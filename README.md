@@ -1,6 +1,6 @@
 # Medusa Agent Skills — YSH Store
 
-Coleção de skills para agentes de IA no contexto do **YSH Store**, uma plataforma B2B de energia solar construída sobre Medusa.js v2. Inclui skills de backend, admin UI e storefront alinhados à arquitetura obrigatória do projeto.
+Coleção de skills para agentes de IA no contexto do **YSH Store**, uma plataforma B2B de energia solar construída sobre Medusa.js v2. Inclui skills de backend, admin UI e storefront alinhados à arquitetura obrigatória do projeto, com suporte tanto a **GitHub Copilot** quanto a **Claude Code**.
 
 Este workspace usa **GitHub Copilot CLI** como agente principal de orquestração.
 
@@ -89,23 +89,54 @@ Skills específicos deste workspace ficam em `.github/skills/`:
 
 ---
 
-## Uso com GitHub Copilot CLI
+## Instalação para GitHub Copilot
 
-Este projeto usa GitHub Copilot CLI. Os skills são carregados como instruções de contexto, não como plugins de CLI.
+No GitHub Copilot, os skills precisam existir dentro de `.github/skills/` no repositório de destino. Este repositório inclui um exportador para copiar os skills dos plugins para o formato esperado pelo Copilot.
 
-**Invocar um skill:**
+**Exportar todos os skills para um projeto Medusa:**
 
-```
-@workspace use skill ysh-medusa-backend-workflow
-```
-
-Ou via prefixo no prompt:
-
-```
-[[SKILL: ysh-medusa-backend-workflow]] crie um workflow para aprovar fabricantes
+```powershell
+Set-Location C:\caminho\para\medusa-agent-skills
+.\tools\install-copilot-skills.ps1 -TargetPath C:\caminho\para\seu-projeto
 ```
 
-**Carregamento automático:** skills relevantes são selecionados automaticamente pelo Copilot com base no domínio da tarefa (backend vs. storefront vs. auditoria).
+**Exportar apenas alguns skills:**
+
+```powershell
+.\tools\install-copilot-skills.ps1 `
+  -TargetPath C:\caminho\para\seu-projeto `
+  -Skill building-with-medusa,building-storefronts,storefront-best-practices
+```
+
+**Sobrescrever skills já exportados:**
+
+```powershell
+.\tools\install-copilot-skills.ps1 -TargetPath C:\caminho\para\seu-projeto -Force
+```
+
+Depois da exportação, o projeto de destino passa a ter uma pasta `.github/skills/` com os skills em formato nativo do Copilot.
+
+### Uso no GitHub Copilot
+
+**Invocar um skill explicitamente:**
+
+```
+[[SKILL: building-with-medusa]] crie um módulo Medusa com workflow e rota admin
+```
+
+```
+[[SKILL: storefront-best-practices]] melhore a PDP para mobile e SEO
+```
+
+**Observação sobre comandos Claude vs. Copilot**
+
+O Copilot não usa `/plugin` nem comandos slash do Claude. Na adaptação para Copilot:
+
+- `building-with-medusa`, `building-admin-dashboard-customizations` e `building-storefronts` continuam como skills principais;
+- `db-migrate`, `db-generate` e `new-user` são exportados como skills operacionais que instruem o agente a executar o CLI do Medusa;
+- referências auxiliares dentro de cada skill continuam disponíveis porque o exportador copia a pasta inteira do skill.
+
+**Carregamento automático:** o Copilot pode selecionar skills automaticamente com base no contexto da tarefa, mas o prefixo `[[SKILL: ...]]` continua sendo a forma mais confiável de forçar o uso.
 
 ---
 

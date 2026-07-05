@@ -46,11 +46,13 @@ The Medusa Admin dashboard is a React application that connects to your backend 
 **What**: React components injected into existing admin pages at predefined zones
 
 **When to use**:
+
 - Adding information to existing pages
 - Displaying related data
 - Extending core entities (products, orders, customers)
 
 **Examples**:
+
 - Show brand on product detail page
 - Show reviews on product detail page
 - Show shipping status on order detail page
@@ -75,11 +77,13 @@ export default ProductBrandWidget
 **What**: Completely new pages in the admin dashboard
 
 **When to use**:
+
 - Managing custom entities
 - Custom dashboards or reports
 - Standalone administrative interfaces
 
 **Examples**:
+
 - Brands management page
 - Reviews management page
 - Custom analytics dashboard
@@ -152,6 +156,7 @@ export const config = defineWidgetConfig({
 ```
 
 **Key points**:
+
 - Uses `DetailWidgetProps<T>` for type safety
 - Receives entity as `data` prop
 - Uses React Query for data fetching
@@ -210,6 +215,7 @@ const ProductBrandWidget = ({ data: product }: DetailWidgetProps<AdminProduct>) 
 ```
 
 **Key points**:
+
 - Local state for edit mode
 - Uses `useMutation` for updates
 - Invalidates query cache after mutation
@@ -320,6 +326,7 @@ export default BrandsPage
 ```
 
 **Key points**:
+
 - Uses `useDataTable` hook for table management
 - Pagination state managed locally (or in URL for production)
 - Uses `sdk.client.fetch()` for custom API endpoints
@@ -363,6 +370,7 @@ export default BrandDetailPage
 ```
 
 **File structure for nested routes**:
+
 ```
 src/admin/routes/brands/
 ├── page.tsx              → /app/brands (list)
@@ -534,6 +542,7 @@ export const sdk = new Medusa({
 ```
 
 **Key points**:
+
 - Use `import.meta.env` (Vite environment variables)
 - Default to "/" for same-origin requests
 - Use "session" auth type for admin
@@ -559,6 +568,7 @@ import { TagSolid, PlusSolid } from "@medusajs/icons"
 ```
 
 **Common components**:
+
 - **Container**: Page/section wrapper
 - **Heading**: Page titles
 - **Text**: Body text
@@ -574,16 +584,19 @@ import { TagSolid, PlusSolid } from "@medusajs/icons"
 Common widget zones:
 
 **Product Pages**:
+
 - `product.details.before`
 - `product.details.after`
 - `product.details.side.before`
 - `product.details.side.after`
 
 **Order Pages**:
+
 - `order.details.before`
 - `order.details.after`
 
 **Customer Pages**:
+
 - `customer.details.before`
 - `customer.details.after`
 
@@ -660,18 +673,21 @@ const modalQuery = useQuery({
 Admin dashboard integration extends Medusa's UI:
 
 **Widgets**:
+
 - ✅ Extend existing pages
 - ✅ Inject at predefined zones
 - ✅ Receive page entity as props
 - ✅ Use for related information
 
 **UI Routes**:
+
 - ✅ Create new pages
 - ✅ Add sidebar navigation
 - ✅ Use for custom entities
 - ✅ Full page control
 
 **Key Technologies**:
+
 - **React Query**: Data fetching and caching
 - **JS SDK**: Backend API communication
 - **Medusa UI**: Consistent styling

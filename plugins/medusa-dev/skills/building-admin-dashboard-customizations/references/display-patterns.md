@@ -1,6 +1,7 @@
 # Displaying Entities - Patterns and Components
 
 ## Contents
+
 - [When to Use Each Pattern](#when-to-use-each-pattern)
 - [DataTable Pattern](#datatable-pattern)
   - [Complete DataTable Implementation](#complete-datatable-implementation)
@@ -325,7 +326,7 @@ For displaying items in a grid:
 
 ## Key Design Elements
 
-### For Product/Variant displays:
+### For Product/Variant displays
 
 - Always show the thumbnail using `<Thumbnail />` component
 - Display title with `<Text size="small" leading="compact" weight="plus">`
@@ -334,7 +335,7 @@ For displaying items in a grid:
 - Include hover states with `bg-ui-bg-component-hover`
 - Add navigation indicators (arrows) when items are clickable
 
-### For other entities:
+### For other entities
 
 - Use similar card patterns but adapt the content
 - Keep consistent spacing (`gap-3` for items, `gap-2` for lists)

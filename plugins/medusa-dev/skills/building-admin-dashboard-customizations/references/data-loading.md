@@ -49,7 +49,7 @@ Before implementing any widget that displays data:
 
 ## Common Mistake vs Correct Pattern
 
-### ❌ WRONG - Single query for both display and modal:
+### ❌ WRONG - Single query for both display and modal
 
 ```tsx
 // This breaks on page refresh!
@@ -63,11 +63,12 @@ const displayItems = data?.filter((item) => ids.includes(item.id)) // No data un
 ```
 
 **Why this is wrong:**
+
 - On page refresh, modal is closed, so query doesn't run
 - User sees empty state instead of their data
 - Display depends on modal interaction
 
-### ✅ CORRECT - Separate queries with proper invalidation:
+### ✅ CORRECT - Separate queries with proper invalidation
 
 ```tsx
 // Display data - loads immediately
@@ -97,6 +98,7 @@ const updateMutation = useMutation({
 ```
 
 **Why this is correct:**
+
 - Display query runs immediately on component mount
 - Modal query only runs when needed
 - Proper invalidation ensures UI updates after changes

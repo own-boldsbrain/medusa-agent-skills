@@ -1,6 +1,7 @@
 # Navigation and Routing
 
 ## Contents
+
 - [Pre-Implementation Requirements for pnpm](#pre-implementation-requirements-for-pnpm)
 - [Basic Navigation with Link Component](#basic-navigation-with-link-component)
 - [Programmatic Navigation](#programmatic-navigation)

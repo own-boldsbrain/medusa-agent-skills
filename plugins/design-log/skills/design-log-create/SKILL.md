@@ -99,6 +99,7 @@ The file structure combines YAML frontmatter with Markdown prose sections. See t
 ## Step 6: Validate before saving
 
 Check all required fields are present:
+
 - [ ] `id` matches the filename
 - [ ] `title` is concise and descriptive
 - [ ] `status` is `draft` (never create with `approved` directly)

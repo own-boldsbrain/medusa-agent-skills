@@ -99,6 +99,7 @@ A estrutura do arquivo combina frontmatter YAML com seções em prosa Markdown. 
 ## Passo 6: Validar antes de salvar
 
 Verifique se todos os campos obrigatórios estão presentes:
+
 - [ ] `id` corresponde ao nome do arquivo
 - [ ] `title` é conciso e descritivo
 - [ ] `status` é `draft` (nunca crie com `approved` diretamente)

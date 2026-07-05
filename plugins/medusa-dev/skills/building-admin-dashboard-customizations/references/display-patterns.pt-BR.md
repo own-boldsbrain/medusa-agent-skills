@@ -1,6 +1,7 @@
 # Exibindo Entidades - Padrões e Componentes
 
 ## Conteúdo
+
 - [Quando Usar Cada Padrão](#quando-usar-cada-padrão)
 - [Padrão DataTable](#padrão-datatable)
   - [Implementação Completa do DataTable](#implementação-completa-do-datatable)
@@ -325,7 +326,7 @@ Para exibir itens em uma grade:
 
 ## Elementos Chave de Design
 
-### Para exibição de Produtos/Variantes:
+### Para exibição de Produtos/Variantes
 
 - Sempre exibir a miniatura usando o componente `<Thumbnail />`
 - Exibir o título com `<Text size="small" leading="compact" weight="plus">`
@@ -334,7 +335,7 @@ Para exibir itens em uma grade:
 - Incluir estados hover com `bg-ui-bg-component-hover`
 - Adicionar indicadores de navegação (setas) quando os itens são clicáveis
 
-### Para outras entidades:
+### Para outras entidades
 
 - Usar padrões de cartão semelhantes, mas adaptar o conteúdo
 - Manter espaçamento consistente (`gap-3` para itens, `gap-2` para listas)

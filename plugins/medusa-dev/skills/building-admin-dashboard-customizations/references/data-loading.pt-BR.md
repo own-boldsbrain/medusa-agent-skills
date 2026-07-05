@@ -1,6 +1,7 @@
 # Princípios e Padrões de Carregamento de Dados
 
 ## Sumário
+
 - [Regras Fundamentais](#regras-fundamentais)
 - [Checklist: Pense Antes de Codificar](#checklist-pense-antes-de-codificar)
 - [Erro Comum vs. Padrão Correto](#erro-comum-vs-padrão-correto)
@@ -48,7 +49,7 @@ Antes de implementar qualquer widget que exiba dados:
 
 ## Erro Comum vs. Padrão Correto
 
-### ❌ ERRADO - Consulta única para exibição e modal:
+### ❌ ERRADO - Consulta única para exibição e modal
 
 ```tsx
 // Isso falha ao recarregar a página!
@@ -62,11 +63,12 @@ const displayItems = data?.filter((item) => ids.includes(item.id)) // Sem dados 
 ```
 
 **Por que isso está errado:**
+
 - Ao recarregar a página, o modal está fechado, então a consulta não é executada.
 - O usuário vê o estado vazio em vez de seus dados.
 - A exibição depende da interação do modal.
 
-### ✅ CORRETO - Consultas separadas com invalidação adequada:
+### ✅ CORRETO - Consultas separadas com invalidação adequada
 
 ```tsx
 // Dados de exibição - carregam imediatamente
@@ -96,6 +98,7 @@ const updateMutation = useMutation({
 ```
 
 **Por que isso está certo:**
+
 - A consulta de exibição é executada imediatamente no mount do componente.
 - A consulta do modal só é executada quando necessário.
 - A invalidação adequada garante que a UI seja atualizada após as mudanças.

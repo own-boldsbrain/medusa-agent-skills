@@ -1,63 +1,63 @@
 ---
 name: design-log-create
-description: Use esta skill quando uma nova decisão arquitetural, escolha tecnológica ou estratégia de implementação precisa ser documentada. Ativada quando o usuário diz "criar um design-log", "registrar esta decisão", "DL para X", ou quando a skill de workflow identifica uma decisão não documentada que deve ser registrada.
+description: Use this skill when a new architectural decision, tech choice, or implementation strategy needs to be documented. Triggered when the user says "create a design-log", "log this decision", "DL for X", or when the workflow skill identifies an undocumented decision that must be recorded.
 ---
 
-# Criar Design-Log
+# Criar registro de projeto
 
-Use esta skill para redigir uma nova entrada de design-log. Siga cada passo com precisão.
+Use esta habilidade para redigir uma nova entrada no registro de projeto. Siga cada etapa com precisão.
 
 ---
 
-## Passo 1: Determinar o próximo ID
+## Etapa 1: Determinar o próximo ID
 
 ```bash
 ls design-log/ | sort
 ```
 
-Encontre o número `DL-NNN` mais alto e incremente em 1. A próxima entrada recebe `DL-{N+1}`.
+Encontre o maior número `DL-NNN` e acrescente 1 a ele. A próxima entrada recebe `DL-{N+1}`.
 
-Exemplo: se o último arquivo é `DL-007-algo.md`, o novo ID é `DL-008`.
+Exemplo: se o último arquivo for `DL-007-something.md`, o novo ID será `DL-008`.
 
 ---
 
-## Passo 2: Escolher um slug
+## Etapa 2: Escolha um slug
 
-O slug é uma descrição curta em kebab-case do tópico da decisão.
+O slug é uma descrição curta, em kebab-case, do tópico de decisão.
 
 - Bom: `catalog-product-families`, `agent-skill-format`, `stack-medusa-v2`
-- Ruim: `minha-decisao`, `update`, `fix`
+- Ruim: `my-decision`, `update`, `fix`
 
-O nome do arquivo final: `DL-NNN-slug.md`
+O nome de arquivo final: `DL-NNN-slug.md`
 
 ---
 
-## Passo 3: Preencher os campos obrigatórios
+## Etapa 3: Preencha os campos obrigatórios
 
-Você **deve**fornecer todos os campos obrigatórios. Não crie uma entrada com campos obrigatórios faltando.
+Você **deve** preencher todos os campos obrigatórios. Não crie uma entrada com campos obrigatórios em branco.
 
 ```yaml
 id: DL-NNN
-title: "Título descritivo curto (5–120 caracteres)"
+title: "Short descriptive title (5–120 chars)"
 status: draft
-date: AAAA-MM-DD   # data de hoje, ISO 8601
-domain: plataforma  # veja a tabela de domínios na referência de schema
+date: YYYY-MM-DD   # today's date, ISO 8601
+domain: plataforma  # see domain table in schema reference
 impact: médio       # baixo | médio | alto | crítico
 context: |
-  O que está acontecendo. Por que esta decisão é necessária agora.
-  Forneça contexto suficiente para um agente que nunca viu este código.
+  What is happening. Why is this decision needed now.
+  Provide enough background for an agent that has never seen this code.
 problem: |
-  O problema específico ou lacuna sendo abordado.
+  The specific problem or gap being addressed.
 decision: |
-  O que foi decidido. Seja explícito e preciso.
-  Evite linguagem vaga como "vamos melhorar" — diga exatamente o que será feito.
+  What was decided. Be explicit and precise.
+  Avoid vague language like "we will improve" — say exactly what will be done.
 ```
 
 ---
 
-## Passo 4: Adicionar campos opcionais (recomendado)
+## Etapa 4: Adicionar campos opcionais (recomendado)
 
-Adicione estes quando você tiver a informação:
+Adicione-os quando tiver as informações:
 
 ```yaml
 affected_files:
@@ -65,88 +65,91 @@ affected_files:
   - "packages/catalog/src/families.ts"
 
 approach: |
-  Orientação de implementação: quais arquivos alterar, em que ordem,
-  e quais padrões seguir.
+  Implementation guidance: which files to change, in what order,
+  and what patterns to follow.
 
 alternatives_considered:
-  - option: "Descrição da Opção A"
-    reason_rejected: "Por que não foi escolhida"
-  - option: "Descrição da Opção B"
-    reason_rejected: "Por que não foi escolhida"
+  - option: "Option A description"
+    reason_rejected: "Why it was not chosen"
+  - option: "Option B description"
+    reason_rejected: "Why it was not chosen"
 
 success_criteria:
-  - "Todos os testes unitários Vitest passam"
-  - "TypeScript compila sem erros"
-  - "Funcionalidade está acessível no storefront"
+  - "All Vitest unit tests pass"
+  - "TypeScript compiles without errors"
+  - "Feature is accessible from the storefront"
 
 consequences:
   positive:
-    - "Reduz a complexidade no módulo de catálogo"
+    - "Reduces complexity in the catalog module"
   negative:
-    - "Requer migração de produtos existentes"
+    - "Requires migration of existing products"
 ```
 
 ---
 
-## Passo 5: Criar o arquivo
+## Etapa 5: Criar o arquivo
 
 Crie o arquivo em: `design-log/DL-NNN-slug.md`
 
-A estrutura do arquivo combina frontmatter YAML com seções em prosa Markdown. Veja o template em `reference/template.pt-br.md` para o formato exato.
+A estrutura do arquivo combina o frontmatter YAML com seções de texto em Markdown. Consulte o modelo em `reference/template.md` para ver o formato exato.
 
 ---
 
-## Passo 6: Validar antes de salvar
+## Etapa 6: Validar antes de salvar
 
-Verifique se todos os campos obrigatórios estão presentes:
+Verifique se todos os campos obrigatórios estão preenchidos:
 
 - [ ] `id` corresponde ao nome do arquivo
 - [ ] `title` é conciso e descritivo
-- [ ] `status` é `draft` (nunca crie com `approved` diretamente)
-- [ ] `date` é hoje no formato ISO 8601
-- [ ] `domain` é um dos valores válidos do enum
-- [ ] `impact` é um de: `baixo`, `médio`, `alto`, `crítico`
-- [ ] `context` explica o contexto de forma suficiente
-- [ ] `problem` é específico (não vago)
-- [ ] `decision` é explícito (não vago)
+- [ ] `status` é `draft` (nunca crie diretamente com `approved`)
+- [ ] `date` é a data de hoje no formato ISO 8601
+- [ ] `domain` é um dos valores válidos da enumeração
+- [ ] `impacto` é um dos seguintes: `baixo`, `médio`, `alto`, `crítico`
+- [ ] `contexto` explica o pano de fundo de forma satisfatória
+- [ ] `problema` é específico (não vago)
+- [ ] `decisão` é explícita (não vaga)
 
 ---
 
-## Passo 7: Notificar o usuário
+## Etapa 7: Notificar o usuário
 
 Após criar o rascunho:
 
 1. Mostre ao usuário o nome do arquivo e um resumo da decisão
-2. Pergunte se desejam revisar e aprovar agora
-3. Lembre-os:**apenas entradas `approved` têm autoridade vinculante sobre agentes**---
+2. Pergunte se ele deseja revisar e aprová-lo agora
+3. Lembre-o: **somente entradas `aprovadas` têm autoridade vinculativa sobre os agentes**
 
-## Fluxo de Promoção de Status
+---
 
-Um agente cria entradas em `draft`. O status é promovido por humanos (ou explicitamente pelo agente com confirmação do usuário):
+## Fluxo de promoção de status
+
+Um agente cria entradas no status `rascunho`. O status é promovido por pessoas (ou explicitamente pelo agente com a confirmação do usuário):
 
 ```
 draft → review → approved → executing → done
                           ↘ rejected
-                 superseded (pode acontecer de qualquer estado terminal)
+                 superseded (can happen from any terminal state)
 ```
 
-Não se auto-promova além de `draft` sem confirmação explícita do usuário.
+Não promova uma entrada para um status superior a `rascunho` sem a confirmação explícita do usuário.
 
 ---
 
-## Substituindo uma entrada existente
+## Substituir uma entrada existente
 
-Se a nova decisão substitui uma entrada `approved` existente:
+Se a nova decisão substituir uma entrada existente com status `aprovado`:
 
-1. Adicione `supersedes: DL-NNN` ao frontmatter da nova entrada
+1. Adicione `supersedes: DL-NNN` ao cabeçalho da nova entrada
 2. Atualize o `status` da entrada antiga para `superseded`
-3. Adicione uma nota na entrada antiga apontando para a nova**Não edite o conteúdo de uma entrada aprovada**— atualize apenas o campo `status`.
+3. Adicione uma nota na entrada antiga indicando a nova
+
+**Não edite o conteúdo de uma entrada aprovada** — atualize apenas o campo `status`.
 
 ---
 
 ## Arquivos de referência
 
--**Template**: `skills/design-log-create/reference/template.pt-br.md`
-
-- **Schema**: `skills/design-log-workflow/reference/schema.pt-br.md`
+- **Modelo**: `skills/design-log-create/reference/template.md`
+- **Esquema**: `skills/design-log-workflow/reference/schema.md`
 - **Exemplo de entrada**: `design-log/DL-000-bootstrap.md`

@@ -11,9 +11,7 @@ Orientações para a implementação do fluxo de finalização de compra na loja
 - Fluxos B2B complexos com requisitos de aprovação
 
 - Vários campos de coleta de dados (empresa, endereço, remessa, cobrança, contato, pagamento)
-- A divulgação progressiva reduz a carga cognitiva**
-
-A YSH Store utiliza 4 etapas de superfície**(mapeadas a partir dos IDs internos das etapas):
+- A divulgação progressiva reduz a carga cognitiva**A YSH Store utiliza 4 etapas de superfície**(mapeadas a partir dos IDs internos das etapas):
 
 | Passo de superfície | Etapas internas abordadas | Descrição |
 |---|---|---|
@@ -271,27 +269,13 @@ O `StripeContext` (por meio de `useContext`) está disponível em toda a árvore
 ## Erros comuns a evitar
 
 - ❌**Busca de formas de pagamento no lado do cliente**— faça a busca no lado do servidor em `CheckoutWorkspace` para evitar a arquitetura em cascata
-- ❌**
-
-Exibindo todos os países**— exibir apenas `cart.region?.countries`
-- ❌**
-
-Definir manualmente os provedores de pagamento**— use sempre `listCartPaymentMethods(region_id)`
-- ❌**
-
-Degraus com salto**— sempre aplique `furthestAccessibleStep` a partir da lógica de degraus da superfície
-- ❌**
-
-Omissão de `scroll: false`**na navegação por etapas — causa um deslocamento brusco para o topo da página
-- ❌**
-
-Realização do pedido antes da sessão de pagamento**— certifique-se de que `initiatePaymentSession` seja concluído antes do redirecionamento para a página de revisão
-- ❌**
-
-Dividir os preços por 100**— O Medusa armazena os preços como valores de exibição
-- ❌**
-
-Não limpar o estado do carrinho após o pedido** — após a realização bem-sucedida do pedido, invalidar o contexto/cache do carrinho
+- ❌**Exibindo todos os países**— exibir apenas `cart.region?.countries`
+- ❌**Definir manualmente os provedores de pagamento**— use sempre `listCartPaymentMethods(region_id)`
+- ❌**Degraus com salto**— sempre aplique `furthestAccessibleStep` a partir da lógica de degraus da superfície
+- ❌**Omissão de `scroll: false`**na navegação por etapas — causa um deslocamento brusco para o topo da página
+- ❌**Realização do pedido antes da sessão de pagamento**— certifique-se de que `initiatePaymentSession` seja concluído antes do redirecionamento para a página de revisão
+- ❌**Dividir os preços por 100**— O Medusa armazena os preços como valores de exibição
+- ❌**Não limpar o estado do carrinho após o pedido** — após a realização bem-sucedida do pedido, invalidar o contexto/cache do carrinho
 ---
 ## Painel de resumo do checkout
 

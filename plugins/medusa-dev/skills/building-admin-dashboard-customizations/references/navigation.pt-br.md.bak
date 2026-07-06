@@ -3,12 +3,12 @@
 ## Conteúdo
 
 - [Pré-requisitos de Implementação para pnpm](#pre-requisitos-de-implementacao-para-pnpm)
-- [Navegação Básica com Componente Link](#navegacao-basica-com-link-component)
+- [Navegação Básica com Componente Link](#navegacao-basica-com-componente-link)
 - [Navegação Programática](#navegacao-programatica)
 - [Acessando Parâmetros de Rota](#acessando-parametros-de-rota)
 - [Linkagem para Páginas Admin Nativas](#linkagem-para-paginas-admin-nativas)
 - [Navegação a partir de Widgets](#navegacao-a-partir-de-widgets)
-- [Padrões Comuns de Navegação](#padroes-comuns-de-navegacao)
+- [Padrões Comuns de Navegação](#padrões-comuns-de-navegação)
 
 ## Pré-requisitos de Implementação para pnpm
 

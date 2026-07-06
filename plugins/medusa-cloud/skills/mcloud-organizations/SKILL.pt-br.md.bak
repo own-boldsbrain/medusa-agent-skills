@@ -8,9 +8,7 @@ allowed-tools: Bash(mcloud organizations*), Bash(mcloud use*), Bash(jq*)
 
 Execute o comando `mcloud organizations` para listar e recuperar organizações na nuvem.
 
-## **Restrições**
-
-- `organizations list` requer**autenticação pessoal**(login no navegador ou chave de acesso pessoal). Chaves de acesso de organização retornam 401 neste comando
+## **Restrições**- `organizations list` requer**autenticação pessoal**(login no navegador ou chave de acesso pessoal). Chaves de acesso de organização retornam 401 neste comando
 
 - Quando autenticado com `MCLOUD_TOKEN` usando uma chave de acesso da org, utilize `mcloud whoami --json` para obter o ID da organização em vez disso.
 

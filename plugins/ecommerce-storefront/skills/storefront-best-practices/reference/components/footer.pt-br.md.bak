@@ -2,18 +2,18 @@
 
 ## Conteúdo
 
-- [Component do Rodapé](#component-do-rodape)
-  - [Conteúdo](#conteudo)
-  - [Visão Geral](#visao-geral)
+- [Component do Rodapé](#componente-do-rodapé)
+  - [Conteúdo](#conteúdo)
+  - [Visão Geral](#visão-geral)
     - [Requisitos Chave](#requisitos-chave)
-  - [Elementos Essenciais do Rodapé](#elementos-essenciais-do-rodape)
-    - [Conteúdo Obrigatório](#conteudo)
-    - [Layout em Colunas (Desktop)](#layout-em-colunas-desktoppadrao-4-5-colunas-coluna-1-lojacategorias-dinamica-do-backend)
-  - [Links de Categoria Dinâmicos (Específico para E-commerce)](#links-de-categoria-dinamicos-especifico-para-e-commercecritico-recupere-categorias-do-backend-dinamicamente-nunca-codifique-recupere-da-api-do-backend-de-e-commerce-para-medusa-sdkstorecategorylistbeneficios-mantem-se-sincronizado-com-a-navegacao-principal)
-  - [Inscrição na Newsletter](#inscricao-na-newsletterelementos-essenciais-campo-de-e-mail-botao-assinar)
-  - [Ícones de Pagamento e Confiança](#icones-de-pagamento-e-confiancaicones-de-metodos-de-pagamentoexibir-metodos-de-pagamento-aceitos-visa-mastercard-paypal-apple-pay-google-pay-icones-de-40-50px-linha-horizontal-inferior-do-rodapeicones-de-confianca-opcionalmaximo-3-4-certificacoes-legitimas-ssl-bbb-garantia-de-reembolso-use-apenas-icones-reais-com-links-de-verificacao)
-  - [Rodapé para Mobile](#rodape-para-mobilecoluna-unica-empilhadalogo-navegacao-newsletter-social-legaldireitos-autoraissecoes-dobraveis-opcionalpadrao-acordeon-para-a-navegacao-para-reduzir-a-altura-mantenha-o-newslettersocial-sempre-visivelpara-toquelinks-de-44px-minimo-espacamento-de-8-12px-texto-de-14-16px-altura-do-campo-de-newsletter-de-48px)
-  - [Lista de Verificação](#icones-de-pagamento-e-confiancaicones-de-metodos-de-pagamentoexibir-metodos-de-pagamento-aceitos-visa-mastercard-paypal-apple-pay-google-pay-icones-de-40-50px-linha-horizontal-inferior-do-rodapeicones-de-confianca-opcionalmaximo-3-4-certificacoes-legitimas-ssl-bbb-garantia-de-reembolso-use-apenas-icones-reais-com-links-de-verificacao)
+  - [Elementos Essenciais do Rodapé](#elementos-essenciais-do-rodapé)
+    - [Conteúdo Obrigatório](#conteúdo-obrigatório)
+    - [Layout em Colunas (Desktop)](#layout-em-colunas-desktop)
+  - [Links de Categoria Dinâmicos (Específico para E-commerce)](#links-de-categoria-dinâmicos-específico-para-ecommerce)
+  - [Inscrição na Newsletter](#inscricao-na-newsletter)
+  - [Ícones de Pagamento e Confiança](#icones-de-pagamento-e-confianca)
+  - [Rodapé para Mobile](#rodape-para-mobile)
+  - [Lista de Verificação](#lista-de-verificacao)
 
 ## Visão Geral
 

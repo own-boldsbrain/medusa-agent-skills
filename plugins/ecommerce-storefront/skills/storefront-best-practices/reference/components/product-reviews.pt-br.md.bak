@@ -2,12 +2,12 @@
 
 ## Conteúdo
 
-- [Visão Geral](#visao-geral)
-- [Padrões de Exibição de Avaliações](#revisao-de-padroes-de-exibicao)
-- [Resumo e Distribuição da Classificação](#classificacao-resumo-e-distribuicao)
+- [Visão Geral](#visão-geral)
+- [Padrões de Exibição de Avaliações](#padrões-de-exibição-de-avaliações)
+- [Resumo e Distribuição da Classificação](#resumo-e-distribuição-da-classificação)
 - [Ordenação e Filtragem](#ordenacao-e-filtragem)
-- [Submissão de Avaliação](#componente-de-avaliacoes-de-produtos)
-- [Sinais de Confiança](#sinais-de-confianca)
+- [Submissão de Avaliação](#submissão-de-avaliação)
+- [Sinais de Confiança](#sinais-de-confiança)
 - [Integração de SEO](#integracao-de-seo)
 
 ## Visão Geral

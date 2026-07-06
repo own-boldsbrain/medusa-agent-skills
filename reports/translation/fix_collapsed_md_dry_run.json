@@ -1,0 +1,50 @@
+[
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.pt-br.md",
+    "changed": false
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-create\\SKILL.pt-br.md",
+    "changed": false
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.pt-br.md",
+    "changed": true
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\reference\\schema.pt-br.md",
+    "changed": false
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\README.pt-br.md",
+    "changed": true
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\medusa.pt-br.md",
+    "changed": true
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\cart-popup.pt-br.md",
+    "changed": false
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-organizations\\SKILL.pt-br.md",
+    "changed": true
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\SKILL.pt-br.md",
+    "changed": false
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\data-models.pt-br.md",
+    "changed": false
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\service.pt-br.md",
+    "changed": false
+  },
+  {
+    "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\streaming.pt-br.md",
+    "changed": false
+  }
+]

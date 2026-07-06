@@ -29,9 +29,7 @@ Guia para conectar sua loja virtual ao backend da Medusa usando o [Medusa JS SDK
 
 **ANTES de escrever código que chama métodos do SDK Medusa**, siga o fluxo de trabalho obrigatório do SKILL.md:
 
-1. **PAUSE**
-
-- Não escreva código ainda.
+1. **PAUSE** - Não escreva código ainda.
 2. **CONSULTE** o servidor MCP ou a documentação (<https://docs.medusajs.com/resources/js-sdk>) para o método exato.
 3. **VERIFIQUE** com o usuário o que você encontrou.
 4. **ESCREVA** o código usando o método verificado.

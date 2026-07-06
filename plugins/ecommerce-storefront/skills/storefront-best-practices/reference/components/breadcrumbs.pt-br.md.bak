@@ -2,19 +2,19 @@
 
 ## Conteúdo
 
-- [Componente de Breadcrumbs](#componente-de-breadcrumbs-trilha-de-navegacao)
-  - [Conteúdo](#conteudo)
-  - [Visão Geral](#visao-geral)
+- [Componente de Breadcrumbs](#componente-de-breadcrumbs-trilha-de-navegação)
+  - [Conteúdo](#conteúdo)
+  - [Visão Geral](#visão-geral)
     - [Requisitos Essenciais](#requisitos-essenciais)
   - [Quando Usar Breadcrumbs](#quando-usar-breadcrumbs)
-  - [Padrões de Breadcrumbs para E-commerce](#padroes-de-breadcrumbs-para-e-commerce)
-    - [Breadcrumbs em Páginas de Produtos](#breadcrumbs-em-paginas-de-produtospadrao-padrao-home-categoria-subcategoria-nome-do-produto)
-    - [Breadcrumbs em Páginas de Categoria](#breadcrumbs-em-paginas-de-produtospadrao-padrao-home-categoria-subcategoria-nome-do-produto)
-    - [Construção do Caminho](#construcao-do-caminhohierarquia-comece-com-home-ou-icone-de-iniciocasa)
-  - [Breadcrumbs em Dispositivos Móveis](#breadcrumbs-em-dispositivos-moveis)
-    - [Padrão Mobile: Reduzir para Link "Voltar"](#padrao-mobile-reduzir-para-link-voltarabordagem-recomendada-mostrar-apenas-o-nivel-anterior-como-link-de-voltar)
-  - [Dados Estruturados para SEO](#dados-estruturados-para-seoschema-breadcrumblist-critico-adicione-dados-estruturados-json-ld-os-breadcrumbs-aparecem-nos-resultados-de-pesquisa-o-que-melhora-o-ctr-taxa-de-cliques-e-ajuda-os-motores-de-busca-a-entenderem-a-estrutura-do-site)
-  - [Lista de Verificação](#lista-de-verificacao)
+  - [Padrões de Breadcrumbs para E-commerce](#padrões-de-breadcrumbs-para-e-commerce)
+    - [Breadcrumbs em Páginas de Produtos](#breadcrumbs-em-páginas-de-produtos)
+    - [Breadcrumbs em Páginas de Categoria](#breadcrumbs-em-páginas-de-categoria)
+    - [Construção do Caminho](#construção-do-caminho)
+  - [Breadcrumbs em Dispositivos Móveis](#breadcrumbs-em-dispositivos-móveis)
+    - [Padrão Mobile: Reduzir para Link "Voltar"](#padrão-mobile-reduzir-para-link-voltar)
+  - [Dados Estruturados para SEO](#dados-estruturados-para-seo)
+  - [Lista de Verificação](#lista-de-verificação)
 
 ## Visão Geral
 

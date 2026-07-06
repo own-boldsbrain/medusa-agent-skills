@@ -32,9 +32,7 @@ Relacione entradas à tarefa atual por:
 
 Para cada entrada relevante, leia:
 
-1. `status` —**apenas entradas `approved` e `executing` têm autoridade vinculante**
-
-2. `domain` e `impact` — para entender o escopo
+1. `status` —**apenas entradas `approved` e `executing` têm autoridade vinculante**2. `domain` e `impact` — para entender o escopo
 2. `context` — por que esta decisão existe
 3. `decision` — o que foi decidido (é isso que você deve seguir)
 4. `approach` — como implementar (se presente, siga-o)

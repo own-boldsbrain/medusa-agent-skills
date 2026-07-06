@@ -2,13 +2,13 @@
 
 ## Contents
 
-- [Visão geral](#visao-geral)
+- [Visão geral](#visão-geral)
 - [Search Placement](#search-placement)
-- [Autocompletar e Sugestões de Produtos](#autocomplete-e-sugestoes-de-produtos)
+- [Autocompletar e Sugestões de Produtos](#autocompletar-e-sugestoes-de-produtos)
 - [Search Results Page](#search-results-page)
 - [Estados Vazios](#estados-vazios)
 - [Pesquisas Recentes e Populares](#pesquisas-recentes-e-populares)
-- [Pesquisa Mobile](#componente-de-pesquisa)
+- [Pesquisa Mobile](#mobile-search)
 
 ## Visão geral
 

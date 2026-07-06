@@ -29,13 +29,13 @@ PLACEHOLDER_PATTERNS = [
 
 MARKDOWN_VIOLATION_PATTERNS = {
     "broken_heading": r"## #",
-    "spaced_bold": r"\*[ \t]+\*|\*\*[ \t]+[^\n*]+[ \t]+\*\*",
+    "spaced_bold": r"\*[ \t]+\*|(?:(?<=\s)|(?<=^))\*\*[ \t]+[^\n*]+[ \t]+\*\*(?=\s|[.,;:!?]|$)",
     "duplicate_bullet": r"^-\s+-\s+",
     "broken_anchor_link": r"\[[^\]]+\]\([^)]+\]",
     "codeblock_inside_table": r"\|\s*```|```.*\|",
-    "collapsed_bold_paragraph": r"\*\*[^*\n]+?\*\*[^\s\n<\[\(\-`*_.,;:!?)]",
-    "collapsed_bold_list": r"\*\*[^*\n]+?\*\*[ \t]*-[ \t]+",
-    "collapsed_bold_numbered_list": r"\*\*[^*\n]+?\*\*[ \t]*\d+\.",
+    "collapsed_bold_paragraph": r"(?:(?<=\s)|(?<=^))\*\*[^*\n]+?\*\*[^\s\n<\[\(\-`*_.,;:!?)]",
+    "collapsed_bold_list": r"\*\*[^*\n]+?\*\*- [ \t]*",
+    "collapsed_bold_numbered_list": r"\*\*[^*\n]+?\*\*\d+\.",
     "broken_hr": r"(?m)^-\s+--$",
 }
 

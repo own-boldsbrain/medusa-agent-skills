@@ -1,63 +1,18 @@
 {
   "summary": {
     "total_pairs": 72,
-    "passed": 55,
-    "needs_review": 16,
-    "failed": 1,
+    "passed": 59,
+    "needs_review": 13,
+    "failed": 0,
     "error": 0
   },
   "issue_file_count": {
-    "markdown_violations": 4,
-    "english_residual_detected": 13,
-    "conversational_filler_detected": 1
+    "english_residual_detected": 13
   },
   "issue_occurrence_count": {
-    "markdown_violations": 4,
-    "english_residual_detected": 13,
-    "conversational_filler_detected": 1
+    "english_residual_detected": 13
   },
   "top_20_risk": [
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.pt-br.md",
-      "status": "failed",
-      "risk_score": 100,
-      "action": "retranslate_from_source",
-      "issues": [
-        "markdown_violations",
-        "conversational_filler_detected"
-      ]
-    },
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\README.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\README.pt-br.md",
-      "status": "needs_review",
-      "risk_score": 50,
-      "action": "repair_by_script",
-      "issues": [
-        "markdown_violations"
-      ]
-    },
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.pt-br.md",
-      "status": "needs_review",
-      "risk_score": 50,
-      "action": "repair_by_script",
-      "issues": [
-        "markdown_violations"
-      ]
-    },
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.pt-br.md",
-      "status": "needs_review",
-      "risk_score": 50,
-      "action": "repair_by_script",
-      "issues": [
-        "markdown_violations"
-      ]
-    },
     {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.pt-br.md",
@@ -189,6 +144,22 @@
       ]
     },
     {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\README.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-create\\SKILL.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-create\\SKILL.pt-br.md",
       "status": "passed",
@@ -207,6 +178,22 @@
     {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\reference\\schema.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\reference\\schema.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\README.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.pt-br.md",
       "status": "passed",
       "risk_score": 0,
       "action": "none",

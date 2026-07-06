@@ -2,31 +2,9 @@
   "P0_source_contaminated": [],
   "P0_truncated": [],
   "P0_codeblock_mismatch": [],
-  "P0_placeholder_or_filler": [
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.pt-br.md",
-      "risk_score": 100
-    }
-  ],
+  "P0_placeholder_or_filler": [],
   "P1_toc_anchor_mismatch": [],
-  "P1_markdown_violations": [
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\README.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\README.pt-br.md",
-      "risk_score": 50
-    },
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.pt-br.md",
-      "risk_score": 50
-    },
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.pt-br.md",
-      "risk_score": 50
-    }
-  ],
+  "P1_markdown_violations": [],
   "P1_heading_mismatch": [],
   "P2_english_residual": [
     {

@@ -2,14 +2,6 @@
 
 Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 
-## P0_placeholder_or_filler (1 arquivos)
-- Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/connecting-to-backend.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/connecting-to-backend.pt-br.md)
-
-## P1_markdown_violations (3 arquivos)
-- Score 50 | [Source](C:/Users/fjuni/medusa-agent-skills/README.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/README.pt-br.md)
-- Score 50 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/README.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/README.pt-br.md)
-- Score 50 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.pt-br.md)
-
 ## P2_english_residual (13 arquivos)
 - Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/skills/design-log-workflow/SKILL.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/skills/design-log-workflow/SKILL.pt-br.md)
 - Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/design.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/design.pt-br.md)

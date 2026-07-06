@@ -287,7 +287,7 @@ Utilize padrões de autenticação específicos do framework para os redireciona
 
 - Detecte erros ao adicionar ao carrinho
 - Verificar se há “fora de estoque” ou “estoque” na mensagem de erro
-- Exibir uma mensagem amigável: “Desculpe, este item está fora de estoque no momento”
+- Exibir uma mensagem amigável: “Infelizmente, este item está fora de estoque no momento”
 - Atualizar a interface de disponibilidade do produto para indicar que está fora de estoque
 
 **Preço alterado durante a finalização da compra:**

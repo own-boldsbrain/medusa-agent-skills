@@ -3,10 +3,12 @@
 Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 
 ## P0_truncated (2 arquivos)
+
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.pt-br.md)
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/typography.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/typography.pt-br.md)
 
 ## P0_codeblock_mismatch (31 arquivos)
+
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/SKILL.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/SKILL.pt-br.md)
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/connecting-to-backend.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/connecting-to-backend.pt-br.md)
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/design.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/design.pt-br.md)
@@ -40,9 +42,11 @@ Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 - Score 85 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/README.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/README.pt-br.md)
 
 ## P1_toc_anchor_mismatch (1 arquivos)
+
 - Score 90 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/search.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/search.pt-br.md)
 
 ## P1_markdown_violations (14 arquivos)
+
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/design-log/README.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/design-log/README.pt-br.md)
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/breadcrumbs.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/breadcrumbs.pt-br.md)
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/navigation.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/navigation.pt-br.md)
@@ -59,11 +63,12 @@ Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 - Score 50 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/using-medusa-cloud/SKILL.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/using-medusa-cloud/SKILL.pt-br.md)
 
 ## P1_heading_mismatch (2 arquivos)
+
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-reviews.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-reviews.pt-br.md)
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/mcloud-organizations/SKILL.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/mcloud-organizations/SKILL.pt-br.md)
 
 ## P2_english_residual (3 arquivos)
+
 - Score 30 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.pt-br.md)
 - Score 30 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/lessons/lesson-1-custom-features.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/lessons/lesson-1-custom-features.pt-br.md)
 - Score 30 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/lessons/lesson-2-extend-medusa.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/lessons/lesson-2-extend-medusa.pt-br.md)
-

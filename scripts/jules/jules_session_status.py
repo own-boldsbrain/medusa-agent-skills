@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+import sys
 import urllib.request
 import urllib.error
 import argparse
@@ -31,7 +32,6 @@ def get_api_token():
             for line in f:
                 line = line.strip()
                 if line.startswith("jules="):
-                    # handle possible quotes
                     val = line.split("=", 1)[1]
                     return val.strip(' "\'')
     return None
@@ -40,13 +40,12 @@ def get_jules_sessions(config, mock_file=None):
     if mock_file:
         with open(mock_file, "r", encoding="utf-8") as f:
             data = json.load(f)
-            # handle both bare list or { "sessions": [...] }
-            return data.get("sessions", data) if isinstance(data, dict) else data
+            sessions = data.get("sessions", data) if isinstance(data, dict) else data
+            return sessions, "test_fixture"
 
     token = get_api_token()
     if not token:
-        # Fallback to empty if no token
-        return []
+        return None, "unavailable"
 
     url = f"{config['jules_api_base_url']}/sessions"
     req = urllib.request.Request(url, headers={
@@ -58,11 +57,13 @@ def get_jules_sessions(config, mock_file=None):
         with urllib.request.urlopen(req, timeout=10) as response:
             if response.status == 200:
                 data = json.loads(response.read().decode('utf-8'))
-                return data.get("sessions", [])
-    except Exception:
-        pass
+                return data.get("sessions", []), "jules_api_live"
+    except urllib.error.URLError as e:
+        print(f"API Error: {e}", file=sys.stderr)
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
         
-    return []
+    return None, "unavailable"
 
 def evaluate_sessions(sessions, config):
     alerts = []
@@ -70,7 +71,6 @@ def evaluate_sessions(sessions, config):
     now = datetime.now(timezone.utc)
     
     for sess in sessions:
-        # Jules API fields
         sess_name = sess.get("name", sess.get("id", "unknown"))
         state = sess.get("state", "UNKNOWN")
         create_time_str = sess.get("createTime")
@@ -79,23 +79,19 @@ def evaluate_sessions(sessions, config):
         
         flags = []
         
-        # AWAITING_PLAN_APPROVAL -> PLAN_PENDING
         if state == "AWAITING_PLAN_APPROVAL":
             flags.append("PLAN_PENDING")
             if "PLAN_PENDING" in config["alert_on"]:
                 alerts.append(f"Session {sess_name} requires plan approval (PLAN_PENDING).")
                 
-        # COMPLETED + outputs.pullRequest -> PR_GENERATED
         if state == "COMPLETED" and pr_info:
             flags.append("PR_GENERATED")
             if "PR_GENERATED" in config["alert_on"]:
                 pr_url = pr_info if isinstance(pr_info, str) else pr_info.get("url", "unknown_url")
                 alerts.append(f"Session {sess_name} generated PR: {pr_url}")
                 
-        # IN_PROGRESS -> STUCK candidate
         if state == "IN_PROGRESS" and create_time_str:
             try:
-                # Handle RFC3339 format, removing Z or dealing with microseconds
                 c_str = create_time_str.replace("Z", "+00:00")
                 created_at = datetime.fromisoformat(c_str)
                 diff = now - created_at
@@ -106,13 +102,11 @@ def evaluate_sessions(sessions, config):
             except ValueError:
                 pass
                 
-        # FAILED -> FAILED
         if state == "FAILED":
             flags.append("FAILED")
             if "FAILED" in config["alert_on"]:
                 alerts.append(f"Session {sess_name} has FAILED.")
                 
-        # AWAITING_USER_FEEDBACK -> NEEDS_HUMAN_REVIEW
         if state == "AWAITING_USER_FEEDBACK":
             flags.append("NEEDS_HUMAN_REVIEW")
             if "NEEDS_HUMAN_REVIEW" in config["alert_on"]:
@@ -136,14 +130,36 @@ def main():
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     config = load_config()
     
-    sessions = get_jules_sessions(config, mock_file=args.mock)
-    processed_sessions, alerts = evaluate_sessions(sessions, config)
+    sessions, source_mode = get_jules_sessions(config, mock_file=args.mock)
+    is_mock = source_mode == "test_fixture"
     
     timestamp = datetime.now(timezone.utc).isoformat()
+
+    if sessions is None:
+        status_msg = "NEEDS_ENVIRONMENT / REPROVADO (Jules API unavailable or no token)"
+        report_json = {
+            "timestamp": timestamp,
+            "status": status_msg,
+            "source_mode": source_mode,
+            "is_mock": is_mock
+        }
+        with open(REPORT_JSON, "w", encoding="utf-8") as f:
+            json.dump(report_json, f, indent=2, ensure_ascii=False)
+            
+        md_content = f"# Jules Session Watch Report\n\n**Generated At:** {timestamp}\n\n**Status:** {status_msg}\n"
+        with open(REPORT_MD, "w", encoding="utf-8") as f:
+            f.write(md_content)
+            
+        print(f"[{timestamp}] Watch cycle aborted: {status_msg}")
+        sys.exit(1)
+    
+    processed_sessions, alerts = evaluate_sessions(sessions, config)
     
     # 1. JSON Report
     report_json = {
         "timestamp": timestamp,
+        "source_mode": source_mode,
+        "is_mock": is_mock,
         "total_sessions": len(processed_sessions),
         "alerts_triggered": len(alerts),
         "sessions": processed_sessions,
@@ -154,6 +170,7 @@ def main():
         
     # 2. Markdown Report
     md_content = f"# Jules Session Watch Report\n\n**Generated At:** {timestamp}\n\n"
+    md_content += f"**Source Mode:** {source_mode} (Mock: {is_mock})\n\n"
     md_content += f"## Active Alerts ({len(alerts)})\n"
     for alert in alerts:
         md_content += f"- 🔴 **ALERT**: {alert}\n"
@@ -171,13 +188,15 @@ def main():
     # 3. JSONL Log Append
     log_entry = {
         "timestamp": timestamp,
+        "source_mode": source_mode,
+        "is_mock": is_mock,
         "event": "WATCH_CYCLE",
         "alerts": alerts
     }
     with open(JSONL_LOG, "a", encoding="utf-8") as f:
         f.write(json.dumps(log_entry) + "\n")
         
-    print(f"[{timestamp}] Watch cycle complete. {len(alerts)} alerts found.")
+    print(f"[{timestamp}] Watch cycle complete. {len(alerts)} alerts found. Source mode: {source_mode}")
 
 if __name__ == "__main__":
     main()

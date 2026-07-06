@@ -238,7 +238,7 @@ export default Module(BRAND_MODULE, {
 **Pontos-chave**:
 
 1. **O nome do módulo DEVE estar em camelCase**: "brand" ✓, "brand-module" ✗
-   - O uso de traços causará erros de tempo de execução!
+   - O uso de traços causará erros de execução!
 
 2. **Exporte a constante `BRAND_MODULE`**: facilita a referência confiável em outros locais
 
@@ -313,7 +313,7 @@ Responda a estas perguntas para testar sua compreensão:
 2. **Por que o nome do módulo é “brand” e não “brand-module”?**
    > Os nomes dos módulos devem estar em camelCase. Traços causam erros de resolução em tempo de execução.
 
-3. **O que acontece se você esquecer de executar as migrações?**
+3. **O que acontece se você se esquecer de executar as migrações?**
    > A tabela `brand` não existirá no banco de dados, portanto, os métodos de serviço falharão.
 
 ### Verificação da implementação
@@ -334,7 +334,7 @@ Execute estes comandos e compartilhe o resultado:
    npm run build
    ```
 
-   Resultado esperado: Sem erros de TypeScript
+   Resultado esperado: Sem erros no TypeScript
 
 3. **Mostre-me seus arquivos**:
    - `src/modules/brand/models/brand.ts`
@@ -413,7 +413,7 @@ const workflow = createWorkflow("create-brand-with-logo", function (input) {
 
 **Principais benefícios**:
 
-- **Reverta automática**: as funções de compensação revertem as alterações
+- **Revertimento automático**: as funções de compensação revertem as alterações
 - **Segurança da transação**: tudo ou nada
 - **Lógica de repetição**: é possível repetir etapas que falharam
 - **Componibilidade**: os fluxos de trabalho podem chamar outros fluxos de trabalho
@@ -880,11 +880,11 @@ validateAndTransformBody(PostAdminCreateBrand)
 - Retorna o erro 400 se a validação falhar
 - Preenche `req.validatedBody` se a validação for bem-sucedida
 
-**Erro comum**: Erro de digitação no nome do arquivo
+**Erro comum**: Erro ortográfico no nome do arquivo
 
 - DEVE ser `middlewares.ts` (plural)
 - NÃO é `middleware.ts` (singular)
-- O erro de digitação faz com que o middleware seja ignorado silenciosamente!
+- O erro ortográfico faz com que o middleware seja ignorado silenciosamente!
 
 **Documentação**: [Guia de Middlewares](https://docs.medusajs.com/learn/fundamentals/api-routes/middlewares) | [Middleware de Validação](https://docs.medusajs.com/learn/fundamentals/api-routes/validation)
 
@@ -1148,7 +1148,7 @@ git commit -m "Complete Lesson 1: Brand Module, Workflow, and API Route"
 Na **Lição 2: Ampliar o Medusa**, você aprenderá a:
 
 - **Vincular marcas a produtos** usando Module Links (mantendo o isolamento dos módulos)
-- **Estender os fluxos de trabalho principais** usando ganchos de fluxo de trabalho (adicionar lógica personalizada aos fluxos de trabalho do Medusa)
+- **Estender fluxos de trabalho principais** usando ganchos de fluxo de trabalho (adicionar lógica personalizada aos fluxos de trabalho do Medusa)
 - **Consultar dados vinculados** entre módulos usando o Query
 
 Você será capaz de:

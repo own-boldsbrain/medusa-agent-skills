@@ -1,62 +1,59 @@
 ---
 name: mcloud-organizations
-description: Execute comandos mcloud organizations para listar ou obter organizações do Cloud. Use ao descobrir organizações, resolver IDs de organização pelo nome ou recuperar detalhes da organização, incluindo membros e assinatura.
+description: Execute mcloud organizations commands to list or get Cloud organizations. Use when discovering organizations, resolving organization IDs by name, or retrieving organization details including members and subscription.
 allowed-tools: Bash(mcloud organizations*), Bash(mcloud use*), Bash(jq*)
 ---
 
-# Cloud CLI: Comandos de Organizações
+# CLI do Cloud: Comandos de organizações
 
-Execute o comando `mcloud organizations` para listar e recuperar organizações na nuvem.
+Execute os comandos `mcloud organizations` para listar e recuperar organizações do Cloud.
 
-## **Restrições**
+## Restrições
 
-- `organizations list` requer**autenticação pessoal**(login no navegador ou chave de acesso pessoal). Chaves de acesso de organização retornam 401 neste comando
-
-- Quando autenticado com `MCLOUD_TOKEN` usando uma chave de acesso da org, utilize `mcloud whoami --json` para obter o ID da organização em vez disso.
+- O comando `organizations list` requer **autenticação pessoal** (login no navegador ou chave de acesso pessoal). As chaves de acesso da organização retornam o código de erro 401 neste comando.
+- Ao se autenticar com `MCLOUD_TOKEN` usando uma chave de acesso da organização, use `mcloud whoami --json` para obter o ID da organização.
 
 ## Comandos
 
-#### Lista de Organizações
+### listar organizações
 
-Liste todas as organizações às quais sua conta tem acesso.
+Lista todas as organizações às quais sua conta tem acesso.
 
 ```bash
 mcloud organizations list --json
 ```
 
--*Opções:**- ```json
+**Opções:**
+- `--json` — Exibe o resultado em formato JSON
 
-`--json` — Saída como JSON
+### obter organizações
 
-```
-
-### Organizações obtêm
-
-Recupere uma única organização pelo ID. Retorna metadados, detalhes da assinatura e membros.
+Recupera uma única organização pelo ID. Retorna metadados, detalhes da assinatura e membros.
 
 ```bash
 mcloud organizations get <organization-id> --json
 ```
 
--*Argumentos:**- `organization` — ID da organização (obrigatório)
+**Argumentos:**
+- `organization` — ID da organização (obrigatório)
 
--*Opções:**- `-o/--organization <id>` — Substituir a organização no contexto ativo (deve corresponder ao argumento)
+**Opções:**
+- `-o/--organization <id>` — Substitui a organização no contexto ativo (deve corresponder ao argumento)
+- `--json` — Exibe o resultado em JSON
 
-- `--json` — Saída em JSON
-
-## Campos da Organização (JSON)
+## Campos da organização (JSON)
 
 | Campo | Descrição |
-|-------|-------------|
-| `id` | Organização ID |
-| `nome` | Nome de exibição da organização |
+|-------|------- ------|
+| `id` | ID da organização |
+| `name` | Nome de exibição da organização |
 | `billing_email` | E-mail de contato para cobrança |
-| `status` | `ativo` ou não |
-| `membros` | Array de objetos de membro com `id`, `role`, `user.email` |
-| `assinatura` | Plano atual, período e flag `is_active` |
-| `conta_corrente` | Detalhes do titular da conta de faturamento |
+| `status` | `active` ou outro valor |
+| `members` | Matriz de objetos de membros com `id`, `role`, `user.email` |
+| `subscription` | Plano atual, período e sinalizador `is_active` |
+| `account_holder` | Dados do titular da conta de cobrança |
 
-## **Exemplos**
+## Exemplos
 
 ```bash
 # List all organizations

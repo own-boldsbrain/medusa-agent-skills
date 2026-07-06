@@ -1,84 +1,61 @@
 # Componente de Avaliações de Produtos
 
-## Conteúdo
+## Índice
 
-- [Visão Geral](#visao-geral)
-- [Padrões de Exibição de Avaliações](#revisao-de-padroes-de-exibicao)
-- [Resumo e Distribuição da Classificação](#classificacao-resumo-e-distribuicao)
-- [Ordenação e Filtragem](#ordenacao-e-filtragem)
-- [Submissão de Avaliação](#componente-de-avaliacoes-de-produtos)
-- [Sinais de Confiança](#sinais-de-confianca)
-- [Integração de SEO](#integracao-de-seo)
+- [Visão geral](#visao-geral)
+- [Padrões de exibição de avaliações](#padroes-de-exibicao-das-avaliacoes)
+- [Resumo e distribuição das notas](#resumo-e-distribuicao-da-classificacao)
+- [Classificação e filtragem](#classificacao-e-filtragem)
+- [Envio de avaliações](#padroes-de-exibicao-das-avaliacoes)
+- [Sinais de confiança](#sinais-de-confianca)
+- [Integração com SEO](#integracao-com-seo)
 
-## Visão Geral
+## Visão geral
 
-Avaliações de produtos geram confiança e influenciam as decisões de compra. Avaliações com classificações convertem 270% melhor do que produtos sem.
+As avaliações de produtos geram confiança e influenciam as decisões de compra. Produtos com avaliações têm uma taxa de conversão 270% maior do que aqueles sem avaliações.
 
-**Conhecimento assumido**: Claude sabe como criar formulários e exibir listas. Este guia foca nos padrões de avaliações de comércio eletrônico e sinais de confiança.
+**Conhecimento prévio**: Claude sabe como criar formulários e exibir listas. Este guia enfoca os padrões de avaliação no comércio eletrônico e os sinais de confiança.
 
-### Key Requirements
+### Requisitos principais
 
-- Resumo de classificação de estrelas (1-5 estrelas) com distribuição
+- Resumo da classificação por estrelas (1 a 5 estrelas) com distribuição
+- Avaliações individuais com classificação, texto, autor e data
+- Classificação (Mais recentes, Mais úteis, Classificação mais alta/mais baixa)
+- Filtragem por classificação (somente 5 estrelas, 4+ estrelas)
+- Emblemas de compra verificada
+- Votos de utilidade (sistema de votos positivos)
+- Formulário para envio de avaliações
+- Otimizado para dispositivos móveis
 
-### Classificação de Estrelas
-
-#### 1 Estrela
-
-- 0% dos usuários
-
-#### 2 Estrelas
-
-- 0% dos usuários
-
-#### 3 Estrelas
-
-- 0% dos usuários
-
-#### 4 Estrelas
-
-- 0% dos usuários
-
-#### 5 Estrelas
-
-- 0% dos usuários
-
-- Avaliações individuais com classificações, texto, autor, data
-- Ordenação (Mais Recente, Mais Útil, Maior/Menor Classificação)
-- Filtering by rating (5 stars only, 4+ stars)
-- Verified purchase badges
-- Votos úteis (sistema de votos positivos)
-- **Formulário de envio de avaliação**
-- Mobile-optimized
-
-## Revisão de Padrões de Exibição
+## Padrões de exibição das avaliações
 
 ### Posicionamento
 
-**On product page:**
+**Na página do produto:**
 
-- Abaixo dos detalhes do produto (após adicionar ao carrinho)
-- Antes de produtos relacionados
-- Link âncora nas informações do produto: "★★★★★ (127 avaliações)"
+- Abaixo dos detalhes do produto (após o botão “Adicionar ao carrinho”)
+- Antes dos produtos relacionados
+- Link de âncora nas informações do produto: “★★★★★ (127 avaliações)”
 
-**Página de avaliações separada:**
+**Página separada de avaliações:**
 
-- Somente para catálogos muito grandes (500+ avaliações)
-- Link: "Ver Todas as Avaliações"
-- A maioria das lojas exibe avaliações embutidas na página do produto
+- Apenas para catálogos muito grandes (mais de 500 avaliações)
+- Link: “Ver todas as avaliações”
+- A maioria das lojas exibe as avaliações diretamente na página do produto
 
-## Classificação Resumo e Distribuição
+## Resumo e distribuição da classificação
 
-### Exibição da Classificação Média
+### Exibição da classificação média
 
-**Exibir de forma proeminente:**
+**Exibir com destaque:**
 
-- Classificação média: "★★★★★ 4.5 de 5"
-- Contagem total de avaliações: "Com base em 127 avaliações"
-- Large stars (24-32px)
+- Classificação média: “★★★★★ 4,5 de 5”
+- Número total de avaliações: “Com base em 127 avaliações”
+- Estrelas grandes (24–32 px)
 
-### Distribuição de Classificações (CRÍTICO)
+### Distribuição da classificação (CRÍTICO)
 
-**Desdobramento visual com barras clicáveis:**
+**Divisão visual com barras clicáveis:**
 
 ```
 5 ★ [████████████████████] 82 (65%)
@@ -88,174 +65,174 @@ Avaliações de produtos geram confiança e influenciam as decisões de compra. 
 1 ★ [█░░░░░░░░░░░░░░░░░░░] 5 (3%)
 ```
 
-**Torne as barras clicáveis:**
+**Tornar as barras clicáveis:**
 
-- Clique para filtrar avaliações por classificação
-- Mostra apenas as classificações de estrelas selecionadas
-- Mostrar tudo para redefinir o filtro
+- Clique para filtrar avaliações por nota
+- Mostra apenas as notas selecionadas
+- “Mostrar tudo” para redefinir o filtro
 
 **Por que a distribuição é importante:**
 
-- Classificação perfeita de 5.0 parece falsa (os clientes confiam em uma média de 4.2-4.5)
-- Mostrar avaliações negativas constrói confiança
-- Distribuição ajuda os clientes a entender a qualidade do produto
+- Uma nota perfeita de 5,0 parece falsa (os clientes confiam mais em uma média entre 4,2 e 4,5)
+- Mostrar avaliações negativas gera confiança
+- A distribuição ajuda os clientes a entender a qualidade do produto
 
-### Sem Avaliações
+### Situação sem avaliações
 
-**Quando não houver avaliações:**
+**Quando não há avaliações:**
 
-- "Ainda sem avaliações"
-- Seja o primeiro a avaliar este produto
-- Botão **"Write a Review"** proeminente
-- Não mostre 0 estrelas ou classificação vazia
+- “Ainda não há avaliações”
+- “Seja o primeiro a avaliar este produto”
+- Botão “Escreva uma avaliação” em destaque
+- Não mostre 0 estrelas ou classificação em branco
 
-## Ordenação e Filtragem
+## Classificação e filtragem
 
-### Opções de Ordenação (CRÍTICO)
+### Opções de classificação (CRÍTICO)
 
 **Classificação essencial:**
 
-- **Mais Recentes** (padrão) - mostra os feedbacks mais recentes
-- **Mais Úteis** (por votos) - exibe as melhores avaliações
-- **Maior Avaliação** (5 estrelas primeiro) - veja o feedback positivo
-- **Menor Avaliação** (1 estrela primeiro) - veja as preocupações
+- **Mais recentes** (padrão) — mostra os comentários mais recentes
+- **Mais úteis** (por votos positivos) — destaca as melhores avaliações
+- **Melhor classificação** (5 estrelas primeiro) — veja os comentários positivos
+- **Classificação mais baixa** (1 estrela primeiro) — veja as reclamações
 
-**Seletor de menu suspenso:**
+**Seletor suspenso:**
 
 ```
 Sort by: [Most Recent ▾]
 ```
 
-### Opções de Filtro
+### Opções de filtragem
 
 **Filtrar por classificação:**
 
 - Todas as classificações (padrão)
-- 5 estrelas apenas
+- Apenas 5 estrelas
 - 4+ estrelas
-- 3 estrelas ou menos (veja feedback negativo)
+- 3 estrelas ou menos (veja os comentários negativos)
 
 **Filtrar por critérios:**
 
-- Compras verificadas apenas (maior confiança)
-- Com fotos apenas (prova visual)
-- Recente (últimos 30 dias, 6 meses)
+- Apenas compras verificadas (máximo de confiança)
+- Apenas com fotos (prova visual)
+- Recentes (últimos 30 dias, 6 meses)
 
-**Exibir contagem filtrada:**
+**Mostrar contagem filtrada:**
 
-- Exibindo 24 de 127 avaliações
+- “Mostrando 24 de 127 avaliações”
 
-## Review Submission
+## Envio de avaliação
 
-### Formulário de Revisão
+### Campos do formulário de avaliação
 
-**Obrigatório:**
+**Obrigatórios:**
 
 - Classificação por estrelas (seletor de 1 a 5 estrelas)
-- Texto de revisão (área de texto, 50-500 caracteres)
-- Nome do revisor (se não estiver conectado)
+- Texto da avaliação (área de texto, 50 a 500 caracteres)
+- Nome do avaliador (se não estiver conectado)
 
 **Opcional:**
 
-- Título/revisão
-- Envie imagens (2-5 no máximo)
+- Título/cabeçalho da avaliação
+- Enviar imagens (máximo de 2 a 5)
 - Você recomendaria? (Sim/Não)
 
-**Colocação do formulário:**
+**Posicionamento do formulário:**
 
-- Botão "Write a Review" abre modal ou formulário inline
-- Posição próxima ao resumo da avaliação
+- O botão “Escreva uma avaliação” abre um formulário modal ou embutido
+- Posicionar próximo ao resumo da avaliação
 
-### Validação de Formulário
+### Validação do formulário
 
 **Requisitos:**
 
-- A classificação deve ser selecionada
+- É necessário selecionar uma nota
 - Comprimento mínimo da avaliação (50 caracteres)
-- Exibir contador de caracteres: "50 / 500 caracteres"
-- Valide antes de enviar
+- Exibir contador de caracteres: “50 / 500 caracteres”
+- Validar antes do envio
 
 **Sucesso:**
 
-- Obrigado pela sua avaliação!
-- Sua avaliação está pendente de aprovação
+- “Obrigado pela sua avaliação!”
+- “Sua avaliação está aguardando aprovação” (se a moderação estiver ativada)
 
-## Sinais de Confiança
+## Sinais de confiança
 
-### Insígnia de Compra Verificada (CRÍTICO)
+### Emblema de compra verificada (CRÍTICO)
 
 **Exibição:**
 
-- Badge ou marca de seleção: "✓ Compra Verificada"
-- Position near reviewer name
+- Emblema ou marca de seleção: “✓ Compra verificada”
+- Posicionar próximo ao nome do avaliador
 - Cor verde ou ícone de marca de seleção
-- Somente para clientes confirmados
+- Apenas para clientes confirmados
 
-**Why it matters:**
+**Por que isso é importante:**
 
-- Constrói confiança (cliente real, não falso)
-- Reduz suspeitas de avaliações pagas
+- Gera confiança (cliente real, não falso)
+- Reduz a suspeita de avaliações pagas
 - Maior credibilidade
 
 ### Votos úteis
 
 **Sistema de votos positivos/negativos:**
 
-- "Esta avaliação foi útil?"
-- [👍 Yes (24)] [👎 No (2)]
-- Click to vote (one vote per user)
-- Powers "Mais Úteis" sorting
+- “Esta avaliação foi útil?”
+- [👍 Sim (24)] [👎 Não (2)]
+- Clique para votar (um voto por usuário)
+- Permite a classificação por “Mais úteis”
 
-**Benefits:**
+**Benefícios:**
 
-- Surfaces most useful reviews
+- Destaca as avaliações mais úteis
 - Validação da comunidade
 - Reduz o impacto de avaliações inúteis
 
-### Revisar Imagens (Opcional)
+### Imagens nas avaliações (opcional)
 
-Customer-uploaded photos (3-4 max per review, 60-80px thumbnails, click to enlarge). Visual proof increases trust and engagement.
+Fotos enviadas pelos clientes (máximo de 3 a 4 por avaliação, miniaturas de 60 a 80 px, clique para ampliar). A prova visual aumenta a confiança e o engajamento.
 
-### Armazenar Respostas (Recomendado)
+### Respostas da loja (recomendado)
 
-Respostas do vendedor abaixo da avaliação original (recuadas, fundo cinza claro). Responda às avaliações negativas de forma profissional - mostra que você se importa, aborda preocupações sem ser defensivo.
+O vendedor responde abaixo da avaliação original (recuada, com fundo cinza claro). Responda às avaliações negativas de forma profissional — isso demonstra que você se importa e aborda as preocupações sem ficar na defensiva.
 
-## Integração de SEO
+## Integração com SEO
 
-**AggregateRating Schema (CRITICAL):** Add structured data to show star ratings in search results. Include `ratingValue` (avg rating), `reviewCount`, `bestRating` (5), `worstRating` (1).
+**Esquema AggregateRating (CRÍTICO):** Adicione dados estruturados para exibir classificações por estrelas nos resultados de pesquisa. Inclua `ratingValue` (classificação média), `reviewCount`, `bestRating` (5), `worstRating` (1).
 
-**Benefícios de SEO:** Classificações por estrelas nos resultados de pesquisa, maior CTR, rich snippets. Veja seo.md para detalhes de implementação.
+**Benefícios de SEO:** Classificações por estrelas nos resultados de busca, maior CTR, rich snippets. Consulte seo.md para detalhes de implementação.
 
-**Important:** Only include if reviews are real. Fake reviews violate Google guidelines.
+**Importante:** Inclua apenas se as avaliações forem reais. Avaliações falsas violam as diretrizes do Google.
 
-## Padrões de Exibição
+## Padrões de exibição
 
-**Individual review card:**
-Star rating (16-20px) + text + reviewer name (first name + initial) + date + verified badge + helpful votes. Truncate long reviews (200-300 chars) with "Read more".
+**Cartão de avaliação individual:**
+Classificação por estrelas (16-20 px) + texto + nome do avaliador (nome + inicial) + data + selo de verificação + votos de utilidade. Trunque avaliações longas (200-300 caracteres) com “Leia mais”.
 
-**Mobile:**
-Coluna única, votos otimizados para toque (44px), seletor de ordenação em tela cheia, filtro em bottom sheet, paginação "Carregar mais".
+**Dispositivos móveis:**
+Coluna única, votos otimizados para toque (44px), seleção de classificação em tela cheia, barra de filtragem na parte inferior, paginação com “Carregar mais”.
 
-## Lista de Verificação
+## Lista de verificação
 
 **Recursos essenciais:**
 
-- [ ] Star rating summary (average + count)
-- [ ] Gráfico de barras de distribuição de avaliações (5 a 1 estrelas)
-- [ ] Clickable bars to filter by rating
-- [ ] Sort dropdown (Most Recent, Most Helpful, Highest/Lowest)
-- [ ] Opções de filtro (verificadas, com fotos, por classificação)
-- [ ] Individual reviews with: stars, text, name, date
-- [ ] Verified purchase badge
-- [ ] Helpful votes (upvote/downvote)
-- [ ] Revisar formulário de envio (avaliação, texto)
-- [ ] Validação de formulário (comprimento mínimo, avaliação obrigatória)
-- [ ] "Leia mais" para resenhas longas
-- [ ] Armazenar respostas para avaliações (recomendado)
-- [ ] Revisar imagens (envios dos clientes, opcional)
-- [ ] Mobile: Alvos de toque mínimo de 44px
-- [ ] Pagination or "Load more" button
-- [ ] Sem avaliações ("Seja o primeiro a avaliar")
+- [ ] Resumo da classificação por estrelas (média + contagem)
+- [ ] Gráfico de barras com distribuição de avaliações (5 a 1 estrela)
+- [ ] Barras clicáveis para filtrar por avaliação
+- [ ] Menu suspenso de classificação (Mais recentes, Mais úteis, Mais altas/Mais baixas)
+- [ ] Opções de filtro (verificadas, com fotos, por avaliação)
+- [ ] Avaliações individuais com: estrelas, texto, nome, data
+- [ ] Emblema de compra verificada
+- [ ] Votos de utilidade (voto positivo/negativo)
+- [ ] Formulário de envio de avaliação (classificação, texto)
+- [ ] Validação do formulário (comprimento mínimo, classificação obrigatória)
+- [ ] “Leia mais” para avaliações longas
+- [ ] Respostas da loja às avaliações (recomendado)
+- [ ] Imagens de avaliações (enviadas pelos clientes, opcional)
+- [ ] Dispositivos móveis: áreas de toque com no mínimo 44px
+- [ ] Paginação ou botão “Carregar mais”
+- [ ] Nenhuma avaliação ("Seja o primeiro a avaliar")
 - [ ] Dados estruturados de AggregateRating (SEO)
-- [ ] Rótulos ARIA para classificações de estrelas
+- [ ] Rótulos ARIA para classificações por estrelas
 - [ ] Acessível por teclado (todas as interações)

@@ -94,7 +94,7 @@ Use diagramas (arte ASCII) à vontade.
 
 Quando o usuário encontrar erros:
 
-- **NÃO** ignore o erro nem diga “vamos voltar a isso mais tarde”
+- **NÃO** ignore o erro nem diga “voltaremos a isso mais tarde”
 - **SIM**, trate-o como um momento valioso de aprendizado
 - Abra o guia de solução de problemas relevante
 - Faça a depuração em conjunto, fazendo perguntas de diagnóstico
@@ -106,7 +106,7 @@ Quando o usuário fizer perguntas para as quais você não tem respostas:
 
 1. **Reconheça a lacuna**: “Que ótima pergunta! Deixe-me procurar as informações mais recentes para você.”
 2. **Consulte o MedusaDocs MCP**: use o servidor MedusaDocs MCP para pesquisar
-3. **Sintetize**: não se limite a citar documentos — explique dentro do contexto de aprendizagem do usuário
+3. **Sintetize**: não se limite a apresentar documentos — explique dentro do contexto de aprendizagem do usuário
 4. **Continue ensinando**: relacione a resposta ao tutorial
 
 ## Estrutura de três aulas
@@ -249,7 +249,7 @@ Não avance até que:
 
 ### Quando o usuário encontrar erros
 
-**CRÍTICO**: NUNCA ignore erros nem diga “vamos resolver isso mais tarde”
+**CRÍTICO**: NUNCA ignore erros nem diga “vamos lidar com isso mais tarde”
 
 Siga este processo:
 
@@ -284,9 +284,9 @@ Carregue a seção de solução de problemas apropriada:
 - **Erros de fluxo de trabalho**: “Função assíncrona não permitida”, “Não é possível usar await”
 - **Erros de rota da API**: “401 Não autorizado”, “Matriz vazia retornada”
 - **Erros da interface de administração**: “Não é possível encontrar @tanstack/react-query”, “Widget não está sendo exibido”
-- **Erros no banco de dados**: “A tabela já existe”, “Falha na migração”
+- **Erros de banco de dados**: “A tabela já existe”, “Falha na migração”
 
-## Estratégia de ensino da arquitetura
+## Estratégia de ensino de arquitetura
 
 Use o padrão **“Eu faço → Nós fazemos → Vocês fazem”** para cada conceito:
 
@@ -486,7 +486,7 @@ Quando o usuário fizer perguntas durante o tutorial para as quais você não ti
 
 2. **Consulte o MCP**: Use a ferramenta `ask_medusa_question` do servidor MCP do MedusaDocs
 
-3. **Sintetize**: Não se limite a copiar a documentação — explique no contexto do aprendizado do usuário:
+3. **Sintetize**: Não basta apenas copiar a documentação — explique no contexto do aprendizado do usuário:
 
    ```
    According to the latest Medusa documentation, [answer].

@@ -108,42 +108,52 @@ A otimização da página de produto é um conjunto de técnicas e estratégias 
 
 A otimização da página de produto é fundamental para o sucesso de uma estratégia de SEO, pois ajuda a:
 
-* Aumentar a visibilidade dos produtos no mercado
-* Melhorar a experiência do usuário
-* Aumentar as taxas de conversão
-* Reduzir a competição por palavras-chave
+- Aumentar a visibilidade dos produtos no mercado
+- Melhorar a experiência do usuário
+- Aumentar as taxas de conversão
+- Reduzir a competição por palavras-chave
 
 ### Técnicas de Otimização da Página de Produto
 
 Aqui estão algumas técnicas básicas de otimização da página de produto:
 
 #### 1. **Título da Página de Produto***O título da página de produto deve ser claro e conciso
-* Deve incluir a palavra-chave principal do produto
-* Deve ser único para cada página de produto
+
+- Deve incluir a palavra-chave principal do produto
+
+- Deve ser único para cada página de produto
 
 ```html
 <title>Produto X - Descrição e Preço</title>
 ```
 
 #### 2. **Meta Descrição***A meta descrição é uma breve descrição da página de produto
-* Deve ser escrita de forma a atrair o usuário
-* Deve incluir a palavra-chave principal do produto
+
+- Deve ser escrita de forma a atrair o usuário
+
+- Deve incluir a palavra-chave principal do produto
 
 ```html
 <meta name="description" content="Produto X é uma ótima escolha para quem busca...">
 ```
 
 #### 3. **Palavras-Chave***As palavras-chave devem ser incluídas na página de produto de forma natural
-* Deve haver uma quantidade razoável de palavras-chave na página
-* Deve ser evitada a sobre-otimização
+
+- Deve haver uma quantidade razoável de palavras-chave na página
+
+- Deve ser evitada a sobre-otimização
 
 #### 4. **Imagens e Vídeos***As imagens e vídeos devem ser otimizados para SEO
-* Deve ser incluído texto alternativo para as imagens
-* Deve ser incluído um título e uma descrição para os vídeos
+
+- Deve ser incluído texto alternativo para as imagens
+
+- Deve ser incluído um título e uma descrição para os vídeos
 
 #### 5. **Links Internos***Os links internos devem ser otimizados para SEO
-* Deve ser incluído um título e uma descrição para os links
-* Deve ser evitada a sobre-otimização
+
+- Deve ser incluído um título e uma descrição para os links
+
+- Deve ser evitada a sobre-otimização
 
 ### Ferramentas para Otimização da Página de Produto
 
@@ -231,14 +241,16 @@ url = "/produtos?cor=azul&amp;ordem=preco&amp;pagina=2"
 print(remove_params(url))  # Output: /produtos
 ```
 
-### Dicas* Sempre use a técnica de "parâmetros de URL" para criar URLs canônicas.
-* Certifique-se de que a função `remove_params` seja chamada com a URL correta.
-* Use a função `f-strings` para criar a URL canônica sem parâmetros.
+### Dicas* Sempre use a técnica de "parâmetros de URL" para criar URLs canônicas
+
+- Certifique-se de que a função `remove_params` seja chamada com a URL correta.
+
+- Use a função `f-strings` para criar a URL canônica sem parâmetros.
 
 ### Links
 
-* [urllib.parse](https://docs.python.org/3/library/urllib.parse.html)
-* [parse_qs](https://docs.python.org/3/library/urllib.parse.html#urllib.parse.parse_qs)
+- [urllib.parse](https://docs.python.org/3/library/urllib.parse.html)
+- [parse_qs](https://docs.python.org/3/library/urllib.parse.html#urllib.parse.parse_qs)
 
 **Implementação:**
 
@@ -288,7 +300,7 @@ Gerar mapas do site dinamicamente a partir do banco de dados para ajudar os meca
 
 A página de produto é a sua oportunidade de brilhar e encantar os clientes com detalhes irresistíveis. Aqui, você pode contar a história por trás de cada item, destacando seus recursos únicos e benefícios.
 
-### O Que Incluir:
+### O Que Incluir
 
 - **Descrição Detalhada:**Descreva o produto de forma cativante, destacando suas características e vantagens.
 -*Imagens*: Mostre o produto em diferentes ângulos e cenários para uma experiência visual completa.
@@ -298,7 +310,7 @@ A página de produto é a sua oportunidade de brilhar e encantar os clientes com
 
 [Link para a Página de Produto](https://exemplo.com/produto)
 
-## Estrutura Sugerida:
+## Estrutura Sugerida
 
 1.**Cabeçalho Chamativo:**Crie um título cativante que chame a atenção do cliente.
 2.*Galeria de Imagens:*Uma coleção de imagens de alta qualidade para uma visão completa.

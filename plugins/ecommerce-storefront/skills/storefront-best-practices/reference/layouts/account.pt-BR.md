@@ -215,6 +215,7 @@ arr.splice(-1, 1);
 arr.splice(arr.length, 0, arr[1]);
 console.log(arr); // [3, 1, 2]
 ```
+
 - Entrar em contato com o suporte sobre o pedido
 
 ### Função de Reordenação (Ecommerce-Específica)
@@ -369,24 +370,29 @@ $cartao = new Cartao("1234567890123456", "123", "12/2025");
 [Link para a página de perfil](https://example.com/profile)
 
 ## Configurações de Perfil
-- **Nome de Usuário:***username*- Email: example@email.com
+
+- **Nome de Usuário:***username*- Email: <example@email.com>
 - Data de Cadastro: 15/03/2023
 
 ## Configurações de Segurança
+
 -**Autenticação de Dois Fatores:** Ativado
+
 - Dispositivos Conectados:
-   - Dispositivo 1: Nome do Dispositivo, Última Atividade: 1 hora atrás
-   - Dispositivo 2: Outro Dispositivo, Última Atividade: 3 dias atrás
+  - Dispositivo 1: Nome do Dispositivo, Última Atividade: 1 hora atrás
+  - Dispositivo 2: Outro Dispositivo, Última Atividade: 3 dias atrás
 - Histórico de Login:
-   - 19/03/2023: Login bem-sucedido
-   - 18/03/2023: Tentativa de login falhada (IP desconhecido)
+  - 19/03/2023: Login bem-sucedido
+  - 18/03/2023: Tentativa de login falhada (IP desconhecido)
 
 [Mais informações sobre segurança](https://example.com/security)
 
 ## Atualizar Informações
+
 Para atualizar suas informações pessoais, clique [aqui](https://example.com/update-profile).
 
 ## Redefinir Senha
+
 Se você esqueceu sua senha, [clique aqui](https://example.com/reset-password) para redefini-la.
 
 ### Profile Information

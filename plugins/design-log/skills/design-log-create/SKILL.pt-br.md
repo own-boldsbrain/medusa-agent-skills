@@ -92,7 +92,7 @@ consequences:
 
 Crie o arquivo em: `design-log/DL-NNN-slug.md`
 
-A estrutura do arquivo combina frontmatter YAML com seções em prosa Markdown. Veja o template em `reference/template.pt-BR.md` para o formato exato.
+A estrutura do arquivo combina frontmatter YAML com seções em prosa Markdown. Veja o template em `reference/template.pt-br.md` para o formato exato.
 
 ---
 
@@ -146,7 +146,7 @@ Se a nova decisão substitui uma entrada `approved` existente:
 
 ## Arquivos de referência
 
--**Template**: `skills/design-log-create/reference/template.pt-BR.md`
+-**Template**: `skills/design-log-create/reference/template.pt-br.md`
 
-- **Schema**: `skills/design-log-workflow/reference/schema.pt-BR.md`
+- **Schema**: `skills/design-log-workflow/reference/schema.pt-br.md`
 - **Exemplo de entrada**: `design-log/DL-000-bootstrap.md`

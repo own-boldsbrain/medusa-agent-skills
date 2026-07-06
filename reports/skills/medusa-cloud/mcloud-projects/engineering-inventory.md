@@ -311,4 +311,3 @@ Inventory generated for `medusa-cloud.mcloud-projects`.
 - **Risco**: baixo
 - **Owner Sugerido**: A definir
 - **Próxima Ação**: Mapear Cálculos
-

@@ -311,4 +311,3 @@ Inventory generated for `ecommerce-storefront.storefront-best-practices`.
 - **Risco**: baixo
 - **Owner Sugerido**: A definir
 - **Próxima Ação**: Mapear Cálculos
-

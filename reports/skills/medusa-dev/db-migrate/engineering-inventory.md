@@ -311,4 +311,3 @@ Inventory generated for `medusa-dev.db-migrate`.
 - **Risco**: baixo
 - **Owner Sugerido**: A definir
 - **Próxima Ação**: Mapear Cálculos
-

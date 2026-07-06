@@ -311,4 +311,3 @@ Inventory generated for `learn-medusa.learning-medusa`.
 - **Risco**: baixo
 - **Owner Sugerido**: A definir
 - **Próxima Ação**: Mapear Cálculos
-

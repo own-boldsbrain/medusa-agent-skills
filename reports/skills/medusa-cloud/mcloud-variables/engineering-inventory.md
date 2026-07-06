@@ -311,4 +311,3 @@ Inventory generated for `medusa-cloud.mcloud-variables`.
 - **Risco**: baixo
 - **Owner Sugerido**: A definir
 - **Próxima Ação**: Mapear Cálculos
-

@@ -311,4 +311,3 @@ Inventory generated for `design-log.design-log-create`.
 - **Risco**: baixo
 - **Owner Sugerido**: A definir
 - **Próxima Ação**: Mapear Cálculos
-

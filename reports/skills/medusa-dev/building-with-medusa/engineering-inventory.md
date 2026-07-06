@@ -311,4 +311,3 @@ Inventory generated for `medusa-dev.building-with-medusa`.
 - **Risco**: baixo
 - **Owner Sugerido**: A definir
 - **Próxima Ação**: Mapear Cálculos
-

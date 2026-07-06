@@ -311,4 +311,3 @@ Inventory generated for `medusa-cloud.mcloud-logs`.
 - **Risco**: baixo
 - **Owner Sugerido**: A definir
 - **Próxima Ação**: Mapear Cálculos
-

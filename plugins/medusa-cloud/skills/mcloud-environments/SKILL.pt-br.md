@@ -1,68 +1,51 @@
 ---
 name: mcloud-environments
-description: Execute comandos mcloud environments para listar, obter, criar, excluir, reimplantação ou acionar builds para ambientes Cloud. Use ao gerenciar o ciclo de vida do ambiente, reimplantar após alterações de variáveis ou iniciar novos builds a partir do código-fonte.
+description: Execute mcloud environments commands to list, get, create, delete, redeploy, or trigger builds for Cloud environments. Use when managing environment lifecycle, redeploying after variable changes, or starting new builds from source.
 allowed-tools: Bash(mcloud environments*), Bash(mcloud use*), Bash(jq*)
 ---
 
-# Cloud CLI: Comandos de Ambientes
+# CLI do Cloud: Comandos de ambientes
 
-Execute o comando `mcloud environments` para gerenciar o ciclo de vida de ambientes e implantações.
+Execute os comandos `mcloud environments` para gerenciar o ciclo de vida e as implantações dos ambientes.
 
-### Restrições
+## Restrições
 
-- **Tempo**: O modelo tem um tempo limitado para responder a cada consulta.
-- **Comprimento da resposta**: As respostas são limitadas a um número específico de palavras ou caracteres.
-- **Conhecimento**: O modelo tem acesso a um conjunto de dados limitado e não pode fornecer informações atualizadas sobre eventos recentes.
-- **Segurança**: O modelo é projetado para evitar respostas potencialmente prejudiciais ou ofensivas.
-- **Idioma**: O modelo é treinado em um idioma específico e pode ter dificuldades com idiomas diferentes.
-
-```
-[Código de exemplo]
-
-def processar_consulta(consulta):
-    # Processamento da consulta aqui
-    resposta = "Resposta gerada"
-    return resposta
-```
-
-[Link para mais informações](https://example.com/constraints)
-
-- Note*: As restrições acima são apenas um exemplo e podem variar de acordo com a implementação e os requisitos específicos do modelo.
-
-- *Ambientes de produção não podem ser excluídos.**Sempre verifique `type` via `environments get --json` antes de tentar excluir em automação.
+- **Os ambientes de produção não podem ser excluídos.** Sempre verifique o `type` por meio do comando `environments get --json` antes de tentar excluir em um processo automatizado.
 - Use `--yes` para operações destrutivas (`delete`) em contextos não interativos.
-- `redeploy` vs `redeploy-com-build` não são intercambiáveis — escolha o correto com base em onde a correção está.
+- `redeploy` e `trigger-build` não são intercambiáveis — escolha o comando correto de acordo com onde a correção está localizada.
 
-### Comandos
+## Comandos
 
-### lista de ambientes
+### Lista de ambientes
 
-Liste todos os ambientes de um projeto.
+Lista todos os ambientes de um projeto.
 
 ```bash
 mcloud environments list --organization <org-id> --project <project-id-or-handle> --json
 ```
 
--*Opções:**- `-o/--organização <id>` — ID da Organização (pode ser substituído pelo contexto ativo)
+**Opções:**
+- `-o/--organization <id>` — ID da organização (usa o contexto ativo como padrão)
+- `-p/--project <id-or-handle>` — ID ou identificador do projeto (usa o contexto ativo como padrão)
+- `--json` — Exibe o resultado em formato JSON
 
-- `-p/--project <id-ou-handle>` — ID ou handle do projeto (reverte para o contexto ativo)
-- `--json` — Saída em JSON
+### ambientes get
 
-### ambientes obtêm
-
-Recupere um único ambiente pelo identificador.
+Recupera um único ambiente pelo identificador.
 
 ```bash
 mcloud environments get <environment-handle> --organization <org-id> --project <project-id-or-handle> --json
 ```
 
--*Argumentos:**- `ambiente` — Manipulador do ambiente (obrigatório)
+**Argumentos:**
+- `environment` — Identificador do ambiente (obrigatório)
 
--*Opções:**- `-o/--organização <id>`, `-p/--projeto <id-ou-identificador>`, `--json`
+**Opções:**
+- `-o/--organization <id>`, `-p/--project <id-or-handle>`, `--json`
 
-### ambientes criam
+### environments create
 
-Crie um novo ambiente de longa duração.
+Cria um novo ambiente de longa duração.
 
 ```bash
 mcloud environments create \
@@ -73,32 +56,35 @@ mcloud environments create \
   --json
 ```
 
--*Opções:**- `-o/--organização <id>`, `-p/--projeto <id-ou-identificador>`
+**Opções:**
+- `-o/--organization <id>`, `-p/--project <id-ou-handle>`
+- `-n/--name <nome>` — Nome do ambiente (obrigatório)
+- `-b/--branch <ramo>` — Ramo do Git a ser acompanhado (obrigatório)
+- `--custom-subdomain <subdomínio>` — Subdomínio personalizado opcional
+- `--json` — Saída em formato JSON
 
-- `-n/--name <name>` — Nome do ambiente (obrigatório)
-- `-b/--branch <branch>` — Ramo Git a ser rastreado (obrigatório)
-- `--custom-subdomain <subdomain>` — Subdomínio personalizado opcional
-- `--json` — Saída como JSON
+### exclusão de ambientes
 
-### ambientes excluir
+Exclua um ambiente. **Não é possível excluir ambientes de produção.**
 
-Apague um ambiente.**Não é possível apagar ambientes de produção.**```bash
+```bash
 mcloud environments delete <environment-handle> \
   --organization <org-id> \
   --project <project-id-or-handle> \
   --yes
-
 ```
 
--*Argumentos:**- `ambiente` — Manipulador de ambiente (obrigatório)
+**Argumentos:**
+- `environment` — Identificador do ambiente (obrigatório)
 
--*Opções:**- `-o/--organization <id>`, `-p/--project <id-ou-handle>`
-- `y`/`-sim` — Ignorar prompt de confirmação (obrigatório em modo não interativo)
-- `--json` — Saída como JSON
+**Opções:**
+- `-o/--organization <id>`, `-p/--project <id-or-handle>`
+- `-y/--yes` — Ignora a solicitação de confirmação (obrigatório no modo não interativo)
+- `--json` — Gera a saída como JSON
 
-### ambientes reimplantar
+### Reimplantação de ambientes
 
-Re-executar uma construção existente para a implantação ativa. Utilize quando a correção está do lado do ambiente (mudança de variável, problema de infra) — NÃO inicia uma nova construção.
+Reexecuta uma compilação existente para a implantação ativa. Use quando a correção for do lado do ambiente (alteração de variável, problema de infraestrutura) — NÃO inicia uma nova compilação.
 
 ```bash
 mcloud environments redeploy <environment-handle> \
@@ -107,15 +93,17 @@ mcloud environments redeploy <environment-handle> \
   --json
 ```
 
--*Argumentos:**- `ambiente` — Manipulador de Ambiente (obrigatório)
+**Argumentos:**
+- `environment` — Identificador do ambiente (obrigatório)
 
--*Opções:**- `-o/--organização <id>`, `-p/--projeto <id-ou-handle>`, `--json`
+**Opções:**
+- `-o/--organization <id>`, `-p/--project <id-or-handle>`, `--json`
 
-> Requer que o ambiente tenha uma implantação ativa. Se não tiver, use `trigger-build` primeiro.
+> Requer que o ambiente tenha uma implantação ativa. Caso contrário, use `trigger-build` primeiro.
 
-### ambientes acionar-construir
+### ambientes trigger-build
 
-Inicie uma nova compilação a partir do branch rastreado. Use quando o código corrigido estiver comprometido — cria uma nova implantação.
+Inicia uma nova compilação a partir do branch rastreado. Use quando a correção já tiver sido confirmada no código — cria uma nova implantação.
 
 ```bash
 mcloud environments trigger-build <environment-handle> \
@@ -124,85 +112,18 @@ mcloud environments trigger-build <environment-handle> \
   --json
 ```
 
--*Argumentos:**- `ambiente` — Manipulador de ambiente (obrigatório)
+**Argumentos:**
+- `environment` — Identificador do ambiente (obrigatório)
 
--*Opções:**- `-o/--organização <id>`, `-p/--projeto <id-ou-handle>`, `--json`
+**Opções:**
+- `-o/--organization <id>`, `-p/--project <id-ou-identificador>`, `--json`
 
-## **Redeploy vs Trigger-Build Decision**Quando você está trabalhando com aplicações em nuvem, especialmente em ambientes de CI/CD (Integração Continua e Entrega Contínua), é comum se deparar com a decisão de reempregar ou disparar uma build. Embora ambos os métodos possam ser eficazes em diferentes situações, é importante entender as diferenças entre eles
+## Decisão entre reimplantação e acionamento de compilação
 
-### Redeploy
-
-Um redeploy é a ação de reempregar uma aplicação existente com as alterações mais recentes. Isso pode ser feito manualmente ou através de um script automático. O redeploy é útil quando:
-
--**Alterações menores**: Se as alterações são menores e não afetam a lógica da aplicação, um redeploy pode ser suficiente.
-
-- **Testes rápidos**: O redeploy permite testar as alterações rapidamente sem a necessidade de uma build completa.
-- **Desenvolvimento**: Durante o desenvolvimento, um redeploy pode ser usado para testar as alterações antes de fazer uma build completa.
-
-### Trigger-Build
-
-Um trigger-build é a ação de disparar uma build completa com as alterações mais recentes. Isso pode ser feito manualmente ou através de um script automático. O trigger-build é útil quando:
-
-- **Alterações significativas**: Se as alterações são significativas e afetam a lógica da aplicação, um trigger-build é recomendado.
-- **Integração contínua**: O trigger-build é essencial para a integração contínua, pois garante que a aplicação seja construída e testada regularmente.
-- **Entrega contínua**: O trigger-build também é importante para a entrega contínua, pois garante que as alterações sejam liberadas regularmente.
-
-### Conclusão
-
-Em resumo, um redeploy é útil quando as alterações são menores e não afetam a lógica da aplicação, enquanto um trigger-build é recomendado quando as alterações são significativas e afetam a lógica da aplicação. É importante entender as diferenças entre esses métodos e escolher o que melhor se adapta às necessidades da sua aplicação.
-
-- *Recursos adicionais**
-
-- [CI/CD com Jenkins](https://www.jenkins.io/)
-- [Integração contínua com GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
-- [Entrega contínua com AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
-
-| Comando | # Quando usar
-
-Use o `when` para criar condições e controlar o fluxo de execução do seu código. Ele permite que você execute um bloco de código apenas quando uma determinada condição for verdadeira.
-
-## Sintaxe
-
-```python
-if condição:
-    # Código a ser executado se a condição for verdadeira
-```
-
-## Exemplos
-
-- Verificar se um número é par:
-
-```python
-numero = 7
-if numero % 2 == 0:
-    print("O número é par.")
-else:
-    print("O número é ímpar.")
-```
-
-- Verificar se uma string está vazia:
-
-```python
-frase = ""
-if frase:
-    print("A string não está vazia.")
-else:
-    print("A string está vazia.")
-```
-
-- Verificar se um elemento existe em uma lista:
-
-```python
-minha_lista = [1, 2, 3, 4, 5]
-elemento = 3
-if elemento in minha_lista:
-    print("O elemento está na lista.")
-else:
-    print("O elemento não está na lista.")
-``` |
+| Comando | Quando usar |
 |---------|-------------|
-| `reimplantar` | Corrigir é lado do ambiente (mudança de variável, configuração de infra) — reexecuta a build existente |
-| `trigger-build` | A correção está no código-fonte no ramo rastreado — inicia uma nova compilação |
+| `redeploy` | A correção é no ambiente (alteração de variável, configuração de infraestrutura) — reexecuta a compilação existente |
+| `trigger-build` | A correção está no código-fonte do branch rastreado — inicia uma nova compilação |
 
 ## Exemplos
 

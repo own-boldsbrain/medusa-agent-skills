@@ -1,45 +1,46 @@
 ---
 name: mcloud-logs
-description: Execute mcloud logs para buscar e transmitir logs de execução para ambientes Cloud. Use ao ler logs do backend ou do storefront, filtrando por intervalo de tempo, buscando por erros ou limitando os logs a uma implantação específica.
+description: Execute mcloud logs to fetch and stream runtime logs for Cloud environments. Use when reading backend or storefront logs, filtering by time range, searching for errors, or scoping logs to a specific deployment.
 allowed-tools: Bash(mcloud logs*), Bash(jq*)
 ---
 
-# CLI do Cloud: Comando de Logs
+# CLI do Cloud: Comando Logs
 
-Execute `mcloud logs` para buscar os logs de execução de um backend ou loja virtual de um ambiente Cloud.
+Execute `mcloud logs` para obter os logs de execução do backend ou da storefront de um ambiente do Cloud.
 
-## **Restrições**- `--follow` e `--json` são incompatíveis. Para análise de logs programática, use janelas de tempo delimitadas com `--from`/`--to` e `--json`
+## Restrições
 
-- `--siga` streams até ser interrompido com `Ctrl+C` — não use em scripts ou pipelines.
-- Logs padrão recupera as últimas 500 linhas de log dos últimos 15 minutos.
+- `--follow` e `--json` são incompatíveis. Para análise programática de logs, use intervalos de tempo delimitados com `--from`/`--to` e `--json`.
+- `--follow` acompanha os fluxos até ser interrompido com `Ctrl+C` — não use em scripts ou pipelines.
+- Por padrão, recupera as últimas 500 linhas de log dos últimos 15 minutos.
 
-## **Comando**```bash
+## Comando
 
+```bash
 mcloud logs \
   --organization <org-id> \
   --project <project-id-or-handle> \
   --environment <environment-handle> \
   [options]
-
 ```
 
 ## Opções
 
-|**Opção** | Descrição | Padrão |
+| Opção | Descrição | Padrão |
 |--------|-------------|---------|
-| `-o/--organization <id>` | ID da Organização | Contexto ativo |
-| `-p/--project <id-ou-handle>` | ID do projeto ou identificador | Contexto ativo |
-| - `-e/--environment <handle>` | Manipulador de ambiente | Contexto ativo |
-| `-f/--follow` | Exibir logs continuamente (incompatível com `--json`) | `falso` |
-| `--limit <1-5000>` | Linhas de log máximo (modo não de acompanhamento apenas) | `500` |
-| `--de <ISO8601>` | Início do intervalo de tempo (por exemplo, `2026-04-22T10:00:00Z`) | 15 minutos atrás |
-| `--to <ISO8601>` | Fim do intervalo de tempo; se >15 minutos atrás, também deve passar `--from` | agora |
+| `-o/--organization <id>` | ID da organização | Contexto ativo |
+| `-p/--project <id-or-handle>` | ID ou identificador do projeto | Contexto ativo |
+| `-e/--environment <handle>` | Identificador do ambiente | Contexto ativo |
+| `-f/--follow` | Transmite logs continuamente (incompatível com `--json`) | `false` |
+| `--limit <1-5000>` | Número máximo de linhas de log (somente no modo sem acompanhamento) | `500` |
+| `--from <ISO8601>` | Início do intervalo de tempo (por exemplo, `2026-04-22T10:00:00Z`) | 15 minutos atrás |
+| `--to <ISO8601>` | Fim do intervalo de tempo; se for há mais de 15 minutos, também é necessário especificar `--from` | agora |
 | `--search <string>` | Filtrar por substring (igual à barra de pesquisa do painel) | — |
-| `--deployment <id>` | Filtrar por ID de implantação ou construção | — |
-| `--fonte <string>` | Filtrar por fonte (repetível) | — |
-| - -metadata <chave=valor> | Filtrar por campo de metadados (repetível; mesmo chave mescla valores) | Por favor, forneça o texto que deseja traduzir. |
-| `--tipo <backend\` | loja>` | Fluxo de registro para consulta | `backend` |
-| `--json` | `Saída como JSON (incompatível com `--follow`)` | `falso` |
+| `--deployment <id>` | Filtrar por ID de implantação ou compilação | — |
+| `--source <string>` | Filtrar por fonte (repetível) | — |
+| `--metadata <chave=valor>` | Filtrar por campo de metadados (repetível; valores com a mesma chave são agrupados) | — |
+| `--type <backend\|storefront>` | Fluxo de log a ser consultado | `backend` |
+| `--json` | Saída como JSON (incompatível com `--follow`) | `false` |
 
 ## Exemplos
 
@@ -78,9 +79,9 @@ mcloud logs --source api --source worker --json
 mcloud logs --metadata status=400 --metadata status=500 --limit 500 --json
 ```
 
-## Intervalo de Tempo Observações
+## Observações sobre o intervalo de tempo
 
-- Janela padrão é os últimos 15 minutos.
-- Passe `--from` sem `--to` para buscar de um determinado momento até agora.
+- A janela padrão abrange os últimos 15 minutos.
+- Passe `--from` sem `--to` para buscar dados desde um determinado momento até o presente.
 - Passe `--to` sem `--from` somente se `--to` estiver dentro dos últimos 15 minutos; caso contrário, passe também `--from`.
-- Ambos `--from` e `--to` aceitam timestamps ISO 8601.
+- Tanto `--from` quanto `--to` aceitam carimbos de data e hora no formato ISO 8601.

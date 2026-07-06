@@ -6,5 +6,6 @@
 - **Origin Main SHA**: `9c41f09deaab619bf81ebc4770fbb2029babf42d`
 
 ## Metrics
+
 - **Sessions Checked**: 5
 - **Alerts Emitted**: 5

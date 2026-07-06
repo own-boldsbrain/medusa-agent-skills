@@ -1,36 +1,44 @@
 ---
 name: mcloud-auth
-description: Execute os comandos de autenticação e contexto do mcloud: login, logout, whoami, use, version e signup. Use ao configurar o CLI, alternar contas, verificar o estado de autenticação, definir o contexto ativo de organização/projeto/ambiente ou verificar a versão do CLI.
+description: Execute mcloud authentication and context commands: login, logout, whoami, use, version, and signup. Use when setting up the CLI, switching accounts, verifying auth state, setting the active org/project/environment context, or checking the CLI version.
 allowed-tools: Bash(mcloud whoami*), Bash(mcloud use*), Bash(mcloud version*), Bash(mcloud logout*), Bash(jq*)
 ---
 
-# Cloud CLI: Comandos de Autenticação e Contexto
+# CLI do Medusa Cloud: Comandos de autenticação e contexto
 
-Execute comandos de autenticação e contexto para o Medusa Cloud CLI.
+Execute comandos de autenticação e contexto para a CLI do Medusa Cloud.
 
-## **Restrições**- `mcloud login`, `mcloud signup` e `mcloud use` (sem flags) exigem um**TTY**— eles falham em CI, Docker ou entrada por pipe. Use `MCLOUD_TOKEN` ou passe flags explicitamente em vez disso
+## Restrições
 
-- Quando o `MCLOUD_TOKEN` estiver definido, as credenciais baseadas em arquivos são ignoradas e o comando `mcloud login` é rejeitado. Desdefina-o para mudar de conta.
+- `mcloud login`, `mcloud signup` e `mcloud use` (sem opções) exigem um **TTY** — eles falham em CI, Docker ou com entrada canalizada. Use `MCLOUD_TOKEN` ou passe as opções explicitamente.
+- Quando `MCLOUD_TOKEN` está definido, as credenciais baseadas em arquivo são ignoradas e `mcloud login` é rejeitado. Desative-a para alternar entre contas.
 - Sempre verifique a autenticação antes de qualquer comando que altere o estado: `mcloud whoami --json | jq -e '.auth.kind != "none"'`
 
-## **Comandos**###**Quem sou eu**Mostre o usuário autenticado, o método de autenticação e o contexto ativo (organização, projeto, ambiente)
+## Comandos
+
+### whoami
+
+Exibe o usuário autenticado, o método de autenticação e o contexto ativo (organização, projeto, ambiente).
 
 ```bash
 mcloud whoami --json
 ```
 
--*Opções:**- `--json` — Saída como JSON
+**Opções:**
 
--*Use para verificar autenticação e escopo:**```bash
+- `--json` — Exibe o resultado em JSON
+
+**Use para verificar a autenticação e o escopo:**
+
+```bash
 mcloud whoami --json | jq -e '.auth.kind != "none" and .organization.id != null'
-
 ```
 
-Código de saída `0` = autenticado e com escopo. Não zero = pare e solicite ao usuário.
+Código de saída `0` = autenticado e com escopo definido. Diferente de zero = interrompe e solicita confirmação ao usuário.
 
-### use
+### uso
 
-Configurar a organização, projeto e/ou ambiente ativo para que os comandos subsequentes ignorem essas flags.
+Defina a organização, o projeto e/ou o ambiente ativos para que os comandos subsequentes ignorem esses parâmetros.
 
 ```bash
 mcloud use \
@@ -39,73 +47,84 @@ mcloud use \
   --environment <environment-handle>
 ```
 
--*CRÍTICO:**`mcloud use` sem flags é interativo e falha no CI/Docker/entrada direcionada. Sempre passe as flags explicitamente.
+**CRÍTICO:** O comando `mcloud use` sem opções é interativo e apresenta falha em CI/Docker/entrada canalizada. Sempre forneça as opções explicitamente.
 
--*Opções:**- `-o/--organização <id>` — Definir organização ativa
+**Opções:**
 
-- `-p/--project <id-or-handle>` — Definir projeto ativo
-- `-e/--environment <handle>` — Defina o ambiente ativo
-- `--clear` — Limpar todo o contexto ativo
-- `--json` — Saída em JSON
+- `-o/--organization <id>` — Define a organização ativa
+- `-p/--project <id-or-handle>` — Define o projeto ativo
+- `-e/--environment <handle>` — Define o ambiente ativo
+- `--clear` — Limpa todo o contexto ativo
+- `--json` — Exibe a saída como JSON
 
--*Contexto claro:**```bash
+**Limpar contexto:**
+
+```bash
 mcloud use --clear
-
 ```
 
 ### versão
 
-Exibir a versão da CLI e metadados da plataforma.
+Exibe a versão da CLI e os metadados da plataforma.
 
 ```bash
 mcloud version --json
 ```
 
--*Opções:**- `--json` — Produzir como JSON
+**Opções:**
 
-### **login**Autentique-se com o Medusa Cloud. Abre um navegador para concluir a autenticação
+- `--json` — Exibe o resultado em JSON
 
->**TTY obrigatório.**Não pode ser executado em CI, Docker ou ambientes não interativos. Use `MCLOUD_TOKEN` em vez disso para autenticação não interativa.
+### login
+
+Autentica com o Medusa Cloud. Abre um navegador para concluir a autenticação.
+
+> **Requer TTY.** Não pode ser executado em CI, Docker ou ambientes não interativos. Use `MCLOUD_TOKEN` para autenticação não interativa.
 
 ```bash
 mcloud login
 ```
 
--*Alternativa não interativa:**```bash
-export MCLOUD_TOKEN=<access-key>
+**Alternativa não interativa:**
 
+```bash
+export MCLOUD_TOKEN=<access-key>
 ```
 
--*Opções:**- `-t/--token <token>` — Autenticar usando uma chave de acesso sem navegador (não interativo)
-- `--json` — Saída como JSON
+**Opções:**
 
-### sair
+- `-t/--token <token>` — Autentica usando uma chave de acesso sem navegador (não interativo)
+- `--json` — Exibe como JSON
 
-Remova as credenciais armazenadas.
+### logout
+
+Remover credenciais armazenadas.
 
 ```bash
 mcloud logout --json
 ```
 
--*Opções:**- `--json` — Saída como JSON
+**Opções:**
 
-### inscreva-se
+- `--json` — Exibe o resultado em formato JSON
 
-Crie uma nova conta no Medusa Cloud. Abre o navegador.
+### signup
 
->**TTY necessário.** Não pode ser executado em ambientes não interativos.
+Cria uma nova conta no Medusa Cloud. Abre um navegador.
+
+> **Requer TTY.** Não pode ser executado em ambientes não interativos.
 
 ```bash
 mcloud signup
 ```
 
-## Métodos de Autenticação
+## Métodos de autenticação
 
 | Método | Quando usar |
 |--------|-------------|
 | `mcloud login` (navegador) | Configuração interativa; requer TTY |
-| `mcloud login --token <chave>` | Login sem interação com chave de acesso |
-| `MCLOUD_TOKEN=<chave>` env var | CI/CD, Docker, ambientes scriptados |
+| `mcloud login --token <chave>` | Login não interativo com chave de acesso |
+| Variável de ambiente `MCLOUD_TOKEN=<chave>` | CI/CD, Docker, ambientes com scripts |
 
 ## Exemplos
 

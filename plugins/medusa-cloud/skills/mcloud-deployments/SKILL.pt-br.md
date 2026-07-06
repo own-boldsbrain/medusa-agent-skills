@@ -1,142 +1,88 @@
 ---
 name: mcloud-deployments
-description: Execute comandos do mcloud deployments para listar deploys, recuperar detalhes do deploy e buscar logs de build. Use ao listar deploys, verificar o status do deploy ou ler a saída de build para depurar falhas de build.
+description: Execute mcloud deployments commands to list deployments, retrieve deployment details, and fetch build logs. Use when listing deployments, checking deployment status, or reading build output for debugging build failures.
 allowed-tools: Bash(mcloud deployments*), Bash(jq*)
 ---
 
-# Cloud CLI: Comandos de Implantação
+# CLI do Cloud: Comandos de implantação
 
-Execute os comandos `mcloud deployments` para inspecionar implantações e seus logs de compilação.
+Execute os comandos `mcloud deployments` para verificar as implantações e seus logs de compilação.
 
-### Restrições
+## Restrições
 
-- Sempre passe `--json` ao analisar a saída — o formato de texto simples pode mudar.
-- Sempre confirme o contexto (`mcloud whoami --json`) antes de executar comandos se org/project não estiverem conhecidos ainda.
-- Use `--deployment` IDs no formato `depl_*` ou build IDs; os build IDs resolvem automaticamente para a implantação mais recente.
+- Sempre utilize a opção `--json` ao analisar a saída — o formato de texto simples pode sofrer alterações.
+- Sempre confirme o contexto (`mcloud whoami --json`) antes de executar comandos, caso a organização ou o projeto ainda não sejam conhecidos.
+- Use IDs de `--deployment` no formato `depl_*` ou IDs de compilação; os IDs de compilação são automaticamente mapeados para a implantação mais recente.
 
-## **Comandos**### lista de deployments
+## Comandos
 
-Lista as implantações recentes para um projeto (padrão: 20 mais recentes em todos os ambientes).
+### lista de implantações
+
+Lista as implantações recentes de um projeto (padrão: as 20 mais recentes em todos os ambientes).
 
 ```bash
 mcloud deployments list --organization <org-id> --project <project-id-or-handle> --json
 ```
 
--*Opções:**- `-o/--organização <id>` — ID da Organização (recuo para o contexto ativo)
+**Opções:**
 
-- `-p/--project <id-ou-identificador>` — ID ou identificador do projeto (assume o contexto ativo como padrão)
-- `-e/--environment <handle>` — Filtre por handle do ambiente
-- `--environment-type <production|long-lived|preview>` — Filtra por tipo de ambiente
-- `--commit <sha>` — Filtrar por SHA de commit do Git (completo ou prefixo)
-- `--limit <1-200>` — Máximo de resultados (padrão: `20`)
-- `--offset <número>` — Offset de Paginação (padrão: `0` )
+- `-o/--organization <id>` — ID da organização (usa o contexto ativo como padrão)
+- `-p/--project <id-ou-identificador>` — ID ou identificador do projeto (usa o contexto ativo como padrão)
+- `-e/--environment <identificador>` — Filtrar por identificador do ambiente
+- `--environment-type <production|long-lived|preview>` — Filtrar por tipo de ambiente
+- `--commit <sha>` — Filtrar por SHA do commit do Git (completo ou prefixo)
+- `--limit <1-200>` — Número máximo de resultados (padrão: `20`)
+- `--offset <número>` — Deslocamento de paginação (padrão: `0`)
+- `--json` — Exibe como JSON
 
-- ```json
+### recuperação de implantações
 
-`--json` — Saída em JSON
-
-```
-
-####**Implantações**O comando `get` permite-lhe obter informações detalhadas sobre as suas implantações. Você pode usar este comando para verificar o estado, os detalhes e as configurações das suas implantações.
-
-## Opções:
-
-- `deployments get [NAME]`: Obtém detalhes específicos de uma implantação com o nome fornecido.
-- `deployments get --all`: Lista todas as implantações e fornece informações detalhadas sobre cada uma.
-- `deployments get --last`: Mostra os detalhes da última implantação realizada.
-- `deployments get --output [OUTPUT_FORMAT]`: Define o formato de saída, como JSON, YAML ou tabela.
-
-## Exemplos:
-
-Obter detalhes de uma implantação específica:
-
-```
-
-deployments get minha-implantacao
-
-```
-
-Listar todas as implantações:
-
-```
-
-deployments get --all
-
-```
-
-Mostrar detalhes da última implantação:
-
-```
-
-deployments get --last
-
-```
-
-Formatar a saída como JSON:
-
-```
-
-deployments get --output json
-
-```
-
-Recupere os detalhes de um único deployment pelo ID.
+Recupera os detalhes de uma única implantação por ID.
 
 ```bash
 mcloud deployments get <deployment-id> --organization <org-id> --project <project-id-or-handle> --json
 ```
 
--*Argumentos:**- `deployment` — ID da implantação (obrigatório)
+**Argumentos:**
 
--*Opções:**- `-o/--organization <id>`, `-p/--project <id-ou-handle>`, `--json`
+- `deployment` — ID da implantação (obrigatório)
 
-### **Deployments**build-logs
+**Opções:**
 
-# Log de Construção de Implantações
+- `-o/--organization <id>`, `-p/--project <id-or-handle>`, `--json`
 
-## Etapas da Construção
+### logs-de-compilação-de-implantações
 
-1.**Verificar a configuração**: Certifique-se de que a configuração de ambiente esteja correta.
-2. **Executar o comando de construção**: Execute o comando para gerar os logs de construção.
-
-## Exemplo de Comando
-
-```bash
-kubectl logs deployment <nome-da-implantacao> -c <nome-do-container>
-```
-
-## Recursos
-
-- [Documentação do Kubernetes](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-- [Gerenciamento de Logs no Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
-
-Buscar registros de compilação para um *deployment*. Use isso para depurar status `build-failed`.
+Busca os logs de compilação de uma implantação. Use isso para depurar o status `build-failed`.
 
 ```bash
 mcloud deployments build-logs <deployment-id> --organization <org-id> --project <project-id-or-handle>
 ```
 
-- *Argumentos:**- `deployment` — ID de implantação (obrigatório)
+**Argumentos:**
 
--*Opções:**- `/--organization <id>`, `-p/--project <id-or-handle>`
+- `deployment` — ID da implantação (obrigatório)
 
-- `--type <backend|storefront>` — Qual fluxo de registro de construção ler (padrão: `backend`)
-- `--json` — Saída como JSON
+**Opções:**
 
-## Status de Implantação
+- `-o/--organization <id>`, `-p/--project <id-or-handle>`
+- `--type <backend|storefront>` — Qual fluxo de log de compilação deve ser lido (padrão: `backend`)
+- `--json` — Exibir como JSON
+
+## Status de implantação
 
 | Status | Significado |
 |--------|---------|
-| `criado` |**Não iniciado o build ainda** |
-| `construção` | Construção em andamento |
-| `construído` | Construção concluída, aguardando rollout |
-| `implantação` | Implementando no ambiente |
-| `implantado` | Em funcionamento e com tráfego |
-| `build-failed` | Falha na etapa de construção — leia `build-logs` |
-| `implantação-falhou` | Construção bem-sucedida, runtime parou — leia `mcloud logs` |
-| `timed-out` | Ultrapassado o orçamento de tempo (apenas backend) |
-| `cancelado` | Substituído por uma nova implantação |
-| `ocioso` | # Não mais o deployment ativo |
+| `created` | Compilação ainda não iniciada |
+| `building` | Compilação em andamento |
+| `built` | Compilação bem-sucedida, aguardando implantação |
+| `deploying` | Implantação no ambiente |
+| `deployed` | Em produção e atendendo ao tráfego |
+| `build-failed` | Etapa de compilação falhou — consulte `build-logs` |
+| `deployment-failed` | Compilação bem-sucedida, falha no tempo de execução — consulte `mcloud logs` |
+| `timed-out` | Tempo limite excedido (somente backend) |
+| `canceled` | Substituída por uma implantação mais recente |
+| `idle` | Não é mais a implantação ativa |
 
 ## Exemplos
 

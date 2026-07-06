@@ -1,0 +1,24 @@
+{
+  "coverage": 0,
+  "matrix": {
+    "medusa-dev.building-admin-dashboard-customizations": "missing",
+    "medusa-dev.building-storefronts": "missing",
+    "medusa-dev.building-with-medusa": "missing",
+    "medusa-dev.creating-internal-agents": "missing",
+    "medusa-dev.db-generate": "missing",
+    "medusa-dev.db-migrate": "missing",
+    "medusa-dev.new-user": "missing",
+    "medusa-cloud.mcloud-auth": "missing",
+    "medusa-cloud.mcloud-deployments": "missing",
+    "medusa-cloud.mcloud-environments": "missing",
+    "medusa-cloud.mcloud-logs": "missing",
+    "medusa-cloud.mcloud-organizations": "missing",
+    "medusa-cloud.mcloud-projects": "missing",
+    "medusa-cloud.mcloud-variables": "missing",
+    "medusa-cloud.using-medusa-cloud": "missing",
+    "learn-medusa.learning-medusa": "missing",
+    "ecommerce-storefront.storefront-best-practices": "missing",
+    "design-log.design-log-create": "missing",
+    "design-log.design-log-workflow": "missing"
+  }
+}

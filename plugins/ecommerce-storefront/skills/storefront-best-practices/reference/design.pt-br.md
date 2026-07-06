@@ -1,62 +1,62 @@
 # Diretrizes de Design
 
-## Sumário
+## Índice
 
-- [Visão geral](#visão-geral)
-- [Descobrindo a Identidade da Marca Existente](#descobrindo-a-identidade-da-marca-existente)
-- [Regras Críticas de Consistência](#regras-críticas-de-consistência)
-- [Quando Pedir Aprovação do Usuário](#quando-pedir-aprovação-do-usuário)
-- [Configuração de Novo Projeto](#configuração-de-novo-projeto)
-- [Árvore de Decisão](#arvore-de-decisao)
-- [Erros Comuns](#erros-comuns)
+- [Visão geral](#visao-geral)
+- [Análise da identidade de marca existente](#identificando-a-identidade-visual-existente)
+- [Regras essenciais de consistência](#regras-essenciais-de-consistencia)
+- [Quando solicitar a aprovação do usuário](#quando-pedir-aprovacao-do-usuario)
+- [Configuração de um novo projeto](#configuracao-de-um-novo-projeto)
+- [Árvore de decisão](#arvore-de-decisao)
+- [Erros comuns](#erros-comuns)
 
 ## Visão geral
 
-**Propósito:** Fornecer diretrizes para manter a consistência da marca ao criar componentes de UI. Isso evita que agentes introduzam acidentalmente cores, fontes ou padrões de design inconsistentes.
+**Objetivo:** Fornecer diretrizes para manter a consistência da marca ao criar componentes da interface do usuário. Isso evita que os agentes introduzam acidentalmente cores, fontes ou padrões de design inconsistentes.
 
-**Princípio crítico:** SEMPRE descubra e use tokens de design existentes antes de criar novos componentes. NUNCA introduza novas cores ou fontes sem a aprovação do usuário.
+**Princípio fundamental:** SEMPRE identifique e utilize os tokens de design existentes antes de criar novos componentes. NUNCA introduza novas cores ou fontes sem a aprovação do usuário.
 
-**When to apply:** Before creating any UI component or design-related change.
+**Quando aplicar:** Antes de criar qualquer componente de interface do usuário ou fazer qualquer alteração relacionada ao design.
 
-## Descobrindo a Identidade de Marca Existente
+## Identificando a identidade visual existente
 
-Antes de implementar qualquer componente, identifique as cores da marca, tipografia e padrões de design existentes. Agentes de IA podem fazer isso - concentre-se no **QUE**procurar, não no**COMO** em detalhes.
+Antes de implementar qualquer componente, identifique as cores, a tipografia e os padrões de design existentes da marca. Agentes de IA podem fazer isso — concentre-se no O QUE procurar, não no COMO detalhado.
 
-### O que Procurar
+### O que procurar
 
 **Cores:**
 
-1. **Configuração do Tailwind** (`tailwind.config.ts/js`) - Verifique `theme.extend.colors` ou `theme.colors`
-2. **Variáveis CSS** (globals.css, app.css) - Procure por `:root { --color-primary: ... }`
-3. **Componentes existentes** - Analisar 2-3 componentes para padrões de uso de cores
+1. **Configuração do Tailwind** (`tailwind.config.ts/js`) — Verifique `theme.extend.colors` ou `theme.colors`
+2. **Variáveis CSS** (globals.css, app.css) — Procure por `:root { --color-primary: ... }`
+3. **Componentes existentes** — Analise 2 a 3 componentes para identificar padrões de uso de cores
 
 **Tipografia:**
 
-1. **Configuração do Tailwind** - Verifique `theme.extend.fontFamily`
-2. **Importações de fontes** - Procure nos arquivos de layout ou no CSS (Next.js `next/font`, Google Fonts, fontes locais)
-3. **Variáveis CSS** - Verifique por `--font-sans`, `--font-heading`
-4. **Componentes existentes** - Identificar padrões de uso de fontes
+1. **Configuração do Tailwind** — Verifique `theme.extend.fontFamily`
+2. **Importações de fontes** — Verifique nos arquivos de layout ou no CSS (Next.js `next/font`, Google Fonts, fontes locais)
+3. **Variáveis CSS** - Verifique se há `--font-sans`, `--font-heading`
+4. **Componentes existentes** - Identifique os padrões de uso de fontes
 
-**Outras padronizações:**
+**Outros padrões:**
 
-- Spacing scale (p-4, mb-6, etc.)
-- Border radius (rounded-lg, rounded-xl)
+- Escala de espaçamento (p-4, mb-6, etc.)
+- Raio da borda (rounded-lg, rounded-xl)
 - Sombras (shadow-md, shadow-lg)
-- Estados interativos (cores de *hover*, foco)
+- Estados interativos (cores de hover e foco)
 
-### Detectando Versão do Tailwind (CRÍTICO)
+### Detecção da versão do Tailwind (CRÍTICO)
 
 **SEMPRE verifique a versão do Tailwind CSS antes de escrever classes utilitárias.**
 
-Tailwind v3 e v4 têm sintaxes diferentes, e misturá-las causa erros.
+O Tailwind v3 e o v4 têm sintaxes diferentes, e misturá-las causa erros.
 
 **Como detectar a versão:**
 
-1. **Check `package.json`**: Look for `"tailwindcss": "^3.x.x"` or `"tailwindcss": "^4.x.x"`
-2. **Verificar arquivo de configuração**
-   - v3: Usa `tailwind.config.js/ts` com `module.exports` ou `export default`
+1. **Verifique o `package.json`**: procure por `"tailwindcss": "^3.x.x"` ou `"tailwindcss": "^4.x.x"`
+2. **Verifique o arquivo de configuração**:
+   - v3: usa `tailwind.config.js/ts` com `module.exports` ou `export default`
    - v4: Pode usar configuração baseada em CSS com `@import "tailwindcss"`
-3. **Check existing components**: Look at class usage patterns
+3. **Verifique os componentes existentes**: observe os padrões de uso das classes
 
 **Principais diferenças:**
 
@@ -75,22 +75,22 @@ Tailwind v3 e v4 têm sintaxes diferentes, e misturá-las causa erros.
 <div className="bg-primary text-white">Content</div>
 ```
 
-**Erro comum:** Usar a sintaxe da v3 em projetos v4 ou vice-versa. Sempre verifique a versão primeiro.
+**Erro comum:** Usar a sintaxe da v3 em projetos da v4 ou vice-versa. Sempre verifique a versão primeiro.
 
-### Document Discovery
+### Análise de Documentos
 
-Create mental inventory of:
+Faça um inventário mental de:
 
-- **Cor(es) primária(s)** e seu uso
-- **Famílias de fontes** (sem serifa, com serifa, cabeçalho, mono)
-- **Padrões comuns** (estilos de botão, designs de cartões, espaçamento)
-- **Semantic names** (primary, secondary, accent vs blue-500, red-600)
+- **Cor(es) principal(is)** e seu uso
+- **Famílias de fontes** (sans, serif, título, mono)
+- **Padrões comuns** (estilos de botões, designs de cartões, espaçamento)
+- **Nomes semânticos** (primário, secundário, destaque vs. azul-500, vermelho-600)
 
-## Critical Consistency Rules
+## Regras essenciais de consistência
 
-### SEMPRE Siga Estas Regras
+### SEMPRE siga estas regras
 
-✅ **NEVER use emojis in storefront UI** - Always use icons or images instead
+✅ **NUNCA use emojis na interface do usuário da loja virtual** — use sempre ícones ou imagens em vez disso
 
 ```tsx
 // ✅ CORRECT - Using icon component or image
@@ -105,9 +105,9 @@ Create mental inventory of:
 </button>
 ```
 
-**Por quê:** Emojis aparecem de forma diferente entre plataformas, não têm uma aparência profissional e podem causar problemas de acessibilidade. Use bibliotecas de ícones (Heroicons, Lucide, Font Awesome) ou imagens SVG em vez disso.
+**Por que:** Os emojis são exibidos de maneira diferente em cada plataforma, não têm aparência profissional e podem causar problemas de acessibilidade. Use bibliotecas de ícones (Heroicons, Lucide, Font Awesome) ou imagens SVG em vez disso.
 
-✅ **USE os tokens de design existentes** (cores, fontes, espaçamento do tema)
+✅ **USE os tokens de design existentes** (cores, fontes e espaçamento do tema)
 
 ```tsx
 // ✅ CORRECT - Using theme colors
@@ -121,7 +121,7 @@ Create mental inventory of:
 </button>
 ```
 
-✅ **USE existing font definitions**, not new font families
+✅ **USE as definições de fonte existentes**, e não novas famílias de fontes
 
 ```tsx
 // ✅ CORRECT - Using theme font
@@ -135,7 +135,7 @@ Create mental inventory of:
 </h1>
 ```
 
-✅ **MATCH patterns from existing components**
+✅ **SIGA os padrões dos componentes existentes**
 
 ```tsx
 // If existing buttons use: bg-primary px-6 py-3 rounded-lg
@@ -145,110 +145,84 @@ Create mental inventory of:
 </button>
 ```
 
-### NEVER Do These Things
+### NUNCA faça estas coisas
 
-❌ **NÃO introduza novas cores sem aprovação do usuário**
+❌ **NÃO introduza novas cores sem a aprovação do usuário**
 
-- If you need a color not in the theme, ASK first
-- Não use valores arbitrários como `bg-[#FF6B6B]` quando o tema tiver cores
+- Se precisar de uma cor que não esteja no tema, PERGUNTE primeiro
+- Não use valores arbitrários como `bg-[#FF6B6B]` quando o tema já tiver cores
 
-❌ **DON'T add new fonts without user approval**
+❌ **NÃO adicione novas fontes sem a aprovação do usuário**
 
-- If current design uses Inter, don't add Montserrat without asking
-- Não use `font-['NewFont']` quando existem fontes no tema
+- Se o design atual usa a Inter, não adicione a Montserrat sem perguntar
+- Não use a sintaxe `font-['NewFont']` quando já houver fontes no tema
 
-❌ **NÃO use valores fixos quando existirem tokens de tema**
+❌ **NÃO use valores codificados diretamente quando houver tokens do tema**
 
-- Use `bg-primary` não `bg-[#3B82F6]`
-- Use `p-6` não `p-[24px]`
+- Use `bg-primary` em vez de `bg-[#3B82F6]`
+- Use `p-6` em vez de `p-[24px]`
 - Use `font-heading` em vez de `font-['Poppins']`
 
-❌ **DON'T create inconsistent patterns**
+❌ **NÃO crie padrões inconsistentes**
 
-- If buttons use `rounded-lg`, all buttons should
-- Se os cartões usarem `shadow-md`, todos os cartões devem
-- If hover effects use `hover:bg-primary-dark`, be consistent
+- Se os botões usarem `rounded-lg`, todos os botões devem usar
+- Se os cartões usarem `shadow-md`, todos os cartões devem usar
+- Se os efeitos de hover usarem `hover:bg-primary-dark`, seja consistente
 
-## Quando Pedir Aprovação do Usuário
+## Quando pedir aprovação do usuário
 
-**ALWAYS ask before:**
+**SEMPRE peça antes de:**
 
-### 1. Adicionando Nova Cor
+### 1. Adicionar uma nova cor
 
 ```
 "I notice the current palette doesn't include an orange accent color.
 Should I add one, or would you prefer to use the existing accent color?"
 ```
 
-**Cenário:** Você está criando um banner promocional que precisa de uma cor laranja, mas o tema só possui azul/roxo.
+**Cenário:** Você está criando um banner promocional que precisa da cor laranja, mas o tema só tem azul/roxo.
 
-### 2. Adicionando Nova Fonte
+### 2. Adicionando uma nova fonte
 
 ```
 "The current design uses Inter for all text. Do you want me to add
 a different font for headings, or keep using Inter throughout?"
 ```
 
-**Scenario:** Building a hero section and wondering if headings should use a different font.
+**Cenário:** Ao criar uma seção de destaque, você se pergunta se os títulos deveriam usar uma fonte diferente.
 
-### 3. Alterando Definições Existentes
+### 3. Alterando definições existentes
 
 ```
 "Should I update the primary color to #3B82F6, or create a
 new color variant?"
 ```
 
-**Scenario:** Current primary is #2563EB but new design mockup shows #3B82F6.
+**Cenário:** A cor primária atual é #2563EB, mas a nova maquete do design mostra #3B82F6.
 
-### 4. Creating New Pattern
+### 4. Criação de um novo padrão
 
 ```
 "The current components don't have a ghost button style (transparent with border).
 Should I create one, or use an existing button variant?"
 ```
 
-**Cenário:** Necessidade de um estilo de botão sutil que ainda não existe.
+**Cenário:** Precisa de um estilo de botão sutil que ainda não existe.
 
-### NÃO Pergunte Sobre
+### NÃO pergunte sobre
 
-### Não Pergunte Sobre
+❌ Decisões padrão de desenvolvimento web (pontos de quebra responsivos, efeitos ao passar o mouse)
+❌ Estrutura de componentes ou escolhas de layout
+❌ Padrões de acessibilidade (os agentes de IA conhecem as diretrizes WCAG)
+❌ Uso de cores/fontes de temas existentes de novas maneiras
 
-#### O que é?
+## Configuração de um novo projeto
 
-Este é um livro sobre como não perguntar sobre coisas que você não entende ou não precisa saber.
+Ao iniciar um novo projeto SEM um tema existente:
 
-#### Capítulo 1: A Arte de Não Perguntar
+### Faça estas perguntas ao usuário
 
-**A importância de não perguntar**Às vezes, perguntar pode parecer uma boa ideia. Mas, na verdade, muitas vezes, perguntar pode ser um grande erro. Aqui estão algumas razões pelas quais você deve evitar perguntar:***Você não precisa saber**: Muitas vezes, não é necessário saber algo para viver uma vida feliz e plena. Se você não precisa saber, então não pergunte.
-***Você pode se sentir idiota**: Se você perguntar algo que é óbvio, você pode se sentir idiota. E, pior ainda, as pessoas ao seu redor podem se sentir envergonhadas por você.
-***Você pode criar problemas**: Perguntar pode criar problemas onde não há. Se você não perguntar, você pode evitar criar problemas desnecessários.
-
-#### Exemplo de código
-
-```python
-def nao_perguntar():
-    # Não pergunte sobre coisas que você não entende
-    # Não pergunte sobre coisas que você não precisa saber
-    # Não pergunte sobre coisas que podem criar problemas
-    pass
-```
-
-#### Conclusão
-
-Em resumo, não pergunte sobre coisas que você não entende ou não precisa saber. Isso pode evitar problemas e manter sua vida simples e feliz. Lembre-se: às vezes, não perguntar é a melhor resposta.
-
-❌ Decisões padrão de desenvolvimento web (pontos de interrupção responsivos, efeitos de hover)  
-❌ Estrutura do componente ou escolhas de layout  
-❌ Padrões de acessibilidade (agentes de IA conhecem WCAG)  
-❌ Uso de cores/tipografias do tema existente de novas maneiras
-
-## Configuração de Novo Projeto
-
-Quando iniciar um novo projeto SEM tema existente:
-
-### Pergunte ao Usuário Estas Questões
-
-**1. Cores da Marca:**
+**1. Cores da marca:**
 
 ```
 "What are your brand colors? Please provide:
@@ -257,7 +231,7 @@ Quando iniciar um novo projeto SEM tema existente:
 - Any specific hex codes or color preferences?"
 ```
 
-**2. Preferências de Fonte:**
+**2. Preferências de fonte:**
 
 ```
 "Do you have font preferences?
@@ -267,7 +241,7 @@ Quando iniciar um novo projeto SEM tema existente:
 - Or should I choose appropriate fonts?"
 ```
 
-**3. Estilo de Design:**
+**3. Estilo de design:**
 
 ```
 "What design style do you prefer?
@@ -277,16 +251,16 @@ Quando iniciar um novo projeto SEM tema existente:
 - Modern (rounded corners, gradients, shadows)"
 ```
 
-**4. Sites de Referência (Opcional):**
+**4. Sites de referência (opcional):**
 
 ```
 "Do you have 2-3 example websites you like the look of?
 This helps me understand your aesthetic preferences."
 ```
 
-### Configurar Configuração do Tema
+### Configuração do tema
 
-Depois de coletar as preferências, configure o tema do Tailwind:
+Após definir as preferências, configure o tema Tailwind:
 
 ```typescript
 // tailwind.config.ts
@@ -313,9 +287,9 @@ export default {
 }
 ```
 
-**Utilize o Tailwind CSS para todos os novos projetos** - padrão de indústria para ecommerce, altamente personalizável, excelente DX.
+**Use o Tailwind CSS em todos os novos projetos** — padrão do setor para comércio eletrônico, altamente personalizável, excelente experiência de desenvolvimento (DX).
 
-## Árvore de Decisão
+## Árvore de decisão
 
 **Ao criar qualquer componente:**
 
@@ -344,189 +318,86 @@ export default {
            Maintain consistency with existing components
 ```
 
-## Erros Comuns
+## Erros comuns
 
-### ❌ Usando Valores Arbitrários Quando o Tema Existe
+### ❌ Usar valores arbitrários quando já existe um tema
 
-### Dangers of Arbitrary Values
+**Problema:** Usar `bg-[#3B82F6]` quando já existe `bg-primary`.
 
-When a theme is applied to an element, it can override any arbitrary value set on the element. This can lead to unexpected results and make it difficult to debug the layout.
+**Por que isso está errado:** Ignora o tema, cria inconsistências e dificulta a manutenção.
 
-#### Example
+**Solução:** Sempre use nomes semânticos do tema.
 
-```html
-<div style="color: blue; font-size: 24px;">
-  <p style="color: red;">Hello, World!</p>
-</div>
-```
+### ❌ Introduzir novas cores sem permissão
 
-In this example, the `color` property is set to `blue` on the `div` element, but the `color` property is also set to `red` on the `p` element. When the theme is applied, the `color` property on the `p` element will override the theme's value, resulting in a `red` text color.
+**Problema:** Adicionar `text-orange-500` quando o tema não possui a cor laranja.
 
-#### Best Practice
+**Por que isso está errado:** O usuário pode não querer a cor laranja em sua marca, o que cria um caos de cores.
 
-To avoid this issue, always use a theme's properties to style elements. If you need to set a specific value, use a class or an ID to override the theme's value.
+**Solução:** Pergunte primeiro ao usuário: “Devo adicionar uma cor laranja ou usar o destaque já existente?”
 
-```html
-<div class="theme">
-  <p class="theme-text">Hello, World!</p>
-</div>
-
-<style>
-  .theme {
-    color: blue;
-    font-size: 24px;
-  }
-
-  .theme-text {
-    color: red;
-  }
-</style>
-```
-
-In this example, the `theme` class is used to set the `color` and `font-size` properties, and the `theme-text` class is used to override the `color` property on the `p` element.
-
-### Related Topics
-
-- [Using a Theme's Properties](#using-a-theme's-properties)
-- [Overriding a Theme's Value](#overriding-a-theme's-value)
-
-**Problema:** Utilizando `bg-[#3B82F6]` quando `bg-primary` existe.
-
-**Por que está errado:** Ignora o tema, cria inconsistência, mais difícil de manter.
-
-**Correção:** Sempre use nomes semânticos do tema.
-
-### ❌ Introduzindo Novas Cores Sem Permissão
-
-**Problema:** Adicionar `text-orange-500` quando o tema não possui laranja.
-
-**Por que está errado:** O usuário pode não querer laranja em sua marca, cria um caos de cores.
-
-**Correção:** Pergunte ao usuário primeiro: "Devo adicionar uma cor laranja, ou usar o acerto existente?"
-
-### ❌ Não Verificar Padrões Existentes
+### ❌ Não verificar os padrões existentes
 
 **Problema:** Criar botões com `rounded-full` quando todos os outros botões usam `rounded-lg`.
 
-**Por que está errado:** Inconsistência visual confunde os usuários.
+**Por que isso está errado:** A inconsistência visual confunde os usuários.
 
-**Correção:** Verifique 2-3 botões existentes, utilize o mesmo arredondamento.
+**Solução:** Verifique 2 ou 3 botões existentes e use o mesmo tipo de arredondamento.
 
-### ❌ Adicionar Fontes Sem Permissão
+### ❌ Adicionar fontes sem permissão
 
-**Problema:** Usando `font-['Montserrat']` quando o tema usa Inter em todo lugar.
+**Problema:** Usar `font-['Montserrat']` quando o tema usa a fonte Inter em todos os lugares.
 
-**Por que está errado:** Os fontes são identidade da marca - não podem ser alterados arbitrariamente.
+**Por que está errado:** As fontes fazem parte da identidade da marca — não podem ser alteradas arbitrariamente.
 
-**Correção:** Utilize o existente `font-heading` ou `font-sans`, ou peça para adicionar o Montserrat.
+**Solução:** Use as fontes existentes `font-heading` ou `font-sans`, ou peça para adicionar a Montserrat.
 
-### ❌ Usando Estilos Inline em vez de Tema
+### ❌ Usar estilos inline em vez do tema
 
-**Por que evitar estilos inline?**Estilos inline são difíceis de manter e podem causar problemas de compatibilidade. Além disso, são uma fonte comum de bugs de layout.**Alternativas**-**Classes CSS**: Use classes CSS para aplicar estilos a elementos. Isso permite que você aplique estilos a vários elementos de uma vez e é mais fácil de manter.
+**Problema:** `style={{ backgroundColor: '#3B82F6', padding: '24px' }}`
 
-- **Frameworks CSS**: Utilize frameworks CSS como Bootstrap ou Tailwind CSS para criar layouts e estilos consistentes.
-- **Sass e Less**: Use preprocessadores de CSS como Sass ou Less para criar estilos mais complexos e reutilizáveis.
+**Por que está errado:** Ignora o tema do Tailwind, não é responsivo e é mais difícil de manter.
 
-**Exemplo de código**
+**Solução:** Use classes do Tailwind: `bg-primary p-6`
 
-```css
-/*Estilo inline*/
-<div style="background-color: #f0f0f0; padding: 20px;">Conteúdo</div>
-
-/*Estilo com classe CSS*/
-<div class="container">
-  <div class="container__content">Conteúdo</div>
-</div>
-
-<style>
-  .container {
-    background-color: #f0f0f0;
-    padding: 20px;
-  }
-  .container__content {
-    padding: 10px;
-  }
-</style>
-```
-
-**Links**
-
-- [Documentação do CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
-- [Bootstrap](https://getbootstrap.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Sass](https://sass-lang.com/)
-- [Less](http://lesscss.org/)
-
-**Problema:** `estilo={{ fundoDeTela: '#3B82F6', padding: '24px' }}`
-
-**Por que está errado:** Ignora o tema do Tailwind, não é responsivo, mais difícil de manter.
-
-**Conserto:** Use classes Tailwind: `bg-primary p-6`
-
-### ❌ Misturando a Sintaxe do Tailwind v3 e v4
+### ❌ Misturar a sintaxe do Tailwind v3 e v4
 
 **Problema:** Usar a sintaxe do Tailwind v3 em um projeto v4, ou vice-versa.
 
-**Por que está errado:** Versões diferentes têm padrões de configuração e sintaxe diferentes. Misturá-las causa erros de build e comportamento de estilo inesperado.
+**Por que isso está errado:** Versões diferentes têm padrões de configuração e sintaxe distintos. Misturá-las causa erros de compilação e comportamentos inesperados no estilo.
 
-**Correção:** Verifique o `package.json` para a versão do Tailwind primeiro. Observe os componentes existentes para entender os padrões de sintaxe usados no projeto. Combine os padrões específicos da versão de forma consistente.
+**Solução:** Verifique primeiro a versão do Tailwind no `package.json`. Analise os componentes existentes para entender os padrões de sintaxe usados no projeto. Adote os padrões específicos de cada versão de maneira consistente.
 
-### ❌ Estados Interativos Inconsistentes
+### ❌ Estados interativos inconsistentes
 
 **Problema:** Alguns botões usam `hover:bg-primary-600`, outros usam `hover:brightness-110`.
 
-**Por que está errado:** Experiência de usuário inconsistente.
+**Por que isso está errado:** Experiência do usuário inconsistente.
 
-**Correção:** Verifique os botões existentes, utilize o mesmo padrão de hover em todos os lugares.
+**Solução:** Verifique os botões existentes e use o mesmo padrão de hover em todos os lugares.
 
-### ❌ Criando Mudanças de Tema Sem Aprovação
+### ❌ Criação de alterações no tema sem aprovação
 
-**Problema**As mudanças de tema podem afetar a aparência e a experiência do usuário de um aplicativo. Criar mudanças de tema sem aprovação pode levar a:* Problemas de consistência visual
+**Problema:** Adicionar uma nova cor ao `tailwind.config.ts` sem pedir permissão.
 
-- Falhas de usabilidade
-- Dificuldade de manutenção e atualização do aplicativo
+**Por que está errado:** Mudanças no tema afetam todo o projeto; é necessário o consentimento do usuário.
 
-**Exemplo de Código**```python
+**Solução:** Pergunte primeiro, explique o motivo e obtenha aprovação.
 
-# Exemplo de código para criar uma mudança de tema
-
-def criar_mudanca_de_tema(tema):
-    # Código para criar a mudança de tema
-    pass
-
-# Exemplo de uso
-
-criar_mudanca_de_tema("tema1")
-
-```**Como Resolver**Para evitar problemas, é importante criar mudanças de tema com aprovação. Aqui estão algumas dicas:* Crie um processo de aprovação claro e documentado
-* Invista em design e usabilidade para garantir que as mudanças de tema sejam consistentes e fáceis de usar
-* Teste as mudanças de tema antes de implementá-las
-* Mantenha um registro das mudanças de tema para facilitar a manutenção e atualização do aplicativo
-
-**Recursos Adicionais***[Documentação de design](https://www.example.com/design-documentation)
-* [Guia de usabilidade](https://www.example.com/usability-guide)
-* [Exemplo de código para criar uma mudança de tema](https://www.example.com/theme-change-example)
-
-**Problema:** Adicionar nova cor ao `tailwind.config.ts` sem perguntar.
-
-**Por que está errado:** Alterações de tema afetam todo o projeto, é necessário o consentimento do usuário.
-
-**Conserto:** Pergunte primeiro, explique a razão, obtenha aprovação.
-
-## Lista Resumida
+## Lista de verificação resumida
 
 **Antes de criar qualquer componente:**
 
-- [ ] **Versão do Tailwind CSS detectada (v3 ou v4) a partir do package.json**
-- [ ] Verificado a configuração de tema existente (configuração Tailwind ou variáveis CSS)
+- [ ] **Detectei a versão do Tailwind CSS (v3 ou v4) no arquivo package.json**
+- [ ] Verifiquei se há configuração de tema existente (configuração do Tailwind ou variáveis CSS)
 - [ ] Extraí as cores existentes e as documentei
-- [ ] Extraiu as fontes existentes e as documentou
-- [ ] Revisado 2-3 componentes existentes em busca de padrões
-- [ ] Identificado escala de espaçamento, raio de borda, padrões de sombra
-- [ ] Confirmei que estou usando tokens do tema, não valores arbitrários
-- [ ] Estados de hover/foco correspondentes aos componentes existentes
-- [ ] Verificado contraste de cores atende ao WCAG 2.1 AA (4.5:1 para texto) - Use [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
-- [ ] Perguntou ao usuário antes de adicionar qualquer nova cor ou fonte
-- [ ] Manutenção de consistência visual em todos os componentes
+- [ ] Extraí as fontes existentes e as documentei
+- [ ] Analisei 2 a 3 componentes existentes para identificar padrões
+- [ ] Identifiquei padrões de espaçamento, raio de borda e sombra
+- [ ] Confirmei que estou usando tokens do tema, e não valores arbitrários
+- [ ] Alinhei os estados de hover/foco com os dos componentes existentes
+- [ ] Verifiquei se o contraste de cores atende às diretrizes WCAG 2.1 AA (4,5:1 para texto) — use o [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [ ] Consultei o usuário antes de adicionar novas cores ou fontes
+- [ ] Mantive a consistência visual em todos os componentes
 
-**Isso é sobre CONSISTÊNCIA, não criar novos designs.**  Coincidir com o que existe, perguntar antes de mudar.
+**Trata-se de CONSISTÊNCIA, não de criar novos designs.** Alinhe-se ao que já existe, pergunte antes de alterar.

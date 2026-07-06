@@ -1,32 +1,32 @@
-# Conectando ao Backend
+# Conexão com o backend
 
-## Contents
+## Índice
 
-- [Visão Geral](#visão-geral)
-- [Detectando o Backend](#detecting-the-backend-critical)
-- [Detecção de Framework](#detecção-de-framework)
-- [Configuração do Ambiente](#configuracao-do-ambiente)
-- [Integração Específica do Backend](#backend-specific-integration)
-- [Padrões de Autenticação](#padrões-de-autenticação)
-- [Gerenciamento de Estado do Carrinho](#gerenciamento-de-estado-do-carrinho)
-- [Tratamento de Erros para Ecommerce](#tratamento-de-erros-para-ecommerce)
-- [Padrões de Desempenho](#padrões-de-desempenho)
-  - [Busca de Dados com TanStack Query](#busca-de-dados-com-tanstack-query-recomendado)
-- [Checklist](#checklist)
+- [Visão geral](#visao-geral)
+- [Detecção do backend](#deteccao-do-back-end-critico)
+- [Detecção de framework](#deteccao-do-framework)
+- [Configuração do ambiente](#configuracao-do-ambiente)
+- [Integração específica ao backend](#integracao-especifica-do-backend)
+- [Padrões de autenticação](#padroes-de-autenticacao)
+- [Gerenciamento do estado do carrinho](#gerenciamento-do-estado-do-carrinho)
+- [Tratamento de erros para comércio eletrônico](#tratamento-de-erros-no-comercio-eletronico)
+- [Padrões de desempenho](#padroes-de-desempenho)
+  - [Recuperação de dados com o TanStack Query](#padroes-de-autenticacao)
+- [Lista de verificação](#lista-de-verificacao)
 
 ## Visão geral
 
-Melhores práticas para conectar a vitrine aos APIs de backend de e-commerce. Padrões independentes de framework para autenticação, gerenciamento de estado do carrinho, tratamento de erros e otimização de desempenho.
+Melhores práticas para conectar a loja virtual às APIs de back-end de comércio eletrônico. Padrões independentes de framework para autenticação, gerenciamento do estado do carrinho, tratamento de erros e otimização de desempenho.
 
-**Para integração específica da Medusa**, consulte `reference/medusa.md` para configuração do SDK, preços, regiões e padrões Medusa.
+**Para integração específica com o Medusa**, consulte `reference/medusa.md` para configuração do SDK, preços, regiões e padrões do Medusa.
 
-## Detectando o Backend (CRÍTICO)
+## Detecção do back-end (CRÍTICO)
 
-**Antes de implementar qualquer integração de backend, identifique qual backend de comércio eletrônico está sendo utilizado.**
+**Antes de implementar qualquer integração com o back-end, identifique qual back-end de comércio eletrônico está sendo usado.**
 
-### Estratégia de Detecção
+### Estratégia de detecção
 
-**1. Verificar a estrutura de monorepo:**
+**1. Verificar se há estrutura de monorepo:**
 
 ```bash
 # Look for backend directory
@@ -41,7 +41,7 @@ Padrões comuns de monorepo:
 - `/frontend` + `/backend`
 - `/packages/web` + `/packages/api`
 
-**2. Verifique as dependências no arquivo package.json:**
+**2. Verifique as dependências do `package.json`:**
 
 ```json
 {
@@ -52,7 +52,7 @@ Padrões comuns de monorepo:
 }
 ```
 
-**3. Check environment variables:**
+**3. Verifique as variáveis de ambiente:**
 
 ```bash
 # Look in .env, .env.local, .env.example
@@ -62,9 +62,9 @@ grep -i "api\|backend\|medusa\|shopify\|commerce" .env*
 Padrões comuns:
 
 - `NEXT_PUBLIC_MEDUSA_BACKEND_URL` → Medusa
-- Personalizado `API_URL` ou `BACKEND_URL` → Outro backend
+- `API_URL` ou `BACKEND_URL` personalizados → Outro backend
 
-**4. Se estiver em dúvida, PERGUNTE AO USUÁRIO:**
+**4. Em caso de dúvida, PERGUNTE AO USUÁRIO:**
 
 ```markdown
 I need to connect to the ecommerce backend. Which backend are you using?
@@ -75,59 +75,59 @@ Options:
 - Other
 ```
 
-### Documentação do Backend e Servidores MCP
+### Documentação do backend e servidores MCP
 
 **SEMPRE consulte a documentação oficial do backend ou o servidor MCP para:**
 
-- API endpoints and data structures
+- Pontos de extremidade da API e estruturas de dados
 - Requisitos de autenticação
-- SDK uso e instalação
-- Configuração de ambiente
-- Limites de taxa e melhores práticas
+- Uso e instalação do SDK
+- Configuração do ambiente
+- Limites de taxa e práticas recomendadas
 
-**Para Medusa:**
+**Para o Medusa:**
 
 - Documentação: <https://docs.medusajs.com>
-- MCP Server: Se disponível, utilize o servidor Medusa MCP para informações de API em tempo real.
-- Docs do JS SDK: <https://docs.medusajs.com/resources/js-sdk>
-- Veja `reference/medusa.md` para o guia de integração detalhado
+- Servidor MCP: se disponível, use o servidor MCP do Medusa para obter informações da API em tempo real
+- Documentação do SDK JS: <https://docs.medusajs.com/resources/js-sdk>
+- Consulte `reference/medusa.md` para obter um guia detalhado de integração
 
-**Para outros backends:**
+**Para outros back-ends:**
 
-- Verifique o portal de documentação do backend
-- Procure pelo servidor MCP, se disponível
+- Verifique o portal de documentação do back-end
+- Procure o servidor MCP, se disponível
 - Verifique os endpoints da API e os métodos de autenticação
-- Nunca assuma a estrutura da API sem verificação
+- Nunca presuma a estrutura da API sem verificar
 
-**Importante:** Não adivinhe pontos de extremidade (endpoints) ou formatos de dados da API. Sempre verifique com a documentação ou peça ao usuário para confirmar a estrutura da API do backend.
+**Importante:** Não tente adivinhar os endpoints da API ou os formatos de dados. Sempre verifique na documentação ou peça ao usuário para confirmar a estrutura da API do backend.
 
-## Detecção de Framework
+## Detecção do framework
 
-Identifique o framework de frontend para determinar os padrões adequados de busca de dados:
+Identifique o framework do front-end para determinar os padrões adequados de obtenção de dados:
 
 **Next.js:**
 
-- App Router: Componentes do Servidor (async/await), Componentes do Cliente (useEffect/TanStack Query)
-- Pages Router: getServerSideProps/getStaticProps (server), useEffect (client)
+- Roteador de aplicativos: Componentes de servidor (async/await), Componentes de cliente (useEffect/TanStack Query)
+- Roteador de páginas: getServerSideProps/getStaticProps (servidor), useEffect (cliente)
 
 **SvelteKit:**
 
-- Carregar funções para dados do lado do servidor
-- Cliente-side: fetch no ciclo de vida do componente
+- Funções de carregamento para dados do lado do servidor
+- Lado do cliente: recuperação no ciclo de vida do componente
 
 **TanStack Start:**
 
 - Funções do servidor para dados do lado do servidor
-- Cliente-side: fetch com React hooks
+- Lado do cliente: recuperação com hooks do React
 
-**Regra Geral:**
+**Regra geral:**
 
-- **Carregamento inicial do lado do servidor**: SEO, desempenho, segurança (páginas de produtos, listas)
-- **Interações do lado do cliente**: Carrinho, filtros, busca, dados específicos do usuário
+- **Lado do servidor para o carregamento inicial**: SEO, desempenho, segurança (páginas de produtos, listagens)
+- **Lado do cliente para interações**: carrinho, filtros, pesquisa, dados específicos do usuário
 
-## Environment Configuration
+## Configuração do ambiente
 
-**Armazene URLs e chaves da API em variáveis de ambiente:**
+**Armazene URLs e chaves da API da loja em variáveis de ambiente:**
 
 ```typescript
 // .env.local
@@ -135,413 +135,295 @@ NEXT_PUBLIC_API_URL=https://api.example.com
 NEXT_PUBLIC_PUBLISHABLE_KEY=pk_...
 ```
 
-**Prefixos específicos do framework:**
+**Prefixos específicos de framework:**
 
 - Next.js: `NEXT_PUBLIC_` para o lado do cliente
 - SvelteKit: `PUBLIC_` para o lado do cliente
-- Vite-based (TanStack Start): `VITE_` para o lado do cliente
+- Baseado em Vite (TanStack Start): `VITE_` para o lado do cliente
 
 **Segurança:**
 
-- ❌ NUNCA exponha chaves secretas/administrativas no código do lado do cliente
-- ✅ Chaves publicáveis são seguras para o cliente (Medusa, Stripe)
-- ✅ Secret keys only in server-side code or environment
+- ❌ NUNCA exponha chaves secretas/de administração no código do lado do cliente
+- ✅ Chaves publicáveis são seguras para o lado do cliente (Medusa, Stripe)
+- ✅ Chaves secretas devem estar apenas no código ou ambiente do lado do servidor
 
-## Integração Específica de Backend
+## Integração específica do backend
 
 ### Backend Medusa
 
-**Para o guia completo de integração com o Medusa**, consulte `reference/medusa.md` que aborda:
+**Para o guia completo de integração com o Medusa**, consulte `reference/medusa.md`, que aborda:
 
 - Instalação e configuração do SDK
 - Configuração do Vite (para TanStack Start, etc.)
-- Tipos TypeScript do `@medusajs/types`
-- Exibição de preço (nunca divida por 100)
+- Tipos do TypeScript do `@medusajs/types`
+- Exibição de preços (nunca dividir por 100)
 - Operações comuns (produtos, carrinho, categorias, clientes)
-- Pontos de extremidade personalizados
-- Região gerenciamento de estado
-- Error handling with SDK
+- Endpoints personalizados
+- Gerenciamento do estado da região
+- Tratamento de erros com o SDK
 
-### Outros Backends
+### Outros back-ends
 
-Para backends não Medusa (APIs personalizadas, plataformas de terceiros):
+Para back-ends que não sejam do Medusa (APIs personalizadas, plataformas de terceiros):
 
-**1. Consulte a documentação da API do backend** para:
+**1. Consulte a documentação da API do back-end** para:
 
 - Requisitos de autenticação
 - Endpoints disponíveis
 - Formatos de solicitação/resposta
 - Disponibilidade do SDK (verifique se existe um SDK oficial)
 
-**2. Use o SDK oficial do backend, se disponível** - fornece segurança de tipos, tratamento de erros e melhores práticas
+**2. Use o SDK oficial do backend, se disponível** — oferece segurança de tipos, tratamento de erros e melhores práticas
 
-**3. Se não houver SDK, crie um wrapper de cliente de API:**
+**3. Se não houver SDK, crie um wrapper para o cliente da API:**
 
-- Centralize API calls in one module
-- Agrupar por recurso (produtos, carrinho, clientes, pedidos)
-- Lidar com autenticação (incluir tokens/cookies)
-- Lide com erros de forma consistente
-- Use native fetch ou axios
+- Centralize as chamadas à API em um único módulo
+- Agrupe por recurso (produtos, carrinho, clientes, pedidos)
+- Gerencie a autenticação (inclua tokens/cookies)
+- Trate os erros de maneira consistente
+- Use o fetch nativo ou o axios
 
-## Padrões de Autenticação
+## Padrões de autenticação
 
-### Autenticação do Cliente
+### Autenticação de clientes
 
-**Sessão baseada (cookies):**
+**Baseada em sessão (cookies):**
 
-- Backend manages session via cookies
-- Sem necessidade de gerenciamento manual de tokens
-- Funciona entre atualizações de página
-- Comum em backends tradicionais de ecommerce
-- Chamar o endpoint de login do backend, verificar o estado de autenticação, métodos de logout
+- O backend gerencia a sessão por meio de cookies
+- Não é necessário gerenciamento manual de tokens
+- Funciona mesmo após a atualização da página
+- Comum em back-ends tradicionais de comércio eletrônico
+- Chamar o endpoint de login do back-end, verificar o estado de autenticação e métodos de logout
 
-**Token-based (JWT, OAuth):**
+**Baseado em token (JWT, OAuth):**
 
 - Armazene o token no localStorage ou em um cookie seguro após o login
-- Include token in Authorization header for all authenticated requests
-- Comum em backends headless/API-first
-- Format: `Authorization: Bearer {token}`
+- Inclua o token no cabeçalho Authorization para todas as solicitações autenticadas
+- Comum em back-ends headless/API-first
+- Formato: `Authorization: Bearer {token}`
 
-### Protegendo Rotas do Cliente
+### Protegendo as rotas do cliente
 
-**Check authentication before rendering customer-specific pages** (account, orders, addresses):
+**Verifique a autenticação antes de renderizar páginas específicas do cliente** (conta, pedidos, endereços):
 
-- **Servidor**: Verifique a autenticação nas funções do servidor (getServerSideProps, funções de carregamento, etc.). Redirecione para o login se não estiver autenticado.
-- **Cliente**: Verifique o estado de autenticação ao montar. Redirecione para login se não estiver autenticado.
+- **Lado do servidor**: Verifique a autenticação nas funções do servidor (getServerSideProps, funções de carregamento, etc.). Redirecione para a página de login se o usuário não estiver autenticado.
+- **Lado do cliente**: Verifique o estado de autenticação ao carregar a página. Redirecione para a página de login se o usuário não estiver autenticado.
 
-Use framework-specific auth patterns for redirects.
+Utilize padrões de autenticação específicos do framework para os redirecionamentos.
 
-### Cart Access Pattern
+### Padrão de acesso ao carrinho
 
-**Carrinhos de hóspedes:**
+**Carrinhos de visitantes:**
 
-- Armazene o ID do carrinho no localStorage ou cookie
-- Check for existing cart ID on app load
-- Create new cart if none exists
-- Permite compras sem conta
-- Persists across sessions
+- Armazene o ID do carrinho no localStorage ou em um cookie
+- Verifique se há um ID de carrinho existente ao carregar o aplicativo
+- Crie um novo carrinho se não houver nenhum
+- Permite fazer compras sem conta
+- Persiste entre sessões
 
-**Carrinhos logados:**
+**Carrinhos de usuários conectados:**
 
-- Associar carrinho à conta do cliente
-- Syncs across devices
-- **CRÍTICO: Mesclar o carrinho de visitante com o carrinho do cliente ao fazer login** - Transferir os itens do carrinho de visitante para o carrinho da conta do cliente e, em seguida, limpar o ID do carrinho de visitante do localStorage
+- Associar o carrinho à conta do cliente
+- Sincronização entre dispositivos
+- **CRÍTICO: Unificar o carrinho de visitante com o carrinho do cliente no momento do login** - Transferir os itens do carrinho de visitante para o carrinho da conta do cliente e, em seguida, limpar o ID do carrinho de visitante do localStorage
 
-## Gerenciamento de Estado do Carrinho
+## Gerenciamento do estado do carrinho
 
-**Critical ecommerce pattern**: Cart must be accessible throughout the app.
+**Padrão crítico de comércio eletrônico**: O carrinho deve estar acessível em todo o aplicativo.
 
-### Global Cart State
+### Estado global do carrinho
 
-**Contexto do React (para casos simples):**
+**React Context (para casos simples):**
 
-- Create CartContext and CartProvider
-- Store cart state and cartId (from localStorage)
-- Carregar o carrinho na montagem se cartId existir
+- Criar CartContext e CartProvider
+- Armazenar o estado do carrinho e o cartId (do localStorage)
+- Carregar o carrinho na montagem, caso o cartId exista
 - Forneça métodos: addItem, removeItem, updateQuantity, clearCart
 - Atualize o estado do carrinho após cada operação
 
 **Bibliotecas de gerenciamento de estado (Zustand, Redux):**
 
-- Use for complex state requirements
-- Melhor para aplicativos grandes
-- Mais fácil de depurar com DevTools
-- Same pattern: Store cart, provide actions, sync with backend
+- Utilize-as para requisitos complexos de estado
+- Mais adequadas para aplicativos de grande porte
+- Mais fáceis de depurar com o DevTools
+- Mesmo padrão: armazenar o carrinho, fornecer ações, sincronizar com o backend
 
 **Requisitos principais:**
 
-- Carrinho acessível de qualquer componente
+- Carrinho acessível a partir de qualquer componente
 - Atualizações em tempo real da contagem do carrinho
-- Atualizações otimistas da interface do usuário (atualize a IU imediatamente, sincronize com o backend)
+- Atualizações otimistas da interface do usuário (atualizar a interface imediatamente, sincronizar com o backend)
 
-### Limpeza do Carrinho Após a Colocação do Pedido (CRÍTICO)
+### Limpeza do carrinho após a realização do pedido (CRÍTICO)
 
-**IMPORTANTE: Após a realização do pedido, DEVE ser feito o reset do estado do carrinho.**
+**IMPORTANTE: Após a conclusão bem-sucedida do pedido, você DEVE redefinir o estado do carrinho.**
 
-**Problema comum:** O popup do carrinho e o estado do carrinho global ainda mostram itens antigos após a conclusão da ordem. Isso ocorre quando o estado do carrinho não é limpo após o checkout.
+**Problema comum:** A janela pop-up do carrinho e o estado global do carrinho ainda exibem itens antigos após a conclusão do pedido. Isso ocorre quando o estado do carrinho não é limpo após a finalização da compra.
 
 **Ações de limpeza necessárias:**
 
-1. **Limpar carrinho do estado global** - Resetar estado do carrinho para null/empty em Context/Zustand/Redux
-2. **Limpar localStorage cart ID** - Remover ID da cesta: `localStorage.removeItem('cart_id')`
-3. **Invalide consultas de carrinho** - Se estiver usando TanStack Query: `queryClient.invalidateQueries({ queryKey: ['carrinho'] })`
-4. **Atualizar contagem do carrinho para 0** - Navbar e interface devem refletir o carrinho vazio
+1. **Limpar o carrinho do estado global** - Redefina o estado do carrinho para nulo/vazio em Context/Zustand/Redux
+2. **Limpe o ID do carrinho no localStorage** - Remova o ID do carrinho: `localStorage.removeItem('cart_id')`
+3. **Invalide as consultas do carrinho** - Se estiver usando o TanStack Query: `queryClient.invalidateQueries({ queryKey: ['cart'] })`
+4. **Atualizar a contagem do carrinho para 0** — A barra de navegação e a interface do usuário devem refletir que o carrinho está vazio
 
 **Quando limpar:**
 
-- Após o **colocamento** bem-sucedido do pedido (pedido confirmado)
+- Após a realização bem-sucedida do pedido (pedido confirmado)
 - Ao navegar para a página de confirmação do pedido
 - Antes de redirecionar para a página de agradecimento
 
-**Por que isso é crítico:**
+**Por que isso é fundamental:**
 
-- Impede que o "phantom cart" apareça no pop-up do carrinho após o pedido
-- Garante estado limpo para a próxima sessão de compras
-- Melhora a UX ao não mostrar itens antigos do carrinho
+- Evita que o “carrinho fantasma” apareça no pop-up do carrinho após o pedido
+- Garante um estado limpo para a próxima sessão de compras
+- Melhora a experiência do usuário ao não exibir itens antigos do carrinho
 
-## Tratamento de Erros para Ecommerce
+## Tratamento de erros no comércio eletrônico
 
-### Introdução
+### Erros específicos do comércio eletrônico
 
-O tratamento de erros é uma parte crucial do desenvolvimento de software, especialmente em aplicações de e-commerce. Erros podem ocorrer por uma variedade de motivos, incluindo problemas de rede, falhas de servidor, ou mesmo erros de programação. Neste artigo, vamos explorar como lidar com erros de forma eficaz em aplicações de e-commerce.
+**Esgotado:**
 
-### Tipos de Erros
+- Detecte erros ao adicionar ao carrinho
+- Verificar se há “fora de estoque” ou “estoque” na mensagem de erro
+- Exibir uma mensagem amigável: “Desculpe, este item está fora de estoque no momento”
+- Atualizar a interface de disponibilidade do produto para indicar que está fora de estoque
 
-Existem vários tipos de erros que podem ocorrer em aplicações de e-commerce:
+**Preço alterado durante a finalização da compra:**
 
-***Erros de Conexão**: Erros que ocorrem quando há problemas de conexão com o servidor ou com a base de dados.
-***Erros de Validção**: Erros que ocorrem quando os dados fornecidos pelo usuário não são válidos.
-***Erros de Negócios**: Erros que ocorrem quando há problemas de negócios, como falta de estoque ou problemas de pagamento.
-
-### Exemplo de Implementação
-
-Abaixo, vamos apresentar um exemplo de implementação de tratamento de erros em Python:
-
-```python
-import logging
-
-# Configuração de log
-logging.basicConfig(level=logging.INFO)
-
-class EcommerceApp:
-    def __init__(self):
-        self.conexao = None
-
-    def conectar(self):
-        try:
-            self.conexao = sqlite3.connect('banco.db')
-            logging.info('Conectado ao banco de dados')
-        except sqlite3.Error as e:
-            logging.error(f'Erro ao conectar ao banco de dados: {e}')
-
-    def validar_dados(self, dados):
-        try:
-            # Validação dos dados
-            if not dados['nome']:
-                raise ValueError('Nome é obrigatório')
-            if not dados['email']:
-                raise ValueError('E-mail é obrigatório')
-            logging.info('Dados válidos')
-        except ValueError as e:
-            logging.error(f'Erro de validação: {e}')
-
-    def processar_pedido(self, pedido):
-        try:
-            # Processamento do pedido
-            logging.info('Pedido processado com sucesso')
-        except Exception as e:
-            logging.error(f'Erro ao processar pedido: {e}')
-
-# Exemplo de uso
-app = EcommerceApp()
-app.conectar()
-app.validar_dados({'nome': 'João', 'email': 'joao@example.com'})
-app.processar_pedido({'id': 1, 'valor': 100.00})
-```
-
-### Conclusão
-
-O tratamento de erros é uma parte crucial do desenvolvimento de software de e-commerce. Ao entender os diferentes tipos de erros e implementar um sistema de tratamento de erros eficaz, podemos garantir que nossas aplicações sejam mais robustas e menos propensas a erros. Além disso, um bom sistema de tratamento de erros pode ajudar a melhorar a experiência do usuário e a reduzir o tempo de resolução de problemas.
-
-### Recursos Adicionais
-
-- [Tratamento de Erros em Python](https://docs.python.org/pt-br/3/library/logging.html)
-- [Exemplo de Implementação de Tratamento de Erros em Python](https://github.com/example/tratamento-erros-python)
-
-### Referências
-
-- [Tratamento de Erros em Aplicações de E-commerce](https://www.example.com/tratamento-erros-e-commerce)
-- [Exemplo de Implementação de Tratamento de Erros em Aplicações de E-commerce](https://github.com/example/tratamento-erros-e-commerce)
-
-### Erros específicos de comércio eletrônico
-
-**Sem estoque:**
-
-- Pegue erros ao adicionar ao carrinho
-- Verifique por "sem estoque" ou "estoque" no erro de mensagem
-- Mostre mensagem amigável para o usuário: "Desculpe, esse item agora está fora de estoque"
-- Atualize a interface de disponibilidade do produto para mostrar fora de estoque
-
-**Preço alterado durante o checkout:**
-
-- Compare o total do carrinho com o total esperado.
-- Se diferente, exiba o aviso: "Os preços foram atualizados. Por favor, revise seu carrinho."
+- Comparar o total do carrinho com o total esperado
+- Se houver diferença, exibir um aviso: “Os preços foram atualizados. Por favor, verifique seu carrinho.”
 - Destaque os preços alterados no carrinho
 
 **Falha no pagamento:**
 
-- Pegue erros durante a conclusão do pedido
-- Verifique erros de pagamento específicos: payment_declined, insufficient_funds, etc.
-- Mostrar mensagens específicas:
-  - Pagamento recusado → "O pagamento foi recusado. Por favor, tente um método de pagamento diferente."
-  - Fundos insuficientes → "Fundos insuficientes. Por favor, utilize um cartão diferente."
-  - Generic → "Pagamento falhou. Por favor, tente novamente ou entre em contato com o suporte."
+- Detecte erros durante a conclusão do pedido
+- Verifique se há erros específicos de pagamento: pagamento_recusado, saldo_insuficiente, etc.
+- Exibir mensagens específicas:
+  - Pagamento recusado → “Pagamento recusado. Tente um método de pagamento diferente.”
+  - Saldo insuficiente → “Saldo insuficiente. Use outro cartão.”
+  - Genérico → “Falha no pagamento. Tente novamente ou entre em contato com o suporte.”
 
 **Sessão expirada:**
 
-- Capturar erros 401/Unauthorized
-- Limpar estado de autenticação
-- Redirecione para login com mensagem: "Sua sessão expirou. Por favor, faça o login novamente."
+- Detectar erros 401/Não autorizado
+- Limpar o estado de autenticação
+- Redirecionar para o login com a mensagem: “Sua sessão expirou. Faça login novamente.”
 
-### Mensagens de Erro Amigáveis ao Usuário
+### Mensagens de erro fáceis de entender
 
-**Mensagens de Erro Amigáveis ao Usuário**A criação de mensagens de erro amigáveis ao usuário é uma prática comum em muitas aplicações. Elas ajudam a melhorar a experiência do usuário, tornando o processo de resolução de problemas mais fácil e menos estressante.
+**Transforme erros técnicos em mensagens claras:**
 
-### Exemplos de Mensagens de Erro Amigáveis
+- Erros de rede/busca → “Não foi possível conectar. Verifique sua conexão com a internet.”
+- Erros de tempo limite → “O tempo limite da solicitação expirou. Tente novamente.”
+- Erros de estoque → “Este item não está mais disponível na quantidade solicitada.”
+- Mensagem genérica de fallback → “Ocorreu um erro. Tente novamente ou entre em contato com o suporte.”
 
-#### Exemplo 1: Erro de Credenciais Inválidas
+**Padrão**: Verifique a mensagem de erro ou o código de status, mapeie para uma mensagem de fácil compreensão e exiba na interface do usuário (notificação, banner, mensagem embutida).
 
-```python
-import getpass
+## Padrões de desempenho
 
-def autenticar():
-    usuario = input("Digite seu usuário: ")
-    senha = getpass.getpass("Digite sua senha: ")
-    
-    if usuario == "admin" and senha == "senha":
-        print("Autenticação bem-sucedida!")
-    else:
-        print("Credenciais inválidas. Por favor, tente novamente.")
+### Busca de dados com o TanStack Query (RECOMENDADO)
 
-autenticar()
-```**Mensagem de Erro Amigável:**"Ocorreu um erro ao tentar se conectar. Por favor, verifique suas credenciais e tente novamente."
-
-#### Exemplo 2: Erro de Conexão com o Banco de Dados
-
-```sql
-CREATE TABLE usuarios (
-  id INT PRIMARY KEY,
-  nome VARCHAR(255),
-  email VARCHAR(255)
-);
-
-- Tentando se conectar ao banco de dados
-SELECT* FROM usuarios;
-```
-
-**Mensagem de Erro Amigável:**"Ocorreu um erro ao tentar se conectar ao banco de dados. Por favor, verifique se o servidor está online e tente novamente."
-
-### Dicas para Criar Mensagens de Erro Amigáveis*   Seja claro e direto ao informar o erro
-
-- Forneça informações úteis para ajudar o usuário a resolver o problema.
-
-- Mantenha a linguagem simples e fácil de entender.
-- Evite jargões técnicos ou termos que possam confundir o usuário.
-- Ofereça sugestões de ação para o usuário seguir.
-
-Ao seguir essas dicas, você pode criar mensagens de erro amigáveis que ajudem a melhorar a experiência do usuário e tornar o processo de resolução de problemas mais fácil e menos estressante.
-
-**Transformar erros técnicos em mensagens claras:**
-
-- Erros de rede/busca → "Não foi possível conectar. Verifique sua conexão com a internet."
-- Erros de tempo limite → "Pedido expirado. Por favor, tente novamente."
-- Erros de inventário → "Este item não está mais disponível na quantidade solicitada."
-- Fallback padrão → "Algo deu errado. Por favor, tente novamente ou entre em contato com o suporte."
-
-**Padrão**: Verificar a mensagem de erro ou código de status, mapear para uma mensagem amigável ao usuário, exibir na IU (toast, banner, inline).
-
-## Padrões de Desempenho
-
-### Recuperação de Dados com TanStack Query (RECOMENDADO)
-
-**Use TanStack Query para todas as chamadas de API do backend** - fornece cache automático, desduplicação de solicitações, estados de carregamento/erro e atualizações otimistas.
+**Use o TanStack Query para todas as chamadas de API do backend** — ele oferece cache automático, deduplicação de solicitações, estados de carregamento/erro e atualizações otimistas.
 
 **Instalação:** `npm install @tanstack/react-query`
 
 **Configuração:**
 
-- Crie QueryClient com opções padrão (staleTime: 5 min, retry: 1)
-- Envolva a aplicação com QueryClientProvider
+- Crie um `QueryClient` com as opções padrão (staleTime: 5 min, retry: 1)
+- Envolva o aplicativo com `QueryClientProvider`
 
-**Padrão de consulta (para busca de dados):**
+**Padrão de consulta (para buscar dados):**
 
 - Use `useQuery` com queryKey e queryFn
-- queryKey: Array com recurso e identificador `['products', categoryId]`
-- queryFn: função de chamada da API
+- queryKey: array com recurso e identificador `['products', categoryId]`
+- queryFn: função de chamada de API
 - Retorna: `data`, `isLoading`, `error`
-- Use para: Produtos, carrinho, dados do cliente, categorias
+- Utilização: produtos, carrinho, dados de clientes, categorias
 
 **Padrão de mutação (para modificar dados):**
 
-- Use `useMutation` com `mutationFn`
+- Use `useMutation` com mutationFn
 - mutationFn: operação da API (adicionar ao carrinho, atualizar, excluir)
-- onSuccess: Atualizar cache ou invalidar queries
-- Returns: função `mutate`, estado `isPending`
-- Use for: Add to cart, remove from cart, update quantities, place order
+- onSuccess: atualizar o cache ou invalidar consultas
+- Retorna: função `mutate`, estado `isPending`
+- Utilização: adicionar ao carrinho, remover do carrinho, atualizar quantidades, finalizar compra
 
 **Benefícios:**
 
-- Cache automático (sem gestão de cache manual)
-- Built-in loading/error states
-- Solicitação de deduplicação
+- Armazenamento em cache automático (sem gerenciamento manual do cache)
+- Estados de carregamento/erro integrados
+- Desduplicação de solicitações
 - Atualizações otimistas (atualizar a interface do usuário antes que o servidor responda)
-- Estratégias de invalidação de cache
+- Estratégias de invalidação do cache
 
-**Ecommerce-specific usage:**
+**Uso específico para comércio eletrônico:**
 
-- Produtos: Tempo de estagnação longo (5-10 min) - os produtos não mudam com frequência.
-- Carrinho: Tempo de validade curto ou inexistente - preços/estoque podem mudar
-- Categorias: Tempo de estagnação longo - raramente mudam
+- Produtos: Tempo de validade longo (5 a 10 min) — os produtos não mudam com frequência
+- Carrinho: Tempo de validade curto ou nenhum — preços/estoque podem mudar
+- Categorias: Tempo de validade longo — raramente mudam
 
-### Estratégia de Cache
+### Estratégia de armazenamento em cache
 
-**Cache do lado do cliente:**
+**Armazenamento em cache no lado do cliente:**
 
-- TanStack Query lida automaticamente com `staleTime` e `cacheTime`
-- Configurar globalmente ou por consulta
-- Dados do produto: 5-10 min de tempo de latência
-- Dados do carrinho: Atualizados a cada busca
-- Categorias: Tempo de estagnação longo
+- O TanStack Query lida automaticamente com `staleTime` e `cacheTime`
+- Configure globalmente ou por consulta
+- Dados de produtos: tempo de validade de 5 a 10 minutos
+- Dados do carrinho: atualizados a cada recuperação
+- Categorias: tempo de validade longo
 
-**Cache do lado do servidor (específico do framework):**
+**Armazenamento em cache no lado do servidor (específico da estrutura):**
 
-- Next.js: Use `revalidate` export ou configuração de cache
-- Definir período de revalidação (por exemplo, 300 segundos para páginas de produtos)
+- Next.js: use a exportação `revalidate` ou a configuração de cache
+- Definir o período de revalidação (por exemplo, 300 segundos para páginas de produtos)
 - Geração estática com ISR para páginas de produtos
 
-### Solicitação de Deduplicação
+### Desduplicação de solicitações
 
-TanStack Query e frameworks modernos lidam com isso automaticamente - múltiplos componentes requisitando os mesmos dados resultam em uma única requisição.
+O TanStack Query e os frameworks modernos lidam com isso automaticamente — múltiplos componentes solicitando os mesmos dados resultam em uma única solicitação.
 
-### Padrão de Paginação
+### Padrão de paginação
 
-**Offset-based:**Passe os parâmetros de limite e deslocamento para a API `limit: 24, offset: page* 24`
+**Baseado em offset:** Passe os parâmetros de limite e offset para a API `limit: 24, offset: page * 24`
 
-**Cursor-base (melhor desempenho):** Passe o limite e o cursor (ID do último item) `limit: 24, cursor: lastProductId`
+**Baseado em cursor (melhor desempenho):** Passe o limite e o cursor (ID do último item) `limit: 24, cursor: lastProductId`
 
-Verifique a documentação do backend para o tipo de paginação compatível.
+Verifique a documentação do backend para saber o tipo de paginação suportado.
 
-## Checklist
+## Lista de verificação
 
-**Integração essencial de backend:**
+**Integração essencial com o backend:**
 
 - [ ] Backend detectado (Medusa, Shopify, personalizado, etc.)
 - [ ] Variáveis de ambiente configuradas (URL da API, chaves)
-- [ ] Padrões de busca de dados específicos do framework identificados
+- [ ] Padrões de obtenção de dados específicos do framework identificados
 - [ ] **RECOMENDADO: TanStack Query instalado e configurado para chamadas de API**
-- [ ] Busca no servidor para páginas de produtos (SEO)
-- [ ] Busca no lado do cliente para interações do carrinho e do usuário (usar TanStack Query)
+- [ ] Busca do lado do servidor para páginas de produtos (SEO)
+- [ ] Busca do lado do cliente para o carrinho e interações do usuário (use o TanStack Query)
 - [ ] Fluxo de autenticação implementado (login/logout)
-- [ ] ID do carrinho persistido no localStorage ou cookies
-- [ ] Gerenciamento global de estado do carrinho (contexto ou armazenamento)
+- [ ] ID do carrinho armazenado no localStorage ou em cookies
+- [ ] Gerenciamento global do estado do carrinho (contexto ou loja)
 - [ ] Contagem do carrinho sincronizada em todo o aplicativo
-- [ ] Atualizações otimistas de UI para operações de carrinho
-- [ ] Tratamento de erros para cenários de falta de estoque
-- [ ] Tratamento de erros para falhas no pagamento
-- [ ] Tratamento de expiração de sessão (redirecionar para login)
-- [ ] Mensagens de erro amigáveis ao usuário (não técnicas)
-- [ ] Estratégia de cache para dados de produtos
-- [ ] Verificações de disponibilidade de estoque antes do checkout
-- [ ] Detecção de alteração de preço e avisos
+- [ ] Atualizações otimistas da interface do usuário para operações do carrinho
+- [ ] Tratamento de erros em casos de falta de estoque
+- [ ] Tratamento de erros em falhas de pagamento
+- [ ] Tratamento de expiração de sessão (redirecionamento para login)
+- [ ] Mensagens de erro fáceis de entender (não técnicas)
+- [ ] Estratégia de armazenamento em cache para dados de produtos
+- [ ] Verificação de disponibilidade de estoque antes da finalização da compra
+- [ ] Detecção de alterações de preço e avisos
 
-**Para backends Medusa, verifique também:**
+**Para back-ends Medusa, verifique também:**
 
-- [ ] SDK Medusa instalado (`@medusajs/js-sdk` + `@medusajs/types`)
+- [ ] SDK do Medusa instalado (`@medusajs/js-sdk` + `@medusajs/types`)
 - [ ] SDK inicializado com baseUrl e publishableKey
-- [ ] Configuração SSR do Vite adicionada (se estiver usando TanStack Start/Vite)
+- [ ] Configuração do Vite SSR adicionada (se estiver usando o TanStack Start/Vite)
 - [ ] Usando tipos oficiais de `@medusajs/types`
-- [ ] Não dividir os preços por 100 (exibir como estão)
-- [ ] Contexto de região implementado para lojas multi-região
-- [ ] Região passada para consultas de carrinho e produto
+- [ ] Não dividindo os preços por 100 (exibição tal como está)
+- [ ] Contexto de região implementado para lojas multirregionais
+- [ ] Região passada para consultas de carrinho e produtos
 
-Veja `reference/medusa.md` para o guia completo de integração com o Medusa.
+Consulte `reference/medusa.md` para obter o guia completo de integração com o Medusa.

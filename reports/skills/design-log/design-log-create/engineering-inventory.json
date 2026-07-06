@@ -1,0 +1,365 @@
+{
+  "skill_id": "design-log.design-log-create",
+  "plugin": "design-log",
+  "skill_name": "design-log-create",
+  "path": "plugins/design-log/skills/design-log-create/SKILL.md",
+  "source_files": [
+    "plugins/design-log/skills/design-log-create/SKILL.md"
+  ],
+  "localized_variants": [
+    "plugins/design-log/skills/design-log-create/SKILL.pt-br.md"
+  ],
+  "coverage_score": 0,
+  "risk_level": "medium",
+  "evidence_level": "missing",
+  "variables": [
+    {
+      "name": "ausente",
+      "type": "ausente",
+      "required": false,
+      "default": null,
+      "sensitive": false,
+      "evidence": "ausente",
+      "validation": "ausente"
+    }
+  ],
+  "workflows": [
+    {
+      "workflow_id": "WF-001",
+      "name": "ausente",
+      "actor": "ausente",
+      "trigger": "ausente",
+      "preconditions": [
+        "ausente"
+      ],
+      "steps": [
+        "ausente"
+      ],
+      "validations": [
+        "ausente"
+      ],
+      "fallbacks": [
+        "ausente"
+      ],
+      "errors_expected": [
+        "ausente"
+      ],
+      "logs": [
+        "ausente"
+      ],
+      "outputs": [
+        "ausente"
+      ],
+      "final_state": "ausente"
+    }
+  ],
+  "jtbd": [
+    {
+      "when": "ausente",
+      "i_want": "ausente",
+      "so_that": "ausente",
+      "actor": "ausente",
+      "context": "ausente",
+      "pain": "ausente",
+      "success_metric": "ausente",
+      "risk": "ausente"
+    }
+  ],
+  "use_cases": [
+    {
+      "use_case_id": "UC-001",
+      "name": "ausente",
+      "actor": "ausente",
+      "scenario": "ausente",
+      "user_input": "ausente",
+      "processing_expected": "ausente",
+      "system_output": "ausente",
+      "outcome_expected": "ausente",
+      "acceptance_criteria": [
+        "ausente"
+      ],
+      "risks": [
+        "ausente"
+      ]
+    },
+    {
+      "use_case_id": "UC-002",
+      "name": "ausente",
+      "actor": "ausente",
+      "scenario": "ausente",
+      "user_input": "ausente",
+      "processing_expected": "ausente",
+      "system_output": "ausente",
+      "outcome_expected": "ausente",
+      "acceptance_criteria": [
+        "ausente"
+      ],
+      "risks": [
+        "ausente"
+      ]
+    },
+    {
+      "use_case_id": "UC-003",
+      "name": "ausente",
+      "actor": "ausente",
+      "scenario": "ausente",
+      "user_input": "ausente",
+      "processing_expected": "ausente",
+      "system_output": "ausente",
+      "outcome_expected": "ausente",
+      "acceptance_criteria": [
+        "ausente"
+      ],
+      "risks": [
+        "ausente"
+      ]
+    },
+    {
+      "use_case_id": "UC-004",
+      "name": "ausente",
+      "actor": "ausente",
+      "scenario": "ausente",
+      "user_input": "ausente",
+      "processing_expected": "ausente",
+      "system_output": "ausente",
+      "outcome_expected": "ausente",
+      "acceptance_criteria": [
+        "ausente"
+      ],
+      "risks": [
+        "ausente"
+      ]
+    },
+    {
+      "use_case_id": "UC-005",
+      "name": "ausente",
+      "actor": "ausente",
+      "scenario": "ausente",
+      "user_input": "ausente",
+      "processing_expected": "ausente",
+      "system_output": "ausente",
+      "outcome_expected": "ausente",
+      "acceptance_criteria": [
+        "ausente"
+      ],
+      "risks": [
+        "ausente"
+      ]
+    }
+  ],
+  "does_does_not": {
+    "does": [
+      "ausente"
+    ],
+    "does_not": [
+      "ausente"
+    ],
+    "depends_on": [
+      "ausente"
+    ],
+    "out_of_scope": [
+      "ausente"
+    ],
+    "risk_if_misused": [
+      "ausente"
+    ]
+  },
+  "user_inputs": [
+    {
+      "input_name": "ausente",
+      "type": "ausente",
+      "origin": "ausente",
+      "required": false,
+      "validation": "ausente",
+      "example": "ausente",
+      "pii_sensitive": false,
+      "restrictions": "ausente"
+    }
+  ],
+  "system_outputs": [
+    {
+      "output_name": "ausente",
+      "type": "ausente",
+      "format": "ausente",
+      "consumer": "ausente",
+      "persistence": "ausente",
+      "example": {},
+      "status_possible": [
+        "missing"
+      ]
+    }
+  ],
+  "expected_outcomes": [
+    {
+      "outcome_id": "OUT-001",
+      "description": "ausente",
+      "metric": "ausente",
+      "baseline": "ausente",
+      "target": "ausente",
+      "impact_expected": "ausente",
+      "risk": "ausente"
+    }
+  ],
+  "apis": [
+    {
+      "api_name": "ausente",
+      "type": "ausente",
+      "provider": "ausente",
+      "base_url": "ausente",
+      "version": "ausente",
+      "security_auth": "ausente",
+      "rate_limits": "ausente",
+      "schemas": [
+        "ausente"
+      ],
+      "observability": "ausente"
+    }
+  ],
+  "endpoints": [
+    {
+      "method": "ausente",
+      "path": "ausente",
+      "purpose": "ausente",
+      "request_schema": "ausente",
+      "response_schema": "ausente",
+      "status_codes": [],
+      "auth_required": false,
+      "idempotency": "ausente",
+      "errors": [
+        "ausente"
+      ]
+    }
+  ],
+  "urls": [
+    {
+      "url": "ausente",
+      "type": "ausente",
+      "usage": "ausente",
+      "risk": "ausente"
+    }
+  ],
+  "connectors": [
+    {
+      "connector_name": "ausente",
+      "type": "ausente",
+      "provider": "ausente",
+      "input": "ausente",
+      "output": "ausente",
+      "auth": "ausente",
+      "rate_limit": "ausente",
+      "failures_expected": [
+        "ausente"
+      ],
+      "retry_backoff": "ausente"
+    }
+  ],
+  "operations": [
+    {
+      "operation": "CREATE",
+      "resource": "not_applicable",
+      "reason": "ausente"
+    }
+  ],
+  "databases": [
+    {
+      "database_name": "ausente",
+      "type": "ausente",
+      "usage": "ausente",
+      "entities": [
+        "ausente"
+      ],
+      "retention": "ausente",
+      "risk": "ausente"
+    }
+  ],
+  "schemas": [
+    {
+      "schema_name": "ausente",
+      "fields": [],
+      "pk_fk": [],
+      "indexes": [],
+      "constraints": [
+        "ausente"
+      ],
+      "example_json": {}
+    }
+  ],
+  "relationships": [
+    {
+      "entity_a": "ausente",
+      "entity_b": "ausente",
+      "cardinality": "ausente",
+      "key": "ausente",
+      "integrity_rule": "ausente",
+      "cascade_delete_behavior": "ausente"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_name": "ausente",
+      "origin": "ausente",
+      "format": "ausente",
+      "frequency": "ausente",
+      "main_fields": [
+        "ausente"
+      ],
+      "expected_quality": "ausente",
+      "usage": "ausente"
+    }
+  ],
+  "json_files": [
+    {
+      "path": "ausente",
+      "purpose": "ausente",
+      "schema": "ausente",
+      "producer": "ausente",
+      "consumer": "ausente",
+      "validation": "ausente"
+    }
+  ],
+  "tables": [
+    {
+      "table_name": "ausente",
+      "columns": [],
+      "keys": [],
+      "indexes": [],
+      "source": "ausente",
+      "consumer": "ausente"
+    }
+  ],
+  "logic": [
+    {
+      "logic_id": "LOGIC-001",
+      "name": "ausente",
+      "input": "ausente",
+      "processing": "ausente",
+      "output": "ausente",
+      "edge_cases": [
+        "ausente"
+      ],
+      "failures": [
+        "ausente"
+      ],
+      "complexity": "ausente"
+    }
+  ],
+  "calculations": [
+    {
+      "calculation_id": "CALC-001",
+      "formula": "ausente",
+      "variables": [
+        "ausente"
+      ],
+      "units": "ausente",
+      "rounding": "ausente",
+      "example": "ausente",
+      "validation": "ausente"
+    }
+  ],
+  "gaps": [
+    "needs_human_review"
+  ],
+  "recommended_next_actions": [
+    "human_review"
+  ]
+}

@@ -2,7 +2,8 @@
 
 Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 
-## P0_truncated (1 arquivos)
+## P0_truncated (2 arquivos)
+- Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.pt-br.md)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/typography.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/typography.pt-br.md)
 
 ## P0_codeblock_mismatch (31 arquivos)
@@ -41,7 +42,7 @@ Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 ## P1_toc_anchor_mismatch (1 arquivos)
 - Score 90 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/search.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/search.pt-br.md)
 
-## P1_markdown_violations (15 arquivos)
+## P1_markdown_violations (14 arquivos)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/README.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/README.pt-br.md)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/breadcrumbs.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/breadcrumbs.pt-br.md)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/navigation.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/navigation.pt-br.md)
@@ -56,7 +57,6 @@ Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 - Score 50 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/skills/design-log-create/SKILL.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/skills/design-log-create/SKILL.pt-br.md)
 - Score 50 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/skills/design-log-workflow/reference/schema.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/skills/design-log-workflow/reference/schema.pt-br.md)
 - Score 50 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/using-medusa-cloud/SKILL.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/using-medusa-cloud/SKILL.pt-br.md)
-- Score 50 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.pt-br.md)
 
 ## P1_heading_mismatch (2 arquivos)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-reviews.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-reviews.pt-br.md)

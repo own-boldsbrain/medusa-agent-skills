@@ -62,6 +62,8 @@ Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-reviews.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-reviews.pt-br.md)
 - Score 100 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/mcloud-organizations/SKILL.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/mcloud-organizations/SKILL.pt-br.md)
 
-## P2_english_residual (1 arquivos)
+## P2_english_residual (3 arquivos)
 - Score 30 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.pt-br.md)
+- Score 30 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/lessons/lesson-1-custom-features.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/lessons/lesson-1-custom-features.pt-br.md)
+- Score 30 | [Source](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/lessons/lesson-2-extend-medusa.md) -> [Target](c:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/lessons/lesson-2-extend-medusa.pt-br.md)
 

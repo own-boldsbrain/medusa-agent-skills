@@ -266,6 +266,16 @@
       "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.md",
       "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.pt-br.md",
       "risk_score": 30
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.pt-br.md",
+      "risk_score": 30
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-2-extend-medusa.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-2-extend-medusa.pt-br.md",
+      "risk_score": 30
     }
   ],
   "P3_style_review": []

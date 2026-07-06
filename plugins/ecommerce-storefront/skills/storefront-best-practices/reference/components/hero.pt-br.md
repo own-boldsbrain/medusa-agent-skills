@@ -1,263 +1,212 @@
-# Componente da Seção Hero
+# Componente Seção Hero
 
-## Conteúdo
+## Índice
 
-- [Visão Geral](#overview)
-- [Tipos de Heróis e Quando Usá-los](#tipos-de-herois-e-quando-usar)
+- [Visão geral](#visão-geral)
+- [Tipos de Hero e Quando Usar](#tipos-de-hero-e-quando-usar)
 - [Diretrizes de Conteúdo](#diretrizes-de-conteúdo)
-- [Múltiplos Heróis (Carousel)](#múltiplos-heróis-carousel)
-- [Hero Móvel](#mobile-hero)
-- [Desempenho](#performance)
-- [Lista de Verificação](#checklist)
+- [Múltiplos Heroes (Carrossel)](#múltiplos-heroes-carrossel)
+- [Hero em Dispositivos Móveis](#hero-em-dispositivos-móveis)
+- [Desempenho](#desempenho)
+- [Lista de Verificação](#lista-de-verificação)
 
-## Visão Geral
+## Visão geral
 
-A seção hero é o banner de destaque no topo da página inicial, imediatamente abaixo da navegação. Primeiro conteúdo que os usuários veem - define o tom para a experiência de compra.
+A seção Hero é o banner proeminente no topo da página inicial, imediatamente abaixo da navegação. É o primeiro conteúdo que os usuários veem - define o tom da experiência de compra.
 
-**Conhecimento prévio**: Os agentes de IA sabem como criar banners de largura completa com imagens e sobreposições de texto. Isso se concentra em padrões de hero do e-commerce.
+**Conhecimento presumido**: Os agentes de IA sabem como construir banners de largura total com imagens e sobreposições de texto. Este documento concentra-se nos padrões de Hero para e-commerce.
 
-**Requisitos principais:**
+**Principais requisitos:**
 
-- Acima da dobra (visível imediatamente)
+- Acima da dobra (imediatamente visível)
 - Proposta de valor clara ou mensagem promocional
 - Imagens de alta qualidade
-- Chamada de ação forte
-- Carregamento rápido (crítico para primeira impressão)
+- Forte chamada para ação (CTA)
+- Carregamento rápido (crítico para a primeira impressão)
 
-## Tipos de Herói e Quando Usar
+## Tipos de Hero e Quando Usar
 
-### 1. Banner de Largura Total (O Mais Comum)
+### 1. Banner de Largura Total (Mais Comum)
 
 **Características:**
 
-- Acelera o conteúdo até a largura da viewport
+- Abrange toda a largura da janela de visualização (viewport)
 - Imagem de fundo grande ou vídeo
-- Texto sobreposta com título + chamada para ação
-- Mensagem única e focada
+- Sobreposição de texto com título + CTA
+- Mensagem única focada
 
 **Melhor para:**
 
-- Campanhas sazonais ("Venda de Verão")
-- Chegadas de novos produtos
-- Racismo de marca
+- Campanhas sazonais ("Promoção de Verão")
+- Chegada de novos produtos
+- Narrativa da marca (brand storytelling)
+- Foco promocional único
+- Mensagem simples e ousada
 
-**Definição**A história de marca é a forma como uma empresa apresenta sua identidade e propósito através de uma narrativa atraente e emocionante.**Importância**A história de marca é fundamental para qualquer empresa que deseje se destacar no mercado. Ela ajuda a criar uma conexão emocional com os clientes, a diferenciar a empresa de seus concorrentes e a estabelecer uma identidade única.**Tipos de histórias de marca***Histórias de fundação: contam a história de como a empresa foi fundada e o propósito por trás dela.
+**Exemplo:** Imagem de fundo dos produtos, título "40% de Desconto na Promoção de Verão", CTA "Compre Agora"
 
-- Histórias de missão: destacam a missão e os valores da empresa.
-- Histórias de produto: contam a história de como um produto ou serviço foi criado e como ele pode ajudar os clientes.
-- Histórias de personalidade: destacam a personalidade da marca e como ela se relaciona com os clientes.
-
-**Exemplos de histórias de marca bem-sucedidas***A história de fundação da Apple, que conta a história de como a empresa foi fundada e o propósito por trás dela.
-
-- A história de missão da Patagonia, que destaca a missão e os valores da empresa.
-- A história de produto da Nike, que conta a história de como um produto ou serviço foi criado e como ele pode ajudar os clientes.
-
-**Dicas para criar uma história de marca eficaz***Seja autêntico e consistente em sua narrativa.
-
-- Use linguagem clara e concisa.
-- Destaque a conexão emocional com os clientes.
-- Seja criativo e inovador em sua abordagem.
-- Use histórias para transmitir mensagens e valores.
-
-**Recursos adicionais***[Livro: "A História de Marca: Como Criar uma Narrativa que Inspire e Conecte" de Jonah Sachs](https://www.amazon.com.br/Hist%C3%ADria-Marca-Criar-Narrativa-Inspire/dp/8576053805)
-
-- [Artigo: "A Importância da História de Marca para Empresas" da HubSpot](https://blog.hubspot.com/pt/marketing/a-importancia-da-historia-de-marca-para-empresas)
-- [Curso: "Criar Histórias de Marca Eficientes" da Udemy](https://www.udemy.com/course/criar-historias-de-marca-eficientes/)
-
-- Enfoque de promoção único
-
-**Enfoque de promoção único**O enfoque de promoção único é uma estratégia de marketing que se concentra em uma única mensagem, produto ou oferta para promover um negócio ou produto. Isso pode incluir uma campanha publicitária, promoção de vendas ou qualquer outra forma de comunicação com os clientes.**Vantagens***Maior visibilidade e reconhecimento do produto ou negócio
-
-- Capacidade de criar uma identidade única e consistente
-- Possibilidade de se conectar com o público-alvo de forma mais eficaz
-
-**Exemplos***Uma empresa de cosméticos pode lançar uma campanha publicitária que se concentre em um único produto, como um creme hidratante.
-
-- Uma loja de roupas pode promover uma única peça de roupa, como um casaco de inverno, com uma promoção especial.
-- Uma empresa de tecnologia pode lançar uma campanha publicitária que se concentre em um único produto, como um smartphone.
-
-**Dicas***Defina claramente o objetivo da campanha de promoção única.
-
-- Selecione um público-alvo específico e personalize a mensagem de acordo com as necessidades e interesses desse público.
-- Use uma linguagem e um tom que sejam consistentes com a marca e o produto.
-- Acompanhe e ajuste a campanha de acordo com os resultados e feedback dos clientes.
-
-**Código de exemplo**
-
-```html
-<div class="promo-unique">
-  <h1>Enfoque de promoção único</h1>
-  <p>Mensagem de promoção única aqui.</p>
-  <button>Compre agora!</button>
-</div>
-```
-
-- Mensagem simples, **destacada**
-
-**Exemplo:** Imagem de fundo de produtos, manchete "40% de desconto na liquidação de verão", CTA "Compre agora"
-
-### 2. Divida o Herói (Imagem + Conteúdo)
+### 2. Hero Dividido (Imagem + Conteúdo)
 
 **Características:**
 
-- Divisão de layout 50/50 ou 60/40
+- Layout de divisão 50/50 ou 60/40
 - Imagem de um lado, conteúdo de texto do outro
-- Não sobrepor texto na imagem
+- Sem sobreposição de texto na imagem
 - Mais limpo, mais fácil de ler
 
 **Melhor para:**
 
-- Lançamentos de produtos (mostre o produto claramente)
-- Comunicação detalhada (mais espaço de texto)
-- Acessibilidade (nenhum problema de contraste de texto-imagem)
-- Lojas Profissionais/B2B
+- Lançamentos de produtos (mostrar o produto claramente)
+- Mensagens detalhadas (mais espaço para texto)
+- Acessibilidade (sem problemas de contraste de texto sobre imagem)
+- Lojas profissionais/B2B
 
-**Exemplo:** Imagem do produto (esquerda 50%), título + benefícios + CTB (direita 50%)
+**Exemplo:** Imagem do produto (50% esquerdo), título + benefícios + CTA (50% direito)
 
-### 3. Herói Minimalista
+### 3. Hero Minimalista
 
 **Características:**
 
 - Imagem grande, texto mínimo
-- A imagem conta histórias
-- Título sutil, pequeno CTA
-- Destaque para a marca visual
+- A imagem faz a narrativa
+- Título sutil, CTA pequeno
+- Ênfase na marca visual
 
 **Melhor para:**
 
 - Marcas de luxo (estética sofisticada)
 - Marcas de estilo de vida (imagens aspiracionais)
-- Produtos focados em fotografia
-- Brand over promotion
+- Produtos com foco em fotografia
+- Foco na marca em vez de promoção
 
-### 4. **Hero de Vídeo**
+### 4. Hero de Vídeo
 
 **Características:**
 
-- Background video (muted, looping)
-- Textos de sobreposição em vídeo
-- Imagem de fallback para conexões lentas
+- Vídeo de fundo (silenciado, em repetição/looping)
+- Sobreposição de texto no vídeo
+- Imagem de fallback (reserva) para conexões lentas
 
 **Melhor para:**
 
-- Marcas de moda (mostre os produtos em movimento)
-- Produtos de estilo de vida (demonstram uso)
-- Caminhantes de alto orçamento
-- Contando histórias de marca com movimento
+- Marcas de moda (mostrar produtos em movimento)
+- Produtos de estilo de vida (demonstrar uso)
+- Campanhas de alto orçamento
+- Narrativa da marca com movimento
 
-**Importante:** Reprodução automática sem som, forneça controles de reprodução/pausa, otimize o tamanho do arquivo (<5MB), use imagem de pôster como fallback.
+**Importante:** Reprodução automática silenciada, fornecer controles de reprodução/pausa, otimizar o tamanho do arquivo (<5MB), usar imagem de pôster como fallback.
 
-### 5. Destaque do Produto Hero
+### 5. Hero de Vitrine de Produtos
 
-**Characteristics:**
+**Características:**
 
-- Multiple featured products in hero
-- Grid of 2-4 products
+- Múltiplos produtos em destaque no hero
+- Grade de 2-4 produtos
 - Links rápidos para páginas de produtos
-- Menos promocional, mais descoberta
+- Menos promocional, mais focado na descoberta
 
 **Melhor para:**
 
-- Lojas de multi-categorias
-- Focado no produto (não focado na campanha)
-- Quick product discovery
+- Lojas de múltiplas categorias
+- Foco no produto (não na campanha)
+- Descoberta rápida de produtos
 - Marketing mínimo, navegação máxima
 
 ## Diretrizes de Conteúdo
 
-**Práticas recomendadas para títulos:**
+**Melhores práticas para títulos:**
 
-- Curto e impactante (5-10 palavras)
+- Curtos e impactantes (5-10 palavras)
 - Proposta de valor clara ("Frete Grátis em Todos os Pedidos")
 - Urgência se sensível ao tempo ("Promoção Relâmpago de 48 Horas")
-- Focado em benefícios ("Atualize seu Estilo")
+- Foco nos benefícios ("Atualize Seu Estilo")
 - Evite frases genéricas ("Bem-vindo à Nossa Loja")
 
 **Subtexto (opcional):**
 
-- 10-20 palavras no máximo.
-- Expanda o benefício do título.
-- Adicione contexto ou detalhes
+- Máximo de 10-20 palavras
+- Expandir o benefício do título
+- Adicionar contexto ou detalhes
 - Nem sempre necessário (design limpo)
 
-**Chamada para ação:**
+**Chamada para ação (CTA):**
 
-- Botão principal de CTA único
-- Texto orientado à ação ("Compre Agora", "Explore Categoria", "Comece Agora")
-- Contraste alto (destaca-se na imagem)
-- Grande o suficiente (altura mínima de 48px)
-- Link para a página de destino relevante (promoção, categoria, lista de produtos)
+- Botão CTA primário único
+- Texto orientado à ação ("Compre Agora", "Explore a Categoria", "Comece")
+- Alto contraste (destaca-se na imagem)
+- Grande o suficiente (mínimo de 48px de altura)
+- Link para página de destino relevante (promoção, categoria, lista de produtos)
 
-**Seleção de imagem:**
+**Seleção de imagens:**
 
-- Fotografia profissional de alta qualidade
-- Shows products or lifestyle context
+- Alta qualidade, fotografia profissional
+- Mostra produtos ou contexto de estilo de vida
 - Representa a estética da marca
-- Otimizado para web (<500KB)
-- Responsivo (culturas diferentes para dispositivos móveis)
+- Otimizada para web (<500KB)
+- Responsiva (cortes diferentes para celular)
 - Garanta que a sobreposição de texto seja legível (contraste adequado)
 
-## Vários Heróis (Carrossel)
+## Múltiplos Heroes (Carrossel)
 
-**Padrão Carrossel:**
+**Padrão de carrossel:**
 
 - 2-4 slides girando automaticamente
-- Cada slide = herói independente (mensagem própria, imagem, CTA)
-- Girar automaticamente a cada 5-7 segundos (lento o suficiente para ler)
-- Controles manuais (setas anterior/próxima, indicadores de pontos)
-- Pausa ao passar o cursor (acessibilidade)
+- Cada slide = hero independente (própria mensagem, imagem, CTA)
+- Rotação automática a cada 5-7 segundos (lento o suficiente para ler)
+- Controles manuais (setas ant/prox, indicadores de ponto)
+- Pausar ao focar (hover) (acessibilidade)
 
 **Quando usar carrossel:**
 
-- Múltiplas campanhas concorrentes (Venda de Inverno + Novidades)
-- Diferentes segmentos de público (Homens/Mulheres/Crianças)
-- Exibição de variedade sazonal
+- Múltiplas campanhas simultâneas (Promoção de Inverno + Novidades)
+- Diferentes segmentos de público (Homem/Mulher/Criança)
+- Vitrine de variedade sazonal
 - Espaço limitado acima da dobra
 
-**Quando NÃO usar carousel:**
+**Quando NÃO usar carrossel:**
 
-- Campanha focada única (use apenas um herói)
-- Usuários raramente veem slides além do primeiro (cegueira de carrossel)
-- Carregamento mais lento da página (múltiplas imagens)
-- Preocupações de acessibilidade (conteúdo de rotação automática)
+- Campanha focada única (use apenas um hero)
+- Usuários raramente veem os slides além do primeiro (cegueira de carrossel)
+- Carregamento de página mais lento (múltiplas imagens)
+- Preocupações com acessibilidade (conteúdo de rotação automática)
 
-**Melhores práticas para Carrosséis:**
+**Melhores práticas para carrossel:**
 
-- Máximo de 3-4 slides (mais = ignorado)
-- Primeiro slide mais importante (mais visualizado)
+- Máximo de 3-4 slides (mais que isso = ignorado)
+- Primeiro slide é o mais importante (mais visto)
 - Layout consistente entre os slides
-- Indicadores claros mostrando progresso
-- Não confie em slides posteriores para informações críticas
-- Pausar na interação (hover, foco)
+- Indicadores claros mostrando o progresso
+- Não dependa de slides posteriores para informações críticas
+- Pausar na interação (foco/hover, teclado)
 
-## Herói Móvel
+## Hero em Dispositivos Móveis
 
-**Ajustes móveis (CRÍTICO):**
+**Ajustes para dispositivos móveis (CRÍTICO):**
 
 **Layout:**
 
-- Largura total, proporção retrato (2:3 ou 3:4)
-- Composição vertical (sobreposição de texto no centro/inferior)
+- Largura total, proporção de retrato (portrait - 2:3 ou 3:4)
+- Composição vertical (sobreposições de texto no centro/inferior)
 - Texto maior para legibilidade
 - Mensagem simplificada (título mais curto)
 
-**Split hero on mobile:**
+**Hero dividido em dispositivos móveis:**
 
-- Empilhar verticalmente (imagem acima, texto abaixo)
+- Empilhar verticalmente (imagem no topo, texto embaixo)
 - Não use lado a lado (muito apertado)
 
 **Desempenho:**
 
 - Imagens menores (<300KB)
-- Diferente corte de imagem para retrato mobile
+- Corte de imagem diferente para retrato no celular
 - Use `srcset` ou `<picture>` para imagens responsivas
 - Considere imagem estática em vez de vídeo (dados móveis)
 
 **Interações por toque:**
 
-- Botão CTA grande (altura mínima de 48px)
-- Easy carousel controls (if used)
-- Gesto de deslizar para slides do carrossel
+- Botão CTA grande (mínimo de 48px de altura)
+- Controles fáceis de carrossel (se usado)
+- Gesto de deslizar (swipe) para slides de carrossel
 
 ## Desempenho
 
@@ -265,55 +214,55 @@ A seção hero é o banner de destaque no topo da página inicial, imediatamente
 
 **Otimização de imagem:**
 
-- Formato WebP com fallback para JPEG
-- Carregamento preguiçoso do conteúdo abaixo da dobra (não do hero - ele está acima da dobra)
-- Imagens responsivas (mobile recebe tamanho menor)
-- Alvo: <500KB desktop, <300KB mobile
+- Formato WebP com fallback em JPEG
+- Carregamento lento (lazy load) para conteúdo abaixo da dobra (não para o hero - ele fica acima da dobra)
+- Imagens responsivas (celulares recebem tamanhos menores)
+- Meta: <500KB no desktop, <300KB no celular
 - Use CDN para entrega mais rápida
 
 **Otimização de vídeo:**
 
-- <5MB file size maximum
-- Muted, autoplay, loop
-- Pôster da imagem (exibido antes do carregamento do vídeo)
+- Tamanho máximo de arquivo de <5MB
+- Silenciado, reprodução automática (autoplay), repetição (loop)
+- Imagem de pôster (aparece antes de o vídeo carregar)
 - Fallback para imagem em conexões lentas
-- Considere não usar em dispositivos móveis (dados/desempenho)
+- Considere não usar no celular (dados/desempenho)
 
-**Otimização de LCP:**
+**Otimização do LCP (Maior Exibição de Conteúdo):**
 
-- Imagem do herói geralmente é o Maior Conteúdo de Pintura
-- Preload hero image: `<link rel="preload" as="image" href="hero.jpg">`
-- CSS crítico em linha para herói
-- Evite deslocamento de layout (defina dimensões da imagem)
+- A imagem do Hero costuma ser o Largest Contentful Paint (LCP)
+- Pré-carregar a imagem do hero: `<link rel="preload" as="image" href="hero.jpg">`
+- CSS crítico inline para o hero
+- Evitar mudança de layout (layout shift) (definir dimensões da imagem)
 
-**Métricas-alvo:**
+**Métricas alvo:**
 
-- LCP < 2.5 seconds
-- No layout shift (CLS < 0.1)
-- Interação rápida (hero CTA clicável imediatamente)
+- LCP < 2,5 segundos
+- Sem mudança de layout (CLS < 0,1)
+- Interação rápida (CTA do hero clicável imediatamente)
 
 ## Lista de Verificação
 
-**Essential features:**
+**Recursos essenciais:**
 
 - [ ] Acima da dobra (imediatamente visível)
-- [ ] Clear headline (5-10 words, value proposition)
+- [ ] Título claro (5-10 palavras, proposta de valor)
 - [ ] Imagem de alta qualidade (profissional, alinhada à marca)
-- [ ] Primary CTA button (action-oriented, high contrast)
-- [ ] Fast loading (<500KB image desktop, <300KB mobile)
+- [ ] Botão CTA primário (orientado à ação, alto contraste)
+- [ ] Carregamento rápido (imagem <500KB desktop, <300KB celular)
 - [ ] Imagens responsivas (diferentes tamanhos/cortes para dispositivos)
-- [ ] Mobile: Portrait aspect ratio (2:3 or 3:4)
-- [ ] Mobile: Posicionamento do texto na vertical (central/inferior)
-- [ ] Mobile: Large CTA (48px height minimum)
+- [ ] Dispositivos móveis: Proporção de retrato (2:3 ou 3:4)
+- [ ] Dispositivos móveis: Posicionamento de texto vertical (centro/inferior)
+- [ ] Dispositivos móveis: CTA grande (altura mínima de 48px)
 - [ ] Sobreposição de texto legível (contraste adequado, sobreposição de fundo)
-- [ ] If carousel: Max 3-4 slides
-- [ ] Se carrossel: Rotação automática de 5-7 segundos
-- [ ] Se carrossel: Pausar ao passar o mouse/focar
-- [ ] If carousel: Manual controls (arrows, dots)
-- [ ] Se vídeo: Silenciado, reprodução automática, loop
-- [ ] Se vídeo: Imagem de fallback do pôster
-- [ ] Se vídeo: <5MB de tamanho de arquivo
-- [ ] Pré-carregar imagem do herói (otimização do LCP)
-- [ ] Sem deslocamento de layout (definir dimensões da imagem)
+- [ ] Se carrossel: Máximo de 3-4 slides
+- [ ] Se carrossel: Rotação automática em 5-7 segundos
+- [ ] Se carrossel: Pausar no foco (hover/focus)
+- [ ] Se carrossel: Controles manuais (setas, pontos)
+- [ ] Se vídeo: Silenciado, reprodução automática (autoplay), repetição (loop)
+- [ ] Se vídeo: Fallback de imagem de pôster
+- [ ] Se vídeo: Tamanho de arquivo <5MB
+- [ ] Pré-carregar imagem do hero (otimização de LCP)
+- [ ] Sem mudança de layout (definir dimensões da imagem)
 - [ ] Rótulos ARIA nos controles do carrossel
-- [ ] Acessível por teclado (Tab para CTA, teclas de seta para carrossel)
+- [ ] Acessível por teclado (Tab para CTA, setas direcionais para carrossel)

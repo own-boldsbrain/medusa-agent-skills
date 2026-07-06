@@ -1,117 +1,117 @@
 # Componente Megamenu
 
-## Contents
+## Índice
 
-- [Visão Geral](#visao-geral)
-- [When to Use Megamenu](#when-to-use-megamenu)
-- [Organização de Conteúdo](#organizacao-de-conteudo)
-- [Padrões de Layout](#layout-patterns)
-- [Trigger Behavior](#trigger-behavior)
-- [Mobile Alternative](#mobile-alternative)
-- [Checklist](#checklist)
+- [Visão geral](#visão-geral)
+- [Quando Usar o Megamenu](#quando-usar-o-megamenu)
+- [Organização de Conteúdo](#organização-de-conteúdo)
+- [Padrões de Layout](#padrões-de-layout)
+- [Comportamento do Acionador](#comportamento-do-acionador)
+- [Alternativa para Dispositivos Móveis](#alternativa-para-dispositivos-móveis)
+- [Lista de Verificação](#lista-de-verificação)
 
 ## Visão geral
 
-Megamenu é um menu suspenso grande e de largura completa que exibe várias colunas de categorias, links e conteúdo promocional. Abre a partir de itens de gatilho na barra de navegação (ex.: "Loja", "Masculino", "Feminino").
+O Megamenu é uma navegação suspensa grande e de largura total, exibindo várias colunas de categorias, links e conteúdo promocional. Ele se abre a partir de itens acionadores na barra de navegação (por exemplo, "Comprar", "Masculino", "Feminino").
 
-**Assumed knowledge**: AI agents know how to build dropdown menus with hover/click triggers. This focuses on ecommerce megamenu patterns.
+**Conhecimento presumido**: Os agentes de IA sabem como construir menus suspensos com acionadores de foco/clique (hover/click). Este documento concentra-se em padrões de megamenu para e-commerce.
 
-**Requisitos-chave:**
+**Principais requisitos:**
 
-- Exibição em largura total (abrange a janela de visualização)
-- Múltiplas colunas para categorias
-- Posicionado diretamente abaixo da navbar
-- Optional promotional images
-- Alternativa mobile (menu hambúrguer, não megamenu)
+- Exibição de largura total (abrange toda a janela de visualização)
+- Várias colunas para categorias
+- Posicionado diretamente abaixo da barra de navegação
+- Imagens promocionais opcionais
+- Alternativa para dispositivos móveis (menu hambúrguer, não megamenu)
 
-## Quando Usar Megamenu
+## Quando Usar o Megamenu
 
-**Use megamenu quando:**
+**Use o megamenu quando:**
 
 - Grande catálogo de produtos (10+ categorias de nível superior)
-- Estrutura de profundidade (pai → filho → neto nível)
-- Quer mostrar produtos/campanhas em destaque
-- Múltiplos segmentos (Homens, Mulheres, Crianças, etc.)
-- Contar histórias visualmente é necessário.
+- Hierarquia profunda (níveis pai → filho → neto)
+- Desejar destacar produtos/campanhas em destaque
+- Vários segmentos (Masculino, Feminino, Infantil, etc.)
+- Narrativa visual (storytelling) necessária
 
-**Use o menu suspenso simples quando:**
+**Use um menu suspenso simples quando:**
 
 - Pequeno catálogo (<10 categorias)
-- Estrutura de categoria plana (1-2 níveis)
-- Navegação apenas com texto suficiente
-- Preferência por design minimalista
+- Estrutura de categorias plana (1-2 níveis)
+- Navegação apenas de texto for suficiente
+- Preferência de design minimalista
 
-**Menus comuns de megamenu:**
+**Acionadores comuns de megamenu:**
 
-- Loja (tudo as categorias)
-- "Men", "Mulheres", "Crianças" (segmentado)
-- "Chegadas Recentes" (curada)
-- "Venda" (promocional)
+- "Comprar" (todas as categorias)
+- "Masculino", "Feminino", "Infantil" (segmentado)
+- "Novidades" (curadoria)
+- "Promoção" (promocional)
 
 ## Organização de Conteúdo
 
-**Integração de Back-end (CRÍTICO):**
+**Integração com o Backend (CRÍTICO):**
 
-Recupere categorias dinamicamente do backend de ecommerce - nunca hardcode categorias. Categorias mudam frequentemente (novos produtos, atualizações sazonais, alterações de estoque). Recupere da API ao montar o componente ou durante a SSR.
+Busque as categorias dinamicamente no backend de e-commerce - nunca fixe (hardcode) categorias. As categorias mudam frequentemente (novos produtos, atualizações sazonais, mudanças de estoque). Busque na API durante a montagem do componente ou via SSR.
 
-**Estrutura da coluna (recomenda-se 3 a 5 colunas):**
+**Estrutura de colunas (3-5 colunas recomendadas):**
 
-**Coluna 1-3: Colunas de Categoria**
+**Colunas 1-3: Colunas de categoria**
 
-- Cabeçalho da categoria pai (negrito, não cliqueável ou cliqueável para "Ver Todos")
-- Categorias infantis abaixo (links clicáveis)
-- 5-10 links por coluna no máximo
-- Categorize subcategorias relacionadas
+- Cabeçalho da categoria pai (negrito, não clicável ou clicável para "Ver Tudo")
+- Categorias filhas abaixo (links clicáveis)
+- Máximo de 5-10 links por coluna
+- Agrupe subcategorias relacionadas
 
 **Exemplo:**
 
 ```plaintext
-Electronics (header)
+Eletrônicos (cabeçalho)
   Laptops
   Desktops
-  Monitors
-  Accessories
-  View All Electronics
+  Monitores
+  Acessórios
+  Ver Todos os Eletrônicos
 ```
 
-**Coluna 4-5: Promocional/Destaque**
+**Colunas 4-5: Promocional/Destaque**
 
 - Cartão de imagem do produto (1-2 produtos em destaque)
 - Banner da campanha ("Promoção de Verão", "Novidades")
-- "Compre o Look" conjuntos curados
+- Conjuntos com curadoria "Compre o Look"
 - Promoções sazonais
 
 **Limites de conteúdo:**
 
-- Máx. 5 colunas (evite sobrecarregar)
-- Máx. 10 links por coluna
-- 1-2 imagens promocionais máximas
+- Máximo de 5 colunas (evite superlotação)
+- Máximo de 10 links por coluna
+- Máximo de 1-2 imagens promocionais
 - Mantenha a altura razoável (<600px)
 
 ## Padrões de Layout
 
 ### ⚠️ CRÍTICO: Posicionamento do Megamenu (Erro Comum)
 
-**Erros comuns de posicionamento que DEVEM ser evitados:**
+**Erros de posicionamento comuns que DEVEM ser evitados:**
 
-❌ **Erro 1: Navbar não tem `position: relative`**
+❌ **Erro 1: A barra de navegação não tem `position: relative`**
 
-- Sem o contexto de posicionamento no navbar, o megamenu não se posicionará corretamente.
-- O Megamenu se posicionará relativo ao corpo do documento em vez do navbar
+- Sem contexto de posicionamento na barra de navegação, o megamenu não se posicionará corretamente
+- O megamenu será posicionado em relação ao corpo do documento (body) em vez da barra de navegação
 
-❌ **Erro 2: Megamenu posicionado relativamente ao botão de ativação**
+❌ **Erro 2: Megamenu posicionado em relação ao botão acionador**
 
-- Causa o megamenu a aparecer deslocado, não alinhado à borda esquerda
-- Megamenu não vai se estender por toda a largura da navbar
-- Posições de gatilho diferentes causam posicionamento inconsistente do megamenu
+- Faz com que o megamenu apareça deslocado, não alinhado à borda esquerda
+- O megamenu não abrangerá toda a largura da barra de navegação
+- Diferentes posições de acionamento causam posicionamento inconsistente do megamenu
 
-❌ **Erro 3: Megamenu não abrange toda a largura**
+❌ **Erro 3: O megamenu não abrange a largura total**
 
-- Usando `largura: auto` ou sem restrição de largura
-- Faltam as propriedades `left: 0` e `right: 0`
-- Resultados em um menu suspenso estreito em vez de um painel de largura total
+- Usar `width: auto` ou nenhuma restrição de largura
+- Falta das propriedades `left: 0` e `right: 0`
+- Resulta em um menu suspenso estreito em vez de um painel de largura total
 
-- --
+---
 
 **Padrão de posicionamento OBRIGATÓRIO:**
 
@@ -119,167 +119,142 @@ Electronics (header)
 
 ```
 ┌─────────────────────────────────────────────────┐
-│ NAVBAR (position: relative)                     │
-│  [Logo]  [Shop ▼]  [Men]  [Women]  [Cart]      │
+│ BARRA DE NAVEGAÇÃO (position: relative)         │
+│  [Logo]  [Comprar ▼]  [Homem]  [Mulher] [Carr] │
 └─────────────────────────────────────────────────┘
   ┌───────────────────────────────────────────────┐
   │ MEGAMENU (absolute, left: 0, full width)      │
   │ ┌─────────────────────────────────────────┐   │
-  │ │ Container (centered content)            │   │
-  │ │ [Col1]  [Col2]  [Col3]  [Promo]        │   │
+  │ │ Container (conteúdo centralizado)       │   │
+  │ │ [Col1]  [Col2]  [Col3]  [Promo]         │   │
   │ └─────────────────────────────────────────┘   │
   └───────────────────────────────────────────────┘
 ```
 
 **Estrutura obrigatória:**
 
-1. **Container da barra de navegação**
+1. **Contêiner da barra de navegação (Navbar)**
    - DEVE ter `position: relative`
-   - Cria um contexto de posicionamento para o megamenu
-   - Contém ambos o botão de gatilho e o dropdown de megamenu
+   - Cria o contexto de posicionamento para o megamenu
+   - Contém tanto o botão acionador quanto o menu suspenso do megamenu
 
-2. **Megamenu suspenso**
+2. **Menu suspenso do Megamenu**
    - DEVE ter `position: absolute`
-   - DEVE ter `left: 0` (alinha-se à borda esquerda do navbar)
-   - DEVE ter `right: 0` OU `width: 100%` (abrange a largura completa do navbar)
+   - DEVE ter `left: 0` (alinha à borda esquerda da barra de navegação)
+   - DEVE ter `right: 0` OU `width: 100%` (abrange toda a largura da barra de navegação)
    - DEVE ter `top: 100%` (posicionado diretamente abaixo da barra de navegação)
-   - Deveria ter um `z-index` apropriado (acima do conteúdo, abaixo de modais)
+   - Deve ter um `z-index` apropriado (acima do conteúdo, abaixo dos modais)
 
-3. **Conteúdo embutido (dentro do megamenu)**
-   - Use constrained width container (e.g., `max-width`, `container`)
+3. **Invólucro do conteúdo (dentro do megamenu)**
+   - Use um contêiner com largura restrita (por exemplo, `max-width`, `container`)
    - Centralize o conteúdo com `margin: 0 auto`
-   - Contém grade/colunas para conteúdo do megamenu
+   - Contém grade/colunas para o conteúdo do megamenu
 
 **Por que esse padrão é obrigatório:**
 
-- Navbar `position: relative` creates positioning context
-- Megamenu `absolute` + `left: 0` + full width ensures consistent, full-width layout
-- Posicionamento relativo à navbar (não acionar) previne problemas de offset
-- O contêiner interno centraliza o conteúdo enquanto mantém o plano de fundo em toda a largura
+- `position: relative` na barra de navegação cria o contexto de posicionamento
+- Megamenu com `absolute` + `left: 0` + largura total garante um layout consistente e de largura total
+- O posicionamento relativo à barra de navegação (não ao acionador) evita problemas de deslocamento
+- O contêiner interno centraliza o conteúdo enquanto mantém o fundo de largura total
 
-# **Título Principal**Este é um exemplo de texto em português
-
-## Subtítulo
-
-- Lista de itens:
-  - Item 1
-  - Item 2 com*ênfase*-**Item 3**com**destaque**
-
-[Link de exemplo](https://example.com)
-
-```python
-def hello_world():
-    print("Olá, Mundo!")
-```
-
-> Citação em português:
-> "A vida é uma aventura maravilhosa."
-
-[Imagem](image.jpg)
-
-<html>
-  <body>
-    <h1>Título em HTML</h1>
-    <p>Parágrafo com <strong>texto forte</strong> e <em>ênfase</em>.</p>
-  </body>
-</html>
+---
 
 ### Outras Considerações de Layout
 
-- Positioned below navbar (no gap)
-- Fundo branco/claro, preenchimento em caixa
-- Shadow or border for depth
+- Posicionado abaixo da barra de navegação (sem espaço/gap)
+- Fundo branco/claro, preenchimento em caixa (boxed padding)
+- Sombra ou borda para profundidade
 - Alto z-index (acima do conteúdo da página, abaixo dos modais)
 
-**Layout de Colunas:**
+**Layout de colunas:**
 
 - Colunas de largura igual ou grade flexível
 - Espaçamento adequado (24-32px entre colunas)
-- Texto alinhado à esquerda em colunas de categoria
+- Texto alinhado à esquerda nas colunas de categoria
 - Coluna(s) direita(s) para conteúdo promocional
-- Responsivo: Empilhe as colunas na tablet, se necessário
+- Responsivo: Empilhe as colunas em tablets, se necessário
 
 **Imagens promocionais:**
 
-- Alinhado à direita (1-2 colunas)
-- Proporção: 2:3 ou quadrado
-- Imagens de produtos ou fotografia de estilo de vida
+- Alinhadas à direita (1-2 colunas)
+- Proporção da tela: 2:3 ou quadrada
+- Imagens de produtos ou fotografia de estilo de vida (lifestyle)
 - Clicável para a página do produto/categoria
-- Incluir legenda ou CTA ("Compre Agora")
+- Inclua legenda ou CTA ("Compre Agora")
 
-## Comportamento de Disparo
+## Comportamento do Acionador
 
-**Hover na área de trabalho (recomendado):**
+**Foco (hover) em Desktop (recomendado):**
 
-- O megamenu abre ao passar o mouse sobre o gatilho
-- **CRÍTICO: O Megamenu DEVE permanecer aberto enquanto paira sobre o conteúdo suspenso**
-- Mantém-se aberto enquanto paira sobre o gatilho OU área de dropdown
-- Fecha apenas quando o mouse sair de ambas as áreas do gatilho e do menu suspenso
-- Desativar o botão de fechar (atraso de 200-300ms) para evitar fechamento acidental
-- Transição suave de entrada/saída (200-300ms)
+- O megamenu abre ao focar (hover) no acionador
+- **CRÍTICO: O megamenu DEVE permanecer aberto ao focar (passar o mouse) sobre o conteúdo suspenso**
+- Permanece aberto enquanto o mouse estiver sobre a área do acionador OU do menu suspenso
+- Fecha apenas quando o mouse sai das áreas do acionador e do menu suspenso
+- Atraso de fechamento (debounce de 200-300ms) para evitar fechamentos acidentais
+- Transição suave de fade-in/out (200-300ms)
 
 **Por que isso é crítico:**
 
-- Se o menu suspenso fechar ao mover do acionador para o conteúdo, os usuários não podem acessar os links
-- Experiência de usuário frustrante - os usuários não conseguem interagir com os itens do megamenu
-- Erro comum: Ouvir apenas o evento de hover no gatilho, e não no dropdown
+- Se o menu suspenso fechar ao mover do acionador para o conteúdo, os usuários não poderão acessar os links
+- Experiência do usuário (UX) frustrante - os usuários não conseguem interagir com os itens do megamenu
+- Erro comum: Ouvir apenas o evento hover no acionador, não no menu suspenso
 
-**Clique no desktop (alternativa):**
+**Clique em Desktop (alternativa):**
 
-- Clique no gatilho para alternar abrir/fechar
+- Clique no acionador para alternar entre abrir/fechar
 - Clique fora para fechar
-- Melhor para laptops com tela sensível ao toque
+- Melhor para laptops habilitados para toque (touch)
 - Menos aberturas acidentais
 
-**Prevenção de tremulação ao pairar:**
+**Prevenção de cintilação (flickering) no hover:**
 
-- Não há espaço entre a barra de navegação e o menu suspenso
-- Dropdown deve sobrepor levemente a navbar
-- Debounce close delay previne flickering
+- Nenhum espaço (gap) entre a barra de navegação e o menu suspenso
+- O menu suspenso deve sobrepor levemente a barra de navegação
+- Atraso no fechamento (debounce) evita a cintilação
 
-## Alternativa Móvel
+## Alternativa para Dispositivos Móveis
 
-**Do NOT use megamenu on mobile:**
+**NÃO use megamenu em dispositivos móveis:**
 
-- Muito grande para telas de celular
-- Difícil de navegar em layout de múltiplas colunas
-- Experiência de toque ruim
+- Muito grande para telas móveis
+- Difícil de navegar em um layout de várias colunas
+- Má experiência de toque (touch)
 
-**Alternativa móvel (menu hambúrguer):**
+**Alternativa para dispositivos móveis (menu hambúrguer):**
 
-- Ícone de hambúrguer abre gaveta deslizante
-- Vertical accordion para categorias
-- Categoria principal expande para mostrar os filhos
+- O ícone de hambúrguer abre uma gaveta deslizante (slide-in)
+- Acordeão vertical para categorias
+- A categoria pai se expande para mostrar as filhas
 - Lista simples e rolável
-- See navbar.md for mobile navigation patterns
+- Consulte navbar.md para padrões de navegação móvel
 
-**Ponto de interrupção:**
+**Ponto de interrupção (Breakpoint):**
 
-- Megamenu: Apenas para desktop (>1024px)
+- Megamenu: Apenas desktop (>1024px)
 - Hambúrguer: Tablet e celular (<1024px)
 
-## Checklist
+## Lista de Verificação
 
 **Recursos essenciais:**
 
-- [ ] Acionado a partir de itens da barra de navegação ("Loja", segmentos)
-- [ ] **CRÍTICO: O contêiner da Navbar tem `position: relative` (cria contexto de posicionamento)**
-- [ ] **CRÍTICO: O Megamenu tem `position: absolute` com `left: 0` (NÃO posicionado relativamente ao botão de ativação)**
-- [ ] **CRÍTICO: Megamenu ocupa toda a largura (`right: 0` ou `w-full`, NÃO apenas `w-auto`)**
-- [ ] **CRÍTICO: Megamenu posicionado em `top: 100%` ou `top-full` (diretamente abaixo da navbar)**
-- [ ] Dropdown de largura total abaixo da navbar, abrange toda a largura da navbar
+- [ ] Acionado a partir de itens da barra de navegação ("Comprar", segmentos)
+- [ ] **CRÍTICO: O contêiner da barra de navegação tem `position: relative` (cria o contexto de posicionamento)**
+- [ ] **CRÍTICO: O Megamenu tem `position: absolute` com `left: 0` (NÃO posicionado em relação ao botão acionador)**
+- [ ] **CRÍTICO: O Megamenu abrange toda a largura (`right: 0` ou `w-full`, NÃO apenas `w-auto`)**
+- [ ] **CRÍTICO: Megamenu posicionado em `top: 100%` ou `top-full` (diretamente abaixo da barra de navegação)**
+- [ ] Menu suspenso de largura total abaixo da barra de navegação, abrange toda a largura da barra
 - [ ] 3-5 colunas para organização
-- [ ] Hierarquia de categorias (pai → links para filhos)
+- [ ] Hierarquia de categorias (pai → links filhos)
 - [ ] Imagens promocionais opcionais (1-2)
-- [ ] **CRÍTICO: O megamenu permanece aberto ao passar o mouse sobre o conteúdo do dropdown (não apenas no acionador)**
-- [ ] Acionador de *hover* com fechamento com debounce (200-300ms)
-- [ ] Transição suave de fade-in/fade-out
-- [ ] Sem tremulação (sem espaço entre a barra de navegação e o menu suspenso)
-- [ ] Mobile: Use hamburger menu, NÃO megamenu
-- [ ] Acessível por teclado (Tab para navegar pelos links, Esc para fechar)
+- [ ] **CRÍTICO: O Megamenu permanece aberto ao focar (passar o mouse) sobre o conteúdo suspenso (não apenas o acionador)**
+- [ ] Acionador por hover com atraso no fechamento (debounce de 200-300ms)
+- [ ] Transição suave de fade-in/out
+- [ ] Sem cintilação (sem espaço/gap entre a barra de navegação e o menu suspenso)
+- [ ] Dispositivos Móveis: Use o menu hambúrguer, NÃO o megamenu
+- [ ] Acessível por teclado (Navegar com Tab pelos links, Esc para fechar)
 - [ ] `role="navigation"` no painel suspenso
-- [ ] Rótulos ARIA em botões de acionamento
-- [ ] Compatível com leitor de tela (anunciar expandir/recolher)
+- [ ] Rótulos ARIA nos botões acionadores
+- [ ] Amigável para leitores de tela (anuncia expandir/recolher)
 - [ ] Máximo de 10 links por coluna
 - [ ] Máximo de 5 colunas no total
-- [ ] Obtido dinamicamente do backend (não hardcode categorias)
+- [ ] Buscado dinamicamente no backend (não codifique/hardcode categorias)

@@ -13,7 +13,7 @@ Execute o comando `mcloud variables` para inspecionar as variáveis de ambiente 
 - **Nunca passe `--reveal` a menos que o usuário peça explicitamente.**Valores secretos aparecem no scrollback do terminal, agregadores de logs e listagens de processos.
 - Procurar por chave requer `--project` e `--environment` (ou o equivalente no contexto ativo). Procurar por ID (`var_...`) funciona sem o contexto de projeto/ambiente.
 
-##**Comandos**### lista de variáveis
+## **Comandos**### lista de variáveis
 
 Liste todas as variáveis de ambiente para um ambiente da Cloud.
 
@@ -49,10 +49,14 @@ mcloud variables get var_01XYZ --json
 ```
 
 **Argumentos:**- `variável` — ID da variável (`var_...`) ou chave (obrigatório)**Opções:**
+
 - `-o/--organization <id>`, `-p/--project <id-ou-handle>`, `-e/--environment <handle>`
 - `--reveal` — Imprima valor secreto em texto plano (**use apenas quando solicitado explicitamente**)
+
 - ```json
+
 `--json` — Saída como JSON
+
 ```
 
 ## Campos Variáveis (JSON)
@@ -77,7 +81,6 @@ env:
 
 ou
 
-
 ```yaml
 env:
   - name: MY_SECRET
@@ -86,7 +89,6 @@ env:
 ```
 
 Além disso, você também pode usar a variável `env` para definir se a variável é tratada como um segredo:
-
 
 ```yaml
 env:

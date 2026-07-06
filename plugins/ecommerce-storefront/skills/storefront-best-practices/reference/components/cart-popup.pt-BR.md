@@ -16,16 +16,20 @@
 O popup do carrinho (carrinho mini/painel lateral) mostra uma visão rápida do carrinho sem precisar navegar. Abre ao clicar no ícone do carrinho ou após adicionar itens.
 
 **IMPORTANTE: Sempre exiba detalhes da variação (tamanho, cor, material, etc.) no popup do carrinho, e não apenas os títulos dos produtos.****Conhecimento Presumido:**Os agentes de IA sabem como criar modais, diálogos e sobreposições. Este guia se concentra em padrões específicos para comércio eletrônico.**Popup do Carrinho vs. Página Completa do Carrinho:**- Popup: Visão rápida, caminho rápido para o checkout, fácil continuar comprando
+
 - Página completa: Revisão detalhada, códigos promocionais, operações complexas
 -**Recomendado:**Ambos - popup para velocidade, página completa para detalhes
 
 ## Quando Mostrar o Popup do Carrinho**Opções de gatilho:**1.**Ao clicar no ícone do carrinho**(sempre) - Clicar no ícone do carrinho na barra de navegação abre o popup
+
 2.**Após adicionar ao carrinho**(recomendado) - Abrir automaticamente o popup quando um item for adicionado, confirma a ação, permite checkout ou continuar comprando
 3.**Ao passar o mouse sobre o ícone do carrinho**(apenas desktop, opcional) - Vista rápida ao passar o mouse. Pode ser acidental, não recomendado.**Alternativas para "Adicionar ao Carrinho":**- Mostrar popup (mais comum) - Confirmação imediata, caminho claro para o checkout
+
 - Apenas Toast (menos intrusivo) - Notificação pequena, usuário clica no ícone do carrinho para ver os detalhes
 - Navegar para a página do carrinho (tradicional) - Vai diretamente para a página completa do carrinho, menos comum agora
 
 ## Padrões de Layout**Dois padrões comuns:****1. Dropdown (recomendado pela simplicidade):**- Desdobra a partir do ícone do carrinho, posicionado abaixo da barra de navegação
+
 - Largura: 280-320px, altura máxima com rolagem
 - Sem sobreposição de fundo (clique fora para fechar)
 - Melhor para poucos itens, implementação mais simples**2. Slide-in drawer (mais proeminente):**- Desliza da direita, altura total, largura 320-400px (desktop) ou 80-90% (mobile)
@@ -35,6 +39,7 @@ O popup do carrinho (carrinho mini/painel lateral) mostra uma visão rápida do 
 - Rodapé fixo: Subtotal + botões de ação (Checkout, Ver Carrinho)
 
 ## Exibição do Carrinho**Recupere os dados do carrinho do backend:**- ID do carrinho de localStorage
+
 - Itens da linha (produtos, variantes, quantidades, preços)
 - Totais do carrinho (subtotal, imposto, frete)
 - Veja connecting-to-backend.md para integração com o backend**Quando recuperar:**- Na inicialização do aplicativo (atualize a contagem no ícone do carrinho)
@@ -60,6 +65,7 @@ O popup do carrinho (carrinho mini/painel lateral) mostra uma visão rápida do 
 - Essencial para produtos com várias variantes (roupas, sapatos, produtos configuráveis)
 
 ## Ações e CTAs (Call to Action)**Exibição do resumo do carrinho:**- Subtotal (soma de todos os itens)
+
 - Frete e imposto: "Calculado no checkout" ou valor real
 - Total: Em negrito e proeminente**Indicador de frete grátis (opcional):**- "Adicione mais $25 para frete grátis" com barra de progresso
 - Incentiva pedidos maiores, atualiza conforme o carrinho muda**Códigos promocionais:**- Geralmente NÃO no popup do carrinho (muito apertado)
@@ -74,6 +80,7 @@ Ambos os botões com largura total, altura de 44-48px em mobile.
 Mostre ícone/ilustração + "Seu carrinho está vazio" + Botão "Continuar Comprando". Centralizado, amigável, design minimalista.
 
 ## Status de Carregamento e Erro**Ao abrir o popup:**- Mostre um esqueleto/placeholder enquanto recupera (evite tela em branco)**Durante as atualizações:**- Alterações de quantidade: Spinner inline, desabilite os controles, debounce 300-500ms
+
 - Remoção de itens: Animação de fade-out, desabilite o botão de remoção durante a solicitação
 - Adicionar ao carrinho: Indicador de carregamento no botão ("Adicionando...")**Tratamento de erros:**- Erros de rede: Opção para tentar novamente, não feche o popup
 - ID do carrinho inválido: Crie um novo carrinho automaticamente
@@ -81,6 +88,7 @@ Mostre ícone/ilustração + "Seu carrinho está vazio" + Botão "Continuar Comp
 - Reverta as atualizações otimistas em caso de falha**Animações:**Transições suaves (250-350ms), slide-in drawer, fade-in/out de fundo. Destaque os itens recém-adicionados.
 
 ## Considerações para Mobile**Dropdown no mobile:**- Largura total (100% menos margens)
+
 - Altura máxima 60-70% da tela, rolável
 - Toque para fechar
 - Swipe para fechar (suportado)**Drawer no mobile:**

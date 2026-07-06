@@ -25,6 +25,7 @@ mcloud deployments list --organization <org-id> --project <project-id-or-handle>
 ```
 
 **Options:**
+
 - `-o/--organization <id>` — Organization ID (falls back to active context)
 - `-p/--project <id-or-handle>` — Project ID or handle (falls back to active context)
 - `-e/--environment <handle>` — Filter by environment handle
@@ -43,9 +44,11 @@ mcloud deployments get <deployment-id> --organization <org-id> --project <projec
 ```
 
 **Arguments:**
+
 - `deployment` — Deployment ID (required)
 
 **Options:**
+
 - `-o/--organization <id>`, `-p/--project <id-or-handle>`, `--json`
 
 ### deployments build-logs
@@ -57,9 +60,11 @@ mcloud deployments build-logs <deployment-id> --organization <org-id> --project 
 ```
 
 **Arguments:**
+
 - `deployment` — Deployment ID (required)
 
 **Options:**
+
 - `-o/--organization <id>`, `-p/--project <id-or-handle>`
 - `--type <backend|storefront>` — Which build log stream to read (default: `backend`)
 - `--json` — Output as JSON

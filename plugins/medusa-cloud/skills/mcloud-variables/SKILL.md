@@ -28,6 +28,7 @@ mcloud variables list \
 ```
 
 **Options:**
+
 - `-o/--organization <id>` — Organization ID (falls back to active context)
 - `-p/--project <id-or-handle>` — Project ID or handle (falls back to active context)
 - `-e/--environment <handle>` — Environment handle (falls back to active context)
@@ -53,9 +54,11 @@ mcloud variables get var_01XYZ --json
 ```
 
 **Arguments:**
+
 - `variable` — Variable ID (`var_...`) or key (required)
 
 **Options:**
+
 - `-o/--organization <id>`, `-p/--project <id-or-handle>`, `-e/--environment <handle>`
 - `--reveal` — Print secret value in plaintext (**use only when explicitly asked**)
 - `--json` — Output as JSON

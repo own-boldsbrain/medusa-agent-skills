@@ -25,6 +25,7 @@ Relacione entradas à tarefa atual por:
 
 -**Palavras-chave de domínio**no slug do nome de arquivo (ex.: `catalogo`, `agente`, `stack`, `plataforma`)
 -**Entradas recentes**(números mais altos são os mais recentes)
+
 - O `DL-000-bootstrap.md` é sempre relevante — contém a fundação da plataforma
 
 ### Passo 3: Ler as entradas relevantes
@@ -32,10 +33,10 @@ Relacione entradas à tarefa atual por:
 Para cada entrada relevante, leia:
 
 1. `status` —**apenas entradas `approved` e `executing` têm autoridade vinculante**2. `domain` e `impact` — para entender o escopo
-3. `context` — por que esta decisão existe
-4. `decision` — o que foi decidido (é isso que você deve seguir)
-5. `approach` — como implementar (se presente, siga-o)
-6. `affected_files` — quais arquivos/módulos são governados por esta decisão
+2. `context` — por que esta decisão existe
+3. `decision` — o que foi decidido (é isso que você deve seguir)
+4. `approach` — como implementar (se presente, siga-o)
+5. `affected_files` — quais arquivos/módulos são governados por esta decisão
 
 ### Passo 4: Verificar contradições
 

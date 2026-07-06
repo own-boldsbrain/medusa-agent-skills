@@ -33,6 +33,7 @@ Os breadcrumbs mostram a localização do usuário dentro da hierarquia do site 
 ## Quando Usar Breadcrumbs
 
 **Use para:**- Páginas de produtos (Home → Categoria → Subcategoria → Produto)
+
 - Páginas de categoria (Home → Categoria → Subcategoria)
 - Hierarquias profundas de site (3+ níveis)
 - Catálogos grandes com muitas categorias**Não use para:**- Página inicial (não possui páginas pai)
@@ -43,6 +44,7 @@ Os breadcrumbs mostram a localização do usuário dentro da hierarquia do site 
 ## Padrões de Breadcrumbs para E-commerce
 
 ### Breadcrumbs em Páginas de Produtos**Padrão padrão:**- Home / Categoria / Subcategoria / Nome do Produto
+
 - Exemplo: Home / Eletrônicos / Laptops / Laptop Gamer Pro**Considerações principais:**- Todos os níveis, exceto o nome do produto, são clicáveis
 - O nome do produto é a página atual (não clicável, texto em cor mais escura)
 - Mostra a localização do produto no catálogo**Múltiplas categorias:**- Se o produto pertencer a várias categorias, escolha a primária/canônica
@@ -50,10 +52,12 @@ Os breadcrumbs mostram a localização do usuário dentro da hierarquia do site 
 - Seja consistente em todo o site
 
 ### Breadcrumbs em Páginas de Categoria**Padrão padrão:**- Home / Categoria Pai / Categoria Atual
+
 - Exemplo: Home / Eletrônicos / Laptops**Categoria atual:**- Não clicável (texto simples)
 - Visualmente distinta dos links (cor mais escura ou negrito)
 
 ### Construção do Caminho**Hierarquia:**- Comece com "Home" (ou ícone de início/casa)
+
 - Siga a hierarquia das categorias
 - Termine com a página atual
 - Máximo de 5-6 níveis (mantenha a estrutura rasa)**Alinhamento de URL:**- O caminho dos breadcrumbs deve corresponder à hierarquia da URL
@@ -63,6 +67,7 @@ Os breadcrumbs mostram a localização do usuário dentro da hierarquia do site 
 ## Breadcrumbs em Dispositivos Móveis
 
 ### Padrão Mobile: Reduzir para Link "Voltar"**Abordagem recomendada:**- Mostrar apenas o nível anterior como link de "voltar"
+
 - Ícone de seta "voltar" (←) + nome da página pai
 - Exemplo: "← Laptops Gamer"**Por que:**- Economiza espaço vertical em dispositivos móveis
 - Oferece uma funcionalidade clara (navegação para trás)
@@ -71,7 +76,7 @@ Os breadcrumbs mostram a localização do usuário dentro da hierarquia do site 
 - Ocultar os níveis intermediários
 - Equilibra uso de espaço e contexto
 
-## Dados Estruturados para SEO**Schema BreadcrumbList (CRÍTICO)**: Adicione dados estruturados JSON-LD. Os breadcrumbs aparecem nos resultados de pesquisa, o que melhora o CTR (Taxa de Cliques) e ajuda os motores de busca a entenderem a estrutura do site.
+## Dados Estruturados para SEO**Schema BreadcrumbList (CRÍTICO)**: Adicione dados estruturados JSON-LD. Os breadcrumbs aparecem nos resultados de pesquisa, o que melhora o CTR (Taxa de Cliques) e ajuda os motores de busca a entenderem a estrutura do site
 
 **Implementação**: `BreadcrumbList` do schema.org com um array de itens. Cada item tem uma posição (1, 2, 3...), nome e URL. Consulte `seo.md` para detalhes sobre schema.
 

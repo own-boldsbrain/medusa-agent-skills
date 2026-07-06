@@ -5,10 +5,10 @@
 - **PR State**: `OPEN`
 - **PR Draft**: `true`
 - **PR Mergeable**: `MERGEABLE`
-- **HEAD SHA**: `2f8241906f4bce46100e2e1f371664e281649972`
+- **HEAD SHA**: `93d934bf7e3314b9462ce836fbc95d401228540a`
 - **Origin Main SHA**: `9c41f09deaab619bf81ebc4770fbb2029babf42d`
 - **Branch**: `chore/translation-forensic-repair`
-- **Updated At**: `2026-07-06T16:47:05Z`
+- **Updated At**: `2026-07-06T16:51:47Z`
 - **Source Mode**: `gh_cli_live`
 
 ## Jules Live Status
@@ -24,5 +24,5 @@
 
 ## Metrics
 
-- **Sessions Checked**: 6 (1 test_fixture + 1 jules_api_live + 4 mock watcher)
+- **Sessions Checked**: 8 (1 test_fixture + 3 jules_api_live + 4 mock watcher)
 - **Alerts Emitted**: 5

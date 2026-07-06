@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-06T16:48:33.326271+00:00",
+  "timestamp": "2026-07-06T16:53:13.450928+00:00",
   "source_mode": "jules_api_live",
   "total_sessions": 265,
   "needs_feedback": 44,
   "stuck_awaiting_approval": 0,
   "failed": 0,
-  "completed_not_audited": 214,
+  "completed_not_audited": 212,
   "actions_required": [
     {
       "action": "RESPOND_OR_CLOSE",
@@ -62,12 +62,10 @@
     {
       "action": "AUDIT_OUTPUTS",
       "priority": "P1",
-      "count": 214,
+      "count": 212,
       "sessions": [
-        "738175384704726190",
         "16220394734208508651",
         "4651661303858123605",
-        "8838994688830827032",
         "3550887234459229470",
         "2363029379064188130",
         "6291128857080795954",

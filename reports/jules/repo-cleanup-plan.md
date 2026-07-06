@@ -1,6 +1,6 @@
 # Jules Repo Cleanup Plan
 
-**Generated**: 2026-07-06T16:48:33.326271+00:00
+**Generated**: 2026-07-06T16:53:13.450928+00:00
 **Source Mode**: `jules_api_live`
 **Total Sessions**: 265
 
@@ -9,7 +9,7 @@
 - Needs Feedback: **44**
 - Stuck (Awaiting Approval): **0**
 - Failed: **0**
-- Completed Not Audited: **214**
+- Completed Not Audited: **212**
 
 ## Actions Required
 
@@ -34,16 +34,16 @@ Sessions awaiting user feedback. Respond or close to free quota.
 
 Completed sessions without local audit. Run jules_session_audit.py to capture outputs.
 
-**Sessions** (214):
-- `738175384704726190`
+**Sessions** (212):
 - `16220394734208508651`
 - `4651661303858123605`
-- `8838994688830827032`
 - `3550887234459229470`
 - `2363029379064188130`
 - `6291128857080795954`
 - `12765868489578398714`
 - `12970440844265075213`
 - `15689033680258543651`
-- ... and 204 more
+- `14843736179884910177`
+- `3096549818431003592`
+- ... and 202 more
 

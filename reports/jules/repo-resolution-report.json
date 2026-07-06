@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-07-06T16:48:33.329800+00:00",
-  "cleanup_plan_ref": "2026-07-06T16:48:33.326271+00:00",
+  "timestamp": "2026-07-06T16:53:13.454897+00:00",
+  "cleanup_plan_ref": "2026-07-06T16:53:13.450928+00:00",
   "total_actions_required": 2,
-  "total_sessions_needing_action": 258,
+  "total_sessions_needing_action": 256,
   "resolutions": [],
   "status": "PENDING"
 }

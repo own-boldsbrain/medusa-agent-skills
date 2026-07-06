@@ -42,6 +42,7 @@ Let me verify your implementation. Please share the following:
 Show me your `src/api/admin/brands/route.ts` file (the updated version with GET handler).
 
 **Key things to check**:
+
 - [ ] Defines `GET` function (must be named `GET` exactly)
 - [ ] Uses types: `MedusaRequest`, `MedusaResponse`
 - [ ] Resolves Query service: `req.scope.resolve("query")`
@@ -56,6 +57,7 @@ Show me your `src/api/admin/brands/route.ts` file (the updated version with GET 
 Show me the GET /admin/brands middleware configuration in `src/api/middlewares.ts`.
 
 **Key things to check**:
+
 - [ ] Imports `createFindParams` from "@medusajs/medusa/api/utils/validators"
 - [ ] Defines `GetBrandsSchema = createFindParams()`
 - [ ] Route configuration:
@@ -67,6 +69,7 @@ Show me the GET /admin/brands middleware configuration in `src/api/middlewares.t
     - Options: `isList: true`
 
 Example:
+
 ```typescript
 validateAndTransformQuery(
   GetBrandsSchema,
@@ -86,12 +89,15 @@ validateAndTransformQuery(
 **Causes and Fixes**:
 
 **Cause 1**: Entity name incorrect
+
 - **Fix**: Use `entity: "brand"` (lowercase, singular)
 
 **Cause 2**: Middleware not configured with defaults
+
 - **Fix**: Add `defaults` to middleware config
 
 **Cause 3**: Module not registered properly
+
 - **Fix**: Check `medusa-config.ts` has brand module
 
 ### "metadata is undefined"
@@ -102,6 +108,7 @@ validateAndTransformQuery(
 
 **Fix**:
 Use default values in destructuring:
+
 ```typescript
 const {
   data: brands,
@@ -124,6 +131,7 @@ res.json({
 
 **Fix**:
 Add to defaults in middleware:
+
 ```typescript
 validateAndTransformQuery(
   GetBrandsSchema,
@@ -142,6 +150,7 @@ validateAndTransformQuery(
 
 **Fix**:
 Ensure you're using `createFindParams()`:
+
 ```typescript
 import { createFindParams } from "@medusajs/medusa/api/utils/validators"
 
@@ -149,6 +158,7 @@ export const GetBrandsSchema = createFindParams()
 ```
 
 And using `validateAndTransformQuery()` (not `validateAndTransformBody()`):
+
 ```typescript
 validateAndTransformQuery(GetBrandsSchema, { ... })
 ```
@@ -160,12 +170,15 @@ validateAndTransformQuery(GetBrandsSchema, { ... })
 **Causes and Fixes**:
 
 **Cause 1**: Link not created properly
+
 - **Fix**: Check Checkpoint 2.2 - verify links exist in database
 
 **Cause 2**: products.* not in defaults
+
 - **Fix**: Add `"products.*"` to defaults array
 
 **Cause 3**: Link direction is backwards
+
 - **Fix**: Review link definition in Checkpoint 2.1
 
 ### "Cannot read property 'result' from undefined"
@@ -176,6 +189,7 @@ validateAndTransformQuery(GetBrandsSchema, { ... })
 
 **Fix**:
 Use `data` for the result array:
+
 ```typescript
 const { data: brands } = await query.graph({ ... })
 // NOT: const { result: brands }
@@ -188,6 +202,7 @@ At this point, you should understand:
 **Two ways to query linked data**:
 
 **Method 1: Fields Parameter** (Simple queries)
+
 ```typescript
 // In a service method
 product = await productService.retrieve(id, {
@@ -196,6 +211,7 @@ product = await productService.retrieve(id, {
 ```
 
 **Method 2: query.graph()** (Complex queries)
+
 ```typescript
 // In API routes
 const { data } = await query.graph({
@@ -239,6 +255,7 @@ Response: { brands: [...], count, limit, offset }
 ```
 
 **Why this matters**:
+
 - **Flexibility**: Clients control what data they need
 - **Performance**: Only fetch requested fields
 - **Pagination**: Handle large datasets efficiently
@@ -254,6 +271,7 @@ Once this checkpoint passes:
    - Query capability for linked records
 
 2. **Commit your work**:
+
    ```bash
    git add .
    git commit -m "Complete Lesson 2: Extend Medusa with links and hooks"

@@ -1,4 +1,5 @@
 ﻿# Component de Popup do Carrinho
+
 ## Conteúdo
 
 - [Visão Geral](#visao-geral)
@@ -19,6 +20,7 @@ O popup do carrinho (carrinho mini/painel lateral) mostra uma visão rápida do 
 **Conhecimento Presumido:** Os agentes de IA sabem como criar modais, diálogos e sobreposições. Este guia se concentra em padrões específicos para comércio eletrônico.
 
 **Popup do Carrinho vs. Página Completa do Carrinho:**
+
 - Popup: Visão rápida, caminho rápido para o checkout, fácil continuar comprando
 - Página completa: Revisão detalhada, códigos promocionais, operações complexas
 - **Recomendado:** Ambos - popup para velocidade, página completa para detalhes
@@ -27,11 +29,12 @@ O popup do carrinho (carrinho mini/painel lateral) mostra uma visão rápida do 
 
 **Opções de gatilho:**
 
-1.  **Ao clicar no ícone do carrinho** (sempre) - Clicar no ícone do carrinho na barra de navegação abre o popup
-2.  **Após adicionar ao carrinho** (recomendado) - Abrir automaticamente o popup quando um item for adicionado, confirma a ação, permite checkout ou continuar comprando
-3.  **Ao passar o mouse sobre o ícone do carrinho** (apenas desktop, opcional) - Vista rápida ao passar o mouse. Pode ser acidental, não recomendado.
+1. **Ao clicar no ícone do carrinho** (sempre) - Clicar no ícone do carrinho na barra de navegação abre o popup
+2. **Após adicionar ao carrinho** (recomendado) - Abrir automaticamente o popup quando um item for adicionado, confirma a ação, permite checkout ou continuar comprando
+3. **Ao passar o mouse sobre o ícone do carrinho** (apenas desktop, opcional) - Vista rápida ao passar o mouse. Pode ser acidental, não recomendado.
 
 **Alternativas para "Adicionar ao Carrinho":**
+
 - Mostrar popup (mais comum) - Confirmação imediata, caminho claro para o checkout
 - Apenas Toast (menos intrusivo) - Notificação pequena, usuário clica no ícone do carrinho para ver os detalhes
 - Navegar para a página do carrinho (tradicional) - Vai diretamente para a página completa do carrinho, menos comum agora
@@ -41,17 +44,20 @@ O popup do carrinho (carrinho mini/painel lateral) mostra uma visão rápida do 
 **Dois padrões comuns:**
 
 **1. Dropdown (recomendado pela simplicidade):**
+
 - Desdobra a partir do ícone do carrinho, posicionado abaixo da barra de navegação
 - Largura: 280-320px, altura máxima com rolagem
 - Sem sobreposição de fundo (clique fora para fechar)
 - Melhor para poucos itens, implementação mais simples
 
 **2. Slide-in drawer (mais proeminente):**
+
 - Desliza da direita, altura total, largura 320-400px (desktop) ou 80-90% (mobile)
 - Sobreposição de fundo semi-transparente (clique para fechar)
 - Melhor para vários itens ou carrinhos complexos
 
 **Ambos os padrões têm:**
+
 - Cabeçalho: Título + número de itens + botão de fechamento (opcional para dropdown)
 - Conteúdo rolável: Lista de itens do carrinho
 - Rodapé fixo: Subtotal + botões de ação (Checkout, Ver Carrinho)
@@ -59,17 +65,20 @@ O popup do carrinho (carrinho mini/painel lateral) mostra uma visão rápida do 
 ## Exibição do Carrinho
 
 **Recupere os dados do carrinho do backend:**
+
 - ID do carrinho de localStorage
 - Itens da linha (produtos, variantes, quantidades, preços)
 - Totais do carrinho (subtotal, imposto, frete)
 - Veja connecting-to-backend.md para integração com o backend
 
 **Quando recuperar:**
+
 - Na inicialização do aplicativo (atualize a contagem no ícone do carrinho)
 - Ao abrir o popup (mostre o estado de carregamento)
 - Após atualizações do carrinho (adicione/remova/altere a quantidade)
 
 **Gerenciamento de estado:**
+
 - Armazene os dados do carrinho globalmente (React Context ou TanStack Query)
 - Persista o ID do carrinho em localStorage
 - Atualizações de UI otimistas (atualize imediatamente, reverta em caso de erro)
@@ -94,6 +103,7 @@ Sem detalhes da variação, os usuários não conseguem confirmar se adicionaram
 - Botão de remover (ícone X, sem confirmação necessária)
 
 **Por que os detalhes da variação são críticos:**
+
 - Confirmação do usuário: "Eu adicionei o tamanho certo?"
 - Evita a perda de carrinho devido à incerteza
 - Permite correções antes do checkout
@@ -102,22 +112,26 @@ Sem detalhes da variação, os usuários não conseguem confirmar se adicionaram
 ## Ações e CTAs (Call to Action)
 
 **Exibição do resumo do carrinho:**
+
 - Subtotal (soma de todos os itens)
 - Frete e imposto: "Calculado no checkout" ou valor real
 - Total: Em negrito e proeminente
 
 **Indicador de frete grátis (opcional):**
+
 - "Adicione mais $25 para frete grátis" com barra de progresso
 - Incentiva pedidos maiores, atualiza conforme o carrinho muda
 
 **Códigos promocionais:**
+
 - Geralmente NÃO no popup do carrinho (muito apertado)
 - Reserve para a página completa do carrinho
 - Exceção: Campo de entrada de código se houver espaço
 
 **Botões de ação:**
-1.  **Checkout** (principal) - Mais proeminente, cor da marca, navega para o checkout
-2.  **Ver Carrinho** (secundário) - Contorno ou sutil, navega para a página completa do carrinho
+
+1. **Checkout** (principal) - Mais proeminente, cor da marca, navega para o checkout
+2. **Ver Carrinho** (secundário) - Contorno ou sutil, navega para a página completa do carrinho
 
 Ambos os botões com largura total, altura de 44-48px em mobile.
 
@@ -128,14 +142,17 @@ Mostre ícone/ilustração + "Seu carrinho está vazio" + Botão "Continuar Comp
 ## Status de Carregamento e Erro
 
 **Ao abrir o popup:**
+
 - Mostre um esqueleto/placeholder enquanto recupera (evite tela em branco)
 
 **Durante as atualizações:**
+
 - Alterações de quantidade: Spinner inline, desabilite os controles, debounce 300-500ms
 - Remoção de itens: Animação de fade-out, desabilite o botão de remoção durante a solicitação
 - Adicionar ao carrinho: Indicador de carregamento no botão ("Adicionando...")
 
 **Tratamento de erros:**
+
 - Erros de rede: Opção para tentar novamente, não feche o popup
 - ID do carrinho inválido: Crie um novo carrinho automaticamente
 - Em falta: Desabilite o aumento da quantidade, mostre mensagem
@@ -146,14 +163,15 @@ Mostre ícone/ilustração + "Seu carrinho está vazio" + Botão "Continuar Comp
 ## Considerações para Mobile
 
 **Dropdown no mobile:**
+
 - Largura total (100% menos margens)
 - Altura máxima 60-70% da tela, rolável
 - Toque para fechar
 - Swipe para fechar (suportado)
 
 **Drawer no mobile:**
+
 - 85-95% de largura da tela ou tela inteira
 - Desliza da direita ou da parte inferior
 - Gestos de deslizar para fechar suportados
 - Sobreposição de fundo
-

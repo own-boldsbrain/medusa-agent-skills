@@ -31,19 +31,19 @@ Use this plugin to build backend and frontend features related to Medusa.
 claude
 ```
 
-2. Add Medusa marketplace to Claude Code:
+1. Add Medusa marketplace to Claude Code:
 
 ```bash
 /plugin marketplace add medusajs/medusa-agent-skills
 ```
 
-3. Install the plugin:
+1. Install the plugin:
 
 ```bash
 /plugin install medusa-dev@medusa
 ```
 
-4. Verify the plugin is loaded:
+1. Verify the plugin is loaded:
 
 ```bash
 /plugin

@@ -13,6 +13,7 @@ This guide provides systematic testing procedures for each component type in Med
 - If a product costs ¥1000, store it as `1000` (not `100000`)
 
 **Example**:
+
 ```json
 {
   "title": "T-Shirt",
@@ -254,6 +255,7 @@ npm run dev
 ```
 
 **Expected**:
+
 - Server starts successfully
 - Console shows "Server is ready on port 9000"
 - No route registration errors
@@ -317,6 +319,7 @@ curl -X POST http://localhost:9000/admin/brands \
 ```
 
 **Expected**:
+
 - 200 or 201 status code
 - JSON response with brand object
 - Brand has id, name, timestamps
@@ -339,6 +342,7 @@ curl -X POST http://localhost:9000/admin/brands \
 ```
 
 **Expected**:
+
 - 400 status code
 - Error message about missing `name` field
 
@@ -398,6 +402,7 @@ psql your_database -c "\d link_brand_product"
 ```
 
 **Expected columns**:
+
 - id (primary key)
 - brand_id (foreign key)
 - product_id (foreign key)
@@ -451,6 +456,7 @@ npm run dev
 ```
 
 **Expected**:
+
 - Server starts without errors
 - No warnings about invalid hook subscribers
 - Logs show hook file loaded
@@ -474,6 +480,7 @@ curl -X POST http://localhost:9000/admin/products \
 ```
 
 **Expected**:
+
 - Product created successfully
 - Link created between product and brand
 
@@ -543,6 +550,7 @@ curl "http://localhost:9000/admin/brands" \
 ```
 
 **Expected**:
+
 - Returns brands array
 - Includes count, limit, offset metadata
 
@@ -595,7 +603,7 @@ curl "http://localhost:9000/admin/brands?fields=id,name,products.*" \
 
 **Manual test in browser**:
 
-1. Open admin: http://localhost:9000/app
+1. Open admin: <http://localhost:9000/app>
 2. Login with admin credentials
 3. Navigate to Products
 4. Click on a product with a brand
@@ -612,6 +620,7 @@ curl "http://localhost:9000/admin/brands?fields=id,name,products.*" \
 3. Look for API request fetching product data
 
 **Expected**:
+
 - Request includes `fields` parameter with `+brand.*`
 - Response includes brand data
 - Widget displays brand name correctly
@@ -626,6 +635,7 @@ curl "http://localhost:9000/admin/brands?fields=id,name,products.*" \
 4. Observe widget
 
 **Expected**:
+
 - Widget shows loading state initially
 - Then displays brand data
 - No errors in console
@@ -653,10 +663,11 @@ if (error) return <div>Error: {error.message}</div>
 
 **Manual test in browser**:
 
-1. Open admin: http://localhost:9000/app
+1. Open admin: <http://localhost:9000/app>
 2. Look for route in sidebar navigation
 
 **Expected**:
+
 - Route appears in sidebar with correct icon and label
 - Clicking navigates to route
 
@@ -669,6 +680,7 @@ if (error) return <div>Error: {error.message}</div>
 3. Check page loads without errors
 
 **Expected**:
+
 - URL updates correctly
 - Page renders successfully
 - No console errors
@@ -681,6 +693,7 @@ if (error) return <div>Error: {error.message}</div>
 2. Observe table
 
 **Expected**:
+
 - Table displays with correct columns
 - Data loads and populates rows
 - Styling matches other admin pages
@@ -695,6 +708,7 @@ if (error) return <div>Error: {error.message}</div>
 3. Click "Next" page
 
 **Expected**:
+
 - Pagination controls appear at bottom
 - Clicking changes page
 - Different data displays
@@ -709,6 +723,7 @@ if (error) return <div>Error: {error.message}</div>
 3. Look for API request
 
 **Expected**:
+
 - Request to `/admin/brands` with query params (limit, offset)
 - Response includes data, count, limit, offset
 - Table populated with response data
@@ -722,11 +737,13 @@ All `/admin` routes require authentication. See **API Route Verification → Ste
 **Quick reference**:
 
 1. Create admin user:
+
    ```bash
    npx medusa user -e admin@test.com -p supersecret
    ```
 
 2. Get authentication token:
+
    ```bash
    curl -X POST http://localhost:9000/auth/user/emailpass \
      -H "Content-Type: application/json" \
@@ -737,6 +754,7 @@ All `/admin` routes require authentication. See **API Route Verification → Ste
    ```
 
 3. Use token in requests:
+
    ```bash
    export AUTH_TOKEN="your-token-here"
    curl http://localhost:9000/admin/brands \
@@ -756,6 +774,7 @@ All `/admin` routes require authentication. See **API Route Verification → Ste
 5. **End-to-end test**: Test complete flows
 
 **Tools used**:
+
 - `npm run build` - Compilation verification
 - `npx medusa db:migrate` - Database setup
 - `curl` - API testing
@@ -766,6 +785,7 @@ All `/admin` routes require authentication. See **API Route Verification → Ste
 **Key principle**: Test each layer independently before testing integration. This isolates problems and makes debugging easier.
 
 **Common verification workflow**:
+
 1. Write code
 2. Run build test
 3. Test in UI (manual test)

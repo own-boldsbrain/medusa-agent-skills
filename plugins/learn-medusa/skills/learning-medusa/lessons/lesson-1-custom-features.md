@@ -575,16 +575,19 @@ createWorkflow("name", async function (input) {  // No async!
 **Why these rules?**
 
 Workflows are **declarative**, not imperative. The constructor function:
+
 - Runs at **load time**, not execution time
 - Defines the **graph of steps**, not the execution
 - Cannot have runtime logic (conditionals, loops)
 
 **For runtime logic, use**:
+
 - `when()` - Conditional step execution
 - `transform()` - Data transformation
 - `parallelize()` - Parallel execution
 
 **Common Mistake**: Using `async` or `await`
+
 ```typescript
 // ❌ WRONG
 const brand = await createBrandStep(input)  // No await!
@@ -622,9 +625,11 @@ const brand = createBrandStep(input)  // Step returns immediately
 ### Implementation Check
 
 1. **Check build succeeds**:
+
    ```bash
    npm run build
    ```
+
    Expected: No TypeScript errors
 
 2. **Show me your file**:
@@ -723,6 +728,7 @@ export type PostAdminCreateBrandType = z.infer<typeof PostAdminCreateBrand>
 - **`z.infer`**: Extracts TypeScript type from schema
 
 **Why separate file?**
+
 - Keeps route file clean
 - Makes schemas reusable
 - Follows Medusa conventions
@@ -757,38 +763,47 @@ export const POST = async (
 **Let's break this down**:
 
 **1. Route Handler Export**:
+
 ```typescript
 export const POST = async (req, res) => { ... }
 ```
+
 - Export function named after HTTP method (POST, GET, DELETE)
 - Medusa automatically registers this as `POST /admin/brands`
 
 **2. Request Type**:
+
 ```typescript
 req: MedusaRequest<PostAdminCreateBrandType>
 ```
+
 - `MedusaRequest<T>`: Type-safe request object
 - `T` is the validated body type
 - Access validated body via `req.validatedBody`
 
 **3. Execute Workflow**:
+
 ```typescript
 const { result } = await createBrandWorkflow(req.scope).run({
   input: req.validatedBody,
 })
 ```
+
 - `req.scope`: The Medusa container
 - `.run()`: Executes the workflow
 - `input`: Data passed to workflow
 - `result`: Data returned by workflow
 
 **4. Return Response**:
+
 ```typescript
 res.json({ brand: result })
 ```
+
 - Returns JSON response to client
 
 **Path Convention**:
+
 ```
 File path: src/api/admin/brands/route.ts
 Route path: POST /admin/brands
@@ -805,6 +820,7 @@ Route path: GET /store/products
 ### Step 3.3: Add Validation Middleware
 
 **Middlewares** are functions that run before the route handler. They're useful for:
+
 - Validation
 - Authentication
 - Custom parsing
@@ -836,13 +852,16 @@ export default defineMiddlewares({
 **What's happening?**
 
 **1. Define Middlewares**:
+
 ```typescript
 export default defineMiddlewares({ routes: [...] })
 ```
+
 - Must export default from `src/api/middlewares.ts`
 - Medusa auto-loads this file
 
 **2. Route Configuration**:
+
 ```typescript
 {
   matcher: "/admin/brands",   // Route path
@@ -852,14 +871,17 @@ export default defineMiddlewares({ routes: [...] })
 ```
 
 **3. Validation Middleware**:
+
 ```typescript
 validateAndTransformBody(PostAdminCreateBrand)
 ```
+
 - Validates request body against Zod schema
 - Returns 400 error if validation fails
 - Populates `req.validatedBody` if validation succeeds
 
 **Common Mistake**: Typo in filename
+
 - MUST be `middlewares.ts` (plural)
 - NOT `middleware.ts` (singular)
 - Typo causes middleware to be ignored silently!
@@ -893,6 +915,7 @@ validateAndTransformBody(PostAdminCreateBrand)
 ### Implementation Check
 
 1. **Check build succeeds**:
+
    ```bash
    npm run build
    ```
@@ -907,6 +930,7 @@ validateAndTransformBody(PostAdminCreateBrand)
 Now let's test the complete feature!
 
 **Step 1: Start the development server**
+
 ```bash
 npm run dev
 ```
@@ -927,6 +951,7 @@ curl -X POST 'http://localhost:9000/auth/user/emailpass' \
 Replace with your admin email/password.
 
 **Don't have an admin user?** Create one:
+
 ```bash
 npx medusa user -e admin@test.com -p supersecret
 ```
@@ -945,6 +970,7 @@ curl -X POST 'http://localhost:9000/admin/brands' \
 ```
 
 **Expected Response**:
+
 ```json
 {
   "brand": {
@@ -959,18 +985,22 @@ curl -X POST 'http://localhost:9000/admin/brands' \
 ### Common Issues
 
 **401 Unauthorized**
+
 - **Cause**: Token expired or invalid credentials
 - **Fix**: Get fresh token from `/auth/user/emailpass`
 
 **Empty array returned `[]`**
+
 - **Cause**: Middleware file typo - probably named `middleware.ts` instead of `middlewares.ts`
 - **Fix**: Rename to `src/api/middlewares.ts` (plural)
 
 **400 Validation error**
+
 - **Cause**: Request body doesn't match Zod schema
 - **Fix**: Ensure you're sending `{ "name": "Acme" }` with correct JSON
 
 **500 Server error**
+
 - Check server logs for details
 - Common causes:
   - Module not registered in config
@@ -1000,21 +1030,25 @@ Congratulations! You just built a complete custom feature in Medusa:
 ### What You Learned
 
 **Architecture**:
+
 - Module → Workflow → API Route pattern
 - Why each layer exists and what it's responsible for
 - How they connect together
 
 **Modules**:
+
 - Data models define database tables
 - Services provide CRUD operations
 - Modules are isolated and reusable
 
 **Workflows**:
+
 - Orchestrate multi-step operations
 - Provide automatic rollback via compensation functions
 - Ensure data consistency
 
 **API Routes**:
+
 - Expose features to clients
 - Validate input via middlewares
 - Execute workflows (keep routes thin!)
@@ -1030,6 +1064,7 @@ Think about it, then expand:
 <summary>Answer</summary>
 
 While you *could* do:
+
 ```typescript
 export const POST = async (req, res) => {
   const brandService = req.scope.resolve("brand")
@@ -1039,16 +1074,19 @@ export const POST = async (req, res) => {
 ```
 
 **Problems**:
+
 - No rollback if subsequent operations fail
 - Can't reuse logic elsewhere (scheduled jobs, other routes)
 - Hard to test
 - Violates separation of concerns
 
 **Workflows solve this** by:
+
 - Providing automatic rollback
 - Being reusable from anywhere
 - Having clear interfaces
 - Being independently testable
+
 </details>
 
 **2. What happens if there's an error creating the brand?**
@@ -1091,6 +1129,7 @@ export const createBrandWorkflow = createWorkflow(
   }
 )
 ```
+
 </details>
 
 ### Commit Your Work
@@ -1113,6 +1152,7 @@ In **Lesson 2: Extend Medusa**, you'll learn how to:
 - **Query linked data** across modules using Query
 
 You'll be able to:
+
 - Create a product with a brand: `POST /admin/products` with `additional_data: { brand_id: "..." }`
 - Retrieve a product's brand: `GET /admin/products/:id?fields=+brand.*`
 - List all brands with their products: `GET /admin/brands` returning linked products

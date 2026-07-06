@@ -43,6 +43,7 @@ Let me verify your implementation. Please share the following:
 Show me your `src/api/admin/brands/validators.ts` file.
 
 **Key things to check**:
+
 - [ ] Imports `z` from "zod"
 - [ ] Defines `CreateBrandSchema` with `z.object()`
 - [ ] Has `name` field with `z.string()`
@@ -53,6 +54,7 @@ Show me your `src/api/admin/brands/validators.ts` file.
 Show me your `src/api/admin/brands/route.ts` file.
 
 **Key things to check**:
+
 - [ ] Imports types: `MedusaRequest`, `MedusaResponse`
 - [ ] Imports workflow: `import { createBrandWorkflow } from "..."`
 - [ ] Imports workflow input type: `CreateBrandWorkflowInput`
@@ -68,6 +70,7 @@ Show me your `src/api/admin/brands/route.ts` file.
 Show me your `src/api/middlewares.ts` file.
 
 **Key things to check**:
+
 - [ ] Imports `defineMiddlewares`, `validateAndTransformBody`
 - [ ] Imports `CreateBrandSchema`
 - [ ] Exports `default defineMiddlewares()`
@@ -95,6 +98,7 @@ npm run dev
 **Cause**: Middleware not configured correctly
 
 **Fix**:
+
 1. Check that `matcher` exactly matches your route: `"/admin/brands"`
 2. Check that `method` is uppercase: `"POST"`
 3. Ensure `middlewares.ts` is in the correct location: `src/api/middlewares.ts`
@@ -108,6 +112,7 @@ npm run dev
 
 **Fix**:
 Workflow results are nested:
+
 ```typescript
 const { result } = await workflow.run({ input: req.validatedBody })
 const brand = result.result // Note: double .result
@@ -124,6 +129,7 @@ The first `.result` is the workflow execution result, the second `.result` is fr
 **Cause**: File not in correct location or not named correctly
 
 **Fix**:
+
 1. Ensure file is at: `src/api/admin/brands/route.ts`
 2. Ensure function is exported as `POST` (not default export)
 3. Restart dev server
@@ -136,6 +142,7 @@ The first `.result` is the workflow execution result, the second `.result` is fr
 **Cause**: Error in step execution (likely in createBrandStep)
 
 **Fix**:
+
 1. Check server logs for detailed error message
 2. Verify brand service is accessible in the step
 3. Verify database connection is working
@@ -149,6 +156,7 @@ The first `.result` is the workflow execution result, the second `.result` is fr
 
 **Fix**:
 Use generic type parameter:
+
 ```typescript
 export const POST = async (
   req: MedusaRequest<CreateBrandWorkflowInput>,
@@ -212,6 +220,7 @@ At this point, you should understand the full three-layer pattern:
 ```
 
 **Why this matters**:
+
 - **Separation of concerns**: Each layer has a single responsibility
 - **Reusability**: Workflow can be called from multiple routes (HTTP, GraphQL, CLI)
 - **Testability**: Each layer can be tested independently
@@ -227,6 +236,7 @@ Once this checkpoint passes:
    - POST /admin/brands (HTTP interface with validation)
 
 2. **Commit your work**:
+
    ```bash
    git add .
    git commit -m "Complete Lesson 1: Build custom brand feature"

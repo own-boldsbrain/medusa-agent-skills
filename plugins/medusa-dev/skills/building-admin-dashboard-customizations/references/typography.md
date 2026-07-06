@@ -1,6 +1,7 @@
 # Typography Guidelines
 
 ## Contents
+
 - [Core Typography Pattern](#core-typography-pattern)
 - [Typography Rules](#typography-rules)
 - [Complete Examples](#complete-examples)

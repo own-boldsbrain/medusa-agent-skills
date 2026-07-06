@@ -3,6 +3,7 @@
 Scheduled jobs are asynchronous functions that run automatically at specified intervals during the Medusa application's runtime. Use them for tasks like syncing products to third-party services, sending periodic reports, or cleaning up stale data.
 
 ## Contents
+
 - [When to Use Scheduled Jobs](#when-to-use-scheduled-jobs)
 - [Creating a Scheduled Job](#creating-a-scheduled-job)
 - [Configuration Options](#configuration-options)
@@ -21,11 +22,13 @@ Use scheduled jobs when you need to perform actions **periodically**:
 - ✅ Recalculating aggregated data
 
 **Don't use scheduled jobs for:**
+
 - ❌ Reacting to events (use [subscribers](subscribers-and-events.md) instead)
 - ❌ One-time tasks (use workflows directly)
 - ❌ Real-time processing (use API routes + workflows)
 
 **Scheduled Jobs vs Subscribers:**
+
 - **Scheduled Job**: Finds carts updated >24h ago and sends emails (polling pattern)
 - **Subscriber**: Reacts to `order.created` and sends an email (event-driven)
 
@@ -114,6 +117,7 @@ export const config = {
 ```
 
 **Key points:**
+
 - The job waits for the first scheduled time before executing
 - `numberOfExecutions: 1` with a daily schedule means it runs once the next day
 - To test immediately, use a frequent schedule like `"* * * * *"` (every minute)

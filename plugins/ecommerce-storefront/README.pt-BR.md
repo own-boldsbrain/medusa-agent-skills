@@ -1,87 +1,99 @@
-﻿# Plugin para Loja de E-commerce Claude Code
+# Plugin do Claude Code para Storefront de E-commerce
 
-Habilidade abrangente para criar lojas de e-commerce com alto poder de conversão, utilizando as melhores práticas para UI/UX, otimização de conversões, SEO e responsividade mobile.
+Habilidade (skill) abrangente para construir storefronts de e-commerce com alta taxa de conversão, utilizando as melhores práticas de UI/UX, otimização de conversões, SEO e responsividade para dispositivos móveis.
 
-Use este plugin para construir recursos front-end para lojas de e-commerce, incluindo componentes, layouts, fluxos de checkout e integração no backend. Este plugin pode ser usado com qualquer backend de e-commerce, como Medusa.
-> Para instalação e uso com outros agentes, consulte o README principal: [README](../../README.md).
+Use este plugin para construir recursos de frontend para lojas de e-commerce, incluindo componentes, layouts, fluxos de checkout e integração com o backend. Este plugin pode ser utilizado com qualquer backend de e-commerce, como o Medusa.
 
-- [Instalação com Claude Code](#instalacao-com-claude-code)
-  - [Pré-requisitos](#pre-requisitos)
-  - [Instalar Plugin](#instalar-plugin)
-- [Instalação para Outros Agentes de IA](#instalacao-para-outros-agentes-de-ia)
-- [Usar Plugin](#usar-plugin)
-  - [Exemplos de Uso](#exemplos-de-uso)
-- [Habilidades Incluídas](#habilidades-incluidas)
+> Para instalação e uso com outros agentes, consulte o [README principal](../../README.md).
+
+- [Instalação com o Claude Code](#instalação-com-o-claude-code)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Instalar o Plugin](#instalar-o-plugin)
+- [Instalação para Outros Agentes de IA](#instalação-para-outros-agentes-de-ia)
+- [Como Usar o Plugin](#como-usar-o-plugin)
+  - [Exemplos de Casos de Uso](#exemplos-de-casos-de-uso)
+- [Habilidades Incluídas](#habilidades-incluídas)
 - [Privacidade](#privacidade)
 
-## Instalação com Claude Code
+## Instalação com o Claude Code
 
 ### Pré-requisitos
 
 - [Claude Code](https://github.com/anthropics/claude-code) instalado
-- Um projeto de loja de e-commerce (ou em processo de criação)
+- Um projeto de storefront de e-commerce (ou planos para criar um)
 
-### Instalar Plugin
+### Instalar o Plugin
 
-1. Iniciar o Claude:
+1. Inicie o Claude:
+
 ```bash
 claude
 ```
 
-2. Adicionar o marketplace Medusa ao Claude Code:
+2. Adicione o marketplace do Medusa ao Claude Code:
+
 ```bash
 /plugin marketplace add medusajs/medusa-agent-skills
 ```
 
-3. Instalar o plugin:
+3. Instale o plugin:
+
 ```bash
 /plugin install ecommerce-storefront@medusa
 ```
 
-4. Verificar se o plugin foi carregado:
+4. Verifique se o plugin foi carregado:
+
 ```bash
 /plugin
 ```
 
-Você deverá ver o plugin Ecommerce Storefront listado na aba "Instalados".
+Você deve ver o plugin Ecommerce Storefront listado na aba "Installed" (Instalados).
 
 ## Instalação para Outros Agentes de IA
 
-Para outros agentes de IA, como Cursor, você pode usar o comando [skills](https://skills.sh/) para instalar a habilidade `storefront-best-practices` com base no seu agente de IA:
+Para outros agentes de IA, como o Cursor, você pode usar o comando [skills](https://skills.sh/) para instalar a habilidade `storefront-best-practices` de acordo com o seu agente de IA:
+
 ```bash
 npx skills add medusajs/medusa-agent-skills
-# escolher a seguinte habilidade:
+# escolha a seguinte habilidade:
 # - storefront-best-practices
 ```
 
-## Usar Plugin
+## Como Usar o Plugin
 
-Ao construir recursos da loja, o Claude carregará automaticamente as orientações apropriadas deste plugin. A habilidade é disparada por palavras-chave como "checkout", "carrinho", "página de produto", "navegação", etc.
+Ao construir recursos para o storefront, o Claude carregará automaticamente as orientações adequadas a partir deste plugin. A habilidade é acionada por palavras-chave como "checkout", "carrinho" (cart), "página de produto" (product page), "navegação" (navigation), etc.
 
 Você também pode chamar a habilidade manualmente com `/ecommerce-storefront:storefront-best-practices`.
 
-### Exemplos de Uso
+### Exemplos de Casos de Uso
 
-Aqui estão alguns exemplos do que você pode pedir ao Claude para construir:
+Aqui estão alguns exemplos do que você pode pedir para o Claude construir:
 
 **Exemplo 1: Página de Listagem de Produtos**
-> Crie uma página de listagem de produtos na minha loja, com filtros por categoria, faixa de preço e tamanho. Inclua opções de ordenação e paginação.
+
+> Construa uma página de listagem de produtos no meu storefront com filtros por categoria, faixa de preço e tamanho. Inclua opções de ordenação e paginação.
 
 **Exemplo 2: Fluxo de Checkout**
-> Implemente uma página de checkout na minha loja, com endereço de entrega, seleção do método de entrega e pagamento. Use o backend Medusa.
+
+> Implemente uma página de checkout no meu storefront com endereço de entrega, seleção do método de entrega e pagamento. Use o backend do Medusa.
 
 **Exemplo 3: Componente de Navegação**
-> Crie uma barra de navegação responsiva com indicador de carrinho, busca e menu suspenso de categorias na minha loja. O carrinho deve ser sempre visível no mobile.
+
+> Crie uma barra de navegação (navbar) responsiva com indicador de carrinho, pesquisa e menu suspenso (dropdown) de categorias no meu storefront. O carrinho deve estar sempre visível na versão mobile.
 
 **Exemplo 4: Página de Detalhes do Produto**
-> Crie uma página de detalhes do produto com galeria de imagens, seleção de variações (tamanho/cor), adicionar ao carrinho e produtos relacionados na minha loja.
 
-**Exemplo 5: Layout da Página Inicial**
-> Desenhe uma página inicial com seção principal, categorias em destaque, slider de produtos e inscrição na newsletter na minha loja.
+> Construa uma página de detalhes do produto com galeria de imagens, seleção de variações (tamanho/cor), botão de adicionar ao carrinho e produtos relacionados no meu storefront.
+
+**Exemplo 5: Layout da Página Inicial (Homepage)**
+
+> Crie o design de uma página inicial com seção hero, categorias em destaque, slider de produtos e formulário de inscrição na newsletter no meu storefront.
 
 ## Habilidades Incluídas
 
-1. **storefront-best-practices** - Orientação abrangente para criar lojas de e-commerce (componentes, layouts, recursos, integração no backend)
+1. **storefront-best-practices** - Orientações completas para a construção de storefronts de e-commerce (componentes, layouts, funcionalidades, integração com backend)
 
 ## Privacidade
-Este plugin não coleta, armazena ou transmite nenhum dado ou informação da conversa do usuário. Todo o conteúdo instrutivo é fornecido localmente por meio de arquivos de habilidade.
+
+Este plugin não coleta, armazena ou transmite nenhum dado do usuário ou informações da conversa. Todo o conteúdo instrucional é fornecido localmente através dos arquivos da habilidade.

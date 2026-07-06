@@ -46,11 +46,13 @@ createProductsWorkflow.hooks.productsCreated(
 ## When to Use Hooks vs Subscribers
 
 **Use workflow hooks when:**
+
 - The logic must complete before the workflow finishes
 - You need rollback/compensation capabilities
 - The operation is critical to the workflow's success
 
 **Use subscribers when:**
+
 - The logic can run asynchronously in the background
 - You don't need to block the main workflow
 - Better performance is needed (hooks are synchronous)

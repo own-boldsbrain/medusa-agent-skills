@@ -1,6 +1,7 @@
 # Navegação e Roteamento
 
 ## Conteúdo
+
 - [Pré-requisitos de Implementação para pnpm](#pre-requisitos-de-implementacao-para-pnpm)
 - [Navegação Básica com Componente Link](#navegacao-basica-com-componente-link)
 - [Navegação Programática](#navegacao-programatica)
@@ -486,10 +487,10 @@ const handleComplete = () => {
 
 ## Casos de Uso Yello Solar Hub
 
-*   **Visualização de Catálogo B2B:** Ao navegar pelo catálogo Medusa, clicar em um item (Painel Solar, Inversor) deve usar o componente `<Link>` para levar o usuário de forma otimizada para a página de detalhes do produto, carregando o SKU, modelos e especificações técnicas.
-*   **Fluxo de Cotação (Programático):** Após o administrador finalizar o preenchimento de uma cotação B2B e clicar em "Submeter Cotação", a função deve usar `useMutation` e, em caso de sucesso, chamar `navigate` para redirecionar o usuário diretamente para a tela de acompanhamento da cotação recém-criada (`/quotes/:id`).
-*   **Rastreamento de Serviço em Campo:** Um widget de "Serviço Recente" deve exibir um botão "Ver Histórico" que utiliza `Link` com parâmetros dinâmicos, direcionando para `/services/device/:id` para que o técnico visualize todas as intervenções registradas no módulo de ativos.
-*   **Filtro Operacional de Produtos:** Em listas de produtos ou equipamentos, usar `useSearchParams` para permitir que o usuário filtre resultados complexos (ex: `?status=em_estoque&marca=Yello&vetor=string`) e atualizar a URL sem recarregar a página.
+- **Visualização de Catálogo B2B:** Ao navegar pelo catálogo Medusa, clicar em um item (Painel Solar, Inversor) deve usar o componente `<Link>` para levar o usuário de forma otimizada para a página de detalhes do produto, carregando o SKU, modelos e especificações técnicas.
+- **Fluxo de Cotação (Programático):** Após o administrador finalizar o preenchimento de uma cotação B2B e clicar em "Submeter Cotação", a função deve usar `useMutation` e, em caso de sucesso, chamar `navigate` para redirecionar o usuário diretamente para a tela de acompanhamento da cotação recém-criada (`/quotes/:id`).
+- **Rastreamento de Serviço em Campo:** Um widget de "Serviço Recente" deve exibir um botão "Ver Histórico" que utiliza `Link` com parâmetros dinâmicos, direcionando para `/services/device/:id` para que o técnico visualize todas as intervenções registradas no módulo de ativos.
+- **Filtro Operacional de Produtos:** Em listas de produtos ou equipamentos, usar `useSearchParams` para permitir que o usuário filtre resultados complexos (ex: `?status=em_estoque&marca=Yello&vetor=string`) e atualizar a URL sem recarregar a página.
 
 ## Notas Importantes
 

@@ -64,11 +64,13 @@ O rodapé fornece navegação complementar, informações da empresa e sinais de
 **CRÍTICO: Recupere categorias do backend dinamicamente** - nunca codifique. Recupere da API do backend de e-commerce (para Medusa: `sdk.store.category.list()`).
 
 **Benefícios:**
+
 - Mantém-se sincronizado com a navegação principal
 - Categorias adicionadas/removidas automaticamente
 - Sem atualizações manuais no rodapé
 
 **Diretrizes:**
+
 - Mostrar apenas as categorias de nível superior (máximo 5-8)
 - Correspondência das etiquetas com a navegação principal
 - Cache dos dados de categoria (raramente muda)
@@ -76,6 +78,7 @@ O rodapé fornece navegação complementar, informações da empresa e sinais de
 ## Inscrição na Newsletter
 
 **Elementos essenciais:**
+
 - Campo de e-mail + botão ("Assinar")
 - Proposta de valor (CRÍTICO): Declare o benefício claramente ("Receba 10% de desconto no seu primeiro pedido", "Ofertas exclusivas + acesso antecipado"). Não apenas diga "Inscreva-se na newsletter".
 - Nota sobre privacidade: "Respeitamos sua privacidade" + link para a política de privacidade

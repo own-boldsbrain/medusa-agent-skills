@@ -1,6 +1,7 @@
 # Frontend SDK Integration
 
 ## Contents
+
 - [Frontend SDK Pattern](#frontend-sdk-pattern)
   - [Locating the SDK](#locating-the-sdk)
   - [Using sdk.client.fetch()](#using-sdkclientfetch)
@@ -32,12 +33,14 @@ import { sdk } from "[LOCATE IN PROJECT]"
 **⚠️ CRITICAL: ALWAYS use the Medusa JS SDK for ALL API requests - NEVER use regular fetch()**
 
 **Why this is critical:**
+
 - **Store API routes** require the publishable API key in headers
 - **Admin API routes** require authentication headers
 - **Regular fetch()** without these headers will cause errors
 - The SDK automatically handles all required headers for you
 
 **When to use what:**
+
 - **Existing endpoints** (built-in Medusa routes): Use existing SDK methods like `sdk.store.product.list()`, `sdk.admin.order.retrieve()`
 - **Custom endpoints** (your custom API routes): Use `sdk.client.fetch()` for custom routes
 
@@ -104,6 +107,7 @@ const products = await sdk.client.fetch("/store/products")
 ```
 
 **Why this matters:**
+
 - **Store routes** require `x-publishable-api-key` header - SDK adds it automatically
 - **Admin routes** require `Authorization` and session cookie headers - SDK adds them automatically
 - **Regular fetch()** doesn't include these headers → API returns authentication/authorization errors

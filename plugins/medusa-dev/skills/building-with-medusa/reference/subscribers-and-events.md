@@ -3,6 +3,7 @@
 Subscribers are asynchronous functions that execute when specific events are emitted. Use them to perform actions after commerce operations, like sending confirmation emails when an order is placed.
 
 ## Contents
+
 - [When to Use Subscribers](#when-to-use-subscribers)
 - [Creating a Subscriber](#creating-a-subscriber)
 - [Common Commerce Events](#common-commerce-events)
@@ -21,11 +22,13 @@ Use subscribers when you need to **react to events** that happen in your applica
 - ✅ Perform non-blocking side effects
 
 **Don't use subscribers for:**
+
 - ❌ Periodic tasks (use [scheduled jobs](scheduled-jobs.md) instead)
 - ❌ Operations that must block the main flow (use workflows instead)
 - ❌ Scheduling future tasks (subscribers execute immediately)
 
 **Subscribers vs Scheduled Jobs:**
+
 - **Subscriber**: Reacts to `order.placed` event and sends confirmation email (event-driven)
 - **Scheduled Job**: Finds abandoned carts every 6 hours and sends emails (polling pattern)
 
@@ -347,6 +350,7 @@ export default async function mySubscriber({
 ### 3. Keep Subscribers Fast and Non-Blocking
 
 Subscribers should perform quick operations. For long-running tasks, consider:
+
 - Queuing the task for background processing
 - Using scheduled jobs instead
 - Breaking the work into smaller steps

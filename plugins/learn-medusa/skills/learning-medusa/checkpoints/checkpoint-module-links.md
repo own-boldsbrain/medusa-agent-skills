@@ -43,6 +43,7 @@ Let me verify your implementation. Please share the following:
 Show me your `src/modules/brand/index.ts` file.
 
 **Key things to check**:
+
 - [ ] Exports module with `Module()`
 - [ ] Module has `service` property pointing to BrandService
 - [ ] Uses `Modules.BRAND` constant for module name (or string "brand")
@@ -52,6 +53,7 @@ Show me your `src/modules/brand/index.ts` file.
 Show me if you created `src/modules/brand/types/index.ts` for module constants.
 
 **Key things to check**:
+
 - [ ] Exports `MODULE_NAME = "brand"`
 - [ ] Exports `Modules.BRAND` constant (if using Modules enum)
 
@@ -62,17 +64,20 @@ Show me if you created `src/modules/brand/types/index.ts` for module constants.
 Show me your `src/links/brand-product.ts` file.
 
 **Key things to check**:
+
 - [ ] Imports `defineLink` from "@medusajs/framework/utils"
 - [ ] Imports `Modules` from "@medusajs/framework/utils" (for ProductModule reference)
 - [ ] Imports `BrandModule` from "../modules/brand"
 - [ ] Calls `defineLink()` with two arguments
 - [ ] First argument configures product side:
+
   ```typescript
   {
     linkable: ProductModule.linkable.product,
     isList: true,
   }
   ```
+
 - [ ] Second argument is `BrandModule.linkable.brand`
 - [ ] File has default export: `export default defineLink(...)`
 
@@ -105,6 +110,7 @@ npm run build
 **Cause**: Module not registered in medusa-config.ts, or server not recognizing the module
 
 **Fix**:
+
 1. Verify brand module is in `medusa-config.ts` modules array
 2. Restart dev server: `npm run dev`
 3. Try sync again: `npx medusa db:sync-links`
@@ -123,6 +129,7 @@ Verify each of these steps:
 At this point, you should understand:
 
 **Module Isolation**:
+
 ```
 ┌─────────────┐           ┌──────────────┐
 │   Brand     │           │   Product    │
@@ -144,6 +151,7 @@ At this point, you should understand:
 ```
 
 **Why module links matter**:
+
 - **Flexibility**: Modules can be added/removed without breaking others
 - **Testability**: Test Brand Module without needing Product Module
 - **Scalability**: Modules can be extracted into separate packages

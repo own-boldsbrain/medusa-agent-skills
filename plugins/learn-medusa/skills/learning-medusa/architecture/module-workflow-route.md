@@ -1,8 +1,8 @@
-# Architecture Deep Dive: Module → Workflow → API Route Pattern
+# Análise aprofundada da arquitetura: Módulo → Fluxo de trabalho → Padrão de rota de API
 
-This is the fundamental three-layer pattern in Medusa for building features. Understanding this pattern is critical to building maintainable, scalable applications with Medusa.
+Este é o padrão fundamental de três camadas do Medusa para a criação de recursos. Compreender esse padrão é fundamental para desenvolver aplicativos sustentáveis e escaláveis com o Medusa.
 
-## The Three-Layer Pattern
+## O Padrão de Três Camadas
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -33,13 +33,13 @@ This is the fundamental three-layer pattern in Medusa for building features. Und
 └─────────────────────────────────────────────────┘
 ```
 
-## Why This Pattern?
+## Por que esse padrão?
 
-### 1. Separation of Concerns
+### 1. Separação de interesses
 
-Each layer has ONE responsibility:
+Cada camada tem UMA responsabilidade:
 
-- **API Route**: Handle HTTP (request parsing, response formatting)
+- **Rota da API**: Processar HTTP (análise de solicitações, formatação de respostas)
 - **Workflow**: Orchestrate business logic (coordination, rollback)
 - **Module**: Manage data (persistence, retrieval)
 
@@ -162,6 +162,7 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
 ```
 
 **Problems**:
+
 1. ❌ Business logic in HTTP layer - not reusable
 2. ❌ Manual rollback - error-prone and hard to maintain
 3. ❌ Can't test business logic without HTTP
@@ -235,6 +236,7 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
 ```
 
 **Benefits**:
+
 1. ✅ Business logic in workflow - reusable from HTTP, GraphQL, CLI, jobs
 2. ✅ Automatic rollback - Medusa handles compensation
 3. ✅ Each layer testable independently
@@ -285,6 +287,7 @@ export const createProductWithInventoryWorkflow = createWorkflow(
 **What happens if step 5 fails (notification service down)?**
 
 Medusa automatically executes compensations in reverse order:
+
 1. Step 4 compensation: Unlink collections
 2. Step 3 compensation: Deallocate inventory
 3. Step 2 compensation: Delete pricing
@@ -294,7 +297,8 @@ Medusa automatically executes compensations in reverse order:
 
 ## When to Use Each Layer
 
-### Module Layer - Use When You Need To:
+### Module Layer - Use When You Need To
+
 - Define data models
 - Store/retrieve data
 - Perform CRUD operations
@@ -302,7 +306,8 @@ Medusa automatically executes compensations in reverse order:
 
 **DON'T** put business logic here (e.g., "when product is created, send email").
 
-### Workflow Layer - Use When You Need To:
+### Workflow Layer - Use When You Need To
+
 - Coordinate multiple steps
 - Handle rollback scenarios
 - Orchestrate cross-module operations
@@ -310,7 +315,8 @@ Medusa automatically executes compensations in reverse order:
 
 **DON'T** handle HTTP concerns here (e.g., parsing request body, setting status codes).
 
-### API Route Layer - Use When You Need To:
+### API Route Layer - Use When You Need To
+
 - Accept HTTP requests
 - Validate input
 - Execute workflows
@@ -400,6 +406,7 @@ The Module → Workflow → API Route pattern is fundamental to building maintai
 - **API Routes**: HTTP interface (request/response handling)
 
 **Benefits**:
+
 - Separation of concerns
 - Reusability (workflows callable from anywhere)
 - Testability (test each layer independently)

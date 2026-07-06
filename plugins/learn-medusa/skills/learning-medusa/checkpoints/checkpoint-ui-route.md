@@ -40,6 +40,7 @@ Let me verify your implementation. Please share the following:
 Show me your updated `src/api/admin/brands/route.ts` file with the GET handler.
 
 **Key things to check**:
+
 - [ ] Defines `GET` function
 - [ ] Resolves query service
 - [ ] Calls `query.graph()` with:
@@ -54,6 +55,7 @@ Show me your updated `src/api/admin/brands/route.ts` file with the GET handler.
 Show me the GET /admin/brands configuration in `src/api/middlewares.ts`.
 
 **Key things to check**:
+
 - [ ] Route matcher: `"/admin/brands"`
 - [ ] Method: `"GET"`
 - [ ] Uses `validateAndTransformQuery()` with:
@@ -67,6 +69,7 @@ Show me the GET /admin/brands configuration in `src/api/middlewares.ts`.
 Show me your `src/admin/routes/brands/page.tsx` file.
 
 **Key things to check**:
+
 - [ ] Imports `defineRouteConfig` from "@medusajs/admin-sdk"
 - [ ] Imports icon (e.g., `TagSolid`) from "@medusajs/icons"
 - [ ] Imports UI components: `Container`, `Heading`, `DataTable`, etc. from "@medusajs/ui"
@@ -91,7 +94,7 @@ Show me your `src/admin/routes/brands/page.tsx` file.
 ### 4. Test: Access UI Route
 
 1. Ensure dev server is running: `npm run dev`
-2. Open admin: http://localhost:9000/app
+2. Open admin: <http://localhost:9000/app>
 3. Look for "Brands" in the sidebar navigation
 
 **Expected**: You should see a "Brands" menu item with the icon you chose.
@@ -102,6 +105,7 @@ Show me your `src/admin/routes/brands/page.tsx` file.
 2. View the brands table
 
 **Expected**:
+
 - Page displays with "Brands" heading
 - Table shows columns: ID, Name, Products (count)
 - Table shows all brands you've created
@@ -123,7 +127,9 @@ Show me your `src/admin/routes/brands/page.tsx` file.
 **Causes and Fixes**:
 
 **Cause 1**: Config not exported
+
 - **Fix**: Ensure you export config:
+
   ```typescript
   export const config = defineRouteConfig({
     label: "Brands",
@@ -132,9 +138,11 @@ Show me your `src/admin/routes/brands/page.tsx` file.
   ```
 
 **Cause 2**: File not named correctly
+
 - **Fix**: Must be named `page.tsx` (not `route.tsx`)
 
 **Cause 3**: File not in correct location
+
 - **Fix**: Should be at `src/admin/routes/brands/page.tsx`
 
 ### "404 Not Found" when accessing /app/brands
@@ -145,11 +153,13 @@ Show me your `src/admin/routes/brands/page.tsx` file.
 
 **Fix**:
 Ensure the structure is:
+
 ```
 src/admin/routes/brands/page.tsx
 ```
 
 NOT:
+
 ```
 src/admin/routes/brands.tsx  ❌
 src/admin/routes/brands/index.tsx  ❌
@@ -162,15 +172,18 @@ src/admin/routes/brands/index.tsx  ❌
 **Causes and Fixes**:
 
 **Cause 1**: Backend API not working
+
 - **Fix**: Test API directly: `curl http://localhost:9000/admin/brands`
 - If API returns data, issue is in frontend
 - If API returns empty, issue is in backend (see Checkpoint 2.3)
 
 **Cause 2**: Query not fetching data
+
 - **Fix**: Check browser DevTools Console for errors
 - Check Network tab - is request being made?
 
 **Cause 3**: Data structure mismatch
+
 - **Fix**: Check that API returns `{ brands: [...] }` format
 - Ensure useQuery is typed as `BrandsResponse`
 
@@ -182,6 +195,7 @@ src/admin/routes/brands/index.tsx  ❌
 
 **Fix**:
 Use optional chaining in column definition:
+
 ```typescript
 columnHelper.accessor("products", {
   header: "Products",
@@ -199,15 +213,19 @@ columnHelper.accessor("products", {
 **Causes and Fixes**:
 
 **Cause 1**: offset not calculated correctly
+
 - **Fix**: Ensure offset = pageIndex * pageSize
 
 **Cause 2**: Query key doesn't include pagination
+
 - **Fix**: Include offset in queryKey:
+
   ```typescript
   queryKey: ["brands", limit, offset]
   ```
 
 **Cause 3**: Backend not using offset parameter
+
 - **Fix**: Verify middleware passes offset to query.graph()
 
 ### "Cannot use sdk.client.fetch"
@@ -217,6 +235,7 @@ columnHelper.accessor("products", {
 **Cause**: SDK not initialized
 
 **Fix**:
+
 1. Ensure `src/admin/lib/sdk.ts` exists and exports sdk
 2. Import correctly: `import { sdk } from "../../lib/sdk"`
 3. Check the number of `../` matches your file structure
@@ -229,6 +248,7 @@ columnHelper.accessor("products", {
 
 **Fix**:
 Use the full DataTable component structure:
+
 ```tsx
 <DataTable instance={table}>
   <DataTable.Toolbar>
@@ -247,11 +267,13 @@ Use the full DataTable component structure:
 
 **Fix**:
 Icons are included with Medusa admin. Check import:
+
 ```typescript
 import { TagSolid } from "@medusajs/icons"
 ```
 
 If still not working, ensure admin dependencies are installed:
+
 ```bash
 npm install
 ```
@@ -263,27 +285,32 @@ npm install
 **Causes and Fixes**:
 
 **Cause 1**: Backend not including products in response
+
 - **Fix**: Check middleware defaults include `"products.*"`
 
 **Cause 2**: Links not created
+
 - **Fix**: Verify links exist (see Checkpoint 2.2)
 
 **Cause 3**: Column accessing wrong property
+
 - **Fix**: Ensure column accessor matches API response structure
 
 ### Route accessible by URL but not in sidebar
 
-**Symptom**: Can access http://localhost:9000/app/brands but no sidebar link
+**Symptom**: Can access <http://localhost:9000/app/brands> but no sidebar link
 
 **Cause**: Config not exported or exported incorrectly
 
 **Fix**:
 Must export config as named export:
+
 ```typescript
 export const config = defineRouteConfig({ ... })
 ```
 
 NOT:
+
 ```typescript
 export default defineRouteConfig({ ... })  ❌
 ```
@@ -400,6 +427,7 @@ Once this checkpoint passes:
    - Brands UI Route (manage brands with table)
 
 3. **Commit your work**:
+
    ```bash
    git add .
    git commit -m "Complete Lesson 3: Admin dashboard customization"

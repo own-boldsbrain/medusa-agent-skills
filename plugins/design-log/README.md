@@ -7,6 +7,7 @@ Teaches AI agents how to use the **YSH Store Design-Log methodology** — a stru
 AI agents lose context between sessions. The design-log system solves this by storing architectural and strategic decisions as structured Markdown files in the `design-log/` folder of the YSH Store repository. Every agent **must** consult these logs before taking any action — this is a non-negotiable rule defined in `AGENTS.md` Section 2.1.
 
 This plugin teaches agents exactly how to:
+
 1. **Consult** existing design-log entries before coding
 2. **Create** new entries when a decision needs to be recorded
 3. **Update** entry status as work progresses (from `draft` → `done`)

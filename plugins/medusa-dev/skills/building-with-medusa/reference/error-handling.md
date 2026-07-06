@@ -3,6 +3,7 @@
 Medusa provides the `MedusaError` class for consistent error responses across your API routes and custom code.
 
 ## Contents
+
 - [Using MedusaError](#using-medusaerror)
 - [Error Types](#error-types)
 - [Error Response Format](#error-response-format)
@@ -25,6 +26,7 @@ throw new MedusaError(
 ## Error Types
 
 ### NOT_FOUND
+
 Use when a requested resource doesn't exist:
 
 ```typescript
@@ -37,6 +39,7 @@ throw new MedusaError(
 **HTTP Status**: 404
 
 ### INVALID_DATA
+
 Use when request data fails validation or is malformed:
 
 ```typescript
@@ -49,6 +52,7 @@ throw new MedusaError(
 **HTTP Status**: 400
 
 ### UNAUTHORIZED
+
 Use when authentication is required but not provided:
 
 ```typescript
@@ -61,6 +65,7 @@ throw new MedusaError(
 **HTTP Status**: 401
 
 ### NOT_ALLOWED
+
 Use when the user is authenticated but doesn't have permission:
 
 ```typescript
@@ -73,6 +78,7 @@ throw new MedusaError(
 **HTTP Status**: 403
 
 ### CONFLICT
+
 Use when the operation conflicts with existing data:
 
 ```typescript
@@ -85,6 +91,7 @@ throw new MedusaError(
 **HTTP Status**: 409
 
 ### DUPLICATE_ERROR
+
 Use when trying to create a duplicate resource:
 
 ```typescript
@@ -97,6 +104,7 @@ throw new MedusaError(
 **HTTP Status**: 422
 
 ### INVALID_STATE
+
 Use when the resource is in an invalid state for the operation:
 
 ```typescript

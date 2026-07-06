@@ -11,8 +11,10 @@ This is a comprehensive catalog of errors you might encounter while learning Med
 **Cause**: Module not registered in `medusa-config.ts`
 
 **Solution**:
+
 1. Open `medusa-config.ts`
 2. Add module to `modules` array:
+
    ```typescript
    modules: [
      {
@@ -21,6 +23,7 @@ This is a comprehensive catalog of errors you might encounter while learning Med
      },
    ]
    ```
+
 3. Restart dev server: `npm run dev`
 
 ---
@@ -33,6 +36,7 @@ This is a comprehensive catalog of errors you might encounter while learning Med
 
 **Solution**:
 Use camelCase in module definition:
+
 ```typescript
 // ❌ WRONG
 export default Module("brand-module", { ... })
@@ -51,6 +55,7 @@ export default Module("brand", { ... })
 **Cause**: Medusa hasn't regenerated types for new module
 
 **Solution**:
+
 1. Ensure migrations ran successfully: `npx medusa db:migrate`
 2. Restart dev server (regenerates types): `npm run dev`
 3. If issue persists, rebuild: `npm run build`
@@ -67,6 +72,7 @@ export default Module("brand", { ... })
 
 **Solution**:
 Remove `async` keyword from workflow function:
+
 ```typescript
 // ❌ WRONG
 createWorkflow("name", async function (input) {
@@ -89,6 +95,7 @@ createWorkflow("name", function (input) {
 
 **Solution**:
 Remove `await` - steps are called synchronously in workflow definition:
+
 ```typescript
 // ❌ WRONG
 const result = await createBrandStep(input)
@@ -108,6 +115,7 @@ const result = createBrandStep(input)
 **Cause**: Middleware not configured correctly
 
 **Solution**:
+
 1. Check `matcher` exactly matches route: `"/admin/brands"`
 2. Check `method` is uppercase: `"POST"`
 3. Ensure file is at `src/api/middlewares.ts`
@@ -122,6 +130,7 @@ const result = createBrandStep(input)
 **Cause**: File not in correct location or not named correctly
 
 **Solution**:
+
 1. Ensure file is at `src/api/admin/brands/route.ts`
 2. Ensure function is exported with correct name: `export const POST`
 3. Restart dev server
@@ -138,6 +147,7 @@ const result = createBrandStep(input)
 **Cause**: Module not registered or server not recognizing module
 
 **Solution**:
+
 1. Verify module is in `medusa-config.ts`
 2. Restart dev server: `npm run dev`
 3. Try sync again: `npx medusa db:sync-links`
@@ -154,6 +164,7 @@ const result = createBrandStep(input)
 
 **Solution**:
 Use default values:
+
 ```typescript
 const {
   data: brands,
@@ -178,6 +189,7 @@ res.json({
 
 **Solution**:
 Add to middleware defaults:
+
 ```typescript
 validateAndTransformQuery(GetBrandsSchema, {
   defaults: ["id", "name", "products.*"],
@@ -197,6 +209,7 @@ validateAndTransformQuery(GetBrandsSchema, {
 
 **Solution**:
 Find exact version and install:
+
 ```bash
 pnpm list @tanstack/react-query --depth=10 | grep @medusajs/dashboard
 pnpm add @tanstack/react-query@5.x.x
@@ -211,22 +224,29 @@ pnpm add @tanstack/react-query@5.x.x
 **Causes and Solutions**:
 
 **Cause 1**: Wrong zone name
+
 - **Solution**: Use exact zone: `"product.details.before"`
 
 **Cause 2**: Config not exported
+
 - **Solution**: Export config:
+
   ```typescript
   export const config = defineWidgetConfig({ zone: "..." })
   ```
 
 **Cause 3**: File not in correct location
+
 - **Solution**: Ensure file is at `src/admin/widgets/[name].tsx`
 
 **Cause 4**: Dev server not restarted
+
 - **Solution**: Restart: `npm run dev`
 
 **Cause 5**: Component not default exported
+
 - **Solution**: Add default export:
+
   ```typescript
   export default WidgetComponent
   ```
@@ -240,7 +260,9 @@ pnpm add @tanstack/react-query@5.x.x
 **Causes and Solutions**:
 
 **Cause 1**: Config not exported
+
 - **Solution**: Export config:
+
   ```typescript
   export const config = defineRouteConfig({
     label: "Brands",
@@ -249,12 +271,15 @@ pnpm add @tanstack/react-query@5.x.x
   ```
 
 **Cause 2**: Wrong file name
+
 - **Solution**: Must be `page.tsx` (not `route.tsx` or `index.tsx`)
 
 **Cause 3**: File not in correct location
+
 - **Solution**: Should be at `src/admin/routes/brands/page.tsx`
 
 **Cause 4**: Dev server not restarted
+
 - **Solution**: Restart dev server
 
 ---
@@ -266,7 +291,9 @@ pnpm add @tanstack/react-query@5.x.x
 **Cause**: SDK not imported or initialized
 
 **Solution**:
+
 1. Create `src/admin/lib/sdk.ts`:
+
    ```typescript
    import Medusa from "@medusajs/js-sdk"
 
@@ -276,7 +303,9 @@ pnpm add @tanstack/react-query@5.x.x
      auth: { type: "session" },
    })
    ```
+
 2. Import in widget/route:
+
    ```typescript
    import { sdk } from "../../lib/sdk"
    ```
@@ -292,7 +321,9 @@ pnpm add @tanstack/react-query@5.x.x
 **Cause**: Database not running or wrong credentials
 
 **Solution**:
+
 1. Check database is running:
+
    ```bash
    # macOS with Homebrew
    brew services list
@@ -302,11 +333,15 @@ pnpm add @tanstack/react-query@5.x.x
    sudo systemctl status postgresql
    sudo systemctl start postgresql
    ```
+
 2. Check credentials in `.env`:
+
    ```
    DATABASE_URL=postgres://user:password@localhost:5432/medusa-db
    ```
+
 3. Test connection:
+
    ```bash
    psql $DATABASE_URL -c "SELECT 1"
    ```
@@ -321,6 +356,7 @@ pnpm add @tanstack/react-query@5.x.x
 
 **Solution**:
 Grant permissions to user:
+
 ```bash
 psql postgres -c "ALTER USER your_user CREATEDB;"
 psql your_database -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO your_user;"
@@ -358,6 +394,7 @@ Medusa stores prices as-is, NOT in cents or smallest currency unit:
 ```
 
 **Examples**:
+
 - $10.00 → `"amount": 10` (not `1000`)
 - €25.50 → `"amount": 25.50` (not `2550`)
 - ¥1000 → `"amount": 1000` (not `100000`)
@@ -383,6 +420,7 @@ If you encounter an error not listed here:
 4. **Use MCP server**: Query MedusaDocs for latest information
 
 When asking for help, include:
+
 - Error message (full stack trace)
 - Steps to reproduce
 - Your code (relevant files)

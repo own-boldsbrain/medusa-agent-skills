@@ -1,6 +1,7 @@
 # Custom Modules
 
 ## Contents
+
 - [When to Create a Custom Module](#when-to-create-a-custom-module)
 - [Module Structure](#module-structure)
 - [Creating a Custom Module - Implementation Checklist](#creating-a-custom-module---implementation-checklist)
@@ -97,6 +98,7 @@ export default Module(BLOG_MODULE, {
 ```
 
 **⚠️ CRITICAL - Module Name Format:**
+
 - Module names MUST be in camelCase
 - **NEVER use dashes (kebab-case)** in module names
 - ✅ CORRECT: `"blog"`, `"productReview"`, `"orderTracking"`
@@ -143,11 +145,13 @@ npx medusa db:migrate
 ```
 
 **⚠️ CRITICAL: These are TWO separate commands:**
+
 - ✅ CORRECT: Run `npx medusa db:generate blog` then `npx medusa db:migrate`
 - ❌ WRONG: `npx medusa db:generate blog "create blog module"` (no description parameter!)
 - ❌ WRONG: Combining into one command
 
 **Why this matters:**
+
 - Migrations create the database tables for your module's data models
 - Without migrations, the module service methods (createPosts, listPosts, etc.) will fail
 - You must generate migrations BEFORE running them

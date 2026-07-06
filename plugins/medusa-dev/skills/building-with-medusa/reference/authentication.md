@@ -3,6 +3,7 @@
 Authentication in Medusa secures API routes and ensures only authorized users can access protected resources.
 
 ## Contents
+
 - [Default Protected Routes](#default-protected-routes)
 - [Authentication Methods](#authentication-methods)
 - [Custom Protected Routes](#custom-protected-routes)
@@ -14,11 +15,13 @@ Authentication in Medusa secures API routes and ensures only authorized users ca
 Medusa automatically protects certain route prefixes:
 
 ### Admin Routes (`/admin/*`)
+
 - **Who can access**: Authenticated admin users only
 - **Authentication methods**: Session, Bearer token, API key
 - **Example**: `/admin/products`, `/admin/custom-reports`
 
 ### Customer Routes (`/store/customers/me/*`)
+
 - **Who can access**: Authenticated customers only
 - **Authentication methods**: Session, Bearer token
 - **Example**: `/store/customers/me/orders`, `/store/customers/me/addresses`
@@ -28,16 +31,19 @@ Medusa automatically protects certain route prefixes:
 ## Authentication Methods
 
 ### Session Authentication
+
 - Used after login via email/password
 - Cookie-based session management
 - Automatically handled by Medusa SDK
 
 ### Bearer Token (JWT)
+
 - Token-based authentication
 - Passed in `Authorization: Bearer <token>` header
 - Used by frontend applications
 
 ### API Key
+
 - Admin-only authentication method
 - Used for server-to-server communication
 - Passed in `x-medusa-access-token` header
@@ -47,6 +53,7 @@ Medusa automatically protects certain route prefixes:
 **⚠️ CRITICAL: Only add `authenticate` middleware to routes OUTSIDE the default prefixes.**
 
 Routes with these prefixes are automatically authenticated - **do NOT add middleware:**
+
 - `/admin/*` - Already requires authenticated admin user
 - `/store/customers/me/*` - Already requires authenticated customer
 
@@ -96,6 +103,7 @@ export default defineMiddlewares({
 ```
 
 **Parameters:**
+
 - First parameter: `"user"` for admin users, `"customer"` for customers
 - Second parameter: Array of allowed authentication methods
 
@@ -230,6 +238,7 @@ export async function DELETE(req: MedusaRequest, res: MedusaResponse) {
 ```
 
 **Why manual checks are wrong:**
+
 - The `authenticate` middleware already validates authentication
 - If authentication failed, the request never reaches your handler
 - Manual checks suggest you don't trust or understand the middleware

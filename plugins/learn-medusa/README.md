@@ -31,19 +31,19 @@ An interactive, guided tutorial for learning Medusa development from scratch by 
 claude
 ```
 
-2. Add Medusa marketplace to Claude Code:
+1. Add Medusa marketplace to Claude Code:
 
 ```bash
 /plugin marketplace add medusajs/medusa-agent-skills
 ```
 
-3. Install the plugin:
+1. Install the plugin:
 
 ```bash
 /plugin install learn-medusa@medusa
 ```
 
-4. Verify the plugin is loaded:
+1. Verify the plugin is loaded:
 
 ```bash
 /plugin
@@ -67,6 +67,7 @@ npx skills add medusajs/medusa-agent-skills
 ## Usage
 
 Ask Claude to teach you:
+
 - "Teach me how to build with Medusa"
 - "Guide me through Medusa development"
 - "I want to learn Medusa"

@@ -18,6 +18,7 @@ By the end of this lesson, you will:
 In Lesson 1, you created a brands system. Now we'll integrate it with Medusa's core Product Module:
 
 **New capabilities**:
+
 - Associate a brand with a product when creating it
 - Retrieve a product with its brand details
 - List all brands with their associated products
@@ -59,6 +60,7 @@ export const Product = model.define("product", {
 ```
 
 **Problems**:
+
 - Core modules shouldn't know about custom modules
 - Breaks when Medusa updates
 - Can't reuse Brand Module elsewhere
@@ -99,12 +101,14 @@ Medusa provides three tools to extend core features safely:
 A **Module Link** creates a relationship between data models of different modules while maintaining module isolation.
 
 **Key properties**:
+
 - Neither module imports from the other
 - Link is managed separately in `src/links/`
 - Both modules remain reusable
 - Relationship is defined declaratively
 
 **Think of it like a junction table**:
+
 - In SQL: A `product_brand` table with `product_id` and `brand_id` columns
 - In Medusa: A link definition that creates this automatically
 
@@ -131,23 +135,28 @@ export default defineLink(
 **Let's break this down**:
 
 **1. Import Module Definitions**:
+
 ```typescript
 import BrandModule from "../modules/brand"
 import ProductModule from "@medusajs/medusa/product"
 ```
+
 - Custom modules: Import from `../modules/[name]`
 - Core modules: Import from `@medusajs/medusa/[module-name]`
 
 **2. Access Linkable Property**:
+
 ```typescript
 ProductModule.linkable.product
 BrandModule.linkable.brand
 ```
+
 - Every module exports a `linkable` property
 - Contains link configurations for each data model
 - Property name is snake-case model name
 
 **3. Define the Link**:
+
 ```typescript
 defineLink(
   { linkable: ProductModule.linkable.product, isList: true },
@@ -156,10 +165,12 @@ defineLink(
 ```
 
 **Parameters**:
+
 - First: Product (with `isList: true` - many products per brand)
 - Second: Brand
 
 **The `isList` property**:
+
 ```
 Brand ─── (1 to many) ─── Products
 
@@ -178,6 +189,7 @@ npx medusa db:migrate
 ```
 
 This:
+
 - Creates a `link_product_brand` table (or similar)
 - Stores relationships between product IDs and brand IDs
 - Enables querying across modules
@@ -209,12 +221,15 @@ This:
 ### Implementation Check
 
 1. **Check migrations succeeded**:
+
    ```bash
    npx medusa db:migrate
    ```
+
    Expected: Migration runs successfully
 
 2. **Check build succeeds**:
+
    ```bash
    npm run build
    ```
@@ -225,10 +240,12 @@ This:
 ### Common Issues
 
 **"Link not found"**
+
 - Check file is in `src/links/` directory
 - Ensure proper import paths
 
 **"Migration failed"**
+
 - Check database is running
 - Review migration output for errors
 
@@ -247,6 +264,7 @@ This:
 **Workflow Hooks** are predefined points in core workflows where you can inject custom logic.
 
 **Example**: Medusa's `createProductsWorkflow` has hooks:
+
 - `productsCreated` - Runs after products are created
 - `productsUpdated` - Runs after products are updated
 - `productsDeleted` - Runs after products are deleted
@@ -254,6 +272,7 @@ This:
 You can "consume" (listen to) these hooks and perform custom actions.
 
 **Why hooks?**
+
 - Extend core workflows without modifying them
 - Keep customizations separate and maintainable
 - Workflows remain upgradeable
@@ -320,30 +339,37 @@ createProductsWorkflow.hooks.productsCreated(
 **Let's break this down**:
 
 **1. Hook Consumption**:
+
 ```typescript
 createProductsWorkflow.hooks.productsCreated(
   async ({ products, additional_data }, { container }) => { ... },
   async (links, { container }) => { ... }
 )
 ```
+
 - First parameter: Hook step function
 - Second parameter: Compensation function (for rollback)
 
 **2. Hook Input**:
+
 ```typescript
 { products, additional_data }
 ```
+
 - `products`: Array of created products (from workflow)
 - `additional_data`: Custom data from API request body
 
 **3. Verify Brand Exists**:
+
 ```typescript
 await brandModuleService.retrieveBrand(additional_data.brand_id)
 ```
+
 - Throws error if brand doesn't exist
 - Prevents linking to non-existent brands
 
 **4. Create Links**:
+
 ```typescript
 const link = container.resolve("link")
 const links = [{
@@ -354,10 +380,12 @@ await link.create(links)
 ```
 
 **Link object structure**:
+
 - Keys: Module names (in the order defined in `defineLink`)
 - Values: Objects with `{model}_id` properties
 
 **Order matters!** Must match the order in `defineLink`:
+
 ```typescript
 // In defineLink:
 defineLink(ProductModule.linkable.product, BrandModule.linkable.brand)
@@ -370,12 +398,14 @@ defineLink(ProductModule.linkable.product, BrandModule.linkable.brand)
 ```
 
 **5. Compensation Function**:
+
 ```typescript
 async (links, { container }) => {
   const link = container.resolve("link")
   await link.dismiss(links)
 }
 ```
+
 - Removes links if an error occurs later
 - Maintains data consistency
 
@@ -411,11 +441,13 @@ export default defineMiddlewares({
 **What's happening?**
 
 **`additionalDataValidator`**:
+
 - Configures validation for `additional_data` request body parameter
 - Uses Zod schemas for each property
 - Properties are passed to workflow hooks
 
 **Why optional?**
+
 - Not all products need a brand
 - Allows creating products without brands
 
@@ -448,6 +480,7 @@ export default defineMiddlewares({
 ### Implementation Check
 
 1. **Build succeeds**:
+
    ```bash
    npm run build
    ```
@@ -459,6 +492,7 @@ export default defineMiddlewares({
 ### Test Creating Product with Brand
 
 **Step 1: Create a brand** (if you haven't already):
+
 ```bash
 curl -X POST 'http://localhost:9000/admin/brands' \
   -H 'Authorization: Bearer {token}' \
@@ -468,12 +502,14 @@ curl -X POST 'http://localhost:9000/admin/brands' \
 Save the brand ID from the response.
 
 **Step 2: Get a shipping profile ID** (required for products):
+
 ```bash
 curl 'http://localhost:9000/admin/shipping-profiles' \
   -H 'Authorization: Bearer {token}'
 ```
 
 **Step 3: Create product with brand**:
+
 ```bash
 curl -X POST 'http://localhost:9000/admin/products' \
   -H 'Authorization: Bearer {token}' \
@@ -498,15 +534,18 @@ curl -X POST 'http://localhost:9000/admin/products' \
 ### Common Issues
 
 **"Brand not found"**
+
 - Brand ID is wrong or brand doesn't exist
 - Create brand first
 
 **"Hook not running"**
+
 - Check file is in `src/workflows/hooks/`
 - Restart dev server
 - Check for TypeScript errors
 
 **"Invalid additional_data"**
+
 - Check `additionalDataValidator` is configured correctly
 - Ensure `brand_id` is a string
 
@@ -525,12 +564,14 @@ curl -X POST 'http://localhost:9000/admin/products' \
 Medusa's core API routes accept a `fields` query parameter to retrieve linked data.
 
 **Get product with brand**:
+
 ```bash
 curl 'http://localhost:9000/admin/products/{product_id}?fields=+brand.*' \
   -H 'Authorization: Bearer {token}'
 ```
 
 **Response**:
+
 ```json
 {
   "product": {
@@ -547,6 +588,7 @@ curl 'http://localhost:9000/admin/products/{product_id}?fields=+brand.*' \
 ```
 
 **The `+brand.*` syntax**:
+
 - `+` = Add to default fields (don't replace)
 - `brand` = Linked model name (singular)
 - `.*` = All properties of brand
@@ -589,13 +631,16 @@ export const GET = async (
 **What's happening?**
 
 **1. Resolve Query**:
+
 ```typescript
 const query = req.scope.resolve("query")
 ```
+
 - Query is a Medusa framework tool for cross-module queries
 - Registered in the container
 
 **2. Query Linked Data**:
+
 ```typescript
 await query.graph({
   entity: "brand",
@@ -604,6 +649,7 @@ await query.graph({
 ```
 
 **Parameters**:
+
 - `entity`: Data model name (as defined in `model.define`)
 - `fields`: Array of properties and relations to retrieve
   - `"*"` = All properties of brand
@@ -637,6 +683,7 @@ Because brands are linked to a list of products (`isList: true` in the link defi
 ### Implementation Check
 
 1. **Build succeeds**:
+
    ```bash
    npm run build
    ```
@@ -647,6 +694,7 @@ Because brands are linked to a list of products (`isList: true` in the link defi
 ### Test Querying
 
 **Test 1: Get product with brand**:
+
 ```bash
 curl 'http://localhost:9000/admin/products/{product_id}?fields=+brand.*' \
   -H 'Authorization: Bearer {token}'
@@ -655,12 +703,14 @@ curl 'http://localhost:9000/admin/products/{product_id}?fields=+brand.*' \
 **Expected**: Product with `brand` property
 
 **Test 2: Get brands with products**:
+
 ```bash
 curl 'http://localhost:9000/admin/brands' \
   -H 'Authorization: Bearer {token}'
 ```
 
 **Expected Response**:
+
 ```json
 {
   "brands": [
@@ -682,11 +732,13 @@ curl 'http://localhost:9000/admin/brands' \
 ### Common Issues
 
 **"Cannot query products"**
+
 - Check link is defined correctly
 - Ensure migrations ran
 - Verify products are actually linked to brand
 
 **"Brand property missing on product"**
+
 - Forgot `?fields=+brand.*` in query
 - Link not created when product was created
 
@@ -712,21 +764,25 @@ Amazing work! You've extended Medusa's core functionality:
 ### What You Learned
 
 **Module Links**:
+
 - Create relationships without breaking module isolation
 - Neither module depends on the other
 - Links are managed separately
 
 **Workflow Hooks**:
+
 - Extend core workflows without modifying them
 - Inject custom logic at predefined points
 - Include rollback logic for data consistency
 
 **Additional Data**:
+
 - Pass custom parameters through core API routes
 - Validate with Zod schemas
 - Accessible in workflow hooks
 
 **Query**:
+
 - Retrieve data across modules
 - Use `fields` parameter in core routes
 - Use Query.graph() in custom routes
@@ -739,6 +795,7 @@ Amazing work! You've extended Medusa's core functionality:
 <summary>Answer</summary>
 
 **Problems with direct column**:
+
 ```typescript
 // ❌ This breaks module isolation
 export const Product = model.define("product", {
@@ -752,10 +809,12 @@ export const Product = model.define("product", {
 - Violates single responsibility
 
 **Module Links solve this**:
+
 - Product Module: No knowledge of brands
 - Brand Module: No knowledge of products
 - Link: Separate concern, easy to maintain
 - Both modules remain reusable
+
 </details>
 
 **2. How does additional_data reach the workflow hook?**
@@ -764,11 +823,13 @@ export const Product = model.define("product", {
 <summary>Answer</summary>
 
 Flow:
+
 1. Client sends request: `{ additional_data: { brand_id: "..." } }`
 2. Middleware validates: `additionalDataValidator: { brand_id: z.string() }`
 3. API route executes workflow
 4. Workflow passes to hooks: `{ products, additional_data }`
 5. Your hook consumes: `if (additional_data?.brand_id) { ... }`
+
 </details>
 
 **3. What happens if brand creation fails after linking?**
@@ -777,6 +838,7 @@ Flow:
 <summary>Answer</summary>
 
 The compensation function runs:
+
 ```typescript
 async (links, { container }) => {
   const link = container.resolve("link")
@@ -806,6 +868,7 @@ In **Lesson 3: Customize Admin Dashboard**, you'll learn how to:
 - **Integrate Medusa UI** components
 
 You'll build:
+
 - A widget showing brand name on product pages
 - A brands management page with a data table
 - Full CRUD operations in the admin dashboard

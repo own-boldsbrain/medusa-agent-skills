@@ -43,6 +43,7 @@ Let me verify your implementation. Please share the following:
 Show me your `src/workflows/create-brand/steps/create-brand.ts` file.
 
 **Key things to check**:
+
 - [ ] Step function is defined with `createStep()`
 - [ ] Step name is descriptive (e.g., "create-brand")
 - [ ] Input has proper TypeScript type
@@ -58,6 +59,7 @@ Show me your `src/workflows/create-brand/steps/create-brand.ts` file.
 Show me your `src/workflows/create-brand/index.ts` file.
 
 **Key things to check**:
+
 - [ ] Uses `createWorkflow()` with unique name
 - [ ] Workflow function is NOT async
 - [ ] Workflow function does NOT use await
@@ -86,6 +88,7 @@ npm run build
 
 **Fix**:
 Remove `async` keyword:
+
 ```typescript
 // ❌ WRONG
 createWorkflow("create-brand", async function (input) {
@@ -106,6 +109,7 @@ createWorkflow("create-brand", function (input) {
 
 **Fix**:
 Remove `await` - steps are called synchronously:
+
 ```typescript
 // ❌ WRONG
 const result = await createBrandStep(input)
@@ -122,6 +126,7 @@ const result = createBrandStep(input)
 
 **Fix**:
 Use exact service name with "ModuleService" suffix:
+
 ```typescript
 const brandService = container.resolve("brand")
 ```
@@ -150,11 +155,13 @@ At this point, you should understand:
 **Example of why this matters**:
 
 Imagine this workflow:
+
 1. Create brand
 2. Upload logo to S3
 3. Send Slack notification
 
 If step 3 fails, the compensation functions for steps 2 and 1 run automatically:
+
 - Delete logo from S3
 - Delete brand from database
 

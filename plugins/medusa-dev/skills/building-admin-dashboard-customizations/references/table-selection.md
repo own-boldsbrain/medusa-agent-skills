@@ -1,6 +1,7 @@
 # Table Selection Pattern
 
 ## Contents
+
 - [Pre-Implementation Requirements for pnpm](#pre-implementation-requirements-for-pnpm)
 - [Complete Widget Example: Related Products Selection](#complete-widget-example-related-products-selection)
 - [Key Implementation Details](#key-implementation-details)
@@ -12,10 +13,12 @@ This is a complete reference implementation for selecting from large datasets (P
 ## Pre-Implementation Requirements for pnpm
 
 **⚠️ pnpm Users**: This example requires the following packages. Install them BEFORE implementing:
+
 - `@tanstack/react-query` - for useQuery and useMutation
 - `react-router-dom` - for Link component (optional, can be removed if not needed)
 
 Check and install with exact versions:
+
 ```bash
 pnpm list @tanstack/react-query --depth=10 | grep @medusajs/dashboard
 pnpm add @tanstack/react-query@[exact-version]
@@ -283,17 +286,20 @@ export default ProductRelatedProductsWidget
 ## Key Implementation Details
 
 ### 1. Typography
+
 - Use `<Text size="small" leading="compact" weight="plus">` for product titles and labels
 - Use `<Text size="small" leading="compact" className="text-ui-fg-subtle">` for descriptions
 - Container headers can use `<Heading>` component
 - See [typography.md](typography.md) for complete typography guidelines
 
 ### 2. State Management
+
 - Use `DataTableRowSelectionState` for tracking selected rows
 - Initialize with existing selections from metadata
 - Use `DataTablePaginationState` with both `pageIndex` and `pageSize`
 
 ### 3. Data Loading Pattern - CRITICAL
+
 **Always use separate queries for display vs modal selection:**
 
 ```tsx
@@ -318,12 +324,14 @@ const { data: modalProducts } = useQuery({
 ```
 
 **Why this pattern?**
+
 - Display data loads immediately on mount
 - Modal data only loads when needed
 - Prevents "No data" on page refresh
 - Handles ID-based references properly
 
 ### 4. Updating with useMutation and Cache Invalidation
+
 ```tsx
 const updateProduct = useMutation({
   mutationFn: (payload) => sdk.admin.product.update(id, payload),
@@ -339,7 +347,9 @@ const updateProduct = useMutation({
 ```
 
 ### 5. DataTable Configuration
+
 Always provide all required configurations:
+
 ```tsx
 const table = useDataTable({
   data: data?.products || [],
@@ -354,6 +364,7 @@ const table = useDataTable({
 ```
 
 ### 6. Component Structure
+
 ```tsx
 <DataTable instance={table}>
   <DataTable.Toolbar>
@@ -369,6 +380,7 @@ const table = useDataTable({
 ## Pattern Variations
 
 ### For Categories Selection
+
 ```tsx
 const { data, isLoading } = useQuery({
   queryFn: () => sdk.admin.productCategory.list({ limit, offset }),
@@ -377,6 +389,7 @@ const { data, isLoading } = useQuery({
 ```
 
 ### For Regions Selection
+
 ```tsx
 const { data, isLoading } = useQuery({
   queryFn: () => sdk.admin.region.list({ limit, offset }),
@@ -385,6 +398,7 @@ const { data, isLoading } = useQuery({
 ```
 
 ### For Custom Endpoints
+
 ```tsx
 const { data, isLoading } = useQuery({
   queryFn: () => sdk.client.fetch("/admin/custom-endpoint", {

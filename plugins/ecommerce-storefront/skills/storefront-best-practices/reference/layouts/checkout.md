@@ -1,32 +1,33 @@
-# Checkout Flow – Reference
+# Fluxo de finalização da compra – Referência
 
-Guidance for implementing the checkout flow in the YSH Store storefront. This reference documents the architecture, surface steps, B2B approval logic, and patterns established in the codebase.
+Orientações para a implementação do fluxo de finalização de compra na loja virtual YSH Store. Este documento de referência descreve a arquitetura, as etapas visíveis ao usuário, a lógica de aprovação B2B e os padrões estabelecidos na base de código.
 
-## Decision Framework: Checkout Strategy
+## Estrutura de decisão: Estratégia de finalização da compra
 
-### Multi-Step Checkout (Current Implementation)
+### Finalização de compra em várias etapas (implementação atual)
 
-**Use when:**
-- Complex B2B flows with approval requirements
-- Multiple data collection points (company, address, shipping, billing, contact, payment)
-- Progressive disclosure reduces cognitive load
+**Quando usar:**
 
-**YSH Store uses 4 surface steps** (mapped from internal step IDs):
+- Fluxos B2B complexos com requisitos de aprovação
+- Vários campos de coleta de dados (empresa, endereço, remessa, cobrança, contato, pagamento)
+- A divulgação progressiva reduz a carga cognitiva
 
-| Surface Step | Internal Steps Covered | Description |
+**A YSH Store utiliza 4 etapas de superfície** (mapeadas a partir dos IDs internos das etapas):
+
+| Passo de superfície | Etapas internas abordadas | Descrição |
 |---|---|---|
-| `address` | `shipping-address`, `billing-address`, `contact-information` | All address and contact data |
-| `delivery` | `delivery` | Shipping method selection |
-| `payment` | `payment` | Payment method selection |
-| `review` | `review` | Final order confirmation |
+| `endereço` | `endereço-de-entrega`, `endereço-de-faturamento`, `informações-de-contato` | Todos os endereços e dados de contato |
+| `entrega` | `entrega` | Seleção do método de envio |
+| `pagamento` | `pagamento` | Seleção da forma de pagamento |
+| `resenha` | `resenha` | Confirmação final do pedido |
 
-> ⚠️ The UI stepper may display more labels than surface steps (e.g., Entrega, Faturamento, Frete, Contato, Pagamento). The surface step system is the authoritative state machine; the stepper is presentational only.
+> ⚠️ O seletor da interface do usuário pode exibir mais rótulos do que as etapas da interface (por exemplo, Entrega, Faturamento, Frete, Contato, Pagamento). O sistema de etapas da interface é a máquina de estados oficial; o seletor tem apenas função de apresentação.
 
 ---
 
-## Architecture
+## Arquitetura
 
-### Server/Client Split
+### Separação entre servidor e cliente
 
 ```
 CheckoutWorkspace (server)          → fetches shipping/payment methods from Medusa
@@ -37,12 +38,13 @@ CheckoutWorkspace (server)          → fetches shipping/payment methods from Me
         └── Review step UI
 ```
 
-**Why this split matters:**
-- `CheckoutWorkspace` fetches `listCartShippingMethods` and `listCartPaymentMethods` server-side, avoiding client waterfalls
-- `CheckoutWorkspaceClient` is a "use client" component that holds all interactive state
-- Overrides (`availableShippingMethodsOverride`, `availablePaymentMethodsOverride`) allow E2E testing without a live backend
+**Por que essa divisão é importante:**
 
-### Surface Steps Logic (`lib/surface-steps.ts`)
+- O `CheckoutWorkspace` recupera `listCartShippingMethods` e `listCartPaymentMethods` no lado do servidor, evitando cascatas no lado do cliente
+- O `CheckoutWorkspaceClient` é um componente do tipo “cliente de uso” que mantém todo o estado interativo
+- As substituições (`availableShippingMethodsOverride`, `availablePaymentMethodsOverride`) permitem a realização de testes de ponta a ponta sem um backend ativo
+
+### Lógica dos Passos de Superfície (`lib/surface-steps.ts`)
 
 ```typescript
 // Step order is authoritative – do not reorder
@@ -61,13 +63,13 @@ export const resolveCheckoutSurfaceState = (cart, rawStep) => {
 }
 ```
 
-**Key invariant:** A customer can never jump ahead of `furthestAccessibleStep`. Steps become accessible as the cart progresses.
+**Invariante-chave:** Um cliente nunca pode ultrapassar o `furthestAccessibleStep`. Os degraus tornam-se acessíveis à medida que o carrinho avança.
 
 ---
 
-## B2B Approval Flow
+## Fluxo de aprovação B2B
 
-The YSH Store checkout has B2B-specific logic:
+O processo de finalização de compra da YSH Store segue uma lógica específica para o setor B2B:
 
 ```typescript
 // In CheckoutWorkspace (server)
@@ -80,9 +82,9 @@ const isApprovedAdmin =
   cart.approval_status?.status === ApprovalStatusType.APPROVED
 ```
 
-### Payment Step Locking
+### Bloqueio de etapas de pagamento
 
-- When `requiresApproval && !isApprovedAdmin` → `paymentLocked = true`
+- Quando `requiresApproval && !isApprovedAdmin` → `paymentLocked = true`
 - When payment is locked, the payment step is not rendered
 - An `ApprovalStatusBanner` shows the pending approval state
 - Admin users with approved status bypass the lock

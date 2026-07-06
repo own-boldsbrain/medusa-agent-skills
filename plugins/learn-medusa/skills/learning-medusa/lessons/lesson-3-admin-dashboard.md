@@ -67,6 +67,7 @@ export const sdk = new Medusa({
 A **widget** is a React component injected into existing admin pages at predefined zones.
 
 **Common zones**:
+
 - `product.details.before` - Top of product details page
 - `product.details.after` - Bottom of product details page
 - `order.details.before` - Top of order details page
@@ -166,11 +167,13 @@ useQuery({
 - Maintains consistent design
 
 **4. Widget Configuration**:
+
 ```tsx
 export const config = defineWidgetConfig({
   zone: "product.details.before",
 })
 ```
+
 - Defines where widget appears
 - Must be exported as `config`
 
@@ -183,11 +186,12 @@ export const config = defineWidgetConfig({
 ### Test Steps
 
 1. **Start dev server**:
+
    ```bash
    npm run dev
    ```
 
-2. **Open admin**: http://localhost:9000/app
+2. **Open admin**: <http://localhost:9000/app>
 
 3. **Navigate to product**: Go to Products → Select a product with a brand
 
@@ -196,11 +200,13 @@ export const config = defineWidgetConfig({
 ### Common Issues
 
 **Widget not showing**:
+
 - Check zone name is correct
 - Ensure `config` is exported
 - Restart dev server
 
 **"Cannot find module '@tanstack/react-query'" (pnpm users only)**:
+
 ```bash
 pnpm list @tanstack/react-query --depth=10 | grep @medusajs/dashboard
 pnpm add @tanstack/react-query@[exact-version]
@@ -215,6 +221,7 @@ pnpm add @tanstack/react-query@[exact-version]
 A **UI Route** is a new page in the admin dashboard.
 
 **File path determines URL**:
+
 - `src/admin/routes/brands/page.tsx` → `/app/brands`
 - `src/admin/routes/settings/team/page.tsx` → `/app/settings/team`
 
@@ -388,17 +395,20 @@ export default BrandsPage
 **Key concepts**:
 
 **1. Route Configuration**:
+
 ```tsx
 export const config = defineRouteConfig({
   label: "Brands",
   icon: TagSolid,
 })
 ```
+
 - Adds link in sidebar
 - `label`: Display name
 - `icon`: From `@medusajs/icons`
 
 **2. Data Table Setup**:
+
 ```tsx
 const columns = [
   columnHelper.accessor("id", { header: "ID" }),
@@ -414,11 +424,13 @@ const table = useDataTable({
 ```
 
 **3. Custom API Fetch**:
+
 ```tsx
 sdk.client.fetch(`/admin/brands`, {
   query: { limit, offset },
 })
 ```
+
 - Use `sdk.client.fetch()` for custom routes
 - Pass query parameters in `query` object
 
@@ -431,7 +443,7 @@ sdk.client.fetch(`/admin/brands`, {
 ### Test Steps
 
 1. **Restart dev server** (to pick up new files)
-2. **Open admin**: http://localhost:9000/app
+2. **Open admin**: <http://localhost:9000/app>
 3. **Find "Brands" in sidebar**: Should see new menu item
 4. **Click Brands**: See table of brands with product counts
 5. **Test pagination**: If you have >15 brands, pagination should work
@@ -439,11 +451,13 @@ sdk.client.fetch(`/admin/brands`, {
 ### Common Issues
 
 **Route not showing**:
+
 - Check file name is `page.tsx` (not `route.tsx`)
 - Ensure `config` is exported
 - Restart dev server
 
 **Table empty**:
+
 - Check API route is working: `curl http://localhost:9000/admin/brands`
 - Check query middleware is configured
 - Verify brands exist in database
@@ -463,22 +477,26 @@ Fantastic! You've customized the Medusa Admin:
 ### What You Learned
 
 **Admin Widgets**:
+
 - Extend existing pages without modifying core
 - Use React Query for data fetching
 - Maintain consistent design with Medusa UI
 
 **UI Routes**:
+
 - Create new admin pages
 - Use DataTable for lists
 - Implement pagination
 - Add navigation links
 
 **React Query**:
+
 - `useQuery` for fetching
 - Query keys for caching
 - Loading states
 
 **Medusa UI**:
+
 - Consistent components
 - Design system integration
 
@@ -487,6 +505,7 @@ Fantastic! You've customized the Medusa Admin:
 You've completed all 3 lessons and built a complete feature:
 
 **Backend**:
+
 - Brand Module (data model, service)
 - createBrandWorkflow (with rollback)
 - POST /admin/brands (create brand)
@@ -495,6 +514,7 @@ You've completed all 3 lessons and built a complete feature:
 - GET /admin/brands (list brands with products)
 
 **Frontend**:
+
 - Product Brand Widget (show brand on product page)
 - Brands UI Route (manage brands)
 
@@ -508,11 +528,13 @@ git commit -m "Complete Lesson 3: Admin Dashboard customization"
 ### Next Steps
 
 **Deploy your feature**:
+
 1. Run tests (if you have them)
 2. Build for production: `npm run build`
 3. Deploy to [Medusa Cloud](https://cloud.medusajs.com)
 
 **Build more features**:
+
 - Categories Module
 - Product Reviews
 - Wishlists

@@ -106,17 +106,20 @@ Sort by: [Most Recent ▾]
 ### Filter Options
 
 **Filter by rating:**
+
 - All ratings (default)
 - 5 stars only
 - 4+ stars
 - 3 stars or less (see negative feedback)
 
 **Filter by criteria:**
+
 - Verified purchases only (highest trust)
 - With photos only (visual proof)
 - Recent (last 30 days, 6 months)
 
 **Show filtered count:**
+
 - "Showing 24 of 127 reviews"
 
 ## Review Submission
@@ -124,28 +127,33 @@ Sort by: [Most Recent ▾]
 ### Review Form Fields
 
 **Required:**
+
 - Star rating (1-5 stars selector)
 - Review text (textarea, 50-500 characters)
 - Reviewer name (if not logged in)
 
 **Optional:**
+
 - Review title/headline
 - Upload images (2-5 max)
 - Would you recommend? (Yes/No)
 
 **Form placement:**
+
 - "Write a Review" button opens modal or inline form
 - Position near rating summary
 
 ### Form Validation
 
 **Requirements:**
+
 - Rating must be selected
 - Minimum review length (50 characters)
 - Show character counter: "50 / 500 characters"
 - Validate before submit
 
 **Success:**
+
 - "Thank you for your review!"
 - "Your review is pending approval" (if moderation enabled)
 
@@ -154,12 +162,14 @@ Sort by: [Most Recent ▾]
 ### Verified Purchase Badge (CRITICAL)
 
 **Display:**
+
 - Badge or checkmark: "✓ Verified Purchase"
 - Position near reviewer name
 - Green color or checkmark icon
 - Only for confirmed customers
 
 **Why it matters:**
+
 - Builds trust (real customer, not fake)
 - Reduces suspicion of paid reviews
 - Higher credibility

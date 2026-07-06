@@ -22,6 +22,7 @@ Revise a lista de arquivos. As entradas seguem o formato de nomenclatura: `DL-NN
 ### Passo 2: Identificar entradas relevantes
 
 Relacione entradas à tarefa atual por:
+
 - **Palavras-chave de domínio** no slug do nome de arquivo (ex.: `catalogo`, `agente`, `stack`, `plataforma`)
 - **Entradas recentes** (números mais altos são os mais recentes)
 - O `DL-000-bootstrap.md` é sempre relevante — contém a fundação da plataforma
@@ -29,6 +30,7 @@ Relacione entradas à tarefa atual por:
 ### Passo 3: Ler as entradas relevantes
 
 Para cada entrada relevante, leia:
+
 1. `status` — **apenas entradas `approved` e `executing` têm autoridade vinculante**
 2. `domain` e `impact` — para entender o escopo
 3. `context` — por que esta decisão existe
@@ -39,6 +41,7 @@ Para cada entrada relevante, leia:
 ### Passo 4: Verificar contradições
 
 Antes de escrever código, pergunte:
+
 - Minha implementação planejada contradiz alguma decisão `approved` ou `executing`?
 - Se sim: **PARE. Não continue.** Reporte a contradição ao usuário e proponha:
   - Uma implementação alinhada com a decisão existente, ou
@@ -82,7 +85,7 @@ evidence:
   notes: "Notas opcionais sobre detalhes de execução."
 ```
 
-4. Se o trabalho revelou uma nova regra recorrente, adicione-a ao `AGENTS.md` e documente no campo `agents_rule_derived`
+1. Se o trabalho revelou uma nova regra recorrente, adicione-a ao `AGENTS.md` e documente no campo `agents_rule_derived`
 
 ---
 

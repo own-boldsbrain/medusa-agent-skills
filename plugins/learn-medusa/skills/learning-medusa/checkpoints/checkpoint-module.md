@@ -47,6 +47,7 @@ ls -R src/modules/brand
 ```
 
 **Expected structure**:
+
 ```
 src/modules/brand:
 index.ts  models  service.ts
@@ -60,6 +61,7 @@ brand.ts
 Show me your `src/modules/brand/models/brand.ts` file.
 
 **Key things to check**:
+
 - [ ] Uses `model.define()` with "brand" as first argument (lowercase, snake-case)
 - [ ] Has `id: model.id().primaryKey()`
 - [ ] Has `name: model.text()`
@@ -70,6 +72,7 @@ Show me your `src/modules/brand/models/brand.ts` file.
 Show me your `src/modules/brand/service.ts` file.
 
 **Key things to check**:
+
 - [ ] Uses `MedusaService(Brand)` (capital B for the model import)
 - [ ] File is exported as default
 
@@ -78,6 +81,7 @@ Show me your `src/modules/brand/service.ts` file.
 Show me your `src/modules/brand/index.ts` file.
 
 **Key things to check**:
+
 - [ ] Exports `BrandService` from service.ts
 - [ ] Uses `Module()` with name "brand" (lowercase)
 - [ ] Exports module as default
@@ -87,6 +91,7 @@ Show me your `src/modules/brand/index.ts` file.
 Show me the `modules` section of your `medusa-config.ts`.
 
 **Key things to check**:
+
 - [ ] Includes `resolve: "./modules/brand"`
 - [ ] Has empty `options: {}`
 
@@ -119,14 +124,17 @@ npm run build
 **Cause**: Module not registered in `medusa-config.ts`
 
 **Fix**:
+
 1. Open `medusa-config.ts`
 2. Add to `modules` array:
+
    ```typescript
    {
      resolve: "./modules/brand",
      options: {},
    }
    ```
+
 3. Restart dev server
 
 ### "Module name must be camelCase"
@@ -137,6 +145,7 @@ npm run build
 
 **Fix**:
 Change module name to just "brand" in `index.ts`:
+
 ```typescript
 export default Module("brand", {
   service: BrandService,

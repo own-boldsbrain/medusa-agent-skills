@@ -12,6 +12,7 @@ Build custom UI extensions for the Medusa Admin dashboard using the Admin SDK an
 ## When to Apply
 
 **Load this skill for ANY admin UI development task, including:**
+
 - Creating widgets for product/order/customer pages
 - Building custom admin pages
 - Implementing forms and modals
@@ -19,6 +20,7 @@ Build custom UI extensions for the Medusa Admin dashboard using the Admin SDK an
 - Adding navigation between pages
 
 **Also load these skills when:**
+
 - **building-with-medusa:** Building backend API routes that the admin UI calls
 - **building-storefronts:** If working on storefront instead of admin dashboard
 
@@ -42,6 +44,7 @@ Build custom UI extensions for the Medusa Admin dashboard using the Admin SDK an
 **⚠️ CRITICAL: This skill should be consulted FIRST for planning and implementation.**
 
 **Use this skill for (PRIMARY SOURCE):**
+
 - **Planning** - Understanding how to structure admin UI features
 - **Component patterns** - Widgets, pages, forms, tables, modals
 - **Design system** - Typography, colors, spacing, semantic classes
@@ -50,12 +53,14 @@ Build custom UI extensions for the Medusa Admin dashboard using the Admin SDK an
 - **Critical rules** - What NOT to do (common mistakes like conditional display queries)
 
 **Use MedusaDocs MCP server for (SECONDARY SOURCE):**
+
 - Specific component prop signatures after you know which component to use
 - Available widget zones list
 - JS SDK method details
 - Configuration options reference
 
 **Why skills come first:**
+
 - Skills contain critical patterns like separate display/modal queries that MCP doesn't emphasize
 - Skills show correct vs incorrect patterns; MCP shows what's possible
 - Planning requires understanding patterns, not just API reference
@@ -214,6 +219,7 @@ const BrokenWidget = ({ data: product }) => {
 ```
 
 **Why this matters:**
+
 - On page refresh, modal is closed, so conditional query doesn't run
 - User sees empty state instead of their data
 - Display depends on modal interaction (broken UX)
@@ -223,6 +229,7 @@ const BrokenWidget = ({ data: product }) => {
 Before implementing, verify you're NOT doing these:
 
 **Data Loading:**
+
 - [ ] Using regular fetch() instead of Medusa JS SDK (causes missing auth header errors)
 - [ ] Not using existing SDK methods for built-in endpoints (e.g., using sdk.client.fetch("/admin/products") instead of sdk.admin.product.list())
 - [ ] Loading display data conditionally based on modal/UI state
@@ -232,27 +239,32 @@ Before implementing, verify you're NOT doing these:
 - [ ] pnpm users: Not installing @tanstack/react-query before coding
 
 **Design System:**
+
 - [ ] Using hardcoded colors instead of semantic classes
 - [ ] Forgetting size="small" on buttons in widgets
 - [ ] Not using px-6 py-4 for section padding
 - [ ] Using raw HTML elements instead of Medusa UI components
 
 **Data Display:**
+
 - [ ] **CRITICAL**: Dividing prices by 100 when displaying (prices are stored as-is: $49.99 = 49.99, NOT in cents)
 
 **Typography:**
+
 - [ ] Using plain span/p tags instead of Text component
 - [ ] Not using weight="plus" for labels
 - [ ] Not using text-ui-fg-subtle for descriptions
 - [ ] Using Heading in small widget sections
 
 **Forms:**
+
 - [ ] Using Drawer for creating (should use FocusModal)
 - [ ] Using FocusModal for editing (should use Drawer)
 - [ ] Not disabling buttons during mutations
 - [ ] Not showing loading state on submit
 
 **Selection:**
+
 - [ ] Using DataTable for <10 items (overkill)
 - [ ] Using Select for >10 items (poor UX)
 - [ ] Not configuring search in useDataTable (causes error)
@@ -271,6 +283,7 @@ references/navigation.md         - Link, useNavigate, useParams patterns
 ```
 
 Each reference contains:
+
 - Step-by-step implementation guides
 - Correct vs incorrect code examples
 - Common mistakes and solutions
@@ -318,6 +331,7 @@ const createReview = useMutation({
 ```
 
 **Why the SDK is required:**
+
 - Admin routes need `Authorization` and session cookie headers
 - Store routes need `x-publishable-api-key` header
 - SDK handles all required headers automatically
@@ -325,6 +339,7 @@ const createReview = useMutation({
 - Using existing SDK methods provides better type safety
 
 **When to use what:**
+
 - **Built-in endpoints**: Use existing SDK methods (`sdk.admin.product.list()`, `sdk.store.product.list()`)
 - **Custom endpoints**: Use `sdk.client.fetch()` for your custom API routes
 
@@ -370,21 +385,26 @@ export default CustomPage
 ## Common Issues & Solutions
 
 **"Cannot find module" errors (pnpm users):**
+
 - Install peer dependencies BEFORE coding
 - Use exact versions from dashboard
 
 **"No QueryClient set" error:**
+
 - pnpm: Install @tanstack/react-query
 - npm/yarn: Remove incorrectly installed package
 
 **"DataTable.Search not enabled":**
+
 - Must pass search configuration to useDataTable
 
 **Widget not refreshing:**
+
 - Invalidate display queries, not just modal queries
 - Include all dependencies in query keys
 
 **Display empty on refresh:**
+
 - Display query has conditional `enabled` based on UI state
 - Remove condition - display data must load on mount
 
@@ -403,7 +423,8 @@ npm run dev      # or pnpm dev / yarn dev
 ### 2. Access the Admin Dashboard
 
 Open your browser and navigate to:
-- **Admin Dashboard:** http://localhost:9000/app
+
+- **Admin Dashboard:** <http://localhost:9000/app>
 
 Log in with your admin credentials.
 
@@ -411,17 +432,20 @@ Log in with your admin credentials.
 
 **For Widgets:**
 Navigate to the page where your widget is displayed. Common widget zones:
+
 - **Product widgets:** Go to Products → Select a product → Your widget appears in the zone you configured (e.g., `product.details.after`)
 - **Order widgets:** Go to Orders → Select an order → Your widget appears in the configured zone
 - **Customer widgets:** Go to Customers → Select a customer → Your widget appears in the configured zone
 
 **For UI Routes (Custom Pages):**
+
 - Look for your custom page in the admin sidebar/navigation (based on the `label` you configured)
 - Or navigate directly to: `http://localhost:9000/app/[your-route-path]`
 
 ### 4. Test Functionality
 
 Depending on what was implemented, test:
+
 - **Forms:** Try creating/editing entities, verify validation and error messages
 - **Tables:** Test pagination, search, sorting, and row selection
 - **Data display:** Verify data loads correctly and refreshes after mutations

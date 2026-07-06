@@ -22,6 +22,7 @@ Review the file list. Entries follow the naming format: `DL-NNN-slug.md`
 ### Step 2: Identify relevant entries
 
 Match entries to the current task by:
+
 - **Domain keywords** in the filename slug (e.g., `catalogo`, `agente`, `stack`, `plataforma`)
 - **Recent entries** (highest numbers are most recent)
 - The `DL-000-bootstrap.md` is always relevant — it contains the platform foundation
@@ -29,6 +30,7 @@ Match entries to the current task by:
 ### Step 3: Read the relevant entries
 
 For each relevant entry, read:
+
 1. `status` — **only `approved` and `executing` entries have binding authority**
 2. `domain` and `impact` — to understand scope
 3. `context` — why this decision exists
@@ -39,6 +41,7 @@ For each relevant entry, read:
 ### Step 4: Check for contradictions
 
 Before writing code, ask:
+
 - Does my planned implementation contradict any `approved` or `executing` decision?
 - If yes: **STOP. Do not proceed.** Report the contradiction to the user and propose either:
   - An implementation aligned with the existing decision, or
@@ -82,7 +85,7 @@ evidence:
   notes: "Optional notes about execution details."
 ```
 
-4. If this work revealed a new recurring rule, add it to `AGENTS.md` and document in `agents_rule_derived` field
+1. If this work revealed a new recurring rule, add it to `AGENTS.md` and document in `agents_rule_derived` field
 
 ---
 

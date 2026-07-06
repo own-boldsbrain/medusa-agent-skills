@@ -1,6 +1,7 @@
 # Padrão de Seleção de Tabela
 
 ## Conteúdos
+
 - [Pré-Requisitos de Implementação para pnpm](#pré-requisitos-de-implementação-para-pnpm)
 - [Exemplo Completo de Widget: Seleção de Produtos Relacionados](#exemplo-completo-de-widget-seleção-de-produtos-relacionados)
 - [Detalhes Chave de Implementação](#detalhes-chave-de-implementação)
@@ -12,10 +13,12 @@ Esta é uma implementação de referência completa para seleção a partir de g
 ## Pré-Requisitos de Implementação para pnpm
 
 **⚠️ Usuários pnpm**: Este exemplo exige os seguintes pacotes. Instale-os ANTES de implementar:
+
 - `@tanstack/react-query` - para `useQuery` e `useMutation`
 - `react-router-dom` - para o componente Link (opcional, pode ser removido se não for necessário)
 
 Verifique e instale com versões exatas:
+
 ```bash
 pnpm list @tanstack/react-query --depth=10 | grep @medusajs/dashboard
 pnpm add @tanstack/react-query@[versão-exata]
@@ -281,27 +284,31 @@ export default ProductRelatedProductsWidget
 ```
 
 ## Casos de Uso Yello Solar Hub
+
 Este padrão é crucial para garantir que a cotação e o catálogo do Yello Solar Hub mantenham a integridade dos componentes em um ecossistema de sistemas solares complexos.
 
-*   **Cotações B2B Multicomponente:** Selecionar múltiplos equipamentos interconectados (ex: Inversor A + Módulos B + Bateria C) em um único registro de cotação, permitindo que o sistema calcule automaticamente o requisito de potência ou o *footprint* total do projeto.
-*   **Rastreabilidade de Kits de Reparo:** Ao registrar um kit de reparo em campo, o uso do padrão permite selecionar todas as peças de estoque (estrutura, parafusos, módulos) que pertencem ao mesmo sistema, garantindo que o histórico de peças possa ser consultado rapidamente.
-*   **Variação e Compatibilidade de Produtos:** Quando um usuário modifica um componente (ex: troca de um Inversor de 10kW para 15kW), o padrão garante que a seleção de produtos complementares (módulos, estruturas) seja ajustada e limitada apenas a modelos compatíveis com o novo componente selecionado.
-*   **Catálogo e Cross-selling:** Em páginas de visualização de produtos em catálogo, o widget pode ser usado para permitir que o vendedor adicione "Produtos Sugeridos/Complementares" que fazem parte do mesmo ecossistema de energia, mas que não são a peça principal do produto visualizado.
+- **Cotações B2B Multicomponente:** Selecionar múltiplos equipamentos interconectados (ex: Inversor A + Módulos B + Bateria C) em um único registro de cotação, permitindo que o sistema calcule automaticamente o requisito de potência ou o *footprint* total do projeto.
+- **Rastreabilidade de Kits de Reparo:** Ao registrar um kit de reparo em campo, o uso do padrão permite selecionar todas as peças de estoque (estrutura, parafusos, módulos) que pertencem ao mesmo sistema, garantindo que o histórico de peças possa ser consultado rapidamente.
+- **Variação e Compatibilidade de Produtos:** Quando um usuário modifica um componente (ex: troca de um Inversor de 10kW para 15kW), o padrão garante que a seleção de produtos complementares (módulos, estruturas) seja ajustada e limitada apenas a modelos compatíveis com o novo componente selecionado.
+- **Catálogo e Cross-selling:** Em páginas de visualização de produtos em catálogo, o widget pode ser usado para permitir que o vendedor adicione "Produtos Sugeridos/Complementares" que fazem parte do mesmo ecossistema de energia, mas que não são a peça principal do produto visualizado.
 
 ## Detalhes Chave de Implementação
 
 ### 1. Tipografia
+
 - Use `<Text size="small" leading="compact" weight="plus">` para títulos e rótulos de produtos
 - Use `<Text size="small" leading="compact" className="text-ui-fg-subtle">` para descrições
 - Os cabeçalhos do contêiner podem usar o componente `<Heading>`
 - Consulte [typography.md](typography.md) para guias completos de tipografia
 
 ### 2. Gerenciamento de Estado
+
 - Use `DataTableRowSelectionState` para rastrear linhas selecionadas
 - Inicialize com seleções existentes no metadado
 - Use `DataTablePaginationState` com `pageIndex` e `pageSize`
 
 ### 3. Padrão de Carregamento de Dados - CRÍTICO
+
 **Sempre use consultas separadas para exibição vs seleção no modal:**
 
 ```tsx
@@ -326,12 +333,14 @@ const { data: modalProducts } = useQuery({
 ```
 
 **Por que este padrão?**
+
 - Os dados de exibição carregam imediatamente ao montar
 - Os dados do modal só carregam quando necessários
 - Evita o problema de "Nenhum dado" em recarregamentos de página
 - Lida corretamente com referências baseadas em ID
 
 ### 4. Atualização com useMutation e Invalidação de Cache
+
 ```tsx
 const updateProduct = useMutation({
   mutationFn: (payload) => sdk.admin.product.update(id, payload),
@@ -347,7 +356,9 @@ const updateProduct = useMutation({
 ```
 
 ### 5. Configuração do DataTable
+
 Sempre forneça todas as configurações necessárias:
+
 ```tsx
 const table = useDataTable({
   data: data?.products || [],
@@ -362,6 +373,7 @@ const table = useDataTable({
 ```
 
 ### 6. Estrutura do Componente
+
 ```tsx
 <DataTable instance={table}>
   <DataTable.Toolbar>
@@ -377,6 +389,7 @@ const table = useDataTable({
 ## Variações do Padrão
 
 ### Para Seleção de Categorias
+
 ```tsx
 const { data, isLoading } = useQuery({
   queryFn: () => sdk.admin.productCategory.list({ limit, offset }),
@@ -385,6 +398,7 @@ const { data, isLoading } = useQuery({
 ```
 
 ### Para Seleção de Regiões
+
 ```tsx
 const { data, isLoading } = useQuery({
   queryFn: () => sdk.admin.region.list({ limit, offset }),
@@ -393,6 +407,7 @@ const { data, isLoading } = useQuery({
 ```
 
 ### Para Endpoints Customizados
+
 ```tsx
 const { data, isLoading } = useQuery({
   queryFn: () => sdk.client.fetch("/admin/custom-endpoint", {

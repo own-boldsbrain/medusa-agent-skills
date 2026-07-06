@@ -1,10 +1,10 @@
-# Architecture Deep Dive: Workflow Orchestration
+# Análise aprofundada da arquitetura: orquestração de fluxos de trabalho
 
-Workflows are Medusa's orchestration layer - they coordinate steps, manage transactions, and provide automatic rollback. Understanding workflow orchestration is essential for building robust, reliable applications.
+Os fluxos de trabalho constituem a camada de orquestração do Medusa — eles coordenam etapas, gerenciam transações e oferecem reversão automática. Compreender a orquestração de fluxos de trabalho é essencial para a criação de aplicativos robustos e confiáveis.
 
-## What is Workflow Orchestration?
+## O que é orquestração de fluxo de trabalho?
 
-**Workflow orchestration** means coordinating multiple operations into a cohesive business process with automatic rollback capabilities.
+**Orquestração de fluxo de trabalho** significa coordenar várias operações em um processo de negócios coeso, com recursos de reversão automática.
 
 ```
 Simple Operation (No Orchestration)
@@ -27,9 +27,9 @@ Orchestrated Workflow
 └─────────────────────────────────────────────────┘
 ```
 
-## Why Workflows Instead of Direct Service Calls?
+## Por que usar fluxos de trabalho em vez de chamadas diretas de atendimento?
 
-### ❌ Problem: Direct Service Calls
+### ❌ Problema: Chamadas de atendimento direto
 
 ```typescript
 // Without workflows - Manual coordination and rollback
@@ -78,11 +78,12 @@ async function createBrandWithLogo(brandData, logoFile) {
 }
 ```
 
-**Problems**:
-1. ❌ Manual rollback logic - easy to make mistakes
-2. ❌ No guaranteed cleanup - rollback can fail
-3. ❌ Code duplication - same pattern repeated everywhere
-4. ❌ Hard to test - must test success and all failure scenarios
+**Problemas**:
+
+1. ❌ Lógica de reversão manual — é fácil cometer erros
+2. ❌ Não há garantia de limpeza — a reversão pode falhar
+3. ❌ Duplicação de código — o mesmo padrão se repete em todos os lugares
+4. ❌ Difícil de testar — é preciso testar o sucesso e todos os cenários de falha
 5. ❌ Hard to extend - adding new steps requires updating rollback logic
 
 ### ✅ Solution: Workflow Orchestration
@@ -156,6 +157,7 @@ const { result } = await createBrandWithLogoWorkflow(container)
 ```
 
 **Benefits**:
+
 1. ✅ Automatic rollback - Medusa handles compensation
 2. ✅ Guaranteed cleanup - all or nothing
 3. ✅ No code duplication - compensation defined once per step
@@ -492,6 +494,7 @@ createProductsWorkflow.hooks.productsCreated(
 ```
 
 **Benefits**:
+
 - ✅ Extends core functionality without modifying Medusa code
 - ✅ Your logic participates in automatic rollback
 - ✅ Upgrade safe - hooks continue to work across Medusa versions
@@ -607,6 +610,7 @@ const createBrandStep = createStep(
 Workflow orchestration is essential for building robust Medusa applications:
 
 **Key Concepts**:
+
 - **Workflows coordinate** - They compose steps into business processes
 - **Steps execute** - They perform atomic operations
 - **Compensation undoes** - Automatic rollback on failure
@@ -614,6 +618,7 @@ Workflow orchestration is essential for building robust Medusa applications:
 - **Hooks extend** - Add custom logic to core workflows
 
 **Benefits**:
+
 - Automatic rollback (all or nothing)
 - Guaranteed cleanup (no orphaned data)
 - Code reusability (workflows callable from anywhere)
@@ -621,6 +626,7 @@ Workflow orchestration is essential for building robust Medusa applications:
 - Easy extension (add steps without rewriting)
 
 **Patterns**:
+
 - Sequential: step2 uses step1's output
 - Parallel: independent steps run concurrently
 - Conditional: `when()` for branching logic

@@ -1,6 +1,7 @@
 # Module Links
 
 ## Contents
+
 - [When to Use Links](#when-to-use-links)
 - [Implementing Module Links - Workflow Checklist](#implementing-module-links---workflow-checklist)
 - [Step 1: Defining a Link](#step-1-defining-a-link)
@@ -97,6 +98,7 @@ export default [
 **IMPORTANT:** The `.linkable` property is **automatically added** to all modules by Medusa. You do NOT need to add `.linkable()` or any linkable definition to your data models. Simply use `ModuleName.linkable.modelName` when defining links.
 
 For example, if you have a `Review` data model in a `ReviewModule`:
+
 - ✅ CORRECT: `ReviewModule.linkable.review` (works automatically)
 - ❌ WRONG: Adding `.linkable()` method to the Review model definition (not needed, causes errors)
 
@@ -139,6 +141,7 @@ npx medusa db:migrate
 ```
 
 **Why this matters:**
+
 - Links create database tables that store the relationships between modules
 - Without migrations, these tables don't exist and link operations will fail
 - This step is REQUIRED before creating any links in code or querying linked data
@@ -332,10 +335,12 @@ const { data: products } = await query.index({
 ```
 
 **Key Distinction:**
+
 - **Same module relations** (e.g., Product → ProductVariant): Use `query.graph()` - filtering works ✅
 - **Different module links** (e.g., Product → Brand): Use `query.index()` for filtering ✅
 
 **Index Module Requirements:**
+
 1. Install `@medusajs/index` package
 2. Add to `medusa-config.ts`
 3. Enable `MEDUSA_FF_INDEX_ENGINE=true` in `.env`

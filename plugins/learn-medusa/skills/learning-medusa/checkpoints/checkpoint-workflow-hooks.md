@@ -43,6 +43,7 @@ Let me verify your implementation. Please share the following:
 Show me your `src/workflows/hooks/product-brand-link.ts` file (or wherever you defined the hook).
 
 **Key things to check**:
+
 - [ ] Imports `createProductsWorkflow` from "@medusajs/medusa/core-flows"
 - [ ] Imports `StepResponse` from "@medusajs/framework/workflows-sdk"
 - [ ] Imports `ContainerRegistrationKeys` from "@medusajs/framework/utils"
@@ -64,19 +65,23 @@ Show me your `src/workflows/hooks/product-brand-link.ts` file (or wherever you d
 Show me your `src/api/middlewares.ts` file (specifically the POST /admin/products configuration).
 
 **Key things to check**:
+
 - [ ] Imports `createFindParams`, `createOperatorMap` from "@medusajs/medusa/api/utils/validators"
 - [ ] Defines `CreateProductSchema` or similar with Zod
 - [ ] Schema includes `additional_data` field:
+
   ```typescript
   additional_data: z.object({
     brand_id: z.string().optional(),
   }).optional()
   ```
+
 - [ ] Route configuration:
   - Matcher: `"/admin/products"`
   - Method: `"POST"`
   - Uses `validateAndTransformBody()` with schema and `additionalDataValidator`
   - Example:
+
   ```typescript
   validateAndTransformBody(CreateProductSchema, {
     additionalDataValidator: {
@@ -113,16 +118,20 @@ curl -X POST http://localhost:9000/admin/products \
 **Causes and Fixes**:
 
 **Cause 1**: Hook file not in the right location
+
 - **Fix**: Ensure file is in `src/workflows/` directory (Medusa auto-discovers hooks here)
 - **Fix**: Restart dev server after creating hook file
 
 **Cause 2**: brand_id not passed in request
+
 - **Fix**: Include `additional_data: { brand_id: "..." }` in POST body
 
 **Cause 3**: additional_data validation not configured
+
 - **Fix**: Check middleware configuration (see below)
 
 **Cause 4**: Hook has syntax errors
+
 - **Fix**: Check server logs for errors
 
 ### "Validation error: additional_data not allowed"
@@ -133,6 +142,7 @@ curl -X POST http://localhost:9000/admin/products \
 
 **Fix**:
 In `src/api/middlewares.ts`, add configuration for POST /admin/products:
+
 ```typescript
 {
   matcher: "/admin/products",
@@ -178,12 +188,14 @@ Core Workflow: createProductsWorkflow
 ```
 
 **Why this matters**:
+
 - **No forking**: You don't modify Medusa's code
 - **Upgrade safe**: Your hooks continue to work when Medusa updates
 - **Composable**: Multiple hooks can subscribe to the same point
 - **Rollback included**: Your hook gets automatic compensation
 
 **Example**: If inventory allocation (step 4) fails:
+
 1. Medusa calls your hook's compensation function
 2. Your hook removes the brand-product link
 3. Medusa calls product creation compensation

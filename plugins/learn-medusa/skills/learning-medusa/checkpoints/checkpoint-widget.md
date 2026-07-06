@@ -12,19 +12,19 @@ Before proceeding, test your understanding:
 
   A widget is a React component injected into an existing admin page at a predefined zone. It extends existing pages without replacing them. A UI route is a completely new page you create. Use widgets when you want to add information to existing pages (like adding brand to product details). Use UI routes when you need a new standalone page (like a brands management page).
 
-2. **Why do we need to refetch product data in the widget when the page already loads the product?**
+1. **Why do we need to refetch product data in the widget when the page already loads the product?**
 
   **Answer:**
 
   The product detail page doesn't include linked relations by default (like brand). We need to explicitly request the brand data using the `fields` parameter. The widget fetches the same product but with `fields: "+brand.*"` to include the brand relation. React Query caches this, so it's not inefficient.
 
-3. **What is React Query's `queryKey` and why is it important?**
+1. **What is React Query's `queryKey` and why is it important?**
 
   **Answer:**
 
   `queryKey` is a unique identifier for a query. React Query uses it for caching, refetching, and invalidation. The key should include all dependencies - in our case, `["product", product.id, "brand"]`. If the product ID changes, React Query knows to fetch different data. If you mutate a brand, you can invalidate this key to refetch fresh data.
 
-4. **Why do widgets use Medusa UI components instead of regular HTML/CSS?**
+1. **Why do widgets use Medusa UI components instead of regular HTML/CSS?**
 
   **Answer:**
 
@@ -79,11 +79,11 @@ Ensure dev server is running with admin:
 npm run dev
 ```
 
-**Expected**: Server starts and admin accessible at http://localhost:9000/app
+**Expected**: Server starts and admin accessible at <http://localhost:9000/app>
 
 ### 4. Manual Test in Browser
 
-1. Open admin dashboard: http://localhost:9000/app
+1. Open admin dashboard: <http://localhost:9000/app>
 2. Navigate to Products page
 3. Click on a product that has a brand (created in Lesson 2)
 4. Look for the Brand widget at the TOP of the product details page

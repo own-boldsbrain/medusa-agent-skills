@@ -413,9 +413,9 @@ const { data, isLoading } = useQuery({
 1. **Considerações sobre o gerenciador de pacotes**:
    - **Usuários do pnpm**: DEVEM instalar `@tanstack/react-query` e `react-router-dom` ANTES da implementação (consulte os Requisitos pré-implementação acima)
    - **Usuários do npm/yarn**: NÃO instalem esses pacotes — eles já estão disponíveis no painel
-2. **Sempre use `keepPreviousData: true`** para a paginação, a fim de evitar oscilações na interface do usuário
+2. **Sempre use `keepPreviousData: true`** para a paginação, a fim de evitar tremulação na interface do usuário
 3. **A pesquisa é feita no lado do servidor** — Passe o valor da pesquisa na função de consulta
-4. **As atualizações de metadados substituem o objeto inteiro** — Espalhe os metadados existentes ao atualizar
+4. **Atualizações de metadados substituem o objeto inteiro** — Espalhe os metadados existentes ao atualizar
 5. **Utilize dependências adequadas nas chaves de consulta** — Inclua todos os parâmetros que afetam os dados
 
 Esse padrão oferece uma maneira consistente e eficiente de lidar com a seleção de grandes conjuntos de dados nas personalizações do Medusa Admin.

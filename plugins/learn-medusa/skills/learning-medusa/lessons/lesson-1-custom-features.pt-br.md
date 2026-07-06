@@ -89,7 +89,7 @@ curl -X POST 'http://localhost:9000/admin/brands' \
   --data '{ "name": "Acme" }'
 ```
 
-E você receberá:
+E receba de volta:
 
 ```json
 {
@@ -637,7 +637,7 @@ const brand = createBrandStep(input)  // Step returns immediately
 
 ### Problemas comuns
 
-**"Função assíncrona não permitida"**
+**“Função assíncrona não permitida”**
 
 - **Causa**: Utilização da palavra-chave `async` no construtor do fluxo de trabalho
 - **Solução**: Remova `async`:
@@ -880,11 +880,11 @@ validateAndTransformBody(PostAdminCreateBrand)
 - Retorna o erro 400 se a validação falhar
 - Preenche `req.validatedBody` se a validação for bem-sucedida
 
-**Erro comum**: Erro ortográfico no nome do arquivo
+**Erro comum**: Erro de digitação no nome do arquivo
 
 - DEVE ser `middlewares.ts` (plural)
 - NÃO é `middleware.ts` (singular)
-- O erro ortográfico faz com que o middleware seja ignorado silenciosamente!
+- O erro de digitação faz com que o middleware seja ignorado silenciosamente!
 
 **Documentação**: [Guia de Middlewares](https://docs.medusajs.com/learn/fundamentals/api-routes/middlewares) | [Middleware de Validação](https://docs.medusajs.com/learn/fundamentals/api-routes/validation)
 
@@ -1149,12 +1149,12 @@ Na **Lição 2: Ampliar o Medusa**, você aprenderá a:
 
 - **Vincular marcas a produtos** usando Module Links (mantendo o isolamento dos módulos)
 - **Estender fluxos de trabalho principais** usando ganchos de fluxo de trabalho (adicionar lógica personalizada aos fluxos de trabalho do Medusa)
-- **Consultar dados vinculados** entre módulos usando o Query
+- **Consultar dados vinculados** entre módulos usando a função Query
 
 Você será capaz de:
 
 - Criar um produto com uma marca: `POST /admin/products` com `additional_data: { brand_id: "..." }`
-- Obter a marca de um produto: `GET /admin/products/:id?fields=+brand.*`
+- Recuperar a marca de um produto: `GET /admin/products/:id?fields=+brand.*`
 - Listar todas as marcas com seus produtos: `GET /admin/brands`, retornando os produtos associados
 
 **Documentação**: [Links do módulo](https://docs.medusajs.com/learn/fundamentals/module-links) | [Ganchos de fluxo de trabalho](https://docs.medusajs.com/learn/fundamentals/workflows/workflow-hooks) | [Guia de consultas](https://docs.medusajs.com/learn/fundamentals/module-links/query)

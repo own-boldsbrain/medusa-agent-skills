@@ -209,7 +209,7 @@ Isso:
 2. **O que significa `isList: true`?**
    <details>
    <summary>Clique para revelar a resposta</summary>
-   Muitos registros desse modelo podem ser vinculados ao outro modelo. Uma marca pode ter muitos produtos.
+   Muitos registros desse modelo podem ser vinculados a outro modelo. Uma marca pode ter muitos produtos.
    </details>
 
 3. **O que acontece se você esquecer de executar as migrações?**

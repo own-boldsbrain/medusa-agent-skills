@@ -30,10 +30,10 @@ Guia abrangente de desenvolvimento de back-end para aplicativos Medusa. Contém 
 
 **Carregue essas referências de acordo com o que você estiver implementando:**
 
-- **Está criando um módulo?** → DEVE carregar `reference/custom-modules.md` primeiro
-- **Está criando fluxos de trabalho?** → DEVE carregar `reference/workflows.md` primeiro
-- **Está criando rotas de API?** → DEVE carregar `reference/api-routes.md` primeiro
-- **Está criando links de módulo?** → DEVE carregar `reference/module-links.md` primeiro
+- **Criando um módulo?** → É OBRIGATÓRIO carregar `reference/custom-modules.md` primeiro
+- **Criando fluxos de trabalho?** → É OBRIGATÓRIO carregar `reference/workflows.md` primeiro
+- **Criando rotas de API?** → É OBRIGATÓRIO carregar `reference/api-routes.md` primeiro
+- **Criando links de módulo?** → É OBRIGATÓRIO carregar `reference/module-links.md` primeiro
 - **Consultando dados?** → É OBRIGATÓRIO carregar `reference/querying-data.md` primeiro
 - **Adicionando autenticação?** → É OBRIGATÓRIO carregar `reference/authentication.md` primeiro
 
@@ -41,7 +41,7 @@ Guia abrangente de desenvolvimento de back-end para aplicativos Medusa. Contém 
 
 ## Padrão de arquitetura crítico
 
-**SIGA SEMPRE este fluxo — nunca pule camadas:**
+**SIGA SEMPRE este fluxo — nunca ignore camadas:**
 
 ```
 Module (data models + CRUD operations)
@@ -162,7 +162,7 @@ Antes de implementar, verifique se você NÃO está fazendo o seguinte:
 
 **Arquitetura:**
 
-- [ ] Chamar serviços de módulos diretamente de rotas de API
+- [ ] Chamar serviços de módulos diretamente de rotas da API
 - [ ] Usar métodos PUT ou PATCH
 - [ ] Ignorar fluxos de trabalho para mutações
 - [ ] Definir `fields` explicitamente com `req.queryConfig`
@@ -347,21 +347,11 @@ Cada arquivo de referência contém:
 
 **Use esta habilidade como (FONTE PRINCIPAL):**
 
-- **Planejamento**
-
-- Compreender como estruturar os recursos de backend do Medusa
-- **Arquitetura**
-
-- Padrões de Módulo → Fluxo de Trabalho → Rota de API
-- **Melhores práticas**
-
-- Padrões de código corretos versus incorretos
-- **Regras essenciais**
-
-- O que NÃO fazer (erros comuns e antipadrões)
-- **Padrões de implementação**
-
-- Guias passo a passo com listas de verificação
+- **Planejamento** - Compreender como estruturar os recursos de backend do Medusa
+- **Arquitetura** - Padrões de Módulo → Fluxo de Trabalho → Rota de API
+- **Melhores práticas** - Padrões de código corretos versus incorretos
+- **Regras essenciais** - O que NÃO fazer (erros comuns e antipadrões)
+- **Padrões de implementação** - Guias passo a passo com listas de verificação
 
 **Use o servidor MedusaDocs MCP como (FONTE SECUNDÁRIA):**
 
@@ -387,7 +377,7 @@ Ao desenvolver recursos que abrangem o back-end e o front-end:
 1. **Back-end (esta habilidade):** Módulo → Fluxo de trabalho → Rota da API
 2. **Front-end:** Carregue a habilidade `building-admin-dashboard-customizations`
 3. **Conexão:**
-   - Endpoints integrados: Use os métodos existentes do SDK (`sdk.admin.product.list()`)
+   - Endpoints integrados: use os métodos existentes do SDK (`sdk.admin.product.list()`)
    - Rotas de API personalizadas: Use `sdk.client.fetch("/admin/my-route")`
    - **NUNCA use o método fetch() padrão** — a falta de cabeçalhos de autenticação causará erros
 

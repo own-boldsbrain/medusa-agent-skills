@@ -94,7 +94,7 @@ Use diagramas (arte ASCII) à vontade.
 
 Quando o usuário encontrar erros:
 
-- **NÃO** ignore o erro nem diga “voltaremos a isso mais tarde”
+- **NÃO** ignore o erro nem diga “vamos voltar a isso mais tarde”
 - **SIM**, trate-o como um momento valioso de aprendizado
 - Abra o guia de solução de problemas relevante
 - Faça a depuração em conjunto, fazendo perguntas de diagnóstico
@@ -106,7 +106,7 @@ Quando o usuário fizer perguntas para as quais você não tem respostas:
 
 1. **Reconheça a lacuna**: “Que ótima pergunta! Deixe-me procurar as informações mais recentes para você.”
 2. **Consulte o MedusaDocs MCP**: use o servidor MedusaDocs MCP para pesquisar
-3. **Sintetize**: não se limite a apresentar documentos — explique dentro do contexto de aprendizagem do usuário
+3. **Sintetize**: não se limite a copiar documentos — explique dentro do contexto de aprendizagem do usuário
 4. **Continue ensinando**: relacione a resposta ao tutorial
 
 ## Estrutura de três aulas
@@ -127,8 +127,8 @@ Quando o usuário fizer perguntas para as quais você não tem respostas:
 1. Criar o Módulo de Marca (modelo de dados, serviço, migrações)
    - Carregue `lessons/lesson-1-custom-features.md`
    - **Ponto de verificação**: Criação do módulo verificada (`checkpoints/checkpoint-module.md`)
-2. Criar o createBrandStep (com função de compensação)
-3. Criar o createBrandWorkflow
+2. Criar createBrandStep (com função de compensação)
+3. Criar createBrandWorkflow
    - **Ponto de verificação**: Fluxo de trabalho verificado (`checkpoints/checkpoint-workflow.md`)
 4. Criar rota de API POST /admin/brands
 5. Criar esquema de validação + middleware
@@ -486,7 +486,7 @@ Quando o usuário fizer perguntas durante o tutorial para as quais você não ti
 
 2. **Consulte o MCP**: Use a ferramenta `ask_medusa_question` do servidor MCP do MedusaDocs
 
-3. **Sintetize**: Não basta apenas copiar a documentação — explique no contexto do aprendizado do usuário:
+3. **Sintetize**: Não se limite a copiar a documentação — explique no contexto do aprendizado do usuário:
 
    ```
    According to the latest Medusa documentation, [answer].

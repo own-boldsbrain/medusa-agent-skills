@@ -6,7 +6,7 @@
 - [Decisão: menu suspenso simples x megamenu](#decisao-menu-suspenso-simples-x-megamenu)
 - [Principais padrões de comércio eletrônico](#padroes-chave-de-comercio-eletronico)
 - [Estrutura do layout](#estrutura-do-layout)
-- [Noções básicas de acessibilidade](#fundamentos-de-acessibilidade)
+- [Fundamentos de acessibilidade](#fundamentos-de-acessibilidade)
 - [Erros comuns no comércio eletrônico](#erros-comuns-no-comercio-eletronico)
 - [Integração com o backend](#integracao-com-o-backend)
 - [Lista de verificação](#lista-de-verificacao)
@@ -150,7 +150,7 @@ import { categories } from "./categories.ts"
 
 - Medusa: Use o método de lista de categorias do SDK (verifique o método exato na documentação/MCP)
 - Outros backends: Chame o endpoint de categorias (consulte a documentação da API)
-- Busca na montagem do componente ou durante a renderização no lado do servidor
+- Busca na montagem do componente ou durante a renderização do lado do servidor
 
 **Por que a busca dinâmica é obrigatória:**
 
@@ -191,7 +191,7 @@ import { categories } from "./categories.ts"
 
 ✅ **CORRETO:**
 
-- Categorias buscadas da API de back-end na montagem
+- Categorias buscadas da API de back-end ao carregar a página
 - Cache com estratégia de revalidação
 - Respeita a ordem e a hierarquia do back-end
 - 4 a 7 itens de nível superior na versão para desktop (com base no que o backend retorna)
@@ -296,7 +296,7 @@ import { categories } from "./categories.ts"
 - A loja possui de 3 a 5 seções principais (Página inicial, Navegar, Carrinho, Conta, Pesquisar)
 - Deseja-se uma experiência semelhante à de um aplicativo
 - Alternância frequente entre seções
-- Não é adequado para hierarquias complexas de categorias
+- Não é adequado para hierarquias de categorias complexas
 
 **Padrão:**
 
@@ -353,17 +353,11 @@ import { categories } from "./categories.ts"
 
 ## Erros comuns no comércio eletrônico
 
-❌ **CRÍTICO: Categorias estáticas codificadas**
+❌ **CRÍTICO: Categorias estáticas codificadas** - NUNCA crie matrizes de categorias estáticas como `const categories = ["Mulheres", "Homens"]` nem importe de arquivos estáticos. SEMPRE busque as categorias pela API do backend. As categorias mudam constantemente — novas categorias são adicionadas, nomes são alterados, a ordem é atualizada. Categorias codificadas exigem intervenção do desenvolvedor até mesmo para alterações simples e vão contra o propósito das plataformas de comércio dinâmicas. Esse é o erro mais comum.
 
-- NUNCA crie matrizes de categorias estáticas como `const categories = ["Mulheres", "Homens"]` nem importe de arquivos estáticos. SEMPRE busque as categorias pela API do backend. As categorias mudam constantemente — novas categorias são adicionadas, nomes são alterados, a ordem é atualizada. Categorias codificadas exigem intervenção do desenvolvedor até mesmo para alterações simples e vão contra o propósito das plataformas de comércio dinâmicas. Esse é o erro mais comum.
+❌ **Ocultar o carrinho no menu deslizante do celular** - Os usuários esperam que o carrinho esteja sempre visível. Mantenha o ícone do carrinho no cabeçalho (canto superior direito), e não oculto dentro do menu “hambúrguer”.
 
-❌ **Ocultar o carrinho no menu deslizante do celular**
-
-- Os usuários esperam que o carrinho esteja sempre visível. Mantenha o ícone do carrinho no cabeçalho (canto superior direito), e não oculto dentro do menu “hambúrguer”.
-
-❌ **Ausência de atualizações em tempo real no carrinho**
-
-- Atualize a contagem imediatamente quando itens forem adicionados (interface de usuário otimista). Não exija a atualização da página.
+❌ **Ausência de atualizações em tempo real no carrinho** - Atualize a contagem imediatamente quando itens forem adicionados (interface de usuário otimista). Não exija a atualização da página.
 
 ❌ **Exibição do preço no ícone do carrinho** — Mostre a contagem de itens (número), não o preço total. A exibição do preço confunde quando as variantes têm quantidades diferentes.
 
@@ -438,7 +432,7 @@ import { categories } from "./categories.ts"
 - [ ] O indicador de conta mostra o status de login
 - [ ] O logotipo leva à página inicial
 - [ ] 4 a 7 categorias de nível superior exibidas (máximo de 10)
-- [ ] A barra de navegação móvel fecha ao navegar
+- [ ] A gaveta do celular fecha ao navegar
 - [ ] Navegação fixa (recomendado)
 - [ ] Áreas de toque com tamanho mínimo de 44x44px
 - [ ] Rótulos ARIA nos botões com ícones

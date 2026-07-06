@@ -31,9 +31,9 @@ def fetch_session(session_id, mock_file=None):
     if not token:
         return None, "unavailable"
 
-    url = f"https://jules.googleapis.com/v1alpha/sessions/{session_id}"
+    url = f"https://jules.googleapis.com/v1alpha/{session_id}" if session_id.startswith("sessions/") else f"https://jules.googleapis.com/v1alpha/sessions/{session_id}"
     req = urllib.request.Request(url, headers={
-        "Authorization": f"Bearer {token}",
+        "X-Goog-Api-Key": token,
         "Accept": "application/json"
     })
     
@@ -41,6 +41,21 @@ def fetch_session(session_id, mock_file=None):
         with urllib.request.urlopen(req, timeout=10) as response:
             if response.status == 200:
                 data = json.loads(response.read().decode('utf-8'))
+                
+                # Fetch activities
+                try:
+                    req_act = urllib.request.Request(f"{url}/activities", headers={
+                        "X-Goog-Api-Key": token,
+                        "Accept": "application/json"
+                    })
+                    with urllib.request.urlopen(req_act, timeout=10) as act_resp:
+                        if act_resp.status == 200:
+                            act_data = json.loads(act_resp.read().decode('utf-8'))
+                            data["activities"] = act_data.get("activities", [])
+                except Exception as e:
+                    print(f"Activities fetch error: {e}", file=sys.stderr)
+                    data["activities"] = "ausente_no_payload"
+
                 return data, "jules_api_live"
     except urllib.error.URLError as e:
         print(f"API Error: {e}", file=sys.stderr)
@@ -75,12 +90,13 @@ def write_md(path, title, data):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--session-id", required=True, help="Session ID (e.g. sess_123)")
+    parser.add_argument("--session-id", required=True, help="Session ID (e.g. sess_123 or sessions/sess_123)")
     parser.add_argument("--mock", type=str, help="Path to JSON fixture")
     args = parser.parse_args()
 
     # Create safe directory name from session ID
-    safe_session_id = args.session_id.replace("/", "_").replace("\\", "_")
+    session_id_clean = args.session_id.replace("sessions/", "")
+    safe_session_id = session_id_clean.replace("/", "_").replace("\\", "_")
     session_dir = BASE_REPORTS_DIR / safe_session_id
     session_dir.mkdir(parents=True, exist_ok=True)
 
@@ -114,7 +130,7 @@ def main():
     write_json(session_dir / "activities.json", activities)
     write_md(session_dir / "activities.md", "Jules Session Activities", activities)
 
-    # 3. Outputs
+    # 3. Outputs (now handled properly if it's a list)
     outputs = session_data.get("outputs", "ausente_no_payload")
     if outputs != "ausente_no_payload" and not outputs:
         outputs = "ausente_no_payload"
@@ -157,8 +173,36 @@ def main():
         "state": session_core.get("state")
     }
     
-    with open(session_dir / "audit-trail.jsonl", "w", encoding="utf-8") as f:
+    with open(session_dir / "audit-trail.jsonl", "a", encoding="utf-8") as f:
         f.write(json.dumps(audit_entry) + "\n")
+        
+    # Generate Index
+    index_json_path = BASE_REPORTS_DIR / "index.json"
+    index_md_path = BASE_REPORTS_DIR / "index.md"
+    
+    index_data = []
+    if index_json_path.exists():
+        try:
+            with open(index_json_path, "r", encoding="utf-8") as f:
+                index_data = json.load(f)
+        except Exception:
+            pass
+            
+    # Update or append
+    existing = next((i for i, x in enumerate(index_data) if x.get("session_id") == session_id_clean), None)
+    entry = {
+        "session_id": session_id_clean,
+        "state": session_core.get("state"),
+        "audited_at": timestamp,
+        "source_mode": source_mode
+    }
+    if existing is not None:
+        index_data[existing] = entry
+    else:
+        index_data.append(entry)
+        
+    write_json(index_json_path, index_data)
+    write_md(index_md_path, "Jules Sessions Index", index_data)
         
     print(f"Generated audit for {safe_session_id} in {session_dir}")
 

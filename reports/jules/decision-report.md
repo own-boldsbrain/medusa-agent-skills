@@ -13,7 +13,8 @@ Entretanto, de forma a garantir a segurança e a integridade da plataforma, é f
 > [!IMPORTANT]
 > **A execução de sessões via Jules API/CLI e os agendamentos via `/schedule` do Antigravity serão tratados exclusivamente como utilitários de orquestração, agendamento e auditoria de tarefas. Eles NÃO servem como prova de que uma tradução está validada ou correta.**
 
-### Racional:
+### Racional
+
 1. **Limitação de Escopo**: O Jules opera na nuvem executando tarefas delegadas (como geração em lote e correções iniciais), porém ele não possui visibilidade de conformidade fina (como verificação de âncoras de TOC quebradas no português, vazamento de fillers conversacionais de LLM ou violações de sintaxe de markdown).
 2. **Independência de Qualidade**: A aprovação linguística e estrutural da localização (`.pt-br.md`) deve ser governada exclusivamente por validadores determinísticos locais (como o `ast_validator.py` e a suíte `pytest tests/translation`) combinados com a revisão humana final (manual sampling).
 3. **Prevenção de Falsos Positivos**: O fato de uma sessão Jules ter o estado registrado como `COMPLETED` no ledger indica apenas que o agente remoto encerrou sua tarefa sem falha fatal na máquina virtual. Isso **não** assegura que os arquivos gerados passaram nos testes de qualidade.

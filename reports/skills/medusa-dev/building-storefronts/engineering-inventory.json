@@ -6,13 +6,21 @@
   "source_files": [
     "plugins/medusa-dev/skills/building-storefronts/SKILL.md"
   ],
-  "localized_variants": [],
-  "coverage_score": 0,
-  "risk_level": "needs_human_review",
-  "evidence_level": "missing",
+  "localized_variants": [
+    "plugins/medusa-dev/skills/building-storefronts/SKILL.pt-br.md"
+  ],
+  "coverage_score": 42.9,
+  "risk_level": "medium",
+  "evidence_level": "direct",
+  "coverage_details": {
+    "total_blocks": 28,
+    "blocks_with_items": 12,
+    "blocks_direct": 12,
+    "coverage_pct": 42.9
+  },
   "blocks": {
     "variables": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir Variáveis",
       "DOD": "Variáveis validados e documentados",
@@ -24,55 +32,211 @@
       "items": []
     },
     "workflows": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir Workflows",
       "DOD": "Workflows validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear Workflows",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "name": "When to Apply",
+          "status": "inferred"
+        },
+        {
+          "name": "CRITICAL: Load Reference Files When Needed",
+          "status": "inferred"
+        },
+        {
+          "name": "Rule Categories by Priority",
+          "status": "inferred"
+        },
+        {
+          "name": "Quick Reference",
+          "status": "inferred"
+        },
+        {
+          "name": "Critical SDK Pattern",
+          "status": "inferred"
+        },
+        {
+          "name": "Common Mistakes Checklist",
+          "status": "inferred"
+        },
+        {
+          "name": "How to Use",
+          "status": "inferred"
+        },
+        {
+          "name": "When to Use MedusaDocs MCP Server",
+          "status": "inferred"
+        },
+        {
+          "name": "Integration with Backend",
+          "status": "inferred"
+        }
+      ]
     },
     "jtbds": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir JTBDs",
       "DOD": "JTBDs validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear JTBDs",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "when": "Working with building-storefronts",
+          "i_want": "Load automatically when planning, researching, or implementing Medusa storefront features (calling custom API routes, SDK integration, React Query patterns, data fetching). REQUIRED for all storefront",
+          "so_that": "I can implement the feature correctly",
+          "status": "inferred"
+        },
+        {
+          "when": "- Calling custom Medusa API routes from the storefront",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "Integrating Medusa SDK in frontend applications",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "Using React Query for data fetching",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "Implementing mutations with optimistic updates",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "Error handling and cache invalidation",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        }
+      ]
     },
     "use_cases_05": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir 05 use cases",
       "DOD": "05 use cases validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear 05 use cases",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "use_case_id": "UC-002",
+          "name": "When to Apply",
+          "scenario": "See SKILL.md",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-003",
+          "name": "CRITICAL: Load Reference Files When Needed",
+          "scenario": "See SKILL.md",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-004",
+          "name": "Rule Categories by Priority",
+          "scenario": "See SKILL.md",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-005",
+          "name": "Quick Reference",
+          "scenario": "See SKILL.md",
+          "status": "inferred"
+        }
+      ]
     },
     "does_and_does_not": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir Faz / Não Faz",
       "DOD": "Faz / Não Faz validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear Faz / Não Faz",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "rule": "- [ ] Using regular fetch() instead of the Medusa JS SDK (causes missing header errors)",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Not using existing SDK methods for built-in endpoints (e.g., using sdk.client.fetch(\"/store/products\") instead of sdk.store.product.list())",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Using JSON.stringify() on the body parameter",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Manually setting Content-Type headers (SDK adds them)",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Hardcoding SDK import paths (locate in project first)",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Not using sdk.client.fetch() for custom routes",
+          "status": "direct"
+        },
+        {
+          "rule": "- [ ] Not invalidating queries after mutations",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Using flat query keys instead of hierarchical",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Not handling loading and error states",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Forgetting to disable buttons during mutations (isPending)",
+          "status": "direct"
+        },
+        {
+          "rule": "- [ ] **CRITICAL**: Dividing prices by 100 when displaying (prices are stored as-is: $49.99 = 49.99, NOT in cents)",
+          "status": "direct"
+        },
+        {
+          "rule": "- [ ] Not implementing onError callbacks",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Not showing error messages to users",
+          "status": "direct"
+        },
+        {
+          "rule": "[ ] Not handling network failures gracefully",
+          "status": "direct"
+        }
+      ]
     },
     "user_inputs": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir User Inputs",
       "DOD": "User Inputs validados e documentados",
@@ -84,31 +248,43 @@
       "items": []
     },
     "system_outputs": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir System Outputs",
       "DOD": "System Outputs validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear System Outputs",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "output_name": "Markdown file",
+          "type": "file",
+          "format": ".md",
+          "status": "inferred"
+        }
+      ]
     },
     "expected_outcomes": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir Outcomes Esperados",
       "DOD": "Outcomes Esperados validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear Outcomes Esperados",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "outcome": "Skill executes correctly",
+          "status": "inferred"
+        }
+      ]
     },
     "apis": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir APIs",
       "DOD": "APIs validados e documentados",
@@ -120,7 +296,7 @@
       "items": []
     },
     "endpoints": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir Endpoints",
       "DOD": "Endpoints validados e documentados",
@@ -132,7 +308,7 @@
       "items": []
     },
     "urls": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir URLs",
       "DOD": "URLs validados e documentados",
@@ -144,31 +320,64 @@
       "items": []
     },
     "connectors": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir Conectores",
       "DOD": "Conectores validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear Conectores",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "connector_name": "sdk.client.fetch",
+          "type": "sdk_call",
+          "status": "inferred"
+        },
+        {
+          "connector_name": "sdk.admin.order",
+          "type": "sdk_call",
+          "status": "inferred"
+        },
+        {
+          "connector_name": "sdk.store.product",
+          "type": "sdk_call",
+          "status": "inferred"
+        }
+      ]
     },
     "crud": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir CRUD",
       "DOD": "CRUD validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear CRUD",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "READ",
+          "status": "direct"
+        },
+        {
+          "operation": "DELETE",
+          "status": "direct"
+        },
+        {
+          "operation": "CREATE",
+          "status": "direct"
+        },
+        {
+          "operation": "UPDATE",
+          "status": "direct"
+        }
+      ]
     },
     "gets": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir GETs",
       "DOD": "GETs validados e documentados",
@@ -180,7 +389,7 @@
       "items": []
     },
     "posts": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir POSTs",
       "DOD": "POSTs validados e documentados",
@@ -192,31 +401,41 @@
       "items": []
     },
     "create": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir CREATE",
       "DOD": "CREATE validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear CREATE",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "CREATE",
+          "status": "inferred"
+        }
+      ]
     },
     "update": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir UPDATE",
       "DOD": "UPDATE validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear UPDATE",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "UPDATE",
+          "status": "inferred"
+        }
+      ]
     },
     "approve": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir APPROVE",
       "DOD": "APPROVE validados e documentados",
@@ -228,7 +447,7 @@
       "items": []
     },
     "reject": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir REJECT",
       "DOD": "REJECT validados e documentados",
@@ -240,19 +459,24 @@
       "items": []
     },
     "delete": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir DELETE",
       "DOD": "DELETE validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear DELETE",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "DELETE",
+          "status": "inferred"
+        }
+      ]
     },
     "databases": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir Bancos de dados",
       "DOD": "Bancos de dados validados e documentados",
@@ -264,19 +488,25 @@
       "items": []
     },
     "schemas": {
-      "status": "needs_human_review",
-      "evidencia": "ausente",
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
       "DOR": "Definir Schemas",
       "DOD": "Schemas validados e documentados",
       "estimativa_t_shirt": "S",
       "horas": 2,
       "risco": "baixo",
       "owner_sugerido": "A definir",
-      "proxima_acao": "Mapear Schemas",
-      "items": []
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "schema": "// ✅ CORRECT - Plain object\nawait sdk.client.fetch(\"/store/reviews\", {\n  method: \"POST\",\n  body: {\n    product_id: \"prod_123\",\n    rating: 5,\n  }\n})\n\n// ❌ WRONG - JSON.stringify breaks the request\nawa",
+          "lang": "typescript",
+          "status": "inferred"
+        }
+      ]
     },
     "relationships": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir Relacionamentos",
       "DOD": "Relacionamentos validados e documentados",
@@ -288,7 +518,7 @@
       "items": []
     },
     "datasets": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir Datasets",
       "DOD": "Datasets validados e documentados",
@@ -300,7 +530,7 @@
       "items": []
     },
     "json_files": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir JSON files",
       "DOD": "JSON files validados e documentados",
@@ -312,7 +542,7 @@
       "items": []
     },
     "tables": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir Tabelas",
       "DOD": "Tabelas validados e documentados",
@@ -324,7 +554,7 @@
       "items": []
     },
     "logic": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir Lógicas",
       "DOD": "Lógicas validados e documentados",
@@ -336,7 +566,7 @@
       "items": []
     },
     "calculations": {
-      "status": "needs_human_review",
+      "status": "missing",
       "evidencia": "ausente",
       "DOR": "Definir Cálculos",
       "DOD": "Cálculos validados e documentados",

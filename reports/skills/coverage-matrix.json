@@ -1,24 +1,119 @@
 {
-  "coverage": 0,
+  "coverage": 40.4,
   "matrix": {
-    "medusa-dev.building-admin-dashboard-customizations": "missing",
-    "medusa-dev.building-storefronts": "missing",
-    "medusa-dev.building-with-medusa": "missing",
-    "medusa-dev.creating-internal-agents": "missing",
-    "medusa-dev.db-generate": "missing",
-    "medusa-dev.db-migrate": "missing",
-    "medusa-dev.new-user": "missing",
-    "medusa-cloud.mcloud-auth": "missing",
-    "medusa-cloud.mcloud-deployments": "missing",
-    "medusa-cloud.mcloud-environments": "missing",
-    "medusa-cloud.mcloud-logs": "missing",
-    "medusa-cloud.mcloud-organizations": "missing",
-    "medusa-cloud.mcloud-projects": "missing",
-    "medusa-cloud.mcloud-variables": "missing",
-    "medusa-cloud.using-medusa-cloud": "missing",
-    "learn-medusa.learning-medusa": "missing",
-    "ecommerce-storefront.storefront-best-practices": "missing",
-    "design-log.design-log-create": "missing",
-    "design-log.design-log-workflow": "missing"
+    "design-log.design-log-create": {
+      "coverage_pct": 35.7,
+      "blocks_with_items": 10,
+      "blocks_total": 28,
+      "evidence_level": "inferred"
+    },
+    "design-log.design-log-workflow": {
+      "coverage_pct": 39.3,
+      "blocks_with_items": 11,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "ecommerce-storefront.storefront-best-practices": {
+      "coverage_pct": 46.4,
+      "blocks_with_items": 13,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "learn-medusa.learning-medusa": {
+      "coverage_pct": 46.4,
+      "blocks_with_items": 13,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-cloud.mcloud-auth": {
+      "coverage_pct": 46.4,
+      "blocks_with_items": 13,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-cloud.mcloud-deployments": {
+      "coverage_pct": 42.9,
+      "blocks_with_items": 12,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-cloud.mcloud-environments": {
+      "coverage_pct": 42.9,
+      "blocks_with_items": 12,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-cloud.mcloud-logs": {
+      "coverage_pct": 35.7,
+      "blocks_with_items": 10,
+      "blocks_total": 28,
+      "evidence_level": "inferred"
+    },
+    "medusa-cloud.mcloud-organizations": {
+      "coverage_pct": 35.7,
+      "blocks_with_items": 10,
+      "blocks_total": 28,
+      "evidence_level": "inferred"
+    },
+    "medusa-cloud.mcloud-projects": {
+      "coverage_pct": 42.9,
+      "blocks_with_items": 12,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-cloud.mcloud-variables": {
+      "coverage_pct": 35.7,
+      "blocks_with_items": 10,
+      "blocks_total": 28,
+      "evidence_level": "inferred"
+    },
+    "medusa-cloud.using-medusa-cloud": {
+      "coverage_pct": 50.0,
+      "blocks_with_items": 14,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-dev.building-admin-dashboard-customizations": {
+      "coverage_pct": 50.0,
+      "blocks_with_items": 14,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-dev.building-storefronts": {
+      "coverage_pct": 42.9,
+      "blocks_with_items": 12,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-dev.building-with-medusa": {
+      "coverage_pct": 67.9,
+      "blocks_with_items": 19,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-dev.creating-internal-agents": {
+      "coverage_pct": 42.9,
+      "blocks_with_items": 12,
+      "blocks_total": 28,
+      "evidence_level": "direct"
+    },
+    "medusa-dev.db-generate": {
+      "coverage_pct": 17.9,
+      "blocks_with_items": 5,
+      "blocks_total": 28,
+      "evidence_level": "missing"
+    },
+    "medusa-dev.db-migrate": {
+      "coverage_pct": 21.4,
+      "blocks_with_items": 6,
+      "blocks_total": 28,
+      "evidence_level": "inferred"
+    },
+    "medusa-dev.new-user": {
+      "coverage_pct": 25.0,
+      "blocks_with_items": 7,
+      "blocks_total": 28,
+      "evidence_level": "inferred"
+    }
   }
 }

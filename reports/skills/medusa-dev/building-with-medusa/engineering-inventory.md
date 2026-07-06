@@ -1,313 +1,247 @@
 # building-with-medusa
 
-Inventory generated for `medusa-dev.building-with-medusa`.
+Inventory for `medusa-dev.building-with-medusa`.
+
+**Coverage**: 67.9% (19/28 blocks with items)
+**Evidence Level**: direct
+**Risk Level**: low
 
 ## Engineering Inventory Blocks
 
 ### Variáveis
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Variáveis
-- **DOD**: Variáveis validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Variáveis
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 2
+  - name: YOUR_SESSION_COOKIE, type: env_var, status: inferred
+  - name: YOUR_TOKEN, type: env_var, status: inferred
 
 ### Workflows
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Workflows
-- **DOD**: Workflows validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Workflows
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 10
+  - name: When to Apply, status: inferred
+  - name: CRITICAL: Load Reference Files When Needed, status: inferred
+  - name: Critical Architecture Pattern, status: inferred
+  - name: Rule Categories by Priority, status: inferred
+  - name: Quick Reference, status: inferred
+  - ... e mais 5
 
 ### JTBDs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir JTBDs
-- **DOD**: JTBDs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear JTBDs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 6
+  - when: Working with building-with-medusa, i_want: Load automatically when planning, researching, or implementing ANY Medusa backend features (custom modules, API routes, workflows, data models, module links, business logic). REQUIRED for all Medusa b, so_that: I can implement the feature correctly
+  - when: - Creating or modifying custom modules and data models, i_want: implement this correctly, so_that: the feature works as expected
+  - when: Implementing workflows for mutations, i_want: implement this correctly, so_that: the feature works as expected
+  - when: Building API routes (store or admin), i_want: implement this correctly, so_that: the feature works as expected
+  - when: Defining module links between entities, i_want: implement this correctly, so_that: the feature works as expected
+  - ... e mais 1
 
 ### 05 use cases
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir 05 use cases
-- **DOD**: 05 use cases validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear 05 use cases
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 5
+  - use_case_id: UC-001, name: When to Validate, scenario: - After implementing any new feature
+- After making changes to modules, workflows, or API routes
+- Before marking tasks as complete
+- Proactively, without waiting for the user to ask
+  - use_case_id: UC-002, name: How to Run Build, scenario: Detect the package manager and run the appropriate command:
+
+```bash
+npm run build      # or pnpm build / yarn build
+```
+  - use_case_id: UC-003, name: Handling Build Errors, scenario: If the build fails:
+
+1. Read the error messages carefully
+2. Fix type errors, import issues, and syntax errors
+3. Run the build again to verify the fix
+4. Do NOT mark implementation as complete until 
+  - use_case_id: UC-004, name: Format for Presenting Next Steps, scenario: Always present next steps in a clear, actionable format after implementation:
+
+```markdown
+  - use_case_id: UC-005, name: Start the Development Server, scenario: [server start command based on package manager]
 
 ### Faz / Não Faz
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Faz / Não Faz
-- **DOD**: Faz / Não Faz validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Faz / Não Faz
+- **Items**: 0
 
 ### User Inputs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir User Inputs
-- **DOD**: User Inputs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear User Inputs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 3
+  - input_name: --cookie, type: flag, origin: CLI
+  - input_name: YOUR_SESSION_COOKIE, type: env_var, origin: environment
+  - input_name: YOUR_TOKEN, type: env_var, origin: environment
 
 ### System Outputs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir System Outputs
-- **DOD**: System Outputs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear System Outputs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - output_name: Markdown file, type: file, format: .md
 
 ### Outcomes Esperados
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Outcomes Esperados
-- **DOD**: Outcomes Esperados validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Outcomes Esperados
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - outcome: Skill executes correctly, status: inferred
 
 ### APIs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir APIs
-- **DOD**: APIs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear APIs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 3
+  - endpoint: admin/[route], method: POST, status: direct
+  - endpoint: admin/[route], method: GET, status: direct
+  - endpoint: store/[route], method: POST, status: direct
 
 ### Endpoints
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Endpoints
-- **DOD**: Endpoints validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Endpoints
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 3
+  - method: POST, path: admin/[route], status: direct
+  - method: GET, path: admin/[route], status: direct
+  - method: POST, path: store/[route], status: direct
 
 ### URLs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir URLs
-- **DOD**: URLs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear URLs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 5
+  - url: http://localhost:9000/admin/[your-route, type: reference, status: direct
+  - url: http://localhost:9000/app, type: reference, status: direct
+  - url: http://localhost:9000/admin/reviews/123/approve, type: reference, status: direct
+  - url: http://localhost:9000/store/[your-route, type: reference, status: direct
+  - url: http://localhost:9000/store/reviews, type: reference, status: direct
 
 ### Conectores
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Conectores
-- **DOD**: Conectores validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Conectores
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 3
+  - connector_name: sdk.store.product, type: sdk_call, status: inferred
+  - connector_name: sdk.admin.product, type: sdk_call, status: inferred
+  - connector_name: sdk.client.fetch, type: sdk_call, status: inferred
 
 ### CRUD
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir CRUD
-- **DOD**: CRUD validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear CRUD
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 5
+  - operation: DELETE, status: direct
+  - operation: READ, status: direct
+  - operation: UPDATE, status: direct
+  - operation: CREATE, status: direct
+  - operation: APPROVE, status: direct
 
 ### GETs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir GETs
-- **DOD**: GETs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear GETs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - method: GET, path: admin/[route], status: direct
 
 ### POSTs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir POSTs
-- **DOD**: POSTs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear POSTs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 2
+  - method: POST, path: admin/[route], status: direct
+  - method: POST, path: store/[route], status: direct
 
 ### CREATE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir CREATE
-- **DOD**: CREATE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear CREATE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: CREATE, status: inferred
 
 ### UPDATE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir UPDATE
-- **DOD**: UPDATE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear UPDATE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: UPDATE, status: inferred
 
 ### APPROVE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir APPROVE
-- **DOD**: APPROVE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear APPROVE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: APPROVE, status: inferred
 
 ### REJECT
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir REJECT
-- **DOD**: REJECT validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear REJECT
+- **Items**: 0
 
 ### DELETE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir DELETE
-- **DOD**: DELETE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear DELETE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: DELETE, status: inferred
 
 ### Bancos de dados
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Bancos de dados
-- **DOD**: Bancos de dados validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Bancos de dados
+- **Items**: 0
 
 ### Schemas
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Schemas
-- **DOD**: Schemas validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Schemas
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - schema: // ✅ CORRECT
+const myWorkflow = createWorkflow(
+  "name",
+  function (input) { // Regular function, not async, not arrow
+    const result = myStep(input) // No await
+    return new WorkflowResponse(re, lang: typescript, status: inferred
 
 ### Relacionamentos
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Relacionamentos
-- **DOD**: Relacionamentos validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Relacionamentos
+- **Items**: 0
 
 ### Datasets
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Datasets
-- **DOD**: Datasets validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Datasets
+- **Items**: 0
 
 ### JSON files
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir JSON files
-- **DOD**: JSON files validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear JSON files
+- **Items**: 0
 
 ### Tabelas
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Tabelas
-- **DOD**: Tabelas validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Tabelas
+- **Items**: 0
 
 ### Lógicas
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Lógicas
-- **DOD**: Lógicas validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Lógicas
+- **Items**: 0
 
 ### Cálculos
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Cálculos
-- **DOD**: Cálculos validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Cálculos
+- **Items**: 0

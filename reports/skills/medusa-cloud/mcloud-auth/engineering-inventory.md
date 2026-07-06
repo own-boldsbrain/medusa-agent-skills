@@ -1,313 +1,246 @@
 # mcloud-auth
 
-Inventory generated for `medusa-cloud.mcloud-auth`.
+Inventory for `medusa-cloud.mcloud-auth`.
+
+**Coverage**: 46.4% (13/28 blocks with items)
+**Evidence Level**: direct
+**Risk Level**: medium
 
 ## Engineering Inventory Blocks
 
 ### Variáveis
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Variáveis
-- **DOD**: Variáveis validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Variáveis
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 4
+  - name: ENVIRONMENT_HANDLE, type: env_var, status: inferred
+  - name: MCLOUD_TOKEN, type: env_var, status: inferred
+  - name: ORGANIZATION_ID, type: env_var, status: inferred
+  - name: PROJECT_HANDLE, type: env_var, status: inferred
 
 ### Workflows
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Workflows
-- **DOD**: Workflows validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Workflows
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 4
+  - name: Constraints, status: inferred
+  - name: Commands, status: inferred
+  - name: Auth Methods, status: inferred
+  - name: Examples, status: inferred
 
 ### JTBDs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir JTBDs
-- **DOD**: JTBDs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear JTBDs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - when: Working with mcloud-auth, i_want: Execute mcloud authentication and context commands: login, logout, whoami, use, version, and signup. Use when setting up the CLI, switching accounts, verifying auth state, setting the active org/proje, so_that: I can implement the feature correctly
 
 ### 05 use cases
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir 05 use cases
-- **DOD**: 05 use cases validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear 05 use cases
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 5
+  - use_case_id: UC-001, name: whoami, scenario: Show authenticated user, auth method, and active context (organization, project, environment).
+
+```bash
+mcloud whoami --json
+```
+
+**Options:**
+
+- `--json` — Output as JSON
+
+**Use to verify auth and sc
+  - use_case_id: UC-002, name: use, scenario: Set the active organization, project, and/or environment so subsequent commands skip those flags.
+
+```bash
+mcloud use \
+  --organization <org-id> \
+  --project <project-id-or-handle> \
+  --environment
+  - use_case_id: UC-003, name: version, scenario: Print CLI version and platform metadata.
+
+```bash
+mcloud version --json
+```
+
+**Options:**
+
+- `--json` — Output as JSON
+  - use_case_id: UC-004, name: login, scenario: Authenticate with Medusa Cloud. Opens a browser to complete auth.
+
+> **TTY required.** Cannot be run in CI, Docker, or non-interactive environments. Use `MCLOUD_TOKEN` instead for non-interactive auth
+  - use_case_id: UC-005, name: logout, scenario: Remove stored credentials.
+
+```bash
+mcloud logout --json
+```
+
+**Options:**
+
+- `--json` — Output as JSON
 
 ### Faz / Não Faz
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Faz / Não Faz
-- **DOD**: Faz / Não Faz validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Faz / Não Faz
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 3
+  - rule: `mcloud login`, `mcloud signup`, and `mcloud use` (without flags) require a **TTY** — they fail in CI, Docker, or piped input. Use `MCLOUD_TOKEN` or pass flags explicitly instead., status: direct
+  - rule: When `MCLOUD_TOKEN` is set, file-based credentials are ignored and `mcloud login` is rejected. Unset it to switch accounts., status: direct
+  - rule: Always verify auth before any state-changing command: `mcloud whoami --json | jq -e '.auth.kind != "none"'`, status: direct
 
 ### User Inputs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir User Inputs
-- **DOD**: User Inputs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear User Inputs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 10
+  - input_name: --clear, type: flag, origin: CLI
+  - input_name: --environment, type: flag, origin: CLI
+  - input_name: --json, type: flag, origin: CLI
+  - input_name: --organization, type: flag, origin: CLI
+  - input_name: --project, type: flag, origin: CLI
+  - ... e mais 5
 
 ### System Outputs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir System Outputs
-- **DOD**: System Outputs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear System Outputs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 2
+  - output_name: JSON response, type: json, format: stdout
+  - output_name: Exit code, type: integer, format: process
 
 ### Outcomes Esperados
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Outcomes Esperados
-- **DOD**: Outcomes Esperados validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Outcomes Esperados
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - outcome: Skill executes correctly, status: inferred
 
 ### APIs
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir APIs
-- **DOD**: APIs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear APIs
+- **Items**: 0
 
 ### Endpoints
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Endpoints
-- **DOD**: Endpoints validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Endpoints
+- **Items**: 0
 
 ### URLs
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir URLs
-- **DOD**: URLs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear URLs
+- **Items**: 0
 
 ### Conectores
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Conectores
-- **DOD**: Conectores validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Conectores
+- **Items**: 0
 
 ### CRUD
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir CRUD
-- **DOD**: CRUD validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear CRUD
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 5
+  - operation: DELETE, status: direct
+  - operation: REJECT, status: direct
+  - operation: READ, status: direct
+  - operation: UPDATE, status: direct
+  - operation: CREATE, status: direct
 
 ### GETs
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir GETs
-- **DOD**: GETs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear GETs
+- **Items**: 0
 
 ### POSTs
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir POSTs
-- **DOD**: POSTs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear POSTs
+- **Items**: 0
 
 ### CREATE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir CREATE
-- **DOD**: CREATE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear CREATE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: CREATE, status: inferred
 
 ### UPDATE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir UPDATE
-- **DOD**: UPDATE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear UPDATE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: UPDATE, status: inferred
 
 ### APPROVE
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir APPROVE
-- **DOD**: APPROVE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear APPROVE
+- **Items**: 0
 
 ### REJECT
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir REJECT
-- **DOD**: REJECT validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear REJECT
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: REJECT, status: inferred
 
 ### DELETE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir DELETE
-- **DOD**: DELETE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear DELETE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: DELETE, status: inferred
 
 ### Bancos de dados
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Bancos de dados
-- **DOD**: Bancos de dados validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Bancos de dados
+- **Items**: 0
 
 ### Schemas
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Schemas
-- **DOD**: Schemas validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Schemas
+- **Items**: 0
 
 ### Relacionamentos
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Relacionamentos
-- **DOD**: Relacionamentos validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Relacionamentos
+- **Items**: 0
 
 ### Datasets
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Datasets
-- **DOD**: Datasets validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Datasets
+- **Items**: 0
 
 ### JSON files
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir JSON files
-- **DOD**: JSON files validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear JSON files
+- **Items**: 0
 
 ### Tabelas
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Tabelas
-- **DOD**: Tabelas validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Tabelas
+- **Items**: 0
 
 ### Lógicas
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Lógicas
-- **DOD**: Lógicas validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Lógicas
+- **Items**: 0
 
 ### Cálculos
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Cálculos
-- **DOD**: Cálculos validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Cálculos
+- **Items**: 0

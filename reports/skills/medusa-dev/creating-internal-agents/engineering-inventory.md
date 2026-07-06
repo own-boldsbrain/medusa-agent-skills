@@ -1,313 +1,205 @@
 # creating-internal-agents
 
-Inventory generated for `medusa-dev.creating-internal-agents`.
+Inventory for `medusa-dev.creating-internal-agents`.
+
+**Coverage**: 42.9% (12/28 blocks with items)
+**Evidence Level**: direct
+**Risk Level**: medium
 
 ## Engineering Inventory Blocks
 
 ### Variáveis
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Variáveis
-- **DOD**: Variáveis validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Variáveis
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - name: AGENT_MODULE, type: env_var, status: inferred
 
 ### Workflows
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Workflows
-- **DOD**: Workflows validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Workflows
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 7
+  - name: Constraints, status: inferred
+  - name: CRITICAL: Load Reference Files When Needed, status: inferred
+  - name: Related Skills, status: inferred
+  - name: Architecture Overview, status: inferred
+  - name: Common Mistakes, status: inferred
+  - ... e mais 2
 
 ### JTBDs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir JTBDs
-- **DOD**: JTBDs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear JTBDs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - when: Working with creating-agents-in-medusa, i_want: Use when building an internal admin-facing AI agent in a Medusa project. These agents are operated by merchants and store operators — not customers. Covers data models, module service, agent runtime (, so_that: I can implement the feature correctly
 
 ### 05 use cases
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir 05 use cases
-- **DOD**: 05 use cases validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear 05 use cases
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 4
+  - use_case_id: UC-002, name: Constraints, scenario: See SKILL.md
+  - use_case_id: UC-003, name: CRITICAL: Load Reference Files When Needed, scenario: See SKILL.md
+  - use_case_id: UC-004, name: Related Skills, scenario: See SKILL.md
+  - use_case_id: UC-005, name: Architecture Overview, scenario: See SKILL.md
 
 ### Faz / Não Faz
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Faz / Não Faz
-- **DOD**: Faz / Não Faz validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Faz / Não Faz
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 8
+  - rule: **Internal use only** — this architecture is for admin users (merchants, operators, support staff), not customers. Routes live under `src/api/admin/`, the UI lives in the Medusa admin dashboard, and access is gated by admin authentication throughout., status: direct
+  - rule: **Authentication is non-negotiable** — MedusaExec runs arbitrary TypeScript with full database access. All agent routes must use `AuthenticatedMedusaRequest` and live under `src/api/admin/`. An unauthenticated endpoint is a remote code execution vulnerability., status: direct
+  - rule: **Use MedusaExec, not custom tools** — for any data operation, the agent writes TypeScript and executes it via MedusaExec. Only build a custom tool for capabilities that cannot be expressed as executable TypeScript (e.g. calling an external API with a secret key)., status: direct
+  - rule: **One shared module, multiple agents** — `AgentSession` and `AgentMessage` are shared infrastructure. Use `agent_type` to distinguish sessions per agent. Never create separate models per agent., status: direct
+  - rule: **Pass `MedusaContainer` via `experimental_context`** — never import services directly in tool files; that causes circular dependencies., status: direct
+  - ... e mais 3
 
 ### User Inputs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir User Inputs
-- **DOD**: User Inputs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear User Inputs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - input_name: AGENT_MODULE, type: env_var, origin: environment
 
 ### System Outputs
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir System Outputs
-- **DOD**: System Outputs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear System Outputs
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - output_name: Markdown file, type: file, format: .md
 
 ### Outcomes Esperados
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir Outcomes Esperados
-- **DOD**: Outcomes Esperados validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Outcomes Esperados
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - outcome: Skill executes correctly, status: inferred
 
 ### APIs
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir APIs
-- **DOD**: APIs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear APIs
+- **Items**: 0
 
 ### Endpoints
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Endpoints
-- **DOD**: Endpoints validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Endpoints
+- **Items**: 0
 
 ### URLs
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir URLs
-- **DOD**: URLs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear URLs
+- **Items**: 0
 
 ### Conectores
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Conectores
-- **DOD**: Conectores validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Conectores
+- **Items**: 0
 
 ### CRUD
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir CRUD
-- **DOD**: CRUD validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear CRUD
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 4
+  - operation: APPROVE, status: direct
+  - operation: READ, status: direct
+  - operation: CREATE, status: direct
+  - operation: UPDATE, status: direct
 
 ### GETs
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir GETs
-- **DOD**: GETs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear GETs
+- **Items**: 0
 
 ### POSTs
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir POSTs
-- **DOD**: POSTs validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear POSTs
+- **Items**: 0
 
 ### CREATE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir CREATE
-- **DOD**: CREATE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear CREATE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: CREATE, status: inferred
 
 ### UPDATE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir UPDATE
-- **DOD**: UPDATE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear UPDATE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: UPDATE, status: inferred
 
 ### APPROVE
 
-- **Status**: needs_human_review
-- **Evidência**: ausente
-- **DOR**: Definir APPROVE
-- **DOD**: APPROVE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear APPROVE
+- **Status**: direct
+- **Evidência**: extraido_do_skill_md
+- **Items**: 1
+  - operation: APPROVE, status: inferred
 
 ### REJECT
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir REJECT
-- **DOD**: REJECT validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear REJECT
+- **Items**: 0
 
 ### DELETE
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir DELETE
-- **DOD**: DELETE validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear DELETE
+- **Items**: 0
 
 ### Bancos de dados
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Bancos de dados
-- **DOD**: Bancos de dados validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Bancos de dados
+- **Items**: 0
 
 ### Schemas
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Schemas
-- **DOD**: Schemas validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Schemas
+- **Items**: 0
 
 ### Relacionamentos
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Relacionamentos
-- **DOD**: Relacionamentos validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Relacionamentos
+- **Items**: 0
 
 ### Datasets
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Datasets
-- **DOD**: Datasets validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Datasets
+- **Items**: 0
 
 ### JSON files
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir JSON files
-- **DOD**: JSON files validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear JSON files
+- **Items**: 0
 
 ### Tabelas
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Tabelas
-- **DOD**: Tabelas validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Tabelas
+- **Items**: 0
 
 ### Lógicas
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Lógicas
-- **DOD**: Lógicas validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Lógicas
+- **Items**: 0
 
 ### Cálculos
 
-- **Status**: needs_human_review
+- **Status**: missing
 - **Evidência**: ausente
-- **DOR**: Definir Cálculos
-- **DOD**: Cálculos validados e documentados
-- **Estimativa**: S (2 horas)
-- **Risco**: baixo
-- **Owner Sugerido**: A definir
-- **Próxima Ação**: Mapear Cálculos
+- **Items**: 0

@@ -1,11 +1,11 @@
 # Translation Forensic Report
 
-Gerado em: 2026-07-06 03:59:35
+Gerado em: 2026-07-06 04:01:48
 
 ## Resumo Global
 - **Total de Pares**: 69
-- 🟢 **Passed**: 16
-- 🟡 **Needs Review**: 11
+- 🟢 **Passed**: 18
+- 🟡 **Needs Review**: 9
 - 🔴 **Failed**: 42
 
 ## Token FinOps
@@ -17,75 +17,74 @@ Gerado em: 2026-07-06 03:59:35
 | Problema | Arquivos Afetados | Total de Ocorrências |
 |---|---|---|
 | code_block_mismatch | 33 | 33 |
-| list_count_drop | 14 | 14 |
-| truncated_target | 2 | 2 |
-| heading_count_mismatch | 36 | 36 |
 | toc_anchor_mismatch | 15 | 73 |
-| heading_level_mismatch | 3 | 5 |
-| invalid_suffix | 2 | 2 |
+| list_count_drop | 14 | 14 |
 | english_residual_detected | 15 | 15 |
+| heading_count_mismatch | 36 | 36 |
+| markdown_violations | 40 | 40 |
+| truncated_target | 2 | 2 |
 | conversational_filler_detected | 1 | 1 |
 | low_line_ratio | 5 | 5 |
-| markdown_violations | 40 | 40 |
+| heading_level_mismatch | 3 | 5 |
 
 ## Top 20 Arquivos Mais Críticos (Risco Máximo = 100)
 - **Score: 100** | `README.pt-br.md` 
   - Ação: `repair_by_script`
-  - Issues: markdown_violations, heading_count_mismatch
+  - Issues: heading_count_mismatch, markdown_violations
 - **Score: 100** | `SKILL.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, markdown_violations, heading_count_mismatch
+  - Issues: heading_count_mismatch, markdown_violations, code_block_mismatch
 - **Score: 100** | `connecting-to-backend.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch, english_residual_detected, conversational_filler_detected, markdown_violations
+  - Issues: code_block_mismatch, toc_anchor_mismatch, english_residual_detected, heading_count_mismatch, markdown_violations, conversational_filler_detected
 - **Score: 100** | `design.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch, english_residual_detected, markdown_violations
+  - Issues: code_block_mismatch, toc_anchor_mismatch, english_residual_detected, heading_count_mismatch, markdown_violations
 - **Score: 100** | `mobile-responsiveness.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, markdown_violations, heading_count_mismatch
+  - Issues: heading_count_mismatch, markdown_violations, code_block_mismatch
 - **Score: 100** | `seo.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch, english_residual_detected, markdown_violations
+  - Issues: code_block_mismatch, toc_anchor_mismatch, english_residual_detected, heading_count_mismatch, markdown_violations
 - **Score: 100** | `breadcrumbs.pt-br.md` 
   - Ação: `repair_by_script`
   - Issues: list_count_drop, low_line_ratio, markdown_violations
 - **Score: 100** | `country-selector.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch, english_residual_detected, markdown_violations
+  - Issues: code_block_mismatch, toc_anchor_mismatch, english_residual_detected, heading_count_mismatch, markdown_violations
 - **Score: 100** | `navbar.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch, english_residual_detected, markdown_violations
+  - Issues: code_block_mismatch, toc_anchor_mismatch, english_residual_detected, heading_count_mismatch, markdown_violations
 - **Score: 100** | `popups.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch
+  - Issues: heading_count_mismatch, toc_anchor_mismatch, code_block_mismatch
 - **Score: 100** | `product-card.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch, english_residual_detected, markdown_violations
+  - Issues: code_block_mismatch, toc_anchor_mismatch, english_residual_detected, heading_count_mismatch, markdown_violations
 - **Score: 100** | `product-reviews.pt-br.md` 
   - Ação: `repair_by_script`
   - Issues: english_residual_detected, heading_count_mismatch
 - **Score: 100** | `product-slider.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: english_residual_detected, code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch
+  - Issues: english_residual_detected, heading_count_mismatch, toc_anchor_mismatch, code_block_mismatch
 - **Score: 100** | `promotions.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch, english_residual_detected, markdown_violations
+  - Issues: code_block_mismatch, toc_anchor_mismatch, english_residual_detected, heading_count_mismatch, markdown_violations
 - **Score: 100** | `wishlist.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch, english_residual_detected, markdown_violations
+  - Issues: code_block_mismatch, toc_anchor_mismatch, english_residual_detected, heading_count_mismatch, markdown_violations
 - **Score: 100** | `static-pages.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: list_count_drop, code_block_mismatch, toc_anchor_mismatch, heading_count_mismatch, english_residual_detected, low_line_ratio, markdown_violations
+  - Issues: code_block_mismatch, toc_anchor_mismatch, list_count_drop, english_residual_detected, heading_count_mismatch, markdown_violations, low_line_ratio
 - **Score: 100** | `SKILL.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: list_count_drop, code_block_mismatch, markdown_violations, heading_count_mismatch
+  - Issues: list_count_drop, heading_count_mismatch, markdown_violations, code_block_mismatch
 - **Score: 100** | `SKILL.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, markdown_violations, heading_count_mismatch
+  - Issues: heading_count_mismatch, markdown_violations, code_block_mismatch
 - **Score: 100** | `SKILL.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, markdown_violations, heading_count_mismatch
+  - Issues: heading_count_mismatch, markdown_violations, code_block_mismatch
 - **Score: 100** | `SKILL.pt-br.md` 
   - Ação: `retranslate_from_source`
-  - Issues: code_block_mismatch, markdown_violations, heading_count_mismatch
+  - Issues: heading_count_mismatch, markdown_violations, code_block_mismatch

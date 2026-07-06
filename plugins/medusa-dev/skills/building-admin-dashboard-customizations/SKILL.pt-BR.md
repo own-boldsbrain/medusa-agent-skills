@@ -10,7 +10,8 @@ Crie extensões de UI personalizadas para o painel de controle Medusa Admin usan
 
 **Nota:**"Rotas UI" são páginas de administração personalizadas, diferentes das rotas de API do backend (que usam a skill `building-with-medusa`).
 
-## Quando Aplicar**Carregue esta skill para QUALQUER tarefa de desenvolvimento de UI de admin, incluindo:**- Criação de widgets para páginas de produto/pedido/cliente.
+## Quando Aplicar**Carregue esta skill para QUALQUER tarefa de desenvolvimento de UI de admin, incluindo:**- Criação de widgets para páginas de produto/pedido/cliente
+
 - Construção de páginas de administração personalizadas.
 - Implementação de formulários e modais.
 - Exibição de dados com tabelas ou listas.
@@ -18,18 +19,21 @@ Crie extensões de UI personalizadas para o painel de controle Medusa Admin usan
 -**building-storefronts:**Se estiver trabalhando na storefront em vez do painel de controle admin.
 
 ## CRÍTICO: Carregue Arquivos de Referência Quando Necessário**O guia de referência abaixo NÃO é suficiente para implementação.**Você DEVE carregar arquivos de referência relevantes antes de escrever código para esse componente.**Carregue estas referências com base no que você está implementando:**-**Criando widgets?**→ DEVE carregar `references/data-loading.md` primeiro
+
 -**Construindo formulários/modais?**→ DEVE carregar `references/forms.md` primeiro
 -**Exibindo dados em tabelas/listas?**→ DEVE carregar `references/display-patterns.md` primeiro
 -**Selecionando de grandes conjuntos de dados?**→ DEVE carregar `references/table-selection.md` primeiro
 -**Adicionando navegação?**→ DEVE carregar `references/navigation.md` primeiro
 -**Estilizando componentes?**→ DEVE carregar `references/typography.md` primeiro**Requisito mínimo:**Carregar pelo menos 1-2 arquivos de referência relevantes para sua tarefa específica antes de implementar.
 
-## Quando Usar Esta Skill vs MedusaDocs MCP Server**⚠️ CRÍTICO: Esta skill deve ser consultada PRIMEIRO para planejamento e implementação.****Use esta skill para (FONTE PRIMÁRIA):**-**Planejamento**- Entender como estruturar recursos da UI de admin.
+## Quando Usar Esta Skill vs MedusaDocs MCP Server**⚠️ CRÍTICO: Esta skill deve ser consultada PRIMEIRO para planejamento e implementação.****Use esta skill para (FONTE PRIMÁRIA):**-**Planejamento**- Entender como estruturar recursos da UI de admin
+
 -**Padrões de componentes**- Widgets, páginas, formulários, tabelas, modais.
 -**Sistema de design**- Tipografia, cores, espaçamento, classes semânticas.
 -**Carregamento de dados**- Padrão de consulta separado e invalidação de cache críticos.
 -**Melhores práticas**- Padrões corretos vs incorretos (ex.: consultas de exibição em mount).
 -**Regras críticas**- O que NÃO fazer (erros comuns como consultas de exibição condicionais).**Use o servidor MedusaDocs MCP para (FONTE SECUNDÁRIA):**- Assinaturas de props de componentes específicos após você saber qual componente usar.
+
 - Lista de zonas de widget disponíveis.
 - Detalhes do método JS SDK.
 - Referência de opções de configuração.**Por que as skills vêm primeiro:**- Skills contêm padrões críticos como consultas de exibição/modal separadas que o MCP não enfatiza.
@@ -45,7 +49,7 @@ Crie extensões de UI personalizadas para o painel de controle Medusa Admin usan
 
 ## Regras de Configuração Críticas
 
-### Configuração do Cliente SDK**CRÍTICO:**Sempre use a configuração exata - valores diferentes causam erros:
+### Configuração do Cliente SDK**CRÍTICO:**Sempre use a configuração exata - valores diferentes causam erros
 
 ```tsx
 // src/admin/lib/client.ts
@@ -60,7 +64,7 @@ export const sdk = new Medusa({
 })
 ```
 
-### Apenas usuários pnpm**CRÍTICO:**Instale dependências*peer*ANTES de escrever qualquer código:
+### Apenas usuários pnpm**CRÍTICO:**Instale dependências*peer*ANTES de escrever qualquer código
 
 ```bash
 # Encontre a versão exata no dashboard
@@ -191,12 +195,14 @@ const BrokenWidget = ({ data: product }) => {
 ```
 
 **Por que isso importa:**- Ao recarregar a página, o modal está fechado, então a consulta condicional não executa.
+
 - O usuário vê estado vazio em vez de seus dados.
 - A exibição depende da interação do modal (UX quebrada).
 
 ## Checklist de Erros Comuns
 
 Antes de implementar, verifique se você NÃO está fazendo isto:**Carregamento de Dados:**- [ ] Usando `fetch()` regular em vez do Medusa JS SDK (causa erros de cabeçalho de autenticação ausente).
+
 - [ ] Não usando métodos existentes do SDK para endpoints integrados (ex.: usando `sdk.client.fetch("/admin/products")` em vez de `sdk.admin.product.list()`).
 - [ ] Carregando dados de exibição condicionalmente com base no estado do modal/UI.
 - [ ] Usando uma única consulta tanto para exibição quanto para modal.
@@ -208,6 +214,7 @@ Antes de implementar, verifique se você NÃO está fazendo isto:**Carregamento 
 - [ ] Usando elementos HTML brutos em vez de componentes Medusa UI.**Exibição de Dados:**- [ ]**CRÍTICO**: Dividir preços por 100 ao exibir (os preços são armazenados como-is: $49.99 = 49.99, NÃO em centavos).
 
 **Tipografia:**- [ ] Usando tags `span`/`p` simples em vez do componente Text.
+
 - [ ] Não usar `weight="plus"` para rótulos.
 - [ ] Não usar `text-ui-fg-subtle` para descrições.
 - [ ] Usando Heading em pequenas seções de widgets.**Formulários:**- [ ] Usando Drawer para criar (deve usar FocusModal).
@@ -237,7 +244,7 @@ Cada referência contém:
 - Erros comuns e soluções.
 - Exemplos completos funcionais.
 
-## Integração com Backend**⚠️ CRÍTICO: SEMPRE use o Medusa JS SDK para TODOS os pedidos de API - NUNCA use `fetch()` regular.**A UI Admin se conecta às rotas de API de backend usando o SDK:
+## Integração com Backend**⚠️ CRÍTICO: SEMPRE use o Medusa JS SDK para TODOS os pedidos de API - NUNCA use `fetch()` regular.**A UI Admin se conecta às rotas de API de backend usando o SDK
 
 ```tsx
 import { sdk } from "[LOCALIZAR INSTÂNCIA SDK NO PROJETO]"
@@ -316,7 +323,8 @@ export const config = defineRouteConfig({
 export default CustomPage
 ```
 
-## Problemas e Soluções Comuns**Erros "Cannot find module" (usuários pnpm):**- Instalar dependências*peer*ANTES de codificar.
+## Problemas e Soluções Comuns**Erros "Cannot find module" (usuários pnpm):**- Instalar dependências*peer*ANTES de codificar
+
 - Usar versões exatas do dashboard.**Erro "No QueryClient set":**- pnpm: Instalar @tanstack/react-query.
 - npm/yarn: Remover o pacote instalado incorretamente.**"DataTable.Search not enabled":**- Deve passar a configuração de pesquisa para useDataTable.**Widget sem atualizar:**- Invalidação de consultas de exibição, não apenas de consultas de modal.
 - Incluir todas as dependências nas chaves da consulta.**Exibição vazia no refresh:**- A consulta de exibição tem `enabled` condicional baseado no estado da UI.
@@ -338,11 +346,12 @@ Abra seu navegador e navegue para:
 
 Faça login com suas credenciais de administrador.
 
-### 3. Navegar até sua UI Personalizada**Para Widgets:**Navegue até a página onde seu widget é exibido. Zonas de widget comuns:
+### 3. Navegar até sua UI Personalizada**Para Widgets:**Navegue até a página onde seu widget é exibido. Zonas de widget comuns
 
 -**Produtos:**Vá para Produtos → Selecionar um produto → Seu widget aparece na zona configurada (ex.: `product.details.after`).
 -**Pedidos:**Vá para Pedidos → Selecionar um pedido → Seu widget aparece na zona configurada.
 -**Clientes:**Vá para Clientes → Selecionar um cliente → Seu widget aparece na zona configurada.**Para Rotas UI (Páginas Personalizadas):**- Procure sua página personalizada na barra lateral/navegação admin (baseado no `label` que você configurou).
+
 - Ou navegue diretamente para: `http://localhost:9000/app/[seu-caminho-de-rota]`
 
 ### 4. Testar Funcionalidade

@@ -65,7 +65,3 @@ Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 ## P2_english_residual (1 arquivos)
 - Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.pt-br.md)
 
-## P3_style_review (2 arquivos)
-- Score 0 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.pt-BR.md)
-- Score 0 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.pt-BR.md)
-

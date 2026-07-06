@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "max_daily_sessions_per_authorized_user": 100,
+  "max_concurrent_sessions_global": 20,
+  "max_concurrent_sessions_per_repo": 5,
+  "handoff_user": "manual_authorized_audited_only",
+  "auto_user_switch": "forbidden",
+  "auto_plan_approval": false,
+  "source_mode_validation_rules": {
+    "test_fixture": "cannot_become_VALIDADO",
+    "jules_api_live": "eligible_for_VALIDADO",
+    "jules_cli_live": "eligible_for_VALIDADO"
+  },
+  "status_on_quota_exhausted": "QUOTA_EXHAUSTED",
+  "authorized_users": [
+    "own-boldsbrain"
+  ],
+  "repos": [
+    "own-boldsbrain/medusa-agent-skills"
+  ]
+}

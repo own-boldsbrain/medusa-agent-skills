@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-07-06T16:37:25.236191+00:00",
+  "quota_status": "CONCURRENT_LIMIT_REACHED",
+  "total_sessions": 265,
+  "daily_created_today": 37,
+  "daily_limit": 100,
+  "daily_remaining": 63,
+  "concurrent_active": 44,
+  "concurrent_limit_global": 20,
+  "concurrent_remaining_global": 0,
+  "concurrent_limit_per_repo": 5,
+  "state_breakdown": {
+    "AWAITING_USER_FEEDBACK": 44,
+    "COMPLETED": 215,
+    "ausente_no_payload": 6
+  },
+  "policy_version": "1.0.0"
+}

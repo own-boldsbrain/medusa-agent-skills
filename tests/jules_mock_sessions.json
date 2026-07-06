@@ -1,0 +1,40 @@
+{
+  "sessions": [
+    {
+      "name": "sessions/sess_1",
+      "state": "AWAITING_PLAN_APPROVAL",
+      "createTime": "2026-07-06T10:00:00Z",
+      "updateTime": "2026-07-06T10:05:00Z",
+      "url": "https://jules.google/sessions/sess_1"
+    },
+    {
+      "name": "sessions/sess_2",
+      "state": "IN_PROGRESS",
+      "createTime": "2026-07-06T09:00:00Z",
+      "updateTime": "2026-07-06T09:00:00Z",
+      "url": "https://jules.google/sessions/sess_2"
+    },
+    {
+      "name": "sessions/sess_3",
+      "state": "COMPLETED",
+      "createTime": "2026-07-06T11:00:00Z",
+      "updateTime": "2026-07-06T11:15:00Z",
+      "url": "https://jules.google/sessions/sess_3",
+      "outputs": {
+        "pullRequest": "https://github.com/own-boldsbrain/medusa-agent-skills/pull/2"
+      }
+    },
+    {
+      "name": "sessions/sess_4",
+      "state": "FAILED",
+      "createTime": "2026-07-06T12:00:00Z",
+      "updateTime": "2026-07-06T12:05:00Z"
+    },
+    {
+      "name": "sessions/sess_5",
+      "state": "AWAITING_USER_FEEDBACK",
+      "createTime": "2026-07-06T12:10:00Z",
+      "updateTime": "2026-07-06T12:15:00Z"
+    }
+  ]
+}

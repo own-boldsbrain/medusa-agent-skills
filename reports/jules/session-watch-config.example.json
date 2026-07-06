@@ -7,7 +7,9 @@
   "alert_on": [
     "PLAN_PENDING",
     "PR_GENERATED",
-    "STUCK"
+    "STUCK",
+    "FAILED",
+    "NEEDS_HUMAN_REVIEW"
   ],
-  "jules_api_base_url": "https://api.jules.google/v1"
+  "jules_api_base_url": "https://jules.googleapis.com/v1alpha"
 }

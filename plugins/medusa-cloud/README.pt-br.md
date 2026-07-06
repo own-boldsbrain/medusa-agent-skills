@@ -39,14 +39,30 @@ claude
 
 ## Habilidades incluídas
 
-1. **using-medusa-cloud** - Guia de fluxo de trabalho para operações da CLI do Cloud (configuração, implantações, depuração, ambientes, variáveis)
-2. **cloud-cli-auth** - Executar `mcloud whoami`, `mcloud use`, `mcloud login`, `mcloud logout`, `mcloud version`
-3. **cloud-cli-deployments** - Executar `mcloud deployments list/get/build-logs`
-4. **cloud-cli-environments** - Executar `mcloud environments list/get/create/delete/redeploy/trigger-build`
-5. **cloud-cli-logs** - Executar `mcloud logs` com todas as opções de filtro
-6. **cloud-cli-variables** - Executar `mcloud variables list/get`
-7. **cloud-cli-organizations** - Executar `mcloud organizations list/get`
-8. **cloud-cli-projects** - Executar `mcloud projects list/get/delete`
+1. **using-medusa-cloud**
+
+- Guia de fluxo de trabalho para operações da CLI do Cloud (configuração, implantações, depuração, ambientes, variáveis)
+2. **cloud-cli-auth**
+
+- Executar `mcloud whoami`, `mcloud use`, `mcloud login`, `mcloud logout`, `mcloud version`
+3. **cloud-cli-deployments**
+
+- Executar `mcloud deployments list/get/build-logs`
+4. **cloud-cli-environments**
+
+- Executar `mcloud environments list/get/create/delete/redeploy/trigger-build`
+5. **cloud-cli-logs**
+
+- Executar `mcloud logs` com todas as opções de filtro
+6. **cloud-cli-variables**
+
+- Executar `mcloud variables list/get`
+7. **cloud-cli-organizations**
+
+- Executar `mcloud organizations list/get`
+8. **cloud-cli-projects**
+
+- Executar `mcloud projects list/get/delete`
 
 ## Privacidade
 

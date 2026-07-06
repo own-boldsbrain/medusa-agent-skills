@@ -353,11 +353,17 @@ import { categories } from "./categories.ts"
 
 ## Erros comuns no comércio eletrônico
 
-❌ **CRÍTICO: Categorias estáticas codificadas** - NUNCA crie matrizes de categorias estáticas como `const categories = ["Mulheres", "Homens"]` nem importe de arquivos estáticos. SEMPRE busque as categorias pela API do backend. As categorias mudam constantemente — novas categorias são adicionadas, nomes são alterados, a ordem é atualizada. Categorias codificadas exigem intervenção do desenvolvedor até mesmo para alterações simples e vão contra o propósito das plataformas de comércio dinâmicas. Esse é o erro mais comum.
+❌ **CRÍTICO: Categorias estáticas codificadas**
 
-❌ **Ocultar o carrinho no menu deslizante do celular** - Os usuários esperam que o carrinho esteja sempre visível. Mantenha o ícone do carrinho no cabeçalho (canto superior direito), e não oculto dentro do menu “hambúrguer”.
+- NUNCA crie matrizes de categorias estáticas como `const categories = ["Mulheres", "Homens"]` nem importe de arquivos estáticos. SEMPRE busque as categorias pela API do backend. As categorias mudam constantemente — novas categorias são adicionadas, nomes são alterados, a ordem é atualizada. Categorias codificadas exigem intervenção do desenvolvedor até mesmo para alterações simples e vão contra o propósito das plataformas de comércio dinâmicas. Esse é o erro mais comum.
 
-❌ **Ausência de atualizações em tempo real no carrinho** - Atualize a contagem imediatamente quando itens forem adicionados (interface de usuário otimista). Não exija a atualização da página.
+❌ **Ocultar o carrinho no menu deslizante do celular**
+
+- Os usuários esperam que o carrinho esteja sempre visível. Mantenha o ícone do carrinho no cabeçalho (canto superior direito), e não oculto dentro do menu “hambúrguer”.
+
+❌ **Ausência de atualizações em tempo real no carrinho**
+
+- Atualize a contagem imediatamente quando itens forem adicionados (interface de usuário otimista). Não exija a atualização da página.
 
 ❌ **Exibição do preço no ícone do carrinho** — Mostre a contagem de itens (número), não o preço total. A exibição do preço confunde quando as variantes têm quantidades diferentes.
 

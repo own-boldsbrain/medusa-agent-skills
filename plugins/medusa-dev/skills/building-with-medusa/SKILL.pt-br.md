@@ -347,11 +347,21 @@ Cada arquivo de referência contém:
 
 **Use esta habilidade como (FONTE PRINCIPAL):**
 
-- **Planejamento** - Compreender como estruturar os recursos de backend do Medusa
-- **Arquitetura** - Padrões de Módulo → Fluxo de Trabalho → Rota de API
-- **Melhores práticas** - Padrões de código corretos versus incorretos
-- **Regras essenciais** - O que NÃO fazer (erros comuns e antipadrões)
-- **Padrões de implementação** - Guias passo a passo com listas de verificação
+- **Planejamento**
+
+- Compreender como estruturar os recursos de backend do Medusa
+- **Arquitetura**
+
+- Padrões de Módulo → Fluxo de Trabalho → Rota de API
+- **Melhores práticas**
+
+- Padrões de código corretos versus incorretos
+- **Regras essenciais**
+
+- O que NÃO fazer (erros comuns e antipadrões)
+- **Padrões de implementação**
+
+- Guias passo a passo com listas de verificação
 
 **Use o servidor MedusaDocs MCP como (FONTE SECUNDÁRIA):**
 

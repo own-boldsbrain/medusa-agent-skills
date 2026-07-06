@@ -2,12 +2,12 @@
 
 ## Índice
 
-- [Componente de Slider de Produtos](#quando-usar-sliders-de-produtos)
-  - [Índice](#contents)
+- [Componente de Slider de Produtos](#componente-de-slider-de-produtos)
+  - [Índice](#indice)
   - [Visão geral](#visao-geral)
   - [Quando usar sliders de produtos](#quando-usar-sliders-de-produtos)
   - [Padrões de carrossel](#padroes-de-slider)
-  - [Exibição de produtos](#quando-usar-sliders-de-produtos)
+  - [Exibição de produtos](#componente-de-slider-de-produtos)
   - [Controles de navegação](#controles-de-navegacao)
   - [Carrosséis para dispositivos móveis](#controles-deslizantes-para-dispositivos-moveis)
   - [Desempenho](#desempenho)

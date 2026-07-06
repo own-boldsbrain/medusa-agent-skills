@@ -14,9 +14,15 @@ Orientação abrangente para a criação de lojas virtuais modernas e com alta t
 - **Adicionar página/fluxo de finalização de compra** – Pagamento, frete, realização do pedido
 - **Implementar carrinho** – Página do carrinho, janela pop-up do carrinho, funcionalidade “adicionar ao carrinho”
 - **Criação de páginas de produtos** – Detalhes do produto, listagens de produtos, grades de produtos
-- **Criação de navegação** - Barra de navegação, megamenu, rodapé, menu para dispositivos móveis
-- **Integração com o backend do Medusa** - Configuração do SDK, carrinho, produtos, pagamento
-- **Qualquer componente da vitrine** - Página inicial, pesquisa, filtros, páginas de conta
+- **Criação de navegação**
+
+- Barra de navegação, megamenu, rodapé, menu para dispositivos móveis
+- **Integração com o backend do Medusa**
+
+- Configuração do SDK, carrinho, produtos, pagamento
+- **Qualquer componente da vitrine**
+
+- Página inicial, pesquisa, filtros, páginas de conta
 - Criação de novas vitrines de comércio eletrônico do zero
 - Aprimoramento de experiências de compra e taxas de conversão existentes
 - Otimização de usabilidade, acessibilidade e SEO
@@ -98,17 +104,23 @@ Task 3: Implement Checkout Flow
 
 ### Acessibilidade
 
-- **CRÍTICO: As atualizações da contagem do carrinho exigem `aria-live="polite"`** - Os leitores de tela não farão a leitura sem isso
+- **CRÍTICO: As atualizações da contagem do carrinho exigem `aria-live="polite"`**
+
+- Os leitores de tela não farão a leitura sem isso
 - Garanta a navegação por teclado para todas as interações com o carrinho e o checkout
 
 ### Dispositivos móveis
 
-- **Elementos fixos na parte inferior DEVEM usar `env(safe-area-inset-bottom)`** - Caso contrário, o indicador de tela inicial do iOS cortará os botões de compra
+- **Elementos fixos na parte inferior DEVEM usar `env(safe-area-inset-bottom)`**
+
+- Caso contrário, o indicador de tela inicial do iOS cortará os botões de compra
 - Áreas de toque com tamanho mínimo de 44px para ações no carrinho, seletores de variantes e botões de quantidade
 
 ### Desempenho
 
-- **SEMPRE adicione `loading="lazy"` às imagens de produtos abaixo da dobra** - Não confie nas configurações padrão do navegador
+- **SEMPRE adicione `loading="lazy"` às imagens de produtos abaixo da dobra**
+
+- Não confie nas configurações padrão do navegador
 - Otimize as imagens de produtos para dispositivos móveis (<500 KB) - A maior parte do tráfego de comércio eletrônico vem de dispositivos móveis
 
 ### Otimização de conversão
@@ -120,7 +132,9 @@ Task 3: Implement Checkout Flow
 
 ### SEO
 
-- **Esquema de produto (JSON-LD) obrigatório** - Essencial para o Google Shopping e rich snippets
+- **Esquema de produto (JSON-LD) obrigatório**
+
+- Essencial para o Google Shopping e rich snippets
 - Use o [PageSpeed Insights](https://pagespeed.web.dev/) para medir os Core Web Vitals
 
 ### Design visual
@@ -163,7 +177,9 @@ Task 3: Implement Checkout Flow
 
 - Após escrever o código, verifique se há erros de TypeScript ou de tipo relacionados ao SDK
 - Se você encontrar erros de tipo nos métodos do SDK, isso significa que você usou um nome de método incorreto ou parâmetros errados
-- **Erros de tipo são um sinal de que você não verificou corretamente** - Volte para a Etapa 2
+- **Erros de tipo são um sinal de que você não verificou corretamente**
+
+- Volte para a Etapa 2
 
 **ISSO NÃO É OPCIONAL — É UMA MEDIDA OBRIGATÓRIA DE PREVENÇÃO DE ERROS**
 
@@ -308,8 +324,12 @@ Antes de implementar, considere:
 2. **Identidade da marca** — Cores, tipografia e tom de voz que combinem com a marca
 3. **Público-alvo** — B2C x B2B, dados demográficos, uso de dispositivos
 4. **Tipo de produto** — Moda x eletrônicos x mantimentos influenciam as escolhas de layout
-5. **Requisitos de negócios** - Multimoeda, multilíngue, específico para cada região
-6. **Sistema de back-end** - A estrutura da API afeta a implementação dos componentes
+5. **Requisitos de negócios**
+
+- Multimoeda, multilíngue, específico para cada região
+6. **Sistema de back-end**
+
+- A estrutura da API afeta a implementação dos componentes
 
 ## Integração com o Medusa
 
@@ -375,7 +395,9 @@ Antes de implementar, fique atento a essas armadilhas comuns específicas do com
 - ❌ **CRÍTICO: Falta o atributo `aria-live="polite"` na contagem do carrinho** — os leitores de tela não anunciarão as atualizações do carrinho sem ele
 - ❌ Não exibir detalhes das variantes (tamanho, cor etc.) no pop-up do carrinho — mostrar apenas o título do produto
 - ❌ O megamenu fecha ao passar o mouse sobre o conteúdo do menu suspenso (deve permanecer aberto ao passar o mouse sobre o gatilho OU sobre o menu suspenso)
-- ❌ **CRÍTICO: Erros de posicionamento do megamenu** - Três erros comuns:
+- ❌ **CRÍTICO: Erros de posicionamento do megamenu**
+
+- Três erros comuns:
   - ❌ A barra de navegação não tem `position: relative` (o megamenu não se posiciona corretamente)
   - ❌ O megamenu está posicionado em relação ao botão de acionamento, em vez de em relação à barra de navegação (use `absolute left-0` no megamenu)
   - ❌ O megamenu não ocupa toda a largura (é preciso usar `right-0` ou `w-full`, não apenas `w-auto`)
@@ -429,11 +451,21 @@ Antes de implementar, fique atento a essas armadilhas comuns específicas do com
 
 **8. Erros de integração com o backend**
 
-- ❌ **ERRO: Escrever código que chama APIs/SDKs de backend sem seguir o fluxo de trabalho de verificação em 5 etapas** - Você DEVE: 1) PARAR, 2) CONSULTAR a documentação/MCP, 3) VERIFICAR com o usuário, 4) Escrever o código, 5) VERIFICAR se há erros de tipo
-- ❌ **ERRO: Ignorando erros do TypeScript nos métodos do SDK** - Erros de tipo indicam que você usou nomes de métodos ou parâmetros incorretos. Volte e verifique na documentação do MCP
-- ❌ **ERRO: Adivinhando nomes de métodos da API, métodos do SDK ou parâmetros** - Sempre verifique as assinaturas exatas dos métodos antes de usá-los
-- ❌ **ERRO: Não está usando o servidor MCP do Medusa quando disponível** - Se estiver usando o backend do Medusa, sempre consulte o servidor MCP para obter os métodos
-- ❌ **ERRO: Copiando exemplos de código sem verificar se estão atualizados** - Os exemplos podem estar desatualizados; sempre verifique primeiro
+- ❌ **ERRO: Escrever código que chama APIs/SDKs de backend sem seguir o fluxo de trabalho de verificação em 5 etapas**
+
+- Você DEVE: 1) PARAR, 2) CONSULTAR a documentação/MCP, 3) VERIFICAR com o usuário, 4) Escrever o código, 5) VERIFICAR se há erros de tipo
+- ❌ **ERRO: Ignorando erros do TypeScript nos métodos do SDK**
+
+- Erros de tipo indicam que você usou nomes de métodos ou parâmetros incorretos. Volte e verifique na documentação do MCP
+- ❌ **ERRO: Adivinhando nomes de métodos da API, métodos do SDK ou parâmetros**
+
+- Sempre verifique as assinaturas exatas dos métodos antes de usá-los
+- ❌ **ERRO: Não está usando o servidor MCP do Medusa quando disponível**
+
+- Se estiver usando o backend do Medusa, sempre consulte o servidor MCP para obter os métodos
+- ❌ **ERRO: Copiando exemplos de código sem verificar se estão atualizados**
+
+- Os exemplos podem estar desatualizados; sempre verifique primeiro
 - ❌ Não detectar qual backend está sendo usado (verificar o monorepo, perguntar ao usuário em caso de dúvida)
 - ❌ Presumir a estrutura da API sem verificar a documentação do backend ou o servidor MCP
 - ❌ Codificar conteúdo dinâmico (categorias, regiões, produtos etc.) em vez de buscá-lo no backend

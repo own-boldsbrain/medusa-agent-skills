@@ -14,13 +14,17 @@
 
 ## FocusModal x Drawer
 
-**FocusModal** - Use para criar novas entidades:
+**FocusModal**
+
+- Use para criar novas entidades:
 
 - Modal em tela cheia
 - Mais espaço para formulários complexos
 - Mais adequado para fluxos com várias etapas
 
-**Drawer** - Use para editar entidades existentes:
+**Drawer**
+
+- Use para editar entidades existentes:
 
 - Painel lateral que desliza da direita
 - Edições rápidas sem perder o contexto

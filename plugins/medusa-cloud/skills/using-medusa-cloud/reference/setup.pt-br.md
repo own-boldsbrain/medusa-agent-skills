@@ -8,7 +8,7 @@ Configuração única para a CLI do Medusa Cloud. Pule as etapas cujas verifica�
 mcloud --version
 ```
 
-Se o comando retornar `0` e exibir uma versão, pule para [Confirmar autenticação](#4-confirm-authentication).
+Se o comando retornar `0` e exibir uma versão, pule para [Confirmar autenticação](#4-confirmar-a-autenticação).
 
 ## 2. Verifique a versão do Node.js
 

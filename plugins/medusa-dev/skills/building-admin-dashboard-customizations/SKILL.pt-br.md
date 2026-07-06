@@ -45,12 +45,24 @@ Crie extensões personalizadas da interface do usuário para o painel de adminis
 
 **Use esta habilidade como (FONTE PRINCIPAL):**
 
-- **Planejamento** - Compreender como estruturar os recursos da interface de usuário administrativa
-- **Padrões de componentes** - Widgets, páginas, formulários, tabelas, janelas modais
-- **Sistema de design** - Tipografia, cores, espaçamento, classes semânticas
-- **Carregamento de dados** - Padrão de consulta separada crítica, invalidação de cache
-- **Melhores práticas** - Padrões corretos x incorretos (por exemplo, exibição de consultas na montagem)
-- **Regras essenciais** - O que NÃO fazer (erros comuns, como consultas de exibição condicionais)
+- **Planejamento**
+
+- Compreender como estruturar os recursos da interface de usuário administrativa
+- **Padrões de componentes**
+
+- Widgets, páginas, formulários, tabelas, janelas modais
+- **Sistema de design**
+
+- Tipografia, cores, espaçamento, classes semânticas
+- **Carregamento de dados**
+
+- Padrão de consulta separada crítica, invalidação de cache
+- **Melhores práticas**
+
+- Padrões corretos x incorretos (por exemplo, exibição de consultas na montagem)
+- **Regras essenciais**
+
+- O que NÃO fazer (erros comuns, como consultas de exibição condicionais)
 
 **Use o servidor MCP do MedusaDocs como (FONTE SECUNDÁRIA):**
 
@@ -116,7 +128,9 @@ pnpm add react-router-dom@[exact-version]
 
 ### 1. Carregamento de dados (CRÍTICA)
 
-- `data-sdk-always` - **SEMPRE use o SDK do Medusa JS para TODAS as solicitações de API** - NUNCA use o `fetch()` comum (a falta de cabeçalhos de autenticação causa erros)
+- `data-sdk-always` - **SEMPRE use o SDK do Medusa JS para TODAS as solicitações de API**
+
+- NUNCA use o `fetch()` comum (a falta de cabeçalhos de autenticação causa erros)
 - `data-sdk-method-choice` - Use os métodos existentes do SDK para endpoints integrados (`sdk.admin.product.list()`), use `sdk.client.fetch()` para rotas personalizadas
 - `data-display-on-mount` - As consultas de exibição DEVEM ser carregadas no momento da montagem (sem condição de ativação baseada no estado da interface do usuário)
 - `data-separate-queries` - Separe as consultas de exibição das consultas de modais/formulários

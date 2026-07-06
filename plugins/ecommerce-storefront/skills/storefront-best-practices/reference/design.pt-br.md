@@ -34,8 +34,12 @@ Antes de implementar qualquer componente, identifique as cores, a tipografia e o
 
 1. **Configuração do Tailwind** — Verifique `theme.extend.fontFamily`
 2. **Importações de fontes** — Verifique nos arquivos de layout ou no CSS (Next.js `next/font`, Google Fonts, fontes locais)
-3. **Variáveis CSS** - Verifique se há `--font-sans`, `--font-heading`
-4. **Componentes existentes** - Identifique os padrões de uso de fontes
+3. **Variáveis CSS**
+
+- Verifique se há `--font-sans`, `--font-heading`
+4. **Componentes existentes**
+
+- Identifique os padrões de uso de fontes
 
 **Outros padrões:**
 

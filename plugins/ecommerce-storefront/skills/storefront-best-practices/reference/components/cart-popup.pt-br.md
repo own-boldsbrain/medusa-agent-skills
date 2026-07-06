@@ -82,7 +82,9 @@ O pop-up do carrinho (mini carrinho/gaveta do carrinho) exibe uma visão geral r
 - Armazenar os dados do carrinho globalmente (React Context ou TanStack Query)
 - Persistir o ID do carrinho no localStorage
 - Atualizações otimistas da interface do usuário (atualizar imediatamente, reverter em caso de erro)
-- **CRÍTICO: Limpar o estado do carrinho após a finalização do pedido** - Consulte connecting-to-backend.md para conhecer o padrão de limpeza do carrinho
+- **CRÍTICO: Limpar o estado do carrinho após a finalização do pedido**
+
+- Consulte connecting-to-backend.md para conhecer o padrão de limpeza do carrinho
 - Problema comum: a janela pop-up do carrinho exibe itens antigos após a finalização do pedido porque o estado do carrinho não foi limpo
 - Consulte connecting-to-backend.md para conhecer os padrões de estado do carrinho
 

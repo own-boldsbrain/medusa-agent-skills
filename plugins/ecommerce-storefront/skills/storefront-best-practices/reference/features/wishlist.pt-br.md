@@ -38,7 +38,9 @@ Uma lista de desejos (também chamada de favoritos ou “salvar para mais tarde�
 
 Antes da implementação:
 
-1. **Verifique a API do backend** - Confirme se os endpoints da lista de desejos existem (ou pergunte ao usuário)
+1. **Verifique a API do backend**
+
+- Confirme se os endpoints da lista de desejos existem (ou pergunte ao usuário)
 2. **Autenticação** — Confirme se é necessário fazer login para salvar itens na lista de desejos
 3. **Teste as operações** — Verifique se as funcionalidades de adicionar/remover/buscar funcionam
 

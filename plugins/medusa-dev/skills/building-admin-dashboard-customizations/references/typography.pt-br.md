@@ -1,93 +1,211 @@
-# Typography Guidelines
+# Diretrizes de tipografia
 
-## Conteúdo
+## Índice
 
-- [Padrão Central de Tipografia](#padrão-central-de-tipografia)
-- [Regras Tipográficas](#regras-tipográficas)
-- [Exemplos Completos](#exemplos-completos)
-- [Classes de Cor de Texto](#classes-de-cor-de-texto)
-- [Padrões Comuns](#padrões-comuns)
-- [Referência Rápida](#referência-rápida)
-- [Casos de Uso Yello Solar Hub](#casos-de-uso-yello-solar-hub)
+- [Padrão básico de tipografia](#padrao-basico-de-tipografia)
+- [Regras de tipografia](#regras-de-tipografia)
+- [Exemplos completos](#exemplos-completos)
+- [Classes de cor de texto](#classes-de-cor-de-texto)
+- [Padrões comuns](#padroes-comuns)
+- [Referência rápida](#referencia-rapida)
 
-## Padrão Central de Tipografia
+## Padrão básico de tipografia
 
-Use `Text` de `@medusajs/ui` para textos de widget e seções internas.
+Utilize o componente `Text` do pacote `@medusajs/ui` para todos os elementos de texto. Siga estes padrões específicos:
 
-### Labels e títulos pequenos
+### Títulos/Rótulos
+
+Utilize este padrão para títulos de seção, rótulos de campos ou qualquer texto principal:
 
 ```tsx
 <Text size="small" leading="compact" weight="plus">
-  {label}
+  {labelText}
 </Text>
 ```
 
-### Descrições e apoio
+### Corpo/Descrições
+
+Use este padrão para descrições, textos de ajuda ou informações secundárias:
 
 ```tsx
 <Text size="small" leading="compact" className="text-ui-fg-subtle">
-  {description}
+  {descriptionText}
 </Text>
 ```
 
-## Regras Tipográficas
+## Regras de tipografia
 
-- Não use `<Heading>` para microseções dentro de widgets.
-- Padronize com `size="small"` e `leading="compact"`.
-- Use `weight="plus"` para labels e informação primária.
-- Use `text-ui-fg-subtle` para informação secundária.
-- Para títulos de container/página, aí sim use `<Heading>`.
+- **Nunca use** o componente `<Heading>` para seções pequenas dentro de widgets/contêineres
+- **Sempre use** `size="small"` e `leading="compact"` para manter a consistência
+- **Use** `weight="plus"` para rótulos e títulos
+- **Use** `className="text-ui-fg-subtle"` para texto secundário/descritivo
+- **Para títulos maiores** (títulos de página, cabeçalhos de contêineres), use o componente `<Heading>`
 
-## Exemplos Completos
+## Exemplos completos
 
-### Seção com título e descrição
+### Seção de widget com rótulo e descrição
 
 ```tsx
+import { Text } from "@medusajs/ui"
+
+// In a container or widget:
 <div className="flex flex-col gap-y-2">
-  <Text size="small" leading="compact" weight="plus">Configurações do Produto</Text>
-  <Text size="small" leading="compact" className="text-ui-fg-subtle">Defina como o item aparece no fluxo comercial</Text>
+  <Text size="small" leading="compact" weight="plus">
+    Product Settings
+  </Text>
+  <Text size="small" leading="compact" className="text-ui-fg-subtle">
+    Configure how this product appears in your store
+  </Text>
 </div>
 ```
 
-### Estado vazio
+### Item de lista com título e subtítulo
+
+```tsx
+<div className="flex flex-col gap-y-1">
+  <Text size="small" leading="compact" weight="plus">
+    Premium T-Shirt
+  </Text>
+  <Text size="small" leading="compact" className="text-ui-fg-subtle">
+    Size: Large • Color: Blue
+  </Text>
+</div>
+```
+
+### Cabeçalho do contêiner (usar título)
+
+```tsx
+import { Container, Heading } from "@medusajs/ui"
+
+<Container className="divide-y p-0">
+  <div className="flex items-center justify-between px-6 py-4">
+    <Heading level="h2">Related Products</Heading>
+  </div>
+  {/* ... */}
+</Container>
+```
+
+### Mensagem de estado vazio
 
 ```tsx
 <Text size="small" leading="compact" className="text-ui-fg-subtle">
-  Nenhum item selecionado
+  No related products selected
 </Text>
+```
+
+### Rótulo do campo do formulário
+
+```tsx
+<div className="flex flex-col gap-y-2">
+  <Text size="small" leading="compact" weight="plus">
+    Display Name
+  </Text>
+  <Input {...props} />
+</div>
 ```
 
 ### Mensagem de erro
 
 ```tsx
-<Text size="small" className="text-ui-fg-error">Campo obrigatório</Text>
+<Text size="small" className="text-ui-fg-error">
+  This field is required
+</Text>
 ```
 
-## Classes de Cor de Texto
+### Emblema ou texto de status
 
-- `text-ui-fg-base`
-- `text-ui-fg-subtle`
-- `text-ui-fg-muted`
-- `text-ui-fg-disabled`
-- `text-ui-fg-error`
-- `text-ui-fg-success`
-- `text-ui-fg-warning`
+```tsx
+<div className="flex items-center gap-x-2">
+  <Text size="small" leading="compact" weight="plus">
+    Status:
+  </Text>
+  <Text size="small" leading="compact" className="text-ui-fg-subtle">
+    Active
+  </Text>
+</div>
+```
 
-## Padrões Comuns
+## Classes de cor de texto
 
-- pares label-valor em linha;
-- metadados com contraste reduzido;
-- títulos de item com peso maior e detalhes discretos.
+A Medusa UI oferece classes de cor semânticas:
 
-## Referência Rápida
+- `text-ui-fg-base` - Cor padrão do texto (raramente necessária, pois é a padrão)
+- `text-ui-fg-subtle` - Texto secundário/suave
+- `text-ui-fg-muted` - Ainda mais suave
+- `text-ui-fg-disabled` - Estado desativado
+- `text-ui-fg-error` - Mensagens de erro
+- `text-ui-fg-success` - Mensagens de sucesso
+- `text-ui-fg-warning` - Mensagens de aviso
 
-- Label: `weight="plus"`
-- Descrição: `text-ui-fg-subtle`
-- Erro: `text-ui-fg-error`
-- Cabeçalho de seção grande: `<Heading>`
+## Padrões comuns
 
-## Casos de Uso Yello Solar Hub
+### Layout de duas colunas
 
-- destacar status de homologação de fabricante;
-- sinalizar estados de aprovação comercial;
-- manter leitura clara de dados técnicos em tabelas admin.
+```tsx
+<div className="grid grid-cols-2 gap-4">
+  <div className="flex flex-col gap-y-1">
+    <Text size="small" leading="compact" className="text-ui-fg-subtle">
+      Category
+    </Text>
+    <Text size="small" leading="compact" weight="plus">
+      Clothing
+    </Text>
+  </div>
+  <div className="flex flex-col gap-y-1">
+    <Text size="small" leading="compact" className="text-ui-fg-subtle">
+      Status
+    </Text>
+    <Text size="small" leading="compact" weight="plus">
+      Published
+    </Text>
+  </div>
+</div>
+```
+
+### Par rótulo-valor embutido
+
+```tsx
+<div className="flex items-center gap-x-2">
+  <Text size="small" leading="compact" className="text-ui-fg-subtle">
+    SKU:
+  </Text>
+  <Text size="small" leading="compact" weight="plus">
+    SHIRT-001
+  </Text>
+</div>
+```
+
+### Cartão com título e metadados
+
+```tsx
+<div className="flex flex-col gap-y-2">
+  <Text size="small" leading="compact" weight="plus">
+    Premium Cotton T-Shirt
+  </Text>
+  <div className="flex items-center gap-x-2 text-ui-fg-subtle">
+    <Text size="small" leading="compact">
+      $29.99
+    </Text>
+    <Text size="small" leading="compact">
+      •
+    </Text>
+    <Text size="small" leading="compact">
+      In stock
+    </Text>
+  </div>
+</div>
+```
+
+## Referência rápida
+
+| Caso de uso | Padrão |
+|----------|---------|
+| Títulos de seção | `weight="plus"` |
+| Texto principal | `weight="plus"` |
+| Rótulos | `weight="plus"` |
+| Descrições | `className="text-ui-fg-subtle"` |
+| Texto auxiliar | `className="text-ui-fg-subtle"` |
+| Metadados | `className="text-ui-fg-subtle"` |
+| Erros | `className="text-ui-fg-error"` |
+| Estados vazios | `className="text-ui-fg-subtle"` |
+| Títulos grandes | Componente `<Heading>` |

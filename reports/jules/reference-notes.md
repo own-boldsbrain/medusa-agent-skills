@@ -25,9 +25,11 @@
 ### Autenticação
 
 Header oficial:
+
 ```
 x-goog-api-key: $JULES_API_KEY
 ```
+
 > [!WARNING]
 > NÃO usar `Authorization: Bearer`. A API Jules usa **`x-goog-api-key`** como header de autenticação.
 
@@ -52,6 +54,7 @@ AWAITING_PLAN_APPROVAL → IN_PROGRESS → COMPLETED
 ### Get Session — Response
 
 Campos principais no objeto Session:
+
 - `name` — Resource name (`sessions/{id}`)
 - `state` — Estado atual
 - `createTime` / `updateTime` — Timestamps

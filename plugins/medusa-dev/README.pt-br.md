@@ -6,14 +6,14 @@ Use este plugin para desenvolver funcionalidades de back-end e front-end relacio
 
 > Para instalação e uso com outros agentes, consulte o [README principal](../../README.md).
 
-- [Plugin Medusa Claude Code](#instalacao-com-o-claude-code)
-  - [Instalação com o Claude Code](#instalacao-com-o-claude-code)
-    - [Pré-requisitos](#prerequisites)
-    - [Instalar o plugin](#usar-o-plugin)
-  - [Instalação para outros agentes de IA](#instalacao-para-outros-agentes-de-ia)
+- [Plugin Medusa Claude Code](#plugin-medusa-claude-code)
+  - [Instalação com o Claude Code](#instalação-com-o-claude-code)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Instalar o plugin](#instalar-o-plugin)
+  - [Instalação para outros agentes de IA](#instalação-para-outros-agentes-de-ia)
   - [Usar o plugin](#usar-o-plugin)
-    - [Exemplos de casos de uso](#instalacao-para-outros-agentes-de-ia)
-  - [Habilidades incluídas](#habilidades-incluidas)
+    - [Exemplos de casos de uso](#exemplos-de-casos-de-uso)
+  - [Habilidades incluídas](#habilidades-incluídas)
   - [Comandos incluídos](#comandos-incluidos)
   - [Privacidade](#privacidade)
 

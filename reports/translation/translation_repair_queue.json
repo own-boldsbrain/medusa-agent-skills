@@ -2,11 +2,6 @@
   "P0_source_contaminated": [],
   "P0_truncated": [
     {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.pt-br.md",
-      "risk_score": 100
-    },
-    {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\typography.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\typography.pt-br.md",
       "risk_score": 100
@@ -226,6 +221,11 @@
     {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\SKILL.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\SKILL.pt-br.md",
+      "risk_score": 50
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.pt-br.md",
       "risk_score": 50
     },
     {

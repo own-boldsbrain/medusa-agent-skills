@@ -2,35 +2,35 @@
   "summary": {
     "total_pairs": 69,
     "passed": 16,
-    "needs_review": 11,
-    "failed": 42,
+    "needs_review": 12,
+    "failed": 41,
     "error": 0
   },
   "issue_file_count": {
-    "markdown_violations": 40,
-    "heading_count_mismatch": 36,
-    "list_count_drop": 14,
+    "markdown_violations": 41,
+    "heading_count_mismatch": 35,
+    "list_count_drop": 13,
     "low_line_ratio": 5,
-    "code_block_mismatch": 33,
+    "code_block_mismatch": 32,
     "conversational_filler_detected": 1,
-    "english_residual_detected": 15,
     "toc_anchor_mismatch": 15,
+    "english_residual_detected": 15,
     "invalid_suffix": 2,
-    "truncated_target": 2,
-    "heading_level_mismatch": 3
+    "heading_level_mismatch": 3,
+    "truncated_target": 1
   },
   "issue_occurrence_count": {
-    "markdown_violations": 40,
-    "heading_count_mismatch": 36,
-    "list_count_drop": 14,
+    "markdown_violations": 41,
+    "heading_count_mismatch": 35,
+    "list_count_drop": 13,
     "low_line_ratio": 5,
-    "code_block_mismatch": 33,
+    "code_block_mismatch": 32,
     "toc_anchor_mismatch": 73,
     "english_residual_detected": 15,
     "conversational_filler_detected": 1,
     "invalid_suffix": 2,
-    "truncated_target": 2,
-    "heading_level_mismatch": 5
+    "heading_level_mismatch": 5,
+    "truncated_target": 1
   },
   "top_20_risk": [
     {
@@ -51,8 +51,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "markdown_violations",
+        "code_block_mismatch",
         "heading_count_mismatch"
       ]
     },
@@ -63,12 +63,12 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "conversational_filler_detected",
-        "english_residual_detected",
-        "heading_count_mismatch",
         "toc_anchor_mismatch",
-        "markdown_violations"
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations",
+        "english_residual_detected"
       ]
     },
     {
@@ -78,11 +78,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
-        "english_residual_detected",
-        "heading_count_mismatch",
         "toc_anchor_mismatch",
-        "markdown_violations"
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations",
+        "english_residual_detected"
       ]
     },
     {
@@ -92,8 +92,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "markdown_violations",
+        "code_block_mismatch",
         "heading_count_mismatch"
       ]
     },
@@ -104,11 +104,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
-        "english_residual_detected",
-        "heading_count_mismatch",
         "toc_anchor_mismatch",
-        "markdown_violations"
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations",
+        "english_residual_detected"
       ]
     },
     {
@@ -118,8 +118,8 @@
       "risk_score": 100,
       "action": "repair_by_script",
       "issues": [
-        "markdown_violations",
         "low_line_ratio",
+        "markdown_violations",
         "list_count_drop"
       ]
     },
@@ -130,11 +130,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
-        "english_residual_detected",
-        "heading_count_mismatch",
         "toc_anchor_mismatch",
-        "markdown_violations"
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations",
+        "english_residual_detected"
       ]
     },
     {
@@ -144,11 +144,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
-        "english_residual_detected",
-        "heading_count_mismatch",
         "toc_anchor_mismatch",
-        "markdown_violations"
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations",
+        "english_residual_detected"
       ]
     },
     {
@@ -170,11 +170,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
-        "english_residual_detected",
-        "heading_count_mismatch",
         "toc_anchor_mismatch",
-        "markdown_violations"
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations",
+        "english_residual_detected"
       ]
     },
     {
@@ -184,8 +184,8 @@
       "risk_score": 100,
       "action": "repair_by_script",
       "issues": [
-        "english_residual_detected",
-        "heading_count_mismatch"
+        "heading_count_mismatch",
+        "english_residual_detected"
       ]
     },
     {
@@ -195,8 +195,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "english_residual_detected",
+        "code_block_mismatch",
         "heading_count_mismatch",
         "toc_anchor_mismatch"
       ]
@@ -208,11 +208,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
-        "english_residual_detected",
-        "heading_count_mismatch",
         "toc_anchor_mismatch",
-        "markdown_violations"
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations",
+        "english_residual_detected"
       ]
     },
     {
@@ -222,11 +222,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
-        "english_residual_detected",
-        "heading_count_mismatch",
         "toc_anchor_mismatch",
-        "markdown_violations"
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations",
+        "english_residual_detected"
       ]
     },
     {
@@ -236,13 +236,13 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "english_residual_detected",
-        "list_count_drop",
         "low_line_ratio",
+        "code_block_mismatch",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
-        "markdown_violations"
+        "markdown_violations",
+        "list_count_drop",
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -252,10 +252,10 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "markdown_violations",
-        "list_count_drop",
-        "heading_count_mismatch"
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "list_count_drop"
       ]
     },
     {
@@ -265,8 +265,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "markdown_violations",
+        "code_block_mismatch",
         "heading_count_mismatch"
       ]
     },
@@ -277,8 +277,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "markdown_violations",
+        "code_block_mismatch",
         "heading_count_mismatch"
       ]
     },
@@ -289,8 +289,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "markdown_violations",
+        "code_block_mismatch",
         "heading_count_mismatch"
       ]
     }

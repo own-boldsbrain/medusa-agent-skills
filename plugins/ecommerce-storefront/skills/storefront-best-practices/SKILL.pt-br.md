@@ -327,7 +327,8 @@ Antes de implementar, considere:
 5. **Requisitos de negócios**
 
 - Multimoeda, multilíngue, específico para cada região
-6. **Sistema de back-end**
+
+1. **Sistema de back-end**
 
 - A estrutura da API afeta a implementação dos componentes
 

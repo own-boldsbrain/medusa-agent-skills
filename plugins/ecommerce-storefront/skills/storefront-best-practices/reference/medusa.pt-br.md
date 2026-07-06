@@ -32,10 +32,11 @@ Guia para conectar sua loja virtual ao backend da Medusa usando o [Medusa JS SDK
 1. **PAUSE**
 
 - Não escreva código ainda.
-2. **CONSULTE** o servidor MCP ou a documentação (<https://docs.medusajs.com/resources/js-sdk>) para o método exato.
-3. **VERIFIQUE** com o usuário o que você encontrou.
-4. **ESCREVA** o código usando o método verificado.
-5. **CHECAR** erros de TypeScript - Erros de tipo significam nome de método ou parâmetros incorretos.
+
+1. **CONSULTE** o servidor MCP ou a documentação (<https://docs.medusajs.com/resources/js-sdk>) para o método exato.
+2. **VERIFIQUE** com o usuário o que você encontrou.
+3. **ESCREVA** o código usando o método verificado.
+4. **CHECAR** erros de TypeScript - Erros de tipo significam nome de método ou parâmetros incorretos.
 
 **Se você encontrar erros de TypeScript nos métodos do SDK, significa que você usou os métodos incorretos. Volte ao Passo 2 e verifique novamente.**
 

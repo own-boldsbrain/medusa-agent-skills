@@ -37,7 +37,8 @@ Antes de implementar qualquer componente, identifique as cores, a tipografia e o
 3. **Variáveis CSS**
 
 - Verifique se há `--font-sans`, `--font-heading`
-4. **Componentes existentes**
+
+1. **Componentes existentes**
 
 - Identifique os padrões de uso de fontes
 

@@ -41,8 +41,9 @@ Antes da implementação:
 1. **Verifique a API do backend**
 
 - Confirme se os endpoints da lista de desejos existem (ou pergunte ao usuário)
-2. **Autenticação** — Confirme se é necessário fazer login para salvar itens na lista de desejos
-3. **Teste as operações** — Verifique se as funcionalidades de adicionar/remover/buscar funcionam
+
+1. **Autenticação** — Confirme se é necessário fazer login para salvar itens na lista de desejos
+2. **Teste as operações** — Verifique se as funcionalidades de adicionar/remover/buscar funcionam
 
 **Usuários do Medusa:**
 O núcleo do Medusa não inclui a lista de desejos por padrão. Instale o plugin Wishlist a partir do repositório de exemplos do Medusa. O plugin oferece funcionalidade completa de lista de desejos com endpoints de API.

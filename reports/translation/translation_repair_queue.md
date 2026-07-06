@@ -2,8 +2,7 @@
 
 Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 
-## P0_truncated (3 arquivos)
-- Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.pt-br.md)
+## P0_truncated (2 arquivos)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.pt-br.md)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/typography.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/typography.pt-br.md)
 
@@ -62,6 +61,9 @@ Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 ## P1_heading_mismatch (2 arquivos)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-reviews.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-reviews.pt-br.md)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/mcloud-organizations/SKILL.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-cloud/skills/mcloud-organizations/SKILL.pt-br.md)
+
+## P2_english_residual (1 arquivos)
+- Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/skills/learning-medusa/SKILL.pt-br.md)
 
 ## P3_style_review (2 arquivos)
 - Score 0 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.pt-BR.md)

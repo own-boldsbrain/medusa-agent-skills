@@ -2,11 +2,6 @@
   "P0_source_contaminated": [],
   "P0_truncated": [
     {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.pt-br.md",
       "risk_score": 100
@@ -266,7 +261,13 @@
       "risk_score": 100
     }
   ],
-  "P2_english_residual": [],
+  "P2_english_residual": [
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.pt-br.md",
+      "risk_score": 30
+    }
+  ],
   "P3_style_review": [
     {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\account.md",

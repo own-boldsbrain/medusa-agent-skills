@@ -2,34 +2,34 @@
   "summary": {
     "total_pairs": 69,
     "passed": 16,
-    "needs_review": 10,
-    "failed": 43,
+    "needs_review": 11,
+    "failed": 42,
     "error": 0
   },
   "issue_file_count": {
     "markdown_violations": 40,
-    "heading_count_mismatch": 37,
-    "list_count_drop": 15,
+    "heading_count_mismatch": 36,
+    "list_count_drop": 14,
     "low_line_ratio": 5,
-    "code_block_mismatch": 34,
-    "toc_anchor_mismatch": 15,
+    "code_block_mismatch": 33,
     "conversational_filler_detected": 1,
-    "english_residual_detected": 14,
+    "english_residual_detected": 15,
+    "toc_anchor_mismatch": 15,
     "invalid_suffix": 2,
-    "truncated_target": 3,
+    "truncated_target": 2,
     "heading_level_mismatch": 3
   },
   "issue_occurrence_count": {
     "markdown_violations": 40,
-    "heading_count_mismatch": 37,
-    "list_count_drop": 15,
+    "heading_count_mismatch": 36,
+    "list_count_drop": 14,
     "low_line_ratio": 5,
-    "code_block_mismatch": 34,
+    "code_block_mismatch": 33,
     "toc_anchor_mismatch": 73,
-    "english_residual_detected": 14,
+    "english_residual_detected": 15,
     "conversational_filler_detected": 1,
     "invalid_suffix": 2,
-    "truncated_target": 3,
+    "truncated_target": 2,
     "heading_level_mismatch": 5
   },
   "top_20_risk": [
@@ -40,8 +40,8 @@
       "risk_score": 100,
       "action": "repair_by_script",
       "issues": [
-        "heading_count_mismatch",
-        "markdown_violations"
+        "markdown_violations",
+        "heading_count_mismatch"
       ]
     },
     {
@@ -52,8 +52,8 @@
       "action": "retranslate_from_source",
       "issues": [
         "code_block_mismatch",
-        "heading_count_mismatch",
-        "markdown_violations"
+        "markdown_violations",
+        "heading_count_mismatch"
       ]
     },
     {
@@ -63,12 +63,12 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "toc_anchor_mismatch",
-        "markdown_violations",
-        "heading_count_mismatch",
-        "conversational_filler_detected",
         "code_block_mismatch",
-        "english_residual_detected"
+        "conversational_filler_detected",
+        "english_residual_detected",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -78,11 +78,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
-        "toc_anchor_mismatch",
-        "heading_count_mismatch",
         "code_block_mismatch",
-        "english_residual_detected"
+        "english_residual_detected",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -93,8 +93,8 @@
       "action": "retranslate_from_source",
       "issues": [
         "code_block_mismatch",
-        "heading_count_mismatch",
-        "markdown_violations"
+        "markdown_violations",
+        "heading_count_mismatch"
       ]
     },
     {
@@ -104,11 +104,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
-        "toc_anchor_mismatch",
-        "heading_count_mismatch",
         "code_block_mismatch",
-        "english_residual_detected"
+        "english_residual_detected",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -118,8 +118,8 @@
       "risk_score": 100,
       "action": "repair_by_script",
       "issues": [
-        "low_line_ratio",
         "markdown_violations",
+        "low_line_ratio",
         "list_count_drop"
       ]
     },
@@ -130,11 +130,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
-        "toc_anchor_mismatch",
-        "heading_count_mismatch",
         "code_block_mismatch",
-        "english_residual_detected"
+        "english_residual_detected",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -144,11 +144,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
-        "toc_anchor_mismatch",
-        "heading_count_mismatch",
         "code_block_mismatch",
-        "english_residual_detected"
+        "english_residual_detected",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -170,11 +170,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
-        "toc_anchor_mismatch",
-        "heading_count_mismatch",
         "code_block_mismatch",
-        "english_residual_detected"
+        "english_residual_detected",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -184,8 +184,8 @@
       "risk_score": 100,
       "action": "repair_by_script",
       "issues": [
-        "heading_count_mismatch",
-        "english_residual_detected"
+        "english_residual_detected",
+        "heading_count_mismatch"
       ]
     },
     {
@@ -195,8 +195,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "english_residual_detected",
         "code_block_mismatch",
+        "english_residual_detected",
         "heading_count_mismatch",
         "toc_anchor_mismatch"
       ]
@@ -208,11 +208,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
-        "toc_anchor_mismatch",
-        "heading_count_mismatch",
         "code_block_mismatch",
-        "english_residual_detected"
+        "english_residual_detected",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -222,11 +222,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
-        "toc_anchor_mismatch",
-        "heading_count_mismatch",
         "code_block_mismatch",
-        "english_residual_detected"
+        "english_residual_detected",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -236,26 +236,13 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "toc_anchor_mismatch",
-        "list_count_drop",
-        "markdown_violations",
-        "heading_count_mismatch",
         "code_block_mismatch",
         "english_residual_detected",
-        "low_line_ratio"
-      ]
-    },
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.pt-br.md",
-      "status": "failed",
-      "risk_score": 100,
-      "action": "retranslate_from_source",
-      "issues": [
-        "code_block_mismatch",
+        "list_count_drop",
+        "low_line_ratio",
         "heading_count_mismatch",
-        "truncated_target",
-        "list_count_drop"
+        "toc_anchor_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -266,9 +253,9 @@
       "action": "retranslate_from_source",
       "issues": [
         "code_block_mismatch",
-        "heading_count_mismatch",
         "markdown_violations",
-        "list_count_drop"
+        "list_count_drop",
+        "heading_count_mismatch"
       ]
     },
     {
@@ -279,8 +266,8 @@
       "action": "retranslate_from_source",
       "issues": [
         "code_block_mismatch",
-        "heading_count_mismatch",
-        "markdown_violations"
+        "markdown_violations",
+        "heading_count_mismatch"
       ]
     },
     {
@@ -291,8 +278,20 @@
       "action": "retranslate_from_source",
       "issues": [
         "code_block_mismatch",
-        "heading_count_mismatch",
-        "markdown_violations"
+        "markdown_violations",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-logs\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-logs\\SKILL.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "code_block_mismatch",
+        "markdown_violations",
+        "heading_count_mismatch"
       ]
     }
   ],

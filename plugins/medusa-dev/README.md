@@ -6,15 +6,16 @@ Use this plugin to build backend and frontend features related to Medusa.
 
 > For installation and usage with other agents, refer to the [main README](../../README.md).
 
-- [Installation with Claude Code](#installation-with-claude-code)
-  - [Prerequisites](#prerequisites)
-  - [Install Plugin](#install-plugin)
-- [Installation for Other AI Agents](#installation-for-other-ai-agents)
-- [Use Plugin](#use-plugin)
-  - [Example Use Cases](#example-use-cases)
-- [Skills Included](#skills-included)
-- [Commands Included](#commands-included)
-- [Privacy](#privacy)
+- [Medusa Claude Code Plugin](#medusa-claude-code-plugin)
+  - [Installation with Claude Code](#installation-with-claude-code)
+    - [Prerequisites](#prerequisites)
+    - [Install Plugin](#install-plugin)
+  - [Installation for Other AI Agents](#installation-for-other-ai-agents)
+  - [Use Plugin](#use-plugin)
+    - [Example Use Cases](#example-use-cases)
+  - [Skills Included](#skills-included)
+  - [Commands Included](#commands-included)
+  - [Privacy](#privacy)
 
 ## Installation with Claude Code
 
@@ -104,6 +105,7 @@ Here are some examples of what you can ask Claude to build:
 1. **building-with-medusa** - Backend development (modules, workflows, API routes)
 2. **building-admin-dashboard-customizations** - Admin UI development (widgets, pages, forms)
 3. **building-storefronts** - Storefront integration (SDK usage, React Query patterns)
+4. **creating-internal-agents** - Creating agents
 
 ## Commands Included
 

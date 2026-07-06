@@ -15,6 +15,7 @@ Habilidades para gerenciar recursos do Medusa Cloud por meio da CLI do Cloud (`m
 
 1. - *Começar Claude:**```bash
 claude
+
 ```
 
 1. Adicione o marketplace Medusa ao Claude Code:

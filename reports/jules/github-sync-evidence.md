@@ -4,11 +4,11 @@
 - **PR Number**: 1
 - **PR State**: `OPEN`
 - **PR Draft**: `true`
-- **PR Mergeable**: `UNKNOWN` (GitHub em estado transitório; não reportou `CONFLICTING`)
-- **HEAD SHA**: `b89fdcad51664fd989e5b2bfa7d6a3a35993ebb3`
+- **PR Mergeable**: `MERGEABLE`
+- **HEAD SHA**: `cebebc10d984c97bc7623b489b41adf905a4a039`
 - **Origin Main SHA**: `9c41f09deaab619bf81ebc4770fbb2029babf42d`
 - **Branch**: `chore/translation-forensic-repair`
-- **Updated At**: `2026-07-06T16:31:42Z`
+- **Updated At**: `2026-07-06T16:38:52Z`
 - **Source Mode**: `gh_cli_live`
 
 ## Jules Live Status

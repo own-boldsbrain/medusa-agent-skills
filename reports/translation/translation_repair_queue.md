@@ -3,6 +3,7 @@
 Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 
 ## P2_english_residual (13 arquivos)
+
 - Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/skills/design-log-workflow/SKILL.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/design-log/skills/design-log-workflow/SKILL.pt-br.md)
 - Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/design.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/design.pt-br.md)
 - Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/navbar.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/navbar.pt-br.md)
@@ -16,4 +17,3 @@ Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 - Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/table-selection.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/table-selection.pt-br.md)
 - Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-with-medusa/SKILL.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-with-medusa/SKILL.pt-br.md)
 - Score 30 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/creating-internal-agents/reference/medusa-exec.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/creating-internal-agents/reference/medusa-exec.pt-br.md)
-

@@ -3,22 +3,26 @@
 Gerado em: 2026-07-06 13:45:41
 
 ## Resumo Global
+
 - **Total de Pares**: 72
 - 🟢 **Passed**: 59
 - 🟡 **Needs Review**: 13
 - 🔴 **Failed**: 0
 
 ## Token FinOps
+
 - **Tokens se retraduzir tudo**: 99313
 - **Tokens após triagem (High-Token P0)**: 0
 - **Tokens economizados (Zero-Token P1/P2)**: 99313
 
 ## Ocorrências (Por Arquivo vs Frequência Absoluta)
+
 | Problema | Arquivos Afetados | Total de Ocorrências |
 |---|---|---|
 | english_residual_detected | 13 | 13 |
 
 ## Top 20 Arquivos Mais Críticos (Risco Máximo = 100)
+
 - **Score: 30** | `SKILL.pt-br.md`
   - Ação: `repair_by_script`
   - Issues: english_residual_detected

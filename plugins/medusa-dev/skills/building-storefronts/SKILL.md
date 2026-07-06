@@ -10,6 +10,7 @@ Frontend integration guide for building storefronts with Medusa. Covers SDK usag
 ## When to Apply
 
 **Load this skill for ANY storefront development task, including:**
+
 - Calling custom Medusa API routes from the storefront
 - Integrating Medusa SDK in frontend applications
 - Using React Query for data fetching
@@ -92,6 +93,7 @@ await sdk.client.fetch("/store/reviews", {
 ```
 
 **Why this matters:**
+
 - The SDK handles JSON serialization automatically
 - Using JSON.stringify() will double-serialize and break the request
 - The server won't be able to parse the body
@@ -101,6 +103,7 @@ await sdk.client.fetch("/store/reviews", {
 Before implementing, verify you're NOT doing these:
 
 **SDK Usage:**
+
 - [ ] Using regular fetch() instead of the Medusa JS SDK (causes missing header errors)
 - [ ] Not using existing SDK methods for built-in endpoints (e.g., using sdk.client.fetch("/store/products") instead of sdk.store.product.list())
 - [ ] Using JSON.stringify() on the body parameter
@@ -109,15 +112,18 @@ Before implementing, verify you're NOT doing these:
 - [ ] Not using sdk.client.fetch() for custom routes
 
 **React Query:**
+
 - [ ] Not invalidating queries after mutations
 - [ ] Using flat query keys instead of hierarchical
 - [ ] Not handling loading and error states
 - [ ] Forgetting to disable buttons during mutations (isPending)
 
 **Data Display:**
+
 - [ ] **CRITICAL**: Dividing prices by 100 when displaying (prices are stored as-is: $49.99 = 49.99, NOT in cents)
 
 **Error Handling:**
+
 - [ ] Not implementing onError callbacks
 - [ ] Not showing error messages to users
 - [ ] Not handling network failures gracefully
@@ -131,6 +137,7 @@ references/frontend-integration.md - SDK usage, React Query patterns, API integr
 ```
 
 The reference file contains:
+
 - Step-by-step SDK integration patterns
 - Complete React Query examples
 - Correct vs incorrect code examples
@@ -141,17 +148,20 @@ The reference file contains:
 ## When to Use MedusaDocs MCP Server
 
 **Use this skill for (PRIMARY SOURCE):**
+
 - How to call custom API routes from storefront
 - SDK usage patterns (sdk.client.fetch)
 - React Query integration patterns
 - Common mistakes and anti-patterns
 
 **Use MedusaDocs MCP server for (SECONDARY SOURCE):**
+
 - Built-in SDK methods (sdk.admin.*, sdk.store.*)
 - Official Medusa SDK API reference
 - Framework-specific configuration options
 
 **Why skills come first:**
+
 - Skills contain critical patterns like "don't use JSON.stringify" that MCP doesn't emphasize
 - Skills show correct vs incorrect patterns; MCP shows what's possible
 - Planning requires understanding patterns, not just API reference
@@ -170,6 +180,7 @@ When building features that span backend and frontend:
    - **NEVER use regular fetch()** - missing publishable API key causes errors
 
 **Why the SDK is required:**
+
 - Store routes need `x-publishable-api-key` header
 - Admin routes need `Authorization` and session headers
 - SDK handles all required headers automatically

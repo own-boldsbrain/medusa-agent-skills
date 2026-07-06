@@ -10,6 +10,7 @@ Esta não é uma referência passiva — é uma SESSÃO TUTORIA INTERATIVA onde 
 ## Objetivo
 
 Construir um recurso de `brands` que permita:
+
 - Criar marcas via API
 - Ligar marcas a produtos
 - Visualizar marcas no painel admin

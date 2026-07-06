@@ -388,6 +388,7 @@ class OrderService extends MedusaService(Order) {
 ```
 
 **Problems**:
+
 - ❌ Order Module depends on Brand Module
 - ❌ Order Module depends on Product Module
 - ❌ Can't test Order Module without Brand Module
@@ -435,6 +436,7 @@ export const createOrderWorkflow = createWorkflow(
 ```
 
 **Benefits**:
+
 - ✅ Order Module remains isolated
 - ✅ Brand validation is in workflow (application layer)
 - ✅ Each module can be tested independently
@@ -445,6 +447,7 @@ export const createOrderWorkflow = createWorkflow(
 Module isolation is fundamental to building scalable, maintainable Medusa applications:
 
 **Key Principles**:
+
 - ✅ Modules NEVER import from other modules
 - ✅ Use link layer for relationships
 - ✅ Use Query layer for cross-module reads
@@ -452,6 +455,7 @@ Module isolation is fundamental to building scalable, maintainable Medusa applic
 - ✅ Keep business logic in workflows, not modules
 
 **Benefits**:
+
 - ✅ No circular dependencies
 - ✅ Independent development and testing
 - ✅ Module extraction and reusability

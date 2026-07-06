@@ -7,6 +7,7 @@ Ensina agentes de IA a usar a **metodologia Design-Log do YSH Store** — um sis
 Agentes de IA perdem contexto entre sessões. O sistema de design-log resolve isso armazenando decisões arquiteturais e estratégicas como arquivos Markdown estruturados na pasta `design-log/` do repositório YSH Store. Todo agente **deve** consultar esses logs antes de qualquer ação — esta é uma regra inegociável definida na Seção 2.1 do `AGENTS.md`.
 
 Este plugin ensina agentes exatamente como:
+
 1. **Consultar** entradas de design-log existentes antes de codificar
 2. **Criar** novas entradas quando uma decisão precisa ser registrada
 3. **Atualizar** o status da entrada conforme o trabalho avança (`draft` → `done`)

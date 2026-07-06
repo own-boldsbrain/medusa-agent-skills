@@ -1,41 +1,45 @@
-# Padrões de Formulários e Modais
+# Formulários e Padrões Modais
 
-## Conteúdo
+## Índice
 
-- [FocusModal vs Drawer](#focusmodal-vs-drawer)
-- [Padrões de Botão de Edição](#edit-button-patterns)
-  - [Botão de Edição Simples (canto superior direito)](#simple-edit-button-top-right-corner)
-  - [Menu Suspenso com Ações](#dropdown-menu-with-actions)
-- [Componente Select para Pequenos Conjuntos de Dados](#select-component-for-small-datasets)
-- [Exemplo FocusModal](#focusmodal-example)
-- [Exemplo Drawer](#drawer-example)
-- [Formulário com Estados de Validação e Carregamento](#form-with-validation-and-loading-states)
-- [Padrões Chave de Formulário](#key-form-patterns)
+- [FocusModal x Drawer](#focusmodal-x-drawer)
+- [Padrões de botões de edição](#padroes-de-botoes-de-edicao)
+  - [Botão de edição simples (canto superior direito)](#padroes-de-botoes-de-edicao)
+  - [Menu suspenso com ações](#formulario-com-validacao-e-estados-de-carregamento)
+- [Componente Select para conjuntos de dados pequenos](#componente-select-para-conjuntos-de-dados-pequenos)
+- [Exemplo do FocusModal](#exemplo-do-focusmodal)
+- [Exemplo do Drawer](#exemplo-do-focusmodal)
+- [Formulário com validação e estados de carregamento](#formulario-com-validacao-e-estados-de-carregamento)
+- [Padrões de formulários principais](#padroes-chave-de-formularios)
 
-## FocusModal vs Drawer
+## FocusModal x Drawer
 
-**FocusModal**- Use para criar novas entidades:
+**FocusModal** - Use para criar novas entidades:
 
-- Modal tela cheia
+- Modal em tela cheia
 - Mais espaço para formulários complexos
-- Melhor para fluxos de múltiplas etapas**Drawer**- Use para editar entidades existentes:
+- Mais adequado para fluxos com várias etapas
 
-- Painel lateral que desliza pela direita
+**Drawer** - Use para editar entidades existentes:
+
+- Painel lateral que desliza da direita
 - Edições rápidas sem perder o contexto
-- Melhor para atualizações de campo único**Regra geral:**FocusModal para criação, Drawer para edição.
+- Mais adequado para atualizações de um único campo
 
-## Padrões de Botão de Edição
+**Regra geral:** FocusModal para criação, Drawer para edição.
 
-Os dados exibidos em um container não devem ser editáveis diretamente. Em vez disso, use um botão "Editar". Isso pode ser:
+## Padrões de botões de edição
 
-### Botão de Edição Simples (canto superior direito)
+Os dados exibidos em um contêiner não devem ser editáveis diretamente. Em vez disso, use um botão “Editar”. Ele pode ser:
+
+### Botão “Editar” simples (canto superior direito)
 
 ```tsx
 import { Button } from "@medusajs/ui"
 import { PencilSquare } from "@medusajs/icons"
 
 <div className="flex items-center justify-between px-6 py-4">
-  <Heading level="h2">Título da Seção</Heading>
+  <Heading level="h2">Section Title</Heading>
   <Button
     size="small"
     variant="secondary"
@@ -43,10 +47,10 @@ import { PencilSquare } from "@medusajs/icons"
   >
     <PencilSquare />
   </Button>
-</div >
+</div>
 ```
 
-### Menu Suspenso com Ações
+### Menu suspenso com ações
 
 ```tsx
 import { EllipsisHorizontal, PencilSquare, Plus, Trash } from "@medusajs/icons"
@@ -63,16 +67,16 @@ export function DropdownMenuDemo() {
       <DropdownMenu.Content>
         <DropdownMenu.Item className="gap-x-2">
           <PencilSquare className="text-ui-fg-subtle" />
-          Editar
+          Edit
         </DropdownMenu.Item>
         <DropdownMenu.Item className="gap-x-2">
           <Plus className="text-ui-fg-subtle" />
-          Adicionar
+          Add
         </DropdownMenu.Item>
         <DropdownMenu.Separator />
         <DropdownMenu.Item className="gap-x-2">
           <Trash className="text-ui-fg-subtle" />
-          Excluir
+          Delete
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu>
@@ -80,16 +84,16 @@ export function DropdownMenuDemo() {
 }
 ```
 
-## Componente Select para Pequenos Conjuntos de Dados
+## Componente Select para conjuntos de dados pequenos
 
-Para selecionar de 2 a 10 opções (status, tipos, etc.), use o componente Select:
+Para selecionar entre 2 e 10 opções (status, tipos etc.), use o componente Select:
 
 ```tsx
 import { Select } from "@medusajs/ui"
 
 <Select>
   <Select.Trigger>
-    <Select.Value placeholder="Selecione o status" />
+    <Select.Value placeholder="Select status" />
   </Select.Trigger>
   <Select.Content>
     {items.map((item) => (
@@ -99,9 +103,11 @@ import { Select } from "@medusajs/ui"
     ))}
   </Select.Content>
 </Select>
-```**Para conjuntos de dados maiores** (Produtos, Categorias, Regiões, etc.), use DataTable com FocusModal para busca e paginação. Consulte [table-selection.md](table-selection.md) para o padrão completo.
+```
 
-## Exemplo FocusModal
+**Para conjuntos de dados maiores** (produtos, categorias, regiões etc.), use o DataTable com o FocusModal para pesquisa e paginação. Consulte [table-selection.md](table-selection.md) para ver o padrão completo.
+
+## Exemplo do FocusModal
 
 ```tsx
 import { FocusModal, Button, Input, Label } from "@medusajs/ui"
@@ -112,7 +118,7 @@ const MyWidget = () => {
   const [formData, setFormData] = useState({ title: "" })
 
   const handleSubmit = () => {
-    // Lógica de envio do formulário
+    // Handle form submission
     console.log(formData)
     setOpen(false)
   }
@@ -120,7 +126,7 @@ const MyWidget = () => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>
-        Criar Novo
+        Create New
       </Button>
 
       <FocusModal open={open} onOpenChange={setOpen}>
@@ -130,28 +136,28 @@ const MyWidget = () => {
               <div className="flex items-center justify-end gap-x-2">
                 <FocusModal.Close asChild>
                   <Button size="small" variant="secondary">
-                    Cancelar
+                    Cancel
                   </Button>
                 </FocusModal.Close>
                 <Button size="small" onClick={handleSubmit}>
-                  Salvar
+                  Save
                 </Button>
-              </div >
+              </div>
             </FocusModal.Header>
 
             <FocusModal.Body className="flex-1 overflow-auto">
               <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
-                  <Label>Título</Label>
+                  <Label>Title</Label>
                   <Input
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   />
-                </div >
-                {/*Mais campos do formulário*/}
-              </div >
+                </div>
+                {/* More form fields */}
+              </div>
             </FocusModal.Body>
-          </div >
+          </div>
         </FocusModal.Content>
       </FocusModal>
     </>
@@ -159,7 +165,7 @@ const MyWidget = () => {
 }
 ```
 
-## Exemplo Drawer
+## Exemplo de gaveta
 
 ```tsx
 import { Drawer, Button, Input, Label } from "@medusajs/ui"
@@ -170,7 +176,7 @@ const MyWidget = ({ data }) => {
   const [formData, setFormData] = useState({ title: data.title })
 
   const handleSubmit = () => {
-    // Lógica de envio do formulário
+    // Handle form submission
     console.log(formData)
     setOpen(false)
   }
@@ -178,39 +184,39 @@ const MyWidget = ({ data }) => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>
-        Editar
+        Edit
       </Button>
 
       <Drawer open={open} onOpenChange={setOpen}>
         <Drawer.Content>
           <Drawer.Header>
-            <Drawer.Title>Editar Configurações</Drawer.Title>
+            <Drawer.Title>Edit Settings</Drawer.Title>
           </Drawer.Header>
 
           <Drawer.Body className="flex-1 overflow-auto p-4">
             <div className="flex flex-col gap-y-4">
               <div className="flex flex-col gap-y-2">
-                <Label>Título</Label>
+                <Label>Title</Label>
                 <Input
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 />
-              </div >
-              {/*Mais campos do formulário*/}
-            </div >
+              </div>
+              {/* More form fields */}
+            </div>
           </Drawer.Body>
 
           <Drawer.Footer>
             <div className="flex items-center justify-end gap-x-2">
               <Drawer.Close asChild>
                 <Button size="small" variant="secondary">
-                  Cancelar
+                  Cancel
                 </Button>
               </Drawer.Close>
               <Button size="small" onClick={handleSubmit}>
-                Salvar
+                Save
               </Button>
-            </div >
+            </div>
           </Drawer.Footer>
         </Drawer.Content>
       </Drawer>
@@ -219,7 +225,7 @@ const MyWidget = ({ data }) => {
 }
 ```
 
-## Formulário com Estados de Validação e Carregamento
+## Formulário com validação e estados de carregamento
 
 ```tsx
 import { FocusModal, Button, Input, Label, Text, toast } from "@medusajs/ui"
@@ -240,21 +246,21 @@ const CreateProductWidget = () => {
     mutationFn: (data) => sdk.admin.product.create(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["products"] })
-      toast.success("Produto criado com sucesso")
+      toast.success("Product created successfully")
       setOpen(false)
       setFormData({ title: "", description: "" })
       setErrors({})
     },
     onError: (error) => {
-      toast.error(error.message || "Falha ao criar o produto")
+      toast.error(error.message || "Failed to create product")
     },
   })
 
   const handleSubmit = () => {
-    // Validar
+    // Validate
     const newErrors = {}
-    if (!formData.title) newErrors.title = "O título é obrigatório"
-    if (!formData.description) newErrors.description = "A descrição é obrigatória"
+    if (!formData.title) newErrors.title = "Title is required"
+    if (!formData.description) newErrors.description = "Description is required"
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
@@ -267,7 +273,7 @@ const CreateProductWidget = () => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>
-        Criar Produto
+        Create Product
       </Button>
 
       <FocusModal open={open} onOpenChange={setOpen}>
@@ -281,7 +287,7 @@ const CreateProductWidget = () => {
                     variant="secondary"
                     disabled={createProduct.isPending}
                   >
-                    Cancelar
+                    Cancel
                   </Button>
                 </FocusModal.Close>
                 <Button
@@ -289,15 +295,15 @@ const CreateProductWidget = () => {
                   onClick={handleSubmit}
                   isLoading={createProduct.isPending}
                 >
-                  Salvar
+                  Save
                 </Button>
-              </div >
+              </div>
             </FocusModal.Header>
 
             <FocusModal.Body className="flex-1 overflow-auto">
               <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
-                  <Label>Título *</Label>
+                  <Label>Title *</Label>
                   <Input
                     value={formData.title}
                     onChange={(e) => {
@@ -310,10 +316,10 @@ const CreateProductWidget = () => {
                       {errors.title}
                     </Text>
                   )}
-                </div >
+                </div>
 
                 <div className="flex flex-col gap-y-2">
-                  <Label>Descrição *</Label>
+                  <Label>Description *</Label>
                   <Input
                     value={formData.description}
                     onChange={(e) => {
@@ -326,10 +332,10 @@ const CreateProductWidget = () => {
                       {errors.description}
                     </Text>
                   )}
-                </div >
-              </div >
+                </div>
+              </div>
             </FocusModal.Body>
-          </div >
+          </div>
         </FocusModal.Content>
       </FocusModal>
     </>
@@ -337,31 +343,31 @@ const CreateProductWidget = () => {
 }
 ```
 
-## Padrões Chave de Formulário
+## Padrões-chave de formulários
 
-### Sempre Desabilitar Ações Durante Mutações
+### Sempre desativar ações durante mutações
 
 ```tsx
 <Button
   disabled={mutation.isPending}
   onClick={handleAction}
 >
-  Ação
+  Action
 </Button>
 ```
 
-### Mostrar Estado de Carregamento no Botão de Envio
+### Mostrar o estado de carregamento no botão “Enviar”
 
 ```tsx
 <Button
   isLoading={mutation.isPending}
   onClick={handleSubmit}
 >
-  Salvar
+  Save
 </Button>
 ```
 
-### Limpar Formulário Após Sucesso
+### Limpar o formulário após o envio bem-sucedido
 
 ```tsx
 onSuccess: () => {
@@ -371,7 +377,7 @@ onSuccess: () => {
 }
 ```
 
-### Validar Antes de Enviar
+### Validar antes do envio
 
 ```tsx
 const handleSubmit = () => {
@@ -384,21 +390,14 @@ const handleSubmit = () => {
 }
 ```
 
-### Limpar Erros de Campo ao Mudar o Input
+### Limpar erros de campo ao alterar a entrada
 
 ```tsx
 <Input
   value={formData.field}
   onChange={(e) => {
     setFormData({ ...formData, field: e.target.value })
-    setErrors({ ...errors, field: undefined }) // Limpa erro
+    setErrors({ ...errors, field: undefined }) // Clear error
   }}
 />
 ```
-
-## Casos de Uso Yello Solar Hub
-
-- **Criação de Cotação B2B (FocusModal):**Utilizar o FocusModal para guiar o usuário por um fluxo de múltiplas etapas ao criar uma cotação complexa. O primeiro passo coleta informações do cliente (Dados Pessoa Jurídica), e o segundo passo exige o detalhamento dos equipamentos (Inversores, Módulos, Baterias), validando em tempo real se os códigos de produto são válidos no catálogo Medusa.
--**Atualização Rápida de Cadastro de Distribuidores (Drawer):**Quando um operador precisa ajustar o telefone ou o prazo de pagamento de um distribuidor parceiro, o Drawer é ideal. Ele permite ver o nome do distribuidor na tela principal enquanto o ajuste rápido dos dados ocorre no painel lateral, sem desviar o foco da planilha de gestão.
--**Aprovação Financeira de Kits Solares (Validation/Loading States):**Ao processar um pedido que requer aprovação comercial, o formulário de aprovação (dentro de um FocusModal) deve implementar validação de dados (ex: o valor total não pode ser negativo) e um estado de carregamento (`isLoading`) no botão "Confirmar Aprovação" para evitar cliques múltiplos durante a chamada da API financeira.
--**Seleção de Componentes em Catálogo (Select Component):** Ao montar um kit solar em um carrinho de cotação, o usuário precisa selecionar módulos, inversores ou estruturas. Como são conjuntos de tipos pré-definidos e pequenos (ex: Tipo A, Tipo B), o componente Select é usado, garantindo que o estoque e a compatibilidade sejam verificados na seleção inicial.stop

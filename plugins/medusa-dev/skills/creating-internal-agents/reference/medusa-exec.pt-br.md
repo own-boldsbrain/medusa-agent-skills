@@ -1,6 +1,6 @@
 # MedusaExec
 
-O MedusaExec permite que o agente escreva e execute código TypeScript arbitrário no servidor Medusa em produção. Em vez de criar previamente um endpoint para cada ação possível, o agente gera o código adequado para cada tarefa em tempo de execução — consultar dados, acionar fluxos de trabalho, atualizar registros — utilizando acesso total ao contêiner DI do Medusa.
+O MedusaExec permite que o agente escreva e execute código TypeScript arbitrário no servidor Medusa em produção. Em vez de criar previamente um endpoint para cada ação possível, o agente gera o código adequado para cada tarefa em tempo de execução — consultar dados, acionar fluxos de trabalho, atualizar registros — utilizando acesso total ao contêiner de injeção de dependências (DI) do Medusa.
 
 > **CRÍTICO — Autenticação obrigatória.** O MedusaExec executa código arbitrário com acesso total ao banco de dados e aos serviços. Ele só deve ser acessível por meio de rotas protegidas por `AuthenticatedMedusaRequest`. Nunca exponha o endpoint POST do agente (ou qualquer rota que acione `executeCode`) sem autenticação de administrador — isso permite que usuários não autenticados executem código arbitrário no seu banco de dados.
 

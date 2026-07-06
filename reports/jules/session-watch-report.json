@@ -1,56 +1,6 @@
 {
-  "timestamp": "2026-07-06T15:57:47.527330+00:00",
-  "source_mode": "test_fixture",
-  "is_mock": true,
-  "total_sessions": 5,
-  "alerts_triggered": 5,
-  "sessions": [
-    {
-      "name": "sessions/sess_1",
-      "state": "AWAITING_PLAN_APPROVAL",
-      "flags": [
-        "PLAN_PENDING"
-      ],
-      "url": "https://jules.google/sessions/sess_1"
-    },
-    {
-      "name": "sessions/sess_2",
-      "state": "IN_PROGRESS",
-      "flags": [
-        "STUCK"
-      ],
-      "url": "https://jules.google/sessions/sess_2"
-    },
-    {
-      "name": "sessions/sess_3",
-      "state": "COMPLETED",
-      "flags": [
-        "PR_GENERATED"
-      ],
-      "url": "https://jules.google/sessions/sess_3"
-    },
-    {
-      "name": "sessions/sess_4",
-      "state": "FAILED",
-      "flags": [
-        "FAILED"
-      ],
-      "url": null
-    },
-    {
-      "name": "sessions/sess_5",
-      "state": "AWAITING_USER_FEEDBACK",
-      "flags": [
-        "NEEDS_HUMAN_REVIEW"
-      ],
-      "url": null
-    }
-  ],
-  "active_alerts": [
-    "Session sessions/sess_1 requires plan approval (PLAN_PENDING).",
-    "Session sessions/sess_2 is STUCK (running > 45m).",
-    "Session sessions/sess_3 generated PR: https://github.com/own-boldsbrain/medusa-agent-skills/pull/2",
-    "Session sessions/sess_4 has FAILED.",
-    "Session sessions/sess_5 is AWAITING_USER_FEEDBACK."
-  ]
+  "timestamp": "2026-07-06T16:11:58.426836+00:00",
+  "status": "NEEDS_ENVIRONMENT / REPROVADO (Jules API unavailable or no token)",
+  "source_mode": "unavailable",
+  "is_mock": false
 }

@@ -137,6 +137,6 @@ Ao escanear logs, associe estes domínios à sua tarefa:
 
 ## Referência
 
-- Definição completa do schema: `skills/design-log-workflow/reference/schema.pt-BR.md`
+- Definição completa do schema: `skills/design-log-workflow/reference/schema.pt-br.md`
 - Criar uma nova entrada: use a skill `design-log-create`
 - Entrada bootstrap (fundação arquitetural): `design-log/DL-000-bootstrap.md`

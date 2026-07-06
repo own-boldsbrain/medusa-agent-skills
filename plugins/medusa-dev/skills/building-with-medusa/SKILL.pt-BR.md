@@ -115,8 +115,11 @@ Frontend (admin dashboard/storefront via SDK)
 - `data-linked-filtering` - `query.graph()` não pode filtrar por campos de módulos vinculados - use `query.index()` ou faça a consulta diretamente daquela entidade
 - `data-no-js-filter` - Não use JavaScript `.filter()` em dados vinculados - utilize filtros de banco de dados (`query.index()` ou consulte a entidade)
 - `data-same-module-ok` - Pode filtrar por relações de mesmo módulo com `query.graph()` (por exemplo, product.variants)
+
 - ```markdown
+
 `data-auth-middleware` - Confie no middleware `authenticate`, não verifique manualmente `req.auth_context`
+
 ```
 
 ### 6. Organização de Arquivos (MÉDIO)

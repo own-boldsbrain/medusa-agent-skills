@@ -271,7 +271,7 @@ export const POST = async (req: AuthenticatedMedusaRequest<CreateDto>, res: Medu
 
 ## Comandos de Manutenção
 
-__CODE_BLOCK_0__
+**CODE_BLOCK_0**
 
 ---
 

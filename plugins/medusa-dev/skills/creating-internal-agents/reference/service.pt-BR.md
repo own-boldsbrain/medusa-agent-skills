@@ -47,6 +47,7 @@ export default class AgentModuleService extends MedusaService({
 O `MedusaService` é uma solução completa para gerenciar e monitorar seus serviços. Com ele, você obtém:
 
 -**Controle total**: Gerencie seus serviços com facilidade, desde o provisionamento até a manutenção.
+
 - *Visibilidade*: Monitore o desempenho e a saúde dos seus serviços em tempo real.
 - Fácil integração: Integre-se com outras ferramentas e sistemas para uma gestão unificada.
 - **Escalabilidade**: Escale seus serviços de forma eficiente, atendendo às demandas crescentes.

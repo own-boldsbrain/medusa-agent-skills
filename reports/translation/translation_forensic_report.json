@@ -8,20 +8,18 @@
   },
   "issue_file_count": {
     "code_block_mismatch": 39,
-    "placeholder_leak_detected": 1,
     "markdown_violations": 40,
     "heading_count_mismatch": 42,
     "list_count_drop": 20,
     "low_line_ratio": 5,
     "toc_anchor_mismatch": 15,
-    "conversational_filler_detected": 1,
     "english_residual_detected": 14,
+    "conversational_filler_detected": 1,
     "truncated_target": 8,
     "heading_level_mismatch": 3
   },
   "issue_occurrence_count": {
     "code_block_mismatch": 39,
-    "placeholder_leak_detected": 1,
     "markdown_violations": 40,
     "heading_count_mismatch": 42,
     "list_count_drop": 20,
@@ -41,7 +39,6 @@
       "action": "retranslate_from_source",
       "issues": [
         "code_block_mismatch",
-        "placeholder_leak_detected",
         "markdown_violations"
       ]
     },
@@ -75,12 +72,12 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "toc_anchor_mismatch",
         "heading_count_mismatch",
+        "english_residual_detected",
         "code_block_mismatch",
-        "conversational_filler_detected",
-        "english_residual_detected"
+        "markdown_violations",
+        "conversational_filler_detected"
       ]
     },
     {
@@ -90,11 +87,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "toc_anchor_mismatch",
         "heading_count_mismatch",
+        "english_residual_detected",
         "code_block_mismatch",
-        "english_residual_detected"
+        "markdown_violations"
       ]
     },
     {
@@ -116,11 +113,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "toc_anchor_mismatch",
         "heading_count_mismatch",
+        "english_residual_detected",
         "code_block_mismatch",
-        "english_residual_detected"
+        "markdown_violations"
       ]
     },
     {
@@ -131,8 +128,8 @@
       "action": "repair_by_script",
       "issues": [
         "list_count_drop",
-        "low_line_ratio",
-        "markdown_violations"
+        "markdown_violations",
+        "low_line_ratio"
       ]
     },
     {
@@ -142,11 +139,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "toc_anchor_mismatch",
         "heading_count_mismatch",
+        "english_residual_detected",
         "code_block_mismatch",
-        "english_residual_detected"
+        "markdown_violations"
       ]
     },
     {
@@ -156,11 +153,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "toc_anchor_mismatch",
         "heading_count_mismatch",
+        "english_residual_detected",
         "code_block_mismatch",
-        "english_residual_detected"
+        "markdown_violations"
       ]
     },
     {
@@ -170,8 +167,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "toc_anchor_mismatch",
+        "code_block_mismatch",
         "heading_count_mismatch"
       ]
     },
@@ -182,11 +179,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "toc_anchor_mismatch",
         "heading_count_mismatch",
+        "english_residual_detected",
         "code_block_mismatch",
-        "english_residual_detected"
+        "markdown_violations"
       ]
     },
     {
@@ -196,8 +193,8 @@
       "risk_score": 100,
       "action": "repair_by_script",
       "issues": [
-        "heading_count_mismatch",
-        "english_residual_detected"
+        "english_residual_detected",
+        "heading_count_mismatch"
       ]
     },
     {
@@ -207,8 +204,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "code_block_mismatch",
         "toc_anchor_mismatch",
+        "code_block_mismatch",
         "heading_count_mismatch",
         "english_residual_detected"
       ]
@@ -220,11 +217,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "toc_anchor_mismatch",
         "heading_count_mismatch",
+        "english_residual_detected",
         "code_block_mismatch",
-        "english_residual_detected"
+        "markdown_violations"
       ]
     },
     {
@@ -234,11 +231,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "toc_anchor_mismatch",
         "heading_count_mismatch",
+        "english_residual_detected",
         "code_block_mismatch",
-        "english_residual_detected"
+        "markdown_violations"
       ]
     },
     {
@@ -248,8 +245,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "list_count_drop",
         "truncated_target",
+        "list_count_drop",
         "heading_count_mismatch"
       ]
     },
@@ -260,9 +257,9 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "truncated_target",
         "code_block_mismatch",
         "list_count_drop",
-        "truncated_target",
         "heading_count_mismatch"
       ]
     },
@@ -273,9 +270,9 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "truncated_target",
         "code_block_mismatch",
         "list_count_drop",
-        "truncated_target",
         "heading_count_mismatch"
       ]
     },
@@ -286,9 +283,9 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "truncated_target",
         "code_block_mismatch",
         "list_count_drop",
-        "truncated_target",
         "heading_count_mismatch"
       ]
     }

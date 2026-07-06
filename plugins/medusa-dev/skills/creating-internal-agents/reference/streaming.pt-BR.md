@@ -53,13 +53,17 @@ res.end()  // REQUIRED — closes the HTTP response
 ## Client-Lado: Parse o Stream NDJSON**Parâmetros***`stream`: O stream NDJSON a ser processado
 
 **Exemplo**```bash
+
 # Criar um stream NDJSON a partir de um arquivo
+
 $ cat example.ndjson | python -c "import json; import sys; for line in sys.stdin: print(json.loads(line))"
 
 # Ler um stream NDJSON a partir de um arquivo
+
 with open('example.ndjson', 'r') as f:
     for line in f:
         print(json.loads(line))
+
 ```**Processamento do Stream NDJSON**O processamento do stream NDJSON envolve as seguintes etapas:
 
 1.**Leitura do Stream**: Leia o stream NDJSON a partir de um arquivo ou de um fluxo de dados.

@@ -224,6 +224,9 @@ def validate_translation(source_file: str, target_file: str) -> ValidationReport
     elif line_ratio < 0.85:
         issues.append(ValidationIssue(severity="P1", type="low_line_ratio", message=f"Target line ratio is {metrics.line_ratio}; review for content loss."))
 
+    if source_text.strip() == target_text.strip() and len(source_text.strip()) > 10:
+        issues.append(ValidationIssue(severity="P0", type="source_contaminated", message="Target is identical to source (no translation occurred)."))
+
     if metrics.source_code_blocks != metrics.target_code_blocks:
         issues.append(ValidationIssue(severity="P0", type="code_block_mismatch", message=f"Source has {metrics.source_code_blocks}, target has {metrics.target_code_blocks}."))
 

@@ -1,33 +1,33 @@
 {
   "summary": {
     "total_pairs": 69,
-    "passed": 14,
+    "passed": 15,
     "needs_review": 8,
-    "failed": 47,
+    "failed": 46,
     "error": 0
   },
   "issue_file_count": {
     "markdown_violations": 40,
-    "heading_count_mismatch": 41,
-    "list_count_drop": 19,
+    "heading_count_mismatch": 40,
+    "list_count_drop": 18,
     "low_line_ratio": 5,
-    "code_block_mismatch": 38,
-    "toc_anchor_mismatch": 15,
-    "conversational_filler_detected": 1,
+    "code_block_mismatch": 37,
     "english_residual_detected": 14,
-    "truncated_target": 7,
+    "conversational_filler_detected": 1,
+    "toc_anchor_mismatch": 15,
+    "truncated_target": 6,
     "heading_level_mismatch": 3
   },
   "issue_occurrence_count": {
     "markdown_violations": 40,
-    "heading_count_mismatch": 41,
-    "list_count_drop": 19,
+    "heading_count_mismatch": 40,
+    "list_count_drop": 18,
     "low_line_ratio": 5,
-    "code_block_mismatch": 38,
+    "code_block_mismatch": 37,
     "toc_anchor_mismatch": 73,
     "english_residual_detected": 14,
     "conversational_filler_detected": 1,
-    "truncated_target": 7,
+    "truncated_target": 6,
     "heading_level_mismatch": 5
   },
   "top_20_risk": [
@@ -38,8 +38,8 @@
       "risk_score": 100,
       "action": "repair_by_script",
       "issues": [
-        "markdown_violations",
-        "heading_count_mismatch"
+        "heading_count_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -49,9 +49,9 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "heading_count_mismatch",
-        "code_block_mismatch"
+        "code_block_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -61,12 +61,12 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "english_residual_detected",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
         "code_block_mismatch",
         "markdown_violations",
         "conversational_filler_detected",
-        "english_residual_detected"
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -76,11 +76,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "english_residual_detected",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
         "code_block_mismatch",
         "markdown_violations",
-        "english_residual_detected"
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -90,9 +90,9 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "markdown_violations",
         "heading_count_mismatch",
-        "code_block_mismatch"
+        "code_block_mismatch",
+        "markdown_violations"
       ]
     },
     {
@@ -102,11 +102,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "english_residual_detected",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
         "code_block_mismatch",
         "markdown_violations",
-        "english_residual_detected"
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -128,11 +128,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "english_residual_detected",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
         "code_block_mismatch",
         "markdown_violations",
-        "english_residual_detected"
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -142,11 +142,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "english_residual_detected",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
         "code_block_mismatch",
         "markdown_violations",
-        "english_residual_detected"
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -156,8 +156,8 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "heading_count_mismatch",
         "toc_anchor_mismatch",
+        "heading_count_mismatch",
         "code_block_mismatch"
       ]
     },
@@ -168,11 +168,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "english_residual_detected",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
         "code_block_mismatch",
         "markdown_violations",
-        "english_residual_detected"
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -193,10 +193,10 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
-        "heading_count_mismatch",
-        "english_residual_detected",
         "toc_anchor_mismatch",
-        "code_block_mismatch"
+        "heading_count_mismatch",
+        "code_block_mismatch",
+        "english_residual_detected"
       ]
     },
     {
@@ -206,11 +206,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "english_residual_detected",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
         "code_block_mismatch",
         "markdown_violations",
-        "english_residual_detected"
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -220,24 +220,11 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "english_residual_detected",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
         "code_block_mismatch",
         "markdown_violations",
-        "english_residual_detected"
-      ]
-    },
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\order-confirmation.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\order-confirmation.pt-br.md",
-      "status": "failed",
-      "risk_score": 100,
-      "action": "retranslate_from_source",
-      "issues": [
-        "truncated_target",
-        "heading_count_mismatch",
-        "list_count_drop",
-        "code_block_mismatch"
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -247,9 +234,9 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "list_count_drop",
         "truncated_target",
         "heading_count_mismatch",
-        "list_count_drop",
         "code_block_mismatch"
       ]
     },
@@ -260,9 +247,9 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "list_count_drop",
         "truncated_target",
         "heading_count_mismatch",
-        "list_count_drop",
         "code_block_mismatch"
       ]
     },
@@ -273,13 +260,13 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "english_residual_detected",
         "list_count_drop",
+        "low_line_ratio",
         "heading_count_mismatch",
-        "toc_anchor_mismatch",
         "code_block_mismatch",
         "markdown_violations",
-        "english_residual_detected",
-        "low_line_ratio"
+        "toc_anchor_mismatch"
       ]
     },
     {
@@ -289,9 +276,22 @@
       "risk_score": 100,
       "action": "retranslate_from_source",
       "issues": [
+        "list_count_drop",
         "truncated_target",
         "heading_count_mismatch",
+        "code_block_mismatch"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
         "list_count_drop",
+        "truncated_target",
+        "heading_count_mismatch",
         "code_block_mismatch"
       ]
     }

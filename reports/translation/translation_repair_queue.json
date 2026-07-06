@@ -2,11 +2,6 @@
   "P0_source_contaminated": [],
   "P0_truncated": [
     {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\order-confirmation.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\order-confirmation.pt-br.md",
-      "risk_score": 100
-    },
-    {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\product-details.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\product-details.pt-br.md",
       "risk_score": 100

@@ -2,8 +2,7 @@
 
 Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 
-## P0_truncated (7 arquivos)
-- Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/order-confirmation.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/order-confirmation.pt-br.md)
+## P0_truncated (6 arquivos)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/product-details.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/product-details.pt-br.md)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/product-listing.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/product-listing.pt-br.md)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/README.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/learn-medusa/README.pt-br.md)

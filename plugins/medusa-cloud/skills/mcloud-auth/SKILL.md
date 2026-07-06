@@ -25,12 +25,15 @@ mcloud whoami --json
 ```
 
 **Options:**
+
 - `--json` — Output as JSON
 
 **Use to verify auth and scope:**
+
 ```bash
 mcloud whoami --json | jq -e '.auth.kind != "none" and .organization.id != null'
 ```
+
 Exit code `0` = authenticated and scoped. Non-zero = stop and prompt the user.
 
 ### use
@@ -47,6 +50,7 @@ mcloud use \
 **CRITICAL:** `mcloud use` without flags is interactive and fails in CI/Docker/piped input. Always pass flags explicitly.
 
 **Options:**
+
 - `-o/--organization <id>` — Set active organization
 - `-p/--project <id-or-handle>` — Set active project
 - `-e/--environment <handle>` — Set active environment
@@ -54,6 +58,7 @@ mcloud use \
 - `--json` — Output as JSON
 
 **Clear context:**
+
 ```bash
 mcloud use --clear
 ```
@@ -67,6 +72,7 @@ mcloud version --json
 ```
 
 **Options:**
+
 - `--json` — Output as JSON
 
 ### login
@@ -80,11 +86,13 @@ mcloud login
 ```
 
 **Non-interactive alternative:**
+
 ```bash
 export MCLOUD_TOKEN=<access-key>
 ```
 
 **Options:**
+
 - `-t/--token <token>` — Authenticate using an access key without browser (non-interactive)
 - `--json` — Output as JSON
 
@@ -97,6 +105,7 @@ mcloud logout --json
 ```
 
 **Options:**
+
 - `--json` — Output as JSON
 
 ### signup

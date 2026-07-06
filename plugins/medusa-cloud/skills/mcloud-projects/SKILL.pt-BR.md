@@ -44,8 +44,11 @@ mcloud projects get <project-id-or-handle> --organization <org-id> --json
 ```
 
 **Argumentos:**- `project` — ID ou nome do projeto (obrigatório)**Opções:**- `-o/--organization <id>` — ID da Organização (retorna ao contexto ativo;**obrigatório**).
+
 - ```json
+
 `--json` — Saída em JSON
+
 ```
 
 ### projetos excluir

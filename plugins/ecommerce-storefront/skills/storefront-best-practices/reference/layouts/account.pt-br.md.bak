@@ -50,18 +50,14 @@ Todos os dados do cliente (pedidos, endereços, perfil, métodos de pagamento) d
 
 Página de destino após o login. Propósito: Acesso rápido a atividades recentes e ações comuns.
 
-**
-
-Exibição (priorize pedidos recentes):**
+**Exibição (priorize pedidos recentes):**
 
 - Mensagem de boas-vindas com o nome do cliente
 - Pedidos recentes (3-5 mais recentes com status)
 - Ações rápidas: Rastrear pedido, Reordenar, Gerenciar endereços
 - Resumo da conta (contagem de endereços salvos, pontos de fidelidade)
 
-**
-
-Funcionalidade de reordenar (CRÍTICO para compras repetidas):**
+**Funcionalidade de reordenar (CRÍTICO para compras repetidas):**
 
 - Verifique primeiro se o recurso está disponível no painel de administração.
 - Botão "Reordenar" em cada cartão de pedido
@@ -69,9 +65,7 @@ Funcionalidade de reordenar (CRÍTICO para compras repetidas):**
 - Feedback de sucesso (carrinho atualizado com X itens)
 - Não saia da página (permaneça no painel)
 
-**
-
-Exemplo de painel:**
+**Exemplo de painel:**
 
 ```
 Bem-vinda de volta, Sarah!
@@ -101,51 +95,39 @@ Exiba todos os pedidos anteriores com filtragem e pesquisa.
 - Primeiras 2-3 miniaturas de produtos
 - Ações rápidas: Rastrear, Ver Detalhes, Reordenar, Fatura
 
-**
-
-Indicadores de status (codificados por cor):**
+**Indicadores de status (codificados por cor):**
 
 - Processando: Amarelo/Laranja
 - Enviado: Azul
 - Entregue: Verde
 - Cancelado: Cinza/Vermelho
 
-**
-
-Filtragem e pesquisa:**
+**Filtragem e pesquisa:**
 
 - Intervalo de datas (Últimos 30 dias, Últimos 6 meses, Todo o período)
 - Filtro de status (Todos, Processando, Enviado, Entregue)
 - Pesquisa por número do pedido ou nome do produto
 
-**
-
-Ordenação:**
+**Ordenação:**
 
 - Mais recentes primeiro (padrão)
 - Mais antigos primeiro
 - Maior/menor preço
 
-**
-
-Paginação:**
+**Paginação:**
 Mostre 10-20 pedidos por página com controles de paginação. Alternativa: Botão "Carregar Mais" (melhor experiência em dispositivos móveis).
 
 ### Visualização de Detalhes do Pedido
 
 Página completa de informações do pedido.
 
-**
-
-Exibição:**
+**Exibição:**
 
 - Número do pedido, data, status com linha do tempo de progresso
 - Número de rastreamento com link da transportadora (se enviado)
 - Data de entrega estimada
 
-**
-
-Linha do tempo de status (constrói confiança):**
+**Linha do tempo de status (constrói confiança):**
 
 ```
 ✓ Pedido Realizado (27 de Jan, 09:45)
@@ -163,9 +145,7 @@ Linha do tempo de status (constrói confiança):**
 - Endereço de cobrança
 - Método de pagamento (últimos 4 dígitos)
 
-**
-
-Ações do pedido:**
+**Ações do pedido:**
 
 - Rastrear remessa (link para a página de rastreamento da transportadora)
 - Baixar fatura/recibo (PDF)
@@ -175,13 +155,9 @@ Ações do pedido:**
 
 ### Funcionalidade de Reordenar (Específico para E-commerce)
 
-**
+**Propósito**: Aumentar as compras repetidas facilitando a reordenação de compras anteriores.
 
-Propósito**: Aumentar as compras repetidas facilitando a reordenação de compras anteriores.
-
-**
-
-Implementação:**
+**Implementação:**
 
 - Botão "Reordenar" nos cartões de pedido e detalhes do pedido
 - Verificar disponibilidade de estoque antes de adicionar ao carrinho
@@ -190,46 +166,34 @@ Implementação:**
 - Mensagem de sucesso: "5 itens adicionados ao carrinho" (ou "3 de 5 itens adicionados - 2 indisponíveis")
 - Permanecer na página atual (não sair da página)
 
-**
-
-Compromisso**: Adição automática ao carrinho (sem atrito) vs redirecionar para a página do carrinho (permitir que o usuário revise primeiro). Recomenda-se adição automática com feedback claro de sucesso.
+**Compromisso**: Adição automática ao carrinho (sem atrito) vs redirecionar para a página do carrinho (permitir que o usuário revise primeiro). Recomenda-se adição automática com feedback claro de sucesso.
 
 ## Endereços Salvos
 
-**
-
-Propósito (CRÍTICO)**: Reduzir o atrito na finalização da compra e aumentar a conversão. Endereços salvos tornam as compras repetidas mais rápidas e fáceis.
+**Propósito (CRÍTICO)**: Reduzir o atrito na finalização da compra e aumentar a conversão. Endereços salvos tornam as compras repetidas mais rápidas e fáceis.
 
 ### Por que Endereços Importam
 
-**
-
-Otimização de conversão:**
+**Otimização de conversão:**
 
 - Endereços salvos reduzem o tempo de finalização da compra em mais de 50% (sem redigitação)
 - A seleção de endereço padrão agiliza o fluxo de finalização da compra
 - Reduz o abandono de formulários (menos campos para preencher)
 - Aumenta a taxa de compras repetidas (finalização de compra mais fácil)
 
-**
-
-Integração com o backend:**
+**Integração com o backend:**
 Busque, crie, atualize e exclua endereços via API do backend. Faça isso com base no backend integrado.
 
 ### Exibição do Catálogo de Endereços
 
-**
-
-Lista de endereços salvos:**
+**Lista de endereços salvos:**
 
 - Todos os endereços salvos
 - Indicador de endereço padrão (selo: "Envio Padrão" ou ícone de estrela)
 - Pré-visualização do endereço: Nome, rua, cidade, estado, CEP
 - Ações rápidas: Editar, Excluir, Definir como Padrão
 
-**
-
-Comportamento do endereço padrão:**
+**Comportamento do endereço padrão:**
 
 - Um endereço de envio padrão
 - Um endereço de cobrança padrão (separado ou o mesmo)
@@ -240,9 +204,7 @@ Comportamento do endereço padrão:**
 
 Colete informações padrão de envio. Principais considerações:
 
-**
-
-Campos obrigatórios:**
+**Campos obrigatórios:**
 
 - Nome completo (ou nome + sobrenome)
 - Endereço (linha 1)
@@ -250,32 +212,24 @@ Campos obrigatórios:**
 - País
 - Número de telefone (recomendado para coordenação de entrega)
 
-**
-
-Melhorias opcionais:**
+**Melhorias opcionais:**
 
 - Rótulo de endereço (Casa, Trabalho) para fácil identificação
 - API de preenchimento automático de endereço (Google Places) para precisão
 - Caixa de seleção "Definir como padrão"
 
-**
-
-Validação:**
+**Validação:**
 Validação em tempo real, especialmente para o formato de CEP/código postal com base no país.
 
 ## Métodos de Pagamento
 
-**
-
-Nota**: O armazenamento de métodos de pagamento é opcional. Implemente apenas se:
+**Nota**: O armazenamento de métodos de pagamento é opcional. Implemente apenas se:
 
 - O backend lida de forma segura com dados de pagamento tokenizados
 - Os requisitos de conformidade PCI DSS são atendidos
 - O gateway de pagamento suporta tokenização (Stripe, Braintree)
 
-**
-
-Segurança (CRÍTICO):**
+**Segurança (CRÍTICO):**
 
 - Nunca armazene números de cartão completos (tokenize com o gateway de pagamento)
 - Exiba apenas os últimos 4 dígitos
@@ -283,9 +237,7 @@ Segurança (CRÍTICO):**
 - Use formulários hospedados pelo gateway de pagamento (Stripe Elements, etc.)
 - Mostre o selo "Armazenado com segurança" para confiança
 
-**
-
-Exibição de pagamento salvo:**
+**Exibição de pagamento salvo:**
 
 - Logotipo do tipo de cartão (Visa, Mastercard)
 - Últimos 4 dígitos
@@ -293,9 +245,7 @@ Exibição de pagamento salvo:**
 - Indicador padrão
 - Ações: Editar (atualizar data de validade/endereço de cobrança), Excluir, Definir como Padrão
 
-**
-
-Compromisso**: Métodos de pagamento salvos aumentam a conveniência, mas exigem conformidade com PCI. Se não implementado, os usuários inserem o pagamento na finalização da compra todas as vezes (mais atrito, mas backend mais simples).
+**Compromisso**: Métodos de pagamento salvos aumentam a conveniência, mas exigem conformidade com PCI. Se não implementado, os usuários inserem o pagamento na finalização da compra todas as vezes (mais atrito, mas backend mais simples).
 
 ## Perfil e Segurança
 
@@ -303,67 +253,45 @@ Compromisso**: Métodos de pagamento salvos aumentam a conveniência, mas exigem
 
 Exiba e edite as informações do cliente.
 
-**
-
-Campos padrão:**
+**Campos padrão:**
 
 - Nome completo
 - E-mail (com status de verificação)
 - Número de telefone
 - Opcional: Data de nascimento, gênero
 
-**
-
-Funcionalidade de edição:**
+**Funcionalidade de edição:**
 Edição inline ou formulário separado, validação em tempo real, confirmação de sucesso.
 
-**
-
-Verificação de e-mail:**
+**Verificação de e-mail:**
 Se não verificado, mostre aviso com o botão "Reenviar e-mail de verificação". Se verificado, mostre selo de marca de seleção.
 
 ### Configurações de Segurança
 
-**
-
-Alteração de senha:**
+**Alteração de senha:**
 
 - Exigir senha atual (opcional)
 - Nova senha com indicador de força
 - Confirmar nova senha
 - Exibição de requisitos de senha (mais de 8 caracteres, letra maiúscula, número)
 
-**
-
-Autenticação de dois fatores (opcional):**
+**Autenticação de dois fatores (opcional):**
 Ativar/desativar 2FA, instruções de configuração, códigos de backup. Implemente apenas se o backend suportar.
 
 ## Preferências de E-mail
 
 Controles de e-mail específicos para e-commerce.
 
-**
+**Categorias de preferência:**
 
-Categorias de preferência:**
+1. **E-mails transacionais** (atualizações de pedidos, envios) - Recomendado sempre ativado, pode ser legalmente exigido
+2. **E-mails de marketing** (vendas, promoções, novos produtos) - Escolha do usuário
+3. **Boletim informativo** (resumo semanal, conteúdo) - Escolha do usuário
 
-1. **
-
-E-mails transacionais** (atualizações de pedidos, envios) - Recomendado sempre ativado, pode ser legalmente exigido
-2. **
-
-E-mails de marketing** (vendas, promoções, novos produtos) - Escolha do usuário
-3. **
-
-Boletim informativo** (resumo semanal, conteúdo) - Escolha do usuário
-
-**
-
-Exibição:**
+**Exibição:**
 Lista de caixas de seleção ou chaves de alternância (toggles) com descrições claras. Botão de salvar na parte inferior.
 
-**
-
-Exemplo:**
+**Exemplo:**
 
 ```
 Preferências de E-mail
@@ -381,7 +309,6 @@ Preferências de E-mail
 ```
 
 **Cancelar inscrição:**
-
 Opções de cancelamento (opt-out) individuais por tipo, botão "Cancelar inscrição de todo marketing". Mantenha os e-mails transacionais ativados (necessário para o atendimento do pedido).
 
 ## Navegação e Layout
@@ -392,40 +319,28 @@ Escolha com base na complexidade da conta:
 
 **Navegação na Barra Lateral (Recomendado):**
 
-- **
-
-Use quando**: Mais de 6 seções de conta, recursos complexos de conta
+- **Use quando**: Mais de 6 seções de conta, recursos complexos de conta
 - Desktop: Barra lateral vertical (20-25% de largura) com links de seção
 - Celular: Recolha para menu hambúrguer ou menu suspenso
 - Benefícios: Navegação persistente, profissional, acomoda muitas seções
 
-**
+**Navegação por Abas:**
 
-Navegação por Abas:**
-
-- **
-
-Use quando**: 4-6 seções de conta, estrutura de conta mais simples
+- **Use quando**: 4-6 seções de conta, estrutura de conta mais simples
 - Abas horizontais na parte superior, aba ativa destacada
 - Celular: Rolagem horizontal ou menu suspenso
 - Benefícios: Moderno, limpo, troca rápida
 
-**
+**Hub da Conta (Foco em Celular):**
 
-Hub da Conta (Foco em Celular):**
-
-- **
-
-Use quando**: Tráfego majoritariamente móvel, conta simples
+- **Use quando**: Tráfego majoritariamente móvel, conta simples
 - Página de destino com cartões de seção (grade de 2 colunas)
 - Toque no cartão para entrar na seção, botão de voltar retorna ao hub
 - Benefícios: Amigável ao toque, intuitivo, hierarquia mínima
 
 ### Organização de Seções
 
-**
-
-Ordem recomendada (do mais para o menos usado):**
+**Ordem recomendada (do mais para o menos usado):**
 
 1. Painel (página de destino)
 2. Pedidos (mais acessado)
@@ -438,35 +353,23 @@ Ordem recomendada (do mais para o menos usado):**
 
 ## Considerações sobre Dispositivos Móveis
 
-**
+**Padrões específicos para dispositivos móveis:**
 
-Padrões específicos para dispositivos móveis:**
-
-**
-
-Navegação:**
+**Navegação:**
 Hub da conta com cartões de seção (2 colunas) ou navegação inferior com 4-5 seções principais (Pedidos, Endereços, Perfil, Mais).
 
-**
-
-Formulários:**
+**Formulários:**
 Um campo por linha, entradas maiores (altura de 48px), tipos de teclado apropriados (e-mail, telefone, numérico), preenchimento automático (autofill) ativado.
 
-**
-
-Histórico de pedidos:**
+**Histórico de pedidos:**
 Cartões de pedido simplificados, botões de largura total, paginação "Carregar Mais" (melhor do que páginas numeradas em dispositivos móveis).
 
-**
-
-Endereços salvos:**
+**Endereços salvos:**
 Cartões de endereço empilhados, largura total, áreas de toque de 48px para editar/excluir.
 
 ## Lista de Verificação
 
-**
-
-Recursos essenciais:**
+**Recursos essenciais:**
 
 - [ ] Painel da conta com pedidos recentes (3-5)
 - [ ] Botão de reordenar (adiciona itens ao carrinho, permanece na página)
@@ -496,9 +399,7 @@ Recursos essenciais:**
 - [ ] Rótulos ARIA nas seções de navegação
 - [ ] Anúncios de status de pedido para leitores de tela
 
-**
-
-Recursos opcionais:**
+**Recursos opcionais:**
 
 - [ ] Métodos de pagamento salvos (se o backend for compatível com PCI)
 - [ ] Autenticação de dois fatores

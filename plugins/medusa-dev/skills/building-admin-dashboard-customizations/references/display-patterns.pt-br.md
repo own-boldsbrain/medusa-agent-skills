@@ -1,36 +1,43 @@
-# Exibindo Entidades - Padrões e Componentes
+# Exibição de entidades — Padrões e componentes
 
-## Conteúdo
+## Índice
 
-- [Quando Usar Cada Padrão](#quando-usar-cada-padrão)
-- [Padrão DataTable](#padrão-datatable)
-  - [Implementação Completa do DataTable](#implementação-completa-do-datatable)
-  - [Solução de Problemas do DataTable](#solução-de-problemas-do-datatable)
-- [Padrões de Lista Simples](#padrões-de-lista-simples)
-  - [Item de Lista de Produtos/Variantes](#item-de-lista-de-produtosvariações)
-  - [Lista de Texto Simples (Sem Miniaturas)](#lista-de-texto-simples-sem-miniaturas)
-  - [Lista Compacta (Sem Cards)](#lista-compacta-sem-cards)
-  - [Exibição em Grade](#exibição-em-grade)
-- [Elementos Chave de Design](#elementos-chave-de-design)
-- [Estados Vazios](#estados-vazios)
-- [Estados de Carregamento](#estados-de-carregamento)
-- [Renderização Condicional Baseada em Contagem](#renderização-condicional-baseada-em-contagem)
-- [Padrões de Classe Comuns](#padrões-de-classe-comuns)
+- [Quando usar cada padrão](#quando-usar-cada-padrao)
+- [Padrão DataTable](#padrao-datatable)
+  - [Implementação completa do DataTable](#padrao-datatable)
+  - [Solução de problemas do DataTable](#padrao-datatable)
+- [Padrões de lista simples](#padroes-simples-de-lista)
+  - [Item de lista de produtos/variantes](#padroes-simples-de-lista)
+  - [Lista de texto simples (sem miniaturas)](#padroes-simples-de-lista)
+  - [Lista compacta (sem cartões)](#padroes-simples-de-lista)
+  - [Exibição em grade](#grid-display)
+- [Elementos-chave de design](#elementos-chave-do-design)
+- [Estados vazios](#estados-vazios)
+- [Estados de carregamento](#estados-de-carregamento)
+- [Renderização condicional com base na contagem](#renderizacao-condicional-com-base-na-contagem)
+- [Padrões comuns de classes](#padroes-comuns-de-classes)
 
-## Quando Usar Cada Padrão
+## Quando usar cada padrão
 
-**Use DataTable quando:**- Exibir potencialmente muitos registros (>5-10 itens)
+**Use a DataTable quando:**
 
-- Os usuários precisam buscar, filtrar ou paginar
-- Ações em lote são necessárias (selecionar múltiplos, excluir, etc.)
-- Exibir em uma visão de lista principal**Use componentes de lista simples quando:**- Exibir poucos registros (<5-10 itens)
-- Em um contexto de widget ou barra lateral
-- Como uma prévia ou resumo
-- Quando o espaço é limitado
+- For necessário exibir um número potencialmente grande de entradas (>5-10 itens)
+- Os usuários precisarem pesquisar, filtrar ou paginar
+- Forem necessárias ações em massa (seleção múltipla, exclusão etc.)
+- A exibição for feita em uma visualização de lista principal
 
-## Padrão DataTable**⚠️ Usuários pnpm**: Os exemplos de DataTable podem usar `react-router-dom` para navegação. Instale-o ANTES de implementar, se necessário
+**Use componentes de lista simples quando:**
 
-### Implementação Completa do DataTable
+- For exibir poucas entradas (<5-10 itens)
+- Em um widget ou na barra lateral
+- Como uma pré-visualização ou resumo
+- O espaço for limitado
+
+## Padrão DataTable
+
+**⚠️ Usuários do pnpm**: Os exemplos do DataTable podem usar o `react-router-dom` para navegação. Instale-o ANTES de implementar, se necessário.
+
+### Implementação completa do DataTable
 
 ```tsx
 import {
@@ -47,15 +54,15 @@ import { sdk } from "../lib/client"
 const columnHelper = createDataTableColumnHelper<HttpTypes.AdminProduct>()
 
 const columns = [
-  columnHelper.select(), // Para seleção de linha
+  columnHelper.select(), // For row selection
   columnHelper.accessor("title", {
-    header: "Título",
+    header: "Title",
   }),
   columnHelper.accessor("status", {
     header: "Status",
   }),
   columnHelper.accessor("created_at", {
-    header: "Criado",
+    header: "Created",
     cell: ({ getValue }) => new Date(getValue()).toLocaleDateString(),
   }),
 ]
@@ -71,18 +78,18 @@ export function ProductTable() {
   })
 
   const limit = pagination.pageSize
-  const offset = pagination.pageIndex *limit
+  const offset = pagination.pageIndex * limit
 
-  // Buscar produtos com busca e paginação
+  // Fetch products with search and pagination
   const { data, isLoading } = useQuery({
     queryFn: () =>
       sdk.admin.product.list({
         limit,
         offset,
-        q: searchValue || undefined, // Consulta de busca
+        q: searchValue || undefined, // Search query
       }),
     queryKey: ["products", limit, offset, searchValue],
-    keepPreviousData: true, // Paginação suave
+    keepPreviousData: true, // Smooth pagination
   })
 
   const table = useDataTable({
@@ -109,7 +116,7 @@ export function ProductTable() {
     <DataTable instance={table}>
       <DataTable.Toolbar>
         <div className="flex gap-2">
-          <DataTable.Search placeholder="Buscar produtos..." />
+          <DataTable.Search placeholder="Search products..." />
         </div>
       </DataTable.Toolbar>
       <DataTable.Table />
@@ -119,14 +126,22 @@ export function ProductTable() {
 }
 ```
 
-### Solução de Problemas do DataTable**"DataTable.Search foi renderizado, mas a busca não está ativada"**Você deve passar a configuração de estado de busca para `useDataTable`
+### Solução de problemas com o DataTable
+
+**“O DataTable.Search foi renderizado, mas a pesquisa não está habilitada”**
+
+É necessário passar a configuração do estado de pesquisa para o `useDataTable`:
 
 ```tsx
 search: {
   state: searchValue,
   onSearchChange: setSearchValue,
 }
-```**"Não é possível desestruturar a propriedade 'pageIndex' de pagination porque é undefined"**Sempre inicialize o estado de paginação com ambas as propriedades:
+```
+
+**“Não é possível desestruturar a propriedade 'pageIndex' da paginação, pois ela está indefinida”**
+
+Sempre inicialize o estado da paginação com ambas as propriedades:
 
 ```tsx
 const [pagination, setPagination] = useState({
@@ -135,9 +150,9 @@ const [pagination, setPagination] = useState({
 })
 ```
 
-## Padrões de Lista Simples
+## Padrões simples de lista
 
-### Item de Lista de Produtos/Variantes
+### Item de lista de produto/variante
 
 Para exibir uma pequena lista de produtos ou variantes com miniaturas:
 
@@ -146,7 +161,7 @@ import { Thumbnail, Text } from "@medusajs/ui"
 import { TriangleRightMini } from "@medusajs/icons"
 import { Link } from "react-router-dom"
 
-// Componente para exibir uma variante de produto
+// Component for displaying a product variant
 const ProductVariantItem = ({ variant, link }) => {
   const Inner = (
     <div className="shadow-elevation-card-rest bg-ui-bg-component rounded-md px-4 py-2 transition-colors">
@@ -184,14 +199,14 @@ const ProductVariantItem = ({ variant, link }) => {
   )
 }
 
-// Uso em um widget
+// Usage in a widget
 const RelatedProductsDisplay = ({ products }) => {
   if (products.length > 10) {
-    // Usar DataTable para muitos itens
+    // Use DataTable for many items
     return <ProductDataTable products={products} />
   }
 
-  // Usar lista simples para poucos itens
+  // Use simple list for few items
   return (
     <div className="flex flex-col gap-2">
       {products.map((product) => (
@@ -206,9 +221,9 @@ const RelatedProductsDisplay = ({ products }) => {
 }
 ```
 
-### Lista de Texto Simples (Sem Miniaturas)
+### Lista simples de texto (sem miniaturas)
 
-Para entidades sem imagens (categorias, regiões, etc.):
+Para entidades sem imagens (categorias, regiões etc.):
 
 ```tsx
 import { Text } from "@medusajs/ui"
@@ -250,7 +265,7 @@ const SimpleListItem = ({ title, description, link }) => {
   )
 }
 
-// Uso
+// Usage
 <div className="flex flex-col gap-2">
   {categories.map((cat) => (
     <SimpleListItem
@@ -263,7 +278,7 @@ const SimpleListItem = ({ title, description, link }) => {
 </div>
 ```
 
-### Lista Compacta (Sem Cards)
+### Lista compacta (sem cartões)
 
 Para exibições muito compactas:
 
@@ -284,7 +299,7 @@ import { Text } from "@medusajs/ui"
 </div>
 ```
 
-### Exibição em Grade
+### Exibição em grade
 
 Para exibir itens em uma grade:
 
@@ -309,40 +324,32 @@ Para exibir itens em uma grade:
 </div>
 ```
 
-## Elementos Chave de Design
+## Elementos-chave do design
 
-### Para exibição de Produtos/Variantes
+### Para exibição de produtos/variantes
 
-- Sempre exibir a miniatura usando o componente `<Thumbnail />`
-- Exibir o título com `<Text size="small" leading="compact" weight="plus">`
-- Mostrar informações secundárias com `<Text size="small" leading="compact" className="text-ui-fg-subtle">`
-- Usar `shadow-elevation-card-rest` para elevação de cartão
-- Incluir estados hover com `bg-ui-bg-component-hover`
-- Adicionar indicadores de navegação (setas) quando os itens são clicáveis
+- Sempre exiba a miniatura usando o componente `<Thumbnail />`
+- Exiba o título com `<Text size="small" leading="compact" weight="plus">`
+- Exiba informações secundárias com `<Text size="small" leading="compact" className="text-ui-fg-subtle">`
+- Use `shadow-elevation-card-rest` para elevar o cartão
+- Inclua estados de foco com `bg-ui-bg-component-hover`
+- Adicione indicadores de navegação (setas) quando os itens forem clicáveis
 
 ### Para outras entidades
 
-- Usar padrões de cartão semelhantes, mas adaptar o conteúdo
-- Manter espaçamento consistente (`gap-3` para itens, `gap-2` para listas)
-- Sempre usar o componente Text com padrões de tipografia corretos
-- Manter hierarquia visual com `weight="plus"` para texto primário e `text-ui-fg-subtle` para texto secundário
+- Use padrões de cartão semelhantes, mas adapte o conteúdo
+- Mantenha um espaçamento consistente (`gap-3` para itens, `gap-2` para listas)
+- Sempre use o componente Text com os padrões tipográficos corretos
+- Mantenha a hierarquia visual com `weight="plus"` para o texto principal e `text-ui-fg-subtle` para o texto secundário
 
-## Casos de Uso Yello Solar Hub
+## Estados vazios
 
--**Visualização de Catálogo (DataTable):**Exibição da lista completa de produtos (módulos, inversores, baterias) no painel administrativo, permitindo que a equipe filtre por marca, status de estoque ou data de aprovação comercial.
--**Fluxo de Cotação B2B (DataTable/Lista Simples):**Apresentação de uma lista paginada de cotações B2B geradas, onde o analista pode ver rapidamente o cliente, o status da aprovação comercial e o valor total cotado.
--**Seleção de Regiões/Distribuidores (Lista Simples):**Exibição em um widget de navegação de todos os distribuidores ou regiões atendidas, permitindo acesso direto ao painel operacional específico daquela área.
--**Visualização de Kits Solares (Exibição em Grade):**Mostrar diferentes kits solares montados (combinação de inversor, módulos e estruturas) de forma visual e atraente, destacando o preço final e a capacidade instalada.
--**Estado de Dados Ausentes (Empty States):** Quando um vendedor consulta um canal regional sem nenhuma cotação B2B registrada, o sistema deve exibir o estado vazio de forma informativa: "Nenhuma cotação B2B encontrada para a Região Sul, por favor, crie a primeira."
-
-## Estados Vazios
-
-Sempre tratar os estados vazios de forma elegante:
+Sempre lide com os estados vazios de maneira elegante:
 
 ```tsx
 {items.length === 0 ? (
   <Text size="small" leading="compact" className="text-ui-fg-subtle">
-    Nenhum item para exibir
+    No items to display
   </Text>
 ) : (
   <div className="flex flex-col gap-2">
@@ -353,9 +360,9 @@ Sempre tratar os estados vazios de forma elegante:
 )}
 ```
 
-## Estados de Carregamento
+## Estados de carregamento
 
-Mostrar estados de carregamento enquanto os dados estão sendo buscados:
+Mostrar os estados de carregamento enquanto os dados estão sendo buscados:
 
 ```tsx
 import { Spinner } from "@medusajs/ui"
@@ -373,16 +380,16 @@ import { Spinner } from "@medusajs/ui"
 )}
 ```
 
-## Renderização Condicional Baseada em Contagem
+## Renderização condicional com base na contagem
 
 ```tsx
 const DisplayComponent = ({ items }) => {
-  // Usar DataTable para muitos itens
+  // Use DataTable for many items
   if (items.length > 10) {
     return <ItemsDataTable items={items} />
   }
 
-  // Usar lista simples para poucos itens
+  // Use simple list for few items
   if (items.length > 0) {
     return (
       <div className="flex flex-col gap-2">
@@ -393,28 +400,28 @@ const DisplayComponent = ({ items }) => {
     )
   }
 
-  // Estado vazio
+  // Empty state
   return (
     <Text size="small" leading="compact" className="text-ui-fg-subtle">
-      Nenhum item para exibir
+      No items to display
     </Text>
   )
 }
 ```
 
-## Padrões de Classe Comuns
+## Padrões comuns de classes
 
-### Card com elevação e hover
+### Cartão com elevação e efeito ao passar o mouse
 
 ```tsx
 className="shadow-elevation-card-rest bg-ui-bg-component rounded-md transition-colors hover:bg-ui-bg-component-hover"
 ```
 
-### Container flex com espaçamento consistente
+### Contêiner flexível com espaçamento consistente
 
 ```tsx
-className="flex flex-col gap-2" // Para listas verticais
-className="flex items-center gap-3" // Para itens horizontais
+className="flex flex-col gap-2" // For vertical lists
+className="flex items-center gap-3" // For horizontal items
 ```
 
 ### Estados de foco para elementos interativos
@@ -423,8 +430,8 @@ className="flex items-center gap-3" // Para itens horizontais
 className="outline-none focus-within:shadow-borders-interactive-with-focus rounded-md"
 ```
 
-### Suporte RTL para ícones direcionais
+### Suporte a RTL para ícones direcionais
 
 ```tsx
 className="text-ui-fg-muted rtl:rotate-180"
-```stop
+```

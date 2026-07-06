@@ -1,149 +1,168 @@
-# Princípios e Padrões de Carregamento de Dados
+# Princípios e padrões de carregamento de dados
 
-## Sumário
+## Índice
 
-- [Regras Fundamentais](#regras-fundamentais)
-- [Checklist: Pense Antes de Codificar](#checklist-pense-antes-de-codificar)
-- [Erro Comum vs. Padrão Correto](#erro-comum-vs-padrão-correto)
-- [Trabalhando com Tanstack Query](#trabalhando-com-tanstack-query)
-- [Busca de Dados com useQuery](#busca-de-dados-com-usequery)
-  - [Consulta Básica](#consulta-básica)
-  - [Consulta Paginação](#consulta-paginação)
-  - [Consulta com Dependências](#consulta-com-dependências)
-  - [Busca de Múltiplos Itens por IDs](#busca-de-múltiplos-itens-por-ids)
-- [Atualizando Dados com useMutation](#atualizando-dados-com-usemutation)
-  - [Mutação Básica](#mutação-básica)
-  - [Mutação com Estado de Carregamento](#mutação-com-estado-de-carregamento)
-  - [Mutação de Criação](#mutação-de-criação)
-  - [Mutação de Exclusão](#mutação-de-exclusão)
-- [Diretrizes de Invalidação de Cache](#diretrizes-de-invalidação-de-cache)
-- [Notas Importantes sobre Metadados](#notas-importantes-sobre-metadados)
-- [Padrões Comuns](#padrões-comuns)
-  - [Padrão: Busca de Dados com Paginação](#padrão-busca-de-dados-com-paginação)
-  - [Padrão: Busca com Debounce](#padrão-busca-com-debounce)
-  - [Padrão: Atualização de Metadados com useMutation](#padrão-atualização-de-metadados-com-usemutation)
-- [Problemas e Soluções Comuns](#problemas-e-soluções-comuns)
-- [Exemplo Completo: Widget com Consultas Separadas](#exemplo-completo-widget-com-consultas-separadas)
+- [Regras fundamentais](#regras-fundamentais)
+- [Lista de verificação “Pense antes de programar”](#lista-de-verificacao-pense-antes-de-programar)
+- [Erro comum x Padrão correto](#erro-comum-x-padrao-correto)
+- [Trabalhando com o Tanstack Query](#trabalhando-com-o-tanstack-query)
+- [Buscando dados com useQuery](#buscando-dados-com-usequery)
+  - [Consulta básica](#basic-query)
+  - [Consulta paginada](#paginated-query)
+  - [Consulta com dependências](#trabalhando-com-o-tanstack-query)
+  - [Recuperação de vários itens por IDs](#lista-de-verificacao-pense-antes-de-programar)
+- [Atualização de dados com useMutation](#atualizacao-de-dados-com-usemutation)
+  - [Mutação básica](#basic-mutation)
+  - [Mutação com estado de carregamento](#atualizacao-de-dados-com-usemutation)
+  - [Criação de mutação](#lista-de-verificacao-pense-antes-de-programar)
+  - [Exclusão de mutação](#lista-de-verificacao-pense-antes-de-programar)
+- [Diretrizes para invalidação de cache](#diretrizes-para-invalidacao-de-cache)
+- [Observações importantes sobre metadados](#observacoes-importantes-sobre-metadados)
+- [Padrões comuns](#padroes-comuns)
+  - [Padrão: Busca de dados com paginação](#atualizacao-de-dados-com-usemutation)
+  - [Padrão: Pesquisa com debounce](#erro-comum-x-padrao-correto)
+  - [Padrão: Atualização de metadados com useMutation](#atualizacao-de-dados-com-usemutation)
+- [Problemas comuns e soluções](#problemas-comuns-e-solucoes)
+- [Exemplo completo: Widget com consultas separadas](#exemplo-completo-widget-com-consultas-separadas)
 
-## Regras Fundamentais
+## Regras fundamentais
 
-1. **SEMPRE use o Medusa JS SDK**- NUNCA use `fetch()` padrão para requisições de API (ausência de headers causa erros de autenticação/autorização)
-2.**Exibição de dados deve carregar no mount**- Qualquer dado exibido na interface principal do widget deve ser buscado quando o componente montar, e não de forma condicional.
-3.**Separe as preocupações (Separate concerns)**- As consultas de dados de modais/formulários devem ser independentes das consultas de dados de exibição.
-4.**Trate dados de referência adequadamente**- Ao armazenar IDs/referências (em metadados ou em outro lugar), você deve buscar as entidades completas para exibi-las.
-5.**Sempre mostre estados de carregamento**- Os usuários devem ver indicadores de carregamento, e não estados vazios, enquanto os dados estão sendo buscados.
-6.**Invalidar as consultas corretas**- Após mutações, invalide as consultas que fornecem os dados de exibição, e não apenas as consultas do modal.
+1. **SEMPRE use o SDK do Medusa JS** — NUNCA use o fetch() comum para solicitações de API (a falta de cabeçalhos causa erros de autenticação/autorização)
+2. **Os dados exibidos devem ser carregados na montagem** — Quaisquer dados exibidos na interface principal do widget devem ser buscados quando o componente for montado, e não de forma condicional
+3. **Separar as preocupações** — As consultas de dados de modais/formulários devem ser independentes das consultas de dados de exibição
+4. **Lidar adequadamente com dados de referência** — Ao armazenar IDs/referências (em metadados ou em qualquer outro lugar), é necessário buscar as entidades completas para exibi-las
+5. **Sempre mostre o status de carregamento** — Os usuários devem ver indicadores de carregamento, e não telas vazias, enquanto os dados estão sendo buscados
+6. **Invalide as consultas corretas** — Após alterações, invalide as consultas que fornecem dados de exibição, e não apenas as consultas dos modais
 
-## Checklist: Pense Antes de Codificar
+## Lista de verificação “Pense antes de programar”
 
 Antes de implementar qualquer widget que exiba dados:
 
-- [ ] Estou usando o Medusa JS SDK para todas as requisições de API (e não `fetch()` padrão)?
-- [ ] Para endpoints embutidos, estou usando métodos existentes do SDK (e não `sdk.client.fetch`)?
-- [ ] Quais dados precisam ser visíveis imediatamente?
+- [ ] Estou usando o SDK do Medusa JS para todas as solicitações de API (em vez do `fetch` comum)?
+- [ ] Para endpoints integrados, estou usando os métodos existentes do SDK (em vez de `sdk.client.fetch`)?
+- [ ] Quais dados precisam estar visíveis imediatamente?
 - [ ] Onde esses dados estão armazenados? (metadados, endpoint separado, entidades relacionadas)
 - [ ] Se estiver armazenando IDs, como vou buscar as entidades completas para exibição?
 - [ ] Minhas consultas de exibição estão separadas das consultas de interação?
-- [ ] Adicionei estados de carregamento para todos os carregamentos de dados?
-- [ ] Quais consultas precisam de invalidação após atualizações para atualizar a exibição?
+- [ ] Adicionei estados de carregamento para todas as buscas de dados?
+- [ ] Quais consultas precisam ser invalidadas após atualizações para atualizar a exibição?
 
-## Erro Comum vs. Padrão Correto
+## Erro comum x Padrão correto
 
-### ❌ ERRADO - Consulta única para exibição e modal
+### ❌ ERRADO - Uma única consulta tanto para a exibição quanto para o modal
 
 ```tsx
-// Isso falha ao recarregar a página!
+// This breaks on page refresh!
 const { data } = useQuery({
   queryFn: () => sdk.admin.product.list(),
-  enabled: modalOpen, // A exibição não funcionará no mount!
+  enabled: modalOpen, // Display won't work on mount!
 })
 
-// Tentando exibir dados filtrados da consulta do modal
-const displayItems = data?.filter((item) => ids.includes(item.id)) // Sem dados até que o modal abra
-```**Por que isso está errado:**- Ao recarregar a página, o modal está fechado, então a consulta não é executada.
-- O usuário vê o estado vazio em vez de seus dados.
-- A exibição depende da interação do modal.
+// Trying to display filtered data from modal query
+const displayItems = data?.filter((item) => ids.includes(item.id)) // No data until modal opens
+```
+
+**Por que isso está errado:**
+
+- Ao atualizar a página, o modal é fechado, portanto a consulta não é executada
+- O usuário vê uma tela vazia em vez de seus dados
+- A exibição depende da interação com o modal
 
 ### ✅ CORRETO - Consultas separadas com invalidação adequada
 
 ```tsx
-// Dados de exibição - carregam imediatamente
+// Display data - loads immediately
 const { data: displayData } = useQuery({
   queryFn: () => fetchDisplayData(),
   queryKey: ["display-data", product.id],
-  // Sem condição 'enabled' - carrega no mount
+  // No 'enabled' condition - loads on mount
 })
 
-// Dados do modal - carregam apenas quando necessário
+// Modal data - loads when needed
 const { data: modalData } = useQuery({
   queryFn: () => fetchModalData(),
   queryKey: ["modal-data"],
-  enabled: modalOpen, // OK para dados apenas do modal
+  enabled: modalOpen, // OK for modal-only data
 })
 
-// Mutação com invalidação de cache adequada
+// Mutation with proper cache invalidation
 const updateMutation = useMutation({
   mutationFn: updateFunction,
   onSuccess: () => {
-    // Invalida a consulta de dados de exibição para atualizar a UI
+    // Invalidate display data query to refresh UI
     queryClient.invalidateQueries({ queryKey: ["display-data", product.id] })
-    // Também invalida a entidade se ela armazenar os dados em cache
+    // Also invalidate the entity if it caches the data
     queryClient.invalidateQueries({ queryKey: ["product", product.id] })
   },
 })
-```**Por que isso está certo:**- A consulta de exibição é executada imediatamente no mount do componente.
-- A consulta do modal só é executada quando necessário.
-- A invalidação adequada garante que a UI seja atualizada após as mudanças.
-- Cada consulta tem uma responsabilidade clara e separada.
+```
 
-## Usando o Medusa JS SDK**⚠️ CRÍTICO: SEMPRE use o Medusa JS SDK para TODAS as requisições de API - NUNCA use `fetch()` padrão**### Por que o SDK é obrigatório
+**Por que isso está correto:**
 
--**Rotas Admin**exigem o header `Authorization` e o cookie de sessão - o SDK adiciona automaticamente.
--**Rotas Store**exigem o header `x-publishable-api-key` - o SDK adiciona automaticamente.
--**`fetch()` padrão** não inclui esses headers → erros de autenticação/autorização.
-- Usar métodos existentes do SDK fornece melhor segurança de tipo e autocompletar.
+- A consulta de exibição é executada imediatamente ao montar o componente
+- A consulta modal só é executada quando necessário
+- A invalidação adequada garante que a interface do usuário seja atualizada após as alterações
+- Cada consulta tem uma responsabilidade clara e distinta
+
+## Usando o SDK do Medusa JS
+
+**⚠️ CRÍTICO: SEMPRE use o SDK do Medusa JS para TODAS as solicitações de API — NUNCA use o fetch() comum**
+
+### Por que o SDK é necessário
+
+- **Rotas de administração** exigem o cabeçalho `Authorization` e o cookie de sessão — o SDK os adiciona automaticamente
+- **Rotas da loja** exigem o cabeçalho `x-publishable-api-key` — o SDK os adiciona automaticamente
+- **O fetch() padrão** não inclui esses cabeçalhos → erros de autenticação/autorização
+- O uso de métodos existentes do SDK oferece maior segurança de tipos e autocompletar
 
 ### Quando usar o quê
 
 ```tsx
 import { sdk } from "../lib/client"
 
-// ✅ CORRETO - Endpoint embutido: Use método existente do SDK
+// ✅ CORRECT - Built-in endpoint: Use existing SDK method
 const product = await sdk.admin.product.retrieve(productId, {
   fields: "+metadata,+variants.*"
 })
 
-// ✅ CORRETO - Endpoint personalizado: Use sdk.client.fetch()
+// ✅ CORRECT - Custom endpoint: Use sdk.client.fetch()
 const reviews = await sdk.client.fetch(`/admin/products/${productId}/reviews`)
 
-// ❌ ERRADO - Usar fetch() padrão para QUALQUER endpoint
+// ❌ WRONG - Using regular fetch for ANY endpoint
 const response = await fetch(`http://localhost:9000/admin/products/${productId}`)
-// ❌ Erro: Header Authorization ausente!
+// ❌ Error: Missing Authorization header!
 ```
 
-### Seleção de Método do SDK
+### Seleção de métodos do SDK
 
-**Para endpoints embutidos do Medusa:**- Use métodos existentes do SDK: `sdk.admin.product.list()`, `sdk.store.product.list()`, etc.
+**Para endpoints integrados do Medusa:**
 
-- Fornece segurança de tipo, autocompletar e tratamento adequado de headers.
-- Referência: [Medusa JS SDK Documentation](https://docs.medusajs.com/resources/medusa-js-sdk)**Para rotas de API personalizadas:**- Use `sdk.client.fetch()` para seus endpoints personalizados.
-- O SDK ainda cuida de todos os headers necessários (auth, chaves de API).
-- Passe objetos simples para o corpo (SDK cuida da serialização JSON).
+- Use os métodos existentes do SDK: `sdk.admin.product.list()`, `sdk.store.product.list()`, etc.
+- Oferece segurança de tipos, autocompletar e tratamento adequado dos cabeçalhos
+- Referência: [Documentação do SDK do Medusa para JS](https://docs.medusajs.com/resources/medusa-js-sdk)
 
-## Trabalhando com Tanstack Query
+**Para rotas de API personalizadas:**
 
-Widgets e rotas admin possuem Tanstack Query pré-configurado.**⚠️ Usuários pnpm**: Você DEVE instalar `@tanstack/react-query` ANTES de usar `useQuery` ou `useMutation`. Instale com a versão exata do dashboard:
+- Use `sdk.client.fetch()` para seus endpoints personalizados
+- O SDK ainda lida com todos os cabeçalhos necessários (autenticação, chaves de API)
+- Passe objetos simples para o corpo da solicitação (o SDK lida com a serialização JSON)
+
+## Trabalhando com o Tanstack Query
+
+Os widgets e rotas de administração já vêm com o Tanstack Query pré-configurado.
+
+**⚠️ Usuários do pnpm**: É OBRIGATÓRIO instalar o `@tanstack/react-query` ANTES de usar o `useQuery` ou o `useMutation`. Instale a versão exata indicada no painel:
 
 ```bash
 pnpm list @tanstack/react-query --depth=10 | grep @medusajs/dashboard
-pnpm add @tanstack/react-query@[versão-exata]
+pnpm add @tanstack/react-query@[exact-version]
 ```
 
-**Usuários npm/yarn**: NÃO instale `@tanstack/react-query` - ele já está disponível pelas dependências do dashboard.
+**Usuários do npm/yarn**: NÃO instale `@tanstack/react-query` — ele já está disponível por meio das dependências do painel de controle.
 
-## Busca de Dados com useQuery
+## Buscando dados com useQuery
 
-### Consulta Básica
+### Consulta básica
 
 ```tsx
 import { useQuery } from "@tanstack/react-query"
@@ -157,57 +176,57 @@ const { data, isLoading, error } = useQuery({
 })
 ```
 
-### Consulta Paginação
+### Consulta paginada
 
 ```tsx
 const limit = 15
-const offset = pagination.pageIndex *limit
+const offset = pagination.pageIndex * limit
 
 const { data: products } = useQuery({
   queryFn: () =>
     sdk.admin.product.list({
       limit,
       offset,
-      q: searchTerm, // para busca
+      q: searchTerm, // for search
     }),
   queryKey: ["products", limit, offset, searchTerm],
-  keepPreviousData: true, // Evita piscadas na UI durante a paginação
+  keepPreviousData: true, // Prevents UI flicker during pagination
 })
 ```
 
-### Consulta com Dependências
+### Consulta com dependências
 
 ```tsx
-// Apenas busca se productId existir
+// Only fetch if productId exists
 const { data } = useQuery({
   queryFn: () => sdk.admin.product.retrieve(productId),
   queryKey: ["product", productId],
-  enabled: !!productId, // Só roda quando productId for truthy
+  enabled: !!productId, // Only run when productId is truthy
 })
 ```
 
-### Busca de Múltiplos Itens por IDs
+### Recuperação de vários itens por IDs
 
 ```tsx
-// Para exibição - busca itens específicos por IDs
+// For display - fetch specific items by IDs
 const { data: displayProducts } = useQuery({
   queryFn: async () => {
     if (selectedIds.length === 0) return { products: [] }
 
     const response = await sdk.admin.product.list({
-      id: selectedIds, // Busca apenas os produtos selecionados
+      id: selectedIds, // Fetch only the selected products
       limit: selectedIds.length,
     })
     return response
   },
   queryKey: ["related-products-display", selectedIds],
-  enabled: selectedIds.length > 0, // Só busca se houver IDs
+  enabled: selectedIds.length > 0, // Only fetch if there are IDs
 })
 ```
 
-## Atualizando Dados com useMutation
+## Atualização de dados com useMutation
 
-### Mutação Básica
+### Mutação básica
 
 ```tsx
 import { useMutation, useQueryClient } from "@tanstack/react-query"
@@ -218,16 +237,16 @@ const queryClient = useQueryClient()
 const updateProduct = useMutation({
   mutationFn: (payload) => sdk.admin.product.update(productId, payload),
   onSuccess: () => {
-    // Invalida e busca novamente
+    // Invalidate and refetch
     queryClient.invalidateQueries({ queryKey: ["product", productId] })
-    toast.success("Produto atualizado com sucesso")
+    toast.success("Product updated successfully")
   },
   onError: (error) => {
-    toast.error(error.message || "Falha ao atualizar produto")
+    toast.error(error.message || "Failed to update product")
   },
 })
 
-// Utilização
+// Usage
 const handleSave = () => {
   updateProduct.mutate({
     metadata: {
@@ -238,68 +257,76 @@ const handleSave = () => {
 }
 ```
 
-### Mutação com Estado de Carregamento
+### Mutação com estado de carregamento
 
 ```tsx
 <Button
   onClick={handleSave}
   isLoading={updateProduct.isPending}
 >
-  Salvar
+  Save
 </Button>
 ```
 
-### Mutação de Criação
+### Criar mutação
 
 ```tsx
 const createProduct = useMutation({
   mutationFn: (data) => sdk.admin.product.create(data),
   onSuccess: () => {
     queryClient.invalidateQueries({ queryKey: ["products"] })
-    toast.success("Produto criado com sucesso")
+    toast.success("Product created successfully")
     setOpen(false)
   },
 })
 ```
 
-### Mutação de Exclusão
+### Excluir mutação
 
 ```tsx
 const deleteProduct = useMutation({
   mutationFn: (id) => sdk.admin.product.delete(id),
   onSuccess: () => {
     queryClient.invalidateQueries({ queryKey: ["products"] })
-    toast.success("Produto excluído")
+    toast.success("Product deleted")
   },
 })
 ```
 
-## Diretrizes de Invalidação de Cache
+## Diretrizes para invalidação de cache
 
-Após mutações, invalide as consultas que afetam o que o usuário vê:
+Após alterações, invalide as consultas que afetam o que o usuário vê:
 
 ```tsx
 onSuccess: () => {
-  // Invalide a entidade em si, se ela armazena os dados
+  // Invalidate the entity itself if it stores the data
   queryClient.invalidateQueries({ queryKey: ["product", productId] })
 
-  // Invalide consultas específicas de exibição
+  // Invalidate display-specific queries
   queryClient.invalidateQueries({ queryKey: ["related-products", productId] })
 
-  // Não é necessário invalidar as consultas de seleção do modal
-  // queryClient.invalidateQueries({ queryKey: ["products-list"] }) // Não necessário
+  // Don't need to invalidate modal selection queries
+  // queryClient.invalidateQueries({ queryKey: ["products-list"] }) // Not needed
 }
-```**Pontos Chave:**- Use chaves de consulta específicas com IDs para invalidação direcionada.
-- Invalide tanto as consultas da entidade quanto as consultas de dados de exibição quando necessário.
-- Considere o que o usuário vê e garanta que essas consultas sejam atualizadas.
-- Consultas de modal/seleção geralmente não precisam de invalidação.
+```
 
-## Notas Importantes sobre Metadados
+**Pontos-chave:**
 
-- Ao atualizar objetos aninhados em metadados, passe o objeto inteiro (Medusa não mescla objetos aninhados).
-- Para remover uma propriedade de metadado, defina-a como string vazia.
-- Metadados são armazenados como JSONB no banco de dados.**Exemplo: Atualizando Metadados**```tsx
-// ✅ CORRETO - Espalha (spread) o metadado existente
+- Use chaves de consulta específicas com IDs para invalidação direcionada
+- Invalide tanto as consultas de dados da entidade quanto as de exibição quando necessário
+- Leve em consideração o que o usuário vê e garanta que essas consultas sejam atualizadas
+- Consultas modais/de seleção normalmente não precisam de invalidação
+
+## Observações importantes sobre metadados
+
+- Ao atualizar objetos aninhados nos metadados, passe o objeto inteiro (o Medusa não mescla objetos aninhados)
+- Para remover uma propriedade de metadados, defina-a como uma string vazia
+- Os metadados são armazenados como JSONB no banco de dados
+
+**Exemplo: Atualização de metadados**
+
+```tsx
+// ✅ CORRECT - Spread existing metadata
 updateProduct.mutate({
   metadata: {
     ...product.metadata,
@@ -307,33 +334,33 @@ updateProduct.mutate({
   },
 })
 
-// ❌ ERRADO - Sobrescreve todos os metadados
+// ❌ WRONG - Overwrites all metadata
 updateProduct.mutate({
   metadata: {
-    new_field: "value", // Todos os outros campos perdidos!
+    new_field: "value", // All other fields lost!
   },
 })
 ```
 
-## Padrões Comuns
+## Padrões comuns
 
-### Padrão: Busca de Dados com Paginação
+### Padrão: Busca de dados com paginação
 
 ```tsx
 const limit = 15
-const offset = pagination.pageIndex*limit
+const offset = pagination.pageIndex * limit
 
 const { data } = useQuery({
   queryFn: () => sdk.admin.product.list({ limit, offset }),
   queryKey: ["products", limit, offset],
-  keepPreviousData: true, // Evita piscadas na UI durante a paginação
+  keepPreviousData: true, // Prevents UI flicker during pagination
 })
 ```
 
-### Padrão: Busca com Debounce
+### Padrão: Pesquisa com debounce
 
 ```tsx
-import { useDebouncedValue } from "@mantine/hooks" // ou implemente o seu próprio
+import { useDebouncedValue } from "@mantine/hooks" // or implement your own
 
 const [search, setSearch] = useState("")
 const [debouncedSearch] = useDebouncedValue(search, 300)
@@ -344,83 +371,84 @@ const { data } = useQuery({
 })
 ```
 
-### Padrão: Atualização de Metadados com useMutation
+### Padrão: Atualização de metadados com useMutation
 
 ```tsx
 const updateMetadata = useMutation({
   mutationFn: (metadata) => sdk.admin.product.update(productId, { metadata }),
   onSuccess: () => {
     queryClient.invalidateQueries({ queryKey: ["product", productId] })
-    toast.success("Atualizado com sucesso")
+    toast.success("Updated successfully")
   },
 })
 ```
 
-## Casos de Uso Yello Solar Hub
+## Problemas comuns e soluções
 
--**Cotação B2B por ID de Equipamentos:**O administrador precisa gerar uma cotação comercial B2B (ex: 5 inversores + 3 painéis). Deve-se usar uma consulta baseada em múltiplos IDs (`selectedIds`) e garantir que o cálculo do preço final (Mutação) invalide o cache da lista de produtos para refletir possíveis ajustes de preço ou tributos.
--**Gestão de Kits Solares (Metadata):**Ao criar um novo kit, o administrador cadastra múltiplos componentes (módulos, estruturas, inversores). O uso de `useMutation` deve atualizar o campo de `metadata` (`related_product_ids`) de forma atômica, seguindo o padrão de passar o objeto completo para evitar sobrescrever dados existentes.
--**Visualização de Canais Regionais:**Em um dashboard de gestão, é necessário listar todos os distribuidores regionais ativos. Isso exige uma consulta paginada (`Paginated Query`) onde o `searchTerm` filtra por região ou CNPJ, e a navegação deve manter o estado de carregamento (`keepPreviousData: true`).
--**Atualização de Catálogo e Especificações Técnicas:**O time comercial altera as especificações de um inversor. A interface deve primeiro carregar os dados de exibição (`displayData`) e, ao salvar, usar a `Mutation` para atualizar os metadados e, crucialmente, invalidar tanto a consulta da entidade do produto quanto quaisquer widgets de exibição relacionados (Ex: "Produtos relacionados").
+### Erros de autenticação/autorização ao buscar dados
 
-## Problemas e Soluções Comuns
+**Sintomas:**
 
-### Erros de Autenticação/Autorização ao buscar dados**Sintomas:**- API retorna 401 Unauthorized ou 403 Forbidden
+- A API retorna 401 Não autorizado ou 403 Proibido
+- Erro “Faltando o cabeçalho x-publishable-api-key”
+- Erro “Não autorizado” nas rotas de administração
 
-- Erro "Missing x-publishable-api-key header".
-- Erro "Unauthorized" em rotas admin.**Causa:**Uso de `fetch()` padrão em vez do Medusa JS SDK.**Solução:**```tsx
-// ❌ ERRADO - Headers obrigatórios ausentes
+**Causa:** Uso do `fetch()` comum em vez do SDK do Medusa JS
+
+**Solução:**
+
+```tsx
+// ❌ WRONG - Missing required headers
 const { data } = useQuery({
-  queryFn: () => fetch('<http://localhost:9000/admin/products').then(r> => r.json()),
+  queryFn: () => fetch('http://localhost:9000/admin/products').then(r => r.json()),
   queryKey: ["products"]
 })
 
-// ✅ CORRETO - SDK trata os headers automaticamente
+// ✅ CORRECT - SDK handles headers automatically
 const { data } = useQuery({
   queryFn: () => sdk.admin.product.list(),
   queryKey: ["products"]
 })
 
-// ✅ CORRETO - Para rotas personalizadas
+// ✅ CORRECT - For custom routes
 const { data } = useQuery({
   queryFn: () => sdk.client.fetch('/admin/custom-route'),
   queryKey: ["custom-data"]
 })
-
 ```
 
-### "Nenhum QueryClient definido, use QueryClientProvider para definir um"
+### “Nenhum QueryClient definido; use o QueryClientProvider para definir um”
 
--**Usuários pnpm**: Você esqueceu de instalar `@tanstack/react-query` antes de implementar. Instale agora com a versão exata do dashboard.
-- **Usuários npm/yarn**: Você instalou incorretamente `@tanstack/react-query` - remova-o do package.json.
-- Nunca envolva seu componente em `QueryClientProvider` - ele já é fornecido.
+- **Usuários do pnpm**: Você esqueceu de instalar o `@tanstack/react-query` antes da implementação. Instale-o agora com a versão exata indicada no painel
+- **Usuários do npm/yarn**: Você instalou incorretamente o `@tanstack/react-query` — remova-o do `package.json`
+- Nunca envolva seu componente em `QueryClientProvider` — ele já está disponível
 
-### Busca não filtra os resultados
+### A pesquisa não está filtrando os resultados
 
-- A busca ocorre no lado do servidor via parâmetro `q`.
-- Certifique-se de passar o valor de busca em sua `queryFn`:
+- A pesquisa ocorre no lado do servidor por meio do parâmetro `q`
+- Certifique-se de passar o valor da pesquisa em seu `queryFn`:
 
 ```tsx
 queryFn: () => sdk.admin.product.list({ q: searchValue })
 ```
 
-### Atualizações de metadados não funcionam
+### Atualizações de metadados não estão funcionando
 
-- Sempre passe o objeto de metadados completo (atualizações parciais não são mescladas).
-- Para remover um campo, defina-o como string vazia, e não `null` ou `undefined`.
+- Sempre passe o objeto de metadados completo (atualizações parciais não são mescladas)
+- Para remover um campo, defina-o como uma string vazia, e não como `null` ou `undefined`
 
-### Widget não atualiza após mutação
+### O widget não atualiza após a mutação
 
-- Use `queryClient.invalidateQueries()` com a chave de consulta correta.
-- Garanta que sua chave de consulta inclua todas as dependências (busca, paginação, etc.).
+- Use `queryClient.invalidateQueries()` com a chave de consulta correta
+- Certifique-se de que sua chave de consulta inclua todas as dependências (busca, paginação etc.)
 
-### Dados mostram vazio no recarregamento da página
+### Os dados aparecem vazios ao atualizar a página
 
-- Sua consulta possui `enabled: modalOpen` ou condição similar.
-- Os dados de exibição NUNCA devem ser habilitados condicionalmente com base no estado da UI.
-- Mova consultas condicionais apenas para modais/formulários.
+- Sua consulta contém `enabled: modalOpen` ou uma condição semelhante
+- Os dados exibidos NUNCA devem ser ativados condicionalmente com base no estado da interface do usuário
+- Mude as consultas condicionais para modais/formulários apenas
 
-## Exemplo Completo: Widget com Consultas Separadas
+## Exemplo completo: Widget com consultas separadas
 
 ```tsx
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -432,7 +460,7 @@ const RelatedProductsWidget = ({ data: product }) => {
   const [open, setOpen] = useState(false)
   const queryClient = useQueryClient()
 
-  // Analisa os IDs de produto relacionados existentes nos metadados
+  // Parse existing related product IDs from metadata
   const relatedIds = useMemo(() => {
     if (product?.metadata?.related_product_ids) {
       try {
@@ -445,7 +473,7 @@ const RelatedProductsWidget = ({ data: product }) => {
     return []
   }, [product?.metadata?.related_product_ids])
 
-  // Consulta 1: Busca produtos selecionados para exibição (carrega no mount)
+  // Query 1: Fetch selected products for display (loads on mount)
   const { data: displayProducts } = useQuery({
     queryFn: async () => {
       if (relatedIds.length === 0) return { products: [] }
@@ -459,14 +487,14 @@ const RelatedProductsWidget = ({ data: product }) => {
     enabled: relatedIds.length > 0,
   })
 
-  // Consulta 2: Busca produtos para seleção no modal (apenas quando o modal estiver aberto)
+  // Query 2: Fetch products for modal selection (only when modal is open)
   const { data: modalProducts, isLoading } = useQuery({
     queryFn: () => sdk.admin.product.list({ limit: 10, offset: 0 }),
     queryKey: ["products-selection"],
-    enabled: open, // Carrega apenas quando o modal está aberto
+    enabled: open, // Only load when modal is open
   })
 
-  // Mutação para atualizar os metadados do produto
+  // Mutation to update the product metadata
   const updateProduct = useMutation({
     mutationFn: (relatedProductIds) => {
       return sdk.admin.product.update(product.id, {
@@ -479,7 +507,7 @@ const RelatedProductsWidget = ({ data: product }) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["product", product.id] })
       queryClient.invalidateQueries({ queryKey: ["related-products-display"] })
-      toast.success("Produtos relacionados atualizados")
+      toast.success("Related products updated")
       setOpen(false)
     },
   })
@@ -487,22 +515,22 @@ const RelatedProductsWidget = ({ data: product }) => {
   return (
     <Container>
       <div className="flex items-center justify-between">
-        <Heading>Produtos Relacionados</Heading>
-        <Button onClick={() => setOpen(true)}>Editar</Button>
-      </div >
+        <Heading>Related Products</Heading>
+        <Button onClick={() => setOpen(true)}>Edit</Button>
+      </div>
 
-      {/*Exibe a seleção atual*/}
-      <div >
+      {/* Display current selection */}
+      <div>
         {displayProducts?.products.map((p) => (
-          <div key={p.id}>{p.title}</div >
+          <div key={p.id}>{p.title}</div>
         ))}
       </div>
 
-      {/*Modal para seleção*/}
+      {/* Modal for selection */}
       <FocusModal open={open} onOpenChange={setOpen}>
-        {/*Conteúdo do modal com UI de seleção*/}
+        {/* Modal content with selection UI */}
       </FocusModal>
     </Container>
   )
 }
-```stop
+```

@@ -1,8 +1,14 @@
 {
   "github_synced": true,
-  "pr_mergeable": "unknown",
-  "head_sha": "443b211dec9495aeaadd4333490e8fa831439c53",
+  "pr_number": 1,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_mergeable": "UNKNOWN",
+  "head_sha": "7348dae2c9f37b433221ff6c87f1017f97e992b0",
   "origin_main_sha": "9c41f09deaab619bf81ebc4770fbb2029babf42d",
+  "branch": "chore/translation-forensic-repair",
+  "updated_at": "2026-07-06T16:22:03Z",
   "sessions_checked": 5,
-  "alerts_emitted": 5
+  "alerts_emitted": 5,
+  "source_mode": "gh_cli_live"
 }

@@ -9,6 +9,6 @@
   "url": "https://jules.google/sessions/sess_mock_123",
   "source_mode": "test_fixture",
   "is_mock": true,
-  "audited_at": "2026-07-06T16:07:42.832055+00:00"
+  "audited_at": "2026-07-06T16:22:55.851572+00:00"
 }
 ```

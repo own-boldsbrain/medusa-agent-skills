@@ -1,1 +1,2 @@
 {"timestamp": "2026-07-06T16:07:42.832055+00:00", "session_id": "sess_mock_123", "source_mode": "test_fixture", "is_mock": true, "event": "AUDIT_GENERATED", "state": "COMPLETED"}
+{"timestamp": "2026-07-06T16:22:55.851572+00:00", "session_id": "sess_mock_123", "source_mode": "test_fixture", "is_mock": true, "event": "AUDIT_GENERATED", "state": "COMPLETED"}

@@ -147,5 +147,6 @@ Se a nova decisão substitui uma entrada `approved` existente:
 ## Arquivos de referência
 
 -**Template**: `skills/design-log-create/reference/template.pt-BR.md`
+
 - **Schema**: `skills/design-log-workflow/reference/schema.pt-BR.md`
 - **Exemplo de entrada**: `design-log/DL-000-bootstrap.md`

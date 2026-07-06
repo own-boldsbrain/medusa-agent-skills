@@ -2,17 +2,17 @@
 
 ## Índice
 
-- [Visão geral](#visão-geral)
-- [Padrões de layout](#padrões-de-layout)
-- [Exibição dos itens do carrinho](#exibição-dos-itens-do-carrinho)
-- [Atualizações de quantidade](#atualizações-de-quantidade)
+- [Visão geral](#visao-geral)
+- [Padrões de layout](#padroes-de-layout)
+- [Exibição dos itens do carrinho](#exibicao-dos-itens-do-carrinho)
+- [Atualizações de quantidade](#atualizacoes-de-quantidade)
 - [Resumo do pedido](#resumo-do-pedido)
-- [Inserção de código promocional](#promo-code-input)
-- [Botão de finalização da compra](#checkout-button)
-- [Estado do carrinho vazio](#empty-cart-state)
-- [Integração com o backend](#backend-integration)
-- [Carrinho para dispositivos móveis](#mobile-cart)
-- [Lista de verificação](#checklist)
+- [Inserção de código promocional](#insercao-do-codigo-promocional)
+- [Botão de finalização da compra](#botao-de-finalizacao-da-compra)
+- [Estado do carrinho vazio](#estado-do-carrinho-vazio)
+- [Integração com o backend](#integracao-com-o-backend)
+- [Carrinho para dispositivos móveis](#carrinho-para-dispositivos-moveis)
+- [Lista de verificação](#lista-de-verificacao)
 
 ## Visão geral
 
@@ -140,7 +140,7 @@ Total:                  $171.96
 Soma de todos os itens da cesta com a quantidade de cada item.
 
 **Frete:**
-Custo estimado do frete, ou “Calculado na finalização da compra” (se for necessário informar o endereço), ou “Frete grátis” (se aplicável). Mostrar o progresso para atingir o valor mínimo para frete grátis (consulte promotions.md).
+Custo estimado do frete, ou “Calculado na finalização da compra” (se for necessário informar o endereço), ou “Frete grátis” (se aplicável). Mostrar o progresso em relação ao valor mínimo para frete grátis (consulte promotions.md).
 
 **Imposto:**
 Imposto estimado ou “Calculado na finalização da compra” (se for necessário fornecer endereço).

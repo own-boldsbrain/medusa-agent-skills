@@ -8,76 +8,44 @@ description: Carregado automaticamente ao planejar, pesquisar ou implementar a U
 
 Crie extensões de UI personalizadas para o painel de controle Medusa Admin usando o Admin SDK e os componentes Medusa UI.
 
-**Nota:** "Rotas UI" são páginas de administração personalizadas, diferentes das rotas de API do backend (que usam a skill `building-with-medusa`).
+**Nota:**"Rotas UI" são páginas de administração personalizadas, diferentes das rotas de API do backend (que usam a skill `building-with-medusa`).
 
-## Quando Aplicar
-
-**Carregue esta skill para QUALQUER tarefa de desenvolvimento de UI de admin, incluindo:**
-
-- Criação de widgets para páginas de produto/pedido/cliente.
+## Quando Aplicar**Carregue esta skill para QUALQUER tarefa de desenvolvimento de UI de admin, incluindo:**- Criação de widgets para páginas de produto/pedido/cliente.
 - Construção de páginas de administração personalizadas.
 - Implementação de formulários e modais.
 - Exibição de dados com tabelas ou listas.
-- Adição de navegação entre páginas.
+- Adição de navegação entre páginas.**Também carregue estas skills quando:**-**building-with-medusa:**Construindo rotas de API de backend que a UI admin chama.
+-**building-storefronts:**Se estiver trabalhando na storefront em vez do painel de controle admin.
 
-**Também carregue estas skills quando:**
+## CRÍTICO: Carregue Arquivos de Referência Quando Necessário**O guia de referência abaixo NÃO é suficiente para implementação.**Você DEVE carregar arquivos de referência relevantes antes de escrever código para esse componente.**Carregue estas referências com base no que você está implementando:**-**Criando widgets?**→ DEVE carregar `references/data-loading.md` primeiro
+-**Construindo formulários/modais?**→ DEVE carregar `references/forms.md` primeiro
+-**Exibindo dados em tabelas/listas?**→ DEVE carregar `references/display-patterns.md` primeiro
+-**Selecionando de grandes conjuntos de dados?**→ DEVE carregar `references/table-selection.md` primeiro
+-**Adicionando navegação?**→ DEVE carregar `references/navigation.md` primeiro
+-**Estilizando componentes?**→ DEVE carregar `references/typography.md` primeiro**Requisito mínimo:**Carregar pelo menos 1-2 arquivos de referência relevantes para sua tarefa específica antes de implementar.
 
-- **building-with-medusa:** Construindo rotas de API de backend que a UI admin chama.
-- **building-storefronts:** Se estiver trabalhando na storefront em vez do painel de controle admin.
-
-## CRÍTICO: Carregue Arquivos de Referência Quando Necessário
-
-**O guia de referência abaixo NÃO é suficiente para implementação.** Você DEVE carregar arquivos de referência relevantes antes de escrever código para esse componente.
-
-**Carregue estas referências com base no que você está implementando:**
-
-- **Criando widgets?** → DEVE carregar `references/data-loading.md` primeiro
-- **Construindo formulários/modais?** → DEVE carregar `references/forms.md` primeiro
-- **Exibindo dados em tabelas/listas?** → DEVE carregar `references/display-patterns.md` primeiro
-- **Selecionando de grandes conjuntos de dados?** → DEVE carregar `references/table-selection.md` primeiro
-- **Adicionando navegação?** → DEVE carregar `references/navigation.md` primeiro
-- **Estilizando componentes?** → DEVE carregar `references/typography.md` primeiro
-
-**Requisito mínimo:** Carregar pelo menos 1-2 arquivos de referência relevantes para sua tarefa específica antes de implementar.
-
-## Quando Usar Esta Skill vs MedusaDocs MCP Server
-
-**⚠️ CRÍTICO: Esta skill deve ser consultada PRIMEIRO para planejamento e implementação.**
-
-**Use esta skill para (FONTE PRIMÁRIA):**
-
-- **Planejamento** - Entender como estruturar recursos da UI de admin.
-- **Padrões de componentes** - Widgets, páginas, formulários, tabelas, modais.
-- **Sistema de design** - Tipografia, cores, espaçamento, classes semânticas.
-- **Carregamento de dados** - Padrão de consulta separado e invalidação de cache críticos.
-- **Melhores práticas** - Padrões corretos vs incorretos (ex.: consultas de exibição em mount).
-- **Regras críticas** - O que NÃO fazer (erros comuns como consultas de exibição condicionais).
-
-**Use o servidor MedusaDocs MCP para (FONTE SECUNDÁRIA):**
-
-- Assinaturas de props de componentes específicos após você saber qual componente usar.
+## Quando Usar Esta Skill vs MedusaDocs MCP Server**⚠️ CRÍTICO: Esta skill deve ser consultada PRIMEIRO para planejamento e implementação.****Use esta skill para (FONTE PRIMÁRIA):**-**Planejamento**- Entender como estruturar recursos da UI de admin.
+-**Padrões de componentes**- Widgets, páginas, formulários, tabelas, modais.
+-**Sistema de design**- Tipografia, cores, espaçamento, classes semânticas.
+-**Carregamento de dados**- Padrão de consulta separado e invalidação de cache críticos.
+-**Melhores práticas**- Padrões corretos vs incorretos (ex.: consultas de exibição em mount).
+-**Regras críticas**- O que NÃO fazer (erros comuns como consultas de exibição condicionais).**Use o servidor MedusaDocs MCP para (FONTE SECUNDÁRIA):**- Assinaturas de props de componentes específicos após você saber qual componente usar.
 - Lista de zonas de widget disponíveis.
 - Detalhes do método JS SDK.
-- Referência de opções de configuração.
-
-**Por que as skills vêm primeiro:**
-
-- Skills contêm padrões críticos como consultas de exibição/modal separadas que o MCP não enfatiza.
+- Referência de opções de configuração.**Por que as skills vêm primeiro:**- Skills contêm padrões críticos como consultas de exibição/modal separadas que o MCP não enfatiza.
 - Skills mostram padrões corretos vs incorretos; o MCP mostra o que é possível.
 - O planejamento requer entender padrões, não apenas a referência da API.
 
 ## Casos de Uso Yello Solar Hub
 
-- **Visualização de Cotações B2B (Widgets):** Adicionar um widget na página de Pedidos (Orders) que exiba o status de uma cotação B2B (Ex: "Aguardando Aprovação Comercial") usando dados de um sistema de CRM externo.
-- **Seleção de Componentes em Kits (Tabelas/Modals):** Criar uma página personalizada na seção de Produtos ou Kits para que o administrador possa montar e visualizar a compatibilidade de módulos e inversores, carregando grandes datasets de peças.
-- **Gestão de Status Operacional (Paginação):** Implementar um Painel de Controle (UI Route) dedicado para o monitoramento do fluxo de instalação solar, exibindo o status operacional (Aprovado, Em Logística, Instalado) e o cliente associado.
-- **Flutuação de Dados em Aprovação Financeira (Data Loading):** Utilizar a separação de consultas (Display vs Modal) ao carregar a página de aprovação de um pedido, para que os detalhes do equipamento (Display Query) carreguem instantaneamente, enquanto a revisão financeira (Modal Query) só carrega ao clicar no modal de notas.
+-**Visualização de Cotações B2B (Widgets):**Adicionar um widget na página de Pedidos (Orders) que exiba o status de uma cotação B2B (Ex: "Aguardando Aprovação Comercial") usando dados de um sistema de CRM externo.
+-**Seleção de Componentes em Kits (Tabelas/Modals):**Criar uma página personalizada na seção de Produtos ou Kits para que o administrador possa montar e visualizar a compatibilidade de módulos e inversores, carregando grandes datasets de peças.
+-**Gestão de Status Operacional (Paginação):**Implementar um Painel de Controle (UI Route) dedicado para o monitoramento do fluxo de instalação solar, exibindo o status operacional (Aprovado, Em Logística, Instalado) e o cliente associado.
+-**Flutuação de Dados em Aprovação Financeira (Data Loading):**Utilizar a separação de consultas (Display vs Modal) ao carregar a página de aprovação de um pedido, para que os detalhes do equipamento (Display Query) carreguem instantaneamente, enquanto a revisão financeira (Modal Query) só carrega ao clicar no modal de notas.
 
 ## Regras de Configuração Críticas
 
-### Configuração do Cliente SDK
-
-**CRÍTICO:** Sempre use a configuração exata - valores diferentes causam erros:
+### Configuração do Cliente SDK**CRÍTICO:**Sempre use a configuração exata - valores diferentes causam erros:
 
 ```tsx
 // src/admin/lib/client.ts
@@ -92,9 +60,7 @@ export const sdk = new Medusa({
 })
 ```
 
-### Apenas usuários pnpm
-
-**CRÍTICO:** Instale dependências *peer* ANTES de escrever qualquer código:
+### Apenas usuários pnpm**CRÍTICO:**Instale dependências*peer*ANTES de escrever qualquer código:
 
 ```bash
 # Encontre a versão exata no dashboard
@@ -105,9 +71,7 @@ pnpm add @tanstack/react-query@[versão-exata]
 # Se estiver usando navegação (Componente Link)
 pnpm list react-router-dom --depth=10 | grep @medusajs/dashboard
 pnpm add react-router-dom@[versão-exata]
-```
-
-**Usuários npm/yarn:** NÃO instalem esses pacotes - já estão disponíveis.
+```**Usuários npm/yarn:**NÃO instalem esses pacotes - já estão disponíveis.
 
 ## Categorias de Regras por Prioridade
 
@@ -124,7 +88,7 @@ pnpm add react-router-dom@[versão-exata]
 
 ### 1. Carregamento de Dados (CRÍTICO)
 
-- `data-sdk-always` - **SEMPRE** use o Medusa JS SDK para TODOS os pedidos de API - NUNCA use `fetch()` regular (falha nos cabeçalhos de autenticação causa erros).
+- `data-sdk-always` -**SEMPRE**use o Medusa JS SDK para TODOS os pedidos de API - NUNCA use `fetch()` regular (falha nos cabeçalhos de autenticação causa erros).
 - `data-sdk-method-choice` - Use métodos existentes do SDK para endpoints integrados (`sdk.admin.product.list()`), use `sdk.client.fetch()` para rotas personalizadas.
 - `data-display-on-mount` - As consultas de exibição DEVEM carregar no mount (nenhuma condição `enabled` baseada no estado da UI).
 - `data-separate-queries` - Separe as consultas de exibição das consultas de modal/formulário.
@@ -141,7 +105,7 @@ pnpm add react-router-dom@[versão-exata]
 
 ### 3. Exibição de Dados (ALTO)
 
-- `display-price-format` - **CRÍTICO**: Os preços do Medusa são armazenados como-is ($49.99 = 49.99, NÃO em centavos). Exiba-os diretamente - NUNCA divida por 100.
+- `display-price-format` -**CRÍTICO**: Os preços do Medusa são armazenados como-is ($49.99 = 49.99, NÃO em centavos). Exiba-os diretamente - NUNCA divida por 100.
 
 ### 4. Tipografia (ALTO)
 
@@ -200,11 +164,11 @@ const RelatedProductsWidget = ({ data: product }) => {
 
   return (
     <Container>
-      {/* A exibição usa displayProducts */}
+      {/*A exibição usa displayProducts*/}
       {displayProducts?.map(p => <div key={p.id}>{p.title}</div>)}
 
       <FocusModal open={modalOpen} onOpenChange={setModalOpen}>
-        {/* O modal usa modalProducts */}
+        {/*O modal usa modalProducts*/}
       </FocusModal>
     </Container>
   )
@@ -226,54 +190,30 @@ const BrokenWidget = ({ data: product }) => {
 }
 ```
 
-**Por que isso importa:**
-
-- Ao recarregar a página, o modal está fechado, então a consulta condicional não executa.
+**Por que isso importa:**- Ao recarregar a página, o modal está fechado, então a consulta condicional não executa.
 - O usuário vê estado vazio em vez de seus dados.
 - A exibição depende da interação do modal (UX quebrada).
 
 ## Checklist de Erros Comuns
 
-Antes de implementar, verifique se você NÃO está fazendo isto:
-
-**Carregamento de Dados:**
-
-- [ ] Usando `fetch()` regular em vez do Medusa JS SDK (causa erros de cabeçalho de autenticação ausente).
+Antes de implementar, verifique se você NÃO está fazendo isto:**Carregamento de Dados:**- [ ] Usando `fetch()` regular em vez do Medusa JS SDK (causa erros de cabeçalho de autenticação ausente).
 - [ ] Não usando métodos existentes do SDK para endpoints integrados (ex.: usando `sdk.client.fetch("/admin/products")` em vez de `sdk.admin.product.list()`).
 - [ ] Carregando dados de exibição condicionalmente com base no estado do modal/UI.
 - [ ] Usando uma única consulta tanto para exibição quanto para modal.
 - [ ] Esquecer de invalidar consultas de exibição após mutações.
 - [ ] Não tratar estados de carregamento (mostrar vazio em vez de spinner).
-- [ ] Usuários pnpm: Não instalar @tanstack/react-query antes de codificar.
-
-**Sistema de Design:**
-
-- [ ] Usando cores hardcoded em vez de classes semânticas.
+- [ ] Usuários pnpm: Não instalar @tanstack/react-query antes de codificar.**Sistema de Design:**- [ ] Usando cores hardcoded em vez de classes semânticas.
 - [ ] Esquecer `size="small"` em botões em widgets.
 - [ ] Não usar `px-6 py-4` para preenchimento de seções.
-- [ ] Usando elementos HTML brutos em vez de componentes Medusa UI.
+- [ ] Usando elementos HTML brutos em vez de componentes Medusa UI.**Exibição de Dados:**- [ ]**CRÍTICO**: Dividir preços por 100 ao exibir (os preços são armazenados como-is: $49.99 = 49.99, NÃO em centavos).
 
-**Exibição de Dados:**
-
-- [ ] **CRÍTICO**: Dividir preços por 100 ao exibir (os preços são armazenados como-is: $49.99 = 49.99, NÃO em centavos).
-
-**Tipografia:**
-
-- [ ] Usando tags `span`/`p` simples em vez do componente Text.
+**Tipografia:**- [ ] Usando tags `span`/`p` simples em vez do componente Text.
 - [ ] Não usar `weight="plus"` para rótulos.
 - [ ] Não usar `text-ui-fg-subtle` para descrições.
-- [ ] Usando Heading em pequenas seções de widgets.
-
-**Formulários:**
-
-- [ ] Usando Drawer para criar (deve usar FocusModal).
+- [ ] Usando Heading em pequenas seções de widgets.**Formulários:**- [ ] Usando Drawer para criar (deve usar FocusModal).
 - [ ] Usando FocusModal para editar (deve usar Drawer).
 - [ ] Não desativando botões durante mutações.
-- [ ] Não mostrar estado de carregamento no envio.
-
-**Seleção:**
-
-- [ ] Usando DataTable para <10 itens (exagero).
+- [ ] Não mostrar estado de carregamento no envio.**Seleção:**- [ ] Usando DataTable para <10 itens (exagero).
 - [ ] Usando Select para >10 itens (má UX).
 - [ ] Não configurar a pesquisa em useDataTable (causa erro).
 
@@ -297,11 +237,7 @@ Cada referência contém:
 - Erros comuns e soluções.
 - Exemplos completos funcionais.
 
-## Integração com Backend
-
-**⚠️ CRÍTICO: SEMPRE use o Medusa JS SDK para TODOS os pedidos de API - NUNCA use `fetch()` regular.**
-
-A UI Admin se conecta às rotas de API de backend usando o SDK:
+## Integração com Backend**⚠️ CRÍTICO: SEMPRE use o Medusa JS SDK para TODOS os pedidos de API - NUNCA use `fetch()` regular.**A UI Admin se conecta às rotas de API de backend usando o SDK:
 
 ```tsx
 import { sdk } from "[LOCALIZAR INSTÂNCIA SDK NO PROJETO]"
@@ -336,26 +272,18 @@ const createReview = useMutation({
     toast.success("Review criado")
   },
 })
-```
-
-**Por que o SDK é obrigatório:**
-
-- As rotas Admin precisam de cabeçalhos `Authorization` e cookie de sessão.
+```**Por que o SDK é obrigatório:**- As rotas Admin precisam de cabeçalhos `Authorization` e cookie de sessão.
 - As rotas Store precisam do cabeçalho `x-publishable-api-key`.
 - O SDK trata todos os cabeçalhos necessários automaticamente.
 - `fetch()` regular sem cabeçalhos → erros de autenticação/autorização.
-- Usar métodos existentes do SDK fornece melhor segurança de tipos.
-
-**Quando usar o quê:**
-
-- **Endpoints integrados**: Use métodos SDK existentes (`sdk.admin.product.list()`, `sdk.store.product.list()`).
+- Usar métodos existentes do SDK fornece melhor segurança de tipos.**Quando usar o quê:**-**Endpoints integrados**: Use métodos SDK existentes (`sdk.admin.product.list()`, `sdk.store.product.list()`).
 - **Endpoints customizados**: Use `sdk.client.fetch()` para suas rotas de API personalizadas.
 
 **Para implementar rotas de API de backend**, carregue a skill `building-with-medusa`.
 
 ## Widget vs Rota UI
 
-**Widgets** estendem páginas admin existentes:
+**Widgets**estendem páginas admin existentes:
 
 ```tsx
 // src/admin/widgets/custom-widget.tsx
@@ -371,9 +299,7 @@ export const config = defineWidgetConfig({
 })
 
 export default MyWidget
-```
-
-**Rotas UI** criam novas páginas admin:
+```**Rotas UI**criam novas páginas admin:
 
 ```tsx
 // src/admin/routes/custom-page/page.tsx
@@ -390,37 +316,13 @@ export const config = defineRouteConfig({
 export default CustomPage
 ```
 
-## Problemas e Soluções Comuns
-
-**Erros "Cannot find module" (usuários pnpm):**
-
-- Instalar dependências *peer* ANTES de codificar.
-- Usar versões exatas do dashboard.
-
-**Erro "No QueryClient set":**
-
-- pnpm: Instalar @tanstack/react-query.
-- npm/yarn: Remover o pacote instalado incorretamente.
-
-**"DataTable.Search not enabled":**
-
-- Deve passar a configuração de pesquisa para useDataTable.
-
-**Widget sem atualizar:**
-
-- Invalidação de consultas de exibição, não apenas de consultas de modal.
-- Incluir todas as dependências nas chaves da consulta.
-
-**Exibição vazia no refresh:**
-
-- A consulta de exibição tem `enabled` condicional baseado no estado da UI.
+## Problemas e Soluções Comuns**Erros "Cannot find module" (usuários pnpm):**- Instalar dependências*peer*ANTES de codificar.
+- Usar versões exatas do dashboard.**Erro "No QueryClient set":**- pnpm: Instalar @tanstack/react-query.
+- npm/yarn: Remover o pacote instalado incorretamente.**"DataTable.Search not enabled":**- Deve passar a configuração de pesquisa para useDataTable.**Widget sem atualizar:**- Invalidação de consultas de exibição, não apenas de consultas de modal.
+- Incluir todas as dependências nas chaves da consulta.**Exibição vazia no refresh:**- A consulta de exibição tem `enabled` condicional baseado no estado da UI.
 - Remover condição - os dados de exibição devem carregar no mount.
 
-## Próximos Passos - Testando Sua Implementação
-
-**Após implementar um recurso com sucesso, sempre forneça estes próximos passos ao usuário:**
-
-### 1. Iniciar o Servidor de Desenvolvimento
+## Próximos Passos - Testando Sua Implementação**Após implementar um recurso com sucesso, sempre forneça estes próximos passos ao usuário:**### 1. Iniciar o Servidor de Desenvolvimento
 
 Se o servidor ainda não estiver rodando, inicie-o:
 
@@ -432,33 +334,26 @@ npm run dev      # ou pnpm dev / yarn dev
 
 Abra seu navegador e navegue para:
 
-- **Dashboard Admin:** <http://localhost:9000/app>
+-**Dashboard Admin:**<http://localhost:9000/app>
 
 Faça login com suas credenciais de administrador.
 
-### 3. Navegar até sua UI Personalizada
+### 3. Navegar até sua UI Personalizada**Para Widgets:**Navegue até a página onde seu widget é exibido. Zonas de widget comuns:
 
-**Para Widgets:**
-Navegue até a página onde seu widget é exibido. Zonas de widget comuns:
-
-- **Produtos:** Vá para Produtos → Selecionar um produto → Seu widget aparece na zona configurada (ex.: `product.details.after`).
-- **Pedidos:** Vá para Pedidos → Selecionar um pedido → Seu widget aparece na zona configurada.
-- **Clientes:** Vá para Clientes → Selecionar um cliente → Seu widget aparece na zona configurada.
-
-**Para Rotas UI (Páginas Personalizadas):**
-
-- Procure sua página personalizada na barra lateral/navegação admin (baseado no `label` que você configurou).
+-**Produtos:**Vá para Produtos → Selecionar um produto → Seu widget aparece na zona configurada (ex.: `product.details.after`).
+-**Pedidos:**Vá para Pedidos → Selecionar um pedido → Seu widget aparece na zona configurada.
+-**Clientes:**Vá para Clientes → Selecionar um cliente → Seu widget aparece na zona configurada.**Para Rotas UI (Páginas Personalizadas):**- Procure sua página personalizada na barra lateral/navegação admin (baseado no `label` que você configurou).
 - Ou navegue diretamente para: `http://localhost:9000/app/[seu-caminho-de-rota]`
 
 ### 4. Testar Funcionalidade
 
 Dependendo do que foi implementado, teste:
 
-- **Formulários:** Tente criar/editar entidades, verifique validação e mensagens de erro.
-- **Tabelas:** Teste paginação, pesquisa, ordenação e seleção de linhas.
-- **Exibição de dados:** Verifique se os dados carregam corretamente e se atualizam após mutações.
-- **Modais:** Abrir FocusModal/Drawer, testar envio de formulário, verificar atualização de dados.
-- **Navegação:** Clique nos links e verifique se o roteamento funciona corretamente.
+-**Formulários:**Tente criar/editar entidades, verifique validação e mensagens de erro.
+-**Tabelas:**Teste paginação, pesquisa, ordenação e seleção de linhas.
+-**Exibição de dados:**Verifique se os dados carregam corretamente e se atualizam após mutações.
+-**Modais:**Abrir FocusModal/Drawer, testar envio de formulário, verificar atualização de dados.
+-**Navegação:**Clique nos links e verifique se o roteamento funciona corretamente.
 
 ### Formato para Apresentação dos Próximos Passos
 
@@ -475,15 +370,10 @@ O [nome do recurso] foi implementado com sucesso. Veja como acessá-lo:
 ### Acessar o Painel de Controle Admin
 Abra http://localhost:9000/app em seu navegador e faça login.
 
-### Ver Sua UI Personalizada
-
-**Para Widgets:**
-1. Navegue até [página admin específica, ex.: "Produtos"]
+### Ver Sua UI Personalizada**Para Widgets:**1. Navegue até [página admin específica, ex.: "Produtos"]
 2. Selecione [uma entidade, ex.: "qualquer produto"]
 3. Role até [localização da zona, ex.: "o final da página"]
-4. Você verá o widget "[nome do widget]"
-
-**Para Rotas UI:**
+4. Você verá o widget "[nome do widget]"**Para Rotas UI:**
 1. Procure por "[rótulo da página]" na navegação admin
 2. Ou navegue diretamente para http://localhost:9000/app/[caminho-da-rota]
 

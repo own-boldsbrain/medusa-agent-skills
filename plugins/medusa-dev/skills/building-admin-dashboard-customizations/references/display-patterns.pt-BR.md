@@ -19,23 +19,15 @@
 
 ## Quando Usar Cada Padrão
 
-**Use DataTable quando:**
-
-- Exibir potencialmente muitos registros (>5-10 itens)
+**Use DataTable quando:**- Exibir potencialmente muitos registros (>5-10 itens)
 - Os usuários precisam buscar, filtrar ou paginar
 - Ações em lote são necessárias (selecionar múltiplos, excluir, etc.)
-- Exibir em uma visão de lista principal
-
-**Use componentes de lista simples quando:**
-
-- Exibir poucos registros (<5-10 itens)
+- Exibir em uma visão de lista principal**Use componentes de lista simples quando:**- Exibir poucos registros (<5-10 itens)
 - Em um contexto de widget ou barra lateral
 - Como uma prévia ou resumo
 - Quando o espaço é limitado
 
-## Padrão DataTable
-
-**⚠️ Usuários pnpm**: Os exemplos de DataTable podem usar `react-router-dom` para navegação. Instale-o ANTES de implementar, se necessário.
+## Padrão DataTable**⚠️ Usuários pnpm**: Os exemplos de DataTable podem usar `react-router-dom` para navegação. Instale-o ANTES de implementar, se necessário.
 
 ### Implementação Completa do DataTable
 
@@ -78,7 +70,7 @@ export function ProductTable() {
   })
 
   const limit = pagination.pageSize
-  const offset = pagination.pageIndex * limit
+  const offset = pagination.pageIndex *limit
 
   // Buscar produtos com busca e paginação
   const { data, isLoading } = useQuery({
@@ -126,22 +118,14 @@ export function ProductTable() {
 }
 ```
 
-### Solução de Problemas do DataTable
-
-**"DataTable.Search foi renderizado, mas a busca não está ativada"**
-
-Você deve passar a configuração de estado de busca para `useDataTable`:
+### Solução de Problemas do DataTable**"DataTable.Search foi renderizado, mas a busca não está ativada"**Você deve passar a configuração de estado de busca para `useDataTable`:
 
 ```tsx
 search: {
   state: searchValue,
   onSearchChange: setSearchValue,
 }
-```
-
-**"Não é possível desestruturar a propriedade 'pageIndex' de pagination porque é undefined"**
-
-Sempre inicialize o estado de paginação com ambas as propriedades:
+```**"Não é possível desestruturar a propriedade 'pageIndex' de pagination porque é undefined"**Sempre inicialize o estado de paginação com ambas as propriedades:
 
 ```tsx
 const [pagination, setPagination] = useState({
@@ -344,11 +328,11 @@ Para exibir itens em uma grade:
 
 ## Casos de Uso Yello Solar Hub
 
-- **Visualização de Catálogo (DataTable):** Exibição da lista completa de produtos (módulos, inversores, baterias) no painel administrativo, permitindo que a equipe filtre por marca, status de estoque ou data de aprovação comercial.
-- **Fluxo de Cotação B2B (DataTable/Lista Simples):** Apresentação de uma lista paginada de cotações B2B geradas, onde o analista pode ver rapidamente o cliente, o status da aprovação comercial e o valor total cotado.
-- **Seleção de Regiões/Distribuidores (Lista Simples):** Exibição em um widget de navegação de todos os distribuidores ou regiões atendidas, permitindo acesso direto ao painel operacional específico daquela área.
-- **Visualização de Kits Solares (Exibição em Grade):** Mostrar diferentes kits solares montados (combinação de inversor, módulos e estruturas) de forma visual e atraente, destacando o preço final e a capacidade instalada.
-- **Estado de Dados Ausentes (Empty States):** Quando um vendedor consulta um canal regional sem nenhuma cotação B2B registrada, o sistema deve exibir o estado vazio de forma informativa: "Nenhuma cotação B2B encontrada para a Região Sul, por favor, crie a primeira."
+-**Visualização de Catálogo (DataTable):**Exibição da lista completa de produtos (módulos, inversores, baterias) no painel administrativo, permitindo que a equipe filtre por marca, status de estoque ou data de aprovação comercial.
+-**Fluxo de Cotação B2B (DataTable/Lista Simples):**Apresentação de uma lista paginada de cotações B2B geradas, onde o analista pode ver rapidamente o cliente, o status da aprovação comercial e o valor total cotado.
+-**Seleção de Regiões/Distribuidores (Lista Simples):**Exibição em um widget de navegação de todos os distribuidores ou regiões atendidas, permitindo acesso direto ao painel operacional específico daquela área.
+-**Visualização de Kits Solares (Exibição em Grade):**Mostrar diferentes kits solares montados (combinação de inversor, módulos e estruturas) de forma visual e atraente, destacando o preço final e a capacidade instalada.
+-**Estado de Dados Ausentes (Empty States):** Quando um vendedor consulta um canal regional sem nenhuma cotação B2B registrada, o sistema deve exibir o estado vazio de forma informativa: "Nenhuma cotação B2B encontrada para a Região Sul, por favor, crie a primeira."
 
 ## Estados Vazios
 

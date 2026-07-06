@@ -5,7 +5,7 @@ description: Use esta skill sempre que for implementar, modificar, refatorar ou 
 
 # Workflow de Design-Log
 
-**Esta skill é obrigatória. Não a ignore.** Antes de qualquer implementação, refatoração ou decisão arquitetural, você DEVE consultar o design-log. Isso está definido na Seção 2.1 do `AGENTS.md` e é inegociável.
+**Esta skill é obrigatória. Não a ignore.**Antes de qualquer implementação, refatoração ou decisão arquitetural, você DEVE consultar o design-log. Isso está definido na Seção 2.1 do `AGENTS.md` e é inegociável.
 
 ---
 
@@ -23,16 +23,15 @@ Revise a lista de arquivos. As entradas seguem o formato de nomenclatura: `DL-NN
 
 Relacione entradas à tarefa atual por:
 
-- **Palavras-chave de domínio** no slug do nome de arquivo (ex.: `catalogo`, `agente`, `stack`, `plataforma`)
-- **Entradas recentes** (números mais altos são os mais recentes)
+-**Palavras-chave de domínio**no slug do nome de arquivo (ex.: `catalogo`, `agente`, `stack`, `plataforma`)
+-**Entradas recentes**(números mais altos são os mais recentes)
 - O `DL-000-bootstrap.md` é sempre relevante — contém a fundação da plataforma
 
 ### Passo 3: Ler as entradas relevantes
 
 Para cada entrada relevante, leia:
 
-1. `status` — **apenas entradas `approved` e `executing` têm autoridade vinculante**
-2. `domain` e `impact` — para entender o escopo
+1. `status` —**apenas entradas `approved` e `executing` têm autoridade vinculante**2. `domain` e `impact` — para entender o escopo
 3. `context` — por que esta decisão existe
 4. `decision` — o que foi decidido (é isso que você deve seguir)
 5. `approach` — como implementar (se presente, siga-o)
@@ -43,7 +42,7 @@ Para cada entrada relevante, leia:
 Antes de escrever código, pergunte:
 
 - Minha implementação planejada contradiz alguma decisão `approved` ou `executing`?
-- Se sim: **PARE. Não continue.** Reporte a contradição ao usuário e proponha:
+- Se sim:**PARE. Não continue.**Reporte a contradição ao usuário e proponha:
   - Uma implementação alinhada com a decisão existente, ou
   - Uma nova entrada `draft` de design-log que substitui a decisão contradita (use a skill `design-log-create`)
 
@@ -115,8 +114,8 @@ Ao escanear logs, associe estes domínios à sua tarefa:
 |--------|------------------------|
 | `draft` | Apenas informativo — sem autoridade vinculante |
 | `review` | Apenas informativo — aguardando aprovação |
-| `approved` | **VINCULANTE** — deve seguir esta decisão |
-| `executing` | **VINCULANTE** — sendo implementado ativamente |
+| `approved` |**VINCULANTE**— deve seguir esta decisão |
+| `executing` |**VINCULANTE**— sendo implementado ativamente |
 | `done` | Apenas referência — decisão foi executada |
 | `rejected` | Ignorar — decisão não foi adotada |
 | `superseded` | Ignorar — substituído por uma entrada mais nova |
@@ -125,11 +124,11 @@ Ao escanear logs, associe estes domínios à sua tarefa:
 
 ## Regras de Ouro (do `design-log/README.md`)
 
-1. **Contexto > Prompt** — Nunca substitua o contexto acumulado por um prompt inteligente
-2. **Imutabilidade** — Logs aprovados não são editados; são substituídos por novas entradas
-3. **Evidência é obrigatória** — "Feito" sem evidência significa que não está feito
-4. **Erros viram regras** — Bugs recorrentes devem virar regras no `AGENTS.md`, referenciadas no DL
-5. **O sistema aprende, não o modelo** — A memória fica em arquivos, não em sessões
+1.**Contexto > Prompt**— Nunca substitua o contexto acumulado por um prompt inteligente
+2.**Imutabilidade**— Logs aprovados não são editados; são substituídos por novas entradas
+3.**Evidência é obrigatória**— "Feito" sem evidência significa que não está feito
+4.**Erros viram regras**— Bugs recorrentes devem virar regras no `AGENTS.md`, referenciadas no DL
+5.**O sistema aprende, não o modelo** — A memória fica em arquivos, não em sessões
 
 ---
 

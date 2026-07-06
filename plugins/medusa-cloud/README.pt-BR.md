@@ -13,9 +13,7 @@ Habilidades para gerenciar recursos do Medusa Cloud por meio da CLI do Cloud (`m
 
 ### Instalar Plugin
 
-1. - *Começar Claude:**
-
-```bash
+1. - *Começar Claude:**```bash
 claude
 ```
 
@@ -39,14 +37,14 @@ claude
 
 ## Habilidades Incluídas
 
-1. - *using-medusa-cloud** - Guia de fluxo para operações CLI de nuvem (configuração, implantações, depuração, ambientes, variáveis)
-2. - *cloud-cli-auth** - Execute `mcloud whoami`, `mcloud use`, `mcloud login`, `mcloud logout`, `mcloud version`
-3. - *cloud-cli-deployments** - Execute `mcloud deployments list/get/build-logs`
-4. - *cloud-cli-environments** - Execute `mcloud environments list/get/create/delete/redeploy/trigger-build`
-5. - *cloud-cli-logs** - Execute `mcloud logs` com todas as opções de filtro
-6. - *cloud-cli-variáveis** - Execute `mcloud variáveis list/get`
-7. - *cloud-cli-organizations** - Execute `mcloud organizações listar/obter`
-8. - *cloud-cli-projects** - Execute `mcloud projetos list/get/delete`
+1. -*using-medusa-cloud**- Guia de fluxo para operações CLI de nuvem (configuração, implantações, depuração, ambientes, variáveis)
+2. -*cloud-cli-auth**- Execute `mcloud whoami`, `mcloud use`, `mcloud login`, `mcloud logout`, `mcloud version`
+3. -*cloud-cli-deployments**- Execute `mcloud deployments list/get/build-logs`
+4. -*cloud-cli-environments**- Execute `mcloud environments list/get/create/delete/redeploy/trigger-build`
+5. -*cloud-cli-logs**- Execute `mcloud logs` com todas as opções de filtro
+6. -*cloud-cli-variáveis**- Execute `mcloud variáveis list/get`
+7. -*cloud-cli-organizations**- Execute `mcloud organizações listar/obter`
+8. -*cloud-cli-projects** - Execute `mcloud projetos list/get/delete`
 
 ## Privacy
 

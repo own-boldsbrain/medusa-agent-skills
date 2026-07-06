@@ -8,25 +8,24 @@ allowed-tools: Bash(mcloud logs*), Bash(jq*)
 
 Execute `mcloud logs` para buscar os logs de execução de um backend ou loja virtual de um ambiente Cloud.
 
-## **Restrições**
+## **Restrições**- `--follow` e `--json` são incompatíveis. Para análise de logs programática, use janelas de tempo delimitadas com `--from`/`--to` e `--json`
 
-- `--follow` e `--json` são incompatíveis. Para análise de logs programática, use janelas de tempo delimitadas com `--from`/`--to` e `--json`.
 - `--siga` streams até ser interrompido com `Ctrl+C` — não use em scripts ou pipelines.
 - Logs padrão recupera as últimas 500 linhas de log dos últimos 15 minutos.
 
-## **Comando**
+## **Comando**```bash
 
-```bash
 mcloud logs \
   --organization <org-id> \
   --project <project-id-or-handle> \
   --environment <environment-handle> \
   [options]
+
 ```
 
 ## Opções
 
-| **Opção** | Descrição | Padrão |
+|**Opção** | Descrição | Padrão |
 |--------|-------------|---------|
 | `-o/--organization <id>` | ID da Organização | Contexto ativo |
 | `-p/--project <id-ou-handle>` | ID do projeto ou identificador | Contexto ativo |
@@ -40,9 +39,7 @@ mcloud logs \
 | `--fonte <string>` | Filtrar por fonte (repetível) | — |
 | - -metadata <chave=valor> | Filtrar por campo de metadados (repetível; mesmo chave mescla valores) | Por favor, forneça o texto que deseja traduzir. |
 | `--tipo <backend\` | loja>` | Fluxo de registro para consulta | `backend` |
-| `--json` | ```json
-Saída como JSON (incompatível com `--follow`)
-``` | `falso` |
+| `--json` | `Saída como JSON (incompatível com `--follow`)` | `falso` |
 
 ## Exemplos
 

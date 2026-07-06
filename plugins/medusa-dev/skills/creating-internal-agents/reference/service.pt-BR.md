@@ -1,6 +1,6 @@
 # Serviço
 
-O módulo do agente é **infraestrutura compartilhada** — um serviço manipula a persistência e o cliente de IA para cada agente do projeto. Cada agente passa sua própria configuração (prompt do sistema + descrições de ferramentas) no momento da chamada, então os diferentes agentes obtêm diferentes comportamentos sem módulos separados.
+O módulo do agente é **infraestrutura compartilhada**— um serviço manipula a persistência e o cliente de IA para cada agente do projeto. Cada agente passa sua própria configuração (prompt do sistema + descrições de ferramentas) no momento da chamada, então os diferentes agentes obtêm diferentes comportamentos sem módulos separados.
 
 ## Módulo Serviço
 
@@ -42,11 +42,11 @@ export default class AgentModuleService extends MedusaService({
 }
 ```
 
-## # O que o `MedusaService` oferece
+### O que o `MedusaService` oferece
 
 O `MedusaService` é uma solução completa para gerenciar e monitorar seus serviços. Com ele, você obtém:
 
-- **Controle total**: Gerencie seus serviços com facilidade, desde o provisionamento até a manutenção.
+-**Controle total**: Gerencie seus serviços com facilidade, desde o provisionamento até a manutenção.
 - *Visibilidade*: Monitore o desempenho e a saúde dos seus serviços em tempo real.
 - Fácil integração: Integre-se com outras ferramentas e sistemas para uma gestão unificada.
 - **Escalabilidade**: Escale seus serviços de forma eficiente, atendendo às demandas crescentes.
@@ -64,7 +64,7 @@ Comece hoje mesmo e experimente o poder do `MedusaService`!
 
 Passar o mapa do modelo para `MedusaService({...})` gera automaticamente métodos CRUD:
 
-| **Padrão** | Exemplo |
+| **Padrão**| Exemplo |
 |---------|---------|
 | `criar<Entidade>s(dados)` | `createAgentSessions({ título, criado_por_id })` |
 | `list<Entidade>s(filtros, config)` | `listAgentSessions({}, { order: { created_at: "DESC" }, take: 50 })` |
@@ -108,7 +108,7 @@ modules: [
 ]
 ```
 
-> **CRÍTICO:** `resolve` deve ser o caminho para o diretório do módulo (que contém `index.ts`). As opções são encaminhadas para o construtor do serviço.
+>**CRÍTICO:** `resolve` deve ser o caminho para o diretório do módulo (que contém `index.ts`). As opções são encaminhadas para o construtor do serviço.
 
 ## Variáveis de Ambiente
 

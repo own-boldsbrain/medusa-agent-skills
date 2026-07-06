@@ -6,7 +6,7 @@ Referência completa de campos para entradas do Design-Log do YSH Store. Fonte d
 
 ## Campos Obrigatórios
 
-Todas as entradas **devem** incluir estes campos:
+Todas as entradas **devem**incluir estes campos:
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
@@ -44,8 +44,8 @@ Todas as entradas **devem** incluir estes campos:
 |--------|------------|----------------------|
 | `draft` | Sendo escrito | Nenhuma |
 | `review` | Aguardando aprovação humana | Nenhuma |
-| `approved` | Aprovado, ainda não iniciado | **VINCULANTE** |
-| `executing` | Sendo implementado ativamente | **VINCULANTE** |
+| `approved` | Aprovado, ainda não iniciado |**VINCULANTE**|
+| `executing` | Sendo implementado ativamente |**VINCULANTE**|
 | `done` | Concluído com evidência | Referência |
 | `rejected` | Não adotado | Ignorar |
 | `superseded` | Substituído por entrada mais nova | Ignorar |
@@ -83,7 +83,7 @@ Todas as entradas **devem** incluir estes campos:
 
 ## Frontmatter vs Corpo Markdown
 
-Uma entrada de design-log é um arquivo Markdown. O frontmatter YAML contém os campos estruturados acima. O corpo Markdown **espelha** o frontmatter com seções em prosa legíveis:
+Uma entrada de design-log é um arquivo Markdown. O frontmatter YAML contém os campos estruturados acima. O corpo Markdown**espelha** o frontmatter com seções em prosa legíveis:
 
 ```markdown
 ---

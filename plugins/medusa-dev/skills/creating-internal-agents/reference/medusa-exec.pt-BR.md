@@ -4,7 +4,7 @@ MedusaExec dá à agente a capacidade de escrever e executar código TypeScript 
 
 > **CRÍTICO — Autenticação necessária.** O MedusaExec executa código arbitrário com acesso total ao banco de dados e aos serviços. Ele só deve ser acessível por meio de rotas protegidas por `AuthenticatedMedusaRequest`. Nunca exponha o endpoint POST do agente (ou qualquer rota que acione `executeCode`) sem autenticação de administrador — fazer isso permite que usuários não autenticados executem código arbitrário contra seu banco de dados.
 
-## # O Executor
+### O Executor
 
 Adicione o executor ao seu projeto em `src/lib/code-mode/executor.ts`:
 
@@ -78,7 +78,7 @@ export async function executeCode(
   } finally {
     console.log = originalLog
     delete require.cache[require.resolve(tempFile)]
-    try { unlinkSync(tempFile) } catch { /* ignore */ }
+    try { unlinkSync(tempFile) } catch { /*ignore*/ }
   }
 }
 ```
@@ -105,7 +105,7 @@ export const medusaExecTool = tool({
 
 Registre-o em seu agente e configuração assim como qualquer outra ferramenta (veja `agent-setup.md`).
 
-## # Estrutura de Código Obrigatória
+### Estrutura de Código Obrigatória
 
 Para garantir a consistência e a legibilidade do código, siga esta estrutura obrigatória:
 
@@ -154,7 +154,7 @@ if __name__ == "__main__":
 
 Esta estrutura garante que o código seja organizado, fácil de ler e seguir. As bibliotecas são importadas no início, as funções e classes são definidas claramente, e a função principal coordena a execução do programa.
 
-Cada script que o agente escreve **deve** exportar por padrão uma função assíncrona:
+Cada script que o agente escreve **deve**exportar por padrão uma função assíncrona:
 
 ```ts
 import { ExecArgs } from "@medusajs/framework/types"
@@ -165,7 +165,7 @@ export default async function({ container, log }: ExecArgs) {
 }
 ```
 
-> **CRÍTICO:** Se o script não exporta por padrão uma função, a execução falha com `INVALID_EXPORT`. O agente deve seguir essa estrutura exatamente em todos os casos.
+>**CRÍTICO:** Se o script não exporta por padrão uma função, a execução falha com `INVALID_EXPORT`. O agente deve seguir essa estrutura exatamente em todos os casos.
 
 ## Consultando Dados
 
@@ -189,7 +189,7 @@ export default async function({ container, log }: ExecArgs) {
 }
 ```
 
-* *Padrões comuns de consulta:**
+**Padrões comuns de consulta:**
 
 ```ts
 // Filter by ID
@@ -208,14 +208,11 @@ fields: ["id", "title", "variants.id", "variants.prices.*"]
 pagination: { take: 50, skip: 0, order: { created_at: "DESC" } }
 ```
 
-> **Sempre `log()` seus resultados** — a ferramenta retorna `logs` como saída primária que o agente lê. Os valores de retorno são secundários. Um script que não registra nada é efetivamente silencioso.
+> **Sempre `log()` seus resultados**— a ferramenta retorna `logs` como saída primária que o agente lê. Os valores de retorno são secundários. Um script que não registra nada é efetivamente silencioso.
 
 ## Códigos de Erro
 
-| ```
-Código
-
-``` | Causa | * *Corrigir** |
+| `Código` | Causa |**Corrigir** |
 |------|-------|-----|
 | `ERRO_DE_COMPILAÇÃO` | Erro de análise do TypeScript/JS | Corrija a sintaxe; verifique se os imports existem |
 | `INVALID_EXPORT` | Não há exportação de função padrão | Adicione `export default async function(...)` |

@@ -8,14 +8,13 @@ allowed-tools: Bash(mcloud organizations*), Bash(mcloud use*), Bash(jq*)
 
 Execute o comando `mcloud organizations` para listar e recuperar organizações na nuvem.
 
-## **Restrições**
+## **Restrições**- `organizations list` requer**autenticação pessoal**(login no navegador ou chave de acesso pessoal). Chaves de acesso de organização retornam 401 neste comando
 
-- `organizations list` requer **autenticação pessoal** (login no navegador ou chave de acesso pessoal). Chaves de acesso de organização retornam 401 neste comando.
 - Quando autenticado com `MCLOUD_TOKEN` usando uma chave de acesso da org, utilize `mcloud whoami --json` para obter o ID da organização em vez disso.
 
 ## Comandos
 
-### # Lista de Organizações
+#### Lista de Organizações
 
 Liste todas as organizações às quais sua conta tem acesso.
 
@@ -23,9 +22,7 @@ Liste todas as organizações às quais sua conta tem acesso.
 mcloud organizations list --json
 ```
 
-- *Opções:**
-
-- ```json
+-*Opções:**- ```json
 
 `--json` — Saída como JSON
 
@@ -39,13 +36,10 @@ Recupere uma única organização pelo ID. Retorna metadados, detalhes da assina
 mcloud organizations get <organization-id> --json
 ```
 
-- *Argumentos:**
+-*Argumentos:**- `organization` — ID da organização (obrigatório)
 
-- `organization` — ID da organização (obrigatório)
+-*Opções:**- `-o/--organization <id>` — Substituir a organização no contexto ativo (deve corresponder ao argumento)
 
-- *Opções:**
-
-- `-o/--organization <id>` — Substituir a organização no contexto ativo (deve corresponder ao argumento)
 - `--json` — Saída em JSON
 
 ## Campos da Organização (JSON)

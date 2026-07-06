@@ -8,7 +8,7 @@ allowed-tools: Bash(mcloud projects*), Bash(mcloud use*), Bash(jq*)
 
 Execute o comando `mcloud projects` para gerenciar projetos na nuvem.
 
-## # Restrições
+### Restrições
 
 - **Tempo**: O tempo disponível para a conclusão do projeto é limitado. Precisamos garantir que o cronograma seja cumprido, evitando atrasos desnecessários.
 - **Recursos**: Os recursos financeiros e humanos são limitados. Devemos otimizar a alocação de recursos para garantir a eficiência e a eficácia do projeto.
@@ -21,21 +21,18 @@ Execute o comando `mcloud projects` para gerenciar projetos na nuvem.
 - **Mudanças**: As mudanças no projeto devem ser minimizadas. Qualquer alteração significativa deve ser cuidadosamente avaliada e aprovada, levando em consideração o impacto potencial no cronograma, no orçamento e na qualidade.
 - **Conformidade**: Devemos garantir que o projeto esteja em conformidade com todas as leis, regulamentos e normas aplicáveis. Qualquer desvio deve ser tratado de forma proativa para evitar problemas legais ou de reputação.
 
-- `projects delete` é **irreversível** — remove todos os ambientes, implantações e recursos associados. Sempre confirme o ID/identificador do projeto antes de deletar.
+- `projects delete` é **irreversível**— remove todos os ambientes, implantações e recursos associados. Sempre confirme o ID/identificador do projeto antes de deletar.
 - Use `--yes` com `delete` em contextos não interativos (scripts, pipelines, agentes).
 
 ## Comandos
 
-### # Lista de Projetos
+#### Lista de Projetos
 
 Liste todos os projetos em uma organização.
 
 ```bash
 mcloud projects list --organization <org-id> --json
-```
-
-* *Opções:**
-- - o/--organization `<id>` — ID da Organização (retorna ao contexto ativo; **obrigatório**)
+```**Opções:**- o/--organization `<id>` — ID da Organização (retorna ao contexto ativo;**obrigatório**)
 - `--json` — Saída em JSON
 
 ### projetos obter
@@ -46,36 +43,24 @@ Recuperar um projeto único por seu ID ou handle.
 mcloud projects get <project-id-or-handle> --organization <org-id> --json
 ```
 
-* *Argumentos:**
-- `project` — ID ou nome do projeto (obrigatório)
-
-* *Opções:**
-- `-o/--organization <id>` — ID da Organização (retorna ao contexto ativo; **obrigatório**).
+**Argumentos:**- `project` — ID ou nome do projeto (obrigatório)**Opções:**- `-o/--organization <id>` — ID da Organização (retorna ao contexto ativo;**obrigatório**).
 - ```json
 `--json` — Saída em JSON
 ```
 
 ### projetos excluir
 
-Excluir um projeto pelo seu ID ou identificador. **Irreversível.**
-
-```bash
+Excluir um projeto pelo seu ID ou identificador. **Irreversível.**```bash
 mcloud projects delete <project-id-or-handle> \
   --organization <org-id> \
   --yes
-```
-
-* *Argumentos:**
-- `projeto` — ID ou identificador do projeto (obrigatório)
-
-* *Opções:**
-- `-o/--organization <id>` — ID da Organização (recai para o contexto ativo; **obrigatório**).
+```**Argumentos:**- `projeto` — ID ou identificador do projeto (obrigatório)**Opções:**- `-o/--organization <id>` — ID da Organização (recai para o contexto ativo;**obrigatório**).
 - `-y/--sim` — Pula o prompt de confirmação (obrigatório em modo não interativo)
 - `--json` — Produzir como JSON
 
 ## Campos do Projeto (JSON)
 
-| Campo | * *Descrição** |
+| Campo | **Descrição** |
 |-------|-------------|
 | `id` | ID do Projeto |
 | `handle` | Identificador de projeto seguro para URL (usado na maioria dos comandos) |

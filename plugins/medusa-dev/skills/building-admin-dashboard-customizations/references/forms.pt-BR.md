@@ -14,19 +14,15 @@
 
 ## FocusModal vs Drawer
 
-**FocusModal** - Use para criar novas entidades:
+**FocusModal**- Use para criar novas entidades:
 
 - Modal tela cheia
 - Mais espaço para formulários complexos
-- Melhor para fluxos de múltiplas etapas
-
-**Drawer** - Use para editar entidades existentes:
+- Melhor para fluxos de múltiplas etapas**Drawer**- Use para editar entidades existentes:
 
 - Painel lateral que desliza pela direita
 - Edições rápidas sem perder o contexto
-- Melhor para atualizações de campo único
-
-**Regra geral:** FocusModal para criação, Drawer para edição.
+- Melhor para atualizações de campo único**Regra geral:**FocusModal para criação, Drawer para edição.
 
 ## Padrões de Botão de Edição
 
@@ -103,9 +99,7 @@ import { Select } from "@medusajs/ui"
     ))}
   </Select.Content>
 </Select>
-```
-
-**Para conjuntos de dados maiores** (Produtos, Categorias, Regiões, etc.), use DataTable com FocusModal para busca e paginação. Consulte [table-selection.md](table-selection.md) para o padrão completo.
+```**Para conjuntos de dados maiores** (Produtos, Categorias, Regiões, etc.), use DataTable com FocusModal para busca e paginação. Consulte [table-selection.md](table-selection.md) para o padrão completo.
 
 ## Exemplo FocusModal
 
@@ -154,7 +148,7 @@ const MyWidget = () => {
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   />
                 </div >
-                {/* Mais campos do formulário */}
+                {/*Mais campos do formulário*/}
               </div >
             </FocusModal.Body>
           </div >
@@ -202,7 +196,7 @@ const MyWidget = ({ data }) => {
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 />
               </div >
-              {/* Mais campos do formulário */}
+              {/*Mais campos do formulário*/}
             </div >
           </Drawer.Body>
 
@@ -404,7 +398,7 @@ const handleSubmit = () => {
 
 ## Casos de Uso Yello Solar Hub
 
-- **Criação de Cotação B2B (FocusModal):** Utilizar o FocusModal para guiar o usuário por um fluxo de múltiplas etapas ao criar uma cotação complexa. O primeiro passo coleta informações do cliente (Dados Pessoa Jurídica), e o segundo passo exige o detalhamento dos equipamentos (Inversores, Módulos, Baterias), validando em tempo real se os códigos de produto são válidos no catálogo Medusa.
-- **Atualização Rápida de Cadastro de Distribuidores (Drawer):** Quando um operador precisa ajustar o telefone ou o prazo de pagamento de um distribuidor parceiro, o Drawer é ideal. Ele permite ver o nome do distribuidor na tela principal enquanto o ajuste rápido dos dados ocorre no painel lateral, sem desviar o foco da planilha de gestão.
-- **Aprovação Financeira de Kits Solares (Validation/Loading States):** Ao processar um pedido que requer aprovação comercial, o formulário de aprovação (dentro de um FocusModal) deve implementar validação de dados (ex: o valor total não pode ser negativo) e um estado de carregamento (`isLoading`) no botão "Confirmar Aprovação" para evitar cliques múltiplos durante a chamada da API financeira.
-- **Seleção de Componentes em Catálogo (Select Component):** Ao montar um kit solar em um carrinho de cotação, o usuário precisa selecionar módulos, inversores ou estruturas. Como são conjuntos de tipos pré-definidos e pequenos (ex: Tipo A, Tipo B), o componente Select é usado, garantindo que o estoque e a compatibilidade sejam verificados na seleção inicial.stop
+- **Criação de Cotação B2B (FocusModal):**Utilizar o FocusModal para guiar o usuário por um fluxo de múltiplas etapas ao criar uma cotação complexa. O primeiro passo coleta informações do cliente (Dados Pessoa Jurídica), e o segundo passo exige o detalhamento dos equipamentos (Inversores, Módulos, Baterias), validando em tempo real se os códigos de produto são válidos no catálogo Medusa.
+-**Atualização Rápida de Cadastro de Distribuidores (Drawer):**Quando um operador precisa ajustar o telefone ou o prazo de pagamento de um distribuidor parceiro, o Drawer é ideal. Ele permite ver o nome do distribuidor na tela principal enquanto o ajuste rápido dos dados ocorre no painel lateral, sem desviar o foco da planilha de gestão.
+-**Aprovação Financeira de Kits Solares (Validation/Loading States):**Ao processar um pedido que requer aprovação comercial, o formulário de aprovação (dentro de um FocusModal) deve implementar validação de dados (ex: o valor total não pode ser negativo) e um estado de carregamento (`isLoading`) no botão "Confirmar Aprovação" para evitar cliques múltiplos durante a chamada da API financeira.
+-**Seleção de Componentes em Catálogo (Select Component):** Ao montar um kit solar em um carrinho de cotação, o usuário precisa selecionar módulos, inversores ou estruturas. Como são conjuntos de tipos pré-definidos e pequenos (ex: Tipo A, Tipo B), o componente Select é usado, garantindo que o estoque e a compatibilidade sejam verificados na seleção inicial.stop

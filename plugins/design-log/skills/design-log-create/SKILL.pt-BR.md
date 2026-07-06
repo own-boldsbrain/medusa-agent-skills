@@ -34,7 +34,7 @@ O nome do arquivo final: `DL-NNN-slug.md`
 
 ## Passo 3: Preencher os campos obrigatórios
 
-Você **deve** fornecer todos os campos obrigatórios. Não crie uma entrada com campos obrigatórios faltando.
+Você **deve**fornecer todos os campos obrigatórios. Não crie uma entrada com campos obrigatórios faltando.
 
 ```yaml
 id: DL-NNN
@@ -118,9 +118,7 @@ Após criar o rascunho:
 
 1. Mostre ao usuário o nome do arquivo e um resumo da decisão
 2. Pergunte se desejam revisar e aprovar agora
-3. Lembre-os: **apenas entradas `approved` têm autoridade vinculante sobre agentes**
-
----
+3. Lembre-os:**apenas entradas `approved` têm autoridade vinculante sobre agentes**---
 
 ## Fluxo de Promoção de Status
 
@@ -142,14 +140,12 @@ Se a nova decisão substitui uma entrada `approved` existente:
 
 1. Adicione `supersedes: DL-NNN` ao frontmatter da nova entrada
 2. Atualize o `status` da entrada antiga para `superseded`
-3. Adicione uma nota na entrada antiga apontando para a nova
-
-**Não edite o conteúdo de uma entrada aprovada** — atualize apenas o campo `status`.
+3. Adicione uma nota na entrada antiga apontando para a nova**Não edite o conteúdo de uma entrada aprovada**— atualize apenas o campo `status`.
 
 ---
 
 ## Arquivos de referência
 
-- **Template**: `skills/design-log-create/reference/template.pt-BR.md`
+-**Template**: `skills/design-log-create/reference/template.pt-BR.md`
 - **Schema**: `skills/design-log-workflow/reference/schema.pt-BR.md`
 - **Exemplo de entrada**: `design-log/DL-000-bootstrap.md`

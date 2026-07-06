@@ -8,7 +8,7 @@ allowed-tools: Bash(mcloud environments*), Bash(mcloud use*), Bash(jq*)
 
 Execute o comando `mcloud environments` para gerenciar o ciclo de vida de ambientes e implantações.
 
-## # Restrições
+### Restrições
 
 - **Tempo**: O modelo tem um tempo limitado para responder a cada consulta.
 - **Comprimento da resposta**: As respostas são limitadas a um número específico de palavras ou caracteres.
@@ -29,11 +29,11 @@ def processar_consulta(consulta):
 
 - Note*: As restrições acima são apenas um exemplo e podem variar de acordo com a implementação e os requisitos específicos do modelo.
 
-- - *Ambientes de produção não podem ser excluídos.** Sempre verifique `type` via `environments get --json` antes de tentar excluir em automação.
+- *Ambientes de produção não podem ser excluídos.**Sempre verifique `type` via `environments get --json` antes de tentar excluir em automação.
 - Use `--yes` para operações destrutivas (`delete`) em contextos não interativos.
 - `redeploy` vs `redeploy-com-build` não são intercambiáveis — escolha o correto com base em onde a correção está.
 
-## # Comandos
+### Comandos
 
 ### lista de ambientes
 
@@ -43,9 +43,8 @@ Liste todos os ambientes de um projeto.
 mcloud environments list --organization <org-id> --project <project-id-or-handle> --json
 ```
 
-- *Opções:**
+-*Opções:**- `-o/--organização <id>` — ID da Organização (pode ser substituído pelo contexto ativo)
 
-- `-o/--organização <id>` — ID da Organização (pode ser substituído pelo contexto ativo)
 - `-p/--project <id-ou-handle>` — ID ou handle do projeto (reverte para o contexto ativo)
 - `--json` — Saída em JSON
 
@@ -57,13 +56,9 @@ Recupere um único ambiente pelo identificador.
 mcloud environments get <environment-handle> --organization <org-id> --project <project-id-or-handle> --json
 ```
 
-- *Argumentos:**
+-*Argumentos:**- `ambiente` — Manipulador do ambiente (obrigatório)
 
-- `ambiente` — Manipulador do ambiente (obrigatório)
-
-- *Opções:**
-
-- `-o/--organização <id>`, `-p/--projeto <id-ou-identificador>`, `--json`
+-*Opções:**- `-o/--organização <id>`, `-p/--projeto <id-ou-identificador>`, `--json`
 
 ### ambientes criam
 
@@ -78,9 +73,8 @@ mcloud environments create \
   --json
 ```
 
-- *Opções:**
+-*Opções:**- `-o/--organização <id>`, `-p/--projeto <id-ou-identificador>`
 
-- `-o/--organização <id>`, `-p/--projeto <id-ou-identificador>`
 - `-n/--name <name>` — Nome do ambiente (obrigatório)
 - `-b/--branch <branch>` — Ramo Git a ser rastreado (obrigatório)
 - `--custom-subdomain <subdomain>` — Subdomínio personalizado opcional
@@ -88,23 +82,18 @@ mcloud environments create \
 
 ### ambientes excluir
 
-Apague um ambiente. **Não é possível apagar ambientes de produção.**
-
-```bash
+Apague um ambiente.**Não é possível apagar ambientes de produção.**```bash
 mcloud environments delete <environment-handle> \
   --organization <org-id> \
   --project <project-id-or-handle> \
   --yes
+
 ```
 
-- *Argumentos:**
+-*Argumentos:**- `ambiente` — Manipulador de ambiente (obrigatório)
 
-- `ambiente` — Manipulador de ambiente (obrigatório)
-
-- *Opções:**
-
-- `-o/--organization <id>`, `-p/--project <id-ou-handle>`
-- - `y`/`-sim` — Ignorar prompt de confirmação (obrigatório em modo não interativo)
+-*Opções:**- `-o/--organization <id>`, `-p/--project <id-ou-handle>`
+- `y`/`-sim` — Ignorar prompt de confirmação (obrigatório em modo não interativo)
 - `--json` — Saída como JSON
 
 ### ambientes reimplantar
@@ -118,13 +107,9 @@ mcloud environments redeploy <environment-handle> \
   --json
 ```
 
-- *Argumentos:**
+-*Argumentos:**- `ambiente` — Manipulador de Ambiente (obrigatório)
 
-- `ambiente` — Manipulador de Ambiente (obrigatório)
-
-- *Opções:**
-
-- `-o/--organização <id>`, `-p/--projeto <id-ou-handle>`, `--json`
+-*Opções:**- `-o/--organização <id>`, `-p/--projeto <id-ou-handle>`, `--json`
 
 > Requer que o ambiente tenha uma implantação ativa. Se não tiver, use `trigger-build` primeiro.
 
@@ -139,23 +124,18 @@ mcloud environments trigger-build <environment-handle> \
   --json
 ```
 
-- *Argumentos:**
+-*Argumentos:**- `ambiente` — Manipulador de ambiente (obrigatório)
 
-- `ambiente` — Manipulador de ambiente (obrigatório)
+-*Opções:**- `-o/--organização <id>`, `-p/--projeto <id-ou-handle>`, `--json`
 
-- *Opções:**
-
-- `-o/--organização <id>`, `-p/--projeto <id-ou-handle>`, `--json`
-
-## **Redeploy vs Trigger-Build Decision**
-
-Quando você está trabalhando com aplicações em nuvem, especialmente em ambientes de CI/CD (Integração Continua e Entrega Contínua), é comum se deparar com a decisão de reempregar ou disparar uma build. Embora ambos os métodos possam ser eficazes em diferentes situações, é importante entender as diferenças entre eles.
+## **Redeploy vs Trigger-Build Decision**Quando você está trabalhando com aplicações em nuvem, especialmente em ambientes de CI/CD (Integração Continua e Entrega Contínua), é comum se deparar com a decisão de reempregar ou disparar uma build. Embora ambos os métodos possam ser eficazes em diferentes situações, é importante entender as diferenças entre eles
 
 ### Redeploy
 
 Um redeploy é a ação de reempregar uma aplicação existente com as alterações mais recentes. Isso pode ser feito manualmente ou através de um script automático. O redeploy é útil quando:
 
-- **Alterações menores**: Se as alterações são menores e não afetam a lógica da aplicação, um redeploy pode ser suficiente.
+-**Alterações menores**: Se as alterações são menores e não afetam a lógica da aplicação, um redeploy pode ser suficiente.
+
 - **Testes rápidos**: O redeploy permite testar as alterações rapidamente sem a necessidade de uma build completa.
 - **Desenvolvimento**: Durante o desenvolvimento, um redeploy pode ser usado para testar as alterações antes de fazer uma build completa.
 

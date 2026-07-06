@@ -27,12 +27,12 @@
 
 ## Regras Fundamentais
 
-1. **SEMPRE use o Medusa JS SDK** - NUNCA use `fetch()` padrão para requisições de API (ausência de headers causa erros de autenticação/autorização)
-2. **Exibição de dados deve carregar no mount** - Qualquer dado exibido na interface principal do widget deve ser buscado quando o componente montar, e não de forma condicional.
-3. **Separe as preocupações (Separate concerns)** - As consultas de dados de modais/formulários devem ser independentes das consultas de dados de exibição.
-4. **Trate dados de referência adequadamente** - Ao armazenar IDs/referências (em metadados ou em outro lugar), você deve buscar as entidades completas para exibi-las.
-5. **Sempre mostre estados de carregamento** - Os usuários devem ver indicadores de carregamento, e não estados vazios, enquanto os dados estão sendo buscados.
-6. **Invalidar as consultas corretas** - Após mutações, invalide as consultas que fornecem os dados de exibição, e não apenas as consultas do modal.
+1. **SEMPRE use o Medusa JS SDK**- NUNCA use `fetch()` padrão para requisições de API (ausência de headers causa erros de autenticação/autorização)
+2.**Exibição de dados deve carregar no mount**- Qualquer dado exibido na interface principal do widget deve ser buscado quando o componente montar, e não de forma condicional.
+3.**Separe as preocupações (Separate concerns)**- As consultas de dados de modais/formulários devem ser independentes das consultas de dados de exibição.
+4.**Trate dados de referência adequadamente**- Ao armazenar IDs/referências (em metadados ou em outro lugar), você deve buscar as entidades completas para exibi-las.
+5.**Sempre mostre estados de carregamento**- Os usuários devem ver indicadores de carregamento, e não estados vazios, enquanto os dados estão sendo buscados.
+6.**Invalidar as consultas corretas**- Após mutações, invalide as consultas que fornecem os dados de exibição, e não apenas as consultas do modal.
 
 ## Checklist: Pense Antes de Codificar
 
@@ -60,11 +60,7 @@ const { data } = useQuery({
 
 // Tentando exibir dados filtrados da consulta do modal
 const displayItems = data?.filter((item) => ids.includes(item.id)) // Sem dados até que o modal abra
-```
-
-**Por que isso está errado:**
-
-- Ao recarregar a página, o modal está fechado, então a consulta não é executada.
+```**Por que isso está errado:**- Ao recarregar a página, o modal está fechado, então a consulta não é executada.
 - O usuário vê o estado vazio em vez de seus dados.
 - A exibição depende da interação do modal.
 
@@ -95,24 +91,16 @@ const updateMutation = useMutation({
     queryClient.invalidateQueries({ queryKey: ["product", product.id] })
   },
 })
-```
-
-**Por que isso está certo:**
-
-- A consulta de exibição é executada imediatamente no mount do componente.
+```**Por que isso está certo:**- A consulta de exibição é executada imediatamente no mount do componente.
 - A consulta do modal só é executada quando necessário.
 - A invalidação adequada garante que a UI seja atualizada após as mudanças.
 - Cada consulta tem uma responsabilidade clara e separada.
 
-## Usando o Medusa JS SDK
+## Usando o Medusa JS SDK**⚠️ CRÍTICO: SEMPRE use o Medusa JS SDK para TODAS as requisições de API - NUNCA use `fetch()` padrão**### Por que o SDK é obrigatório
 
-**⚠️ CRÍTICO: SEMPRE use o Medusa JS SDK para TODAS as requisições de API - NUNCA use `fetch()` padrão**
-
-### Por que o SDK é obrigatório
-
-- **Rotas Admin** exigem o header `Authorization` e o cookie de sessão - o SDK adiciona automaticamente.
-- **Rotas Store** exigem o header `x-publishable-api-key` - o SDK adiciona automaticamente.
-- **`fetch()` padrão** não inclui esses headers → erros de autenticação/autorização.
+-**Rotas Admin**exigem o header `Authorization` e o cookie de sessão - o SDK adiciona automaticamente.
+-**Rotas Store**exigem o header `x-publishable-api-key` - o SDK adiciona automaticamente.
+-**`fetch()` padrão** não inclui esses headers → erros de autenticação/autorização.
 - Usar métodos existentes do SDK fornece melhor segurança de tipo e autocompletar.
 
 ### Quando usar o quê
@@ -135,23 +123,15 @@ const response = await fetch(`http://localhost:9000/admin/products/${productId}`
 
 ### Seleção de Método do SDK
 
-**Para endpoints embutidos do Medusa:**
-
-- Use métodos existentes do SDK: `sdk.admin.product.list()`, `sdk.store.product.list()`, etc.
+**Para endpoints embutidos do Medusa:**- Use métodos existentes do SDK: `sdk.admin.product.list()`, `sdk.store.product.list()`, etc.
 - Fornece segurança de tipo, autocompletar e tratamento adequado de headers.
-- Referência: [Medusa JS SDK Documentation](https://docs.medusajs.com/resources/medusa-js-sdk)
-
-**Para rotas de API personalizadas:**
-
-- Use `sdk.client.fetch()` para seus endpoints personalizados.
+- Referência: [Medusa JS SDK Documentation](https://docs.medusajs.com/resources/medusa-js-sdk)**Para rotas de API personalizadas:**- Use `sdk.client.fetch()` para seus endpoints personalizados.
 - O SDK ainda cuida de todos os headers necessários (auth, chaves de API).
 - Passe objetos simples para o corpo (SDK cuida da serialização JSON).
 
 ## Trabalhando com Tanstack Query
 
-Widgets e rotas admin possuem Tanstack Query pré-configurado.
-
-**⚠️ Usuários pnpm**: Você DEVE instalar `@tanstack/react-query` ANTES de usar `useQuery` ou `useMutation`. Instale com a versão exata do dashboard:
+Widgets e rotas admin possuem Tanstack Query pré-configurado.**⚠️ Usuários pnpm**: Você DEVE instalar `@tanstack/react-query` ANTES de usar `useQuery` ou `useMutation`. Instale com a versão exata do dashboard:
 
 ```bash
 pnpm list @tanstack/react-query --depth=10 | grep @medusajs/dashboard
@@ -180,7 +160,7 @@ const { data, isLoading, error } = useQuery({
 
 ```tsx
 const limit = 15
-const offset = pagination.pageIndex * limit
+const offset = pagination.pageIndex *limit
 
 const { data: products } = useQuery({
   queryFn: () =>
@@ -308,11 +288,7 @@ onSuccess: () => {
   // Não é necessário invalidar as consultas de seleção do modal
   // queryClient.invalidateQueries({ queryKey: ["products-list"] }) // Não necessário
 }
-```
-
-**Pontos Chave:**
-
-- Use chaves de consulta específicas com IDs para invalidação direcionada.
+```**Pontos Chave:**- Use chaves de consulta específicas com IDs para invalidação direcionada.
 - Invalide tanto as consultas da entidade quanto as consultas de dados de exibição quando necessário.
 - Considere o que o usuário vê e garanta que essas consultas sejam atualizadas.
 - Consultas de modal/seleção geralmente não precisam de invalidação.
@@ -321,11 +297,7 @@ onSuccess: () => {
 
 - Ao atualizar objetos aninhados em metadados, passe o objeto inteiro (Medusa não mescla objetos aninhados).
 - Para remover uma propriedade de metadado, defina-a como string vazia.
-- Metadados são armazenados como JSONB no banco de dados.
-
-**Exemplo: Atualizando Metadados**
-
-```tsx
+- Metadados são armazenados como JSONB no banco de dados.**Exemplo: Atualizando Metadados**```tsx
 // ✅ CORRETO - Espalha (spread) o metadado existente
 updateProduct.mutate({
   metadata: {
@@ -348,7 +320,7 @@ updateProduct.mutate({
 
 ```tsx
 const limit = 15
-const offset = pagination.pageIndex * limit
+const offset = pagination.pageIndex*limit
 
 const { data } = useQuery({
   queryFn: () => sdk.admin.product.list({ limit, offset }),
@@ -385,26 +357,16 @@ const updateMetadata = useMutation({
 
 ## Casos de Uso Yello Solar Hub
 
-- **Cotação B2B por ID de Equipamentos:** O administrador precisa gerar uma cotação comercial B2B (ex: 5 inversores + 3 painéis). Deve-se usar uma consulta baseada em múltiplos IDs (`selectedIds`) e garantir que o cálculo do preço final (Mutação) invalide o cache da lista de produtos para refletir possíveis ajustes de preço ou tributos.
-- **Gestão de Kits Solares (Metadata):** Ao criar um novo kit, o administrador cadastra múltiplos componentes (módulos, estruturas, inversores). O uso de `useMutation` deve atualizar o campo de `metadata` (`related_product_ids`) de forma atômica, seguindo o padrão de passar o objeto completo para evitar sobrescrever dados existentes.
-- **Visualização de Canais Regionais:** Em um dashboard de gestão, é necessário listar todos os distribuidores regionais ativos. Isso exige uma consulta paginada (`Paginated Query`) onde o `searchTerm` filtra por região ou CNPJ, e a navegação deve manter o estado de carregamento (`keepPreviousData: true`).
-- **Atualização de Catálogo e Especificações Técnicas:** O time comercial altera as especificações de um inversor. A interface deve primeiro carregar os dados de exibição (`displayData`) e, ao salvar, usar a `Mutation` para atualizar os metadados e, crucialmente, invalidar tanto a consulta da entidade do produto quanto quaisquer widgets de exibição relacionados (Ex: "Produtos relacionados").
+-**Cotação B2B por ID de Equipamentos:**O administrador precisa gerar uma cotação comercial B2B (ex: 5 inversores + 3 painéis). Deve-se usar uma consulta baseada em múltiplos IDs (`selectedIds`) e garantir que o cálculo do preço final (Mutação) invalide o cache da lista de produtos para refletir possíveis ajustes de preço ou tributos.
+-**Gestão de Kits Solares (Metadata):**Ao criar um novo kit, o administrador cadastra múltiplos componentes (módulos, estruturas, inversores). O uso de `useMutation` deve atualizar o campo de `metadata` (`related_product_ids`) de forma atômica, seguindo o padrão de passar o objeto completo para evitar sobrescrever dados existentes.
+-**Visualização de Canais Regionais:**Em um dashboard de gestão, é necessário listar todos os distribuidores regionais ativos. Isso exige uma consulta paginada (`Paginated Query`) onde o `searchTerm` filtra por região ou CNPJ, e a navegação deve manter o estado de carregamento (`keepPreviousData: true`).
+-**Atualização de Catálogo e Especificações Técnicas:**O time comercial altera as especificações de um inversor. A interface deve primeiro carregar os dados de exibição (`displayData`) e, ao salvar, usar a `Mutation` para atualizar os metadados e, crucialmente, invalidar tanto a consulta da entidade do produto quanto quaisquer widgets de exibição relacionados (Ex: "Produtos relacionados").
 
 ## Problemas e Soluções Comuns
 
-### Erros de Autenticação/Autorização ao buscar dados
-
-**Sintomas:**
-
-- API retorna 401 Unauthorized ou 403 Forbidden.
+### Erros de Autenticação/Autorização ao buscar dados**Sintomas:**- API retorna 401 Unauthorized ou 403 Forbidden.
 - Erro "Missing x-publishable-api-key header".
-- Erro "Unauthorized" em rotas admin.
-
-**Causa:** Uso de `fetch()` padrão em vez do Medusa JS SDK.
-
-**Solução:**
-
-```tsx
+- Erro "Unauthorized" em rotas admin.**Causa:**Uso de `fetch()` padrão em vez do Medusa JS SDK.**Solução:**```tsx
 // ❌ ERRADO - Headers obrigatórios ausentes
 const { data } = useQuery({
   queryFn: () => fetch('http://localhost:9000/admin/products').then(r => r.json()),
@@ -426,7 +388,7 @@ const { data } = useQuery({
 
 ### "Nenhum QueryClient definido, use QueryClientProvider para definir um"
 
-- **Usuários pnpm**: Você esqueceu de instalar `@tanstack/react-query` antes de implementar. Instale agora com a versão exata do dashboard.
+-**Usuários pnpm**: Você esqueceu de instalar `@tanstack/react-query` antes de implementar. Instale agora com a versão exata do dashboard.
 - **Usuários npm/yarn**: Você instalou incorretamente `@tanstack/react-query` - remova-o do package.json.
 - Nunca envolva seu componente em `QueryClientProvider` - ele já é fornecido.
 
@@ -526,16 +488,16 @@ const RelatedProductsWidget = ({ data: product }) => {
         <Button onClick={() => setOpen(true)}>Editar</Button>
       </div >
 
-      {/* Exibe a seleção atual */}
+      {/*Exibe a seleção atual*/}
       <div >
         {displayProducts?.products.map((p) => (
           <div key={p.id}>{p.title}</div >
         ))}
       </div>
 
-      {/* Modal para seleção */}
+      {/*Modal para seleção*/}
       <FocusModal open={open} onOpenChange={setOpen}>
-        {/* Conteúdo do modal com UI de seleção */}
+        {/*Conteúdo do modal com UI de seleção*/}
       </FocusModal>
     </Container>
   )

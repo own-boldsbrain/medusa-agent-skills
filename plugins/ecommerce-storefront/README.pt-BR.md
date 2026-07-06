@@ -70,29 +70,11 @@ Você também pode chamar a habilidade manualmente com `/ecommerce-storefront:st
 
 Aqui estão alguns exemplos do que você pode pedir para o Claude construir:
 
-**Exemplo 1: Página de Listagem de Produtos**
-
-> Construa uma página de listagem de produtos no meu storefront com filtros por categoria, faixa de preço e tamanho. Inclua opções de ordenação e paginação.
-
-**Exemplo 2: Fluxo de Checkout**
-
-> Implemente uma página de checkout no meu storefront com endereço de entrega, seleção do método de entrega e pagamento. Use o backend do Medusa.
-
-**Exemplo 3: Componente de Navegação**
-
-> Crie uma barra de navegação (navbar) responsiva com indicador de carrinho, pesquisa e menu suspenso (dropdown) de categorias no meu storefront. O carrinho deve estar sempre visível na versão mobile.
-
-**Exemplo 4: Página de Detalhes do Produto**
-
-> Construa uma página de detalhes do produto com galeria de imagens, seleção de variações (tamanho/cor), botão de adicionar ao carrinho e produtos relacionados no meu storefront.
-
-**Exemplo 5: Layout da Página Inicial (Homepage)**
-
-> Crie o design de uma página inicial com seção hero, categorias em destaque, slider de produtos e formulário de inscrição na newsletter no meu storefront.
+**Exemplo 1: Página de Listagem de Produtos**> Construa uma página de listagem de produtos no meu storefront com filtros por categoria, faixa de preço e tamanho. Inclua opções de ordenação e paginação.**Exemplo 2: Fluxo de Checkout**> Implemente uma página de checkout no meu storefront com endereço de entrega, seleção do método de entrega e pagamento. Use o backend do Medusa.**Exemplo 3: Componente de Navegação**> Crie uma barra de navegação (navbar) responsiva com indicador de carrinho, pesquisa e menu suspenso (dropdown) de categorias no meu storefront. O carrinho deve estar sempre visível na versão mobile.**Exemplo 4: Página de Detalhes do Produto**> Construa uma página de detalhes do produto com galeria de imagens, seleção de variações (tamanho/cor), botão de adicionar ao carrinho e produtos relacionados no meu storefront.**Exemplo 5: Layout da Página Inicial (Homepage)**> Crie o design de uma página inicial com seção hero, categorias em destaque, slider de produtos e formulário de inscrição na newsletter no meu storefront.
 
 ## Habilidades Incluídas
 
-1. **storefront-best-practices** - Orientações completas para a construção de storefronts de e-commerce (componentes, layouts, funcionalidades, integração com backend)
+1.**storefront-best-practices** - Orientações completas para a construção de storefronts de e-commerce (componentes, layouts, funcionalidades, integração com backend)
 
 ## Privacidade
 

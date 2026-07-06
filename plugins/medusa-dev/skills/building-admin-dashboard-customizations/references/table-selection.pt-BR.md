@@ -106,7 +106,7 @@ const ProductRelatedProductsWidget = ({
 
   // Consulta 2: Buscar produtos para seleção no modal (somente quando o modal estiver aberto)
   const limit = pagination.pageSize
-  const offset = pagination.pageIndex * limit
+  const offset = pagination.pageIndex *limit
 
   const { data: modalProducts, isLoading } = useQuery({
     queryFn: () => sdk.admin.product.list({
@@ -287,10 +287,10 @@ export default ProductRelatedProductsWidget
 
 Este padrão é crucial para garantir que a cotação e o catálogo do Yello Solar Hub mantenham a integridade dos componentes em um ecossistema de sistemas solares complexos.
 
-- **Cotações B2B Multicomponente:** Selecionar múltiplos equipamentos interconectados (ex: Inversor A + Módulos B + Bateria C) em um único registro de cotação, permitindo que o sistema calcule automaticamente o requisito de potência ou o *footprint* total do projeto.
-- **Rastreabilidade de Kits de Reparo:** Ao registrar um kit de reparo em campo, o uso do padrão permite selecionar todas as peças de estoque (estrutura, parafusos, módulos) que pertencem ao mesmo sistema, garantindo que o histórico de peças possa ser consultado rapidamente.
-- **Variação e Compatibilidade de Produtos:** Quando um usuário modifica um componente (ex: troca de um Inversor de 10kW para 15kW), o padrão garante que a seleção de produtos complementares (módulos, estruturas) seja ajustada e limitada apenas a modelos compatíveis com o novo componente selecionado.
-- **Catálogo e Cross-selling:** Em páginas de visualização de produtos em catálogo, o widget pode ser usado para permitir que o vendedor adicione "Produtos Sugeridos/Complementares" que fazem parte do mesmo ecossistema de energia, mas que não são a peça principal do produto visualizado.
+-**Cotações B2B Multicomponente:**Selecionar múltiplos equipamentos interconectados (ex: Inversor A + Módulos B + Bateria C) em um único registro de cotação, permitindo que o sistema calcule automaticamente o requisito de potência ou o*footprint*total do projeto.
+-**Rastreabilidade de Kits de Reparo:**Ao registrar um kit de reparo em campo, o uso do padrão permite selecionar todas as peças de estoque (estrutura, parafusos, módulos) que pertencem ao mesmo sistema, garantindo que o histórico de peças possa ser consultado rapidamente.
+-**Variação e Compatibilidade de Produtos:**Quando um usuário modifica um componente (ex: troca de um Inversor de 10kW para 15kW), o padrão garante que a seleção de produtos complementares (módulos, estruturas) seja ajustada e limitada apenas a modelos compatíveis com o novo componente selecionado.
+-**Catálogo e Cross-selling:**Em páginas de visualização de produtos em catálogo, o widget pode ser usado para permitir que o vendedor adicione "Produtos Sugeridos/Complementares" que fazem parte do mesmo ecossistema de energia, mas que não são a peça principal do produto visualizado.
 
 ## Detalhes Chave de Implementação
 
@@ -307,11 +307,7 @@ Este padrão é crucial para garantir que a cotação e o catálogo do Yello Sol
 - Inicialize com seleções existentes no metadado
 - Use `DataTablePaginationState` com `pageIndex` e `pageSize`
 
-### 3. Padrão de Carregamento de Dados - CRÍTICO
-
-**Sempre use consultas separadas para exibição vs seleção no modal:**
-
-```tsx
+### 3. Padrão de Carregamento de Dados - CRÍTICO**Sempre use consultas separadas para exibição vs seleção no modal:**```tsx
 // Consulta de exibição - carrega no montagem, busca itens específicos
 const { data: displayProducts } = useQuery({
   queryFn: () => sdk.admin.product.list({
@@ -330,9 +326,7 @@ const { data: modalProducts } = useQuery({
   enabled: open, // Apenas quando o modal estiver aberto
   keepPreviousData: true,
 })
-```
-
-**Por que este padrão?**
+```**Por que este padrão?**
 
 - Os dados de exibição carregam imediatamente ao montar
 - Os dados do modal só carregam quando necessários
@@ -366,9 +360,9 @@ const table = useDataTable({
   getRowId: (row) => row.id,
   rowCount: data?.count || 0,
   isLoading,
-  rowSelection: { /* config */ },
-  search: { /* config */ },
-  pagination: { /* config */ },
+  rowSelection: { /*config*/ },
+  search: { /*config*/ },
+  pagination: { /*config*/ },
 })
 ```
 
@@ -422,9 +416,9 @@ const { data, isLoading } = useQuery({
 1. **Considerações do Gerenciador de Pacotes**:
    - **Usuários pnpm**: É OBRIGATÓRIO instalar `@tanstack/react-query` e `react-router-dom` ANTES de implementar (veja Pré-Requisitos acima)
    - **Usuários npm/yarn**: NÃO instale esses pacotes - eles já estão disponíveis através do dashboard
-2. **Sempre use `keepPreviousData: true`** para paginação, evitando piscar a interface (UI flicker).
-3. **Busca é no lado do servidor** - Passe o valor da busca na função da consulta (query function).
-4. **Atualizações de metadados substituem o objeto inteiro** - Espalhe (spread) os metadados existentes ao atualizar.
-5. **Use dependências de `queryKey` corretas** - Inclua todos os parâmetros que afetam os dados.
+2. **Sempre use `keepPreviousData: true`**para paginação, evitando piscar a interface (UI flicker).
+3.**Busca é no lado do servidor**- Passe o valor da busca na função da consulta (query function).
+4.**Atualizações de metadados substituem o objeto inteiro**- Espalhe (spread) os metadados existentes ao atualizar.
+5.**Use dependências de `queryKey` corretas** - Inclua todos os parâmetros que afetam os dados.
 
 Este padrão fornece uma maneira consistente e performática de lidar com a seleção a partir de grandes conjuntos de dados em personalizações do Medusa Admin.stop

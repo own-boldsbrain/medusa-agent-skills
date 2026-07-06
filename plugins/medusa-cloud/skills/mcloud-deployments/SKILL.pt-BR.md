@@ -8,15 +8,13 @@ allowed-tools: Bash(mcloud deployments*), Bash(jq*)
 
 Execute os comandos `mcloud deployments` para inspecionar implantações e seus logs de compilação.
 
-## # Restrições
+### Restrições
 
 - Sempre passe `--json` ao analisar a saída — o formato de texto simples pode mudar.
 - Sempre confirme o contexto (`mcloud whoami --json`) antes de executar comandos se org/project não estiverem conhecidos ainda.
 - Use `--deployment` IDs no formato `depl_*` ou build IDs; os build IDs resolvem automaticamente para a implantação mais recente.
 
-## **Comandos**
-
-### lista de deployments
+## **Comandos**### lista de deployments
 
 Lista as implantações recentes para um projeto (padrão: 20 mais recentes em todos os ambientes).
 
@@ -24,9 +22,8 @@ Lista as implantações recentes para um projeto (padrão: 20 mais recentes em t
 mcloud deployments list --organization <org-id> --project <project-id-or-handle> --json
 ```
 
-- *Opções:**
+-*Opções:**- `-o/--organização <id>` — ID da Organização (recuo para o contexto ativo)
 
-- `-o/--organização <id>` — ID da Organização (recuo para o contexto ativo)
 - `-p/--project <id-ou-identificador>` — ID ou identificador do projeto (assume o contexto ativo como padrão)
 - `-e/--environment <handle>` — Filtre por handle do ambiente
 - `--environment-type <production|long-lived|preview>` — Filtra por tipo de ambiente
@@ -40,9 +37,7 @@ mcloud deployments list --organization <org-id> --project <project-id-or-handle>
 
 ```
 
-### # **Implantações**
-
-O comando `get` permite-lhe obter informações detalhadas sobre as suas implantações. Você pode usar este comando para verificar o estado, os detalhes e as configurações das suas implantações.
+####**Implantações**O comando `get` permite-lhe obter informações detalhadas sobre as suas implantações. Você pode usar este comando para verificar o estado, os detalhes e as configurações das suas implantações.
 
 ## Opções:
 
@@ -91,21 +86,17 @@ Recupere os detalhes de um único deployment pelo ID.
 mcloud deployments get <deployment-id> --organization <org-id> --project <project-id-or-handle> --json
 ```
 
-- *Argumentos:**
+-*Argumentos:**- `deployment` — ID da implantação (obrigatório)
 
-- `deployment` — ID da implantação (obrigatório)
+-*Opções:**- `-o/--organization <id>`, `-p/--project <id-ou-handle>`, `--json`
 
-- *Opções:**
-
-- `-o/--organization <id>`, `-p/--project <id-ou-handle>`, `--json`
-
-### **Deployments** build-logs
+### **Deployments**build-logs
 
 # Log de Construção de Implantações
 
 ## Etapas da Construção
 
-1. **Verificar a configuração**: Certifique-se de que a configuração de ambiente esteja correta.
+1.**Verificar a configuração**: Certifique-se de que a configuração de ambiente esteja correta.
 2. **Executar o comando de construção**: Execute o comando para gerar os logs de construção.
 
 ## Exemplo de Comando
@@ -125,13 +116,10 @@ Buscar registros de compilação para um *deployment*. Use isso para depurar sta
 mcloud deployments build-logs <deployment-id> --organization <org-id> --project <project-id-or-handle>
 ```
 
-- *Argumentos:**
+- *Argumentos:**- `deployment` — ID de implantação (obrigatório)
 
-- `deployment` — ID de implantação (obrigatório)
+-*Opções:**- `/--organization <id>`, `-p/--project <id-or-handle>`
 
-- *Opções:**
-
-- - `/--organization <id>`, `-p/--project <id-or-handle>`
 - `--type <backend|storefront>` — Qual fluxo de registro de construção ler (padrão: `backend`)
 - `--json` — Saída como JSON
 
@@ -139,7 +127,7 @@ mcloud deployments build-logs <deployment-id> --organization <org-id> --project 
 
 | Status | Significado |
 |--------|---------|
-| `criado` | **Não iniciado o build ainda** |
+| `criado` |**Não iniciado o build ainda** |
 | `construção` | Construção em andamento |
 | `construído` | Construção concluída, aguardando rollout |
 | `implantação` | Implementando no ambiente |

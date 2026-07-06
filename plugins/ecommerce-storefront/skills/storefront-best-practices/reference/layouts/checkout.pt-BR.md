@@ -6,13 +6,9 @@ Orientações para a implementação do fluxo de finalização de compra na loja
 
 ### Finalização de compra em várias etapas (implementação atual)
 
-* *Quando usar:**
-
-- Fluxos B2B complexos com requisitos de aprovação
+**Quando usar:**- Fluxos B2B complexos com requisitos de aprovação
 - Vários campos de coleta de dados (empresa, endereço, remessa, cobrança, contato, pagamento)
-- A divulgação progressiva reduz a carga cognitiva
-
-* *A YSH Store utiliza 4 etapas de superfície** (mapeadas a partir dos IDs internos das etapas):
+- A divulgação progressiva reduz a carga cognitiva**A YSH Store utiliza 4 etapas de superfície**(mapeadas a partir dos IDs internos das etapas):
 
 | Passo de superfície | Etapas internas abordadas | Descrição |
 |---|---|---|
@@ -36,11 +32,7 @@ CheckoutWorkspace (server)          → fetches shipping/payment methods from Me
         ├── Delivery step UI
         ├── Payment step UI
         └── Review step UI
-```
-
-* *Por que essa divisão é importante:**
-
-- O `CheckoutWorkspace` recupera `listCartShippingMethods` e `listCartPaymentMethods` no lado do servidor, evitando cascatas no lado do cliente
+```**Por que essa divisão é importante:**- O `CheckoutWorkspace` recupera `listCartShippingMethods` e `listCartPaymentMethods` no lado do servidor, evitando cascatas no lado do cliente
 - O `CheckoutWorkspaceClient` é um componente do tipo “cliente de uso” que mantém todo o estado interativo
 - As substituições (`availableShippingMethodsOverride`, `availablePaymentMethodsOverride`) permitem a realização de testes de ponta a ponta sem um backend ativo
 
@@ -61,9 +53,7 @@ export const resolveCheckoutSurfaceState = (cart, rawStep) => {
   const requestedStep = normalizeCheckoutSurfaceStep(rawStep)
   // ...
 }
-```
-
-* *Invariante-chave:** Um cliente nunca pode ultrapassar o `furthestAccessibleStep`. Os degraus tornam-se acessíveis à medida que o carrinho avança.
+```**Invariante-chave:**Um cliente nunca pode ultrapassar o `furthestAccessibleStep`. Os degraus tornam-se acessíveis à medida que o carrinho avança.
 
 - --
 
@@ -121,22 +111,16 @@ const localFixture = isLocalE2EMode
 
 const cart = localFixture?.cart ?? (await retrieveCart(cartId))
 const customer = localFixture?.customer ?? (await retrieveCustomer())
-```
-
-* *Padrão:** Sempre proteja `localFixture` por meio de `isLocalE2EModeEnabled()` — esse sinalizador nunca deve estar ativo em produção.
+```**Padrão:**Sempre proteja `localFixture` por meio de `isLocalE2EModeEnabled()` — esse sinalizador nunca deve estar ativo em produção.
 
 - --
 
-## Recuperando formas de pagamento
-
-* *IMPORTANTE:** Sempre obtenha os métodos de pagamento do Medusa por ID de região — nunca os defina diretamente no código.
+## Recuperando formas de pagamento**IMPORTANTE:**Sempre obtenha os métodos de pagamento do Medusa por ID de região — nunca os defina diretamente no código.
 
 ```typescript
 // In CheckoutWorkspace (server)
 const availablePaymentMethods = await listCartPaymentMethods(cart.region?.id ?? "")
-```
-
-* *Por que:** Os provedores de pagamento variam de acordo com a região. A codificação estática faz com que o processo de finalização da compra deixe de funcionar quando a região muda.
+```**Por que:**Os provedores de pagamento variam de acordo com a região. A codificação estática faz com que o processo de finalização da compra deixe de funcionar quando a região muda.
 
 - --
 
@@ -152,9 +136,7 @@ const CHECKOUT_STEPS = [
   { id: "contact-details", label: "Contato" },
   { id: "payment", label: "Pagamento" },
 ] as const
-```
-
-* *Requisito-chave de acessibilidade:** Cada círculo de degrau utiliza `aria-current="step"` quando está ativo.
+```**Requisito-chave de acessibilidade:**Cada círculo de degrau utiliza `aria-current="step"` quando está ativo.
 
 - --
 
@@ -176,9 +158,7 @@ const createQueryString = useCallback(
 router.push(pathname + "?" + createQueryString("step", "delivery"), {
   scroll: false,
 })
-```
-
-* *Use `scroll: false`** em todas as transições entre etapas para evitar saltos na página. O layout do checkout é um fluxo de página única, no qual o conteúdo das etapas é atualizado dinamicamente, sem a necessidade de rolar até o topo.
+```**Use `scroll: false`**em todas as transições entre etapas para evitar saltos na página. O layout do checkout é um fluxo de página única, no qual o conteúdo das etapas é atualizado dinamicamente, sem a necessidade de rolar até o topo.
 
 - --
 
@@ -203,9 +183,7 @@ if (isStripeLike(selectedPaymentMethod) && !activeSession) {
 await initiatePaymentSession(cart, {
   provider_id: selectedPaymentMethod,
 })
-```
-
-* *Padrão:** Sempre chame `initiatePaymentSession` quando o provedor for alterado OU quando não houver nenhuma sessão ativa.
+```**Padrão:**Sempre chame `initiatePaymentSession` quando o provedor for alterado OU quando não houver nenhuma sessão ativa.
 
 ### Wrapper de pagamento
 
@@ -232,7 +210,7 @@ O `StripeContext` (por meio de `useContext`) está disponível em toda a árvore
 ```
 
 - Salva por meio de `setShippingAddress(cart.id, addressPayload)`
-- Os países são obtidos a partir de `cart.region?.countries` — **NUNCA mostre todos os países**, apenas os países da região
+- Os países são obtidos a partir de `cart.region?.countries` —**NUNCA mostre todos os países**, apenas os países da região
 - O endereço é armazenado no `localStorage` para preenchimento automático em visitas subsequentes
 
 ### Endereço de cobrança
@@ -278,7 +256,7 @@ O `StripeContext` (por meio de `useContext`) está disponível em toda a árvore
 
 - Exibe o subtotal, o frete, os impostos, o desconto, o vale-presente e o total
 - Utiliza `convertToLocale` para formatar preços
-- * *NÃO divida os preços por 100** — Os preços da Medusa já estão no formato de exibição
+- **NÃO divida os preços por 100**— Os preços da Medusa já estão no formato de exibição
 
 - --
 
@@ -296,14 +274,14 @@ O `StripeContext` (por meio de `useContext`) está disponível em toda a árvore
 
 ## Erros comuns a evitar
 
-- ❌ **Busca de formas de pagamento no lado do cliente** — faça a busca no lado do servidor em `CheckoutWorkspace` para evitar a arquitetura em cascata
-- ❌ **Exibindo todos os países** — exibir apenas `cart.region?.countries`
-- ❌ **Definir manualmente os provedores de pagamento** — use sempre `listCartPaymentMethods(region_id)`
-- ❌ **Degraus com salto** — sempre aplique `furthestAccessibleStep` a partir da lógica de degraus da superfície
-- ❌ **Omissão de `scroll: false`** na navegação por etapas — causa um deslocamento brusco para o topo da página
-- ❌ **Realização do pedido antes da sessão de pagamento** — certifique-se de que `initiatePaymentSession` seja concluído antes do redirecionamento para a página de revisão
-- ❌ **Dividir os preços por 100** — O Medusa armazena os preços como valores de exibição
-- ❌ **Não limpar o estado do carrinho após o pedido** — após a realização bem-sucedida do pedido, invalidar o contexto/cache do carrinho
+- ❌**Busca de formas de pagamento no lado do cliente**— faça a busca no lado do servidor em `CheckoutWorkspace` para evitar a arquitetura em cascata
+- ❌**Exibindo todos os países**— exibir apenas `cart.region?.countries`
+- ❌**Definir manualmente os provedores de pagamento**— use sempre `listCartPaymentMethods(region_id)`
+- ❌**Degraus com salto**— sempre aplique `furthestAccessibleStep` a partir da lógica de degraus da superfície
+- ❌**Omissão de `scroll: false`**na navegação por etapas — causa um deslocamento brusco para o topo da página
+- ❌**Realização do pedido antes da sessão de pagamento**— certifique-se de que `initiatePaymentSession` seja concluído antes do redirecionamento para a página de revisão
+- ❌**Dividir os preços por 100**— O Medusa armazena os preços como valores de exibição
+- ❌**Não limpar o estado do carrinho após o pedido** — após a realização bem-sucedida do pedido, invalidar o contexto/cache do carrinho
 
 - --
 

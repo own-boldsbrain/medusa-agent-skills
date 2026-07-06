@@ -1,280 +1,143 @@
 {
   "P0_source_contaminated": [],
-  "P0_truncated": [
+  "P0_truncated": [],
+  "P0_codeblock_mismatch": [],
+  "P0_placeholder_or_filler": [
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\typography.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\typography.pt-br.md",
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.pt-br.md",
       "risk_score": 100
     }
   ],
-  "P0_codeblock_mismatch": [
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\design.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\design.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\mobile-responsiveness.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\mobile-responsiveness.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\seo.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\seo.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\country-selector.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\country-selector.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\navbar.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\navbar.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\popups.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\popups.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-card.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-card.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-slider.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-slider.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\promotions.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\promotions.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\wishlist.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\wishlist.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\static-pages.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\static-pages.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\README.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\README.pt-br.md",
-      "risk_score": 85
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-auth\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-auth\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-deployments\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-deployments\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-environments\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-environments\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-logs\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-logs\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-projects\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-projects\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-variables\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-variables\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\reference\\debugging-deployments.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\reference\\debugging-deployments.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\reference\\setup.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\reference\\setup.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\data-loading.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\data-loading.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\display-patterns.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\display-patterns.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\forms.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\forms.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\table-selection.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\table-selection.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-with-medusa\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-with-medusa\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\SKILL.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\admin-extension.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\admin-extension.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\medusa-exec.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\medusa-exec.pt-br.md",
-      "risk_score": 100
-    }
-  ],
-  "P0_placeholder_or_filler": [],
   "P1_toc_anchor_mismatch": [
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\search.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\search.pt-br.md",
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\breadcrumbs.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\breadcrumbs.pt-br.md",
+      "risk_score": 90
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\footer.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\footer.pt-br.md",
+      "risk_score": 90
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-slider.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-slider.pt-br.md",
+      "risk_score": 90
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\reference\\setup.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\reference\\setup.pt-br.md",
+      "risk_score": 60
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\README.pt-br.md",
+      "risk_score": 100
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\data-loading.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\data-loading.pt-br.md",
+      "risk_score": 90
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\display-patterns.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\display-patterns.pt-br.md",
       "risk_score": 90
     }
   ],
   "P1_markdown_violations": [
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\README.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\README.pt-br.md",
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\README.pt-br.md",
       "risk_score": 50
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-create\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-create\\SKILL.pt-br.md",
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.pt-br.md",
       "risk_score": 50
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.pt-br.md",
-      "risk_score": 90
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\reference\\schema.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\reference\\schema.pt-br.md",
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.pt-br.md",
       "risk_score": 50
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\README.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\README.pt-br.md",
-      "risk_score": 70
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\design.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\design.pt-br.md",
+      "risk_score": 80
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\breadcrumbs.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\breadcrumbs.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\cart-popup.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\cart-popup.pt-br.md",
-      "risk_score": 90
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\footer.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\footer.pt-br.md",
-      "risk_score": 70
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\SKILL.pt-br.md",
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\cart-popup.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\cart-popup.pt-br.md",
       "risk_score": 50
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\navigation.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\navigation.pt-br.md",
-      "risk_score": 100
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\navbar.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\navbar.pt-br.md",
+      "risk_score": 80
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\data-models.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\data-models.pt-br.md",
-      "risk_score": 100
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\wishlist.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\wishlist.pt-br.md",
+      "risk_score": 50
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\service.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\service.pt-br.md",
-      "risk_score": 100
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\README.pt-br.md",
+      "risk_score": 50
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\streaming.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\streaming.pt-br.md",
-      "risk_score": 100
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\SKILL.pt-br.md",
+      "risk_score": 80
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\forms.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\forms.pt-br.md",
+      "risk_score": 50
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-with-medusa\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-with-medusa\\SKILL.pt-br.md",
+      "risk_score": 80
     }
   ],
-  "P1_heading_mismatch": [
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-reviews.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-reviews.pt-br.md",
-      "risk_score": 100
-    },
-    {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-organizations\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-organizations\\SKILL.pt-br.md",
-      "risk_score": 100
-    }
-  ],
+  "P1_heading_mismatch": [],
   "P2_english_residual": [
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.pt-br.md",
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.pt-br.md",
       "risk_score": 30
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.pt-br.md",
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.pt-br.md",
       "risk_score": 30
     },
     {
-      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-2-extend-medusa.md",
-      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-2-extend-medusa.pt-br.md",
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.pt-br.md",
+      "risk_score": 30
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-2-extend-medusa.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-2-extend-medusa.pt-br.md",
+      "risk_score": 30
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\SKILL.pt-br.md",
+      "risk_score": 30
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\table-selection.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\table-selection.pt-br.md",
+      "risk_score": 30
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\medusa-exec.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\medusa-exec.pt-br.md",
       "risk_score": 30
     }
   ],

@@ -296,6 +296,7 @@ Existem vários tipos de erros que podem ocorrer em aplicações de e-commerce:
 ### Exemplo de Implementação
 
 Abaixo, vamos apresentar um exemplo de implementação de tratamento de erros em Python:
+
 ```python
 import logging
 
@@ -337,19 +338,20 @@ app.conectar()
 app.validar_dados({'nome': 'João', 'email': 'joao@example.com'})
 app.processar_pedido({'id': 1, 'valor': 100.00})
 ```
+
 ### Conclusão
 
 O tratamento de erros é uma parte crucial do desenvolvimento de software de e-commerce. Ao entender os diferentes tipos de erros e implementar um sistema de tratamento de erros eficaz, podemos garantir que nossas aplicações sejam mais robustas e menos propensas a erros. Além disso, um bom sistema de tratamento de erros pode ajudar a melhorar a experiência do usuário e a reduzir o tempo de resolução de problemas.
 
 ### Recursos Adicionais
 
-* [Tratamento de Erros em Python](https://docs.python.org/pt-br/3/library/logging.html)
-* [Exemplo de Implementação de Tratamento de Erros em Python](https://github.com/example/tratamento-erros-python)
+- [Tratamento de Erros em Python](https://docs.python.org/pt-br/3/library/logging.html)
+- [Exemplo de Implementação de Tratamento de Erros em Python](https://github.com/example/tratamento-erros-python)
 
 ### Referências
 
-* [Tratamento de Erros em Aplicações de E-commerce](https://www.example.com/tratamento-erros-e-commerce)
-* [Exemplo de Implementação de Tratamento de Erros em Aplicações de E-commerce](https://github.com/example/tratamento-erros-e-commerce)
+- [Tratamento de Erros em Aplicações de E-commerce](https://www.example.com/tratamento-erros-e-commerce)
+- [Exemplo de Implementação de Tratamento de Erros em Aplicações de E-commerce](https://github.com/example/tratamento-erros-e-commerce)
 
 ### Erros específicos de comércio eletrônico
 
@@ -419,11 +421,13 @@ SELECT* FROM usuarios;
 
 **Mensagem de Erro Amigável:**"Ocorreu um erro ao tentar se conectar ao banco de dados. Por favor, verifique se o servidor está online e tente novamente."
 
-### Dicas para Criar Mensagens de Erro Amigáveis*   Seja claro e direto ao informar o erro.
-*   Forneça informações úteis para ajudar o usuário a resolver o problema.
-*   Mantenha a linguagem simples e fácil de entender.
-*   Evite jargões técnicos ou termos que possam confundir o usuário.
-*   Ofereça sugestões de ação para o usuário seguir.
+### Dicas para Criar Mensagens de Erro Amigáveis*   Seja claro e direto ao informar o erro
+
+- Forneça informações úteis para ajudar o usuário a resolver o problema.
+
+- Mantenha a linguagem simples e fácil de entender.
+- Evite jargões técnicos ou termos que possam confundir o usuário.
+- Ofereça sugestões de ação para o usuário seguir.
 
 Ao seguir essas dicas, você pode criar mensagens de erro amigáveis que ajudem a melhorar a experiência do usuário e tornar o processo de resolução de problemas mais fácil e menos estressante.
 

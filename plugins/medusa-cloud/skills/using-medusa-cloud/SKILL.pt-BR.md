@@ -9,23 +9,23 @@ Guia operacional para agentes de IA que gerenciam a infraestrutura Medusa Cloud 
 
 ## # Restrições
 
-- * *Sempre passe `--json`** ao analisar a saída do CLI. A saída em texto simples é destinada a humanos e pode mudar sem aviso prévio.
-- * *Confirme o contexto antes de mutar.** Execute `mcloud whoami --json` antes de qualquer mudança de estado.
-- * *Leia antes de escrever.** Execute um `get` ou `list` antes de qualquer `delete`, `redeploy` ou `trigger-build`.
-- * *Use `--yes` para operações destrutivas.** Comandos de `delete` requerem `--yes` em modo não interativo.
-- * *Ambientes de produção não podem ser deletados.** `mcloud environments delete` gera erros em produção por design.
-- * *Nunca passe `--reveal` a menos que o usuário peça explicitamente.** Valores secretos aparecem no histórico do terminal e nos logs.
-- * *`--json` e `--follow` são incompatíveis.** Use janelas de tempo limitadas (`--from`/`--to`) com `--json` para ingestão programática de logs.
+- - *Sempre passe `--json`** ao analisar a saída do CLI. A saída em texto simples é destinada a humanos e pode mudar sem aviso prévio.
+- - *Confirme o contexto antes de mutar.** Execute `mcloud whoami --json` antes de qualquer mudança de estado.
+- - *Leia antes de escrever.** Execute um `get` ou `list` antes de qualquer `delete`, `redeploy` ou `trigger-build`.
+- - *Use `--yes` para operações destrutivas.** Comandos de `delete` requerem `--yes` em modo não interativo.
+- - *Ambientes de produção não podem ser deletados.** `mcloud environments delete` gera erros em produção por design.
+- - *Nunca passe `--reveal` a menos que o usuário peça explicitamente.** Valores secretos aparecem no histórico do terminal e nos logs.
+- - *`--json` e `--follow` são incompatíveis.** Use janelas de tempo limitadas (`--from`/`--to`) com `--json` para ingestão programática de logs.
 
 ## CRÍTICO: Carregar Arquivos de Referência Quando Necessário
 
-* *Carregue essas referências com base no que você está fazendo:**
+- *Carregue essas referências com base no que você está fazendo:**
 
-- * *Configurando a CLI?** → DEVE carregar `setup.md` primeiro
-- * *Depurando um deployment falhado?** → DEVE carregar `debugging-deployments.md` primeiro
-- * *Gerenciando ambientes ou variáveis?** → DEVE carregar `environments-and-variables.md` primeiro
+- - *Configurando a CLI?** → DEVE carregar `setup.md` primeiro
+- - *Depurando um deployment falhado?** → DEVE carregar `debugging-deployments.md` primeiro
+- - *Gerenciando ambientes ou variáveis?** → DEVE carregar `environments-and-variables.md` primeiro
 
-* *Requisito mínimo:** Carregue pelo menos um arquivo de referência antes de executar fluxos de trabalho de múltiplos passos.
+- *Requisito mínimo:** Carregue pelo menos um arquivo de referência antes de executar fluxos de trabalho de múltiplos passos.
 
 ## Referência Rápida
 
@@ -60,7 +60,7 @@ Rota em `backend_status` (ou `storefront_status`):
 | `deployment-failed` | O tempo de execução falhou após a compilação | `mcloud logs --deployment *<id>*` |
 | `tempo-esgotado` | Orçamento de tempo excedido | Ambos: logs de compilação primeiro, depois logs de runtime |
 
-### * *Decisão de Redeslocamento**
+### **Decisão de Redeslocamento**
 
 | Comando | Quando usar |
 |---------|-------------|
@@ -69,11 +69,11 @@ Rota em `backend_status` (ou `storefront_status`):
 
 ## Principais Armadilhas
 
-- * *Comandos apenas para TTY.** `mcloud login`, `mcloud use` (sem bandeiras) e `delete` sem `--yes` requerem um TTY. Eles falham em CI, Docker ou entrada por pipe.
-- * *`MCLOUD_TOKEN` precedência.** Quando definido, as credenciais baseadas em arquivo são ignoradas e o comando `mcloud login` é rejeitado. Desative-o para alternar contas.
-- * *Acesso pessoal vs chaves de acesso da organização.** Chaves pessoais exigem `--organization`; chaves de acesso da organização estão pré-escopadas.
-- * *`organizations list` requer autenticação pessoal.** As chaves de acesso da organização retornam 401 neste comando.
-- * *IDs de construção vs IDs de implantação.** `depl_*` = ID de implantação; qualquer outra coisa = ID de construção (resolvido para a última implantação). `mcloud logs --deployment` aceita ambos; outros comandos aceitam apenas IDs de construção.
+- - *Comandos apenas para TTY.** `mcloud login`, `mcloud use` (sem bandeiras) e `delete` sem `--yes` requerem um TTY. Eles falham em CI, Docker ou entrada por pipe.
+- - *`MCLOUD_TOKEN` precedência.** Quando definido, as credenciais baseadas em arquivo são ignoradas e o comando `mcloud login` é rejeitado. Desative-o para alternar contas.
+- - *Acesso pessoal vs chaves de acesso da organização.** Chaves pessoais exigem `--organization`; chaves de acesso da organização estão pré-escopadas.
+- - *`organizations list` requer autenticação pessoal.** As chaves de acesso da organização retornam 401 neste comando.
+- - *IDs de construção vs IDs de implantação.** `depl_*` = ID de implantação; qualquer outra coisa = ID de construção (resolvido para a última implantação). `mcloud logs --deployment` aceita ambos; outros comandos aceitam apenas IDs de construção.
 
 ## Arquivos de Referência
 

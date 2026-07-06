@@ -20,45 +20,61 @@ Selecionador de país permite que os clientes escolham seu país/região, o que 
 ### Funções-chave do Ecommerce
 
 #### 1. **Gerenciamento de Produtos***Adicionar produtos
-* Editar produtos
-* Excluir produtos
-* Visualizar produtos
+
+- Editar produtos
+
+- Excluir produtos
+- Visualizar produtos
 
 #### 2. **Gerenciamento de Pedidos***Criar pedidos
-* Editar pedidos
-* Excluir pedidos
-* Visualizar pedidos
-* Status de pedidos
+
+- Editar pedidos
+
+- Excluir pedidos
+- Visualizar pedidos
+- Status de pedidos
 
 #### 3. **Gerenciamento de Clientes***Criar clientes
-* Editar clientes
-* Excluir clientes
-* Visualizar clientes
-* Histórico de compras
+
+- Editar clientes
+
+- Excluir clientes
+- Visualizar clientes
+- Histórico de compras
 
 #### 4. **Gerenciamento de Pagamentos***Formas de pagamento
-* Pagamentos parciais
-* Pagamentos totais
-* Cancelamentos de pagamentos
+
+- Pagamentos parciais
+
+- Pagamentos totais
+- Cancelamentos de pagamentos
 
 #### 5. **Gerenciamento de Relatórios***Relatórios de vendas
-* Relatórios de lucro
-* Relatórios de estoque
-* Relatórios de clientes
+
+- Relatórios de lucro
+
+- Relatórios de estoque
+- Relatórios de clientes
 
 #### 6. **Integração com Terceiros***Integração com lojas virtuais
-* Integração com sistemas de pagamento
-* Integração com provedores de entrega
+
+- Integração com sistemas de pagamento
+
+- Integração com provedores de entrega
 
 #### 7. **Segurança e Privacidade***Autenticação de usuários
-* Autorização de acesso
-* Proteção de dados
-* Privacidade de clientes
+
+- Autorização de acesso
+
+- Proteção de dados
+- Privacidade de clientes
 
 #### 8. **Desempenho e Manutenção***Monitoramento de desempenho
-* Manutenção de banco de dados
-* Manutenção de sistema
-* Atualizações de software
+
+- Manutenção de banco de dados
+
+- Manutenção de sistema
+- Atualizações de software
 
 - Exibir preços na moeda correta
 - Mostrar disponibilidade de produtos específica de país
@@ -122,6 +138,7 @@ Selecionador de país permite que os clientes escolham seu país/região, o que 
 1. Verifique se você deseja confirmar ou alterar.
 2. Selecione a opção desejada no menu.
 3. Clique em "Confirmar" ou "Alterar" para prosseguir.**Exemplo de código**
+
 ```python
 def confirmar_alterar():
     # Código para confirmar ou alterar
@@ -129,6 +146,7 @@ def confirmar_alterar():
 ```
 
 [Veja mais](https://exemplo.com/confirmar-alterar) sobre como confirmar ou alterar.
+
 - Store preference for future visits
 
 ### Padrões de Design de Seletores

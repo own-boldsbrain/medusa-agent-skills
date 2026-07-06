@@ -387,8 +387,8 @@ In this example, the `theme` class is used to set the `color` and `font-size` pr
 
 ### Related Topics
 
-* [Using a Theme's Properties](#using-a-theme's-properties)
-* [Overriding a Theme's Value](#overriding-a-theme's-value)
+- [Using a Theme's Properties](#using-a-theme's-properties)
+- [Overriding a Theme's Value](#overriding-a-theme's-value)
 
 **Problema:** Utilizando `bg-[#3B82F6]` quando `bg-primary` existe.
 
@@ -423,6 +423,7 @@ In this example, the `theme` class is used to set the `color` and `font-size` pr
 ### ❌ Usando Estilos Inline em vez de Tema
 
 **Por que evitar estilos inline?**Estilos inline são difíceis de manter e podem causar problemas de compatibilidade. Além disso, são uma fonte comum de bugs de layout.**Alternativas**-**Classes CSS**: Use classes CSS para aplicar estilos a elementos. Isso permite que você aplique estilos a vários elementos de uma vez e é mais fácil de manter.
+
 - **Frameworks CSS**: Utilize frameworks CSS como Bootstrap ou Tailwind CSS para criar layouts e estilos consistentes.
 - **Sass e Less**: Use preprocessadores de CSS como Sass ou Less para criar estilos mais complexos e reutilizáveis.
 
@@ -481,17 +482,22 @@ In this example, the `theme` class is used to set the `color` and `font-size` pr
 ### ❌ Criando Mudanças de Tema Sem Aprovação
 
 **Problema**As mudanças de tema podem afetar a aparência e a experiência do usuário de um aplicativo. Criar mudanças de tema sem aprovação pode levar a:* Problemas de consistência visual
-* Falhas de usabilidade
-* Dificuldade de manutenção e atualização do aplicativo
+
+- Falhas de usabilidade
+- Dificuldade de manutenção e atualização do aplicativo
 
 **Exemplo de Código**```python
+
 # Exemplo de código para criar uma mudança de tema
+
 def criar_mudanca_de_tema(tema):
     # Código para criar a mudança de tema
     pass
 
 # Exemplo de uso
+
 criar_mudanca_de_tema("tema1")
+
 ```**Como Resolver**Para evitar problemas, é importante criar mudanças de tema com aprovação. Aqui estão algumas dicas:* Crie um processo de aprovação claro e documentado
 * Invista em design e usabilidade para garantir que as mudanças de tema sejam consistentes e fáceis de usar
 * Teste as mudanças de tema antes de implementá-las

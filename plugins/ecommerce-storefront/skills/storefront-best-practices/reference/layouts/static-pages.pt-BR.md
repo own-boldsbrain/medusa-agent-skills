@@ -19,6 +19,7 @@ As páginas estáticas fornecem informações essenciais sobre a loja, as polít
 ### Páginas estáticas essenciais
 
 **Obrigatório:**- Política de Privacidade (obrigatório por lei em muitas regiões)
+
 - Termos e Condições
 - Envio e Devoluções
 - Contato**Altamente recomendado:**- Perguntas Frequentes (FAQ)
@@ -27,9 +28,10 @@ As páginas estáticas fornecem informações essenciais sobre a loja, as polít
 
 ## Página de Perguntas Frequentes
 
-### Propósito e Estrutura**Objetivo**: Responder a perguntas comuns dos clientes, reduzir as consultas de suporte, melhorar a confiança na compra.
+### Propósito e Estrutura**Objetivo**: Responder a perguntas comuns dos clientes, reduzir as consultas de suporte, melhorar a confiança na compra
 
 **Categorias de Perguntas Frequentes comuns:**- Pedido e Pagamento
+
 - Envio e Entrega
 - Devoluções e Trocas
 - Informações do Produto
@@ -50,6 +52,7 @@ Shipping and Delivery
 
 ▸ How long does shipping take?
 ▸ Do you ship internationally?
+
 ```**Alternativa: Todas Expandidas**Todas as perguntas e respostas visíveis. Melhor para poucas perguntas (<10), bom para SEO (todo o conteúdo visível), fácil de pesquisar com Ctrl+F.
 
 ### Funcionalidade de Busca**Pesquisa de perguntas frequentes**(para extensas FAQs):
@@ -103,6 +106,7 @@ Free Shipping   | Free      | Orders over $50
 ```
 
 ### Devoluções e Trocas**Informações importantes:**- Período de devolução (por exemplo, 30 dias)
+
 - Retornar condições (não utilizadas, tags anexadas, etc.)
 - Método de reembolso (pagamento original, crédito na loja)
 - Custo de envio de volta
@@ -121,6 +125,7 @@ How to Return an Item
 
 4. Receive Refund
    Refunds processed within 5-7 business days
+
 ```
 
 ## Política de Privacidade e Termos

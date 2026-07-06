@@ -20,6 +20,7 @@
 ## Quando Usar Cada Padrão
 
 **Use DataTable quando:**- Exibir potencialmente muitos registros (>5-10 itens)
+
 - Os usuários precisam buscar, filtrar ou paginar
 - Ações em lote são necessárias (selecionar múltiplos, excluir, etc.)
 - Exibir em uma visão de lista principal**Use componentes de lista simples quando:**- Exibir poucos registros (<5-10 itens)
@@ -27,7 +28,7 @@
 - Como uma prévia ou resumo
 - Quando o espaço é limitado
 
-## Padrão DataTable**⚠️ Usuários pnpm**: Os exemplos de DataTable podem usar `react-router-dom` para navegação. Instale-o ANTES de implementar, se necessário.
+## Padrão DataTable**⚠️ Usuários pnpm**: Os exemplos de DataTable podem usar `react-router-dom` para navegação. Instale-o ANTES de implementar, se necessário
 
 ### Implementação Completa do DataTable
 
@@ -118,7 +119,7 @@ export function ProductTable() {
 }
 ```
 
-### Solução de Problemas do DataTable**"DataTable.Search foi renderizado, mas a busca não está ativada"**Você deve passar a configuração de estado de busca para `useDataTable`:
+### Solução de Problemas do DataTable**"DataTable.Search foi renderizado, mas a busca não está ativada"**Você deve passar a configuração de estado de busca para `useDataTable`
 
 ```tsx
 search: {

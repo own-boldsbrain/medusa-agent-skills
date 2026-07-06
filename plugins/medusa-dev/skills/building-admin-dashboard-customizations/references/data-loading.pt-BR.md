@@ -124,6 +124,7 @@ const response = await fetch(`http://localhost:9000/admin/products/${productId}`
 ### Seleção de Método do SDK
 
 **Para endpoints embutidos do Medusa:**- Use métodos existentes do SDK: `sdk.admin.product.list()`, `sdk.store.product.list()`, etc.
+
 - Fornece segurança de tipo, autocompletar e tratamento adequado de headers.
 - Referência: [Medusa JS SDK Documentation](https://docs.medusajs.com/resources/medusa-js-sdk)**Para rotas de API personalizadas:**- Use `sdk.client.fetch()` para seus endpoints personalizados.
 - O SDK ainda cuida de todos os headers necessários (auth, chaves de API).
@@ -364,12 +365,13 @@ const updateMetadata = useMutation({
 
 ## Problemas e Soluções Comuns
 
-### Erros de Autenticação/Autorização ao buscar dados**Sintomas:**- API retorna 401 Unauthorized ou 403 Forbidden.
+### Erros de Autenticação/Autorização ao buscar dados**Sintomas:**- API retorna 401 Unauthorized ou 403 Forbidden
+
 - Erro "Missing x-publishable-api-key header".
 - Erro "Unauthorized" em rotas admin.**Causa:**Uso de `fetch()` padrão em vez do Medusa JS SDK.**Solução:**```tsx
 // ❌ ERRADO - Headers obrigatórios ausentes
 const { data } = useQuery({
-  queryFn: () => fetch('http://localhost:9000/admin/products').then(r => r.json()),
+  queryFn: () => fetch('<http://localhost:9000/admin/products').then(r> => r.json()),
   queryKey: ["products"]
 })
 
@@ -384,6 +386,7 @@ const { data } = useQuery({
   queryFn: () => sdk.client.fetch('/admin/custom-route'),
   queryKey: ["custom-data"]
 })
+
 ```
 
 ### "Nenhum QueryClient definido, use QueryClientProvider para definir um"

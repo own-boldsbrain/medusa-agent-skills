@@ -7,10 +7,12 @@
   "head_sha": "b89fdcad51664fd989e5b2bfa7d6a3a35993ebb3",
   "origin_main_sha": "9c41f09deaab619bf81ebc4770fbb2029babf42d",
   "branch": "chore/translation-forensic-repair",
-  "updated_at": "2026-07-06T16:27:10Z",
-  "sessions_checked": 5,
+  "updated_at": "2026-07-06T16:31:42Z",
+  "sessions_checked": 6,
   "alerts_emitted": 5,
   "source_mode": "gh_cli_live",
-  "jules_live_status": "NEEDS_ENVIRONMENT",
-  "jules_live_reason": "No valid JULES_API_KEY in .env.local; API returns 401/404. Live session audit blocked until key is provisioned."
+  "jules_live_status": "CONNECTED",
+  "jules_live_reason": "API key validated. Listed 30 sessions. Audited session 6772708384542803924 (COMPLETED) with source_mode=jules_api_live.",
+  "jules_live_session_audited": "sessions/6772708384542803924",
+  "jules_live_activities_count": 1
 }

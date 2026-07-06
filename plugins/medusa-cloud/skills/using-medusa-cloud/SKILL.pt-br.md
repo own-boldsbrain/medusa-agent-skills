@@ -1,45 +1,45 @@
 ---
 name: using-medusa-cloud
-description: Gerencia os recursos do Medusa Cloud através do Cloud CLI (mcloud). Utilize ao implantar, depurar implantações, gerenciar ambientes, variáveis de ambiente ou qualquer operação do Medusa Cloud. CRÍTICO para comandos mcloud, falhas de implantação, logs de build, configuração do Cloud e fluxos de trabalho de CI/CD.
+description: Manages Medusa Cloud resources through the Cloud CLI (mcloud). Use when deploying, debugging deployments, managing environments, environment variables, or any Medusa Cloud operation. CRITICAL for mcloud commands, deployment failures, build logs, Cloud setup, and CI/CD workflows.
 ---
 
-# Gerenciando Recursos do Medusa Cloud
+# Gerenciamento de recursos do Medusa Cloud
 
-Guia operacional para agentes de IA que gerenciam a infraestrutura Medusa Cloud por meio do CLI `mcloud`. Aborda configuração, implantações, depuração, ambientes e variáveis.
+Guia operacional para agentes de IA que gerenciam a infraestrutura do Medusa Cloud por meio da CLI `mcloud`. Aborda configuração, implantações, depuração, ambientes e variáveis.
 
-## # Restrições
+## Restrições
 
-- - *Sempre passe `--json`** ao analisar a saída do CLI. A saída em texto simples é destinada a humanos e pode mudar sem aviso prévio.
-- - *Confirme o contexto antes de mutar.** Execute `mcloud whoami --json` antes de qualquer mudança de estado.
-- - *Leia antes de escrever.** Execute um `get` ou `list` antes de qualquer `delete`, `redeploy` ou `trigger-build`.
-- - *Use `--yes` para operações destrutivas.** Comandos de `delete` requerem `--yes` em modo não interativo.
-- - *Ambientes de produção não podem ser deletados.** `mcloud environments delete` gera erros em produção por design.
-- - *Nunca passe `--reveal` a menos que o usuário peça explicitamente.** Valores secretos aparecem no histórico do terminal e nos logs.
-- - *`--json` e `--follow` são incompatíveis.** Use janelas de tempo limitadas (`--from`/`--to`) com `--json` para ingestão programática de logs.
+- **Sempre passe `--json`** ao analisar a saída da CLI. A saída em texto simples é destinada a humanos e pode sofrer alterações sem aviso prévio.
+- **Confirme o contexto antes de realizar alterações.** Execute `mcloud whoami --json` antes de qualquer alteração de estado.
+- **Leia antes de gravar.** Execute um `get` ou `list` antes de qualquer `delete`, `redeploy` ou `trigger-build`.
+- **Use `--yes` para operações destrutivas.** Os comandos `delete` exigem `--yes` no modo não interativo.
+- **Ambientes de produção não podem ser excluídos.** O comando `mcloud environments delete` gera erro em ambientes de produção por padrão.
+- **Nunca passe o parâmetro `--reveal`, a menos que o usuário solicite explicitamente.** Valores confidenciais aparecem no histórico do terminal e nos logs.
+- **`--json` e `--follow` são incompatíveis.** Use intervalos de tempo delimitados (`--from`/`--to`) com `--json` para a ingestão programática de logs.
 
-## CRÍTICO: Carregar Arquivos de Referência Quando Necessário
+## CRÍTICO: Carregue os arquivos de referência quando necessário
 
-- *Carregue essas referências com base no que você está fazendo:**
+**Carregue essas referências de acordo com o que você estiver fazendo:**
 
-- - *Configurando a CLI?** → DEVE carregar `setup.md` primeiro
-- - *Depurando um deployment falhado?** → DEVE carregar `debugging-deployments.md` primeiro
-- - *Gerenciando ambientes ou variáveis?** → DEVE carregar `environments-and-variables.md` primeiro
+- **Configurando a CLI?** → É OBRIGATÓRIO carregar `setup.md` primeiro
+- **Depurando uma implantação com falha?** → É OBRIGATÓRIO carregar `debugging-deployments.md` primeiro
+- **Gerenciando ambientes ou variáveis?** → É OBRIGATÓRIO carregar `environments-and-variables.md` primeiro
 
-- *Requisito mínimo:** Carregue pelo menos um arquivo de referência antes de executar fluxos de trabalho de múltiplos passos.
+**Requisito mínimo:** Carregue pelo menos um arquivo de referência antes de executar fluxos de trabalho com várias etapas.
 
-## Referência Rápida
+## Referência rápida
 
-### Verificação de Autenticação
+### Verificação de autenticação
 
-Sempre verifique a autenticação e o escopo antes de modificar o estado:
+Sempre verifique a autenticação e o escopo antes de alterar o estado:
 
 ```bash
 mcloud whoami --json | jq -e '.auth.kind != "none" and .organization.id != null'
 ```
 
-Código de saída `0` = autenticado e escopo. Não-zero = pare e pergunte ao usuário.
+Código de saída `0` = autenticado e com escopo definido. Diferente de zero = interrompa e solicite confirmação ao usuário.
 
-### Conjunto de Contexto Uma Vez
+### Defina o contexto uma vez
 
 ```bash
 mcloud use \
@@ -48,34 +48,34 @@ mcloud use \
   --environment production
 ```
 
-> **CRÍTICO:** `mcloud use` sem flags é interativo e falha em CI/Docker/entrada canalizada. Sempre passe flags.
+> **CRÍTICO:** O comando `mcloud use` sem sinalizadores é interativo e falha em CI/Docker/entrada canalizada. Sempre passe os sinalizadores.
 
-### Status de Implantação Roteamento
+### Roteamento por status de implantação
 
-Rota em `backend_status` (ou `storefront_status`):
+Roteamento com base em `backend_status` (ou `storefront_status`):
 
-| # Status | Significado | Registros para verificar |
+| Status | Significado | Logs a serem verificados |
 |--------|---------|---------------|
-| `build-failed` | Etapa de construção falhou. | `mcloud deployments build-logs <id>` |
-| `deployment-failed` | O tempo de execução falhou após a compilação | `mcloud logs --deployment *<id>*` |
-| `tempo-esgotado` | Orçamento de tempo excedido | Ambos: logs de compilação primeiro, depois logs de runtime |
+| `build-failed` | Etapa de compilação falhou | `mcloud deployments build-logs <id>` |
+| `deployment-failed` | Falha no tempo de execução após a compilação | `mcloud logs --deployment <id>` |
+| `timed-out` | Tempo limite excedido | Ambos: primeiro os logs de compilação, depois os de tempo de execução |
 
-### **Decisão de Redeslocamento**
+### Decisão de reimplantação
 
 | Comando | Quando usar |
 |---------|-------------|
-| `mcloud environments redeploy <env>` | Conserto é do lado do ambiente (mudança de variável, infra) — reexecuta build existente |
-| `mcloud environments acionar-compilação <env>` | Correção está no código-fonte na branch rastreada — inicia novo build |
+| `mcloud environments redeploy <env>` | A correção é no ambiente (alteração de variável, infraestrutura) — reexecuta a compilação existente |
+| `mcloud environments trigger-build <env>` | A correção está no código-fonte do branch rastreado — inicia uma nova compilação |
 
-## Principais Armadilhas
+## Armadilhas comuns
 
-- - *Comandos apenas para TTY.** `mcloud login`, `mcloud use` (sem bandeiras) e `delete` sem `--yes` requerem um TTY. Eles falham em CI, Docker ou entrada por pipe.
-- - *`MCLOUD_TOKEN` precedência.** Quando definido, as credenciais baseadas em arquivo são ignoradas e o comando `mcloud login` é rejeitado. Desative-o para alternar contas.
-- - *Acesso pessoal vs chaves de acesso da organização.** Chaves pessoais exigem `--organization`; chaves de acesso da organização estão pré-escopadas.
-- - *`organizations list` requer autenticação pessoal.** As chaves de acesso da organização retornam 401 neste comando.
-- - *IDs de construção vs IDs de implantação.** `depl_*` = ID de implantação; qualquer outra coisa = ID de construção (resolvido para a última implantação). `mcloud logs --deployment` aceita ambos; outros comandos aceitam apenas IDs de construção.
+- **Comandos exclusivos para TTY.** `mcloud login`, `mcloud use` (sem opções) e `delete` sem `--yes` exigem um TTY. Eles falham em CI, Docker ou com entrada por pipeline.
+- **Prioridade de `MCLOUD_TOKEN`.** Quando definido, as credenciais baseadas em arquivo são ignoradas e o `mcloud login` é rejeitado. Desative-o para alternar entre contas.
+- **Chaves de acesso pessoais vs. da organização.** Chaves pessoais exigem `--organization`; as chaves da organização já têm escopo definido.
+- **`organizations list` requer autenticação pessoal.** As chaves de acesso da organização retornam um erro 401 neste comando.
+- **IDs de compilação x IDs de implantação.** `depl_*` = ID de implantação; qualquer outra coisa = ID de compilação (resolvida para a implantação mais recente). O comando `mcloud logs --deployment` aceita ambos; outros comandos aceitam apenas IDs de compilação.
 
-## Arquivos de Referência
+## Arquivos de referência
 
 ```
 setup.md                       - CLI installation, authentication, context setup

@@ -1,124 +1,124 @@
-# Referência de Schema do Design-Log
+# Referência do esquema do Design-Log
 
-Referência completa de campos para entradas do Design-Log do YSH Store. Fonte da verdade: `design-log/schema.json`.
+Referência completa dos campos para as entradas do Design-Log da YSH Store. Fonte oficial: `design-log/schema.json`.
 
 ---
 
-## Campos Obrigatórios
+## Campos obrigatórios
 
-Todas as entradas **devem**incluir estes campos:
+Todas as entradas **devem** incluir estes campos:
 
 | Campo | Tipo | Descrição |
-|-------|------|-----------|
-| `id` | `string` | ID único. Formato: `DL-NNN` (ex.: `DL-001`, `DL-042`) |
-| `title` | `string` | Título descritivo curto. Mín. 5, máx. 120 caracteres |
-| `status` | `enum` | Status do ciclo de vida (veja tabela abaixo) |
-| `date` | `string` | Data ISO 8601 (ex.: `2026-04-09`) |
-| `domain` | `enum` | Domínio principal (veja tabela abaixo) |
-| `impact` | `enum` | Nível de impacto: `baixo` \| `médio` \| `alto` \| `crítico` |
-| `context` | `string` | Contexto: o que está acontecendo, por que esta decisão é necessária agora? Mín. 20 caracteres |
-| `problem` | `string` | Problema ou lacuna específica que precisa ser resolvida. Mín. 10 caracteres |
-| `decision` | `string` | O que foi decidido — seja específico e preciso. Mín. 10 caracteres |
+|-------|------|-------------|
+| `id` | `string` | ID exclusivo. Formato: `DL-NNN` (por exemplo, `DL-001`, `DL-042`) |
+| `title` | `string` | Título descritivo curto. Mínimo de 5, máximo de 120 caracteres |
+| `status` | `enum` | Status do ciclo de vida (veja a tabela abaixo) |
+| `date` | `string` | Data no formato ISO 8601 (por exemplo, `2026-04-09`) |
+| `domínio` | `enum` | Domínio principal (veja a tabela abaixo) |
+| `impacto` | `enum` | Nível de impacto: `baixo` \| `médio` \| `alto` \| `crítico` |
+| `contexto` | `string` | Contexto: o que está acontecendo, por que essa decisão é necessária agora? Mínimo de 20 caracteres |
+| `problema` | `string` | Problema específico ou lacuna que precisa ser resolvida. Mínimo de 10 caracteres |
+| `decisão` | `string` | O que foi decidido — seja específico e preciso. Mínimo de 10 caracteres |
 
 ---
 
-## Campos Opcionais
+## Campos opcionais
 
 | Campo | Tipo | Descrição |
-|-------|------|-----------|
-| `affected_files` | `string[]` | Arquivos ou módulos diretamente impactados |
-| `supersedes` | `string` | ID da entrada que esta substitui (ex.: `DL-002`) |
-| `related` | `string[]` | IDs de entradas relacionadas (ex.: `["DL-001", "DL-003"]`) |
-| `approach` | `string` | Orientação de implementação — quais arquivos, qual sequência |
-| `alternatives_considered` | `object[]` | Cada um: `{ option, reason_rejected }` |
-| `success_criteria` | `string[]` | Prova mensurável de conclusão |
-| `consequences` | `object` | `{ positive: string[], negative: string[] }` |
-| `evidence` | `object` | `{ pr_url, commit_sha, test_output, notes }` — obrigatório quando status = `done` |
-| `agents_rule_derived` | `string` | Nova regra adicionada ao `AGENTS.md` derivada desta entrada |
+|-------|------|-------------|
+| `affected_files` | `string[]` | Arquivos ou módulos diretamente afetados |
+| `supersedes` | `string` | ID da entrada que esta substitui (por exemplo, `DL-002`) |
+| `related` | `string[]` | IDs das entradas relacionadas (por exemplo, `["DL-001", "DL-003"]`) |
+| `abordagem` | `string` | Orientação de implementação — quais arquivos, em que sequência |
+| `alternativas_consideradas` | `object[]` | Cada uma: `{ opção, motivo_da_rejeição }` |
+| `critérios_de_sucesso` | `string[]` | Prova mensurável de conclusão |
+| `consequências` | `object` | `{ positivas: string[], negativas: string[] }` |
+| `evidence` | `object` | `{ pr_url, commit_sha, test_output, notes }` — obrigatório para o status `done` |
+| `agents_rule_derived` | `string` | Nova regra adicionada ao `AGENTS.md`, derivada desta entrada |
 
 ---
 
-## Valores de Status
+## Valores de status
 
 | Status | Significado | Autoridade do agente |
-|--------|------------|----------------------|
-| `draft` | Sendo escrito | Nenhuma |
+|--------|---------|----------------|
+| `draft` | Em fase de redação | Nenhuma |
 | `review` | Aguardando aprovação humana | Nenhuma |
-| `approved` | Aprovado, ainda não iniciado |**VINCULANTE**|
-| `executing` | Sendo implementado ativamente |**VINCULANTE**|
+| `approved` | Aprovado, ainda não iniciado | **VINCULANTE** |
+| `executing` | Em fase de implementação | **VINCULANTE** |
 | `done` | Concluído com evidência | Referência |
-| `rejected` | Não adotado | Ignorar |
-| `superseded` | Substituído por entrada mais nova | Ignorar |
+| `rejeitado` | Não adotado | Ignorar |
+| `substituído` | Substituído por uma entrada mais recente | Ignorar |
 
 ---
 
-## Valores de Domínio
+## Valores de domínio
 
 | Domínio | Escopo |
-|---------|--------|
-| `plataforma` | Stack principal, estrutura do repositório, monorepo, ferramentas |
+|--------|-------|
+| `plataforma` | Pilha principal, estrutura do repositório, monorepo, ferramentas |
 | `catálogo` | Catálogo de produtos, famílias de painéis solares, variantes, preços |
-| `agente` | Regras de agentes de IA, AGENTS.md, skills, plugins |
+| `agente` | Regras do agente de IA, AGENTS.md, habilidades, plug-ins |
 | `stack` | Escolhas tecnológicas (Medusa v2, Next.js 15, pnpm, etc.) |
-| `lifecycle` | Pipeline de deploy, ambientes, CI/CD, branches |
-| `sistema` | Preocupações transversais, módulos compartilhados, padrões de arquitetura |
+| `lifecycle` | Pipeline de implantação, ambientes, CI/CD, ramificações |
+| `sistema` | Questões transversais, módulos compartilhados, padrões de arquitetura |
 | `segurança` | Autenticação, autorização, segredos, permissões |
-| `observabilidade` | Logging, monitoramento, rastreamento, relatório de erros |
-| `ux` | Decisões de UI/UX, design de componentes, fluxos do usuário |
+| `observabilidade` | Registro de logs, monitoramento, rastreamento, relatórios de erros |
+| `ux` | Decisões de UI/UX, design de componentes, fluxos de usuários |
 | `integração` | APIs externas, webhooks, serviços de terceiros |
 | `testes` | Estratégia de testes, Vitest, limites de cobertura, E2E |
 
 ---
 
-## Valores de Impacto
+## Valores de impacto
 
 | Valor | Significado |
-|-------|-------------|
-| `baixo` | Impacto mínimo — mudança localizada |
-| `médio` | Impacto moderado — afeta um módulo ou funcionalidade |
-| `alto` | Alto impacto — afeta múltiplos módulos ou comportamento visível ao usuário |
+|-------|---------|
+| `baixo` | Impacto mínimo — alteração localizada |
+| `médio` | Impacto moderado — afeta um módulo ou recurso |
+| `alto` | Impacto alto — afeta vários módulos ou o comportamento visível ao usuário |
 | `crítico` | Impacto crítico — afeta a arquitetura central ou a estabilidade da plataforma |
 
 ---
 
-## Frontmatter vs Corpo Markdown
+## Frontmatter x Corpo do Markdown
 
-Uma entrada de design-log é um arquivo Markdown. O frontmatter YAML contém os campos estruturados acima. O corpo Markdown**espelha** o frontmatter com seções em prosa legíveis:
+Uma entrada no design-log é um arquivo Markdown. O frontmatter em YAML contém os campos estruturados acima. O corpo do Markdown **reflete** o frontmatter com seções de texto legíveis para humanos:
 
 ```markdown
 ---
 id: DL-NNN
 title: ...
 status: draft
-date: AAAA-MM-DD
+date: YYYY-MM-DD
 domain: plataforma
 impact: médio
 ...
 ---
 
-## Contexto
-[versão em prosa do campo context]
+## Context
+[prose version of context field]
 
-## Problema
-[versão em prosa do campo problem]
+## Problem
+[prose version of problem field]
 
-## Decisão
-[versão em prosa do campo decision]
+## Decision
+[prose version of decision field]
 
-## Abordagem
-[opcional — orientação de implementação]
+## Approach
+[optional — implementation guidance]
 
-## Alternativas Consideradas
-[opcional]
+## Alternatives Considered
+[optional]
 
-## Critérios de Sucesso
-[opcional]
+## Success Criteria
+[optional]
 
-## Consequências
-[opcional]
+## Consequences
+[optional]
 
-## Evidência
-[obrigatório quando status = done]
+## Evidence
+[required when status = done]
 ```
 
-Tanto o frontmatter quanto as seções Markdown devem ser mantidos sincronizados.
+Tanto as páginas preliminares quanto as seções em Markdown devem ser mantidas em sincronia.

@@ -30,19 +30,19 @@ Use este plugin para criar recursos de front-end para lojas virtuais, incluindo 
 claude
 ```
 
-2. Adicione o Medusa Marketplace ao código do Claude:
+1. Adicione o Medusa Marketplace ao código do Claude:
 
 ```bash
 /plugin marketplace add medusajs/medusa-agent-skills
 ```
 
-3. Instale o plugin:
+1. Instale o plugin:
 
 ```bash
 /plugin install ecommerce-storefront@medusa
 ```
 
-4. Verifique se o plugin foi carregado:
+1. Verifique se o plugin foi carregado:
 
 ```bash
 /plugin

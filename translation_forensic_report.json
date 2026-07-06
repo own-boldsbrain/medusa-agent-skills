@@ -1,0 +1,301 @@
+{
+  "summary": {
+    "total_pairs": 69,
+    "passed": 18,
+    "needs_review": 9,
+    "failed": 42,
+    "error": 0
+  },
+  "issue_file_count": {
+    "markdown_violations": 40,
+    "heading_count_mismatch": 36,
+    "list_count_drop": 14,
+    "low_line_ratio": 5,
+    "code_block_mismatch": 33,
+    "toc_anchor_mismatch": 15,
+    "conversational_filler_detected": 1,
+    "english_residual_detected": 15,
+    "truncated_target": 2,
+    "heading_level_mismatch": 3
+  },
+  "issue_occurrence_count": {
+    "markdown_violations": 40,
+    "heading_count_mismatch": 36,
+    "list_count_drop": 14,
+    "low_line_ratio": 5,
+    "code_block_mismatch": 33,
+    "toc_anchor_mismatch": 73,
+    "english_residual_detected": 15,
+    "conversational_filler_detected": 1,
+    "truncated_target": 2,
+    "heading_level_mismatch": 5
+  },
+  "top_20_risk": [
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "repair_by_script",
+      "issues": [
+        "heading_count_mismatch",
+        "markdown_violations"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\connecting-to-backend.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "toc_anchor_mismatch",
+        "conversational_filler_detected",
+        "english_residual_detected",
+        "markdown_violations",
+        "code_block_mismatch",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\design.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\design.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "toc_anchor_mismatch",
+        "english_residual_detected",
+        "markdown_violations",
+        "code_block_mismatch",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\mobile-responsiveness.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\mobile-responsiveness.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\seo.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\seo.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "toc_anchor_mismatch",
+        "english_residual_detected",
+        "markdown_violations",
+        "code_block_mismatch",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\breadcrumbs.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\breadcrumbs.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 100,
+      "action": "repair_by_script",
+      "issues": [
+        "markdown_violations",
+        "low_line_ratio",
+        "list_count_drop"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\country-selector.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\country-selector.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "toc_anchor_mismatch",
+        "english_residual_detected",
+        "markdown_violations",
+        "code_block_mismatch",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\navbar.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\navbar.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "toc_anchor_mismatch",
+        "english_residual_detected",
+        "markdown_violations",
+        "code_block_mismatch",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\popups.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\popups.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-card.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-card.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "toc_anchor_mismatch",
+        "english_residual_detected",
+        "markdown_violations",
+        "code_block_mismatch",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-reviews.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-reviews.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "repair_by_script",
+      "issues": [
+        "heading_count_mismatch",
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-slider.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\product-slider.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "toc_anchor_mismatch",
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\promotions.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\promotions.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "toc_anchor_mismatch",
+        "english_residual_detected",
+        "markdown_violations",
+        "code_block_mismatch",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\wishlist.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\features\\wishlist.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "toc_anchor_mismatch",
+        "english_residual_detected",
+        "markdown_violations",
+        "code_block_mismatch",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\static-pages.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\layouts\\static-pages.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "toc_anchor_mismatch",
+        "low_line_ratio",
+        "list_count_drop",
+        "english_residual_detected",
+        "markdown_violations",
+        "code_block_mismatch",
+        "heading_count_mismatch"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-auth\\SKILL.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-auth\\SKILL.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations",
+        "list_count_drop"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-deployments\\SKILL.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-deployments\\SKILL.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-environments\\SKILL.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-environments\\SKILL.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations"
+      ]
+    },
+    {
+      "source": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-logs\\SKILL.md",
+      "target": "c:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\mcloud-logs\\SKILL.pt-br.md",
+      "status": "failed",
+      "risk_score": 100,
+      "action": "retranslate_from_source",
+      "issues": [
+        "code_block_mismatch",
+        "heading_count_mismatch",
+        "markdown_violations"
+      ]
+    }
+  ],
+  "generated_files": {
+    "json": "translation_forensic_report.json",
+    "markdown": "translation_forensic_report.md",
+    "queue": "translation_repair_queue.json"
+  }
+}

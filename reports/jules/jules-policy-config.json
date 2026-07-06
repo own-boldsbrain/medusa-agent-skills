@@ -17,5 +17,33 @@
   ],
   "repos": [
     "own-boldsbrain/medusa-agent-skills"
-  ]
+  ],
+  "prompt_engineering_spikes": {
+    "enabled": true,
+    "strategy": "spike_controlled_sessions",
+    "spike_types": [
+      "research",
+      "audit",
+      "design",
+      "repair_plan",
+      "implementation_plan",
+      "validation"
+    ],
+    "required_fields": [
+      "objective",
+      "hypothesis",
+      "scope",
+      "out_of_scope",
+      "reference_urls",
+      "expected_artifacts",
+      "risks",
+      "acceptance_criteria",
+      "required_evidence",
+      "next_action_recommended"
+    ],
+    "validation_rules": {
+      "state_limit_for_research_or_plan": "GERADO",
+      "test_fixture_validation": "forbidden_as_live_evidence"
+    }
+  }
 }

@@ -288,6 +288,9 @@ def validate_translation(source_file: str, target_file: str) -> ValidationReport
         severity = "P0" if any(hit.type in {"broken_heading", "broken_anchor_link", "codeblock_inside_table"} for hit in markdown_hits) else "P1"
         issues.append(ValidationIssue(severity=severity, type="markdown_violations", message=f"{len(markdown_hits)} Markdown violations.", hits=markdown_hits[:30]))
 
+    if not target_file.endswith(".pt-br.md"):
+        issues.append(ValidationIssue(severity="P1", type="invalid_suffix", message=f"Target file must end with strictly '.pt-br.md' (found {Path(target_file).suffix} or mixed case)."))
+
     has_p0 = any(issue.severity == "P0" for issue in issues)
     has_p1 = any(issue.severity == "P1" for issue in issues)
 

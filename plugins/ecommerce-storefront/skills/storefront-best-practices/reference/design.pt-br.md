@@ -34,13 +34,8 @@ Antes de implementar qualquer componente, identifique as cores, a tipografia e o
 
 1. **Configuração do Tailwind** — Verifique `theme.extend.fontFamily`
 2. **Importações de fontes** — Verifique nos arquivos de layout ou no CSS (Next.js `next/font`, Google Fonts, fontes locais)
-3. **Variáveis CSS**
-
-- Verifique se há `--font-sans`, `--font-heading`
-
-1. **Componentes existentes**
-
-- Identifique os padrões de uso de fontes
+3. **Variáveis CSS** - Verifique se há `--font-sans`, `--font-heading`
+4. **Componentes existentes** - Identifique os padrões de uso de fontes
 
 **Outros padrões:**
 
@@ -126,7 +121,7 @@ Faça um inventário mental de:
 </button>
 ```
 
-✅ **USE as definições de fonte existentes**, e não novas famílias de fontes
+✅ **USE as definições de fonte existentes**, não novas famílias de fontes
 
 ```tsx
 // ✅ CORRECT - Using theme font
@@ -325,9 +320,9 @@ export default {
 
 ## Erros comuns
 
-### ❌ Usar valores arbitrários quando já existe um tema
+### ❌ Usar valores arbitrários quando o tema já existe
 
-**Problema:** Usar `bg-[#3B82F6]` quando já existe `bg-primary`.
+**Problema:** Usar `bg-[#3B82F6]` quando `bg-primary` já existe.
 
 **Por que isso está errado:** Ignora o tema, cria inconsistências e dificulta a manutenção.
 
@@ -369,7 +364,7 @@ export default {
 
 **Problema:** Usar a sintaxe do Tailwind v3 em um projeto v4, ou vice-versa.
 
-**Por que isso está errado:** Versões diferentes têm padrões de configuração e sintaxe distintos. Misturá-las causa erros de compilação e comportamentos inesperados no estilo.
+**Por que está errado:** Versões diferentes têm padrões de configuração e sintaxe distintos. Misturá-las causa erros de compilação e comportamentos inesperados no estilo.
 
 **Solução:** Verifique primeiro a versão do Tailwind no `package.json`. Analise os componentes existentes para entender os padrões de sintaxe usados no projeto. Adote os padrões específicos de cada versão de maneira consistente.
 

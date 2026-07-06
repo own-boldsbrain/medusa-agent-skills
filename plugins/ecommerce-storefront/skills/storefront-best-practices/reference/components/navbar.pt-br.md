@@ -1,25 +1,25 @@
-# Componente Navbar
+# Componente da barra de navegação
 
-## Conteúdos
+## Índice
 
-- [Visão geral](#visão-geral)
-- [Decisão: Dropdown Simples vs Megamenu](#decisão-simple-dropdown-vs-megamenu)
-- [Principais Padrões de E-commerce](#principais-padroes-de-e-commerce)
-- [Estrutura de Layout](#layout-structure)
-- [Essenciais de Acessibilidade](#essenciais-de-acessibilidade)
-- [Erros Comuns em E-commerce](#erros-comuns-em-e-commerce)
-- [Integração com o Backend](#integração-com-o-backend)
-- [Lista de Verificação](#checklist)
+- [Visão geral](#visao-geral)
+- [Decisão: menu suspenso simples x megamenu](#decisao-menu-suspenso-simples-x-megamenu)
+- [Principais padrões de comércio eletrônico](#padroes-chave-de-comercio-eletronico)
+- [Estrutura do layout](#estrutura-do-layout)
+- [Noções básicas de acessibilidade](#fundamentos-de-acessibilidade)
+- [Erros comuns no comércio eletrônico](#erros-comuns-no-comercio-eletronico)
+- [Integração com o backend](#integracao-com-o-backend)
+- [Lista de verificação](#lista-de-verificacao)
 
 ## Visão geral
 
-Navegação principal para lojas virtuais. Desktop: menu horizontal com links de categorias. Mobile: gaveta do hambúrguer com subcategorias em acordeão.
+Navegação principal para lojas virtuais. Computador: menu horizontal com links de categorias. Celular: menu tipo “hambúrguer” com subcategorias em formato de acordeão.
 
-### ⚠️ CRÍTICO: NUNCA Hardcode Categorias
+### ⚠️ CRÍTICO: NUNCA defina categorias estaticamente
 
-**ALWAYS fetch categories dynamically from the backend. NEVER hardcode static category arrays.**
+**SEMPRE recupere as categorias dinamicamente do backend. NUNCA defina matrizes de categorias estáticas.**
 
-❌ **WRONG - DO NOT DO THIS:**
+❌ **ERRADO – NÃO FAÇA ISSO:**
 
 ```typescript
 // WRONG - Static hardcoded categories
@@ -30,7 +30,7 @@ const categories = [
 ]
 ```
 
-✅ **CORRECT - Fetch from backend:**
+✅ **CORRETO – Obter do backend:**
 
 ```typescript
 // CORRECT - Fetch categories dynamically
@@ -43,94 +43,94 @@ useEffect(() => {
 }, [])
 ```
 
-**Why this matters:**
+**Por que isso é importante:**
 
-- As categorias mudam frequentemente (novas categorias, renomeadas, reordenadas)
-- Categorias codificadas tornam-se desatualizadas imediatamente
-- Requires code changes every time categories change
+- As categorias mudam com frequência (novas categorias, renomeações, reordenações)
+- Categorias codificadas manualmente ficam desatualizadas imediatamente
+- Exige alterações no código sempre que as categorias mudam
 - Não é possível escalar para lojas com catálogos dinâmicos
-- Defeats the purpose of headless commerce
+- Contraria o objetivo do comércio headless
 
-### Requisitos Principais
+### Requisitos principais
 
-- Desktop: Horizontal category links, cart/account/search right-aligned
-- Mobile: Hamburger drawer, cart stays visible in header (not hidden in drawer)
-- **CRÍTICO: Buscar categorias do back-end dinamicamente (NUNCA codificar matrizes estáticas)**
-- Fixo: Recomendado para fácil acesso ao carrinho enquanto navega
-- Real-time updates: Cart count, login state, category changes
+- Desktop: links de categorias horizontais, carrinho/conta/busca alinhados à direita
+- Celular: menu tipo “hambúrguer”, o carrinho permanece visível no cabeçalho (não fica oculto no menu)
+- **CRÍTICO: Buscar categorias do backend dinamicamente (NUNCA codificar matrizes estáticas)**
+- Fixo: Recomendado para facilitar o acesso ao carrinho durante a navegação
+- Atualizações em tempo real: número de itens no carrinho, status de login, mudanças de categoria
 
-## Decisão: Dropdown Simples vs Megamenu
+## Decisão: Menu suspenso simples x Megamenu
 
-**Use Dropdown Simples quando:**
+**Use o menu suspenso simples quando:**
 
-- <10 top-level categories
-- Hierarquia plana ou rasa (1-2 níveis de profundidade)
-- Minimal subcategories per parent
+- <10 categorias de nível superior
+- Hierarquia plana ou superficial (1 a 2 níveis de profundidade)
+- Número mínimo de subcategorias por categoria principal
 - Catálogo de produtos focado/especializado
 
-**Use Megamenu when:**
+**Use o megamenu quando:**
 
-- 10+ top-level categories
-- Hierarquia profunda (3+ níveis)
-- Precisa exibir produtos em destaque na navegação
+- Mais de 10 categorias de nível superior
+- Hierarquia profunda (3 ou mais níveis)
+- Necessidade de destacar produtos em destaque na navegação
 - Catálogo de produtos complexo
-- Moda, eletrônicos ou grande estoque
+- Moda, eletrônicos ou estoque extenso
 
-**Mobile**: Always use drawer with accordion pattern, never megamenu on mobile.
+**Dispositivos móveis**: Sempre use a gaveta com padrão de acordeão; nunca use o megamenu em dispositivos móveis.
 
-See [megamenu.md](megamenu.md) for megamenu implementation details.
+Consulte [megamenu.md](megamenu.md) para obter detalhes sobre a implementação do megamenu.
 
-## Principais Padrões de Ecommerce
+## Padrões-chave de comércio eletrônico
 
-### Indicador de Carrinho (CRÍTICO)
+### Indicador do carrinho (CRÍTICO)
 
 **Sempre visível tanto no desktop quanto no celular:**
 
-- Área de trabalho: Canto superior direito, ícone do carrinho + badge de contagem
-- Mobile: No canto superior direito do cabeçalho (NÃO escondido no menu hambúrguer)
-- This is non-negotiable - users expect cart always accessible
+- Desktop: canto superior direito, ícone do carrinho + emblema com a contagem
+- Celular: canto superior direito no cabeçalho (NÃO oculto na gaveta tipo “hambúrguer”)
+- Isso é imprescindível — os usuários esperam que o carrinho esteja sempre acessível
 
-**Badge display:**
+**Exibição do emblema:**
 
-- Mostra o número de itens (NÃO preço - confuso quando as variantes mudam)
-- Only visible when cart has items (count > 0)
-- Mostrar a contagem real até 99, depois "99+"
-- Position: Top-right corner of cart icon
-- Etiqueta ARIA: `aria-label="Carrinho de compras com 3 itens"`
+- Mostra a contagem de itens (NÃO o preço — isso gera confusão quando as variantes mudam)
+- Visível apenas quando o carrinho contiver itens (contagem > 0)
+- Mostrar a contagem real até 99; depois, “99+”
+- Posição: canto superior direito do ícone do carrinho
+- Rótulo ARIA: `aria-label="Carrinho de compras com 3 itens"`
 
 **Atualizações em tempo real:**
 
-- Atualize a contagem imediatamente ao adicionar itens (UI otimista)
-- Nenhuma atualização de página necessária
+- Atualizar a contagem imediatamente quando itens forem adicionados (IU otimista)
+- Não é necessária atualização da página
 - Sincronizar com o estado do carrinho no backend
-- Handle errors gracefully (restore count if add fails)
+- Lidar com erros de maneira adequada (restaurar a contagem se a adição falhar)
 
-**Comportamento do clique:**
+**Comportamento ao clicar:**
 
-- Opção 1: Navegue para a página de carrinho
-- Opção 2: Abrir popup/gaveta do carrinho (ver cart-popup.md)
-- A escolha depende do tipo de loja (consulte cart-popup.md para os critérios de decisão)
+- Opção 1: Navegar para a página do carrinho
+- Opção 2: Abrir o pop-up/menu deslizante do carrinho (consulte cart-popup.md)
+- A escolha depende do tipo de loja (consulte cart-popup.md para critérios de decisão)
 
 ✅ **CORRETO:**
 
-- Ícone do carrinho visível no cabeçalho móvel
-- Badrão mostra contagem (não preço)
-- Atualizações em tempo real sem recarregar a página
-- Alvo de toque 44x44px
-- Links para o carrinho ou abre popup do carrinho
+- Ícone do carrinho visível no cabeçalho da versão móvel
+- O selo mostra a quantidade (não o preço)
+- Atualizações em tempo real sem atualização da página
+- Área de toque de 44x44px
+- Links para o carrinho ou que abrem o pop-up do carrinho
 
-❌ **ERRADO:**
+❌ **INCORRETO:**
 
-- Escondendo o carrinho na gaveta do menu hambúrguer (os usuários não conseguem encontrá-lo)
-- Mostrando preço em badge (€25,99) em vez de quantidade.
-- Contagem do carrinho não atualiza até a atualização da página
-- Sem feedback visual quando itens são adicionados
+- Ocultar o carrinho no menu “hambúrguer” da versão móvel (os usuários não conseguem encontrá-lo)
+- Exibição do preço no ícone (€25,99) em vez da quantidade
+- A quantidade no carrinho não é atualizada até que a página seja recarregada
+- Ausência de feedback visual quando itens são adicionados
 
-### Navegação por Categoria
+### Navegação por categoria
 
-**CRÍTICO: Buscar dinamicamente do backend (NUNCA codificar manualmente):**
+**CRÍTICO: Buscar dinamicamente do backend (NUNCA codificar estaticamente):**
 
-❌ **ERRADO - Estas são todas abordagens incorretas:**
+❌ **ERRADO – Todas essas são abordagens incorretas:**
 
 ```typescript
 // WRONG - Hardcoded array
@@ -146,331 +146,297 @@ const categories = [
 import { categories } from "./categories.ts"
 ```
 
-✅ **CORRETO - Fetch de API de backend:**
+✅ **CORRETO - Obter da API do backend:**
 
-- Medusa: Use o método da lista de categorias do SDK (verifique o método exato com docs/MCP)
-- Outros back-ends: Chamada do endpoint de categorias (ver documentação da API)
-- Obter no mount do componente ou durante a renderização do lado do servidor
+- Medusa: Use o método de lista de categorias do SDK (verifique o método exato na documentação/MCP)
+- Outros backends: Chame o endpoint de categorias (consulte a documentação da API)
+- Busca na montagem do componente ou durante a renderização no lado do servidor
 
-**Por que é necessário o carregamento dinâmico:**
+**Por que a busca dinâmica é obrigatória:**
 
-- Proprietários de lojas adicionam/removem/renominam categorias frequentemente
-- Alterações na ordem e hierarquia de categorias
+- Os proprietários das lojas adicionam, removem ou renomeiam categorias com frequência
+- A ordem e a hierarquia das categorias mudam
 - Lojas multilíngues precisam de nomes de categorias traduzidos
-- Categorias em destaque rotativas (sazonais, promoções)
-- Valores hardcoded exigem intervenção do desenvolvedor para mudanças simples
+- As categorias em destaque mudam periodicamente (sazonais, promoções)
+- Valores codificados exigem intervenção do desenvolvedor para alterações simples
 
-**Estratégia de cache:**
+**Estratégia de armazenamento em cache:**
 
-- Categorias de cache (revalidar em intervalo ou gatilho manual)
-- Use SWR, TanStack Query, ou cacheamento de nível do framework
-- Revalidar a cada 5-10 minutos ou ao navegar pela página
-- Atualize imediatamente quando as categorias do backend mudarem
+- Armazenar categorias em cache (revalidar em intervalos ou por acionamento manual)
+- Usar SWR, TanStack Query ou armazenamento em cache no nível do framework
+- Revalidar a cada 5-10 minutos ou ao navegar entre páginas
+- Atualizar imediatamente quando as categorias do backend forem alteradas
 
 **Organização:**
 
-- 4-7 categorias de nível superior ideais (máximo 10 no desktop)
-- A ordem vem do backend (respeita a ordenação do administrador)
-- Mantenha "Venda" ou "Novas chegadas" em destaque se o backend fornecer
-- Máximo 2 níveis em dropdown simples (categoria → subcategoria)
-- Hierarquias mais profundas: Use megamenu ou páginas de categorias separadas
+- O ideal é ter de 4 a 7 categorias de nível superior (máximo de 10 no desktop)
+- A ordem é definida pelo backend (respeita a ordem definida pelo administrador)
+- Mantenha “Promoções” ou “Novidades” em destaque, se o back-end fornecer essas opções
+- Máximo de 2 níveis no menu suspenso simples (categoria → subcategoria)
+- Hierarquias mais profundas: use megamenu ou páginas de categorias separadas
 
-**Comportamento do Desktop:**
+**Comportamento no desktop:**
 
-- Links horizontais com menus suspensos ao passar o mouse para subcategorias
-- Pequeno atraso ao passar o cursor para evitar acionamentos acidentais
-- Clique no pai para navegar para a página de categoria
-- Clique em criança para navegar para a subcategoria
+- Links horizontais com menus suspensos ao passar o mouse para as subcategorias
+- Ligeiro atraso ao passar o cursor para evitar acionamentos acidentais
+- Clique no item pai para navegar até a página da categoria
+- Clique no item filho para navegar até a subcategoria
 
-**Comportamento móvel:**
+**Comportamento no celular:**
 
-- Todas as categorias na gaveta de hambúrguer
-- Padrão de acordeão para subcategorias (expandir/colapsar)
-- Feche a gaveta ao clicar na categoria (exceto no acordeão expansível)
-- Deslizante de rolagem se as categorias excederem a altura da viewport
+- Todas as categorias na barra de navegação tipo “hambúrguer”
+- Padrão de acordeão para subcategorias (expandir/recolher)
+- Fechar a barra de navegação ao clicar na categoria (exceto ao expandir o acordeão)
+- Barra de navegação rolável se as categorias excederem a altura da janela de visualização
 
 ✅ **CORRETO:**
 
-- Categorias recuperadas da API backend no mount
+- Categorias buscadas da API de back-end na montagem
 - Cache com estratégia de revalidação
-- Respeita a ordem e hierarquia do backend
-- 4-7 itens de nível superior no desktop (com base no que o backend retorna)
-- Cabeçalho móvel para subcategorias
-- Ordenação consistente entre dispositivos
+- Respeita a ordem e a hierarquia do back-end
+- 4 a 7 itens de nível superior na versão para desktop (com base no que o backend retorna)
+- Acordeão para subcategorias na versão móvel
+- Ordenação consistente em todos os dispositivos
 
 ❌ **ERRADO:**
 
-- Categorias de array fixas no componente (NUNCA FAÇA ISSO)
-- Categorias estáticas importadas de arquivo (NUNCA FAÇA ISSO)
-- No cache invalidation (stale categories)
-- Muitos itens de nível superior (>10, deslumbrante)
-- Ordem de categoria diferente no desktop vs móvel
-- Categorias não atualizam quando as alterações são feitas no backend
+- Matriz de categorias codificada diretamente no componente (NUNCA FAÇA ISSO)
+- Categorias estáticas importadas de um arquivo (NUNCA FAÇA ISSO)
+- Ausência de invalidação do cache (categorias desatualizadas)
+- Excesso de itens de nível superior (>10, excessivo)
+- Ordem diferente das categorias no desktop e no celular
+- As categorias não são atualizadas quando o backend é alterado
 
-### Problema
+### Indicador de conta do usuário
 
-Categories don't update when backend changes
+**Dois estados com base na autenticação:**
 
-### Causas
+**Fora da conta:**
 
-- Alterações feitas no backend não estão sendo refletidas nas categorias
-- Falta de sincronização entre o backend e as categorias
+- Computador: texto “Entrar” ou “Faça login” + ícone do usuário
+- Celular: apenas o ícone do usuário
+- Ao clicar, o usuário é direcionado para a página de login
+- Chamada à ação clara
 
-### Exemplo
+**Dentro da conta:**
 
-```python
-# Código do backend que não está atualizando as categorias
-def alterar_categoria(id_categoria, novo_nome):
-    # Código que atualiza a categoria no backend
-    pass
-
-# Código que não está atualizando as categorias
-def atualizar_categorias():
-    # Código que deve chamar a função alterar_categoria
-    pass
-```
-
-### Solução
-
-1. Verifique se o backend está atualizando as categorias corretamente
-2. Verifique se há alguma configuração ou problema de sincronização entre o backend e as categorias
-3. Implemente um mecanismo de sincronização entre o backend e as categorias
-
-### Recursos
-
-- [Documentação do backend](https://example.com/backend-documentation)
-- [Ferramenta de sincronização](https://example.com/sync-tool)
-
-### User Account Indicator
-
-**Dois estados baseados na autenticação:**
-
-**Sessão encerrada:**
-
-- Área de trabalho: texto "Entrar" ou "Fazer Login" + ícone de usuário
-- Mobile: User icon only
-- Clique navega para a página de login
-- Clear call-to-action
-
-**Conectado:**
-
-- Desktop: User name, initials, or email + dropdown
-- Mobile: User name/initials or icon → account page
-- Menu suspenso (desktop): Minha Conta, Pedidos, Lista de Desejos, Sair
-- Buscar usuário atual do estado de autenticação do backend
+- Computador: nome de usuário, iniciais ou e-mail + menu suspenso
+- Celular: nome de usuário/iniciais ou ícone → página da conta
+- Menu suspenso (computador): Minha conta, Pedidos, Lista de desejos, Sair
+- Obter o usuário atual a partir do estado de autenticação do backend
 
 **Gerenciamento do estado de autenticação:**
 
-- Verifique o estado de autenticação no backend (não apenas no localStorage)
-- Atualize imediatamente em eventos de login/logout
-- Lidar com a expiração da sessão de forma graciosa
-- Sincronize entre abas se possível
+- Verificar o estado de autenticação no backend (não apenas no localStorage)
+- Atualizar imediatamente nos eventos de login/logout
+- Lidar com a expiração da sessão de maneira adequada
+- Sincronizar entre abas, se possível
 
 ✅ **CORRETO:**
 
-- Exibe "Entrar" quando estiver desconectado
-- Shows user identifier when logged in
-- Dropdown com ações da conta
-- Verifica o estado de autenticação do backend (não apenas o estado do cliente)
+- Exibe “Entrar” quando o usuário está desconectado
+- Exibe o identificador do usuário quando ele está conectado
+- Menu suspenso com ações da conta
+- Verifica o estado de autenticação no backend (não apenas no cliente)
 
-❌ **ERRADO:**
+❌ **INCORRETO:**
 
-- Não há indicação de estado de login
-- Depende apenas do localStorage (pode estar desatualizado)
-- Nenhum menu suspenso para ações da conta ao fazer login
-- Opção de logout ausente
+- Nenhuma indicação do estado de login
+- Depende exclusivamente do localStorage (pode estar desatualizado)
+- Não há menu suspenso para ações da conta quando o usuário está conectado
+- Falta a opção de logout
 
-### Navegação Móvel (Mobile Navigation Pattern)
+### Padrão de navegação em dispositivos móveis
 
-**Gaveta de hambúrgueres:**
+**Menu “hambúrguer”:**
 
-- Acionador: Ícone de hambúrguer (canto superior esquerdo)
-- Gaveta: Slides da esquerda, 80-85% de largura, altura total, rolagem possível.
-- Plano de fundo: sobreposição semi-transparente, clique para fechar.
-- Conteúdo: Todas as categorias com subcategorias em acordeão
+- Acionador: ícone de hambúrguer (canto superior esquerdo)
+- Gaveta: Desliza da esquerda, 80-85% da largura, altura total, com rolagem
+- Fundo: Sobreposição semitransparente, clicar para fechar
+- Conteúdo: Todas as categorias com subcategorias em formato de acordeão
 
-**CRÍTICO: Mantenha o carrinho no cabeçalho:**
+**CRÍTICO: Manter o carrinho no cabeçalho:**
 
-- Ícone do carrinho permanece no cabeçalho mobile (topo-direita)
-- Não esconda o carrinho dentro da gaveta
+- O ícone do carrinho permanece no cabeçalho da versão móvel (canto superior direito)
+- Não oculte o carrinho dentro da gaveta
 - Os usuários esperam que o carrinho esteja sempre acessível
-- Mesmo para o ícone de pesquisa se estiver usando apenas o ícone de pesquisa
+- O mesmo vale para o ícone de busca, caso seja utilizada a busca apenas por ícone
 
-**Conta em gaveta:**
+**Conta na gaveta:**
 
-- Desconectado: link "**Entrar**" no cabeçalho da gaveta ou no topo do menu
-- Entrou: Nome de usuário/iniciais no cabeçalho da gaveta com link para a conta
+- Sem login: link “Entrar” no cabeçalho da gaveta ou na parte superior do menu
+- Com login: nome de usuário/iniciais no cabeçalho da gaveta com link para a conta
 
-**Comportamento de fechamento:**
+**Comportamento ao fechar:**
 
-- Botão de fechar (X) no cabeçalho do painel
-- Clique no fundo sobreposto
-- Navegue até a categoria (a gaveta fecha)
-- Tecla de escape
+- Botão Fechar (X) no cabeçalho da gaveta
+- Clique na sobreposição de fundo
+- Navegar para uma categoria (a gaveta fecha)
+- Tecla Escape
 
 ✅ **CORRETO:**
 
-- Carrinho fica no cabeçalho móvel (visível)
-- Hambúrguer abre gaveta da esquerda
-- Sobreposição de fundo escurece o plano de fundo
-- Feche na navegação ou clique no fundo.
-- Scrollable drawer para menus longos
+- O carrinho permanece no cabeçalho da versão móvel (visível)
+- O ícone de hambúrguer abre a gaveta pela esquerda
+- A sobreposição de fundo escurece o plano de fundo
+- Fechamento ao navegar ou ao clicar no fundo
+- Gaveta rolável para menus longos
 
 ❌ **ERRADO:**
 
-- Carrinho escondido dentro do menu hambúrguer (pecado capital)
-- Full-screen drawer (no backdrop)
-- A gaveta não fecha na navegação
-- Não rolável (categorias cortadas)
+- Carrinho oculto dentro da gaveta do ícone de hambúrguer (erro grave)
+- Gaveta em tela cheia (sem fundo)
+- A gaveta não fecha ao navegar
+- Não é rolável (categorias cortadas)
 
-### Navegação Inferior (Alternativa para Mobile)
+### Navegação inferior (alternativa para dispositivos móveis)
 
 **Quando usar:**
 
-- Loja tem 3-5 seções principais (Início, Navegar, Carrinho, Conta, Busca)
-- Experiência similar a de um aplicativo desejada
-- Seção de alternância frequente
-- Não adequado para hierarquias de categorias complexas
+- A loja possui de 3 a 5 seções principais (Página inicial, Navegar, Carrinho, Conta, Pesquisar)
+- Deseja-se uma experiência semelhante à de um aplicativo
+- Alternância frequente entre seções
+- Não é adequado para hierarquias complexas de categorias
 
 **Padrão:**
 
-- Barra fixa na parte inferior da tela (somente para mobile)
+- Barra fixa na parte inferior da tela (somente em dispositivos móveis)
 - Ícone + rótulo para cada seção
-- Seção ativa em destaque
-- 5 itens no máximo
+- Destaque a seção ativa
+- Máximo de 5 itens
 - Navegação direta, sem menus suspensos
 
-## Estrutura de Layout
+## Estrutura do layout
 
 **Desktop:**
 
-- Esquerda: Logo → Página Inicial
-- Centro: Links de Categorias (horizontal)
-- Certo: Pesquisar, Conta, Carrinho
+- Esquerda: Logotipo → Página inicial
+- Centro: Links de categorias (horizontais)
+- Direita: Pesquisa, Conta, Carrinho
 
-**Celular:**
+**Dispositivos móveis:**
 
-- Esquerda: Hambúrguer
-- Centro: Logo
-- Certo: Carrinho (+ ícone de Pesquisa opcional)
+- Esquerda: Ícone de hambúrguer
+- Centro: Logotipo
+- Direita: Carrinho (+ ícone de pesquisa opcional)
 
-**Recomendado fixo:**
+**Recomenda-se usar o efeito “sticky”:**
 
-- Mantém o carrinho/conta acessível enquanto rola a página
+- Mantém o carrinho e a conta acessíveis durante a rolagem
 - Use `position: sticky` ou `position: fixed`
-- Cor de fundo sólida (ocultar conteúdo de rolagem)
-- Adequate z-index to stay above content
+- Cor de fundo sólida (oculta o conteúdo que rola)
+- z-index adequado para permanecer acima do conteúdo
 
-## Acessibilidade Essenciais
+## Fundamentos de acessibilidade
 
-**Ecommerce específico ARIA:**
+**ARIA específico para comércio eletrônico:**
 
-- Contagem do carrinho: `aria-live="polite"` para anunciar alterações (ex., "3 itens no carrinho")
-- Gaveta móvel: `role="dialog"`, `aria-modal="true"`
+- Contagem do carrinho: `aria-live="polite"` para anunciar alterações (por exemplo, “3 itens no carrinho”)
+- Menu deslizante no celular: `role="dialog"`, `aria-modal="true"`
 - Botão de hambúrguer: `aria-label="Abrir menu de navegação"`, `aria-expanded="false"`
 - Página ativa: `aria-current="page"` no link da categoria atual
-- Indicadores de dropdown: `aria-expanded`, `aria-controls` para relações de megamenu
+- Indicadores de menu suspenso: `aria-expanded`, `aria-controls` para relações no megamenu
 
-**Navegação pelo teclado:**
+**Navegação por teclado:**
 
-- Tabule todas as **links/botões**
-- Enter/Espaço para ativar
-- Escape para fechar o menu móvel ou dropdowns
-- Visible focus indicators (outline/ring)
+- Navegue com a tecla Tab por todos os links/botões
+- Tecla Enter/Espaço para ativar
+- Tecla Escape para fechar o menu móvel ou os menus suspensos
+- Indicadores de foco visíveis (contorno/anel)
 
-**Generic accessibility applies:**
+**Acessibilidade genérica aplicável:**
 
-- Semântico HTML (`<header>`, `<nav>`)
-- Ícones de botões precisam de rótulos ARIA
-- 4,5:1 contraste mínimo de cores
-- 44x44px alvos de toque em dispositivos móveis
+- HTML semântico (`<header>`, `<nav>`)
+- Botões com ícones precisam de rótulos ARIA
+- Contraste de cores mínimo de 4,5:1
+- Áreas de toque de 44x44px em dispositivos móveis
 
-## Common Ecommerce Mistakes
+## Erros comuns no comércio eletrônico
 
-❌ **CRÍTICO: Categorias estáticas hardcoded** - NUNCA crie arrays de categorias estáticos como `const categorias = ["Women", "Men"]` ou importe de arquivos estáticos. SEMPRE busque da API backend. Categorias mudam constantemente - novas categorias são adicionadas, nomes alterados, ordem atualizada. Categorias hardcoded exigem intervenção do desenvolvedor para mudanças simples e anulam o propósito de plataformas de comércio dinâmicas. Esse é o #1 erro mais comum.
+❌ **CRÍTICO: Categorias estáticas codificadas** - NUNCA crie matrizes de categorias estáticas como `const categories = ["Mulheres", "Homens"]` nem importe de arquivos estáticos. SEMPRE busque as categorias pela API do backend. As categorias mudam constantemente — novas categorias são adicionadas, nomes são alterados, a ordem é atualizada. Categorias codificadas exigem intervenção do desenvolvedor até mesmo para alterações simples e vão contra o propósito das plataformas de comércio dinâmicas. Esse é o erro mais comum.
 
-❌ **Hiding cart in mobile drawer** - Users expect cart always visible. Keep cart icon in header (top-right), not hidden inside hamburger menu.
+❌ **Ocultar o carrinho no menu deslizante do celular** - Os usuários esperam que o carrinho esteja sempre visível. Mantenha o ícone do carrinho no cabeçalho (canto superior direito), e não oculto dentro do menu “hambúrguer”.
 
-❌ **No real-time cart updates** - Update count immediately when items added (optimistic UI). Don't require page refresh.
+❌ **Ausência de atualizações em tempo real no carrinho** - Atualize a contagem imediatamente quando itens forem adicionados (interface de usuário otimista). Não exija a atualização da página.
 
-❌ **Exibindo preço no emblema do carrinho** - Exibir quantidade de itens (número), não o preço total. A exibição de preço causa confusão quando variantes têm quantidades diferentes.
+❌ **Exibição do preço no ícone do carrinho** — Mostre a contagem de itens (número), não o preço total. A exibição do preço confunde quando as variantes têm quantidades diferentes.
 
-❌ **No cache invalidation** - Categories become stale when backend changes. Revalidate periodically (5-10 min) or on manual trigger.
+❌ **Sem invalidação do cache** — As categorias ficam desatualizadas quando há alterações no backend. Revalide periodicamente (a cada 5–10 minutos) ou por acionamento manual.
 
-❌ **Hover-only dropdowns on mobile** - Use click/tap interactions. Hover doesn't work on touch devices.
+❌ **Menus suspensos que só funcionam ao passar o mouse em dispositivos móveis** — Use interações por clique/toque. A função de passar o mouse não funciona em dispositivos sensíveis ao toque.
 
-❌ **Navegação de desktop no celular** - Use o padrão de menu hambúrguer, não o menu horizontal que não se encaixa.
+❌ **Navegação de desktop em dispositivos móveis** — Use o padrão de menu “hambúrguer”, e não um menu horizontal que não cabe na tela.
 
-❌ **Ordem de categorias inconsistente** - Mesma ordem no desktop e no mobile para consistência. Respeite a ordem de categorias do backend.
+❌ **Ordem inconsistente das categorias** — Mantenha a mesma ordem no desktop e no celular para garantir a consistência. Respeite a ordem das categorias no backend.
 
-## Integração de Backend
+## Integração com o backend
 
-### Categoria de Recuperação (CRÍTICO - NUNCA Codificar Diretamente)
+### Busca de categorias (CRÍTICO — NUNCA codifique diretamente)
 
 **Padrões de implementação:**
 
-**Client-side fetching:**
+**Busca no lado do cliente:**
 
-- Buscar categorias no useEffect ao montar
-- Store in state (use appropriate types for Medusa: StoreProductCategory)
-- Handle loading and error states
-- Mapear categorias para links de navegação
-- Use category.id as key, category.handle for URL, category.name for display
+- Busque as categorias no `useEffect` ao montar a página
+- Armazenar no estado (use os tipos apropriados para o Medusa: StoreProductCategory)
+- Lidar com os estados de carregamento e de erro
+- Mapeie as categorias para links de navegação
+- Use category.id como chave, category.handle para a URL e category.name para exibição
 
 **Com cache (RECOMENDADO):**
 
 - Use o TanStack Query com queryKey ['categories']
-- Set staleTime: 5-10 minutes (categories rarely change)
-- Automatic loading/error states
-- Request deduplication if multiple components need categories
+- Defina staleTime: 5 a 10 minutos (as categorias raramente mudam)
+- Carregamento automático e estados de erro
+- Solicite a deduplicação se vários componentes precisarem de categorias
 
-**Server-side fetching:**
+**Busca no lado do servidor:**
 
-- Buscar no componente do servidor ou na função de carregamento
-- Sem estado de carregamento necessário (renderizado no servidor)
+- Faça a busca no componente do servidor ou na função de carregamento
+- Não é necessário carregar o estado (renderizado no servidor)
 - Melhor para SEO
 
 **Padrão de sincronização do estado do carrinho:**
 
-- Inscrever-se no estado global do carrinho (Contexto)
-- Atualizar a contagem do carrinho na barra de navegação quando o carrinho mudar
-- Handle optimistic updates (show new count immediately on add to cart)
-- Sync with backend on events or interval
+- Assinar o estado global do carrinho (Contexto)
+- Atualizar a contagem do carrinho na barra de navegação quando o carrinho for alterado
+- Lidar com atualizações otimistas (mostrar a nova contagem imediatamente ao adicionar ao carrinho)
+- Sincronizar com o backend em eventos ou em intervalos
 
-**Authentication state pattern:**
+**Padrão de estado de autenticação:**
 
-- Verifique o estado de autenticação do backend na montagem
-- Ouça por eventos de login/logout
-- Update account indicator immediately
-- Handle session expiration gracefully
+- Verificar o estado de autenticação no backend ao carregar a página
+- Monitorar eventos de login/logout
+- Atualizar o indicador de conta imediatamente
+- Lidar com a expiração da sessão de maneira adequada
 
 **Gatilhos de atualização de categoria:**
 
-- Ao carregar/navegar na página
-- No acionador de atualização manual
-- No intervalo de revalidação (5-10 minutos)
-- After admin updates categories (webhook or polling)
+- Ao carregar a página/navegar
+- Ao acionar a atualização manual
+- No intervalo de revalidação (5 a 10 minutos)
+- Após o administrador atualizar as categorias (webhook ou polling)
 
-## Lista de Verificação
+## Lista de verificação
 
 **Recursos essenciais da barra de navegação:**
 
-- [ ] **CRÍTICO: Categorias buscadas dinamicamente da API do backend (NÃO arrays fixos)**
-- [ ] **CRITICAL: No static category imports or hardcoded category lists**
-- [ ] Desktop: Ligações de categorias horizontais
-- [ ] Mobile: Hamburger drawer with accordion
-- [ ] Ícone do carrinho visível no cabeçalho de desktop e mobile (NÃO escondido na gaveta)
-- [ ] O emblema do carrinho mostra a contagem de itens (não o preço)
-- [ ] Atualizações da contagem de carrinhos em tempo real
-- [ ] Categorias usam ordenação do backend (não ordenação manual)
-- [ ] Indicador de conta mostra o estado de login
-- [ ] Logo links para a página inicial
-- [ ] 4-7 categorias de nível superior exibidas (máx. 10)
-- [ ] Gaveta móvel fecha na navegação
+- [ ] **CRÍTICO: Categorias obtidas dinamicamente da API de back-end (NÃO matrizes codificadas)**
+- [ ] **CRÍTICO: Sem importações estáticas de categorias ou listas de categorias codificadas**
+- [ ] Desktop: Links horizontais de categorias
+- [ ] Celular: Menu “hambúrguer” com acordeão
+- [ ] Ícone do carrinho visível tanto no cabeçalho do desktop quanto no celular (NÃO oculto no menu)
+- [ ] O ícone do carrinho mostra a quantidade de itens (não o preço)
+- [ ] A contagem do carrinho é atualizada em tempo real
+- [ ] As categorias utilizam ordenação no backend (não ordenação manual)
+- [ ] O indicador de conta mostra o status de login
+- [ ] O logotipo leva à página inicial
+- [ ] 4 a 7 categorias de nível superior exibidas (máximo de 10)
+- [ ] A barra de navegação móvel fecha ao navegar
 - [ ] Navegação fixa (recomendado)
-- [ ] Alvos de toque mínimos de 44x44px
-- [ ] Rótulos ARIA nos botões de ícone
-- [ ] `aria-live` no contador do carrinho para leitores de tela
-- [ ] Acessível com teclado e estados de foco visíveis
-- [ ] Categorias armazenadas em cache com estratégia de revalidação (5-10 min)
-- [ ] Manipulação de erros para coleta de categoria falhada
+- [ ] Áreas de toque com tamanho mínimo de 44x44px
+- [ ] Rótulos ARIA nos botões com ícones
+- [ ] `aria-live` na contagem do carrinho para leitores de tela
+- [ ] Acessível por teclado com estados de foco visíveis
+- [ ] Categorias armazenadas em cache com estratégia de revalidação (5 a 10 min)
+- [ ] Tratamento de erros na recuperação de categorias com falha

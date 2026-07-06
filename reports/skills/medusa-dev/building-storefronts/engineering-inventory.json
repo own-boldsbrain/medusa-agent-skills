@@ -331,7 +331,7 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "connector_name": "sdk.client.fetch",
+          "connector_name": "sdk.store.product",
           "type": "sdk_call",
           "status": "inferred"
         },
@@ -341,7 +341,7 @@
           "status": "inferred"
         },
         {
-          "connector_name": "sdk.store.product",
+          "connector_name": "sdk.client.fetch",
           "type": "sdk_call",
           "status": "inferred"
         }
@@ -359,7 +359,7 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "operation": "READ",
+          "operation": "CREATE",
           "status": "direct"
         },
         {
@@ -367,7 +367,7 @@
           "status": "direct"
         },
         {
-          "operation": "CREATE",
+          "operation": "READ",
           "status": "direct"
         },
         {

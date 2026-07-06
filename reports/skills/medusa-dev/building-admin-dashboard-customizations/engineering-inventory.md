@@ -110,10 +110,10 @@ pnpm list @tanstack/react-query --depth=10 | grep @medusajs/dashboard
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 4
-  - url: http://localhost:9000/app/[route-path, type: reference, status: direct
   - url: http://localhost:9000/app/[your-route-path, type: reference, status: direct
-  - url: http://localhost:9000/app, type: reference, status: direct
+  - url: http://localhost:9000/app/[route-path, type: reference, status: direct
   - url: http://localhost:9000/admin/products/${product.id}/reviews`, type: reference, status: direct
+  - url: http://localhost:9000/app, type: reference, status: direct
 
 ### Conectores
 
@@ -129,9 +129,9 @@ pnpm list @tanstack/react-query --depth=10 | grep @medusajs/dashboard
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 4
-  - operation: READ, status: direct
-  - operation: DELETE, status: direct
   - operation: CREATE, status: direct
+  - operation: DELETE, status: direct
+  - operation: READ, status: direct
   - operation: UPDATE, status: direct
 
 ### GETs

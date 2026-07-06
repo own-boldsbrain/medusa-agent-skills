@@ -145,10 +145,10 @@ mcloud logout --json
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 5
-  - operation: DELETE, status: direct
-  - operation: REJECT, status: direct
   - operation: READ, status: direct
   - operation: UPDATE, status: direct
+  - operation: DELETE, status: direct
+  - operation: REJECT, status: direct
   - operation: CREATE, status: direct
 
 ### GETs

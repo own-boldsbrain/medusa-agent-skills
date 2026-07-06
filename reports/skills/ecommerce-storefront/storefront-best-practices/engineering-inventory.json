@@ -281,12 +281,12 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "url": "https://pagespeed.web.dev/",
+          "url": "https://medusajs.com",
           "type": "reference",
           "status": "direct"
         },
         {
-          "url": "https://medusajs.com",
+          "url": "https://pagespeed.web.dev/",
           "type": "reference",
           "status": "direct"
         },
@@ -327,10 +327,6 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "operation": "DELETE",
-          "status": "direct"
-        },
-        {
           "operation": "READ",
           "status": "direct"
         },
@@ -339,11 +335,15 @@
           "status": "direct"
         },
         {
-          "operation": "CREATE",
+          "operation": "APPROVE",
           "status": "direct"
         },
         {
-          "operation": "APPROVE",
+          "operation": "DELETE",
+          "status": "direct"
+        },
+        {
+          "operation": "CREATE",
           "status": "direct"
         }
       ]

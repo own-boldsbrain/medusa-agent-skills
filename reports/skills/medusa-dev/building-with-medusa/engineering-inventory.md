@@ -59,7 +59,7 @@ npm run build      # or pnpm build / yarn build
 1. Read the error messages carefully
 2. Fix type errors, import issues, and syntax errors
 3. Run the build again to verify the fix
-4. Do NOT mark implementation as complete until 
+4. Do NOT mark implementation as complete until
   - use_case_id: UC-004, name: Format for Presenting Next Steps, scenario: Always present next steps in a clear, actionable format after implementation:
 
 ```markdown
@@ -117,11 +117,11 @@ npm run build      # or pnpm build / yarn build
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 5
-  - url: http://localhost:9000/admin/[your-route, type: reference, status: direct
+  - url: http://localhost:9000/store/reviews, type: reference, status: direct
   - url: http://localhost:9000/app, type: reference, status: direct
   - url: http://localhost:9000/admin/reviews/123/approve, type: reference, status: direct
+  - url: http://localhost:9000/admin/[your-route, type: reference, status: direct
   - url: http://localhost:9000/store/[your-route, type: reference, status: direct
-  - url: http://localhost:9000/store/reviews, type: reference, status: direct
 
 ### Conectores
 
@@ -137,11 +137,11 @@ npm run build      # or pnpm build / yarn build
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 5
-  - operation: DELETE, status: direct
   - operation: READ, status: direct
   - operation: UPDATE, status: direct
-  - operation: CREATE, status: direct
   - operation: APPROVE, status: direct
+  - operation: DELETE, status: direct
+  - operation: CREATE, status: direct
 
 ### GETs
 

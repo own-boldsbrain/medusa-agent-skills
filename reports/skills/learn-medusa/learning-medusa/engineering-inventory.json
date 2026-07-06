@@ -352,11 +352,11 @@
           "status": "direct"
         },
         {
-          "operation": "READ",
+          "operation": "CREATE",
           "status": "direct"
         },
         {
-          "operation": "CREATE",
+          "operation": "READ",
           "status": "direct"
         },
         {

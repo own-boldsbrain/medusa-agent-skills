@@ -334,7 +334,7 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "url": "http://localhost:9000/admin/[your-route",
+          "url": "http://localhost:9000/store/reviews",
           "type": "reference",
           "status": "direct"
         },
@@ -349,12 +349,12 @@
           "status": "direct"
         },
         {
-          "url": "http://localhost:9000/store/[your-route",
+          "url": "http://localhost:9000/admin/[your-route",
           "type": "reference",
           "status": "direct"
         },
         {
-          "url": "http://localhost:9000/store/reviews",
+          "url": "http://localhost:9000/store/[your-route",
           "type": "reference",
           "status": "direct"
         }
@@ -400,10 +400,6 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "operation": "DELETE",
-          "status": "direct"
-        },
-        {
           "operation": "READ",
           "status": "direct"
         },
@@ -412,11 +408,15 @@
           "status": "direct"
         },
         {
-          "operation": "CREATE",
+          "operation": "APPROVE",
           "status": "direct"
         },
         {
-          "operation": "APPROVE",
+          "operation": "DELETE",
+          "status": "direct"
+        },
+        {
+          "operation": "CREATE",
           "status": "direct"
         }
       ]

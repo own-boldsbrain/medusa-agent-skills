@@ -129,8 +129,8 @@ mcloud projects delete <project-id-or-handle> \
 - **Evidência**: extraido_do_skill_md
 - **Items**: 4
   - operation: APPROVE, status: direct
-  - operation: DELETE, status: direct
   - operation: READ, status: direct
+  - operation: DELETE, status: direct
   - operation: UPDATE, status: direct
 
 ### GETs

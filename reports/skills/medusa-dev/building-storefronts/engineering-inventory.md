@@ -103,18 +103,18 @@ Inventory for `medusa-dev.building-storefronts`.
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 3
-  - connector_name: sdk.client.fetch, type: sdk_call, status: inferred
-  - connector_name: sdk.admin.order, type: sdk_call, status: inferred
   - connector_name: sdk.store.product, type: sdk_call, status: inferred
+  - connector_name: sdk.admin.order, type: sdk_call, status: inferred
+  - connector_name: sdk.client.fetch, type: sdk_call, status: inferred
 
 ### CRUD
 
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 4
-  - operation: READ, status: direct
-  - operation: DELETE, status: direct
   - operation: CREATE, status: direct
+  - operation: DELETE, status: direct
+  - operation: READ, status: direct
   - operation: UPDATE, status: direct
 
 ### GETs

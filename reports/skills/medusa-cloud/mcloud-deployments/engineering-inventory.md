@@ -117,11 +117,11 @@ mcloud deployments get <deployment-id> --organization <org-id> --project <projec
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 5
-  - operation: REJECT, status: direct
   - operation: READ, status: direct
   - operation: UPDATE, status: direct
-  - operation: CREATE, status: direct
   - operation: APPROVE, status: direct
+  - operation: REJECT, status: direct
+  - operation: CREATE, status: direct
 
 ### GETs
 

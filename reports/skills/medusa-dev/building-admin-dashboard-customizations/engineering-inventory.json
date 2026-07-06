@@ -296,22 +296,22 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "url": "http://localhost:9000/app/[route-path",
-          "type": "reference",
-          "status": "direct"
-        },
-        {
           "url": "http://localhost:9000/app/[your-route-path",
           "type": "reference",
           "status": "direct"
         },
         {
-          "url": "http://localhost:9000/app",
+          "url": "http://localhost:9000/app/[route-path",
           "type": "reference",
           "status": "direct"
         },
         {
           "url": "http://localhost:9000/admin/products/${product.id}/reviews`",
+          "type": "reference",
+          "status": "direct"
+        },
+        {
+          "url": "http://localhost:9000/app",
           "type": "reference",
           "status": "direct"
         }
@@ -357,7 +357,7 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "operation": "READ",
+          "operation": "CREATE",
           "status": "direct"
         },
         {
@@ -365,7 +365,7 @@
           "status": "direct"
         },
         {
-          "operation": "CREATE",
+          "operation": "READ",
           "status": "direct"
         },
         {

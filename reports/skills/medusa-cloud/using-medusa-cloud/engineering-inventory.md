@@ -44,7 +44,7 @@ Inventory for `medusa-cloud.using-medusa-cloud`.
 mcloud whoami --json | jq -e '.auth.kind != "none" and .organization.id != null'
 ```
 
-Exit code `0` = authenticated and scoped. Non-zero = 
+Exit code `0` = authenticated and scoped. Non-zero =
   - use_case_id: UC-002, name: Set Context Once, scenario: ```bash
 mcloud use \
   --organization org_123 \
@@ -131,11 +131,11 @@ mcloud use \
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 6
-  - operation: DELETE, status: direct
-  - operation: REJECT, status: direct
   - operation: READ, status: direct
   - operation: UPDATE, status: direct
-  - operation: CREATE, status: direct
+  - operation: APPROVE, status: direct
+  - operation: DELETE, status: direct
+  - operation: REJECT, status: direct
   - ... e mais 1
 
 ### GETs

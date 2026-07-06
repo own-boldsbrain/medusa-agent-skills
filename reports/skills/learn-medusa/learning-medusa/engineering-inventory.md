@@ -75,7 +75,7 @@ Looking at your code, I can see you've completed:
 - [ ] Lesson 2
 - [ ] Lesson 3
 
-Let's pick up with Lesson 2. 
+Let's pick up with Lesson 2.
   - use_case_id: UC-005, name: Skipping Ahead, scenario: If user wants to skip:
 
 ```
@@ -150,8 +150,8 @@ I understand you want to jump to Lesson [N]. However, each lesson builds on the 
 - **Evidência**: extraido_do_skill_md
 - **Items**: 4
   - operation: APPROVE, status: direct
-  - operation: READ, status: direct
   - operation: CREATE, status: direct
+  - operation: READ, status: direct
   - operation: UPDATE, status: direct
 
 ### GETs

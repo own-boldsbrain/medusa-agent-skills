@@ -107,8 +107,8 @@ Inventory for `medusa-dev.creating-internal-agents`.
 - **Evidência**: extraido_do_skill_md
 - **Items**: 4
   - operation: APPROVE, status: direct
-  - operation: READ, status: direct
   - operation: CREATE, status: direct
+  - operation: READ, status: direct
   - operation: UPDATE, status: direct
 
 ### GETs

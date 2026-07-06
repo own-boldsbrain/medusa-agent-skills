@@ -343,19 +343,19 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "operation": "DELETE",
-          "status": "direct"
-        },
-        {
-          "operation": "REJECT",
-          "status": "direct"
-        },
-        {
           "operation": "READ",
           "status": "direct"
         },
         {
           "operation": "UPDATE",
+          "status": "direct"
+        },
+        {
+          "operation": "DELETE",
+          "status": "direct"
+        },
+        {
+          "operation": "REJECT",
           "status": "direct"
         },
         {

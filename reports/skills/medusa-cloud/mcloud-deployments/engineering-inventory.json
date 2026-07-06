@@ -274,10 +274,6 @@
       "proxima_acao": "Validar com revisão humana",
       "items": [
         {
-          "operation": "REJECT",
-          "status": "direct"
-        },
-        {
           "operation": "READ",
           "status": "direct"
         },
@@ -286,11 +282,15 @@
           "status": "direct"
         },
         {
-          "operation": "CREATE",
+          "operation": "APPROVE",
           "status": "direct"
         },
         {
-          "operation": "APPROVE",
+          "operation": "REJECT",
+          "status": "direct"
+        },
+        {
+          "operation": "CREATE",
           "status": "direct"
         }
       ]

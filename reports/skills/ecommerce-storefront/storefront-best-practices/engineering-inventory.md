@@ -101,8 +101,8 @@ Inventory for `ecommerce-storefront.storefront-best-practices`.
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 3
-  - url: https://pagespeed.web.dev/, type: reference, status: direct
   - url: https://medusajs.com, type: reference, status: direct
+  - url: https://pagespeed.web.dev/, type: reference, status: direct
   - url: https://docs.medusajs.com/mcp, type: reference, status: direct
 
 ### Conectores
@@ -117,11 +117,11 @@ Inventory for `ecommerce-storefront.storefront-best-practices`.
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 5
-  - operation: DELETE, status: direct
   - operation: READ, status: direct
   - operation: UPDATE, status: direct
-  - operation: CREATE, status: direct
   - operation: APPROVE, status: direct
+  - operation: DELETE, status: direct
+  - operation: CREATE, status: direct
 
 ### GETs
 

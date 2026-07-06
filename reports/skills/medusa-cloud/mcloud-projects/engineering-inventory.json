@@ -280,11 +280,11 @@
           "status": "direct"
         },
         {
-          "operation": "DELETE",
+          "operation": "READ",
           "status": "direct"
         },
         {
-          "operation": "READ",
+          "operation": "DELETE",
           "status": "direct"
         },
         {

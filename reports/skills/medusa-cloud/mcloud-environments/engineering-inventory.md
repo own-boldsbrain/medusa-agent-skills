@@ -141,11 +141,11 @@ mcloud environments redeploy <environment
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 5
-  - operation: DELETE, status: direct
   - operation: READ, status: direct
   - operation: UPDATE, status: direct
-  - operation: CREATE, status: direct
   - operation: APPROVE, status: direct
+  - operation: DELETE, status: direct
+  - operation: CREATE, status: direct
 
 ### GETs
 

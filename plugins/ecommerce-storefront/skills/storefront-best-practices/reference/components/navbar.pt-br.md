@@ -213,8 +213,8 @@ Categories don't update when backend changes
 
 ### Causas
 
-* Alterações feitas no backend não estão sendo refletidas nas categorias
-* Falta de sincronização entre o backend e as categorias
+- Alterações feitas no backend não estão sendo refletidas nas categorias
+- Falta de sincronização entre o backend e as categorias
 
 ### Exemplo
 
@@ -238,8 +238,8 @@ def atualizar_categorias():
 
 ### Recursos
 
-* [Documentação do backend](https://example.com/backend-documentation)
-* [Ferramenta de sincronização](https://example.com/sync-tool)
+- [Documentação do backend](https://example.com/backend-documentation)
+- [Ferramenta de sincronização](https://example.com/sync-tool)
 
 ### User Account Indicator
 

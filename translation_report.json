@@ -1,0 +1,14 @@
+{
+  "directory": "C:\\Users\\fjuni\\medusa-agent-skills",
+  "total_targets": 3,
+  "processed": 1,
+  "skipped": 0,
+  "success": 0,
+  "failed": 1,
+  "failures": [
+    {
+      "file": "C:\\Users\\fjuni\\medusa-agent-skills\\README.md",
+      "error": "Failed to translate/validate C:\\Users\\fjuni\\medusa-agent-skills\\README.md. Error: Command '['C:\\\\Python314\\\\python.exe', '-u', 'C:\\\\Users\\\\fjuni\\\\.gemini\\\\config\\\\skills\\\\translation\\\\scripts\\\\validate_translation.py', 'C:\\\\Users\\\\fjuni\\\\medusa-agent-skills\\\\README.md', 'C:\\\\Users\\\\fjuni\\\\medusa-agent-skills\\\\README.pt-br.md']' returned non-zero exit status 1."
+    }
+  ]
+}

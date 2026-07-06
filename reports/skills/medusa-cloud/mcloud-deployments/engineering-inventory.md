@@ -43,7 +43,8 @@ mcloud deployments list --organization <org-id> --project <project-id-or-handle>
 ```
 
 **Options
-  - use_case_id: UC-002, name: deployments get, scenario: Retrieve a single deployment's details by ID.
+
+- use_case_id: UC-002, name: deployments get, scenario: Retrieve a single deployment's details by ID.
 
 ```bash
 mcloud deployments get <deployment-id> --organization <org-id> --project <project-id-or-handle> --json

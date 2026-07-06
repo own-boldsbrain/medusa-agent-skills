@@ -1,22 +1,22 @@
 {
   "summary": {
     "total_pairs": 72,
-    "passed": 46,
+    "passed": 48,
     "needs_review": 18,
-    "failed": 8,
+    "failed": 6,
     "error": 0
   },
   "issue_file_count": {
     "markdown_violations": 13,
-    "english_residual_detected": 16,
+    "english_residual_detected": 14,
     "conversational_filler_detected": 1,
-    "toc_anchor_mismatch": 7
+    "toc_anchor_mismatch": 5
   },
   "issue_occurrence_count": {
     "markdown_violations": 13,
-    "english_residual_detected": 16,
+    "english_residual_detected": 14,
     "conversational_filler_detected": 1,
-    "toc_anchor_mismatch": 10
+    "toc_anchor_mismatch": 7
   },
   "top_20_risk": [
     {
@@ -39,28 +39,6 @@
       "issues": [
         "toc_anchor_mismatch",
         "markdown_violations"
-      ]
-    },
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\breadcrumbs.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\breadcrumbs.pt-br.md",
-      "status": "failed",
-      "risk_score": 90,
-      "action": "repair_by_script",
-      "issues": [
-        "toc_anchor_mismatch",
-        "english_residual_detected"
-      ]
-    },
-    {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\footer.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\footer.pt-br.md",
-      "status": "failed",
-      "risk_score": 90,
-      "action": "repair_by_script",
-      "issues": [
-        "toc_anchor_mismatch",
-        "english_residual_detected"
       ]
     },
     {
@@ -103,8 +81,8 @@
       "risk_score": 80,
       "action": "repair_by_script",
       "issues": [
-        "markdown_violations",
-        "english_residual_detected"
+        "english_residual_detected",
+        "markdown_violations"
       ]
     },
     {
@@ -114,8 +92,8 @@
       "risk_score": 80,
       "action": "repair_by_script",
       "issues": [
-        "markdown_violations",
-        "english_residual_detected"
+        "english_residual_detected",
+        "markdown_violations"
       ]
     },
     {
@@ -125,8 +103,8 @@
       "risk_score": 80,
       "action": "repair_by_script",
       "issues": [
-        "markdown_violations",
-        "english_residual_detected"
+        "english_residual_detected",
+        "markdown_violations"
       ]
     },
     {
@@ -136,8 +114,8 @@
       "risk_score": 80,
       "action": "repair_by_script",
       "issues": [
-        "markdown_violations",
-        "english_residual_detected"
+        "english_residual_detected",
+        "markdown_violations"
       ]
     },
     {
@@ -223,6 +201,26 @@
     {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.pt-br.md",
       "status": "needs_review",
       "risk_score": 30,
       "action": "repair_by_script",

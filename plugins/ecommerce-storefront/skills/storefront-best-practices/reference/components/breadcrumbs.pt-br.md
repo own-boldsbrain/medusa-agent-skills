@@ -2,17 +2,17 @@
 
 ## Índice
 
-- [Componente de trilha de navegação](#padroes-de-trilha-de-navegacao-no-comercio-eletronico)
-  - [Índice](#contents)
-  - [Visão geral](#visao-geral)
+- [Componente de trilha de navegação](#componente-de-trilha-de-navegação)
+  - [Índice](#índice)
+  - [Visão geral](#visão-geral)
     - [Requisitos principais](#requisitos-principais)
-  - [Quando usar o Breadcrumbs](#quando-usar-trilhas-de-navegacao)
-  - [Padrões de Breadcrumbs para comércio eletrônico](#padroes-de-trilha-de-navegacao-no-comercio-eletronico)
-    - [Breadcrumbs na página de produto](#quando-usar-trilhas-de-navegacao)
-    - [Breadcrumbs na página de categoria](#quando-usar-trilhas-de-navegacao)
-    - [Construção do caminho](#path-construction)
-  - [Breadcrumbs para dispositivos móveis](#trilhas-de-navegacao-em-dispositivos-moveis)
-    - [Padrão para dispositivos móveis: link “Voltar” ao recolher](#trilhas-de-navegacao-em-dispositivos-moveis)
+  - [Quando usar trilhas de navegação](#quando-usar-trilhas-de-navegação)
+  - [Padrões de trilha de navegação no comércio eletrônico](#padrões-de-trilha-de-navegação-no-comércio-eletrônico)
+    - [Trilha de navegação na página do produto](#trilha-de-navegação-na-página-do-produto)
+    - [Trilha de navegação da página de categoria](#trilha-de-navegação-da-página-de-categoria)
+    - [Construção do caminho](#construção-do-caminho)
+  - [Trilhas de navegação em dispositivos móveis](#trilhas-de-navegação-em-dispositivos-móveis)
+    - [Padrão para dispositivos móveis: recolher para criar link de volta](#padrão-para-dispositivos-móveis-recolher-para-criar-link-de-volta)
   - [Dados estruturados para SEO](#dados-estruturados-para-seo)
   - [Lista de verificação](#lista-de-verificacao)
 

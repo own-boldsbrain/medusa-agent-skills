@@ -2,18 +2,18 @@
 
 ## Índice
 
-- [Componente de rodapé](#elementos-essenciais-do-rodape)
-  - [Índice](#contents)
-  - [Visão geral](#visao-geral)
+- [Componente de rodapé](#componente-de-rodapé)
+  - [Índice](#índice)
+  - [Visão geral](#visão-geral)
     - [Requisitos principais](#requisitos-principais)
-  - [Elementos essenciais do rodapé](#elementos-essenciais-do-rodape)
+  - [Elementos essenciais do rodapé](#elementos-essenciais-do-rodapé)
     - [Conteúdo obrigatório](#conteúdo-obrigatório)
     - [Layout com várias colunas (desktop)](#layout-com-várias-colunas-desktop)
-  - [Links dinâmicos de categorias (específicos para comércio eletrônico)](#links-dinamicos-de-categorias-especifico-para-comercio-eletronico)
-  - [Inscrição na newsletter](#inscricao-na-newsletter)
-  - [Símbolos de pagamento e confiança](#icones-de-pagamento-e-selos-de-confianca)
-  - [Rodapé para dispositivos móveis](#rodape-para-dispositivos-moveis)
-  - [Lista de verificação](#lista-de-verificacao)
+  - [Links dinâmicos de categorias (específicos para comércio eletrônico)](#links-dinâmicos-de-categorias-específico-para-comércio-eletrônico)
+  - [Inscrição na newsletter](#inscrição-na-newsletter)
+  - [Símbolos de pagamento e confiança](#ícones-de-pagamento-e-selos-de-confiança)
+  - [Rodapé para dispositivos móveis](#rodapé-para-dispositivos-móveis)
+  - [Lista de verificação](#lista-de-verificação)
 
 ## Visão geral
 

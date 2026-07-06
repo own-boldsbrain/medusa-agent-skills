@@ -5,10 +5,8 @@ Fila cirúrgica de reparos, categorizada por tipo de ação necessária.
 ## P0_placeholder_or_filler (1 arquivos)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/connecting-to-backend.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/connecting-to-backend.pt-br.md)
 
-## P1_toc_anchor_mismatch (7 arquivos)
+## P1_toc_anchor_mismatch (5 arquivos)
 - Score 100 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/README.pt-br.md)
-- Score 90 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/breadcrumbs.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/breadcrumbs.pt-br.md)
-- Score 90 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/footer.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/footer.pt-br.md)
 - Score 90 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-slider.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-slider.pt-br.md)
 - Score 90 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/data-loading.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/data-loading.pt-br.md)
 - Score 90 | [Source](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/display-patterns.md) -> [Target](C:/Users/fjuni/medusa-agent-skills/plugins/medusa-dev/skills/building-admin-dashboard-customizations/references/display-patterns.pt-br.md)

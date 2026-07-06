@@ -44,11 +44,6 @@
   ],
   "P0_codeblock_mismatch": [
     {
-      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\README.md",
-      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\README.pt-br.md",
-      "risk_score": 100
-    },
-    {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.pt-br.md",
       "risk_score": 100
@@ -213,6 +208,11 @@
     }
   ],
   "P1_markdown_violations": [
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\README.pt-br.md",
+      "risk_score": 50
+    },
     {
       "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.md",
       "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.pt-br.md",

@@ -308,6 +308,7 @@ Este padrão é crucial para garantir que a cotação e o catálogo do Yello Sol
 - Use `DataTablePaginationState` com `pageIndex` e `pageSize`
 
 ### 3. Padrão de Carregamento de Dados - CRÍTICO**Sempre use consultas separadas para exibição vs seleção no modal:**```tsx
+
 // Consulta de exibição - carrega no montagem, busca itens específicos
 const { data: displayProducts } = useQuery({
   queryFn: () => sdk.admin.product.list({
@@ -326,6 +327,7 @@ const { data: modalProducts } = useQuery({
   enabled: open, // Apenas quando o modal estiver aberto
   keepPreviousData: true,
 })
+
 ```**Por que este padrão?**
 
 - Os dados de exibição carregam imediatamente ao montar

@@ -271,7 +271,20 @@ export const POST = async (req: AuthenticatedMedusaRequest<CreateDto>, res: Medu
 
 ## Comandos de Manutenção
 
-**CODE_BLOCK_0**
+```bash
+# Gerar migration para um módulo
+npx medusa db:generate --module <nome-modulo>
+
+# Rodar migrations pendentes
+npx medusa db:migrate
+
+# Criar usuário admin
+npx medusa user -e admin@exemplo.com -p senha123
+
+# Build TypeScript (backend + admin)
+npx tsc --noEmit
+npx tsc --project src/admin/tsconfig.json --noEmit
+```
 
 ---
 

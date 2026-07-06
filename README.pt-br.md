@@ -10,9 +10,9 @@ Este espaço de trabalho usa o **GitHub Copilot CLI** como principal agente de o
 
 | Plugin | Descrição |
 |--------|-------------|
-| [medusa-dev](plugins/medusa-dev/README.md) | Habilidades abrangentes para a criação de aplicativos Medusa, incluindo backend, interface de usuário administrativa e lojas virtuais. |
-| [learn-medusa](plugins/learn-medusa/README.md) | Sessão tutorial interativa para aprender sobre os conceitos do Medusa por meio da criação de um recurso de marcas. |
-| [ecommerce-storefront](plugins/ecommerce-storefront/README.md) | Habilidade abrangente para criar lojas virtuais de comércio eletrônico com alta taxa de conversão, seguindo as melhores práticas. |
+| [medusa-dev](plugins/medusa-dev/README.md) | Conjuntos abrangentes de habilidades para a criação de aplicativos Medusa, abrangendo backend, interface de usuário administrativa e storefronts. |
+| [learn-medusa](plugins/learn-medusa/README.md) | Sessão de tutorial interativo para aprender os conceitos do Medusa por meio da criação de um recurso de marcas. |
+| [ecommerce-storefront](plugins/ecommerce-storefront/README.md) | Habilidade abrangente para criar lojas virtuais de alto índice de conversão seguindo as melhores práticas. |
 | [medusa-cloud](plugins/medusa-cloud/README.md) | Habilidades para gerenciar recursos do Medusa Cloud por meio da CLI do Cloud (mcloud). |
 
 Toda implementação neste projeto segue o fluxo:
@@ -60,8 +60,8 @@ Importante: isso é um contrato de governança para os agentes. Não mover fisic
 |--------|--------|
 | [medusa-dev](plugins/medusa-dev/README.md) | Backend: módulos, workflows, rotas API, links, migrations |
 | [learn-medusa](plugins/learn-medusa/README.md) | Referência de arquitetura Medusa.js v2 (módulos, isolation, orquestração) |
-| [ecommerce-storefront](plugins/ecommerce-storefront/README.md) | Storefront: layouts, SEO, mobile, Medusa SDK, React Query |
-| [design-log](plugins/design-log/README.md) | Design-Log: metodologia de decisões arquiteturais persistentes para agentes de IA |
+| [ecommerce-storefront](plugins/ecommerce-storefront/README.md) | Loja virtual: layouts, SEO, dispositivos móveis, Medusa SDK, React Query |
+| [design-log](plugins/design-log/README.md) | Design-Log: metodologia para decisões arquitetônicas persistentes para agentes de IA |
 
 ### Competências por área
 
@@ -87,9 +87,9 @@ As habilidades específicas deste espaço de trabalho ficam em `.github/skills/`
 
 | Habilidade | Quando usar |
 |-------|-------------|
-| `ysh-medusa-backend-workflow` | **Padrão principal** para qualquer backend do Medusa: módulo, fluxo de trabalho, rota, migração, link, auditoria |
-| `ysh-storefront-360-workflow` | Storefront de ponta a ponta: página inicial, listagem, página de produto (PDP), comparador, carrinho, finalização da compra, conta, pedido |
-| `ysh-audit-agents-workflow` | Revisão de auditoria, comparador, ranking, terminal de erros, pré-implantação |
+| `ysh-medusa-backend-workflow` | **Padrão principal** para qualquer backend Medusa: módulo, fluxo de trabalho, rota, migração, link, auditoria |
+| `ysh-storefront-360-workflow` | Storefront de ponta a ponta: página inicial, listagem, PDP, comparador, carrinho, checkout, conta, pedido |
+| `ysh-audit-agents-workflow` | Revisão de auditoria, comparador, quadro de líderes, terminal de erros, pré-implantação |
 | `ysh-medusa-manufacturer-incorporation` | Incorporação de fabricantes, catálogo, taxonomia, publicação |
 
 > Em conflito entre skill upstream (medusa-dev) e skill YSH, o skill YSH prevalece.
@@ -125,7 +125,7 @@ Depois da exportação, o projeto de destino passa a ter uma pasta `.github/skil
 
 ### Uso no GitHub Copilot
 
-**Chamar uma habilidade explicitamente:**
+**Chamar uma skill explicitamente:**
 
 ```
 [[SKILL: building-with-medusa]] crie um módulo Medusa com workflow e rota admin
@@ -141,7 +141,7 @@ O Copilot não usa `/plugin` nem os comandos com barra do Claude. Na adaptação
 
 - `building-with-medusa`, `building-admin-dashboard-customizations` e `building-storefronts` continuam como habilidades principais;
 - `db-migrate`, `db-generate` e `new-user` são exportados como habilidades operacionais que instruem o agente a executar a CLI do Medusa;
-- referências auxiliares dentro de cada habilidade continuam disponíveis porque o exportador copia a pasta inteira da habilidade.
+- referências auxiliares dentro de cada skill continuam disponíveis porque o exportador copia a pasta inteira do skill.
 
 **Carregamento automático:** o Copilot pode selecionar skills automaticamente com base no contexto da tarefa, mas o prefixo `[[SKILL: ...]]` continua sendo a forma mais confiável de forçar o uso.
 
@@ -157,13 +157,13 @@ Para uso com Claude Code, consulte as instruções de instalação dos plugins i
 /plugin marketplace add medusajs/medusa-agent-skills
 ```
 
-**Instalar plugin de backend:**
+**Instalar o plugin de backend:**
 
 ```bash
 /plugin install medusa-dev@medusa
 ```
 
-**Instalar o plugin do Storefront:**
+**Instalar o plugin de storefront:**
 
 ```bash
 /plugin install ecommerce-storefront@medusa

@@ -1,180 +1,208 @@
-# Componente de Pop-up do Carrinho
+# Componente de pop-up do carrinho
 
 ## Índice
 
-- [Visão Geral](#visão-geral)
-- [Quando Mostrar o Pop-up do Carrinho](#quando-mostrar-o-pop-up-do-carrinho)
-- [Padrões de Layout](#padrões-de-layout)
-- [Exibição do Carrinho](#exibição-do-carrinho)
-- [Ações e Chamadas à Ação](#ações-e-chamadas-à-ação)
-- [Estado Vazio](#estado-vazio)
-- [Carregamento e Estados de Erro](#carregamento-e-estados-de-erro)
-- [Considerações para Dispositivos Móveis](#considerações-para-dispositivos-móveis)
-- [Lista de Verificação](#lista-de-verificação)
+- [Visão geral](#visao-geral)
+- [Quando exibir o pop-up do carrinho](#quando-exibir-a-janela-pop-up-do-carrinho)
+- [Padrões de layout](#padroes-de-layout)
+- [Exibição do carrinho](#exibicao-do-carrinho)
+- [Ações e CTAs](#acoes-e-ctas)
+- [Estado vazio](#estado-vazio)
+- [Considerações para dispositivos móveis](#consideracoes-para-dispositivos-moveis)
+- [Lista de verificação](#lista-de-verificacao)
 
-## Visão Geral
+## Visão geral
 
-O pop-up do carrinho (ou gaveta do carrinho) exibe uma visão rápida do carrinho sem que o usuário precise navegar para longe da página atual. Ele é aberto ao clicar no ícone do carrinho ou logo após a adição de itens.
+O pop-up do carrinho (mini carrinho/gaveta do carrinho) exibe uma visão geral rápida do carrinho sem a necessidade de sair da página. Ele é aberto ao clicar no ícone do carrinho ou após a adição de itens.
 
-**⚠️ CRÍTICO: Sempre exiba os detalhes da variante (tamanho, cor, material, etc.) no pop-up do carrinho, não apenas os títulos dos produtos.**
+**⚠️ IMPORTANTE: Sempre exiba os detalhes das variantes (tamanho, cor, material etc.) no pop-up do carrinho, não apenas os nomes dos produtos.**
 
-**Conhecimento presumido:** Agentes de IA sabem como construir modais, diálogos e overlays. O foco aqui está nos padrões específicos para storefronts de e-commerce (Next.js, React, Medusa).
+**Conhecimento prévio**: Os agentes de IA sabem como criar janelas modais, diálogos e sobreposições. Este conteúdo se concentra em padrões específicos do comércio eletrônico.
 
-**Pop-up do carrinho vs página completa do carrinho:**
+**Janela pop-up do carrinho x página completa do carrinho:**
 
-- Pop-up: Visão geral rápida, caminho direto para finalizar compra, facilita continuar comprando.
-- Página completa: Análise detalhada, códigos promocionais, operações complexas (ex: cálculo de frete antecipado).
-- **Recomendado:** Utilizar ambos. O pop-up para velocidade e a página completa do carrinho para detalhes.
+- Pop-up: Visão geral rápida, processo de finalização de compra ágil, continuação fácil das compras
+- Página completa: Revisão detalhada, códigos promocionais, operações complexas
+- **Recomendado**: Ambos — janela pop-up para agilidade, página completa do carrinho para detalhes
 
-## Quando Mostrar o Pop-up do Carrinho
+## Quando exibir a janela pop-up do carrinho
 
-**Opções de gatilho:**
+**Opções de acionamento:**
 
-1. **Ao clicar no ícone do carrinho**: sempre deve abrir o pop-up, menu suspenso ou gaveta.
-2. **Após adicionar ao carrinho**: recomendado para confirmar a ação e oferecer "Finalizar compra" ou "Continuar comprando".
-3. **Ao passar o mouse no ícone do carrinho**: opcional apenas em desktop; evite como único gatilho porque pode abrir acidentalmente.
+1. **Ao clicar no ícone do carrinho** (sempre) — clicar no ícone do carrinho na barra de navegação abre a janela pop-up
+2. **Após adicionar ao carrinho** (recomendado) — abre automaticamente a janela pop-up quando o item é adicionado, confirma a ação e permite finalizar a compra ou continuar comprando
+3. **Ícone do carrinho ao passar o mouse** (somente para desktop, opcional) — Visualização rápida ao passar o mouse. Pode ocorrer acidentalmente; não recomendado.
 
-**Alternativas de feedback ao adicionar ao carrinho:**
+**Alternativas de feedback para “Adicionar ao carrinho”:**
 
-- **Abrir pop-up**: confirmação imediata e caminho claro para finalizar compra.
-- **Mostrar toast**: menos intrusivo, mas exige que o usuário abra o carrinho para revisar detalhes.
-- **Navegar para a página do carrinho**: padrão tradicional, útil para fluxos mais detalhados.
+- Exibir pop-up (mais comum) — Confirmação imediata, caminho claro para o checkout
+- Apenas notificação (menos intrusiva) — Pequena notificação; o usuário clica no ícone do carrinho para ver os detalhes
+- Navegar para a página do carrinho (tradicional) — leva diretamente à página completa do carrinho, menos comum atualmente
 
-## Padrões de Layout
+## Padrões de layout
 
 **Dois padrões comuns:**
 
-**1. Menu suspenso (recomendado para simplicidade):**
+**1. Menu suspenso (recomendado por ser simples):**
 
-- Desce a partir do ícone do carrinho, posicionado abaixo da navegação principal.
-- Largura: 280-320px, altura máxima com barra de rolagem.
-- Sem sobreposição de fundo (clique fora para fechar).
-- Melhor para poucos itens e implementação mais simples.
+- Abre a partir do ícone do carrinho, posicionado abaixo da barra de navegação
+- Largura: 280-320 px, altura máxima com rolagem
+- Sem sobreposição de fundo (clique fora da área para fechar)
+- Mais adequado para poucos itens, implementação mais simples
 
-**2. Gaveta do carrinho (mais proeminente):**
+**2. Gaveta deslizante (mais destacada):**
 
-- Desliza da direita, ocupa toda a altura da tela, largura de 320-400px (desktop) ou 80-90% (mobile).
-- Fundo semi-transparente escurecendo a página (clique no fundo para fechar).
-- Melhor para múltiplos itens ou fluxos de carrinho complexos.
+- Desliza da direita, altura total, largura de 320-400 px (desktop) ou 80-90% (celular)
+- Sobreposição de fundo semitransparente (clique para fechar)
+- Mais adequado para vários itens ou carrinhos complexos
 
-**Ambos os padrões incluem:**
+**Ambos os padrões possuem:**
 
-- Cabeçalho: Título + contagem de itens + botão de fechar (opcional para menu suspenso).
-- Conteúdo rolável: Lista de itens adicionados.
-- Rodapé fixo: Subtotal + botões de ação ("Finalizar compra", "Ver carrinho").
+- Cabeçalho: Título + número de itens + botão de fechar (opcional para o menu suspenso)
+- Conteúdo rolável: Lista de itens do carrinho
+- Rodapé fixo: Subtotal + botões de ação (Finalizar compra, Ver carrinho)
 
-## Exibição do Carrinho
+## Exibição do carrinho
 
-**Integração de Estado e Backend (Medusa/React):**
+**Buscar dados do carrinho do backend:**
 
-A implementação recomendada para ecossistemas modernos (como Next.js e Medusa) exige controle de estado rigoroso:
+- ID do carrinho do localStorage
+- Itens da linha (produtos, variantes, quantidades, preços)
+- Totais do carrinho (subtotal, impostos, frete)
+- Consulte connecting-to-backend.md para integração com o backend
 
-- **Identificação:** Guarde sempre o `cart.id` no `localStorage` após a criação no primeiro acesso.
-- **Estado Global:** Armazene os detalhes completos do carrinho utilizando React Context, Zustand, Redux ou TanStack Query para evitar *prop drilling* e garantir sincronia em toda a interface.
-- **Ciclo de Vida das Mutações:** Ao adicionar, remover ou alterar a quantidade de um item, invalide a consulta (refetch) via TanStack Query para sincronizar o carrinho imediatamente com o backend.
-- **Atualizações Otimistas:** Atualize a interface antes do servidor responder, mas reverta silenciosamente em caso de erro.
-- **Tratamento de Carrinho Inválido:** Se o `cart.id` armazenado estiver expirado, inválido ou ausente, a aplicação deve interceptar o erro e criar um novo carrinho automaticamente, substituindo o ID no `localStorage`.
-- **Limpeza Pós-Checkout:** É **CRÍTICO** limpar o estado global e o `localStorage` do carrinho assim que o pedido for concluído (place order). Evite a todo custo o bug de exibir itens antigos em um pop-up de carrinho após a compra.
-- **Autenticação:** Realize o merge do carrinho de convidado (guest) com o carrinho do usuário após o login.
+**Quando buscar:**
 
-**Exibição dos Itens do Carrinho:**
+- Na inicialização do aplicativo (atualizar o ícone do carrinho)
+- Ao abrir o pop-up (mostrar estado de carregamento)
+- Após atualizações no carrinho (adicionar/remover/alterar quantidade)
 
-**CRÍTICO: Sempre mostre os detalhes da variante (tamanho, cor, material, etc.) para cada item do carrinho.** Sem esses detalhes, os usuários ficam inseguros se adicionaram a variante correta.
+**Gerenciamento de estado:**
 
-A estrutura de cada item deve conter:
+- Armazenar os dados do carrinho globalmente (React Context ou TanStack Query)
+- Persistir o ID do carrinho no localStorage
+- Atualizações otimistas da interface do usuário (atualizar imediatamente, reverter em caso de erro)
+- **CRÍTICO: Limpar o estado do carrinho após a finalização do pedido** - Consulte connecting-to-backend.md para conhecer o padrão de limpeza do carrinho
+- Problema comum: a janela pop-up do carrinho exibe itens antigos após a finalização do pedido porque o estado do carrinho não foi limpo
+- Consulte connecting-to-backend.md para conhecer os padrões de estado do carrinho
 
-- Imagem do produto (miniatura de 60-80px).
-- Título do produto, truncado em até 2 linhas.
-- **Detalhes da variante (OBRIGATÓRIO)**: Tamanho, cor, material ou outras opções selecionadas.
-  - Formato: "Tamanho: M, Cor: Preto" ou "M / Preto".
-  - O pop-up do carrinho deve sempre exibir tamanho, cor, material e demais opções selecionadas da variante, não apenas o título do produto. Exiba abaixo do título com texto menor.
-- Controles de quantidade (botões de +/- com debounce de 300-500ms).
-- Preço unitário e preço total da linha (preço × quantidade).
-- Botão de remoção (ícone X ou lata de lixo, ação direta sem confirmação prévia).
+**Exibição dos itens do carrinho:**
 
-## Ações e Chamadas à Ação
+**CRÍTICO: Sempre exiba os detalhes da variante (tamanho, cor, material etc.) para cada item do carrinho.**
 
-**Resumo de totais:**
+Sem os detalhes da variante, os usuários não podem confirmar se adicionaram a variante correta. Isso é especialmente crítico quando os produtos têm várias opções.
 
-- Subtotal (soma de todos os itens).
-- Frete e impostos: Exiba "Calculado na finalização" ou o valor real (se aplicável).
-- Total: Em **negrito** e com alto destaque.
+- Imagem do produto (miniatura de 60-80px)
+- Título do produto (truncado para 2 linhas)
+- **Detalhes da variante (OBRIGATÓRIO)**: Tamanho, cor, material ou outras opções de variante
+  - Formato: “Tamanho: Grande, Cor: Preto” ou “Grande / Preto”
+  - Mostrar TODAS as opções de variantes selecionadas, não apenas o título do produto
+  - Exibir abaixo do título, em fonte menor (cinza)
+- Controles de quantidade (botões +/-, tempo de espera de 300 a 500 ms)
+- Preço unitário e preço total (total do item = preço × quantidade)
+- Botão “Remover” (ícone X, sem necessidade de confirmação)
+
+**Por que os detalhes das variantes são essenciais:**
+
+- Confirmação do usuário: “Adicionei o tamanho certo?”
+- Evita o abandono do carrinho devido à incerteza
+- Permite correções antes da finalização da compra
+- Essencial para produtos com várias variantes (roupas, sapatos, produtos configuráveis)
+
+## Ações e CTAs
+
+**Exibição do resumo do carrinho:**
+
+- Subtotal (soma de todos os itens)
+- Frete e impostos: “Calculado na finalização da compra” ou valor real
+- Total: em negrito e em destaque
 
 **Indicador de frete grátis (opcional):**
 
-- "Faltam {valor_para_frete_gratis} para frete grátis" acompanhado de uma barra de progresso.
-- Incentiva o aumento do ticket médio, atualizando dinamicamente conforme os itens mudam.
+- “Adicione mais US$ 25 para frete grátis” com barra de progresso
+- Incentiva pedidos maiores, atualiza-se conforme o carrinho muda
 
 **Códigos promocionais:**
 
-- Normalmente NÃO devem ser incluídos no pop-up do carrinho (falta de espaço).
-- Reserve a inserção de cupons para a página completa do carrinho ou para o fluxo de checkout.
+- Normalmente NÃO aparecem na janela pop-up do carrinho (espaço muito apertado)
+- Reservar para a página completa do carrinho
+- Exceção: inserção simples do código, se o espaço permitir
 
-**Botões de ação principais:**
+**Botões de ação:**
 
-1. **Finalizar compra** (Primário): Mais proeminente, alto contraste (cor principal da marca), navega direto para o fluxo de checkout.
-2. **Ver carrinho** (Secundário): Botão contornado, fantasma ou link em texto, navega para a página completa do carrinho.
+1. **Finalizar compra** (principal) — Mais destacado, com alto contraste (cor da marca), leva à página de finalização da compra
+2. **Ver carrinho** (secundário) — Contorno ou discreto, leva à página completa do carrinho
 
-## Estado Vazio
+Ambos os botões ocupam toda a largura, com altura de 44 a 48 px no celular.
 
-Deve exibir um ícone ou ilustração neutra acompanhada do texto "Seu carrinho está vazio" e um botão claro de "Continuar comprando". O design deve ser centrado, minimalista e amigável, incentivando a navegação.
+## Estado vazio
 
-## Carregamento e Estados de Erro
+Mostrar ícone/ilustração + “Seu carrinho está vazio” + botão “Continuar comprando”. Centralizado, amigável, design minimalista.
 
-**Ao abrir o pop-up:** Mostre um *skeleton* (estrutura de carregamento) enquanto os dados são buscados do backend, evitando exibir uma tela em branco momentânea.
+## Estados de carregamento e erros
 
-**Durante atualizações (Mutações):**
+**Ao abrir o pop-up**: Mostrar esboço/marcador de posição durante a busca (evitar tela em branco)
 
-- **Alteração de quantidade:** Exiba um *spinner* pequeno (inline), desabilite os botões de controle para evitar cliques duplos e use debounce.
-- **Remoção de item:** Utilize animação de desvanecimento (fade-out) suave, desabilitando o botão de remoção durante a requisição.
-- **Adicionar ao carrinho:** Indicador de estado de carregamento no próprio botão que disparou a ação (ex: texto "Adicionando..." ou ícone giratório).
+**Durante atualizações**:
 
-**Tratamento de erros:**
+- Alterações na quantidade: Indicador de carregamento embutido, desativar controles, tempo de espera de 300 a 500 ms
+- Remoção de item: Animação de desvanecimento, desativar o botão de remoção durante a solicitação
+- Adicionar ao carrinho: Indicador de carregamento no botão (“Adicionando...”)
 
-- **Erros de rede:** Exiba a opção de tentar novamente; não feche o pop-up inesperadamente.
-- **Fora de estoque:** Desabilite o botão de aumento de quantidade e exiba uma mensagem textual de aviso.
-- Reverter quaisquer atualizações otimistas caso o servidor retorne falha.
+**Tratamento de erros**:
 
-## Considerações para Dispositivos Móveis
+- Erros de rede: Mostrar opção de repetição da tentativa, não fechar a janela pop-up
+- ID do carrinho inválido: Criar novo carrinho automaticamente
+- Esgotado: Desativar aumento da quantidade, mostrar mensagem
+- Reverter atualizações otimistas em caso de falha
 
-**Ajustes de interface em telas pequenas:**
+**Animações**: Transições suaves (250-350 ms), gaveta deslizante, fade-in/out do plano de fundo. Destacar itens recém-adicionados.
 
-- A gaveta do carrinho deve ocupar entre 85% a 100% (tela cheia) da largura em dispositivos móveis, deslizando da direita ou de baixo.
-- Suporte a gestos de deslizar (swipe) para fechar.
-- Rodapé fixo na parte inferior contendo os botões de ação e os totais para estarem sempre alcançáveis pelo polegar.
-- Botões de "Finalizar compra" com largura total (100%).
+## Considerações para dispositivos móveis
 
-**Alvos de toque (Touch Targets):**
-Recomendado: 44-48px para conforto em dispositivos móveis. Mínimo WCAG AA: 24x24px ou espaçamento equivalente.
+**Menu suspenso em dispositivos móveis:**
 
-## Lista de Verificação
+- Largura total (100% menos margens)
+- Altura máxima de 60 a 70% da janela de visualização, com rolagem
+- Toque fora da área para fechar
 
-**Arquitetura e Implementação:**
+**Gaveta em dispositivos móveis:**
 
-- [ ] Gatilhos corretos de abertura implementados (ícone e/ou após adição).
-- [ ] Layout em formato de menu suspenso ou gaveta.
-- [ ] Fechamento via botão X, clique fora (quando aplicável) e tecla Escape.
-- [ ] **CRÍTICO: Exibição obrigatória de variantes (tamanho, cor, etc.) - não apenas o título.**
-- [ ] Itens exibem imagem, título, variante, quantidade, preço unitário e total.
-- [ ] Controle de quantidade com debounce e desativação temporal (loading).
-- [ ] Remoção rápida de item sem confirmações intrusivas.
-- [ ] Subtotal do carrinho claramente visível.
-- [ ] CTA primário de "Finalizar compra".
-- [ ] CTA secundário de "Ver carrinho".
-- [ ] Estado vazio bem desenhado com botão "Continuar comprando".
-- [ ] Estados de carregamento (*skeleton*) e de erro tratados visualmente.
-- [ ] Atualização em tempo real do ícone (badge) com o total de itens.
-- [ ] Limpeza do estado do carrinho no frontend (Context/TanStack) após pedido finalizado.
-- [ ] Tratamento autônomo e recuperação de ID de carrinho inválido/expirado.
-- [ ] Responsividade adaptada (gaveta/menu) para dispositivos móveis.
+- 85 a 95% da largura da tela ou tela inteira
+- Desliza da direita ou da parte inferior
+- Gestos de deslizar para fechar são suportados
+- Sobreposição de fundo
 
-**Acessibilidade (Operacional e W3C):**
+**Ajustes para dispositivos móveis:**
 
-- [ ] O contêiner pai utiliza `role="dialog"`.
-- [ ] A propriedade `aria-modal="true"` é utilizada apenas se o componente funcionar como gaveta modal e o conteúdo de fundo estiver realmente inerte.
-- [ ] O modal possui `aria-labelledby` apontando para o ID do título do pop-up.
-- [ ] Foco inicial: O foco é enviado para dentro do pop-up assim que ele é aberto.
-- [ ] Foco preso (Focus Trap): Teclas `Tab` e `Shift+Tab` não escapam do modal enquanto ele estiver aberto.
-- [ ] Retorno de foco: Ao fechar o pop-up, o foco retorna para o elemento que o disparou (geralmente o ícone do carrinho).
-- [ ] Botão de fechar visível e acessível para teclado e leitores.
-- [ ] Anúncios dinâmicos: Utilização de `aria-live` para anunciar quando um item é adicionado ou removido para o leitor de tela.
+- Áreas de toque grandes (mínimo de 44 a 48 px)
+- Botões de ação em largura total (48-52 px de altura)
+- Imagens menores (60 px), títulos truncados
+- Rodapé fixo com ações
+- Botão de fechar grande (44x44 px)
+
+## Lista de verificação
+
+**Recursos essenciais:**
+
+- [ ] Abre ao clicar no ícone do carrinho
+- [ ] Layout de menu suspenso (280-320px) ou gaveta (320-400px)
+- [ ] Botão de fechar ou clicar fora da área para fechar
+- [ ] Sobreposição de fundo se for gaveta
+- [ ] **CRÍTICO: Os itens do carrinho mostram detalhes das variantes (tamanho, cor etc.) — não apenas o título do produto**
+- [ ] Itens do carrinho com imagem, título, opções de variantes, quantidade e preços
+- [ ] Controles de quantidade (botões +/-, sem rebote)
+- [ ] Botão “Remover item”
+- [ ] Exibição do subtotal
+- [ ] Botão “Finalizar compra” (primário)
+- [ ] Botão “Ver carrinho” (secundário)
+- [ ] Estado vazio com CTA “Continuar comprando”
+- [ ] Estados de carregamento (esqueleto/ícone giratório)
+- [ ] Animações suaves (250-350 ms)
+- [ ] Dispositivos móveis: menu suspenso em largura total ou gaveta de 85-95%
+- [ ] Áreas de toque com no mínimo 44-48px
+- [ ] `role="dialog"` e `aria-modal="true"`
+- [ ] Rótulos ARIA no botão do carrinho (“Carrinho de compras com 3 itens”)
+- [ ] Acessível por teclado (armadilha de foco, tecla Escape fecha, retorna o foco)
+- [ ] Anúncios do leitor de tela (item adicionado/removido)
+- [ ] Atualizações em tempo real do ícone de contagem do carrinho

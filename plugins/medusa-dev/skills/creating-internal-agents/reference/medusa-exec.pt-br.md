@@ -1,10 +1,10 @@
 # MedusaExec
 
-MedusaExec dá à agente a capacidade de escrever e executar código TypeScript arbitrário contra o servidor Medusa vivo. Em vez de pré-construir um ponto final para cada ação possível, a agente gera o código certo para cada tarefa em tempo de execução — consultando dados, ativando fluxos de trabalho, atualizando registros — usando acesso completo ao contêiner DI do Medusa.
+O MedusaExec permite que o agente escreva e execute código TypeScript arbitrário no servidor Medusa em produção. Em vez de criar previamente um endpoint para cada ação possível, o agente gera o código adequado para cada tarefa em tempo de execução — consultar dados, acionar fluxos de trabalho, atualizar registros — utilizando acesso total ao contêiner DI do Medusa.
 
-> **CRÍTICO — Autenticação necessária.** O MedusaExec executa código arbitrário com acesso total ao banco de dados e aos serviços. Ele só deve ser acessível por meio de rotas protegidas por `AuthenticatedMedusaRequest`. Nunca exponha o endpoint POST do agente (ou qualquer rota que acione `executeCode`) sem autenticação de administrador — fazer isso permite que usuários não autenticados executem código arbitrário contra seu banco de dados.
+> **CRÍTICO — Autenticação obrigatória.** O MedusaExec executa código arbitrário com acesso total ao banco de dados e aos serviços. Ele só deve ser acessível por meio de rotas protegidas por `AuthenticatedMedusaRequest`. Nunca exponha o endpoint POST do agente (ou qualquer rota que acione `executeCode`) sem autenticação de administrador — isso permite que usuários não autenticados executem código arbitrário no seu banco de dados.
 
-### O Executor
+## O Executor
 
 Adicione o executor ao seu projeto em `src/lib/code-mode/executor.ts`:
 
@@ -78,12 +78,12 @@ export async function executeCode(
   } finally {
     console.log = originalLog
     delete require.cache[require.resolve(tempFile)]
-    try { unlinkSync(tempFile) } catch { /*ignore*/ }
+    try { unlinkSync(tempFile) } catch { /* ignore */ }
   }
 }
 ```
 
-## A Ferramenta MedusaExec
+## A ferramenta MedusaExec
 
 ```ts
 // src/modules/agent/tools/medusa-exec.ts
@@ -103,58 +103,11 @@ export const medusaExecTool = tool({
 })
 ```
 
-Registre-o em seu agente e configuração assim como qualquer outra ferramenta (veja `agent-setup.md`).
+Registre-o no seu agente e na configuração, assim como qualquer outra ferramenta (consulte `agent-setup.md`).
 
-### Estrutura de Código Obrigatória
+## Estrutura de código necessária
 
-Para garantir a consistência e a legibilidade do código, siga esta estrutura obrigatória:
-
-```python
-# Importar bibliotecas necessárias
-import biblioteca1
-import biblioteca2
-
-# Definir funções personalizadas
-def funcao_personalizada1():
-    # Código da função 1
-
-def funcao_personalizada2(parametro1, parametro2):
-    # Código da função 2
-
-# Classe principal
-class MinhaClasse:
-    def __init__(self, atributo1, atributo2):
-        self.atributo1 = atributo1
-        self.atributo2 = atributo2
-
-    def metodo1(self):
-        # Código do método 1
-
-    def metodo2(self, parametro):
-        # Código do método 2
-
-# Função principal (ponto de entrada do programa)
-def main():
-    # Inicializar objetos e variáveis
-    objeto1 = MinhaClasse(valor1, valor2)
-    variavel1 = 10
-
-    # Chamadas de funções e métodos
-    funcao_personalizada1()
-    objeto1.metodo1()
-    resultado = funcao_personalizada2(variavel1, objeto1.atributo2)
-
-    # Imprimir resultados
-    print("Resultado da função 2:", resultado)
-
-# Executar a função principal
-if __name__ == "__main__":
-    main()
-```
-
-Esta estrutura garante que o código seja organizado, fácil de ler e seguir. As bibliotecas são importadas no início, as funções e classes são definidas claramente, e a função principal coordena a execução do programa.
-
-Cada script que o agente escreve **deve**exportar por padrão uma função assíncrona:
+Todo script escrito pelo agente **deve** exportar por padrão uma função assíncrona:
 
 ```ts
 import { ExecArgs } from "@medusajs/framework/types"
@@ -165,11 +118,11 @@ export default async function({ container, log }: ExecArgs) {
 }
 ```
 
->**CRÍTICO:** Se o script não exporta por padrão uma função, a execução falha com `INVALID_EXPORT`. O agente deve seguir essa estrutura exatamente em todos os casos.
+> **CRÍTICO:** Se o script não exportar uma função por padrão, a execução falhará com o erro `INVALID_EXPORT`. O agente deve sempre seguir essa estrutura à risca.
 
-## Consultando Dados
+## Consulta de dados
 
-Use `query.graph()` — nunca resolva serviços de módulo diretamente, pois isso ignora a camada de lógica de negócios da Medusa.
+Use `query.graph()` — nunca acesse os serviços do módulo diretamente, pois isso contorna a camada de lógica de negócios do Medusa.
 
 ```ts
 import { ExecArgs } from "@medusajs/framework/types"
@@ -208,20 +161,20 @@ fields: ["id", "title", "variants.id", "variants.prices.*"]
 pagination: { take: 50, skip: 0, order: { created_at: "DESC" } }
 ```
 
-> **Sempre `log()` seus resultados**— a ferramenta retorna `logs` como saída primária que o agente lê. Os valores de retorno são secundários. Um script que não registra nada é efetivamente silencioso.
+> **Sempre `log()` seus resultados** — a ferramenta retorna `logs` como a saída principal que o agente lê. Os valores de retorno são secundários. Um script que não registra nada é, na prática, silencioso.
 
-## Códigos de Erro
+## Códigos de erro
 
-| `Código` | Causa |**Corrigir** |
+| Código | Causa | Solução |
 |------|-------|-----|
-| `ERRO_DE_COMPILAÇÃO` | Erro de análise do TypeScript/JS | Corrija a sintaxe; verifique se os imports existem |
-| `INVALID_EXPORT` | Não há exportação de função padrão | Adicione `export default async function(...)` |
-| `ERRO_DE_EXECUÇÃO` | Exceção durante a execução | Verifique a lógica; valide as entradas |
-| `TIMEOUT` | Excedeu 30 segundos | Reduzir escopo; adicionar paginação |
+| `COMPILE_ERROR` | Erro de análise do TypeScript/JS | Corrija a sintaxe; verifique se as importações existem |
+| `INVALID_EXPORT` | Falta exportação padrão da função | Adicione `export default async function(...)` |
+| `RUNTIME_ERROR` | Exceção durante a execução | Verifique a lógica; valide as entradas |
+| `TIMEOUT` | Excedido o limite de 30 segundos | Reduza o escopo; adicione paginação |
 
-## Sugestão de Prompt do Sistema para o Agente
+## Orientação do prompt do sistema para o agente
 
-Adicione isso ao prompt do sistema do agente para que ele saiba como usar o MedusaExec corretamente:
+Adicione isto ao prompt do sistema do agente para que ele saiba como usar o MedusaExec corretamente:
 
 ```ts
 export const prompt = () => `
@@ -253,7 +206,7 @@ Rules:
 `
 ```
 
-## Descrição da Configuração
+## Descrição da configuração
 
 ```ts
 MedusaExec: {

@@ -1,8 +1,8 @@
-# Modelos de Dados
+# Modelos de dados
 
-`AgentSession` e `AgentMessage` são infraestrutura compartilhada — um conjunto de tabelas serve todos os agentes no projeto. Um campo `agent_type` na sessão distingue qual agente o possui, então um agente de suporte ao cliente e um agente de auditoria de produtos escrevem nas mesmas tabelas sem colidir.
+`AgentSession` e `AgentMessage` são uma infraestrutura compartilhada — um único conjunto de tabelas atende a todos os agentes do projeto. Um campo `agent_type` na sessão distingue a qual agente ela pertence, de modo que um agente de atendimento ao cliente e um agente de auditoria de produtos podem gravar nas mesmas tabelas sem que haja conflito.
 
-> **Não crie modelos de sessão/mensagem separados por agente.**Adicione `agent_type` e reutilize esses modelos.
+> **Não crie modelos separados de sessão/mensagem para cada agente.** Adicione `agent_type` e reutilize esses modelos.
 
 ## Modelos
 
@@ -33,23 +33,25 @@ export const AgentMessage = model.define("agent_message", {
 })
 ```
 
-## Regras Principais
+## Regras principais
 
--*`tipo_de_agente`**— defina para um slug estável, em minúsculas, quando criar uma sessão. Cada rota da API do agente passa seu próprio valor. Use-o para filtrar sessões na endpoint de lista para que cada agente só veja sua própria história.
--*`model.id({ prefix: "..." })`**— gera um ID com prefixo (ex: `sess_01JABCD…`).
--*`hasMany` / `belongsTo`**— sempre defina ambos os lados. O valor `mappedBy` deve corresponder ao nome do campo no pai.
--*`nullable()`**— `title` é definido de forma preguiçosa a partir da primeira mensagem; pode ser nulo na criação.
+- **`agent_type`** — defina esse campo com um slug estável, em letras minúsculas, ao criar uma sessão. A rota da API de cada agente passa seu próprio valor. Use-o para filtrar as sessões no endpoint da lista, de modo que cada agente veja apenas seu próprio histórico.
+- **`model.id({ prefix: "..." })`** — gera um ID com prefixo (por exemplo, `sess_01JABCD…`).
+- **`hasMany` / `belongsTo`** — sempre defina ambos os lados. O valor de `mappedBy` deve corresponder ao nome do campo no modelo pai.
+- **`nullable()`** — `title` é definido de forma diferida a partir da primeira mensagem; pode ser nulo no momento da criação.
 
-##**Migrações**Após adicionar ou alterar modelos, execute:
+## Migrações
+
+Após adicionar ou alterar modelos, execute:
 
 ```bash
 npx medusa db:generate agent   # matches the module resolve path in medusa-config.ts
 npx medusa db:migrate
 ```
 
->**CRÍTICO:** O nome passado para `db:generate` deve corresponder à forma como o módulo é resolvido em `medusa-config.ts`.
+> **CRÍTICO:** O nome passado para `db:generate` deve corresponder à forma como o módulo é resolvido em `medusa-config.ts`.
 
-## Exportando Modelos
+## Exportação de modelos
 
 ```ts
 // Imported directly in service.ts

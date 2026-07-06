@@ -1,47 +1,47 @@
 ---
 name: building-with-medusa
-description: Carregar automaticamente ao planejar, pesquisar ou implementar QUALQUER recurso de backend do Medusa (módulos personalizados, rotas de API, fluxos de trabalho, modelos de dados, links de módulos, lógica de negócios). OBRIGATÓRIO para todo trabalho de backend do Medusa em TODOS os modos (planejamento, implementação, exploração). Contém padrões arquiteturais, melhores práticas e regras críticas que os servidores MCP não fornecem.
+description: Load automatically when planning, researching, or implementing ANY Medusa backend features (custom modules, API routes, workflows, data models, module links, business logic). REQUIRED for all Medusa backend work in ALL modes (planning, implementation, exploration). Contains architectural patterns, best practices, and critical rules that MCP servers don't provide.
 ---
 
-# Desenvolvimento de Backend da Medusa
+# Desenvolvimento de Back-end com Medusa
 
-Guia completo de desenvolvimento backend para aplicações Medusa. Contém padrões em 6 categorias que abrangem arquitetura, segurança de tipos, posicionamento da lógica de negócios e armadilhas comuns.
+Guia abrangente de desenvolvimento de back-end para aplicativos Medusa. Contém padrões divididos em seis categorias que abrangem arquitetura, segurança de tipos, posicionamento da lógica de negócios e armadilhas comuns.
 
-## Quando Aplicar
+## Quando aplicar
 
-**Carregue esta habilidade para QUALQUER tarefa de desenvolvimento backend, incluindo:**
+**Utilize esta habilidade para QUALQUER tarefa de desenvolvimento de backend, incluindo:**
 
-- Criando ou modificando módulos personalizados e modelos de dados
-- Implementando fluxos de trabalho para mutações
-- Construindo rotas de API (loja ou admin)
-- Definindo links de módulo entre entidades
-- Escrivendo lógica de negócios ou validação
-- Consultando dados entre módulos
-- Implementando autenticação/autorização
+- Criação ou modificação de módulos personalizados e modelos de dados
+- Implementação de fluxos de trabalho para mutações
+- Criação de rotas de API (loja ou administração)
+- Definição de ligações entre módulos e entidades
+- Criação de lógica de negócios ou validação
+- Consulta de dados entre módulos
+- Implementação de autenticação/autorização
 
-**Também carregue essas habilidades quando:**
+**Carregue também estas habilidades quando:**
 
-- **building-admin-dashboard-customizações:** Construindo interface de administração UI (widgets, páginas, formulários)
-- **building-storefronts:** Chamando rotas de backend da API a partir de vitrines (integração de SDK)
+- **building-admin-dashboard-customizations:** Criação da interface de usuário administrativa (widgets, páginas, formulários)
+- **building-storefronts:** Chamada de rotas de API de back-end a partir de lojas virtuais (integração com SDK)
 
-## CRÍTICO: Carregar Arquivos de Referência Quando Necessário
+## IMPORTANTE: Carregue os arquivos de referência quando necessário
 
 **A referência rápida abaixo NÃO é suficiente para a implementação.** Você DEVE carregar os arquivos de referência relevantes antes de escrever o código para esse componente.
 
-**Carregue essas referências com base no que você está implementando:**
+**Carregue essas referências de acordo com o que você estiver implementando:**
 
-- **Criando um módulo?** → DEVE carregar `reference/custom-modules.md` primeiro
-- **Criando fluxos de trabalho?** → DEVE carregar `reference/workflows.md` primeiro
-- **Criando rotas de API?** → DEVE carregar `reference/api-routes.md` primeiro
-- **Criando links de módulo?** → É MANDATÓRIO carregar `reference/module-links.md` primeiro
-- **Consultando dados?** → DEVE carregar `reference/querying-data.md` primeiro
-- **Adicionando autenticação?** → DEVE carregar `reference/authentication.md` primeiro
+- **Está criando um módulo?** → DEVE carregar `reference/custom-modules.md` primeiro
+- **Está criando fluxos de trabalho?** → DEVE carregar `reference/workflows.md` primeiro
+- **Está criando rotas de API?** → DEVE carregar `reference/api-routes.md` primeiro
+- **Está criando links de módulo?** → DEVE carregar `reference/module-links.md` primeiro
+- **Consultando dados?** → É OBRIGATÓRIO carregar `reference/querying-data.md` primeiro
+- **Adicionando autenticação?** → É OBRIGATÓRIO carregar `reference/authentication.md` primeiro
 
-**Requisito mínimo:** Carregue pelo menos 1-2 arquivos de referência relevantes para a sua tarefa específica antes de implementar.
+**Requisito mínimo:** Carregue pelo menos 1 ou 2 arquivos de referência relevantes para sua tarefa específica antes de implementar.
 
-## Padrão de Arquitetura Crítica
+## Padrão de arquitetura crítico
 
-**SEMPRE siga este fluxo - nunca pule camadas:**
+**SIGA SEMPRE este fluxo — nunca pule camadas:**
 
 ```
 Module (data models + CRUD operations)
@@ -55,83 +55,76 @@ Frontend (admin dashboard/storefront via SDK)
 
 **Convenções principais:**
 
-- Apenas métodos GET, POST, DELETE (nunca PUT/PATCH)
-- Fluxos de trabalho são necessários para TODAS as mutações
-- A lógica de negócios pertence às etapas do fluxo de trabalho, NÃO às rotas.
-- Faça a consulta com `query.graph()` para recuperação de dados entre módulos.
-- Consulta com `query.index()` (Módulo de Índice) para filtrar entre módulos separados com links
-- Links de módulo mantêm isolamento entre módulos
+- Apenas métodos GET, POST e DELETE (nunca PUT/PATCH)
+- É obrigatório o uso de fluxos de trabalho para TODAS as mutações
+- A lógica de negócios deve estar nas etapas do fluxo de trabalho, NÃO nas rotas
+- Utilize `query.graph()` para recuperação de dados entre módulos
+- Utilize `query.index()` (Módulo de Índice) para filtrar dados entre módulos separados por meio de links
+- Os links entre módulos mantêm o isolamento entre eles
 
-## Regras por Categoria de Prioridade
+## Categorias de regras por prioridade
 
-| Prioridade | Categoria | **Impacto** | Prefixo |
+| Prioridade | Categoria | Impacto | Prefixo |
 |----------|----------|--------|--------|
-| 1 | Violações de Arquitetura | CRÍTICO | `arch-` |
-| 2 | Segurança de Tipos | CRÍTICO | `type-` |
-| 3 | Colocação da Lógica de Negócio | ALTO | `lógica-` |
-| 4 | Importação e Organização de Código | **ALTO** | `import-` |
-| 5 | Padrões de Acesso a Dados | MEDIUM (inclui a regra de preço CRÍTICO) | `data-` |
-| 6 | Organização de Arquivos | MÉDUM
+| 1 | Violações de arquitetura | CRÍTICA | `arch-` |
+| 2 | Segurança de tipos | CRÍTICO | `type-` |
+| 3 | Localização da lógica de negócios | ALTO | `logic-` |
+| 4 | Importação e organização do código | ALTO | `import-` |
+| 5 | Padrões de acesso a dados | MÉDIO (inclui regra de preço CRÍTICA) | `data-` |
+| 6 | Organização de arquivos | MÉDIO | `file-` |
 
-**Nota:** Não consegui encontrar informações sobre a palavra "MEDIUM" em português. O resultado pode ser um termo mais comum ou uma tradução literal. | `file-` |
+## Referência rápida
 
-## Referência Rápida
+### 1. Violações de arquitetura (CRÍTICO)
 
-### 1. Violações de Arquitetura (CRÍTICO)
+- `arch-workflow-required` - Use fluxos de trabalho para TODAS as mutações; nunca chame serviços de módulos a partir de rotas
+- `arch-layer-bypass` - Nunca ignore camadas (rota → serviço sem fluxo de trabalho)
+- `arch-http-methods` - Use apenas GET, POST, DELETE (nunca PUT/PATCH)
+- `arch-module-isolation` - Use ligações entre módulos, em vez de chamadas diretas de serviço entre módulos
+- `arch-query-config-fields` - Não defina `fields` explicitamente ao usar `req.queryConfig`
 
-- `arch-workflow-required` - Utilize fluxos de trabalho para TODAS as mutações, nunca chame serviços de módulos a partir de rotas
-- `arch-layer-bypass` - Nunca contorne as camadas (rota → serviço sem fluxo de trabalho)
-- `arch-http-métodos` - Use apenas GET, POST, DELETE (nunca PUT/PATCH)
-- `arch-module-isolation` - Use links de módulo, não chamadas diretas de serviço entre módulos
-- `arch-query-config-fields` - Não defina campos explícitos `fields` ao usar `req.queryConfig`
-
-### 2. Segurança de Tipo (CRÍTICO)
+### 2. Segurança de tipos (CRÍTICO)
 
 - `type-request-schema` - Passe o tipo inferido pelo Zod para `MedusaRequest<T>` ao usar `req.validatedBody`
-- `type-authenticated-request` - Use `SolicitaçãoAutenticadaMedusaRequest` para rotas protegidas (não `MedusaRequest`)
-- `type-export-schema` - Exporta tanto o esquema Zod QUANTO o tipo inferido dos middlewares
-- `type-linkable-auto` - Nunca adicione `.linkable()` aos modelos de dados (adicionado automaticamente)
-- `type-module-name-camelcase` - Os nomes dos módulos DEVEM estar em camelCase, nunca use traços (causa erros de execução)
+- `type-authenticated-request` - Use `AuthenticatedMedusaRequest` para rotas protegidas (não `MedusaRequest`)
+- `type-export-schema` - Exporte tanto o esquema do Zod quanto o tipo inferido a partir dos middlewares
+- `type-linkable-auto` - Nunca adicione `.linkable()` aos modelos de dados (é adicionado automaticamente)
+- `type-module-name-camelcase` - Os nomes dos módulos DEVEM estar em camelCase; nunca use traços (isso causa erros em tempo de execução)
 
 ### 3. Localização da Lógica de Negócios (ALTA)
 
-- `logic-workflow-validation` - Coloque validações de negócio nos passos do fluxo de trabalho, não nas rotas da API
-- `logic-ownership-checks` - Validar propriedade/permissões em fluxos de trabalho, não em rotas
+- `logic-workflow-validation` - Coloque a validação de negócios nas etapas do fluxo de trabalho, não nas rotas da API
+- `logic-ownership-checks` - Valide propriedade/permissões nos fluxos de trabalho, não nas rotas
 - `logic-module-service` - Mantenha os módulos simples (apenas CRUD), coloque a lógica nos fluxos de trabalho
 
-### 4. Importação & Organização do Código (ALTA)
+### 4. Importação e organização do código (ALTA)
 
-- `import-top-level` - Importe fluxos de trabalho/módulos no topo do arquivo, nunca use `await import()` no corpo da rota
+- `import-top-level` - Importe fluxos de trabalho/módulos no início do arquivo; nunca use `await import()` no corpo da rota
 - `import-static-only` - Use importações estáticas para todas as dependências
-- `import-no-dynamic-routes` - Importações dinâmicas adicionam sobrecarga e quebram a verificação de tipos
+- `import-no-dynamic-routes` - Importações dinâmicas aumentam a sobrecarga e prejudicam a verificação de tipos
 
-### 5. Padrões de Acesso a Dados (MÉDIO)
+### 5. Padrões de acesso a dados (MÉDIO)
 
-- `data-price-format` - **CRÍTICO**: Os preços são armazenados como estão no Medusa (49.99 armazenado como 49.99, NÃO em centavos). Nunca multiplique por 100 ao salvar ou divida por 100 ao exibir.
+- `data-price-format` - **CRÍTICO**: Os preços são armazenados exatamente como estão no Medusa (49,99 é armazenado como 49,99, NÃO em centavos). Nunca multiplique por 100 ao salvar nem divida por 100 ao exibir
 - `data-query-method` - Use `query.graph()` para recuperar dados; use `query.index()` (Módulo de Índice) para filtrar entre módulos vinculados
-- `data-query-graph` - Utilize `query.graph()` para consultas transmodulares com notação ponto (sem filtragem transmodular)
-- `data-query-index` - Use `query.index()` quando filtrar por propriedades de modelos de dados vinculados em módulos separados
-- `data-list-e-contagem` - Use `listAndCount` para consultas paginadas de módulo único
-- `data-linked-filtering` - `query.graph()` não pode filtrar por campos de módulos vinculados - use `query.index()` ou faça a consulta diretamente daquela entidade
-- `data-no-js-filter` - Não use JavaScript `.filter()` em dados vinculados - utilize filtros de banco de dados (`query.index()` ou consulte a entidade)
-- `data-same-module-ok` - Pode filtrar por relações de mesmo módulo com `query.graph()` (por exemplo, product.variants)
+- `data-query-graph` - Use `query.graph()` para consultas entre módulos com notação dot (sem filtragem entre módulos)
+- `data-query-index` - Use `query.index()` ao filtrar por propriedades de modelos de dados vinculados em módulos separados
+- `data-list-and-count` - Use `listAndCount` para consultas paginadas em um único módulo
+- `data-linked-filtering` - `query.graph()` não pode filtrar por campos de módulos vinculados — use `query.index()` ou faça a consulta diretamente nessa entidade
+- `data-no-js-filter` - Não use `.filter()` do JavaScript em dados vinculados — use filtros do banco de dados (`query.index()` ou consulte a entidade)
+- `data-same-module-ok` - Permite filtrar por relações do mesmo módulo com `query.graph()` (por exemplo, product.variants)
+- `data-auth-middleware` - Confie no middleware `authenticate`; não verifique manualmente `req.auth_context`
 
-- ```markdown
+### 6. Organização de arquivos (MÉDIO)
 
-`data-auth-middleware` - Confie no middleware `authenticate`, não verifique manualmente `req.auth_context`
+- `file-workflow-steps` - Recomendado: crie etapas em `src/workflows/steps/[nome].ts`
+- `file-workflow-composition` - Funções de composição em `src/workflows/[nome].ts`
+- `file-middleware-exports` - Exporte esquemas e tipos dos arquivos de middleware
+- `file-links-directory` - Defina links de módulos em `src/links/[nome].ts`
 
-```
+## Regras de composição do fluxo de trabalho
 
-### 6. Organização de Arquivos (MÉDIO)
-
-- `file-workflow-steps` - Recomendado: Crie os passos em `src/workflows/steps/[name].ts`
-- `file-workflow-composition` - Funções de composição em `src/workflows/[name].ts`
-- `file-middleware-exports` - Exporta esquemas e tipos de dados de arquivos de middleware
-- `file-links-directory` - Defina os links do módulo em `src/links/[name].ts`
-
-## Regras de Composição de Fluxo de Trabalho
-
-**A função de fluxo de trabalho tem restrições críticas:**
+**A função de fluxo de trabalho possui restrições essenciais:**
 
 ```typescript
 // ✅ CORRECT
@@ -156,121 +149,121 @@ const myWorkflow = createWorkflow(
 
 **Restrições:**
 
-- No async/await (runs at load time)
-- Sem funções de seta (use `function`)
-- Nenhum condicional/ternário (utilize `when()`)
-- Não há manipulação de variáveis (use `transform()`)
-- Nenhuma data de criação (use `transform()`)
-- Múltiplas chamadas de etapas precisam de `.config({ name: "unique-name" })` para evitar conflitos
+- Sem async/await (é executado no momento do carregamento)
+- Sem funções-seta (use `function`)
+- Sem condicionais/ternários (use `when()`)
+- Sem manipulação de variáveis (use `transform()`)
+- Sem criação de datas (use `transform()`)
+- Chamadas com várias etapas precisam de `.config({ name: "unique-name" })` para evitar conflitos
 
-## Lista de Verificação de Erros Comuns
+## Lista de verificação de erros comuns
 
 Antes de implementar, verifique se você NÃO está fazendo o seguinte:
 
 **Arquitetura:**
 
-- [ ] Chamando serviços de módulos diretamente das rotas da API
-- [ ] Usando métodos PUT ou PATCH
-- [ ] Ignorando fluxos de trabalho para mutações
-- [ ] Definindo `fields` explicitamente com `req.queryConfig`
-- [ ] Pular migrações após criar links do módulo
+- [ ] Chamar serviços de módulos diretamente de rotas de API
+- [ ] Usar métodos PUT ou PATCH
+- [ ] Ignorar fluxos de trabalho para mutações
+- [ ] Definir `fields` explicitamente com `req.queryConfig`
+- [ ] Ignorar migrações após criar ligações entre módulos
 
-**Segurança de Tipos:**
+**Segurança de tipos:**
 
-- [ ] Esquecendo o argumento de tipo `MedusaRequest<SchemaType>`
-- [ ] Usando `MedusaRequest` em vez de `AuthenticatedMedusaRequest` para rotas protegidas
-- [ ] Não exportando o tipo inferido do Zod a partir dos middlewares
-- [ ] Adicionando `.linkable()` aos modelos de dados
-- [ ] Usando traços em nomes de módulos (devem estar em camelCase)
+- [ ] Esquecer o argumento de tipo `MedusaRequest<SchemaType>`
+- [ ] Usar `MedusaRequest` em vez de `AuthenticatedMedusaRequest` para rotas protegidas
+- [ ] Não exportar o tipo inferido pelo Zod dos middlewares
+- [ ] Adicionar `.linkable()` aos modelos de dados
+- [ ] Usar traços nos nomes dos módulos (devem estar em camelCase)
 
-**Lógica de Negócios:**
+**Lógica de negócios:**
 
-- [ ] Validando regras de negócio em rotas de API
-- [ ] Verificando propriedade em rotas em vez de fluxos de trabalho
+- [ ] Validar regras de negócios nas rotas da API
+- [ ] Verificar a propriedade nas rotas em vez de nos fluxos de trabalho
 - [ ] Verificar manualmente `req.auth_context?.actor_id` quando o middleware já foi aplicado
 
 **Importações:**
 
-- [ ] Using `await import()` in route handler bodies
+- [ ] Usar `await import()` no corpo dos manipuladores de rota
 - [ ] Importações dinâmicas para fluxos de trabalho ou módulos
 
-**Acesso a Dados:**
+**Acesso a dados:**
 
-- [ ] **CRÍTICO**: Multiplicar os preços por 100 ao salvar ou dividir por 100 ao exibir (os preços são armazenados como estão: $49.99 = 49.99)
-- [ ] Filtrando por campos de módulo vinculado com `query.graph()` (use `query.index()` ou consulta do outro lado em vez disso)
-- [ ] Usando JavaScript `.filter()` em dados vinculados (use `query.index()` ou consulte a entidade vinculada diretamente)
-- [ ] Não usar `query.graph()` para recuperação de dados entre módulos
-- [ ] Usar `query.graph()` quando precisar filtrar entre módulos separados (use `query.index()` em vez disso)
+- [ ] **CRÍTICO**: Multiplicar preços por 100 ao salvar ou dividir por 100 ao exibir (os preços são armazenados como estão: $49,99 = 49,99)
+- [ ] Filtragem por campos de módulos vinculados com `query.graph()` (use `query.index()` ou faça a consulta por outro caminho)
+- [ ] Uso de `.filter()` do JavaScript em dados vinculados (use `query.index()` ou consulte a entidade vinculada diretamente)
+- [ ] Não utilizar `query.graph()` para recuperação de dados entre módulos
+- [ ] Utilizar `query.graph()` quando for necessário filtrar dados em módulos distintos (use `query.index()` em vez disso)
 
-## Validando Implementação
+## Validação da implementação
 
-**CRÍTICO: Sempre execute o comando de build após concluir a implementação para detectar erros de tipo e problemas de tempo de execução.**
+**CRÍTICO: Sempre execute o comando de compilação após concluir a implementação para detectar erros de tipo e problemas de tempo de execução.**
 
 ### Quando validar
 
-- Após implementar qualquer nova funcionalidade
-- Após fazer alterações em módulos, fluxos de trabalho ou rotas da API
+- Após implementar qualquer novo recurso
+- Após fazer alterações em módulos, fluxos de trabalho ou rotas de API
 - Antes de marcar tarefas como concluídas
-- Proativamente, sem esperar que o usuário peça
+- De forma proativa, sem esperar que o usuário solicite
 
-### Como Executar a Compilação
+### Como executar a compilação
 
-Detecte o gerenciador de pacotes e execute o comando apropriado:
+Identifique o gerenciador de pacotes e execute o comando apropriado:
 
 ```bash
 npm run build      # or pnpm build / yarn build
 ```
 
-### Handling Build Errors
+### Como lidar com erros de compilação
 
-If the build fails:
+Se a compilação falhar:
 
 1. Leia as mensagens de erro com atenção
-2. Fix type errors, import issues, and syntax errors
-3. Run the build again to verify the fix
-4. Do NOT mark implementation as complete until build succeeds
+2. Corrija erros de tipo, problemas de importação e erros de sintaxe
+3. Execute a compilação novamente para verificar se a correção funcionou
+4. NÃO marque a implementação como concluída até que a compilação seja bem-sucedida
 
-**Common build errors:**
+**Erros comuns de compilação:**
 
-- Missing imports or exports
-- Incompatibilidades de tipo (por exemplo, argumento de tipo `MedusaRequest<T>` ausente)
-- Incorrect workflow composition (async functions, conditionals)
+- Importações ou exportações ausentes
+- Incompatibilidades de tipo (por exemplo, ausência do argumento de tipo `MedusaRequest<T>`)
+- Composição incorreta do fluxo de trabalho (funções assíncronas, condicionais)
 
-## Próximos Passos - Testando Sua Implementação
+## Próximos passos — Testando sua implementação
 
-**After successfully implementing a feature, always provide these next steps to the user:**
+**Após implementar um recurso com sucesso, sempre forneça estes próximos passos ao usuário:**
 
-### 1. Inicie o Servidor de Desenvolvimento
+### 1. Inicie o servidor de desenvolvimento
 
-Se o servidor não estiver sendo executado, inicie-o:
+Se o servidor ainda não estiver em execução, inicie-o:
 
 ```bash
 npm run dev      # or pnpm dev / yarn dev
 ```
 
-### 2. Access the Admin Dashboard
+### 2. Acesse o Painel de Administração
 
-Abra seu navegador e navegue para:
+Abra seu navegador e acesse:
 
-- **Admin Dashboard:** <http://localhost:9000/app>
+- **Painel de Administração:** <http://localhost:9000/app>
 
-Log in with your admin credentials to test any admin-related features.
+Faça login com suas credenciais de administrador para testar quaisquer recursos relacionados à administração.
 
-### 3. Testar Rotas da API
+### 3. Testar rotas da API
 
-If you implemented custom API routes, list them for the user to test:
+Se você implementou rotas personalizadas da API, liste-as para que o usuário possa testá-las:
 
-**Admin Routes (require authentication):**
+**Rotas de administração (exigem autenticação):**
 
-- `POST http://localhost:9000/admin/[your-route]` - Descrição do que isso faz
-- `GET http://localhost:9000/admin/[your-route]` - Description of what it does
+- `POST http://localhost:9000/admin/[sua-rota]` - Descrição do que ela faz
+- `GET http://localhost:9000/admin/[sua-rota]` - Descrição do que ela faz
 
-**Store Routes (public or customer-authenticated):**
+**Rotas da loja (públicas ou autenticadas pelo cliente):**
 
-- `POST http://localhost:9000/store/[your-route]` - Description of what it does
-- `GET http://localhost:9000/store/[your-route]` - Description of what it does
+- `POST http://localhost:9000/store/[sua-rota]` - Descrição do que ela faz
+- `GET http://localhost:9000/store/[sua-rota]` - Descrição do que ela faz
 
-**Testing with cURL example:**
+**Exemplo de teste com o cURL:**
 
 ```bash
 # Admin route (requires authentication)
@@ -285,17 +278,17 @@ curl -X POST http://localhost:9000/store/reviews \
   -d '{"product_id": "prod_123", "rating": 5, "comment": "Great product!"}'
 ```
 
-### 4. Additional Testing Steps
+### 4. Etapas adicionais de teste
 
-Depending on what was implemented, mention:
+Dependendo do que foi implementado, mencione:
 
-- **Workflows:** Test mutation operations and verify rollback on errors
-- **Assinantes:** Disparar eventos e verificar logs para a execução do assinante
-- **Scheduled jobs:** Wait for job execution or check logs for cron output
+- **Fluxos de trabalho:** Teste as operações de mutação e verifique a reversão em caso de erros
+- **Assinantes:** Acione eventos e verifique os logs para acompanhar a execução dos assinantes
+- **Tarefas agendadas:** Aguarde a execução da tarefa ou verifique os logs para conferir a saída do cron
 
-### Formato para Apresentar os Próximos Passos
+### Formato para apresentar os próximos passos
 
-Always present next steps in a clear, actionable format after implementation:
+Sempre apresente os próximos passos de forma clara e prática após a implementação:
 
 ```markdown
 ## Implementation Complete
@@ -324,9 +317,9 @@ I've added the following routes:
 3. [Specific test case 3]
 ```
 
-## Como Usar
+## Como usar
 
-**For detailed patterns and examples, load reference files:**
+**Para ver padrões e exemplos detalhados, carregue os arquivos de referência:**
 
 ```
 reference/custom-modules.md    - Creating modules with data models
@@ -343,65 +336,65 @@ reference/troubleshooting.md    - Common errors and solutions
 
 Cada arquivo de referência contém:
 
-- Step-by-step implementation checklists
-- Correct vs incorrect code examples
-- TypeScript patterns and type safety
-- Common pitfalls and solutions
+- Listas de verificação passo a passo para implementação
+- Exemplos de código correto e incorreto
+- Padrões do TypeScript e segurança de tipos
+- Armadilhas comuns e soluções
 
-## Quando Usar Esta Habilidade vs Servidor MedusaDocs MCP
+## Quando usar esta habilidade em comparação com o MedusaDocs MCP Server
 
-**⚠️ CRITICAL: This skill should be consulted FIRST for planning and implementation.**
+**⚠️ IMPORTANTE: Esta habilidade deve ser consultada PRIMEIRO para planejamento e implementação.**
 
-**Use this skill for (PRIMARY SOURCE):**
+**Use esta habilidade como (FONTE PRINCIPAL):**
 
-- **Planning** - Understanding how to structure Medusa backend features
-- **Architecture** - Module → Workflow → API Route patterns
-- **Melhores práticas** - Padrões de código corretos vs incorretos
-- **Regras críticas** - O que NÃO fazer (erros comuns e antipadrões)
-- **Implementation patterns** - Step-by-step guides with checklists
+- **Planejamento** - Compreender como estruturar os recursos de backend do Medusa
+- **Arquitetura** - Padrões de Módulo → Fluxo de Trabalho → Rota de API
+- **Melhores práticas** - Padrões de código corretos versus incorretos
+- **Regras essenciais** - O que NÃO fazer (erros comuns e antipadrões)
+- **Padrões de implementação** - Guias passo a passo com listas de verificação
 
-**Use MedusaDocs MCP server for (SECONDARY SOURCE):**
+**Use o servidor MedusaDocs MCP como (FONTE SECUNDÁRIA):**
 
-- Specific method signatures after you know which method to use
-- Opções de configuração de módulos integrados
-- Official type definitions
+- Assinaturas específicas de métodos depois que você souber qual método usar
+- Opções de configuração integradas aos módulos
+- Definições oficiais de tipos
 - Detalhes de configuração no nível do framework
 
-**Por que habilidades vêm em primeiro lugar:**
+**Por que o Skills vem em primeiro lugar:**
 
-- Skills contain opinionated guidance and anti-patterns MCP doesn't have
-- Habilidades mostram padrões arquiteturais necessários para o planejamento
-- MCP é material de referência; habilidades são orientação prescritiva
+- O Skills contém orientações com pontos de vista específicos e antipadrões que o MCP não possui
+- O Skills mostra os padrões arquitetônicos necessários para o planejamento
+- O MCP é um material de referência; as habilidades são orientações prescritivas
 
-## Integração com Aplicações Frontend
+## Integração com aplicativos front-end
 
-**⚠️ CRÍTICO: Aplicativos de interface do usuário DEVEM utilizar a SDK JS Medusa para TODAS as solicitações de API**
+**⚠️ CRÍTICO: Os aplicativos front-end DEVEM usar o SDK do Medusa JS para TODAS as solicitações de API**
 
-Quando construir recursos que abrangem backend e frontend:
+Ao desenvolver recursos que abrangem o back-end e o front-end:
 
 **Para o Painel de Administração:**
 
-1. **Backend (essa habilidade):** Módulo → Fluxo de Trabalho → Rotas da API
-2. **Frontend:** Carregar a habilidade `building-admin-dashboard-customizations`
+1. **Back-end (esta habilidade):** Módulo → Fluxo de trabalho → Rota da API
+2. **Front-end:** Carregue a habilidade `building-admin-dashboard-customizations`
 3. **Conexão:**
-   - Pontos de extremidade incorporados: Use os métodos SDK existentes (`sdk.admin.product.list()`)
-   - Rotas da API personalizadas: Use `sdk.client.fetch("/admin/minha-rota")`
-   - **NUNCA use o fetch() regular** - cabeçalhos de autenticação ausentes causarão erros
+   - Endpoints integrados: Use os métodos existentes do SDK (`sdk.admin.product.list()`)
+   - Rotas de API personalizadas: Use `sdk.client.fetch("/admin/my-route")`
+   - **NUNCA use o método fetch() padrão** — a falta de cabeçalhos de autenticação causará erros
 
-**Para vitrines:**
+**Para Storefronts:**
 
-1. **Backend (esta habilidade):** Módulo → Fluxo de Trabalho → Rota de API
-2. **Frontend:** Carregar a habilidade `building-storefronts`
+1. **Back-end (esta skill):** Módulo → Fluxo de trabalho → Rota de API
+2. **Front-end:** Carregue a habilidade `building-storefronts`
 3. **Conexão:**
-   - Pontos de extremidade embutidos: Utilize métodos de SDK existentes (`sdk.store.product.list()`)
-   - Rotas de API personalizadas: Use `sdk.client.fetch("/store/my-route")`
-   - **NUNCA use a fetch() regular** - uma chave API publicável ausente causará erros
+   - Endpoints integrados: use os métodos existentes do SDK (`sdk.store.product.list()`)
+   - Rotas de API personalizadas: use `sdk.client.fetch("/store/my-route")`
+   - **NUNCA use o método fetch() comum** — a falta da chave de API publicável causará erros
 
-**Why the SDK is required:**
+**Por que o SDK é necessário:**
 
-- As rotas da loja precisam do cabeçalho `x-publishable-api-key`
-- Rotas de administração precisam de `Autorização` e cabeçalhos de sessão
-- SDK handles all required headers automatically
-- Regular fetch() without headers → authentication/authorization errors
+- As rotas da loja exigem o cabeçalho `x-publishable-api-key`
+- As rotas de administração exigem os cabeçalhos `Authorization` e de sessão
+- O SDK lida com todos os cabeçalhos necessários automaticamente
+- Chamada `fetch()` comum sem cabeçalhos → erros de autenticação/autorização
 
-Veja as habilidades de frontend respectivas para padrões de integração completos.
+Consulte as respectivas habilidades de front-end para conhecer os padrões completos de integração.

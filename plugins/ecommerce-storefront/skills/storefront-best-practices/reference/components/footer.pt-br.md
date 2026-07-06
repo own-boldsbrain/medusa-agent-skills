@@ -1,86 +1,124 @@
-# Component do Rodapé
+# Componente de rodapé
 
-## Conteúdo
+## Índice
 
-- [Component do Rodapé](#component-do-rodape)
-  - [Conteúdo](#conteudo)
-  - [Visão Geral](#visao-geral)
-    - [Requisitos Chave](#requisitos-chave)
-  - [Elementos Essenciais do Rodapé](#elementos-essenciais-do-rodape)
-    - [Conteúdo Obrigatório](#conteudo)
-    - [Layout em Colunas (Desktop)](#layout-em-colunas-desktoppadrao-4-5-colunas-coluna-1-lojacategorias-dinamica-do-backend)
-  - [Links de Categoria Dinâmicos (Específico para E-commerce)](#links-de-categoria-dinamicos-especifico-para-e-commercecritico-recupere-categorias-do-backend-dinamicamente-nunca-codifique-recupere-da-api-do-backend-de-e-commerce-para-medusa-sdkstorecategorylistbeneficios-mantem-se-sincronizado-com-a-navegacao-principal)
-  - [Inscrição na Newsletter](#inscricao-na-newsletterelementos-essenciais-campo-de-e-mail-botao-assinar)
-  - [Ícones de Pagamento e Confiança](#icones-de-pagamento-e-confiancaicones-de-metodos-de-pagamentoexibir-metodos-de-pagamento-aceitos-visa-mastercard-paypal-apple-pay-google-pay-icones-de-40-50px-linha-horizontal-inferior-do-rodapeicones-de-confianca-opcionalmaximo-3-4-certificacoes-legitimas-ssl-bbb-garantia-de-reembolso-use-apenas-icones-reais-com-links-de-verificacao)
-  - [Rodapé para Mobile](#rodape-para-mobilecoluna-unica-empilhadalogo-navegacao-newsletter-social-legaldireitos-autoraissecoes-dobraveis-opcionalpadrao-acordeon-para-a-navegacao-para-reduzir-a-altura-mantenha-o-newslettersocial-sempre-visivelpara-toquelinks-de-44px-minimo-espacamento-de-8-12px-texto-de-14-16px-altura-do-campo-de-newsletter-de-48px)
-  - [Lista de Verificação](#icones-de-pagamento-e-confiancaicones-de-metodos-de-pagamentoexibir-metodos-de-pagamento-aceitos-visa-mastercard-paypal-apple-pay-google-pay-icones-de-40-50px-linha-horizontal-inferior-do-rodapeicones-de-confianca-opcionalmaximo-3-4-certificacoes-legitimas-ssl-bbb-garantia-de-reembolso-use-apenas-icones-reais-com-links-de-verificacao)
+- [Componente de rodapé](#elementos-essenciais-do-rodape)
+  - [Índice](#contents)
+  - [Visão geral](#visao-geral)
+    - [Requisitos principais](#requisitos-principais)
+  - [Elementos essenciais do rodapé](#elementos-essenciais-do-rodape)
+    - [Conteúdo obrigatório](#conteúdo-obrigatório)
+    - [Layout com várias colunas (desktop)](#layout-com-várias-colunas-desktop)
+  - [Links dinâmicos de categorias (específicos para comércio eletrônico)](#links-dinamicos-de-categorias-especifico-para-comercio-eletronico)
+  - [Inscrição na newsletter](#inscricao-na-newsletter)
+  - [Símbolos de pagamento e confiança](#icones-de-pagamento-e-selos-de-confianca)
+  - [Rodapé para dispositivos móveis](#rodape-para-dispositivos-moveis)
+  - [Lista de verificação](#lista-de-verificacao)
 
-## Visão Geral
+## Visão geral
 
-O rodapé fornece navegação complementar, informações da empresa e sinais de confiança. Aparece em todas as páginas.
+O rodapé oferece navegação complementar, informações sobre a empresa e sinais de confiança. Aparece em todas as páginas.
 
-**Conhecimentos assumidos:**Os agentes de IA sabem como criar layouts em colunas e listas de navegação. Este guia se concentra nos padrões de rodapé para e-commerce.
+**Conhecimentos prévios**: os agentes de IA sabem como criar layouts com várias colunas e listas de navegação. Este guia se concentra em padrões de rodapé para comércio eletrônico.
 
-### Requisitos Chave
+### Requisitos principais
 
 - Links de navegação (categorias, páginas)
-- Recuperação dinâmica de categorias do backend
-- Links legais (Privacidade, Termos)
-- Inscrição na newsletter
-- Ícones de métodos de pagamento
-- Links de mídia social
-- Responsivo (colunas em desktop, coluna única em mobile)
-
-## Elementos Essenciais do Rodapé
-
-### Conteúdo Obrigatório**Obrigatório:**- Links de navegação (categorias do backend)
-
-- Informações de contato (e-mail, telefone)
+- Busca dinâmica de categorias no backend
 - Links legais (Política de Privacidade, Termos de Uso)
-- Aviso de direitos autorais com o ano atual**Fortemente recomendado:**- Formulário de inscrição na newsletter
-- Ícones de métodos de pagamento
-- Links de mídia social
+- Inscrição na newsletter
+- Emblemas de formas de pagamento
+- Links para redes sociais
+- Responsivo (várias colunas no desktop, coluna única no celular)
+
+## Elementos essenciais do rodapé
+
+### Conteúdo obrigatório
+
+**Obrigatório:**
+
+- Links de navegação (categorias do back-end)
+- Informações de contato (e-mail, telefone)
+- Links legais (Política de Privacidade, Termos de Serviço)
+- Aviso de direitos autorais com o ano atual
+
+**Altamente recomendado:**
+
+- Formulário de inscrição na newsletter
+- Emblemas de formas de pagamento
+- Links para redes sociais
 - Sinais de confiança
 
-### Layout em Colunas (Desktop)**Padrão: 4-5 colunas**- Coluna 1: Loja/Categorias (dinâmica do backend)
+### Layout com várias colunas (desktop)
 
-- Coluna 2: Atendimento ao Cliente (Contato, FAQ, Envio)
-- Coluna 3: Empresa (Sobre, Carreiras)
+**Padrão padrão: 4-5 colunas**
+
+- Coluna 1: Loja/Categorias (dinâmicas no back-end)
+- Coluna 2: Atendimento ao cliente (Contato, Perguntas frequentes, Envio)
+- Coluna 3: Empresa (Sobre nós, Carreiras)
 - Coluna 4: Inscrição na newsletter
-- Inferior: Links legais, ícones de pagamento, direitos autorais
+- Parte inferior: Links jurídicos, selos de pagamento, direitos autorais
 
-## Links de Categoria Dinâmicos (Específico para E-commerce)**CRÍTICO: Recupere categorias do backend dinamicamente**- nunca codifique. Recupere da API do backend de e-commerce (para Medusa: `sdk.store.category.list()`).**Benefícios:**- Mantém-se sincronizado com a navegação principal
+## Links dinâmicos de categorias (específico para comércio eletrônico)
 
+**IMPORTANTE: Busque as categorias dinamicamente no backend** — nunca use valores fixos. Busque-as pela API do backend de comércio eletrônico (para Medusa: `sdk.store.category.list()`).
+
+**Benefícios:**
+
+- Mantém-se sincronizado com a navegação principal
 - Categorias adicionadas/removidas automaticamente
-- Sem atualizações manuais no rodapé**Diretrizes:**- Mostrar apenas as categorias de nível superior (máximo 5-8)
-- Correspondência das etiquetas com a navegação principal
-- Cache dos dados de categoria (raramente muda)
+- Não há necessidade de atualizações manuais no rodapé
 
-## Inscrição na Newsletter**Elementos essenciais:**- Campo de e-mail + botão ("Assinar")
+**Diretrizes:**
 
-- Proposta de valor (CRÍTICO): Declare o benefício claramente ("Receba 10% de desconto no seu primeiro pedido", "Ofertas exclusivas + acesso antecipado"). Não apenas diga "Inscreva-se na newsletter".
-- Nota sobre privacidade: "Respeitamos sua privacidade" + link para a política de privacidade**Layout:**Input + botão em linha (desktop), empilhados (mobile). Full width no mobile.
+- Mostrar apenas as categorias de nível superior (máximo de 5 a 8)
+- Alinhar os rótulos com a navegação principal
+- Armazenar em cache os dados das categorias (raramente mudam)
 
-## Ícones de Pagamento e Confiança**Ícones de métodos de pagamento:**Exibir métodos de pagamento aceitos (Visa, Mastercard, PayPal, Apple Pay, Google Pay). Ícones de 40-50px, linha horizontal, inferior do rodapé.**Ícones de confiança (opcional):**Máximo 3-4 certificações legítimas (SSL, BBB, garantia de reembolso). Use apenas ícones reais com links de verificação
+## Inscrição na newsletter
 
-## Rodapé para Mobile**Coluna única, empilhada:**Logo → Navegação → Newsletter → Social → Legal/direitos autorais.**Seções dobráveis (opcional):**Padrão acordeon para a navegação para reduzir a altura. Mantenha o newsletter/social sempre visível.**Para toque:**Links de 44px mínimo, espaçamento de 8-12px, texto de 14-16px, altura do campo de newsletter de 48px
+**Elementos essenciais:**
 
-## Lista de Verificação**Recursos essenciais:**
+- Campo para e-mail + botão de envio (“Inscrever-se”)
+- **Proposta de valor (FUNDAMENTAL)**: Indique um benefício claro (“Ganhe 10% de desconto no seu primeiro pedido”, “Ofertas exclusivas + acesso antecipado”). Não se limite a dizer “Inscreva-se na newsletter”.
+- Aviso de privacidade: “Respeitamos sua privacidade” + link para a política de privacidade
+
+**Layout:** Campo de preenchimento + botão alinhados (computador), empilhados (celular). Largura total no celular.
+
+## Ícones de pagamento e selos de confiança
+
+**Ícones de formas de pagamento:**
+Exiba as formas de pagamento aceitas (Visa, Mastercard, PayPal, Apple Pay, Google Pay). Ícones de 40 a 50 px, dispostos em linha horizontal, na parte inferior do rodapé.
+
+**Selos de confiança (opcional):**
+No máximo 3 a 4 certificações válidas (SSL, BBB, garantia de reembolso). Use apenas selos reais com links de verificação.
+
+## Rodapé para dispositivos móveis
+
+**Coluna única, empilhada:** Logotipo → Navegação → Boletim informativo → Redes sociais → Informações legais/direitos autorais.
+
+**Seções recolhíveis (opcional):** Padrão de acordeão para a navegação, a fim de reduzir a altura. Mantenha o boletim informativo e as redes sociais sempre visíveis.
+
+**Otimizado para telas sensíveis ao toque:** links com no mínimo 44px, espaçamento de 8 a 12px, texto de 14 a 16px, altura do campo de inscrição na newsletter de 48px.
+
+## Lista de verificação
+
+**Recursos essenciais:**
 
 - [ ] Links de navegação (categorias, páginas)
-- [ ] Categorias recuperadas dinamicamente do backend
+- [ ] Categorias carregadas dinamicamente do backend
 - [ ] Informações de contato (e-mail, telefone)
-- [ ] Links legais (Política de Privacidade, Termos de Uso)
+- [ ] Links legais (Política de Privacidade, Termos de Serviço)
 - [ ] Aviso de direitos autorais com o ano atual
 - [ ] Formulário de inscrição na newsletter com proposta de valor
-- [ ] Ícones de métodos de pagamento
-- [ ] Links de mídia social
-- [ ] Responsivo (colunas em desktop, coluna única em mobile)
-- [ ] Mobile: Alvos de toque de 44px
-- [ ] Mobile: Seções dobráveis (opcional)
-- [ ] HTML semântico (`<footer>`, `<nav>` sections)
-- [ ] Rótulos ARIA para a navegação ("Navegação do rodapé")
+- [ ] Ícones de formas de pagamento
+- [ ] Links para redes sociais
+- [ ] Responsivo (4 a 5 colunas no desktop, uma coluna no celular)
+- [ ] Dispositivos móveis: áreas de toque de 44px
+- [ ] Dispositivos móveis: seções recolhíveis (opcional)
+- [ ] HTML semântico (seções `<footer>`, `<nav>`)
+- [ ] Rótulos ARIA na navegação (“Navegação no rodapé”)
 - [ ] Acessível por teclado
 - [ ] Indicadores de foco visíveis
-- [ ] Contraste de cor mínimo de 4.5:1
-- [ ] Consistente em todas as páginas
+- [ ] Contraste de cores mínimo de 4,5:1
+- [ ] Consistência em todas as páginas

@@ -1,36 +1,36 @@
-# Navegação e Roteamento
+# Navegação e roteamento
 
-## Conteúdo
+## Índice
 
-- [Pré-requisitos de Implementação para pnpm](#pre-requisitos-de-implementacao-para-pnpm)
-- [Navegação Básica com Componente Link](#navegacao-basica-com-link-component)
-- [Navegação Programática](#navegacao-programatica)
-- [Acessando Parâmetros de Rota](#acessando-parametros-de-rota)
-- [Linkagem para Páginas Admin Nativas](#linkagem-para-paginas-admin-nativas)
-- [Navegação a partir de Widgets](#navegacao-a-partir-de-widgets)
-- [Padrões Comuns de Navegação](#padroes-comuns-de-navegacao)
+- [Requisitos prévios à implementação do pnpm](#requisitos-pre-implementacao-para-o-pnpm)
+- [Navegação básica com o componente Link](#navegacao-basica-com-o-componente-link)
+- [Navegação programática](#navegacao-programatica)
+- [Acesso aos parâmetros de rota](#acessando-parametros-de-rota)
+- [Criação de links para páginas de administração integradas](#links-para-paginas-de-administracao-integradas)
+- [Navegação a partir de widgets](#navegacao-a-partir-de-widgets)
+- [Padrões comuns de navegação](#padroes-comuns-de-navegacao)
 
-## Pré-requisitos de Implementação para pnpm
+## Requisitos pré-implementação para o pnpm
 
-**⚠️ Usuários pnpm**: A navegação exige `react-router-dom`. Instale ANTES de implementar:
+**⚠️ Usuários do pnpm**: A navegação requer o `react-router-dom`. Instale ANTES da implementação:
 
 ```bash
 pnpm list react-router-dom --depth=10 | grep @medusajs/dashboard
 pnpm add react-router-dom@[exact-version]
 ```
 
-**Usuários npm/yarn**: NÃO instale - já está disponível nas dependências do dashboard.
+**Usuários do npm/yarn**: NÃO instale — já está disponível por meio das dependências do painel.
 
-## Navegação Básica com Link Component
+## Navegação básica com o componente `Link`
 
-Use o componente `Link` para navegação interna em widgets e páginas customizadas:
+Use o componente `Link` para navegação interna em widgets e páginas personalizadas:
 
 ```tsx
 import { Link } from "react-router-dom"
 import { Text } from "@medusajs/ui"
 import { TriangleRightMini } from "@medusajs/icons"
 
-// Link para uma página customizada
+// Link to a custom page
 <Link
   to="/custom/my-page"
   className="outline-none focus-within:shadow-borders-interactive-with-focus rounded-md [&:hover>div]:bg-ui-bg-component-hover"
@@ -38,7 +38,7 @@ import { TriangleRightMini } from "@medusajs/icons"
   <div className="shadow-elevation-card-rest bg-ui-bg-component rounded-md px-4 py-3 transition-colors">
     <div className="flex items-center gap-3">
       <Text size="small" leading="compact" weight="plus">
-        Ir para a Página Customizada
+        Go to Custom Page
       </Text>
       <div className="size-7 flex items-center justify-center">
         <TriangleRightMini className="text-ui-fg-muted rtl:rotate-180" />
@@ -48,10 +48,10 @@ import { TriangleRightMini } from "@medusajs/icons"
 </Link>
 ```
 
-### Link com ID Dinâmico
+### Link com ID dinâmico
 
 ```tsx
-// Link para detalhes do produto
+// Link to product details
 <Link to={`/products/${product.id}`}>
   <Text size="small" leading="compact" weight="plus">
     {product.title}
@@ -59,7 +59,7 @@ import { TriangleRightMini } from "@medusajs/icons"
 </Link>
 ```
 
-### Link Estilizado como Botão
+### Link no estilo de botão
 
 ```tsx
 import { Button } from "@medusajs/ui"
@@ -67,14 +67,14 @@ import { Link } from "react-router-dom"
 
 <Button asChild size="small" variant="secondary">
   <Link to="/custom/my-page">
-    Ver Detalhes
+    View Details
   </Link>
 </Button>
 ```
 
-## Navegação Programática
+## Navegação programática
 
-Use `useNavigate` para navegação após ações (por exemplo, após criar uma entidade):
+Use `useNavigate` para a navegação após ações (por exemplo, após a criação de uma entidade):
 
 ```tsx
 import { useNavigate } from "react-router-dom"
@@ -90,32 +90,32 @@ const CreateProductWidget = () => {
     mutationFn: (data) => sdk.admin.product.create(data),
     onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ["products"] })
-      toast.success("Produto criado com sucesso")
+      toast.success("Product created successfully")
 
-      // Navega para a página do novo produto
+      // Navigate to the new product's page
       navigate(`/products/${result.product.id}`)
     },
     onError: (error) => {
-      toast.error(error.message || "Falha ao criar o produto")
+      toast.error(error.message || "Failed to create product")
     },
   })
 
   const handleCreate = () => {
     createProduct.mutate({
-      title: "Novo Produto",
-      // ... outros campos
+      title: "New Product",
+      // ... other fields
     })
   }
 
   return (
     <Button onClick={handleCreate} isLoading={createProduct.isPending}>
-      Criar e Visualizar Produto
+      Create and View Product
     </Button>
   )
 }
 ```
 
-### Navegar com Estado
+### Navegar com estado
 
 Passar dados para a página de destino:
 
@@ -124,14 +124,14 @@ navigate("/custom/review", {
   state: { productId: product.id, productTitle: product.title }
 })
 
-// Acesso na página de destino
+// Access in destination page
 import { useLocation } from "react-router-dom"
 
 const ReviewPage = () => {
   const location = useLocation()
   const { productId, productTitle } = location.state || {}
 
-  return <div >Revisando: {productTitle}</div>
+  return <div>Reviewing: {productTitle}</div>
 }
 ```
 
@@ -141,38 +141,38 @@ const ReviewPage = () => {
 const navigate = useNavigate()
 
 <Button onClick={() => navigate(-1)}>
-  Voltar
+  Go Back
 </Button>
 ```
 
-## Acessando Parâmetros de Rota
+## Acessando parâmetros de rota
 
-Em páginas customizadas, acesse parâmetros de URL com `useParams`:
+Em páginas personalizadas, acesse os parâmetros da URL com `useParams`:
 
 ```tsx
-// Página customizada em: /custom/products/:id
+// Custom page at: /custom/products/:id
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import { sdk } from "../lib/client"
 import { Container, Heading } from "@medusajs/ui"
 
 const ProductDetailsPage = () => {
-  const { id } = useParams() // Obtém :id da URL
+  const { id } = useParams() // Get :id from URL
 
   const { data: product, isLoading } = useQuery({
     queryFn: () => sdk.admin.product.retrieve(id, {
       fields: "+metadata,+variants.*",
     }),
     queryKey: ["product", id],
-    enabled: !!id, // Apenas busca se o ID existir
+    enabled: !!id, // Only fetch if ID exists
   })
 
-  if (isLoading) return <div >Carregando...</div >
+  if (isLoading) return <div>Loading...</div>
 
   return (
     <Container>
       <Heading>{product?.title}</Heading>
-      {/*Detalhes do produto*/}
+      {/* Product details */}
     </Container>
   )
 }
@@ -180,10 +180,10 @@ const ProductDetailsPage = () => {
 export default ProductDetailsPage
 ```
 
-### Múltiplos Parâmetros
+### Vários parâmetros
 
 ```tsx
-// Rota: /custom/orders/:orderId/items/:itemId
+// Route: /custom/orders/:orderId/items/:itemId
 const { orderId, itemId } = useParams()
 
 const { data } = useQuery({
@@ -193,9 +193,9 @@ const { data } = useQuery({
 })
 ```
 
-### Parâmetros de Consulta
+### Parâmetros de consulta
 
-Use `useSearchParams` para parâmetros de string de consulta:
+Use `useSearchParams` para parâmetros da string de consulta:
 
 ```tsx
 import { useSearchParams } from "react-router-dom"
@@ -203,8 +203,8 @@ import { useSearchParams } from "react-router-dom"
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const status = searchParams.get("status") // Obtém ?status=published
-  const page = searchParams.get("page") // Obtém ?page=2
+  const status = searchParams.get("status") // Get ?status=published
+  const page = searchParams.get("page") // Get ?page=2
 
   const { data } = useQuery({
     queryFn: () => sdk.admin.product.list({
@@ -214,49 +214,49 @@ const ProductsPage = () => {
     queryKey: ["products", status, page],
   })
 
-  // Atualiza parâmetros de consulta
+  // Update query params
   const handleFilterChange = (newStatus: string) => {
     setSearchParams({ status: newStatus, page: "0" })
   }
 
   return (
-    <div >
+    <div>
       <Button onClick={() => handleFilterChange("published")}>
-        Publicado Apenas
+        Published Only
       </Button>
-      {/*Lista de produtos*/}
-    </div >
+      {/* Products list */}
+    </div>
   )
 }
 ```
 
-## Linkagem para Páginas Admin Nativas
+## Links para páginas de administração integradas
 
-Linkar para páginas admin padrão do Medusa:
+Link para as páginas de administração padrão do Medusa:
 
 ```tsx
 import { Link } from "react-router-dom"
 
-// Detalhes do produto
-<Link to={`/products/${productId}`}>Ver Produto</Link>
+// Product details
+<Link to={`/products/${productId}`}>View Product</Link>
 
-// Detalhes do pedido
-<Link to={`/orders/${orderId}`}>Ver Pedido</Link>
+// Order details
+<Link to={`/orders/${orderId}`}>View Order</Link>
 
-// Detalhes do cliente
-<Link to={`/customers/${customerId}`}>Ver Cliente</Link>
+// Customer details
+<Link to={`/customers/${customerId}`}>View Customer</Link>
 
-// Categorias de produto
-<Link to="/categories">Ver Categorias</Link>
+// Product categories
+<Link to="/categories">View Categories</Link>
 
-// Configurações
-<Link to="/settings">Configurações</Link>
+// Settings
+<Link to="/settings">Settings</Link>
 
-// Campo customizado em configurações
-<Link to="/settings/custom-field-name">Configurações Personalizadas</Link>
+// Custom field in settings
+<Link to="/settings/custom-field-name">Custom Settings</Link>
 ```
 
-### Rotas Nativas Comuns
+### Rotas integradas comuns
 
 ```tsx
 const ADMIN_ROUTES = {
@@ -272,17 +272,17 @@ const ADMIN_ROUTES = {
   settings: "/settings",
 }
 
-// Uso
+// Usage
 <Link to={ADMIN_ROUTES.productDetails(product.id)}>
-  Ver Produto
+  View Product
 </Link>
 ```
 
-## Navegação a partir de Widgets
+## Navegação a partir de widgets
 
-### Padrão: Link Ver Todos
+### Modelo: Link “Ver tudo”
 
-Adicionar um link "Ver Todos" de um widget para uma página customizada:
+Adicione um link “Ver tudo” a partir de um widget para uma página personalizada:
 
 ```tsx
 import { defineWidgetConfig } from "@medusajs/admin-sdk"
@@ -291,24 +291,24 @@ import { Link } from "react-router-dom"
 import { DetailWidgetProps } from "@medusajs/framework/types"
 
 const RelatedProductsWidget = ({ data: product }) => {
-  // ... lógica do widget
+  // ... widget logic
 
   return (
     <Container className="divide-y p-0">
       <div className="flex items-center justify-between px-6 py-4">
-        <Heading level="h2">Produtos Relacionados</Heading>
+        <Heading level="h2">Related Products</Heading>
         <div className="flex items-center gap-x-2">
           <Button size="small" variant="secondary" onClick={() => setOpen(true)}>
-            Editar
+            Edit
           </Button>
           <Button asChild size="small" variant="transparent">
             <Link to={`/custom/products/${product.id}/related`}>
-              Ver Todos
+              View All
             </Link>
           </Button>
-        </div >
-      </div >
-      {/*Conteúdo do widget*/}
+        </div>
+      </div>
+      {/* Widget content */}
     </Container>
   )
 }
@@ -320,9 +320,9 @@ export const config = defineWidgetConfig({
 export default RelatedProductsWidget
 ```
 
-### Padrão: Navegação de Item da Lista
+### Padrão: Navegação por itens de lista
 
-Tornar itens de lista clicáveis para navegar:
+Torne os itens da lista clicáveis para navegar:
 
 ```tsx
 import { Thumbnail, Text } from "@medusajs/ui"
@@ -345,22 +345,22 @@ const ProductListItem = ({ product }) => {
             <Text size="small" leading="compact" className="text-ui-fg-subtle">
               {product.status}
             </Text>
-          </div >
+          </div>
           <div className="size-7 flex items-center justify-center">
             <TriangleRightMini className="text-ui-fg-muted rtl:rotate-180" />
-          </div >
-        </div >
-      </div >
+          </div>
+        </div>
+      </div>
     </Link>
   )
 }
 ```
 
-## Padrões Comuns de Navegação
+## Padrões comuns de navegação
 
-### Padrão: Voltar para a Lista
+### Padrão: Voltar à lista
 
-Navegar de volta para a lista após visualizar detalhes:
+Voltar à lista após visualizar os detalhes:
 
 ```tsx
 import { useNavigate } from "react-router-dom"
@@ -371,20 +371,20 @@ const DetailsPage = () => {
   const navigate = useNavigate()
 
   return (
-    <div >
+    <div>
       <div className="flex items-center gap-x-2 mb-4">
         <IconButton onClick={() => navigate("/custom/products")}>
           <ArrowLeft />
         </IconButton>
-        <Heading>Detalhes do Produto</Heading>
-      </div >
-      {/*Conteúdo dos detalhes*/}
-    </div >
+        <Heading>Product Details</Heading>
+      </div>
+      {/* Details content */}
+    </div>
   )
 }
 ```
 
-### Padrão: Navegação Breadcrumb
+### Padrão: Navegação por trilha de navegação
 
 ```tsx
 import { Link } from "react-router-dom"
@@ -395,7 +395,7 @@ const Breadcrumbs = ({ product }) => {
     <div className="flex items-center gap-x-2">
       <Link to="/products">
         <Text size="small" className="text-ui-fg-subtle hover:text-ui-fg-base">
-          Produtos
+          Products
         </Text>
       </Link>
       <Text size="small" className="text-ui-fg-muted">/</Text>
@@ -405,15 +405,15 @@ const Breadcrumbs = ({ product }) => {
         </Text>
       </Link>
       <Text size="small" className="text-ui-fg-muted">/</Text>
-      <Text size="small" weight="plus">Detalhes</Text>
-    </div >
+      <Text size="small" weight="plus">Details</Text>
+    </div>
   )
 }
 ```
 
-### Padrão: Navegação por Abas (Tabs)
+### Padrão: Navegação por abas
 
-Navegar entre diferentes visualizações usando abas:
+Navegue entre diferentes visualizações usando abas:
 
 ```tsx
 import { useSearchParams, Link } from "react-router-dom"
@@ -427,53 +427,53 @@ const ProductTabs = () => {
     <Tabs value={activeTab}>
       <Tabs.List>
         <Tabs.Trigger value="details" asChild>
-          <Link to="?tab=details">Detalhes</Link>
+          <Link to="?tab=details">Details</Link>
         </Tabs.Trigger>
         <Tabs.Trigger value="variants" asChild>
-          <Link to="?tab=variants">Variantes</Link>
+          <Link to="?tab=variants">Variants</Link>
         </Tabs.Trigger>
         <Tabs.Trigger value="media" asChild>
-          <Link to="?tab=media">Mídia</Link>
+          <Link to="?tab=media">Media</Link>
         </Tabs.Trigger>
       </Tabs.List>
 
       <Tabs.Content value="details">
-        {/*Conteúdo dos detalhes*/}
+        {/* Details content */}
       </Tabs.Content>
       <Tabs.Content value="variants">
-        {/*Conteúdo das variantes*/}
+        {/* Variants content */}
       </Tabs.Content>
       <Tabs.Content value="media">
-        {/*Conteúdo da mídia*/}
+        {/* Media content */}
       </Tabs.Content>
     </Tabs>
   )
 }
 ```
 
-### Padrão: Ação com Navegação
+### Padrão: Ação com navegação
 
-Executar uma ação e depois navegar:
+Execute uma ação e, em seguida, navegue:
 
 ```tsx
 const deleteProduct = useMutation({
   mutationFn: (id) => sdk.admin.product.delete(id),
   onSuccess: () => {
     queryClient.invalidateQueries({ queryKey: ["products"] })
-    toast.success("Produto excluído")
-    navigate("/products") // Navega para a lista após exclusão
+    toast.success("Product deleted")
+    navigate("/products") // Navigate to list after deletion
   },
 })
 ```
 
-### Padrão: Navegação Condicional
+### Padrão: Navegação condicional
 
-Navegar com base no estado ou dados:
+Navegue com base no estado ou nos dados:
 
 ```tsx
 const handleComplete = () => {
   if (hasErrors) {
-    toast.error("Por favor, corrija os erros primeiro")
+    toast.error("Please fix errors first")
     return
   }
 
@@ -485,20 +485,13 @@ const handleComplete = () => {
 }
 ```
 
-## Casos de Uso Yello Solar Hub
+## Observações importantes
 
-- **Visualização de Catálogo B2B:**Ao navegar pelo catálogo Medusa, clicar em um item (Painel Solar, Inversor) deve usar o componente `<Link>` para levar o usuário de forma otimizada para a página de detalhes do produto, carregando o SKU, modelos e especificações técnicas.
--**Fluxo de Cotação (Programático):**Após o administrador finalizar o preenchimento de uma cotação B2B e clicar em "Submeter Cotação", a função deve usar `useMutation` e, em caso de sucesso, chamar `navigate` para redirecionar o usuário diretamente para a tela de acompanhamento da cotação recém-criada (`/quotes/:id`).
--**Rastreamento de Serviço em Campo:**Um widget de "Serviço Recente" deve exibir um botão "Ver Histórico" que utiliza `Link` com parâmetros dinâmicos, direcionando para `/services/device/:id` para que o técnico visualize todas as intervenções registradas no módulo de ativos.
--**Filtro Operacional de Produtos:**Em listas de produtos ou equipamentos, usar `useSearchParams` para permitir que o usuário filtre resultados complexos (ex: `?status=em_estoque&marca=Yello&vetor=string`) e atualizar a URL sem recarregar a página.
-
-## Notas Importantes
-
-1.**Usuários pnpm**: Devem instalar `react-router-dom` com versão exata do dashboard
-2. **Usuários npm/yarn**: NÃO devem instalar `react-router-dom` - já está disponível
-3. **Sempre usar caminhos relativos**começando com `/` para navegação interna
-4.**Usar Link para links de navegação**- melhor para SEO e acessibilidade
-5.**Usar navigate para navegação programática**- após ações ou baseada em lógica
-6.**Sempre tratar estados de carregamento**ao buscar dados baseados em parâmetros de rota
-7.**Limpar em desmontagem**ao usar*listeners*ou*subscriptions*em rotas
-8.**Manter o gerenciamento de foco** para acessibilidade ao navegarstop
+1. **Usuários do pnpm**: É necessário instalar o `react-router-dom` com a versão exata indicada no painel
+2. **Usuários do npm/yarn**: NÃO instalem o `react-router-dom` — ele já está disponível
+3. **Sempre use caminhos relativos** começando com `/` para navegação interna
+4. **Use `Link` para links de navegação** — melhor para SEO e acessibilidade
+5. **Use `navigate` para navegação programática** — após ações ou com base na lógica
+6. **Sempre lide com os estados de carregamento** ao buscar dados baseados em parâmetros de rota
+7. **Limpe ao desmontar** ao usar ouvintes ou assinaturas nas rotas
+8. **Manter o gerenciamento do foco** para garantir a acessibilidade durante a navegação

@@ -1,99 +1,142 @@
-# Componente de Breadcrumbs (Trilha de Navegação)
+# Componente de trilha de navegação
 
-## Conteúdo
+## Índice
 
-- [Componente de Breadcrumbs](#componente-de-breadcrumbs-trilha-de-navegacao)
-  - [Conteúdo](#conteudo)
-  - [Visão Geral](#visao-geral)
-    - [Requisitos Essenciais](#requisitos-essenciais)
-  - [Quando Usar Breadcrumbs](#quando-usar-breadcrumbs)
-  - [Padrões de Breadcrumbs para E-commerce](#padroes-de-breadcrumbs-para-e-commerce)
-    - [Breadcrumbs em Páginas de Produtos](#breadcrumbs-em-paginas-de-produtospadrao-padrao-home-categoria-subcategoria-nome-do-produto)
-    - [Breadcrumbs em Páginas de Categoria](#breadcrumbs-em-paginas-de-produtospadrao-padrao-home-categoria-subcategoria-nome-do-produto)
-    - [Construção do Caminho](#construcao-do-caminhohierarquia-comece-com-home-ou-icone-de-iniciocasa)
-  - [Breadcrumbs em Dispositivos Móveis](#breadcrumbs-em-dispositivos-moveis)
-    - [Padrão Mobile: Reduzir para Link "Voltar"](#padrao-mobile-reduzir-para-link-voltarabordagem-recomendada-mostrar-apenas-o-nivel-anterior-como-link-de-voltar)
-  - [Dados Estruturados para SEO](#dados-estruturados-para-seoschema-breadcrumblist-critico-adicione-dados-estruturados-json-ld-os-breadcrumbs-aparecem-nos-resultados-de-pesquisa-o-que-melhora-o-ctr-taxa-de-cliques-e-ajuda-os-motores-de-busca-a-entenderem-a-estrutura-do-site)
-  - [Lista de Verificação](#lista-de-verificacao)
+- [Componente de trilha de navegação](#padroes-de-trilha-de-navegacao-no-comercio-eletronico)
+  - [Índice](#contents)
+  - [Visão geral](#visao-geral)
+    - [Requisitos principais](#requisitos-principais)
+  - [Quando usar o Breadcrumbs](#quando-usar-trilhas-de-navegacao)
+  - [Padrões de Breadcrumbs para comércio eletrônico](#padroes-de-trilha-de-navegacao-no-comercio-eletronico)
+    - [Breadcrumbs na página de produto](#quando-usar-trilhas-de-navegacao)
+    - [Breadcrumbs na página de categoria](#quando-usar-trilhas-de-navegacao)
+    - [Construção do caminho](#path-construction)
+  - [Breadcrumbs para dispositivos móveis](#trilhas-de-navegacao-em-dispositivos-moveis)
+    - [Padrão para dispositivos móveis: link “Voltar” ao recolher](#trilhas-de-navegacao-em-dispositivos-moveis)
+  - [Dados estruturados para SEO](#dados-estruturados-para-seo)
+  - [Lista de verificação](#lista-de-verificacao)
 
-## Visão Geral
+## Visão geral
 
-Os breadcrumbs mostram a localização do usuário dentro da hierarquia do site (Home → Categoria → Subcategoria → Produto). Eles são fundamentais para a navegação em e-commerces e para SEO.
+A trilha de navegação mostra a localização do usuário na hierarquia do site (Página inicial → Categoria → Subcategoria → Produto). É fundamental para a navegação em comércio eletrônico e para o SEO.
 
-**Conhecimento prévio assumido**: Agentes de IA sabem como criar breadcrumbs com separadores e links. Este guia se concentra em padrões específicos para e-commerce.
+**Conhecimento prévio**: os agentes de IA sabem como criar trilhas de navegação com separadores e links. Este guia se concentra em padrões específicos para comércio eletrônico.
 
-### Requisitos Essenciais
+### Requisitos principais
 
-- Mostrar o caminho completo da página inicial até a página atual
-- Cada nível deve ser clicável (exceto a página atual)
+- Mostrar o caminho completo desde a página inicial até a página atual
+- Cada nível é clicável (exceto a página atual)
 - Posicionado abaixo da barra de navegação, acima do título da página
-- Incluir dados estruturados para SEO (JSON-LD)
-- Otimizado para dispositivos móveis (padrão de link "Voltar")
+- Inclui dados estruturados para SEO (JSON-LD)
+- Otimizado para dispositivos móveis (padrão de link de retorno)
 
-## Quando Usar Breadcrumbs
+## Quando usar trilhas de navegação
 
-**Use para:**- Páginas de produtos (Home → Categoria → Subcategoria → Produto)
+**Use para:**
 
-- Páginas de categoria (Home → Categoria → Subcategoria)
-- Hierarquias profundas de site (3+ níveis)
-- Catálogos grandes com muitas categorias**Não use para:**- Página inicial (não possui páginas pai)
-- Estruturas de site planas (1-2 níveis)
+- Páginas de produtos (Página inicial → Categoria → Subcategoria → Produto)
+- Páginas de categoria (Página inicial → Categoria → Subcategoria)
+- Hierarquias profundas do site (3 ou mais níveis)
+- Catálogos grandes com muitas categorias
+
+**Não use para:**
+
+- Página inicial (sem páginas pai)
+- Estruturas planas do site (1 a 2 níveis)
 - Fluxo de checkout (linear, não hierárquico)
-- Resultados de pesquisa (não hierárquicos)
+- Resultados da pesquisa (não hierárquicos)
 
-## Padrões de Breadcrumbs para E-commerce
+## Padrões de trilha de navegação no comércio eletrônico
 
-### Breadcrumbs em Páginas de Produtos**Padrão padrão:**- Home / Categoria / Subcategoria / Nome do Produto
+### Trilha de navegação na página do produto
 
-- Exemplo: Home / Eletrônicos / Laptops / Laptop Gamer Pro**Considerações principais:**- Todos os níveis, exceto o nome do produto, são clicáveis
-- O nome do produto é a página atual (não clicável, texto em cor mais escura)
-- Mostra a localização do produto no catálogo**Múltiplas categorias:**- Se o produto pertencer a várias categorias, escolha a primária/canônica
-- Combine a categoria na URL com o caminho de navegação
-- Seja consistente em todo o site
+**Padrão padrão:**
 
-### Breadcrumbs em Páginas de Categoria**Padrão padrão:**- Home / Categoria Pai / Categoria Atual
+- Página inicial / Categoria / Subcategoria / Nome do produto
+- Exemplo: Página inicial / Eletrônicos / Laptops / Laptop para jogos Pro
 
-- Exemplo: Home / Eletrônicos / Laptops**Categoria atual:**- Não clicável (texto simples)
-- Visualmente distinta dos links (cor mais escura ou negrito)
+**Principais considerações:**
 
-### Construção do Caminho**Hierarquia:**- Comece com "Home" (ou ícone de início/casa)
+- Todos os níveis, exceto o nome do produto, são clicáveis
+- O nome do produto corresponde à página atual (não clicável, texto em tom mais escuro)
+- Mostra a localização do produto no catálogo
 
+**Pertencimento a várias categorias:**
+
+- Se o produto estiver em várias categorias, escolha a principal/canônica
+- Corresponder à categoria na URL ou no caminho de navegação
+- Manter a consistência em todo o site
+
+### Trilha de navegação da página de categoria
+
+**Padrão padrão:**
+
+- Página inicial / Categoria principal / Categoria atual
+- Exemplo: Página inicial / Eletrônicos / Laptops
+
+**Categoria atual:**
+
+- Não clicável (texto simples)
+- Visualmente distinta dos links (mais escura ou em negrito)
+
+### Construção do caminho
+
+**Hierarquia:**
+
+- Comece com “Página inicial” (ou ícone da página inicial)
 - Siga a hierarquia das categorias
 - Termine com a página atual
-- Máximo de 5-6 níveis (mantenha a estrutura rasa)**Alinhamento de URL:**- O caminho dos breadcrumbs deve corresponder à hierarquia da URL
-- Nomenclatura consistente entre URLs e breadcrumbs
-- Exemplo: `/categorias/eletronicos/laptops` → "Home / Eletrônicos / Laptops"
+- Máximo de 5 a 6 níveis (mantenha a estrutura simples)
 
-## Breadcrumbs em Dispositivos Móveis
+**Alinhamento com a URL:**
 
-### Padrão Mobile: Reduzir para Link "Voltar"**Abordagem recomendada:**- Mostrar apenas o nível anterior como link de "voltar"
+- O caminho de navegação deve corresponder à hierarquia da URL
+- Nomenclatura consistente entre URLs e trilhas de navegação
+- Exemplo: `/categories/electronics/laptops` → “Página inicial / Eletrônicos / Laptops”
 
-- Ícone de seta "voltar" (←) + nome da página pai
-- Exemplo: "← Laptops Gamer"**Por que:**- Economiza espaço vertical em dispositivos móveis
-- Oferece uma funcionalidade clara (navegação para trás)
-- Mais simples que o caminho completo dos breadcrumbs
-- Os usuários mobile já têm o botão "voltar" no próprio dispositivo**Alternativa: Caminho truncado**- Mostrar "Home ... Página Atual"
-- Ocultar os níveis intermediários
-- Equilibra uso de espaço e contexto
+## Trilhas de navegação em dispositivos móveis
 
-## Dados Estruturados para SEO**Schema BreadcrumbList (CRÍTICO)**: Adicione dados estruturados JSON-LD. Os breadcrumbs aparecem nos resultados de pesquisa, o que melhora o CTR (Taxa de Cliques) e ajuda os motores de busca a entenderem a estrutura do site
+### Padrão para dispositivos móveis: recolher para criar link de volta
 
-**Implementação**: `BreadcrumbList` do schema.org com um array de itens. Cada item tem uma posição (1, 2, 3...), nome e URL. Consulte `seo.md` para detalhes sobre schema.
+**Abordagem recomendada:**
 
-## Lista de Verificação
+- Mostrar apenas o nível anterior como link de volta
+- Ícone de seta para trás (←) + nome da página pai
+- Exemplo: “← Laptops para jogos”
+
+**Por que:**
+
+- Economiza espaço vertical em dispositivos móveis
+- Funcionalidade clara (navegação para trás)
+- Mais simples do que uma trilha de navegação completa
+- Os usuários de dispositivos móveis têm o botão “Voltar” do aparelho
+
+**Alternativa: Caminho truncado**
+
+- Exibir “Página inicial... Página atual”
+- Ocultar níveis intermediários
+- Equilibrar espaço e contexto
+
+## Dados estruturados para SEO
+
+**Esquema BreadcrumbList (CRÍTICO)**: Adicionar dados estruturados em JSON-LD. A trilha de navegação aparece nos resultados de busca, melhora a CTR e ajuda os mecanismos de busca a compreender a estrutura do site.
+
+**Implementação**: BreadcrumbList do schema.org com matriz de itens. Cada item possui posição (1, 2, 3...), nome e URL. Consulte o arquivo seo.md para obter detalhes sobre o esquema.
+
+## Lista de verificação
 
 **Recursos essenciais:**
 
 - [ ] Posicionado abaixo da barra de navegação, acima do título da página
-- [ ] Caminho completo exibido (Home → Categoria → Produto)
+- [ ] Caminho completo exibido (Página inicial → Categoria → Produto)
 - [ ] Todos os níveis clicáveis, exceto a página atual
-- [ ] Página atual visualmente distinta (não clicável, mais escura)
-- [ ] Separadores claros (›, /, > ou chevron)
-- [ ] Mobile: Padrão de link voltar ("← Categoria")
+- [ ] Página atual visualmente diferenciada (não clicável, mais escura)
+- [ ] Separadores claros (›, /, > ou seta)
+- [ ] Dispositivos móveis: padrão de link “Voltar” (“← Categoria”)
 - [ ] Dados estruturados (JSON-LD BreadcrumbList)
-- [ ] HTML Semântico (`<nav aria-label="Breadcrumb">`)
-- [ ] Atributo `aria-current="page"` no item atual
-- [ ] Acessível via teclado (navegação pelos links com Tab)
-- [ ] Truncar nomes longos (máximo de 20-30 caracteres)
-- [ ] Consistência com os nomes da navegação
-- [ ] Máximo de 5-6 níveis de profundidade
+- [ ] HTML semântico (`<nav aria-label="Breadcrumb">`)
+- [ ] `aria-current="page"` no item atual
+- [ ] Acessível por teclado (navegação por links com a tecla Tab)
+- [ ] Rastreamento de rótulos longos (máximo de 20 a 30 caracteres)
+- [ ] Consistente com os rótulos de navegação
+- [ ] No máximo 5 a 6 níveis de profundidade

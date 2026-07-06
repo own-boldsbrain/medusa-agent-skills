@@ -1,8 +1,8 @@
-# Extensão de Administração
+# Extensão de administração
 
-A interface de chat do administrador é uma extensão de página do React registrada em `src/admin/routes/<name>/page.tsx`.
+A interface de usuário do chat de administração é uma extensão de página do React registrada em `src/admin/routes/<nome>/page.tsx`.
 
-## Página de Registro
+## Registro da página
 
 ```tsx
 import { defineRouteConfig } from "@medusajs/admin-sdk"
@@ -14,9 +14,9 @@ export const config = defineRouteConfig({
 })
 ```
 
-## Bibliotecas de Componentes da Interface Administrativa UI
+## Bibliotecas de componentes da interface de usuário de administração
 
-Somente use estes — eles são agrupados com o administrador do Medusa:
+Use apenas estas — elas vêm incluídas no Medusa admin:
 
 ```tsx
 import { useState, useRef, useEffect, useCallback } from "react"
@@ -25,7 +25,7 @@ import { ChatBubbleLeftRight, PlusMini, Wrench, AcademicCap } from "@medusajs/ic
 import { Button, Textarea, clx } from "@medusajs/ui"
 ```
 
-> Não importe de `@headlessui`, `shadcn` ou outras bibliotecas de interface — elas não estão embutidas no administrador.
+> NÃO importe de `@headlessui`, `shadcn` ou outras bibliotecas de interface do usuário — elas não estão incluídas no admin.
 
 ## Tipos
 
@@ -42,9 +42,9 @@ type ToolCall = { tool: string; status: "running" | "done" }
 type Session = { id: string; title: string | null; created_at: string }
 ```
 
-## **Layout Completo**
+## Layout completo
 
-A interface de usuário utiliza um layout de duas colunas: uma barra lateral de sessão com largura fixa à esquerda e a área de chat preenchendo o restante.
+A interface do usuário utiliza um layout de duas colunas: uma barra lateral de sessão de largura fixa à esquerda e a área de bate-papo ocupando o restante.
 
 ```tsx
 export default function AgentPage() {
@@ -61,7 +61,7 @@ export default function AgentPage() {
   return (
     <div className="flex h-screen bg-ui-bg-subtle overflow-hidden">
 
-      {/*── Sidebar ──*/}
+      {/* ── Sidebar ── */}
       <div className="w-[320px] shrink-0 flex flex-col border-r border-ui-border-base bg-ui-bg-base">
         <div className="p-3">
           <button
@@ -99,10 +99,10 @@ export default function AgentPage() {
         </div>
       </div>
 
-      {/*── Main chat area ──*/}
+      {/* ── Main chat area ── */}
       <div className="flex-1 flex flex-col min-w-0">
 
-        {/*Header*/}
+        {/* Header */}
         <div className="flex items-center gap-3 px-6 py-4 bg-ui-bg-base border-b border-ui-border-base shrink-0">
           <div className="w-9 h-9 rounded-full bg-ui-tag-green-bg flex items-center justify-center shrink-0">
             <AcademicCap className="w-5 h-5 text-ui-tag-green-icon" />
@@ -115,7 +115,7 @@ export default function AgentPage() {
           </div>
         </div>
 
-        {/*Messages*/}
+        {/* Messages */}
         <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-6">
           {messages.map((msg, i) => (
             <MessageRow
@@ -127,7 +127,7 @@ export default function AgentPage() {
           <div ref={bottomRef} />
         </div>
 
-        {/*Input*/}
+        {/* Input */}
         <div className="px-6 py-4 bg-ui-bg-base border-t border-ui-border-base shrink-0">
           <div className="flex items-end gap-3 bg-ui-bg-subtle border border-ui-border-base rounded-2xl px-4 py-3">
             <Textarea
@@ -162,9 +162,9 @@ export default function AgentPage() {
 }
 ```
 
-## Linha de Mensagem
+## Linha de mensagens
 
-As mensagens do usuário são bolhas verde-escuras alinhadas à direita. As mensagens do assistente são alinhadas à esquerda, com um avatar de agente e um bloco opcional de chamada de ferramenta recolhível acima do texto.
+As mensagens dos usuários são balões em verde escuro alinhados à direita. As mensagens do assistente são alinhadas à esquerda e apresentam um avatar do agente e um botão opcional para abrir ou fechar a ferramenta, chamado “call pill”, acima do texto.
 
 ```tsx
 function MessageRow({ msg, isStreaming }: { msg: Message; isStreaming: boolean }) {
@@ -174,7 +174,7 @@ function MessageRow({ msg, isStreaming }: { msg: Message; isStreaming: boolean }
         <div className="max-w-[70%] px-4 py-2.5 rounded-2xl rounded-br-sm bg-ui-button-inverted">
           <p className="txt-compact-small text-white whitespace-pre-wrap">{msg.content}</p>
         </div>
-        {/*User avatar*/}
+        {/* User avatar */}
         <div className="w-7 h-7 rounded-full bg-ui-fg-base flex items-center justify-center shrink-0">
           <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
             <circle cx="8" cy="5.5" r="2.5" fill="white" />
@@ -189,30 +189,30 @@ function MessageRow({ msg, isStreaming }: { msg: Message; isStreaming: boolean }
   // Assistant
   return (
     <div className="flex items-start gap-2.5">
-      {/*Agent avatar*/}
+      {/* Agent avatar */}
       <div className="w-7 h-7 rounded-full bg-ui-tag-green-bg flex items-center justify-center shrink-0 mt-0.5">
         <AcademicCap className="w-4 h-4 text-ui-tag-green-icon" />
       </div>
 
       <div className="flex-1 min-w-0 flex flex-col gap-1.5">
-        {/*Tool call pill*/}
+        {/* Tool call pill */}
         <ToolCallPill toolCalls={msg.toolCalls} isStreaming={isStreaming} />
 
-        {/*Message text*/}
+        {/* Message text */}
         {msg.content && (
           <div className="bg-ui-bg-base border border-ui-border-base rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[70%]">
             <p className="txt-compact-small text-ui-fg-base whitespace-pre-wrap">{msg.content}</p>
           </div>
         )}
 
-        {/*Streaming indicator*/}
+        {/* Streaming indicator */}
         {isStreaming && !msg.content && (
           <div className="flex items-center gap-1 px-4 py-3">
             {[0, 1, 2].map((i) => (
               <span
                 key={i}
                 className="w-1.5 h-1.5 rounded-full bg-ui-fg-muted animate-bounce"
-                style={{ animationDelay: `${i *0.15}s` }}
+                style={{ animationDelay: `${i * 0.15}s` }}
               />
             ))}
           </div>
@@ -223,9 +223,9 @@ function MessageRow({ msg, isStreaming }: { msg: Message; isStreaming: boolean }
 }
 ```
 
-## Chamada de Ferramenta Comprimido
+## Ferramenta “Call Pill”
 
-Pílula recolhível que aparece acima do texto da mensagem do assistente. Recolhe automaticamente quando o streaming termina.
+Botão retrátil que aparece acima do texto da mensagem do assistente. Se fecha automaticamente quando a transmissão termina.
 
 ```tsx
 const HIDDEN_TOOLS = new Set(["TodoWrite", "Skills"])
@@ -281,39 +281,7 @@ function ToolCallPill({ toolCalls, isStreaming }: { toolCalls: ToolCall[]; isStr
 }
 ```
 
-## Streaming Fetch
-
-# Streaming Fetch
-
-O Streaming Fetch é uma técnica de programação que permite que você faça requisições HTTP de forma assíncrona e em tempo real, permitindo que você processe os dados à medida que eles são recebidos.
-
-## Exemplo
-
-```bash
-# Usando o método fetch para fazer uma requisição HTTP
-fetch('https://api.example.com/dados')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error(error));
-```
-
-## Vantagens***Melhoria da experiência do usuário**: ao processar os dados em tempo real, você pode fornecer uma experiência mais imediata e interativa para o usuário
-
-***Redução do carregamento da página**: ao processar os dados em tempo real, você pode reduzir a quantidade de dados que precisam ser carregados na página, o que pode melhorar a velocidade de carregamento.
-***Melhoria da escalabilidade**: ao processar os dados em tempo real, você pode melhorar a escalabilidade de sua aplicação, pois você pode lidar com uma grande quantidade de dados sem que isso afete a velocidade de processamento.
-
-## Exemplos de uso
-
-***Carregamento de dados em tempo real**: você pode usar o Streaming Fetch para carregar dados em tempo real, como notícias, previsões do tempo, etc.
-***Processamento de imagens em tempo real**: você pode usar o Streaming Fetch para processar imagens em tempo real, como aplicando efeitos de vídeo, etc.
-***Integração com APIs**: você pode usar o Streaming Fetch para integrar com APIs que fornecem dados em tempo real, como APIs de notícias, previsões do tempo, etc.
-
-## Referências
-
-* [Streaming Fetch](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Streaming)
-* [Fetch API](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API)
-
-**Observação:** O Streaming Fetch é uma técnica de programação que pode ser usada em diferentes contextos, como web, mobile, etc.
+## Busca por streaming
 
 ```tsx
 async function handleSend() {
@@ -378,7 +346,7 @@ async function sendMessage(userText: string) {
               : m
           ))
         }
-      } catch { /*incomplete line*/ }
+      } catch { /* incomplete line */ }
     }
   }
 
@@ -386,7 +354,7 @@ async function sendMessage(userText: string) {
 }
 ```
 
-## Gerenciamento de Sessão
+## Gerenciamento de sessões
 
 ```tsx
 function startNewChat() {
@@ -408,7 +376,7 @@ async function loadSession(id: string) {
 }
 ```
 
-## Auxiliar de Tempo Relativo
+## Auxiliar de tempo relativo
 
 ```tsx
 function relativeTime(iso: string): string {

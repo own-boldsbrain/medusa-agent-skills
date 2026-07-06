@@ -1,142 +1,140 @@
 ---
 name: design-log-workflow
-description: Use esta skill sempre que for implementar, modificar, refatorar ou tomar qualquer decisão arquitetural no projeto YSH Store. Este é o protocolo obrigatório de consulta pré-ação — escanear entradas de design-log existentes para entender as decisões e restrições do projeto antes de escrever qualquer código.
+description: Use this skill whenever you are about to implement, modify, refactor, or make any architectural decision in the YSH Store project. This is the mandatory pre-action consultation protocol — scan existing design-log entries to understand the project's decisions and constraints before writing any code.
 ---
 
-# Workflow de Design-Log
+# Fluxo de Trabalho do Design-Log
 
-**Esta skill é obrigatória. Não a ignore.**Antes de qualquer implementação, refatoração ou decisão arquitetural, você DEVE consultar o design-log. Isso está definido na Seção 2.1 do `AGENTS.md` e é inegociável.
+**Esta prática é obrigatória. Não a ignore.** Antes de qualquer implementação, refatoração ou decisão arquitetônica, você DEVE consultar o design-log. Isso está definido no arquivo `AGENTS.md`, na Seção 2.1, e é inegociável.
 
 ---
 
-## Fase 1 — Consulta Pré-Ação (SEMPRE execute antes de codificar)
+## Fase 1 — Consulta pré-ação (SEMPRE execute antes da codificação)
 
-### Passo 1: Escanear a pasta design-log
+### Etapa 1: Analise a pasta design-log
 
 ```bash
 ls design-log/
 ```
 
-Revise a lista de arquivos. As entradas seguem o formato de nomenclatura: `DL-NNN-slug.md`
+Analise a lista de arquivos. As entradas seguem o formato de nomenclatura: `DL-NNN-slug.md`
 
-### Passo 2: Identificar entradas relevantes
+### Etapa 2: Identifique as entradas relevantes
 
-Relacione entradas à tarefa atual por:
+Correlacione as entradas com a tarefa atual por meio de:
 
--**Palavras-chave de domínio**no slug do nome de arquivo (ex.: `catalogo`, `agente`, `stack`, `plataforma`)
--**Entradas recentes**(números mais altos são os mais recentes)
+- **Palavras-chave do domínio** no slug do nome do arquivo (por exemplo, `catalogo`, `agente`, `stack`, `plataforma`)
+- **Entradas recentes** (os números mais altos são os mais recentes)
+- O arquivo `DL-000-bootstrap.md` é sempre relevante — ele contém a base da plataforma
 
-- O `DL-000-bootstrap.md` é sempre relevante — contém a fundação da plataforma
-
-### Passo 3: Ler as entradas relevantes
+### Etapa 3: Leia as entradas relevantes
 
 Para cada entrada relevante, leia:
 
-1. `status` —**apenas entradas `approved` e `executing` têm autoridade vinculante**
-
+1. `status` — **apenas as entradas com `approved` e `executing` têm validade vinculativa**
 2. `domain` e `impact` — para entender o escopo
-2. `context` — por que esta decisão existe
-3. `decision` — o que foi decidido (é isso que você deve seguir)
-4. `approach` — como implementar (se presente, siga-o)
-5. `affected_files` — quais arquivos/módulos são governados por esta decisão
+3. `context` — por que essa decisão existe
+4. `decision` — o que foi decidido (é a isso que você deve se alinhar)
+5. `approach` — como implementar (se houver, siga essa orientação)
+6. `affected_files` — quais arquivos/módulos são regidos por essa decisão
 
-### Passo 4: Verificar contradições
+### Etapa 4: Verifique se há contradições
 
-Antes de escrever código, pergunte:
+Antes de escrever código, pergunte-se:
 
-- Minha implementação planejada contradiz alguma decisão `approved` ou `executing`?
-- Se sim:**PARE. Não continue.**Reporte a contradição ao usuário e proponha:
-  - Uma implementação alinhada com a decisão existente, ou
-  - Uma nova entrada `draft` de design-log que substitui a decisão contradita (use a skill `design-log-create`)
+- A implementação que planejo realizar contradiz alguma decisão `aprovada` ou `em execução`?
+- Se sim: **PARE. Não prossiga.** Informe a contradição ao usuário e proponha:
+  - Uma implementação alinhada à decisão existente, ou
+  - Uma nova entrada no `design-log` com status `rascunho` que substitua a que está em contradição (use a habilidade `design-log-create`)
 
-### Passo 5: Alinhar e prosseguir
+### Etapa 5: Alinhar e prosseguir
 
-Implemente de acordo com as decisões aprovadas. O design-log é a única fonte de verdade para direção arquitetural.
+Implemente de acordo com as decisões aprovadas. O design-log é a única fonte de verdade para a direção arquitetônica.
 
 ---
 
-## Fase 2 — Durante a Implementação
+## Fase 2 — Durante a implementação
 
-### Se você ficar bloqueado por um problema não antecipado
+### Se você se deparar com um problema inesperado
 
-1. Crie uma nova entrada de design-log com `status: draft` (use a skill `design-log-create`)
+1. Crie uma nova entrada no design-log com `status: draft` (use a habilidade `design-log-create`)
 2. Documente o problema nos campos `context` e `problem`
 3. Proponha uma solução no campo `decision`
-4. Apresente ao usuário para revisão — não se auto-aprove
+4. Apresente ao usuário para revisão — não aprove por conta própria
 5. Só prossiga depois que a entrada for promovida para `approved`
 
 ### Se você descobrir uma decisão não documentada que já está sendo seguida
 
-Documente retroativamente. Crie uma nova entrada capturando a decisão implícita para que ela se torne explícita e pesquisável.
+Documente-a retroativamente. Crie uma nova entrada registrando a decisão implícita para que ela se torne explícita e pesquisável.
 
 ---
 
-## Fase 3 — Atualização Pós-Implementação
+## Fase 3 — Atualização pós-implementação
 
-Após concluir um trabalho correspondente a uma entrada de design-log:
+Após concluir o trabalho correspondente a uma entrada do diário de projeto:
 
-1. Encontre a entrada (ex.: `DL-007-catalog-strategy.md`)
-2. Atualize `status` de `executing` → `done`
+1. Localize a entrada (por exemplo, `DL-007-catalog-strategy.md`)
+2. Atualize o `status` de `executing` para `done`
 3. Adicione a seção `evidence`:
 
 ```yaml
 evidence:
   pr_url: "https://github.com/boldsbrainai/ysh-store/pull/NNN"
   commit_sha: "abc1234"
-  test_output: "Todos os testes Vitest passaram. TypeScript compilou sem erros."
-  notes: "Notas opcionais sobre detalhes de execução."
+  test_output: "All Vitest tests pass. TypeScript compile clean."
+  notes: "Optional notes about execution details."
 ```
 
-1. Se o trabalho revelou uma nova regra recorrente, adicione-a ao `AGENTS.md` e documente no campo `agents_rule_derived`
+1. Se esse trabalho revelou uma nova regra recorrente, adicione-a ao `AGENTS.md` e documente-a no campo `agents_rule_derived`
 
 ---
 
-## Referência Rápida de Domínios
+## Referência rápida de domínios
 
-Ao escanear logs, associe estes domínios à sua tarefa:
+Ao analisar os logs, relacione esses domínios à sua tarefa:
 
-| Domínio | O que governa |
-|---------|--------------|
-| `plataforma` | Stack principal, estrutura do repositório, ferramentas |
+| Domínio | O que abrange |
+|--------|----------------|
+| `plataforma` | Pilha principal, estrutura de repositórios, ferramentas |
 | `catálogo` | Catálogo de produtos, famílias, variantes |
-| `agente` | Regras de agentes de IA, AGENTS.md, skills |
-| `stack` | Escolhas de stack tecnológico (Medusa, Next.js, etc.) |
-| `lifecycle` | Deploy, ambiente, CI/CD |
-| `sistema` | Preocupações transversais do sistema |
-| `segurança` | Auth, permissões, segurança |
-| `observabilidade` | Logging, monitoramento, rastreamento |
+| `agente` | Regras do agente de IA, AGENTS.md, habilidades |
+| `stack` | Escolhas de pilha tecnológica (Medusa, Next.js, etc.) |
+| `lifecycle` | Implantação, ambiente, CI/CD |
+| `sistema` | Questões transversais do sistema |
+| `segurança` | Autenticação, permissões, segurança |
+| `observabilidade` | Registro de logs, monitoramento, rastreamento |
 | `ux` | Decisões de UI/UX, sistema de design |
 | `integração` | APIs externas, webhooks, integrações |
 | `testes` | Estratégia de testes, requisitos de cobertura |
 
 ---
 
-## Regras de Autoridade por Status
+## Regras de autoridade de status
 
 | Status | Comportamento do agente |
-|--------|------------------------|
-| `draft` | Apenas informativo — sem autoridade vinculante |
-| `review` | Apenas informativo — aguardando aprovação |
-| `approved` |**VINCULANTE**— deve seguir esta decisão |
-| `executing` |**VINCULANTE**— sendo implementado ativamente |
-| `done` | Apenas referência — decisão foi executada |
-| `rejected` | Ignorar — decisão não foi adotada |
-| `superseded` | Ignorar — substituído por uma entrada mais nova |
+|--------|----------------|
+| `rascunho` | Apenas informativo — sem caráter vinculativo |
+| `revisão` | Apenas informativo — aguardando aprovação |
+| `aprovado` | **VINCULATIVO** — esta decisão deve ser seguida |
+| `em execução` | **VINCULATIVO** — sendo implementado ativamente |
+| `concluído` | Apenas para referência — a decisão foi executada |
+| `rejeitado` | Ignorar — a decisão não foi adotada |
+| `substituído` | Ignorar — substituído por uma entrada mais recente |
 
 ---
 
-## Regras de Ouro (do `design-log/README.md`)
+## Regras de Ouro (de `design-log/README.md`)
 
-1.**Contexto > Prompt**— Nunca substitua o contexto acumulado por um prompt inteligente
-2.**Imutabilidade**— Logs aprovados não são editados; são substituídos por novas entradas
-3.**Evidência é obrigatória**— "Feito" sem evidência significa que não está feito
-4.**Erros viram regras**— Bugs recorrentes devem virar regras no `AGENTS.md`, referenciadas no DL
-5.**O sistema aprende, não o modelo** — A memória fica em arquivos, não em sessões
+1. **Contexto > Prompt** — Nunca substitua o contexto acumulado por um prompt engenhoso
+2. **Imutabilidade** — Registros aprovados não são editados; eles são substituídos por novas entradas
+3. **A evidência é obrigatória** — “Concluído” sem evidência significa que não está concluído
+4. **Erros se tornam regras** — Bugs recorrentes devem se tornar regras no `AGENTS.md`, referenciadas no DL
+5. **O sistema aprende, não o modelo** — A memória fica nos arquivos, não nas sessões
 
 ---
 
 ## Referência
 
-- Definição completa do schema: `skills/design-log-workflow/reference/schema.pt-br.md`
-- Criar uma nova entrada: use a skill `design-log-create`
-- Entrada bootstrap (fundação arquitetural): `design-log/DL-000-bootstrap.md`
+- Definição completa do esquema: `skills/design-log-workflow/reference/schema.md`
+- Criação de uma nova entrada: use a habilidade `design-log-create`
+- Entrada inicial (base da arquitetura): `design-log/DL-000-bootstrap.md`

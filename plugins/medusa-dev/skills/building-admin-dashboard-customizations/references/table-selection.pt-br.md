@@ -1,35 +1,35 @@
-# Padrão de Seleção de Tabela
+# Padrão de Seleção de Tabelas
 
-## Conteúdos
+## Índice
 
-- [Pré-Requisitos de Implementação para pnpm](#pré-requisitos-de-implementação-para-pnpm)
-- [Exemplo Completo de Widget: Seleção de Produtos Relacionados](#exemplo-completo-de-widget-seleção-de-produtos-relacionados)
-- [Detalhes Chave de Implementação](#detalhes-chave-de-implementação)
-- [Variações do Padrão](#variações-do-padrão)
-- [Observações Importantes](#observações-importantes)
+- [Requisitos prévios à implementação do pnpm](#requisitos-previos-à-implementacao-do-pnpm)
+- [Exemplo completo de widget: Seleção de produtos relacionados](#exemplo-completo-de-widget-selecao-de-produtos-relacionados)
+- [Detalhes-chave da implementação](#detalhes-chave-da-implementacao)
+- [Variações do padrão](#variacoes-de-padrao)
+- [Observações importantes](#observacoes-importantes)
 
-Esta é uma implementação de referência completa para seleção a partir de grandes conjuntos de dados (Produtos, Categorias, Regiões, etc.) em personalizações do Medusa Admin. Este padrão utiliza FocusModal com DataTable para uma experiência de usuário (UX) ótima.
+Esta é uma implementação de referência completa para seleção a partir de grandes conjuntos de dados (produtos, categorias, regiões etc.) nas personalizações do Medusa Admin. Este padrão utiliza o FocusModal com o DataTable para proporcionar uma experiência do usuário (UX) ideal.
 
-## Pré-Requisitos de Implementação para pnpm
+## Requisitos prévios à implementação do pnpm
 
-**⚠️ Usuários pnpm**: Este exemplo exige os seguintes pacotes. Instale-os ANTES de implementar:
+**⚠️ Usuários do pnpm**: Este exemplo requer os seguintes pacotes. Instale-os ANTES de implementar:
 
-- `@tanstack/react-query` - para `useQuery` e `useMutation`
+- `@tanstack/react-query` - para useQuery e useMutation
 - `react-router-dom` - para o componente Link (opcional, pode ser removido se não for necessário)
 
-Verifique e instale com versões exatas:
+Verifique e instale as versões exatas:
 
 ```bash
 pnpm list @tanstack/react-query --depth=10 | grep @medusajs/dashboard
-pnpm add @tanstack/react-query@[versão-exata]
+pnpm add @tanstack/react-query@[exact-version]
 
 pnpm list react-router-dom --depth=10 | grep @medusajs/dashboard
-pnpm add react-router-dom@[versão-exata]
+pnpm add react-router-dom@[exact-version]
 ```
 
-Consulte o arquivo SKILL.md principal para instruções completas de configuração pnpm.
+Consulte o arquivo SKILL.md principal para obter instruções completas sobre a configuração do pnpm.
 
-## Exemplo Completo de Widget: Seleção de Produtos Relacionados
+## Exemplo completo de widget: Seleção de produtos relacionados
 
 ```tsx
 import { defineWidgetConfig } from "@medusajs/admin-sdk"
@@ -59,7 +59,7 @@ const ProductRelatedProductsWidget = ({
   const [open, setOpen] = useState(false)
   const queryClient = useQueryClient()
 
-  // Analisar produtos relacionados existentes no metadado
+  // Parse existing related products from metadata
   const initialIds = useMemo(() => {
     if (product?.metadata?.related_product_ids) {
       try {
@@ -72,7 +72,7 @@ const ProductRelatedProductsWidget = ({
     return []
   }, [product?.metadata?.related_product_ids])
 
-  // Inicializar o estado de seleção com os produtos relacionados existentes
+  // Initialize selection state with existing related products
   const initialState = useMemo(() => {
     return initialIds.reduce((acc, id) => {
       acc[id] = true
@@ -87,26 +87,26 @@ const ProductRelatedProductsWidget = ({
     pageSize: 10
   })
 
-  // IMPORTANTE: Consultas separadas para exibição e seleção no modal
+  // IMPORTANT: Separate queries for display and modal selection
 
-  // Consulta 1: Buscar produtos selecionados para exibição (carrega no montagem)
+  // Query 1: Fetch selected products for display (loads on mount)
   const { data: displayProducts } = useQuery({
     queryFn: async () => {
       if (initialIds.length === 0) return { products: [] }
-      // Buscar produtos específicos por IDs para exibição
+      // Fetch specific products by IDs for display
       const response = await sdk.admin.product.list({
-        id: initialIds, // Buscar apenas os produtos selecionados
+        id: initialIds, // Fetch only the selected products
         limit: initialIds.length,
       })
       return response
     },
     queryKey: ["related-products-display", initialIds],
-    enabled: initialIds.length > 0, // Apenas buscar se houver IDs
+    enabled: initialIds.length > 0, // Only fetch if there are IDs
   })
 
-  // Consulta 2: Buscar produtos para seleção no modal (somente quando o modal estiver aberto)
+  // Query 2: Fetch products for modal selection (only when modal is open)
   const limit = pagination.pageSize
-  const offset = pagination.pageIndex *limit
+  const offset = pagination.pageIndex * limit
 
   const { data: modalProducts, isLoading } = useQuery({
     queryFn: () => sdk.admin.product.list({
@@ -115,11 +115,11 @@ const ProductRelatedProductsWidget = ({
       q: searchValue || undefined,
     }),
     queryKey: ["products-selection", limit, offset, searchValue],
-    keepPreviousData: true, // Paginação suave
-    enabled: open, // Somente carregar quando o modal estiver aberto
+    keepPreviousData: true, // Smooth pagination
+    enabled: open, // Only load when modal is open
   })
 
-  // Mutação para atualizar o metadado do produto
+  // Mutation to update the product metadata
   const updateProduct = useMutation({
     mutationFn: (relatedProductIds: string[]) => {
       return sdk.admin.product.update(product.id, {
@@ -130,28 +130,28 @@ const ProductRelatedProductsWidget = ({
       })
     },
     onSuccess: () => {
-      // Invalidar consultas para atualizar a exibição
+      // Invalidate queries to refresh the display
       queryClient.invalidateQueries({ queryKey: ["product", product.id] })
       queryClient.invalidateQueries({ queryKey: ["related-products-display"] })
-      toast.success("Sucesso", {
-        description: "Produtos relacionados atualizados com sucesso",
-        dismissLabel: "Fechar",
+      toast.success("Success", {
+        description: "Related products updated successfully",
+        dismissLabel: "Close",
       })
       setOpen(false)
     },
     onError: (error) => {
-      console.error("Erro ao salvar produtos relacionados:", error)
-      toast.error("Erro", {
-        description: "Falha ao atualizar produtos relacionados",
-        dismissLabel: "Fechar",
+      console.error("Error saving related products:", error)
+      toast.error("Error", {
+        description: "Failed to update related products",
+        dismissLabel: "Close",
       })
     },
   })
 
-  // Obter IDs dos produtos selecionados
+  // Get selected product IDs
   const selectedProductIds = useMemo(() => Object.keys(rowSelection), [rowSelection])
 
-  // Usar query de exibição para mostrar produtos selecionados
+  // Use display query for showing selected products
   const selectedProducts = displayProducts?.products || []
 
   const handleSubmit = () => {
@@ -160,7 +160,7 @@ const ProductRelatedProductsWidget = ({
 
   const columns = useColumns()
 
-  // Usar modalProducts para a tabela de seleção
+  // Use modalProducts for the selection table
   const availableProducts = useMemo(() => {
     if (!modalProducts?.products) return []
     return modalProducts.products.filter(p => p.id !== product.id)
@@ -189,7 +189,7 @@ const ProductRelatedProductsWidget = ({
   return (
     <Container className="divide-y p-0">
       <div className="flex items-center justify-between px-6 py-4">
-        <Heading level="h2">Produtos Relacionados</Heading>
+        <Heading level="h2">Related Products</Heading>
         <Button
           size="small"
           variant="secondary"
@@ -201,7 +201,7 @@ const ProductRelatedProductsWidget = ({
       <div className="px-6 py-4">
         {selectedProducts.length === 0 ? (
           <Text size="small" leading="compact" className="text-ui-fg-subtle">
-            Nenhum produto relacionado selecionado
+            No related products selected
           </Text>
         ) : (
           <div className="flex flex-col gap-y-2">
@@ -226,7 +226,7 @@ const ProductRelatedProductsWidget = ({
                   <DataTable instance={table}>
                     <DataTable.Toolbar>
                       <div className="flex gap-2">
-                        <DataTable.Search placeholder="Buscar produtos..." />
+                        <DataTable.Search placeholder="Search products..." />
                       </div>
                     </DataTable.Toolbar>
                     <DataTable.Table />
@@ -239,7 +239,7 @@ const ProductRelatedProductsWidget = ({
               <div className="flex items-center justify-end gap-x-2">
                 <FocusModal.Close asChild>
                   <Button size="small" variant="secondary">
-                    Cancelar
+                    Cancel
                   </Button>
                 </FocusModal.Close>
                 <Button
@@ -247,7 +247,7 @@ const ProductRelatedProductsWidget = ({
                   onClick={handleSubmit}
                   isLoading={updateProduct.isPending}
                 >
-                  Salvar
+                  Save
                 </Button>
               </div>
             </FocusModal.Footer>
@@ -264,13 +264,13 @@ const useColumns = () => {
   return useMemo(() => [
     columnHelper.select(),
     columnHelper.accessor("title", {
-      header: "Título",
+      header: "Title",
     }),
     columnHelper.accessor("status", {
       header: "Status",
     }),
     columnHelper.accessor("created_at", {
-      header: "Criado",
+      header: "Created",
       cell: ({ getValue }) => new Date(getValue()).toLocaleDateString(),
     }),
   ], [])
@@ -283,70 +283,65 @@ export const config = defineWidgetConfig({
 export default ProductRelatedProductsWidget
 ```
 
-## Casos de Uso Yello Solar Hub
-
-Este padrão é crucial para garantir que a cotação e o catálogo do Yello Solar Hub mantenham a integridade dos componentes em um ecossistema de sistemas solares complexos.
-
--**Cotações B2B Multicomponente:**Selecionar múltiplos equipamentos interconectados (ex: Inversor A + Módulos B + Bateria C) em um único registro de cotação, permitindo que o sistema calcule automaticamente o requisito de potência ou o*footprint*total do projeto.
--**Rastreabilidade de Kits de Reparo:**Ao registrar um kit de reparo em campo, o uso do padrão permite selecionar todas as peças de estoque (estrutura, parafusos, módulos) que pertencem ao mesmo sistema, garantindo que o histórico de peças possa ser consultado rapidamente.
--**Variação e Compatibilidade de Produtos:**Quando um usuário modifica um componente (ex: troca de um Inversor de 10kW para 15kW), o padrão garante que a seleção de produtos complementares (módulos, estruturas) seja ajustada e limitada apenas a modelos compatíveis com o novo componente selecionado.
--**Catálogo e Cross-selling:**Em páginas de visualização de produtos em catálogo, o widget pode ser usado para permitir que o vendedor adicione "Produtos Sugeridos/Complementares" que fazem parte do mesmo ecossistema de energia, mas que não são a peça principal do produto visualizado.
-
-## Detalhes Chave de Implementação
+## Detalhes-chave da implementação
 
 ### 1. Tipografia
 
 - Use `<Text size="small" leading="compact" weight="plus">` para títulos e rótulos de produtos
 - Use `<Text size="small" leading="compact" className="text-ui-fg-subtle">` para descrições
-- Os cabeçalhos do contêiner podem usar o componente `<Heading>`
-- Consulte [typography.md](typography.md) para guias completos de tipografia
+- Os cabeçalhos dos contêineres podem usar o componente `<Heading>`
+- Consulte [typography.md](typography.md) para obter as diretrizes completas de tipografia
 
-### 2. Gerenciamento de Estado
+### 2. Gerenciamento de estado
 
 - Use `DataTableRowSelectionState` para rastrear linhas selecionadas
-- Inicialize com seleções existentes no metadado
+- Inicialize com as seleções existentes a partir dos metadados
 - Use `DataTablePaginationState` com `pageIndex` e `pageSize`
 
-### 3. Padrão de Carregamento de Dados - CRÍTICO**Sempre use consultas separadas para exibição vs seleção no modal:**```tsx
+### 3. Padrão de carregamento de dados - CRÍTICO
 
-// Consulta de exibição - carrega no montagem, busca itens específicos
+**Sempre use consultas separadas para exibição e seleção modal:**
+
+```tsx
+// Display query - loads on mount, fetches specific items
 const { data: displayProducts } = useQuery({
   queryFn: () => sdk.admin.product.list({
-    id: initialIds, // Buscar produtos específicos por IDs
+    id: initialIds, // Fetch specific products by IDs
   }),
   queryKey: ["related-products-display", initialIds],
   enabled: initialIds.length > 0,
 })
 
-// Consulta do modal - carrega quando o modal abre, paginado
+// Modal query - loads when modal opens, paginated
 const { data: modalProducts } = useQuery({
   queryFn: () => sdk.admin.product.list({
     limit, offset, q: searchValue,
   }),
   queryKey: ["products-selection", limit, offset, searchValue],
-  enabled: open, // Apenas quando o modal estiver aberto
+  enabled: open, // Only when modal is open
   keepPreviousData: true,
 })
+```
 
-```**Por que este padrão?**
+**Por que esse padrão?**
 
-- Os dados de exibição carregam imediatamente ao montar
-- Os dados do modal só carregam quando necessários
-- Evita o problema de "Nenhum dado" em recarregamentos de página
+- Os dados de exibição são carregados imediatamente ao serem montados
+- Os dados modais só são carregados quando necessário
+- Evita a mensagem “Sem dados” ao atualizar a página
 - Lida corretamente com referências baseadas em ID
 
-### 4. Atualização com useMutation e Invalidação de Cache
+### 4. Atualização com useMutation e invalidação de cache
 
 ```tsx
 const updateProduct = useMutation({
   mutationFn: (payload) => sdk.admin.product.update(id, payload),
   onSuccess: () => {
-    // Invalidar AS DUAS consultas: o produto e a de exibição
+    // Invalidate BOTH the product and display queries
     queryClient.invalidateQueries({ queryKey: ["product", id] })
     queryClient.invalidateQueries({ queryKey: ["related-products-display"] })
-    toast.success("Atualizado com sucesso")
+    toast.success("Updated successfully")
 
-    // Nota: Não é necessário invalidar ["products-selection"] - são dados do modal
+    // Note: No need to invalidate ["products-selection"] - that's modal data
   },
 })
 ```
@@ -362,19 +357,19 @@ const table = useDataTable({
   getRowId: (row) => row.id,
   rowCount: data?.count || 0,
   isLoading,
-  rowSelection: { /*config*/ },
-  search: { /*config*/ },
-  pagination: { /*config*/ },
+  rowSelection: { /* config */ },
+  search: { /* config */ },
+  pagination: { /* config */ },
 })
 ```
 
-### 6. Estrutura do Componente
+### 6. Estrutura do componente
 
 ```tsx
 <DataTable instance={table}>
   <DataTable.Toolbar>
     <div className="flex gap-2">
-      <DataTable.Search placeholder="Buscar..." />
+      <DataTable.Search placeholder="Search..." />
     </div>
   </DataTable.Toolbar>
   <DataTable.Table />
@@ -382,9 +377,9 @@ const table = useDataTable({
 </DataTable>
 ```
 
-## Variações do Padrão
+## Variações de padrão
 
-### Para Seleção de Categorias
+### Para seleção de categorias
 
 ```tsx
 const { data, isLoading } = useQuery({
@@ -393,7 +388,7 @@ const { data, isLoading } = useQuery({
 })
 ```
 
-### Para Seleção de Regiões
+### Para seleção de regiões
 
 ```tsx
 const { data, isLoading } = useQuery({
@@ -402,7 +397,7 @@ const { data, isLoading } = useQuery({
 })
 ```
 
-### Para Endpoints Customizados
+### Para pontos de extremidade personalizados
 
 ```tsx
 const { data, isLoading } = useQuery({
@@ -413,14 +408,14 @@ const { data, isLoading } = useQuery({
 })
 ```
 
-## Observações Importantes
+## Observações importantes
 
-1. **Considerações do Gerenciador de Pacotes**:
-   - **Usuários pnpm**: É OBRIGATÓRIO instalar `@tanstack/react-query` e `react-router-dom` ANTES de implementar (veja Pré-Requisitos acima)
-   - **Usuários npm/yarn**: NÃO instale esses pacotes - eles já estão disponíveis através do dashboard
-2. **Sempre use `keepPreviousData: true`**para paginação, evitando piscar a interface (UI flicker).
-3.**Busca é no lado do servidor**- Passe o valor da busca na função da consulta (query function).
-4.**Atualizações de metadados substituem o objeto inteiro**- Espalhe (spread) os metadados existentes ao atualizar.
-5.**Use dependências de `queryKey` corretas** - Inclua todos os parâmetros que afetam os dados.
+1. **Considerações sobre o gerenciador de pacotes**:
+   - **Usuários do pnpm**: DEVEM instalar `@tanstack/react-query` e `react-router-dom` ANTES da implementação (consulte os Requisitos pré-implementação acima)
+   - **Usuários do npm/yarn**: NÃO instalem esses pacotes — eles já estão disponíveis no painel
+2. **Sempre use `keepPreviousData: true`** para a paginação, a fim de evitar oscilações na interface do usuário
+3. **A pesquisa é feita no lado do servidor** — Passe o valor da pesquisa na função de consulta
+4. **As atualizações de metadados substituem o objeto inteiro** — Espalhe os metadados existentes ao atualizar
+5. **Utilize dependências adequadas nas chaves de consulta** — Inclua todos os parâmetros que afetam os dados
 
-Este padrão fornece uma maneira consistente e performática de lidar com a seleção a partir de grandes conjuntos de dados em personalizações do Medusa Admin.stop
+Esse padrão oferece uma maneira consistente e eficiente de lidar com a seleção de grandes conjuntos de dados nas personalizações do Medusa Admin.

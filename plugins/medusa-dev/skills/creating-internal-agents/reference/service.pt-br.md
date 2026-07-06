@@ -1,8 +1,8 @@
 # Serviço
 
-O módulo do agente é **infraestrutura compartilhada**— um serviço manipula a persistência e o cliente de IA para cada agente do projeto. Cada agente passa sua própria configuração (prompt do sistema + descrições de ferramentas) no momento da chamada, então os diferentes agentes obtêm diferentes comportamentos sem módulos separados.
+O módulo do agente é uma **infraestrutura compartilhada** — um único serviço lida com a persistência e o cliente de IA para todos os agentes do projeto. Cada agente passa sua própria configuração (prompt do sistema + descrições das ferramentas) no momento da chamada, de modo que agentes diferentes apresentam comportamentos distintos sem a necessidade de módulos separados.
 
-## Módulo Serviço
+## Serviço do Módulo
 
 ```ts
 // src/modules/agent/service.ts
@@ -42,42 +42,23 @@ export default class AgentModuleService extends MedusaService({
 }
 ```
 
-### O que o `MedusaService` oferece
+## O que o `MedusaService` oferece
 
-O `MedusaService` é uma solução completa para gerenciar e monitorar seus serviços. Com ele, você obtém:
+Ao passar o mapa do modelo para `MedusaService({...})`, os métodos CRUD são gerados automaticamente:
 
--**Controle total**: Gerencie seus serviços com facilidade, desde o provisionamento até a manutenção.
-
-- *Visibilidade*: Monitore o desempenho e a saúde dos seus serviços em tempo real.
-- Fácil integração: Integre-se com outras ferramentas e sistemas para uma gestão unificada.
-- **Escalabilidade**: Escale seus serviços de forma eficiente, atendendo às demandas crescentes.
-- *Suporte*: Receba suporte dedicado e uma comunidade ativa para resolver quaisquer desafios.
-
-## Recursos Chave
-
-- Gerenciamento de Instâncias: Crie, inicie, pare e gerencie instâncias de serviço com eficiência.
-- Monitoramento Avançado: Monitore métricas críticas e receba alertas em tempo real.
-- Integração API: Integre-se com APIs para automatizar tarefas e compartilhar dados.
-- [Documentação Completa](https://medusaservice.com/docs): Explore a documentação abrangente para aproveitar ao máximo o `MedusaService`.
-- **Comunidade Ativa**: Junte-se à nossa comunidade vibrante para compartilhar ideias e obter suporte.
-
-Comece hoje mesmo e experimente o poder do `MedusaService`!
-
-Passar o mapa do modelo para `MedusaService({...})` gera automaticamente métodos CRUD:
-
-| **Padrão**| Exemplo |
+| Padrão | Exemplo |
 |---------|---------|
-| `criar<Entidade>s(dados)` | `createAgentSessions({ título, criado_por_id })` |
-| `list<Entidade>s(filtros, config)` | `listAgentSessions({}, { order: { created_at: "DESC" }, take: 50 })` |
+| `create<Entity>s(data)` | `createAgentSessions({ title, created_by_id })` |
+| `list<Entity>s(filters, config)` | `listAgentSessions({}, { order: { created_at: "DESC" }, take: 50 })` |
 | `retrieve<Entity>(id)` | `retrieveAgentSession(id)` |
-| `atualize<Entidade>s(id, dados)` | `updateAgentSessions(id, { title: "…" })` |
+| `update<Entity>s(id, data)` | `updateAgentSessions(id, { title: "…" })` |
 | `delete<Entity>s(id)` | `deleteAgentSessions(id)` |
 
 Os nomes dos métodos são derivados do nome da classe do modelo (por exemplo, `AgentSession` → `AgentSession`).
 
-> Todos os agentes compartilham esses métodos. Filtre por `agent_type` ao listar sessões para restringir os resultados ao agente chamador.
+> Todos os agentes compartilham esses métodos. Filtre por `agent_type` ao listar sessões para restringir os resultados ao agente que está fazendo a chamada.
 
-## Arquivo de Índice do Módulo
+## Arquivo de índice do módulo
 
 ```ts
 // src/modules/agent/index.ts
@@ -91,10 +72,10 @@ export default Module(AGENT_MODULE, {
 })
 ```
 
-> A constante (`AGENT_MODULE`) é a chave usada para resolver o serviço do contêiner nas rotas da API:  
+> A constante (`AGENT_MODULE`) é a chave usada para resolver o serviço a partir do contêiner nas rotas da API:
 > `req.scope.resolve(AGENT_MODULE)`
 
-## Registrando no medusa-config.ts
+## Registro no medusa-config.ts
 
 ```ts
 // medusa-config.ts
@@ -109,12 +90,11 @@ modules: [
 ]
 ```
 
->**CRÍTICO:** `resolve` deve ser o caminho para o diretório do módulo (que contém `index.ts`). As opções são encaminhadas para o construtor do serviço.
+> **CRÍTICO:** `resolve` deve ser o caminho para o diretório do módulo (que contém `index.ts`). As opções são encaminhadas para o construtor do serviço.
 
-## Variáveis de Ambiente
+## Variáveis de ambiente
 
 Adicione ao `.env`:
-
 ```
 ANTHROPIC_API_KEY=sk-ant-...
 ```

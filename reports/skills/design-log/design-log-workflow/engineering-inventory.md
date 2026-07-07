@@ -39,10 +39,12 @@ Inventory for `design-log.design-log-workflow`.
 - **Evidência**: extraido_do_skill_md
 - **Items**: 2
   - use_case_id: UC-001, name: If you get blocked by an unanticipated problem, scenario: 1. Create a new design-log entry with `status: draft` (use `design-log-create` skill)
-2. Document the problem in `context` and `problem` fields
-3. Propose a solution in the `decision` field
-4. Present
-  - use_case_id: UC-002, name: If you discover an undocumented decision already being followed, scenario: Document it retroactively. Create a new entry capturing the implicit decision so it becomes explicit and searchable.
+
+1. Document the problem in `context` and `problem` fields
+2. Propose a solution in the `decision` field
+3. Present
+
+- use_case_id: UC-002, name: If you discover an undocumented decision already being followed, scenario: Document it retroactively. Create a new entry capturing the implicit decision so it becomes explicit and searchable.
 
 ---
 
@@ -89,7 +91,7 @@ Inventory for `design-log.design-log-workflow`.
 - **Status**: direct
 - **Evidência**: extraido_do_skill_md
 - **Items**: 1
-  - url: https://github.com/boldsbrainai/ysh-store/pull/NNN", type: reference, status: direct
+  - url: <https://github.com/boldsbrainai/ysh-store/pull/NNN>", type: reference, status: direct
 
 ### Conectores
 

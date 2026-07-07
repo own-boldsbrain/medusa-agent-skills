@@ -43,6 +43,7 @@ mcloud environments list --organization <org-id> --project <project-id-or-handle
 ```
 
 **Options:**
+
 - `-o/--organization <id>` — Organization ID (fa
   - use_case_id: UC-002, name: environments get, scenario: Retrieve a single environment by handle.
 
@@ -51,6 +52,7 @@ mcloud environments get <environment-handle> --organization <org-id> --project <
 ```
 
 **Arguments:**
+
 - `environment` — Env
   - use_case_id: UC-003, name: environments create, scenario: Create a new long-lived environment.
 
@@ -64,7 +66,8 @@ mcloud environments create \
 ```
 
 **Op
-  - use_case_id: UC-004, name: environments delete, scenario: Delete an environment. **Cannot delete production environments.**
+
+- use_case_id: UC-004, name: environments delete, scenario: Delete an environment. **Cannot delete production environments.**
 
 ```bash
 mcloud environments delete <environment-handle> \

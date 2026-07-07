@@ -51,7 +51,8 @@ mcloud whoami --json
 - `--json` — Output as JSON
 
 **Use to verify auth and sc
-  - use_case_id: UC-002, name: use, scenario: Set the active organization, project, and/or environment so subsequent commands skip those flags.
+
+- use_case_id: UC-002, name: use, scenario: Set the active organization, project, and/or environment so subsequent commands skip those flags.
 
 ```bash
 mcloud use \
@@ -70,7 +71,8 @@ mcloud version --json
   - use_case_id: UC-004, name: login, scenario: Authenticate with Medusa Cloud. Opens a browser to complete auth.
 
 > **TTY required.** Cannot be run in CI, Docker, or non-interactive environments. Use `MCLOUD_TOKEN` instead for non-interactive auth
-  - use_case_id: UC-005, name: logout, scenario: Remove stored credentials.
+
+- use_case_id: UC-005, name: logout, scenario: Remove stored credentials.
 
 ```bash
 mcloud logout --json

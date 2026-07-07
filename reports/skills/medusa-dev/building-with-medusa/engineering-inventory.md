@@ -54,13 +54,15 @@ Inventory for `medusa-dev.building-with-medusa`.
 ```bash
 npm run build      # or pnpm build / yarn build
 ```
-  - use_case_id: UC-003, name: Handling Build Errors, scenario: If the build fails:
+
+- use_case_id: UC-003, name: Handling Build Errors, scenario: If the build fails:
 
 1. Read the error messages carefully
 2. Fix type errors, import issues, and syntax errors
 3. Run the build again to verify the fix
 4. Do NOT mark implementation as complete until
-  - use_case_id: UC-004, name: Format for Presenting Next Steps, scenario: Always present next steps in a clear, actionable format after implementation:
+
+- use_case_id: UC-004, name: Format for Presenting Next Steps, scenario: Always present next steps in a clear, actionable format after implementation:
 
 ```markdown
   - use_case_id: UC-005, name: Start the Development Server, scenario: [server start command based on package manager]

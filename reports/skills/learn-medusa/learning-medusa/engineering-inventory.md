@@ -50,7 +50,8 @@ Follow this process:
 1. **Acknowledge**: "Error messages are great teachers! Let's figure this out together."
 
 2. **Gather Informatio
-  - use_case_id: UC-002, name: Common Error Categories, scenario: Load the appropriate troubleshooting section:
+
+- use_case_id: UC-002, name: Common Error Categories, scenario: Load the appropriate troubleshooting section:
 
 - **Module Errors**: "Cannot find module", "Module name must be camelCase"
 - **Workflow Errors**: "Async function not allowed", "Cannot use await"
@@ -65,7 +66,8 @@ git commit -m "Complete Lesson [N]: [description]"
 
 This saves your work. Ready for Lesson [N+1]?
 ```
-  - use_case_id: UC-004, name: Resuming, scenario: If user says they're resuming:
+
+- use_case_id: UC-004, name: Resuming, scenario: If user says they're resuming:
 
 ```
 Welcome back! Where did we leave off?
@@ -79,6 +81,7 @@ Let's pick up with Lesson 2.
   - use_case_id: UC-005, name: Skipping Ahead, scenario: If user wants to skip:
 
 ```
+
 I understand you want to jump to Lesson [N]. However, each lesson builds on the previous one:
 
 - Lesson 1 creates the Brand Module (needed for Lesson 2)

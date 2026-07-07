@@ -45,6 +45,7 @@ mcloud organizations list --json
 ```
 
 **Options:**
+
 - `--json` — Output as JSON
   - use_case_id: UC-002, name: organizations get, scenario: Retrieve a single organization by ID. Returns metadata, subscription details, and members.
 
@@ -53,6 +54,7 @@ mcloud organizations get <organization-id> --json
 ```
 
 **Arguments:**
+
 - `organization` — Organizatio
 
 ### Faz / Não Faz

@@ -18,6 +18,7 @@
 Sessions awaiting user feedback. Respond or close to free quota.
 
 **Sessions** (44):
+
 - `16387877014523172499`
 - `18046950038902881999`
 - `14941115679822205801`
@@ -35,6 +36,7 @@ Sessions awaiting user feedback. Respond or close to free quota.
 Completed sessions without local audit. Run jules_session_audit.py to capture outputs.
 
 **Sessions** (129):
+
 - `2852353683560895854`
 - `18056493852772059325`
 - `4083876857599082877`
@@ -46,4 +48,3 @@ Completed sessions without local audit. Run jules_session_audit.py to capture ou
 - `9447374420446474300`
 - `6331457133221086738`
 - ... and 119 more
-

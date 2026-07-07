@@ -6,7 +6,7 @@ export const validateLayering: ArchitectureRule = (context: ArchitectureRuleCont
   for (const module of report.modules) {
     if (!module.has_index) {
       addViolation({
-        rule_id: "module_without_index",
+        rule_id: "MEDUSA_LAYERING_MODULE_WITHOUT_INDEX",
         severity: "P1",
         category: "layering",
         description: `Module ${module.name} is missing an index.ts file.`,
@@ -19,7 +19,7 @@ export const validateLayering: ArchitectureRule = (context: ArchitectureRuleCont
 
     if (!module.has_service) {
       addViolation({
-        rule_id: "module_without_service",
+        rule_id: "MEDUSA_LAYERING_MODULE_WITHOUT_SERVICE",
         severity: "P1",
         category: "layering",
         description: `Module ${module.name} is missing a service file.`,
@@ -32,7 +32,7 @@ export const validateLayering: ArchitectureRule = (context: ArchitectureRuleCont
 
     if (module.models.length > 0 && module.migrations.length === 0) {
       addViolation({
-        rule_id: "module_with_models_without_migrations",
+        rule_id: "MEDUSA_LAYERING_MODEL_WITHOUT_MIGRATION",
         severity: "P0",
         category: "layering",
         description: `Module ${module.name} has models but no migrations.`,
@@ -45,7 +45,7 @@ export const validateLayering: ArchitectureRule = (context: ArchitectureRuleCont
 
     if (!module.registered_in_medusa_config) {
       addViolation({
-        rule_id: "medusa_config_missing_module_registration",
+        rule_id: "MEDUSA_LAYERING_MODULE_NOT_REGISTERED",
         severity: "P1",
         category: "layering",
         description: `Module ${module.name} is not registered in medusa-config.ts.`,
@@ -58,7 +58,7 @@ export const validateLayering: ArchitectureRule = (context: ArchitectureRuleCont
 
     if (!module.module_definition_detected) {
       addViolation({
-        rule_id: "module_definition_not_detected",
+        rule_id: "MEDUSA_LAYERING_MODULE_DEFINITION_NOT_DETECTED",
         severity: "P1",
         category: "layering",
         description: `Module ${module.name} does not export a Module definition.`,
@@ -71,7 +71,7 @@ export const validateLayering: ArchitectureRule = (context: ArchitectureRuleCont
 
     if (!module.medusa_service_detected) {
       addViolation({
-        rule_id: "medusa_service_not_detected",
+        rule_id: "MEDUSA_LAYERING_MEDUSA_SERVICE_NOT_DETECTED",
         severity: "P1",
         category: "layering",
         description: `Module ${module.name} does not have a MedusaService extension.`,

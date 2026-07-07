@@ -6,7 +6,7 @@ export const validateWorkflowMutations: ArchitectureRule = (context: Architectur
   for (const workflow of report.workflows) {
     if (!workflow.create_workflow_detected) {
       addViolation({
-        rule_id: "workflow_without_createWorkflow",
+        rule_id: "MEDUSA_WORKFLOW_FILE_WITHOUT_CREATE_WORKFLOW",
         severity: "P1",
         category: "workflows",
         description: `Workflow does not use createWorkflow.`,
@@ -19,7 +19,7 @@ export const validateWorkflowMutations: ArchitectureRule = (context: Architectur
 
     if (!workflow.step_response_detected && workflow.steps.length > 0) {
       addViolation({
-        rule_id: "step_without_StepResponse",
+        rule_id: "MEDUSA_WORKFLOW_STEP_WITHOUT_STEP_RESPONSE",
         severity: "P1",
         category: "workflows",
         description: `Workflow steps do not return a StepResponse.`,
@@ -32,7 +32,7 @@ export const validateWorkflowMutations: ArchitectureRule = (context: Architectur
 
     if (!workflow.workflow_response_detected) {
       addViolation({
-        rule_id: "workflow_without_WorkflowResponse",
+        rule_id: "MEDUSA_WORKFLOW_WITHOUT_WORKFLOW_RESPONSE",
         severity: "P2",
         category: "workflows",
         description: `Workflow does not return a WorkflowResponse.`,
@@ -55,7 +55,7 @@ export const validateWorkflowMutations: ArchitectureRule = (context: Architectur
 
     if (asyncArrowFinding) {
       addViolation({
-        rule_id: "workflow_async_arrow_constructor",
+        rule_id: "MEDUSA_WORKFLOW_ASYNC_ARROW_CONSTRUCTOR",
         severity: "P0",
         category: "workflows",
         description: `Workflow uses an async arrow function constructor.`,

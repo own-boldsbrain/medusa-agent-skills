@@ -14,7 +14,7 @@ export const detectRouteServiceBypass: ArchitectureRule = (context: Architecture
 
     if (route.direct_service_calls_detected) {
       addViolation({
-        rule_id: "direct_service_call_inside_route",
+        rule_id: "MEDUSA_ROUTING_DIRECT_SERVICE_BYPASS",
         severity: isMutation ? "P0" : "P2",
         category: "routing",
         description: `API route performs direct service call.`,
@@ -29,7 +29,7 @@ export const detectRouteServiceBypass: ArchitectureRule = (context: Architecture
 
     if (isMutation && route.workflow_invocations.length === 0) {
       addViolation({
-        rule_id: "route_mutation_without_workflow_invocation",
+        rule_id: "MEDUSA_WORKFLOW_MUTATION_ROUTE_WITHOUT_WORKFLOW",
         severity: "P0",
         category: "routing",
         description: `Route performs mutation without invoking a workflow.`,

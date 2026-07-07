@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MedusaRouteSchema",
+  "description": "JSON schema validating Medusa API Routes configuration and metadata",
+  "type": "object",
+  "properties": {
+    "route_id": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["admin", "store", "internal"]
+    },
+    "method": {
+      "type": "string",
+      "enum": ["GET", "POST", "DELETE", "PUT", "PATCH"]
+    },
+    "path": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "request_schema": {
+      "type": "string"
+    },
+    "response_schema": {
+      "type": "string"
+    },
+    "auth_required": {
+      "type": "boolean"
+    },
+    "auth_strategy": {
+      "type": "string"
+    },
+    "middlewares": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "zod_validator_required": {
+      "type": "boolean"
+    },
+    "workflow_invoked": {
+      "type": "string"
+    },
+    "query_graph_usage": {
+      "type": "boolean"
+    },
+    "query_index_usage": {
+      "type": "boolean"
+    },
+    "idempotency": {
+      "type": "boolean"
+    },
+    "rate_limit": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        },
+        "window_seconds": {
+          "type": "integer"
+        }
+      },
+      "required": ["limit", "window_seconds"]
+    },
+    "status_codes": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "error_contracts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "audit_log_required": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "route_id",
+    "scope",
+    "method",
+    "path",
+    "purpose",
+    "request_schema",
+    "response_schema",
+    "auth_required",
+    "auth_strategy",
+    "middlewares",
+    "zod_validator_required",
+    "workflow_invoked",
+    "query_graph_usage",
+    "query_index_usage",
+    "idempotency",
+    "rate_limit",
+    "status_codes",
+    "error_contracts",
+    "audit_log_required"
+  ]
+}

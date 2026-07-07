@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MedusaWorkflowSchema",
+  "description": "JSON schema validating the structure, steps, and constraints of Medusa Workflows",
+  "type": "object",
+  "properties": {
+    "workflow_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "trigger": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "string"
+    },
+    "input_schema": {
+      "type": "string"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "input_schema": {
+            "type": "string"
+          },
+          "output_schema": {
+            "type": "string"
+          },
+          "mutates_state": {
+            "type": "boolean"
+          },
+          "requires_compensation": {
+            "type": "boolean"
+          },
+          "compensation_strategy": {
+            "type": "string"
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "errors_expected": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "observability_events": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "step_id",
+          "name",
+          "purpose",
+          "input_schema",
+          "output_schema",
+          "mutates_state",
+          "requires_compensation",
+          "compensation_strategy",
+          "dependencies",
+          "errors_expected",
+          "observability_events"
+        ]
+      }
+    },
+    "compensations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "side_effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "idempotency": {
+      "type": "object",
+      "properties": {
+        "key_required": {
+          "type": "boolean"
+        },
+        "strategy": {
+          "type": "string"
+        }
+      },
+      "required": ["key_required", "strategy"]
+    },
+    "observability": {
+      "type": "object",
+      "properties": {
+        "logging_enabled": {
+          "type": "boolean"
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["logging_enabled", "metrics"]
+    },
+    "failure_modes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback_strategy": {
+      "type": "string"
+    },
+    "human_approval_required": {
+      "type": "boolean"
+    },
+    "evidence_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "active", "deprecated"]
+    }
+  },
+  "required": [
+    "workflow_id",
+    "name",
+    "domain",
+    "trigger",
+    "actor",
+    "input_schema",
+    "steps",
+    "compensations",
+    "side_effects",
+    "idempotency",
+    "observability",
+    "failure_modes",
+    "rollback_strategy",
+    "human_approval_required",
+    "evidence_required",
+    "status"
+  ]
+}

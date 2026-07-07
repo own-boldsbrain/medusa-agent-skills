@@ -1,5 +1,6 @@
 import ts from "typescript";
 import * as fs from "fs";
+import * as path from "path";
 
 export function parseSourceFile(filePath: string, content?: string): ts.SourceFile {
   const fileContent = content !== undefined ? content : fs.readFileSync(filePath, "utf-8");
@@ -23,7 +24,7 @@ export function getFilesRecursively(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
   const list = fs.readdirSync(dir);
   list.forEach((file: string) => {
-    const fullPath = require("path").join(dir, file);
+    const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
     if (stat && stat.isDirectory()) {
       results = results.concat(getFilesRecursively(fullPath));

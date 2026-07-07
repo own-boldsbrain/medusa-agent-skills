@@ -14,7 +14,7 @@
 ## Jules Live Status
 
 - **Status**: `CONNECTED` ✅
-- **API Key**: Validada (53 chars, prefixo `AQ.Ab8RN...`)
+- **API Key**: Validada (53 chars, prefixo `[REDACTED]`)
 - **Sessões Listadas**: 30
 - **Sessão Auditada**: `sessions/6772708384542803924`
   - State: `COMPLETED`

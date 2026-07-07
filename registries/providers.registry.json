@@ -1,0 +1,118 @@
+{
+  "providers": [
+    {
+      "provider_id": "openai",
+      "type": "llm_provider",
+      "runtime_modes": ["chat", "tools", "structured_output", "vision", "embeddings"],
+      "auth": {
+        "env_vars": ["OPENAI_API_KEY"],
+        "never_log": true
+      },
+      "capabilities": {
+        "tool_calling": true,
+        "json_schema_output": true,
+        "streaming": true,
+        "multimodal": true
+      },
+      "rate_limit_strategy": "provider_defined",
+      "cost_tracking": "required",
+      "fallback_priority": 1,
+      "status": "proposed"
+    },
+    {
+      "provider_id": "anthropic",
+      "type": "llm_provider",
+      "runtime_modes": ["chat", "tools", "vision"],
+      "auth": {
+        "env_vars": ["ANTHROPIC_API_KEY"],
+        "never_log": true
+      },
+      "capabilities": {
+        "tool_calling": true,
+        "json_schema_output": false,
+        "streaming": true,
+        "multimodal": true
+      },
+      "rate_limit_strategy": "headers_tracking",
+      "cost_tracking": "required",
+      "fallback_priority": 2,
+      "status": "proposed"
+    },
+    {
+      "provider_id": "gemini",
+      "type": "llm_provider",
+      "runtime_modes": ["chat", "tools", "structured_output", "vision", "embeddings"],
+      "auth": {
+        "env_vars": ["GEMINI_API_KEY"],
+        "never_log": true
+      },
+      "capabilities": {
+        "tool_calling": true,
+        "json_schema_output": true,
+        "streaming": true,
+        "multimodal": true
+      },
+      "rate_limit_strategy": "provider_defined",
+      "cost_tracking": "required",
+      "fallback_priority": 3,
+      "status": "proposed"
+    },
+    {
+      "provider_id": "ollama",
+      "type": "llm_provider",
+      "runtime_modes": ["chat", "tools", "embeddings"],
+      "auth": {
+        "env_vars": [],
+        "never_log": true
+      },
+      "capabilities": {
+        "tool_calling": true,
+        "json_schema_output": false,
+        "streaming": true,
+        "multimodal": false
+      },
+      "rate_limit_strategy": "local_unlimited",
+      "cost_tracking": "ignored",
+      "fallback_priority": 5,
+      "status": "proposed"
+    },
+    {
+      "provider_id": "openrouter",
+      "type": "llm_provider",
+      "runtime_modes": ["chat", "tools", "structured_output", "vision"],
+      "auth": {
+        "env_vars": ["OPENROUTER_API_KEY"],
+        "never_log": true
+      },
+      "capabilities": {
+        "tool_calling": true,
+        "json_schema_output": true,
+        "streaming": true,
+        "multimodal": true
+      },
+      "rate_limit_strategy": "provider_defined",
+      "cost_tracking": "required",
+      "fallback_priority": 4,
+      "status": "proposed"
+    },
+    {
+      "provider_id": "custom",
+      "type": "llm_provider",
+      "runtime_modes": ["chat"],
+      "auth": {
+        "env_vars": ["CUSTOM_PROVIDER_API_KEY"],
+        "never_log": true
+      },
+      "capabilities": {
+        "tool_calling": false,
+        "json_schema_output": false,
+        "streaming": true,
+        "multimodal": false
+      },
+      "rate_limit_strategy": "manual_throttling",
+      "cost_tracking": "optional",
+      "fallback_priority": 6,
+      "status": "proposed"
+    }
+  ]
+}

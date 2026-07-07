@@ -1,0 +1,213 @@
+{
+  "mcps": [
+    {
+      "mcp_id": "medusa-docs",
+      "domain": "medusa-framework",
+      "purpose": "Consult versioned official Medusa documentation and API reference",
+      "tools": [
+        "search_docs",
+        "get_doc_page",
+        "get_api_reference",
+        "get_sdk_method",
+        "get_release_delta"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": false,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    },
+    {
+      "mcp_id": "medusa-repo",
+      "domain": "medusa-framework",
+      "purpose": "Inspect the target repository files structure and detect Medusa assets",
+      "tools": [
+        "scan_project",
+        "detect_medusa_version",
+        "list_modules",
+        "list_workflows",
+        "list_api_routes",
+        "list_admin_extensions",
+        "list_storefront_integrations",
+        "diff_against_pattern"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": true,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    },
+    {
+      "mcp_id": "medusa-architecture",
+      "domain": "medusa-framework",
+      "purpose": "Validate Medusa architectural layering and anti-patterns",
+      "tools": [
+        "validate_layering",
+        "detect_route_service_bypass",
+        "validate_workflow_mutations",
+        "validate_query_graph_usage",
+        "validate_query_index_usage",
+        "validate_module_links"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": true,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    },
+    {
+      "mcp_id": "medusa-schema",
+      "domain": "medusa-framework",
+      "purpose": "Inspect database models, tables, entities, and migrations",
+      "tools": [
+        "inspect_data_models",
+        "generate_schema_report",
+        "validate_model_naming",
+        "validate_migration_presence",
+        "infer_table_contracts"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": true,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    },
+    {
+      "mcp_id": "medusa-workflow",
+      "domain": "medusa-framework",
+      "purpose": "Inspect workflows, steps, rollback mechanisms, and constructor validation rules",
+      "tools": [
+        "inspect_workflows",
+        "validate_step_response",
+        "validate_compensation",
+        "validate_constructor_constraints",
+        "detect_async_arrow_workflow",
+        "generate_workflow_graph"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": true,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    },
+    {
+      "mcp_id": "medusa-api",
+      "domain": "medusa-framework",
+      "purpose": "Audit routes, authentication scopes, middlewares, and payload schemas",
+      "tools": [
+        "list_routes",
+        "inspect_route_handlers",
+        "validate_http_methods",
+        "validate_auth_middleware",
+        "validate_zod_schema",
+        "generate_openapi_fragment"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": true,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    },
+    {
+      "mcp_id": "medusa-storefront",
+      "domain": "medusa-framework",
+      "purpose": "Verify Medusa Storefront JS SDK usage, React Query patterns, cache key invalidations, and price formatting",
+      "tools": [
+        "detect_raw_fetch",
+        "validate_sdk_usage",
+        "validate_query_keys",
+        "validate_loading_error_states",
+        "validate_price_display",
+        "validate_publishable_key_usage"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": true,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    },
+    {
+      "mcp_id": "medusa-admin-ui",
+      "domain": "medusa-framework",
+      "purpose": "Inspect custom admin widgets, route extensions, form setups, and UI table selection patterns",
+      "tools": [
+        "list_admin_extensions",
+        "validate_injection_zones",
+        "validate_admin_routes",
+        "validate_form_patterns",
+        "validate_table_selection_patterns"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": true,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    },
+    {
+      "mcp_id": "medusa-cloud",
+      "domain": "medusa-framework",
+      "purpose": "Inspect mcloud environments, deployment status logs, and variable declarations",
+      "tools": [
+        "list_projects",
+        "list_environments",
+        "inspect_deployments",
+        "fetch_logs",
+        "validate_variables",
+        "create_deploy_report"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": false,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    },
+    {
+      "mcp_id": "medusa-audit",
+      "domain": "medusa-framework",
+      "purpose": "Orchestrate local anti-false-positive checks, secret scanning, formatting, and unit tests execution",
+      "tools": [
+        "run_diff_check",
+        "run_typecheck",
+        "run_tests",
+        "run_secret_scan",
+        "run_markdown_audit",
+        "emit_validation_report"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": true,
+        "writes_repo": true,
+        "logs_secrets": false
+      },
+      "status": "proposed"
+    }
+  ]
+}

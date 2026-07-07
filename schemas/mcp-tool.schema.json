@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MCPToolSchema",
+  "description": "Schema governing the structural validation of an MCP tool configuration",
+  "type": "OBJECT",
+  "properties": {
+    "name": {
+      "type": "STRING",
+      "description": "Unique identifier name of the tool, matching standard identifier patterns",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "description": {
+      "type": "STRING",
+      "description": "Detailed explanation of what the tool does, constraints, and parameters"
+    },
+    "input_schema": {
+      "type": "OBJECT",
+      "description": "Zod-compatible JSON Schema definition for the input arguments to the tool",
+      "required": ["type", "properties"],
+      "properties": {
+        "type": {
+          "type": "STRING",
+          "enum": ["object"]
+        },
+        "properties": {
+          "type": "OBJECT"
+        },
+        "required": {
+          "type": "ARRAY",
+          "items": {
+            "type": "STRING"
+          }
+        }
+      }
+    },
+    "output_format": {
+      "type": "OBJECT",
+      "properties": {
+        "content_type": {
+          "type": "STRING",
+          "enum": ["application/json", "text/plain", "text/markdown"]
+        },
+        "schema": {
+          "type": "OBJECT"
+        }
+      },
+      "required": ["content_type"]
+    }
+  },
+  "required": ["name", "description", "input_schema"]
+}

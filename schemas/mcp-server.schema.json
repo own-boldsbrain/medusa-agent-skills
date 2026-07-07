@@ -1,0 +1,338 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MCPServerSchema",
+  "description": "JSON schema validating the MCP Server properties, transport options, and capabilities",
+  "type": "object",
+  "properties": {
+    "server_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "protocol": {
+      "type": "string",
+      "enum": ["mcp"]
+    },
+    "protocol_version": {
+      "type": "string"
+    },
+    "json_rpc": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "enum": ["2.0"]
+        },
+        "encoding": {
+          "type": "string",
+          "enum": ["utf-8"]
+        },
+        "request_id": {
+          "type": "object",
+          "properties": {
+            "required": {
+              "type": "boolean"
+            },
+            "allowed_types": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["string", "number"]
+              }
+            },
+            "null_allowed": {
+              "type": "boolean"
+            },
+            "unique_within_session": {
+              "type": "boolean"
+            }
+          },
+          "required": ["required", "allowed_types", "null_allowed", "unique_within_session"]
+        },
+        "response_contract": {
+          "type": "object",
+          "properties": {
+            "same_id_as_request": {
+              "type": "boolean"
+            },
+            "requires_result_or_error": {
+              "type": "boolean"
+            },
+            "forbid_result_and_error_together": {
+              "type": "boolean"
+            }
+          },
+          "required": ["same_id_as_request", "requires_result_or_error", "forbid_result_and_error_together"]
+        },
+        "notification_contract": {
+          "type": "object",
+          "properties": {
+            "id_forbidden": {
+              "type": "boolean"
+            },
+            "response_forbidden": {
+              "type": "boolean"
+            }
+          },
+          "required": ["id_forbidden", "response_forbidden"]
+        }
+      },
+      "required": ["version", "encoding", "request_id", "response_contract", "notification_contract"]
+    },
+    "transport": {
+      "type": "object",
+      "properties": {
+        "supported": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["stdio", "streamable_http"]
+          }
+        },
+        "default": {
+          "type": "string",
+          "enum": ["stdio", "streamable_http"]
+        },
+        "stdio": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "use_case": {
+              "type": "string"
+            },
+            "message_delimiter": {
+              "type": "string"
+            },
+            "stdout_must_only_emit_valid_mcp_messages": {
+              "type": "boolean"
+            },
+            "stderr_allowed_for_logs": {
+              "type": "boolean"
+            }
+          },
+          "required": ["enabled", "message_delimiter", "stdout_must_only_emit_valid_mcp_messages", "stderr_allowed_for_logs"]
+        },
+        "streamable_http": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "use_case": {
+              "type": "string"
+            },
+            "endpoint_path_required": {
+              "type": "boolean"
+            },
+            "supported_methods": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["POST", "GET", "DELETE"]
+              }
+            },
+            "accept_headers_required": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["application/json", "text/event-stream"]
+              }
+            },
+            "sse_optional": {
+              "type": "boolean"
+            },
+            "session_header": {
+              "type": "string"
+            },
+            "protocol_version_header": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "enabled",
+            "endpoint_path_required",
+            "supported_methods",
+            "accept_headers_required",
+            "sse_optional",
+            "session_header",
+            "protocol_version_header"
+          ]
+        },
+        "legacy_http_sse": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "status": {
+              "type": "string"
+            }
+          },
+          "required": ["enabled", "status"]
+        },
+        "custom": {
+          "type": "object",
+          "properties": {
+            "allowed": {
+              "type": "boolean"
+            },
+            "must_preserve_json_rpc_format": {
+              "type": "boolean"
+            },
+            "must_document_connection_pattern": {
+              "type": "boolean"
+            }
+          },
+          "required": ["allowed", "must_preserve_json_rpc_format", "must_document_connection_pattern"]
+        }
+      },
+      "required": ["supported", "default", "stdio", "streamable_http", "legacy_http_sse", "custom"]
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "tools": {
+          "type": "boolean"
+        },
+        "resources": {
+          "type": "boolean"
+        },
+        "prompts": {
+          "type": "boolean"
+        },
+        "logging": {
+          "type": "boolean"
+        }
+      },
+      "required": ["tools", "resources", "prompts", "logging"]
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "prompts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "auth": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["bearer", "api_key", "none"]
+        }
+      },
+      "required": ["required", "type"]
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "timeout_ms": {
+          "type": "integer"
+        },
+        "max_concurrent": {
+          "type": "integer"
+        }
+      },
+      "required": ["timeout_ms", "max_concurrent"]
+    },
+    "observability": {
+      "type": "object",
+      "properties": {
+        "prometheus_metrics": {
+          "type": "boolean"
+        },
+        "structured_logs": {
+          "type": "boolean"
+        }
+      },
+      "required": ["prometheus_metrics", "structured_logs"]
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "origin_validation_required_for_http": {
+          "type": "boolean"
+        },
+        "localhost_binding_required_for_local_http": {
+          "type": "boolean"
+        },
+        "authentication_required_for_remote_http": {
+          "type": "boolean"
+        },
+        "secret_logging_forbidden": {
+          "type": "boolean"
+        },
+        "tool_permission_model_required": {
+          "type": "boolean"
+        },
+        "dangerous_tool_confirmation_required": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "origin_validation_required_for_http",
+        "localhost_binding_required_for_local_http",
+        "authentication_required_for_remote_http",
+        "secret_logging_forbidden",
+        "tool_permission_model_required",
+        "dangerous_tool_confirmation_required"
+      ]
+    },
+    "compatibility": {
+      "type": "object",
+      "properties": {
+        "min_protocol_version": {
+          "type": "string"
+        }
+      },
+      "required": ["min_protocol_version"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "active", "deprecated"]
+    }
+  },
+  "required": [
+    "server_id",
+    "name",
+    "domain",
+    "description",
+    "protocol",
+    "protocol_version",
+    "json_rpc",
+    "transport",
+    "capabilities",
+    "tools",
+    "resources",
+    "prompts",
+    "auth",
+    "session",
+    "observability",
+    "security",
+    "compatibility",
+    "status"
+  ]
+}

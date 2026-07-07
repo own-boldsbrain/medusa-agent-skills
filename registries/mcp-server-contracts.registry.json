@@ -1,0 +1,292 @@
+{
+  "contracts": [
+    {
+      "server_id": "medusa-docs",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-docs.search_docs",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        },
+        {
+          "tool_id": "medusa-docs.get_api_reference",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": true,
+        "prompts": true,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": false
+      },
+      "status": "proposed"
+    },
+    {
+      "server_id": "medusa-repo",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-repo.scan_project",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        },
+        {
+          "tool_id": "medusa-repo.list_modules",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": false
+      },
+      "status": "proposed"
+    },
+    {
+      "server_id": "medusa-architecture",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-architecture.validate_layering",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        },
+        {
+          "tool_id": "medusa-architecture.detect_route_service_bypass",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": false
+      },
+      "status": "proposed"
+    },
+    {
+      "server_id": "medusa-schema",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-schema.inspect_data_models",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": false
+      },
+      "status": "proposed"
+    },
+    {
+      "server_id": "medusa-workflow",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-workflow.inspect_workflows",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": false
+      },
+      "status": "proposed"
+    },
+    {
+      "server_id": "medusa-api",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-api.list_routes",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": false
+      },
+      "status": "proposed"
+    },
+    {
+      "server_id": "medusa-storefront",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-storefront.validate_sdk_usage",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": false
+      },
+      "status": "proposed"
+    },
+    {
+      "server_id": "medusa-admin-ui",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-admin-ui.list_admin_extensions",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": false
+      },
+      "status": "proposed"
+    },
+    {
+      "server_id": "medusa-cloud",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-cloud.list_projects",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": false
+      },
+      "status": "proposed"
+    },
+    {
+      "server_id": "medusa-audit",
+      "domain": "medusa-framework",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "local_first",
+      "default_transport": "stdio",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "medusa-audit.run_secret_scan",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_write",
+          "required": true
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": true
+      },
+      "status": "proposed"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MCPToolContractSchema",
+  "description": "JSON schema validating the structural details of individual MCP tool contracts",
+  "type": "object",
+  "properties": {
+    "tool_id": {
+      "type": "string"
+    },
+    "server_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "method_name": {
+      "type": "string"
+    },
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["object"]
+        },
+        "properties": {
+          "type": "object"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["type", "properties"]
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["object"]
+        },
+        "properties": {
+          "type": "object"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["type", "properties"]
+    },
+    "side_effect_level": {
+      "type": "string",
+      "enum": ["read_only", "read_write"]
+    },
+    "mutates_state": {
+      "type": "boolean"
+    },
+    "requires_auth": {
+      "type": "boolean"
+    },
+    "requires_human_approval": {
+      "type": "boolean"
+    },
+    "idempotency": {
+      "type": "boolean"
+    },
+    "timeout_ms": {
+      "type": "integer"
+    },
+    "retry_policy": {
+      "type": "object",
+      "properties": {
+        "max_attempts": {
+          "type": "integer"
+        },
+        "backoff_factor": {
+          "type": "number"
+        }
+      },
+      "required": ["max_attempts", "backoff_factor"]
+    },
+    "rate_limit": {
+      "type": "object",
+      "properties": {
+        "requests_per_minute": {
+          "type": "integer"
+        }
+      },
+      "required": ["requests_per_minute"]
+    },
+    "error_contract": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "structured_errors_required": {
+          "type": "boolean"
+        }
+      },
+      "required": ["codes", "structured_errors_required"]
+    },
+    "observability_events": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "active", "deprecated"]
+    }
+  },
+  "required": [
+    "tool_id",
+    "server_id",
+    "name",
+    "description",
+    "domain",
+    "method_name",
+    "input_schema",
+    "output_schema",
+    "side_effect_level",
+    "mutates_state",
+    "requires_auth",
+    "requires_human_approval",
+    "idempotency",
+    "timeout_ms",
+    "retry_policy",
+    "rate_limit",
+    "error_contract",
+    "observability_events",
+    "evidence_required",
+    "status"
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://medusajs.com/schemas/workflow-schema-inspection-report.schema.json",
+  "title": "Medusa Workflow & Schema Inspection Report",
+  "description": "Deep inspection of Medusa workflows, steps, compensations, and data models",
+  "type": "object",
+  "required": [
+    "project_root",
+    "generated_at",
+    "inspector_version",
+    "workflows",
+    "data_models",
+    "diagnostics",
+    "summary"
+  ],
+  "properties": {
+    "project_root": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "inspector_version": {
+      "type": "string"
+    },
+    "workflows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "path",
+          "create_workflow_detected",
+          "constructor_kind",
+          "workflow_response_detected",
+          "steps_defined",
+          "steps_invoked"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "create_workflow_detected": {
+            "type": "boolean"
+          },
+          "constructor_kind": {
+            "type": "string"
+          },
+          "workflow_response_detected": {
+            "type": "boolean"
+          },
+          "steps_defined": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "step_name",
+                "variable_name",
+                "has_compensation",
+                "returns_step_response",
+                "uses_container",
+                "mutates_state_signal"
+              ],
+              "properties": {
+                "step_name": {
+                  "type": "string"
+                },
+                "variable_name": {
+                  "type": "string"
+                },
+                "has_compensation": {
+                  "type": "boolean"
+                },
+                "returns_step_response": {
+                  "type": "boolean"
+                },
+                "uses_container": {
+                  "type": "boolean"
+                },
+                "mutates_state_signal": {
+                  "type": "boolean"
+                },
+                "input_identifiers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "output_identifiers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "steps_invoked": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "step_name",
+                "call_expression",
+                "order"
+              ],
+              "properties": {
+                "step_name": {
+                  "type": "string"
+                },
+                "call_expression": {
+                  "type": "string"
+                },
+                "order": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "module_name",
+          "path",
+          "model_name",
+          "table_name",
+          "fields",
+          "relationships",
+          "migration_files"
+        ],
+        "properties": {
+          "module_name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "model_name": {
+            "type": "string"
+          },
+          "table_name": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "kind",
+                "primary_key",
+                "nullable"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "text",
+                    "number",
+                    "boolean",
+                    "dateTime",
+                    "json",
+                    "enum",
+                    "relationship",
+                    "unknown"
+                  ]
+                },
+                "primary_key": {
+                  "type": "boolean"
+                },
+                "nullable": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "kind",
+                "related_model_reference"
+              ],
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "hasOne",
+                    "belongsTo",
+                    "hasMany",
+                    "manyToMany",
+                    "unknown"
+                  ]
+                },
+                "related_model_reference": {
+                  "type": "string"
+                },
+                "mapped_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "migration_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "file",
+          "message"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "workflow_count",
+        "step_count",
+        "steps_with_compensation",
+        "data_model_count",
+        "migration_count"
+      ],
+      "properties": {
+        "workflow_count": {
+          "type": "integer"
+        },
+        "step_count": {
+          "type": "integer"
+        },
+        "steps_with_compensation": {
+          "type": "integer"
+        },
+        "data_model_count": {
+          "type": "integer"
+        },
+        "migration_count": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

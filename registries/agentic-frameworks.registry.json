@@ -1,0 +1,121 @@
+{
+  "frameworks": [
+    {
+      "framework_id": "langgraph",
+      "type": "agentic_orchestration_framework",
+      "language": ["python", "typescript"],
+      "supports_state_graph": true,
+      "supports_human_in_the_loop": true,
+      "supports_tool_routing": true,
+      "supports_persistence": true,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "AgentRuntimeAdapter",
+      "status": "proposed"
+    },
+    {
+      "framework_id": "crewai",
+      "type": "agentic_orchestration_framework",
+      "language": ["python"],
+      "supports_state_graph": false,
+      "supports_human_in_the_loop": true,
+      "supports_tool_routing": true,
+      "supports_persistence": false,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "AgentRuntimeAdapter",
+      "status": "proposed"
+    },
+    {
+      "framework_id": "autogen",
+      "type": "agentic_orchestration_framework",
+      "language": ["python", "typescript"],
+      "supports_state_graph": true,
+      "supports_human_in_the_loop": true,
+      "supports_tool_routing": true,
+      "supports_persistence": true,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "AgentRuntimeAdapter",
+      "status": "proposed"
+    },
+    {
+      "framework_id": "mastra",
+      "type": "agentic_orchestration_framework",
+      "language": ["typescript"],
+      "supports_state_graph": true,
+      "supports_human_in_the_loop": true,
+      "supports_tool_routing": true,
+      "supports_persistence": true,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "AgentRuntimeAdapter",
+      "status": "proposed"
+    },
+    {
+      "framework_id": "openai-agents",
+      "type": "agentic_orchestration_framework",
+      "language": ["python", "typescript"],
+      "supports_state_graph": false,
+      "supports_human_in_the_loop": false,
+      "supports_tool_routing": true,
+      "supports_persistence": true,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "AgentRuntimeAdapter",
+      "status": "proposed"
+    },
+    {
+      "framework_id": "vercel-ai-sdk",
+      "type": "agentic_orchestration_framework",
+      "language": ["typescript"],
+      "supports_state_graph": false,
+      "supports_human_in_the_loop": false,
+      "supports_tool_routing": true,
+      "supports_persistence": false,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "AgentRuntimeAdapter",
+      "status": "proposed"
+    },
+    {
+      "framework_id": "semantic-kernel",
+      "type": "agentic_orchestration_framework",
+      "language": ["csharp", "python", "typescript"],
+      "supports_state_graph": false,
+      "supports_human_in_the_loop": true,
+      "supports_tool_routing": true,
+      "supports_persistence": true,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "AgentRuntimeAdapter",
+      "status": "proposed"
+    },
+    {
+      "framework_id": "agno",
+      "type": "agentic_orchestration_framework",
+      "language": ["python"],
+      "supports_state_graph": false,
+      "supports_human_in_the_loop": true,
+      "supports_tool_routing": true,
+      "supports_persistence": true,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "AgentRuntimeAdapter",
+      "status": "proposed"
+    },
+    {
+      "framework_id": "custom",
+      "type": "agentic_orchestration_framework",
+      "language": ["python", "typescript", "go"],
+      "supports_state_graph": true,
+      "supports_human_in_the_loop": true,
+      "supports_tool_routing": true,
+      "supports_persistence": true,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "AgentRuntimeAdapter",
+      "status": "proposed"
+    }
+  ]
+}

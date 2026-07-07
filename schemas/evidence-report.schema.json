@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EvidenceReportSchema",
+  "description": "JSON schema defining the structured evidence reports generated after agent execution",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "description": "Unique identifier of the execution run"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of when the report was generated"
+    },
+    "repo": {
+      "type": "string",
+      "description": "Target repository path or URL"
+    },
+    "branch": {
+      "type": "string",
+      "description": "Active git branch during execution"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "GERADO",
+        "VALIDADO",
+        "REPROVADO",
+        "APROVADO_COM_EVIDENCIAS"
+      ],
+      "description": "Canonical validation status"
+    },
+    "scope": {
+      "type": "string",
+      "description": "Scope of the analysis or change"
+    },
+    "files_analyzed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of files inspected by the agent"
+    },
+    "files_changed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of files modified by the agent"
+    },
+    "commands_executed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of shell commands run during the session"
+    },
+    "validation_results": {
+      "type": "object",
+      "properties": {
+        "json_validation": {
+          "type": "string",
+          "enum": ["passed", "failed", "skipped"]
+        },
+        "diff_check": {
+          "type": "string",
+          "enum": ["passed", "failed", "skipped"]
+        },
+        "tests": {
+          "type": "string",
+          "enum": ["passed", "failed", "skipped"]
+        },
+        "secret_scan": {
+          "type": "string",
+          "enum": ["passed", "failed", "skipped"]
+        },
+        "markdown_audit": {
+          "type": "string",
+          "enum": ["passed", "failed", "skipped"]
+        }
+      },
+      "required": ["json_validation", "diff_check", "tests", "secret_scan", "markdown_audit"]
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": ["P0", "P1", "P2", "P3"]
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["severity", "description"]
+      },
+      "description": "Identified architectural or functional risks"
+    },
+    "pending_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Items waiting for action or human review"
+    },
+    "human_review": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "reviewed_by": {
+          "type": "string"
+        },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "decision": {
+          "type": "string"
+        }
+      },
+      "required": ["required"]
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Recommended next steps"
+    }
+  },
+  "required": [
+    "run_id",
+    "generated_at",
+    "repo",
+    "branch",
+    "status",
+    "scope",
+    "files_analyzed",
+    "files_changed",
+    "commands_executed",
+    "validation_results",
+    "risks",
+    "pending_items",
+    "human_review",
+    "next_actions"
+  ]
+}

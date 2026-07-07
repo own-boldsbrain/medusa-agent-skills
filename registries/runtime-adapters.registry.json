@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-07-07T00:00:00-03:00",
+  "repo": "own-boldsbrain/medusa-agent-skills",
+  "status": "proposed",
+  "provider_adapters": [
+    {
+      "adapter_id": "provider.openai",
+      "provider": "openai",
+      "schema": "schemas/provider-adapter.schema.json",
+      "capabilities": ["chat", "tool_calling", "structured_output", "streaming"],
+      "auth": "environment_variable",
+      "status": "proposed"
+    },
+    {
+      "adapter_id": "provider.anthropic",
+      "provider": "anthropic",
+      "schema": "schemas/provider-adapter.schema.json",
+      "capabilities": ["chat", "tool_calling", "streaming"],
+      "auth": "environment_variable",
+      "status": "proposed"
+    }
+  ],
+  "framework_adapters": [
+    {
+      "adapter_id": "framework.langgraph",
+      "framework": "langgraph",
+      "schema": "schemas/framework-adapter.schema.json",
+      "state_management": ["durable_graph_state", "checkpointed_workflow_state"],
+      "human_in_the_loop": true,
+      "status": "proposed"
+    },
+    {
+      "adapter_id": "framework.openai-agents",
+      "framework": "openai-agents",
+      "schema": "schemas/framework-adapter.schema.json",
+      "state_management": ["session_scoped_state", "event_sourced_trace"],
+      "human_in_the_loop": true,
+      "status": "proposed"
+    }
+  ]
+}

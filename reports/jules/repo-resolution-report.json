@@ -1,8 +1,16 @@
 {
-  "timestamp": "2026-07-06T16:58:33.694512+00:00",
-  "cleanup_plan_ref": "2026-07-06T16:58:33.690794+00:00",
+  "timestamp": "2026-07-07T20:01:50.409010+00:00",
+  "cleanup_plan_ref": "2026-07-07T20:01:50.404790+00:00",
   "total_actions_required": 2,
-  "total_sessions_needing_action": 256,
-  "resolutions": [],
+  "total_sessions_needing_action": 173,
+  "resolutions": [
+    {
+      "timestamp": "2026-07-07T20:00:00Z",
+      "action": "CREDENTIAL_ROTATION",
+      "session_id": "N/A (env)",
+      "details": "Manual rotation of expired Jules token to jules_new token in .env.local to resolve HTTP 401 errors. Key prefix validated: AQ.Ab8RN6KVZ...",
+      "user": "own-boldsbrain"
+    }
+  ],
   "status": "PENDING"
 }

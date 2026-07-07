@@ -49,7 +49,7 @@ def get_jules_sessions(config, mock_file=None):
 
     url = f"{config['jules_api_base_url']}/sessions"
     req = urllib.request.Request(url, headers={
-        "Authorization": f"Bearer {token}",
+        "X-Goog-Api-Key": token,
         "Accept": "application/json"
     })
     

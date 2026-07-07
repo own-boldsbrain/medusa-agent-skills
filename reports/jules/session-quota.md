@@ -1,11 +1,11 @@
 # Jules Session Quota Report
 
-**Timestamp**: 2026-07-06T16:58:33.627234+00:00
+**Timestamp**: 2026-07-07T20:00:06.664998+00:00
 **Quota Status**: `CONCURRENT_LIMIT_REACHED`
 
 ## Limits
 
-- **Daily Created Today**: 37 / 100 (remaining: 63)
+- **Daily Created Today**: 0 / 100 (remaining: 100)
 - **Concurrent Active**: 44 / 20 (remaining: 0)
 - **Concurrent Limit Per Repo**: 5
 

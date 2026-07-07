@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "reports": [
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/promotions.pt-br.md",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/wishlist.pt-br.md",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/cart-popup.pt-BR.md",
+      "passed": true,
+      "errors": []
+    }
+  ]
+}

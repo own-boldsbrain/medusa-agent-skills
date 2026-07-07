@@ -3,323 +3,239 @@
 ## Conteúdo
 
 - [Visão Geral](#visao-geral)
-- [Verificação de Suporte ao Backend](#verificação-de-suporte-ao-backend)
+- [Verificação de Suporte ao Backend](#verificacao-de-suporte-ao-backend)
 - [Botão de Lista de Desejos](#botao-de-lista-de-desejos)
 - [Adicionando e Removendo](#adicionando-e-removendo)
-- [Página de Lista de Desejos](#wishlist-page)
-- [Convidados vs Usuários Logados](#convidados-vs-usuários-logados)
-- [Ícone de Navegação](#ícone-de-navegação)
-- [Considerações de Móvel](#considerações-de-móvel)
-- [Checklist](#checklist)
+- [Página de Lista de Desejos](#pagina-de-lista-de-desejos)
+- [Usuários Convidados vs Logados](#usuarios-convidados-vs-logados)
+- [Ícone de Navegação](#icone-de-navegacao)
+- [Considerações para Dispositivos Móveis](#consideracoes-para-dispositivos-moveis)
+- [Lista de Verificação](#lista-de-verificacao)
 
-## Visão geral
+## Visão Geral
 
-Uma lista de desejos (também chamada de favoritos ou guardar para mais tarde) permite que os clientes salvem produtos nos quais estão interessados para uma compra futura. Esta funcionalidade ajuda a organizar as compras, a rastrear itens desejados e aumenta as visitas de retorno e as conversões.
+Uma lista de desejos (também chamada de favoritos ou salvar para mais tarde) permite que os clientes salvem produtos nos quais estão interessados para compra futura. Este recurso ajuda a organizar as compras, monitorar os itens desejados e aumenta as visitas de retorno e as conversões.
 
-### Principais Benefícios do Ecommerce
+### Principais Benefícios de E-commerce
 
-**Por que as listas de desejos importam:**
+**Por que as listas de desejos são importantes:**
 
-- Aumente as visitas de retorno (usuários voltam para verificar a lista de desejos)
-- Reduza o abandono do carrinho (salvar para mais tarde em vez de abandonar)
-- Planejamento de presentes (salve itens para listas de presentes, compartilhe com outros)
-- Rastreamento de preços (os usuários monitoram itens para vendas - oportunidade de remarketing)
-- Métrica de engajamento (mostra interesse pelo produto para análises)
+- Aumentam as visitas de retorno (os usuários voltam para verificar a lista de desejos)
+- Reduzem o abandono de carrinho (salvar para mais tarde em vez de abandonar)
+- Planejamento de presentes (salvar itens para listas de presentes, compartilhar com outras pessoas)
+- Monitoramento de preços (os usuários acompanham os itens para promoções - oportunidade de remarketing)
+- Métrica de engajamento (mostra o interesse no produto para análise)
 
-**Impacto da conversão:**
+**Impacto na conversão:**
 
-- Usuários com listas de desejos têm 2-3x maior valor de vida ao longo do tempo
-- Conversão da lista de desejos para compra: 20-30% em média
-- Lembrete por e-mail sobre itens da lista de desejos: taxa de cliques de 15-25%
+- Usuários com listas de desejos têm um valor de vida útil (LTV) 2-3x maior
+- Conversão da lista de desejos em compra: 20-30% em média
+- Lembretes por e-mail sobre itens da lista de desejos: taxa de cliques de 15-25%
 
-## Verificação de Suporte Backend
+## Verificação de Suporte ao Backend
 
-**CRÍTICO: Implemente apenas a interface de lista de desejos se o backend de comércio eletrônico suportar funcionalidade de lista de desejos.**
+**CRÍTICO: Implemente a UI da lista de desejos apenas se o backend do seu e-commerce suportar essa funcionalidade.**
 
 Antes de implementar:
 
-1. **Verificar API do backend** - Verificar se os endpoints da lista de desejos existem (ou perguntar ao usuário)
-2. **Autenticação** - Confirme se login é necessário para armazenamento da lista de desejos
-3. **Operações de teste** - Verifique a funcionalidade de adicionar/excluir/consultar está funcionando corretamente
+1. **Verificar API do backend** - Verifique se os endpoints da lista de desejos existem (ou pergunte ao usuário)
+2. **Autenticação** - Confirme se o login é necessário para armazenamento da lista de desejos
+3. **Testar operações** - Verifique se a funcionalidade de adicionar/remover/buscar funciona
 
-**Usuários Medusa:**
-O núcleo Medusa não inclui lista de desejos por padrão. Instale o plugin Wishlist do repositório de exemplos da Medusa. O plugin fornece funcionalidade completa de lista de desejos com pontos de extremidade da API.
+**Usuários do Medusa:**
+O núcleo do Medusa não inclui lista de desejos por padrão. Instale o plugin Wishlist a partir do repositório de exemplos do Medusa. O plugin fornece a funcionalidade completa de lista de desejos com os endpoints da API.
 
-**Backends gerais:**  
-A lista de desejos geralmente requer autenticação do usuário. Endpoints da API necessários:
+**Backends gerais:**
+A lista de desejos normalmente exige a autenticação do usuário. Endpoints de API necessários:
 
-- GET /lista-de-desejos (recupere a lista de desejos do usuário)
+- GET /wishlist (buscar a lista de desejos do usuário)
 - POST /wishlist (adicionar item)
-- APAGAR /wishlist/{id} (remover item)
+- DELETE /wishlist/{id} (remover item)
 
-**Se o backend não suporta wishlist:**
-Não implemente a feature. wishlist apenas com localStorage cria uma má experiência (perdido ao trocar de dispositivo, sem sincronização, sem remarketing).
+**Se o backend não suportar a lista de desejos:**
+Não implemente o recurso. Uma lista de desejos baseada apenas em localStorage cria uma experiência ruim para o usuário (perdida ao trocar de dispositivo, sem sincronização, sem remarketing).
 
-## Botão de Desejos
+## Botão de Lista de Desejos
 
 ### Design e Estados
 
-**Design e Estados**### Introdução
+**Ícone de coração** (símbolo universal):
 
-O design é um processo criativo que visa melhorar a experiência do usuário. Os estados são uma parte importante do design, pois eles descrevem como o aplicativo ou sistema irá se comportar em diferentes situações.
-
-### Tipos de Estados***Estado Normal**: O estado normal é o estado padrão do aplicativo ou sistema, onde o usuário pode realizar suas tarefas diárias
-
-***Estado de Erro**: O estado de erro é um estado que ocorre quando o aplicativo ou sistema encontra um problema, como uma conexão de rede instável ou um erro de banco de dados.
-***Estado de Carregamento**: O estado de carregamento é um estado que ocorre quando o aplicativo ou sistema está carregando dados ou realizando uma ação demorada.
-
-### Exemplo de Código
-
-```html
-<!-- Exemplo de HTML para um botão de carregamento -->
-<button disabled>
-  <span class="spinner">
-    <i class="fas fa-spinner fa-spin"></i>
-  </span>
-  Carregando...
-</button>
-```
-
-### Design de Estados
-
-O design de estados é uma parte importante do design de interfaces de usuário. É importante criar estados visuais atraentes e intuitivos para o usuário.
-
-### Recursos
-
-- [Material Design](https://material.io/design): Um guia de design para criar experiências de usuário atraentes e intuitivas.
-- [Sketch](https://www.sketch.com/): Um software de design de interfaces de usuário para criar protótipos e designs de alta qualidade.
-
-### Conclusão
-
-O design e os estados são fundamentais para criar experiências de usuário atraentes e intuitivas. É importante criar estados visuais atraentes e intuitivos para o usuário, e utilizar recursos de design para criar protótipos e designs de alta qualidade.
-
-**Ícone do coração** (símbolo universal):
-
-- Rascunho do coração: Não está na lista de desejos
+- Coração contornado: Não está na lista de desejos
 - Coração preenchido: Na lista de desejos
-- 24-32px nos cartões de produto, 32-40px na página do produto
+- 24-32px em cards de produto, 32-40px na página do produto
 
 **Cores:**
 
-- **Contorno:** Cinza ou preto
+- Contorno: Cinza ou preto
 - Preenchido: Vermelho, rosa ou cor da marca
-- Contraste alto contra imagem do produto
+- Alto contraste com a imagem do produto
 
 ### Posicionamento
 
-**Cartões de produto:**
+**Cards de produto:**
 Canto superior direito da imagem do produto, sempre visível (não apenas ao passar o mouse), margem de 16px das bordas.
 
 **Página de detalhes do produto:**
-Perto do botão "Adicionar ao Carrinho", ou acima da imagem do produto, ou com opções de compartilhamento. Etiqueta de texto opcional: "Adicionar à Lista de Desejos" ou apenas ícone.
+Próximo ao botão "Adicionar ao Carrinho", acima da imagem do produto ou junto com as opções de compartilhamento. Rótulo de texto opcional: "Adicionar à Lista de Desejos" ou apenas o ícone.
 
-## **Adicionando e Removendo**### Adicionando e Removendo
+## Adicionando e Removendo
 
-#### Adicionando
-
-Você pode adicionar elementos ao array usando o método `push()`.
-
-```javascript
-const arr = [1, 2, 3];
-arr.push(4);
-console.log(arr); // [1, 2, 3, 4]
-```
-
-Você também pode usar o método `unshift()` para adicionar elementos no início do array.
-
-```javascript
-const arr = [1, 2, 3];
-arr.unshift(0);
-console.log(arr); // [0, 1, 2, 3]
-```
-
-#### Removendo
-
-Você pode remover elementos do array usando o método `pop()`.
-
-```javascript
-const arr = [1, 2, 3];
-arr.pop();
-console.log(arr); // [1, 2]
-```
-
-Você também pode usar o método `shift()` para remover elementos do início do array.
-
-```javascript
-const arr = [1, 2, 3];
-arr.shift();
-console.log(arr); // [2, 3]
-```
-
-Você pode remover um elemento específico do array usando o método `splice()`.
-
-```javascript
-const arr = [1, 2, 3];
-arr.splice(1, 1);
-console.log(arr); // [1, 3]
-```
-
-### Exercícios* Adicione o número 5 ao array `[1, 2, 3]` usando o método `push()`
-
-- Remova o último elemento do array `[1, 2, 3, 4]` usando o método `pop()`.
-
-- Adicione o número 0 ao início do array `[1, 2, 3]` usando o método `unshift()`.
-- Remova o primeiro elemento do array `[1, 2, 3]` usando o método `shift()`.
-
-### Adicionar à Lista de Desejos
+### Adicionando à Lista de Desejos
 
 **Fluxo:**
 
-1. O usuário clica no ícone do coração
-2. Mostrar estado de carregamento brevemente
-3. Envie solicitação de API para adicionar item
-4. Atualize ícone para estado preenchido
-5. Mostrar feedback de sucesso (toast: "Adicionado ao wishlist" ou animação suave)
-6. Atualizar emblema da lista de desejos de navegação (+1)
+1. O usuário clica no ícone de coração
+2. Mostrar estado de carregamento rapidamente
+3. Enviar solicitação à API para adicionar o item
+4. Atualizar o ícone para o estado preenchido
+5. Mostrar feedback de sucesso (toast: "Adicionado à lista de desejos" ou animação sutil)
+6. Atualizar o badge da lista de desejos na navegação (+1)
 
-**Interface Otimista:**
-Atualize o ícone imediatamente, reverter se a API falhar. Fornece feedback instantâneo.
+**UI Otimista:**
+Atualize o ícone imediatamente e reverta se a API falhar. Fornece feedback instantâneo.
 
-**Error handling:**
-Show error toast ("Failed to add to wishlist"), revert icon to outline, allow retry.
+**Tratamento de erros:**
+Mostrar toast de erro ("Falha ao adicionar à lista de desejos"), reverter o ícone para contornado, permitir nova tentativa.
 
-**Manipulação de variantes:**
-Salve a variante específica (tamanho, cor) se selecionada na página do produto. Nas cartas de produto, salve a variante padrão.
+**Tratamento de variantes:**
+Salve a variante específica (tamanho, cor) se selecionada na página do produto. Nos cards de produto, salve a variante padrão.
 
-### Removing from Wishlist
+### Removendo da Lista de Desejos
 
-**Da página/cartão do produto:**
-Clique no coração cheio → muda para contorno → toast: "Removido da lista de desejos" → atualizar distintivo (-1).
+**No card/página do produto:**
+Clicar no coração preenchido → muda para contornado → toast: "Removido da lista de desejos" → atualiza o badge (-1).
 
-**De página de lista de desejos:**
-Ícone X na esquina da carta do produto ou botão "Remover" → item desaparece. Opicional: Ação de Desfazer em toast (5 segundos).
+**Na página da lista de desejos:**
+Ícone X no canto do card do produto ou botão "Remover" → o item desaparece gradualmente. Opcional: Ação de desfazer no toast (5 segundos).
 
 **Confirmação:**
-Geralmente não é necessário (baixo risco, facilmente reversível). Confirme apenas para ações em massa ("Limpar tudo").
+Geralmente não é necessária (baixo risco, facilmente reversível). Confirme apenas para ações em massa ("Limpar tudo").
 
 ## Página de Lista de Desejos
 
 ### Layout
 
-**Heading:**
-"My Wishlist" or "Favorites" with item count ("12 items saved").
+**Título:**
+"Minha Lista de Desejos" ou "Favoritos" com a contagem de itens ("12 itens salvos").
 
 **Grade de produtos:**
-Semelhante à página de listagem de produtos. Cartões de produto com imagens, títulos, preços atuais (podem diferir do momento em que foram adicionados), status de estoque.
+Semelhante à página de listagem de produtos. Cards de produto com imagens, títulos, preços atuais (podem diferir de quando foram adicionados) e status do estoque.
 
 **Estado vazio:**
-"Sua lista de desejos está vazia" com CTA "Começar a comprar".
+"Sua lista de desejos está vazia" com um CTA "Começar a Comprar".
 
-### Informações do Cartão de Produto
+### Informações do Card de Produto
 
 Exibir por item:
 
-- Imagem do produto (linkada à página do produto)
-- Título do produto (linkado)
-- Preço atual (pode mostrar o preço promocional, caso esteja em promoção agora)
-- Preço original se em promoção (tachado)
-- Detalhes da variante (tamanho, cor se salvo)
-- Status do estoque: Em estoque (verde), Fora de estoque (vermelho, opção "Avise-me"), Estoque baixo ("Apenas 2 restantes")
-- **"Adicionar ao Carrinho" botão** (CRÍTICO - caminho de conversão)
-- Remover botão (ícone X)
+- Imagem do produto (com link para a página do produto)
+- Título do produto (com link)
+- Preço atual (pode mostrar o preço promocional caso esteja em promoção)
+- Preço original, se estiver em promoção (riscado)
+- Detalhes da variante (tamanho, cor, se salvo)
+- Status do estoque: Em estoque (verde), Fora de estoque (vermelho, opção "Avise-me"), Estoque baixo ("Restam apenas 2")
+- **Botão "Adicionar ao Carrinho"** (CRÍTICO - caminho de conversão)
+- Botão remover (ícone X)
 
 ### Ações e Conversão
 
-**Adicionar ao Carrinho (CRÍTICO):**Botão "Adicionar ao Carrinho" em cada item. Adiciona o item ao carrinho**sem remover da lista de desejos** (o usuário pode querer ambos). Toast de sucesso: "Adicionado ao carrinho". Não navegue para outra página (permaneça na página da lista de desejos).
+**Adicionar ao Carrinho (CRÍTICO):**
+Botão "Adicionar ao Carrinho" em cada item. Adiciona o item ao carrinho **sem remover da lista de desejos** (o usuário pode querer ambos). Toast de sucesso: "Adicionado ao carrinho". Não redirecione (permaneça na página da lista de desejos).
 
-**Compromisso:**
+**Compensação (Tradeoff):**
 
-- **Manter na lista de desejos** (recomendado): Usuário acompanha itens desejados e pode reordená-los facilmente.
-- **Adicionar ao carrinho**: Remove da lista de desejos após adicionar - mais simples, mas limita a reordenação
+- **Manter na lista de desejos** (recomendado): O usuário acompanha os itens desejados e pode recomprar facilmente
+- **Mover para o carrinho**: Remove da lista de desejos após adicionar - mais simples, mas limita a recompra
 
-**Manipulação de estoque:**
-Se estiver fora de estoque, desabilite "Adicionar ao Carrinho" e mostre a opção "Notifique-me quando voltar ao estoque" (se o backend suportar).
+**Tratamento de estoque:**
+Se estiver fora de estoque, desative "Adicionar ao Carrinho" e mostre a opção "Notifique-me quando estiver de volta ao estoque" (se o backend suportar).
 
-## Hóspede vs Usuários Logados
+## Usuários Convidados vs Logados
 
-### Decisão: Requerer Login ou Usar localStorage?
+### Decisão: Exigir Login ou Usar localStorage?
 
 **Exigir login (Recomendado):**
 
-**Por que:**
+**Por quê:**
 
-- Lista de desejos requer armazenamento persistente entre dispositivos
-- Ativa lembretes por e-mail e notificações de queda de preços
-- Melhor experiência do usuário (nunca perdido)
+- A lista de desejos exige armazenamento persistente em todos os dispositivos
+- Possibilita lembretes por e-mail e notificações de queda de preço
+- Melhor experiência do usuário (nunca se perde)
 - Dados mais limpos para análise e remarketing
-- Evita confusão de itens perdidos na lista de desejos
+- Evita a confusão de itens perdidos na lista de desejos
 
 **Implementação:**
-Clique em lista de desejos → Exibir modal de prompt de login: "Faça login para salvar sua lista de desejos". Incluir botão "Cadastre-se". Benefício claro: "Salve itens em todos os seus dispositivos".
+Ao clicar na lista de desejos → Mostrar modal de solicitação de login: "Faça login para salvar sua lista de desejos". Inclua o botão "Cadastre-se". Benefício claro: "Salve itens em todos os seus dispositivos".
 
-**localStorage approach (Não recomendado):**
+**Abordagem localStorage (Não Recomendado):**
 
-- Específico para o dispositivo apenas (perdido ao trocar de dispositivo)
+- Específico apenas do dispositivo (perdido ao trocar de dispositivo)
 - Perdido se o usuário limpar os dados do navegador
 - Sem oportunidades de remarketing
-- Não há lembretes por e-mail
-- Cria expectativas de UX inadequadas
+- Sem lembretes por e-mail
+- Cria expectativas de UX ruins
 
 **Exceção:**
-Se o backend não suportar lista de desejos autenticada, considere não implementar o recurso de forma alguma em vez de usar apenas o localStorage.
+Se o backend não suportar lista de desejos autenticada, considere não implementar o recurso em vez de usar apenas localStorage.
 
 ## Ícone de Navegação
 
-### Colocação e Design
+### Posicionamento e Design
 
 **Posição:**
 Barra de navegação superior, entre o ícone de pesquisa e o ícone do carrinho. Ou: No menu suspenso da conta do usuário.
 
 **Ícone:**
-Ícone de coração (contorno ou preenchido se os itens estiverem na lista de desejos). Tamanho 24-32px, consistente com o ícone do carrinho.
+Ícone de coração (contornado ou preenchido se houver itens na lista de desejos). Tamanho de 24-32px, consistente com o ícone do carrinho.
 
-**Contagem de emblemas:**  
-Círculo pequeno com número mostrando o total de itens na lista de desejos. Vermelho ou na cor da marca, posicionado no canto superior direito do ícone de coração.
+**Contagem no badge:**
+Pequeno círculo com um número mostrando o total de itens na lista de desejos. Vermelho ou cor da marca, posicionado no canto superior direito do ícone de coração.
 
 **Comportamento do link:**
-Navega para a página de lista de desejos ao clicar. Menu suspenso menos comum para lista de desejos (diferente do popup do carrinho).
+Navega para a página da lista de desejos ao ser clicado. Dropdown é menos comum para lista de desejos (diferente do popup do carrinho).
 
-## Considerações Móveis
+## Considerações para Dispositivos Móveis
 
 **Botão de coração:**
-Alvo de toque maior (mínimo de 44px), posicionado no canto da imagem do produto, feedback claro ao tocar (escala ou mudança de cor).
+Alvo de toque maior (mínimo de 44px), posicionado no canto da imagem do produto, feedback claro de toque (escala ou mudança de cor).
 
-**Lista de desejos:**
-Grade de produtos em coluna única, empilhar cartões verticalmente, botões "Adicionar ao Carrinho" em largura total, botões grandes de remoção (alvo de toque de 44px).
+**Página de lista de desejos:**
+Grade de produtos em coluna única, empilhar cartões verticalmente, botões "Adicionar ao Carrinho" ocupando a largura total, botões de remover grandes (alvo de toque de 44px).
 
-**Ícone de navegação:**  
-Ícone de coração na barra de navegação móvel ou menu hambúrguer, com contador de notificações.
+**Ícone de navegação:**
+Ícone de coração na barra de navegação mobile ou no menu hambúrguer, com contagem no badge.
 
-**Prompt de login:**
-Se o convidado clicar em lista de desejos, mostre a folha inferior (menos disruptiva que a modal completa) com a mensagem "Faça login para salvar sua lista de desejos".
+**Solicitação de login:**
+Se um convidado clicar na lista de desejos, exiba um bottom sheet (menos intrusivo que um modal completo) com a mensagem "Faça login para salvar sua lista de desejos".
 
-## Checklist
+## Lista de Verificação
 
 **Recursos essenciais:**
 
-- [ ] Suporte à API de backend verificado antes da implementação
-- [ ] Ícone de coração nos cards de produtos (canto superior direito)
+- [ ] Suporte à API do backend verificado antes da implementação
+- [ ] Ícone de coração nos cards de produto (canto superior direito)
 - [ ] Ícone de coração na página de detalhes do produto
-- [ ] Estados preenchido vs contorno
-- [ ] Toast notification on add/remove
-- [ ] Ícone de lista de desejos na navegação com contador de notificação
+- [ ] Estados preenchido vs contornado claros
+- [ ] Notificação toast ao adicionar/remover
+- [ ] Ícone da lista de desejos na navegação com contagem no badge
 - [ ] Página de lista de desejos com grade de produtos
-- [ ] Informações do produto: imagem, título, preço atual, status de estoque
-- [ ] Detalhes da variante se salvos (tamanho, cor)
+- [ ] Informações do produto: imagem, título, preço atual, status do estoque
+- [ ] Detalhes da variante, se salvos (tamanho, cor)
 - [ ] Botão "Adicionar ao carrinho" em cada item da lista de desejos
 - [ ] Adicionar ao carrinho sem remover da lista de desejos
-- [ ] Botão Remover (ícone X) em cada item
-- [ ] Estado vazio da lista de desejos ("Iniciar Compras" CTA)
-- [ ] Login necessário para lista de desejos persistente
-- [ ] Solicitação de login de usuário convidado ao clicar na lista de desejos
-- [ ] Indicadores de status de estoque (em estoque, fora de estoque, estoque baixo)
-- [ ] Indisponível: Desabilitar "Adicionar ao carrinho", mostrar "Notificar-me"
-- [ ] Mobile: alvos de toque de 44px
-- [ ] Mobile: Layout de coluna única
+- [ ] Botão de remover (ícone X) em cada item
+- [ ] Estado vazio da lista de desejos (CTA "Começar a Comprar")
+- [ ] Login necessário para uma lista de desejos persistente
+- [ ] Solicitação de login para usuários convidados ao clicar na lista de desejos
+- [ ] Indicadores de status do estoque (em estoque, fora de estoque, estoque baixo)
+- [ ] Fora de estoque: Desativar adicionar ao carrinho, exibir "Avise-me"
+- [ ] Dispositivos móveis: alvos de toque de 44px
+- [ ] Dispositivos móveis: layout de coluna única
 - [ ] UI Otimista (feedback instantâneo)
-- [ ] Tratamento de erros para solicitações de API com falha
-- [ ] Estados de carregamento durante adição/remoção
-- [ ] Botão aria-label ("Adicionar à lista de desejos" / "Remover da lista de desejos")
+- [ ] Tratamento de erros para solicitações de API falhas
+- [ ] Estados de carregamento ao adicionar/remover
+- [ ] aria-label nos botões ("Adicionar à lista de desejos" / "Remover da lista de desejos")
 - [ ] atributo aria-pressed no botão de coração
-- [ ] Acessível por teclado (Tab, Enter/Espaço)
-- [ ] Anúncios de leitor de tela para adicionar/remover
+- [ ] Acessível via teclado (Tab, Enter/Espaço)
+- [ ] Anúncios de leitor de tela ao adicionar/remover

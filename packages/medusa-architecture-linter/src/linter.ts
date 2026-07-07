@@ -2,20 +2,30 @@ import {
   ArchitectureRule, 
   ArchitectureValidationReport, 
   ArchitectureViolation, 
-  MedusaStructureReport 
+  MedusaStructureReport,
+  WorkflowSchemaInspectionReport,
+  ApiRouteInspectionReport
 } from "./types.js";
 import { validateLayering } from "./rules/layering.js";
 import { detectRouteServiceBypass } from "./rules/routing.js";
 import { validateWorkflowMutations } from "./rules/workflows.js";
+import { validateApiRoutes } from "./rules/api-routes.js";
+import { validateDataModels } from "./rules/data-models.js";
+import { validateAdvancedWorkflows } from "./rules/advanced-workflows.js";
 
 const DEFAULT_RULES: ArchitectureRule[] = [
   validateLayering,
   detectRouteServiceBypass,
-  validateWorkflowMutations
+  validateWorkflowMutations,
+  validateApiRoutes,
+  validateDataModels,
+  validateAdvancedWorkflows
 ];
 
 export function runArchitectureLinter(
   report: MedusaStructureReport, 
+  workflowReport?: WorkflowSchemaInspectionReport,
+  apiRouteReport?: ApiRouteInspectionReport,
   rules: ArchitectureRule[] = DEFAULT_RULES
 ): ArchitectureValidationReport {
   const violations: ArchitectureViolation[] = [];
@@ -24,7 +34,7 @@ export function runArchitectureLinter(
     violations.push(violation);
   };
 
-  const context = { report, addViolation };
+  const context = { report, workflowReport, apiRouteReport, addViolation };
 
   for (const rule of rules) {
     try {
@@ -61,7 +71,21 @@ export function runArchitectureLinter(
     linter_version: "0.1.0",
     source_report: {
       scanner_version: report.scanner_version,
-      path: "unknown" // Will be populated by the runner if known
+      path: "reports/generated/medusa-structure.json"
+    },
+    source_reports: {
+      structure: {
+        version: report.scanner_version,
+        path: "reports/generated/medusa-structure.json"
+      },
+      workflow_schema: {
+        version: workflowReport?.inspector_version || "unknown",
+        path: workflowReport ? "reports/generated/workflow-schema-inspection.json" : "unknown"
+      },
+      api_routes: {
+        version: apiRouteReport?.inspector_version || "unknown",
+        path: apiRouteReport ? "reports/generated/api-route-inspection.json" : "unknown"
+      }
     },
     passed,
     violations,

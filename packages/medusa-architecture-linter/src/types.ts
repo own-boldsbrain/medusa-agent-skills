@@ -20,6 +20,11 @@ export interface ArchitectureValidationReport {
     scanner_version: string;
     path: string;
   };
+  source_reports?: {
+    structure: { version: string; path: string };
+    workflow_schema: { version: string; path: string };
+    api_routes: { version: string; path: string };
+  };
   passed: boolean;
   violations: ArchitectureViolation[];
   summary: string;
@@ -27,6 +32,8 @@ export interface ArchitectureValidationReport {
 
 export interface ArchitectureRuleContext {
   report: MedusaStructureReport;
+  workflowReport?: WorkflowSchemaInspectionReport;
+  apiRouteReport?: ApiRouteInspectionReport;
   addViolation: (violation: ArchitectureViolation) => void;
 }
 
@@ -84,3 +91,48 @@ export interface MedusaStructureReport {
   }>;
   summary: string;
 }
+
+// Mirror of workflow schema inspector report
+export interface WorkflowSchemaInspectionReport {
+  project_root: string;
+  generated_at: string;
+  inspector_version: string;
+  workflows: Array<{
+    name: string;
+    file: string;
+    steps_defined: Array<{
+      name: string;
+      has_compensation: boolean;
+      uses_container: boolean;
+      mutates_state_signal: boolean;
+    }>;
+  }>;
+  data_models: Array<{
+    name: string;
+    file: string;
+    migration_files: string[];
+  }>;
+}
+
+// Mirror of API route inspector report
+export interface ApiRouteInspectionReport {
+  project_root: string;
+  generated_at: string;
+  inspector_version: string;
+  api_routes: Array<{
+    route_id: string;
+    scope: string;
+    method: string;
+    path: string;
+    auth_required: boolean;
+    zod_validator_required: boolean;
+    workflow_invoked: string;
+    idempotency: boolean;
+    error_contracts: string[];
+  }>;
+  unknown_fields: Array<{
+    route_id: string;
+    fields: string[];
+  }>;
+}
+

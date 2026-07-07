@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { scanMedusaProject } from "../packages/medusa-repo-scanner/src/scanner.js";
+import { scanMedusaProject } from "../packages/medusa-repo-scanner/src/scanner.ts";
 
 console.log("Starting Medusa Repository Structural Scan...");
 

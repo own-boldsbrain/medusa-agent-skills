@@ -43,10 +43,16 @@ export const validateWorkflowMutations: ArchitectureRule = (context: Architectur
       });
     }
 
-    // Relying on scanner's workflow_async_arrow_constructor finding if it was mapped, 
-    // or we assume it's in findings array for now. Wait, the scanner maps findings directly. 
-    // Let's check if there's a finding in the workflow itself.
-    const asyncArrowFinding = workflow.findings.find(f => f.includes("async arrow"));
+    const asyncArrowFinding =
+      workflow.findings.find(
+        f => f === "workflow_async_arrow_constructor" || f.includes("async arrow")
+      ) ||
+      report.findings.find(
+        f =>
+          f.type === "workflow_async_arrow_constructor" &&
+          f.file === workflow.path
+      )?.message;
+
     if (asyncArrowFinding) {
       addViolation({
         rule_id: "workflow_async_arrow_constructor",

@@ -1,245 +1,196 @@
-# Componente de Controle Deslizante de Produtos
+# Componente de Slider de Produtos
 
-## Conteúdo
+## Índice
 
-- [Componente Slider de Produto](#product-slider-component)
-  - [Conteúdos](#conteúdos)
-  - [Visão Geral](#visao-geral)
-  - [Quando Usar Sliders de Produtos](#quando-usar-sliders-de-produtos)
-  - [Padrões do Slider](#slider-patterns)
-  - [Exibição do Produto](#exibicao-do-produto)
-  - [Controles de Navegação](#controles-de-navegacao)
-  - [Móveis Sliders](#móveis-sliders)
-  - [Desempenho](#performance)
-  - [Checklist](#checklist)
+- [Componente de Slider de Produtos](#componente-de-slider-de-produtos)
+  - [Índice](#indice)
+  - [Visão geral](#visao-geral)
+  - [Quando usar sliders de produtos](#quando-usar-sliders-de-produtos)
+  - [Padrões de carrossel](#padroes-de-slider)
+  - [Exibição de produtos](#componente-de-slider-de-produtos)
+  - [Controles de navegação](#controles-de-navegacao)
+  - [Carrosséis para dispositivos móveis](#controles-deslizantes-para-dispositivos-moveis)
+  - [Desempenho](#desempenho)
+  - [Lista de verificação](#lista-de-verificacao)
 
-## Visão Geral
+## Visão geral
 
-O slider de produtos (carrossel) exibe vários produtos horizontalmente com navegação para percorrê-los. Usado para produtos relacionados, recentemente visualizados, mais vendidos e produtos em destaque.
+O slider de produtos (carrossel) exibe vários produtos horizontalmente, com navegação para percorrê-los. É usado para produtos relacionados, vistos recentemente, mais vendidos e produtos em destaque.
 
-**Conhecimento prévio**: Os agentes de IA sabem como criar carrosséis com navegação. Esse se concentra em padrões de carregador de produtos de comércio eletrônico.
+**Conhecimento prévio**: Os agentes de IA sabem como criar carrosséis com navegação. Este guia se concentra em padrões de sliders de produtos para comércio eletrônico.
 
 **Requisitos principais:**
 
-- Horizontal scrolling of product cards
+- Rolagem horizontal dos cartões de produto
 - Navegação por setas (anterior/próximo)
-- Indicadores de ponto opcionais
+- Indicadores de pontos opcionais
+- Dispositivos móveis: suporte ao gesto de deslizar
+- Contagem responsiva de produtos (4 a 6 visíveis no desktop, 2 a 3 no celular)
+- Carregamento diferido para produtos fora da tela
 
-### Indicadores de Ponto Opcionais
-
-Em alguns casos, é possível usar indicadores de ponto opcionais para indicar que um caractere ou grupo de caracteres é opcional. Isso é útil quando você precisa representar um caractere que pode ou não estar presente em uma string.
-
-#### Exemplo
-
-```regex
-^ab(c)?d$
-```
-
-Nesse exemplo, o caractere `c` é opcional, pois está entre parênteses e precedido por um `?`. Isso significa que a string pode ou não conter o caractere `c`.
-
-#### Como funciona
-
-O operador `?` após o parêntese indica que o grupo entre parênteses é opcional. Isso significa que a string pode ou não conter o caractere ou grupo de caracteres dentro do parêntese.
-
-#### Exemplo de uso
-
-Suponha que você esteja criando um padrão para validar um número de telefone. O número de telefone pode ou não conter um código de área. Você pode usar indicadores de ponto opcionais para representar isso:
-
-```regex
-^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$
-```
-
-Nesse exemplo, o código de área (representado por `[0-9]{3}`) é opcional, pois está entre parênteses e precedido por um `?`. Isso significa que a string pode ou não conter o código de área.
-
-### Referências
-
-- [Documentação do Regex em Python](https://docs.python.org/3/library/re.html)
-- [Documentação do Regex em JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)
-
-- Móvel: Suporte ao gesto de rolagem
-- Contagem de produtos responsiva (4-6 visíveis em desktop, 2-3 em mobile)
-- Carregamento preguiçoso para produtos fora da tela
-
-## When to Use Product Sliders
+## Quando usar sliders de produtos
 
 **Use para:**
 
 - Produtos relacionados (página do produto)
-- Recentemente visualizado (página do produto, página inicial)
-- Você também pode gostar de:
-
-# Você também pode gostar de
-
-### Sugestões baseadas em compras semelhantes
-
-- [Clique aqui para ver as sugestões](link para as sugestões)
-- [Clique aqui para ver as recomendações](link para as recomendações)
-
-### Sugestões baseadas em categorias
-
-- [Clique aqui para ver as sugestões](link para as sugestões)
-- [Clique aqui para ver as recomendações](link para as recomendações)
-
-### Sugestões baseadas em marcas
-
-- [Clique aqui para ver as sugestões](link para as sugestões)
-- [Clique aqui para ver as recomendações](link para as recomendações)
-- Melhores Vendedores / Produtos Destaque (página inicial)
-- "Frequentemente Comprados Juntos" (página do produto)
-- Chegadas novas (página inicial)
-- Categorias em destaque (página inicial)
+- Visualizados recentemente (página do produto, página inicial)
+- “Você também pode gostar” (página do produto)
+- Mais vendidos / Produtos em destaque (página inicial)
+- “Frequentemente comprados juntos” (página do produto)
+- Novidades (página inicial)
+- Destaques por categoria (página inicial)
 
 **Não use para:**
 
-- Imagens principais do produto (use a galeria em vez disso)
-- Conteúdo crítico (não todos os usuários rodam/roçam)
-- Fluxo de finalização da compra (manter linear)
-- Navegação primária (utilize grade para descoberta)
+- Imagens principais do produto (use uma galeria em vez disso)
+- Conteúdo essencial (nem todos os usuários rolam a tela ou deslizam)
+- Fluxo de checkout (mantenha-o linear)
+- Navegação principal (use uma grade para facilitar a descoberta)
 
-## Padrões de Slider
+## Padrões de slider
 
 **Rolagem contínua:**
 
-- Mostra 4-6 produtos de uma vez (desktop)
-- Role para a esquerda/direita 1-2 produtos por vez
-- Transição animada suave (300-400ms)
+- Mostra de 4 a 6 produtos por vez (desktop)
+- Role para a esquerda/direita de 1 a 2 produtos por vez
+- Transição animada suave (300-400 ms)
 - Padrão mais comum
 
-**Bússola de infinito (opcional):**
+**Loop infinito (opcional):**
 
-- Envolve para o início após o fim
-- Bom para conjuntos de produtos pequenos (<10 itens)
+- Retorna ao início após o fim
+- Ideal para conjuntos pequenos de produtos (<10 itens)
 - Cria uma sensação de navegação contínua
-- Não necessário para conjuntos grandes
+- Não é necessário para conjuntos grandes
 
-**Alinhamento de snap:**
+**Alinhamento automático:**
 
-- Produtos se alinham à grade após rolagem.
-- Impede a visibilidade parcial do produto
-- Ajuste visual melhorado
+- Os produtos se alinham à grade após a rolagem
+- Evita a visibilidade parcial dos produtos
+- Melhor alinhamento visual
 - Melhora a experiência de navegação
 
 **Reprodução automática (NÃO recomendado para produtos):**
 
 - Rolagem automática sem ação do usuário
-- Má experiência do usuário com sliders de produtos (usuários perdem o controle)
+- Experiência do usuário (UX) insatisfatória para sliders de produtos (os usuários perdem o controle)
 - Use apenas para banners promocionais/imagens de destaque
-- Se estiver usando: Pausa ao passar o mouse, velocidade lenta (5-7s)
+- Se for usar: pausar ao passar o mouse, velocidade lenta (5-7s)
 
-## Exibição de Produto
+## Exibição do produto
 
-**Cartões de produtos em carrosséis:**
+**Cartões de produto em sliders:**
 
-- Mesmas cartas como nas grades de produtos (ver product-card.md)
-- Simplificado no mobile (menos detalhes, imagens menores)
-- Image, title, price minimum
-- Opcional: Avaliação, "Adicionar ao Carrinho" (somente desktop)
+- Os mesmos cartões das grades de produtos (consulte product-card.md)
+- Versão simplificada para dispositivos móveis (menos detalhes, imagens menores)
+- Imagem, título e preço, no mínimo
+- Opcional: Avaliação, “Adicionar ao carrinho” (somente em desktop)
 - Espaçamento adequado entre os cartões (16-24px)
 
 **Exibição responsiva:**
 
-- Large desktop (>1440px): 5-6 products visible
-- Desktop (1024-1440px): 4-5 produtos
-- Tablet (768-1024px): 3-4 produtos
-- Móvel (<768px): 2 produtos (às vezes 1,5 para dica de rolagem)
+- Computador de tela grande (>1440px): 5 a 6 produtos visíveis
+- Computador (1024-1440px): 4 a 5 produtos
+- Tablet (768-1024px): 3 a 4 produtos
+- Dispositivos móveis (<768px): 2 produtos (às vezes 1,5 para indicar a necessidade de rolagem)
 
-**Scroll hint on mobile:**
+**Indicação de rolagem em dispositivos móveis:**
 
-- Mostre 1.5 produtos (visibilidade parcial do próximo)
-- Indica mais conteúdo para deslizar
-- Melhora a descoberta
+- Mostrar 1,5 produtos (visibilidade parcial do próximo)
+- Indica que há mais conteúdo para deslizar
+- Melhora a descoberta de conteúdo
 - Melhor do que mostrar exatamente 2 produtos
 
-## Controles de Navegação
+## Controles de navegação
 
-**Arrow buttons:**
+**Botões de seta:**
 
-- Setas esquerda/direita fora do slider
-- Área de trabalho: Sempre visível ou mostrar ao passar o mouse
-- Mobile: Oculto (gesto de deslizar preferido)
-- Posição: Centralizado verticalmente
-- Tamanho: alvos de toque de 40-48px
-- Desativar a seta esquerda no início, seta direita no final (sem loop infinito)
+- Setas para a esquerda/direita fora do slider
+- Computador: sempre visíveis ou exibidas ao passar o mouse
+- Celular: ocultas (prefere-se o gesto de deslizar)
+- Posição: centralizadas verticalmente
+- Tamanho: alvos de toque de 40 a 48px
+- Desativar a seta para a esquerda no início e a seta para a direita no final (sem loop infinito)
 
-**Indicadores de ponto (opcional):**
+**Indicadores de pontos (opcional):**
 
-- Mostrar progresso através de controle deslizante
-- Cada ponto = uma "página" de produtos
-- Posição: Abaixo do slider, centralizado.
-- Pequeno (8-12px pontos)
-- Somente se muitos produtos (>12)
-- Menos comum para sliders de produtos (mais para carrosséis de destaque)
+- Mostram o progresso por meio do controle deslizante
+- Cada ponto = uma “página” de produtos
+- Posição: abaixo do controle deslizante, centralizado
+- Pequenos (pontos de 8 a 12 px)
+- Apenas se houver muitos produtos (>12)
+- Menos comum em controles deslizantes de produtos (mais comum em carrosséis de destaque)
 
-**Navegação pelo teclado:**
+**Navegação por teclado:**
 
-- Navegue através dos cartões de produto visíveis
-- Teclas de seta rolam o controle deslizante (opcional)
-- Gerenciamento de foco no rolar
+- Navegue pelas fichas de produtos visíveis usando a tecla Tab
+- As setas do teclado rolam o controle deslizante (opcional)
+- Gerenciamento do foco durante a rolagem
 
-## Sliders Móveis
+## Controles deslizantes para dispositivos móveis
 
 **Gestos de toque:**
 
-- Deslize horizontal para rolar
-- Roda nativa de momentum de rolagem
-- Ajustar ao alinhamento do produto
-- Botões de seta (o deslize é intuitivo)
+- Deslize horizontalmente para rolar
+- Inércia de rolagem nativa
+- Alinhamento automático aos produtos
+- Sem botões de seta (o deslizar é intuitivo)
 
 **Ajustes específicos para dispositivos móveis:**
 
-- 2 produtos visíveis (ou 1,5 para dica)
-- Alvos de toque maiores em produtos
-- Remova recursos exclusivos para *hover* (Visualização Rápida)
-- Animações de rolagem mais rápidas (200-300ms)
+- 2 produtos visíveis (ou 1,5 como sugestão)
+- Áreas de toque maiores nos produtos
+- Remover recursos ativados apenas ao passar o cursor (Visualização Rápida)
+- Animações de rolagem mais rápidas (200-300 ms)
 
-**Desempenho em dispositivos móveis:**
+**Desempenho no celular:**
 
-- Carregamento preguiçoso de produtos fora da tela
-- Tamanhos de imagem menores
-- Limite de produtos iniciais carregados (8-10)
-- Carregar mais ao rolar
+- Carregamento diferido de produtos fora da tela
+- Imagens com tamanhos menores
+- Limitar o número de produtos carregados inicialmente (8 a 10)
+- Carregar mais à medida que a tela é rolada
 
 ## Desempenho
 
-**Carregamento preguiçoso (crítico):**
+**Carregamento diferido (crítico):**
 
-- Somente carregue os produtos visíveis inicialmente
-- Carregue produtos adjacentes (esquerda/direita) sob demanda
+- Carregar inicialmente apenas os produtos visíveis
+- Carregar produtos adjacentes (esquerda/direita) sob demanda
 - Melhora significativamente o tempo de carregamento da página
-- Use Intersection Observer API
+- Utiliza a API Intersection Observer
 
 **Otimização de imagens:**
 
 - Imagens responsivas (menores para dispositivos móveis)
-- Formato WebP com fallback
-- Imagens com carregamento preguiçoso fora da tela
-- Miniaturas otimizadas (<300KB)
+- Formato WebP com alternativa
+- Carregamento diferido de imagens fora da tela
+- Miniaturas otimizadas (<300 KB)
 
-**Limitar comprimento do controle deslizante:**
+**Limitar o comprimento do slider:**
 
-- Máx. 20-30 produtos por slider
-- Link "Ver Tudo" para a página completa da categoria
+- Máximo de 20 a 30 produtos por slider
+- Link “Ver tudo” para a página completa da categoria
 - Melhora o desempenho
-- Evita rolagem infinita
+- Evita a rolagem infinita
 
-## Checklist
+## Lista de verificação
 
 **Recursos essenciais:**
 
-- [ ] 4-6 produtos visíveis (desktop), 2 (mobile)
-- [ ] Navegação por setas (desktop)
-- [ ] Movimento de deslizar (mobile)
-- [ ] Cartões de produtos com imagem, título, preço
-- [ ] Contagem de produtos responsiva
-- [ ] Transições de rolagem suave (300-400ms)
-- [ ] Alinhar ao produto
-- [ ] Carregar produtos fora da tela sob demanda
-- [ ] link "Ver Todos" se muitos produtos (>20)
+- [ ] 4 a 6 produtos visíveis (computador), 2 (dispositivos móveis)
+- [ ] Navegação por setas (computador)
+- [ ] Gesto de deslizar (dispositivos móveis)
+- [ ] Cartões de produto com imagem, título e preço
+- [ ] Contagem responsiva de produtos
+- [ ] Transições suaves de rolagem (300-400 ms)
+- [ ] Alinhamento automático dos produtos
+- [ ] Carregamento diferido de produtos fora da tela
+- [ ] Link “Ver tudo” se houver muitos produtos (>20)
 - [ ] Desativar setas no início/fim
-- [ ] Acessível por teclado (Navegue pelos produtos com Tab)
-- [ ] Mobile: Sem setas, apenas deslizar
-- [ ] Imagens otimizadas (<300KB)
-- [ ] Espaçamento entre produtos (16-24px)
-- [ ] Rótulos ARIA na navegação (`aria-label="Previous products"`)
-- [ ] `role="region"` no contêiner do controle deslizante
-- [ ] Sem reprodução automática para os carrosséis de produtos
+- [ ] Acessível por teclado (navegação entre produtos com a tecla Tab)
+- [ ] Celular: sem setas, apenas deslizar
+- [ ] Imagens otimizadas (<300 KB)
+- [ ] Espaçamento entre produtos (16-24 px)
+- [ ] Rótulos ARIA na navegação (`aria-label="Produtos anteriores"`)
+- [ ] `role="region"` no contêiner do slider
+- [ ] SEM reprodução automática para os sliders de produtos

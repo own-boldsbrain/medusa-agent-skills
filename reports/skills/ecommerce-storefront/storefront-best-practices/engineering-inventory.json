@@ -1,0 +1,552 @@
+{
+  "skill_id": "ecommerce-storefront.storefront-best-practices",
+  "plugin": "ecommerce-storefront",
+  "skill_name": "storefront-best-practices",
+  "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/SKILL.md",
+  "source_files": [
+    "plugins/ecommerce-storefront/skills/storefront-best-practices/SKILL.md"
+  ],
+  "localized_variants": [
+    "plugins/ecommerce-storefront/skills/storefront-best-practices/SKILL.pt-br.md"
+  ],
+  "coverage_score": 46.4,
+  "risk_level": "medium",
+  "evidence_level": "direct",
+  "coverage_details": {
+    "total_blocks": 28,
+    "blocks_with_items": 13,
+    "blocks_direct": 13,
+    "coverage_pct": 46.4
+  },
+  "blocks": {
+    "variables": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Variáveis",
+      "DOD": "Variáveis validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Variáveis",
+      "items": []
+    },
+    "workflows": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Workflows",
+      "DOD": "Workflows validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "name": "When to Apply",
+          "status": "inferred"
+        },
+        {
+          "name": "CRITICAL: Load Reference Files When Needed",
+          "status": "inferred"
+        },
+        {
+          "name": "Planning and Implementation Workflow",
+          "status": "inferred"
+        },
+        {
+          "name": "Critical Ecommerce-Specific Patterns",
+          "status": "inferred"
+        },
+        {
+          "name": "Pattern Selection Guides",
+          "status": "inferred"
+        },
+        {
+          "name": "Quick Reference",
+          "status": "inferred"
+        },
+        {
+          "name": "Common Implementation Patterns",
+          "status": "inferred"
+        },
+        {
+          "name": "Design Considerations",
+          "status": "inferred"
+        },
+        {
+          "name": "Integration with Medusa",
+          "status": "inferred"
+        },
+        {
+          "name": "Minimum Viable Features",
+          "status": "inferred"
+        }
+      ]
+    },
+    "jtbds": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir JTBDs",
+      "DOD": "JTBDs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "when": "Working with storefront-best-practices",
+          "i_want": "ALWAYS use this skill when working on ecommerce storefronts, online stores, shopping sites. Use for ANY storefront component including checkout pages, cart, payment flows, product pages, product listi",
+          "so_that": "I can implement the feature correctly",
+          "status": "inferred"
+        },
+        {
+          "when": "- **Adding checkout page/flow** - Payment, shipping, order placement",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "**Implementing cart** - Cart page, cart popup, add to cart functionality",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "**Building product pages** - Product details, product listings, product grids",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "**Creating navigation** - Navbar, megamenu, footer, mobile menu",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "**Integrating Medusa backend** - SDK setup, cart, products, payment",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        }
+      ]
+    },
+    "use_cases_05": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir 05 use cases",
+      "DOD": "05 use cases validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "use_case_id": "UC-001",
+          "name": "Accessibility",
+          "scenario": "- **CRITICAL: Cart count updates require `aria-live=\"polite\"`** - Screen readers won't announce without it\n- Ensure keyboard navigation for all cart/checkout interactions",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-002",
+          "name": "Mobile",
+          "scenario": "- **Sticky bottom elements MUST use `env(safe-area-inset-bottom)`** - iOS home indicator will cut off purchase buttons otherwise\n- 44px minimum touch targets for cart actions, variant selectors, quant",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-003",
+          "name": "Performance",
+          "scenario": "- **ALWAYS add `loading=\"lazy\"` to product images below fold** - Don't rely on browser defaults\n- Optimize product images for mobile (<500KB) - Most ecommerce traffic is mobile",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-004",
+          "name": "Conversion Optimization",
+          "scenario": "- Clear CTAs throughout shopping flow\n- Minimal friction in checkout (guest checkout if supported)\n- Trust signals (reviews, security badges, return policy) near purchase buttons\n- Clear pricing and s",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-005",
+          "name": "SEO",
+          "scenario": "- **Product schema (JSON-LD) required** - Critical for Google Shopping and rich snippets\n- Use [PageSpeed Insights](https://pagespeed.web.dev/) to measure Core Web Vitals",
+          "status": "inferred"
+        }
+      ]
+    },
+    "does_and_does_not": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Faz / Não Faz",
+      "DOD": "Faz / Não Faz validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "rule": "**CRITICAL: Cart count updates require `aria-live=\"polite\"`** - Screen readers won't announce without it",
+          "status": "direct"
+        },
+        {
+          "rule": "Ensure keyboard navigation for all cart/checkout interactions",
+          "status": "direct"
+        }
+      ]
+    },
+    "user_inputs": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir User Inputs",
+      "DOD": "User Inputs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear User Inputs",
+      "items": []
+    },
+    "system_outputs": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir System Outputs",
+      "DOD": "System Outputs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "output_name": "Markdown file",
+          "type": "file",
+          "format": ".md",
+          "status": "inferred"
+        }
+      ]
+    },
+    "expected_outcomes": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Outcomes Esperados",
+      "DOD": "Outcomes Esperados validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "outcome": "Skill executes correctly",
+          "status": "inferred"
+        }
+      ]
+    },
+    "apis": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir APIs",
+      "DOD": "APIs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear APIs",
+      "items": []
+    },
+    "endpoints": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Endpoints",
+      "DOD": "Endpoints validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Endpoints",
+      "items": []
+    },
+    "urls": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir URLs",
+      "DOD": "URLs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "url": "https://medusajs.com",
+          "type": "reference",
+          "status": "direct"
+        },
+        {
+          "url": "https://pagespeed.web.dev/",
+          "type": "reference",
+          "status": "direct"
+        },
+        {
+          "url": "https://docs.medusajs.com/mcp",
+          "type": "reference",
+          "status": "direct"
+        }
+      ]
+    },
+    "connectors": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Conectores",
+      "DOD": "Conectores validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "connector_name": "sdk.store.cart",
+          "type": "sdk_call",
+          "status": "inferred"
+        }
+      ]
+    },
+    "crud": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir CRUD",
+      "DOD": "CRUD validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "READ",
+          "status": "direct"
+        },
+        {
+          "operation": "UPDATE",
+          "status": "direct"
+        },
+        {
+          "operation": "APPROVE",
+          "status": "direct"
+        },
+        {
+          "operation": "DELETE",
+          "status": "direct"
+        },
+        {
+          "operation": "CREATE",
+          "status": "direct"
+        }
+      ]
+    },
+    "gets": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir GETs",
+      "DOD": "GETs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear GETs",
+      "items": []
+    },
+    "posts": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir POSTs",
+      "DOD": "POSTs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear POSTs",
+      "items": []
+    },
+    "create": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir CREATE",
+      "DOD": "CREATE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "CREATE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "update": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir UPDATE",
+      "DOD": "UPDATE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "UPDATE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "approve": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir APPROVE",
+      "DOD": "APPROVE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "APPROVE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "reject": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir REJECT",
+      "DOD": "REJECT validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear REJECT",
+      "items": []
+    },
+    "delete": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir DELETE",
+      "DOD": "DELETE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "DELETE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "databases": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Bancos de dados",
+      "DOD": "Bancos de dados validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Bancos de dados",
+      "items": []
+    },
+    "schemas": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Schemas",
+      "DOD": "Schemas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Schemas",
+      "items": []
+    },
+    "relationships": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Relacionamentos",
+      "DOD": "Relacionamentos validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Relacionamentos",
+      "items": []
+    },
+    "datasets": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Datasets",
+      "DOD": "Datasets validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Datasets",
+      "items": []
+    },
+    "json_files": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir JSON files",
+      "DOD": "JSON files validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear JSON files",
+      "items": []
+    },
+    "tables": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Tabelas",
+      "DOD": "Tabelas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Tabelas",
+      "items": []
+    },
+    "logic": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Lógicas",
+      "DOD": "Lógicas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Lógicas",
+      "items": []
+    },
+    "calculations": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Cálculos",
+      "DOD": "Cálculos validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Cálculos",
+      "items": []
+    }
+  }
+}

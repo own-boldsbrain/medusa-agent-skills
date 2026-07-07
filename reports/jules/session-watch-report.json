@@ -1,0 +1,266 @@
+{
+  "timestamp": "2026-07-07T19:59:31.715792+00:00",
+  "source_mode": "jules_api_live",
+  "is_mock": false,
+  "total_sessions": 30,
+  "alerts_triggered": 25,
+  "sessions": [
+    {
+      "name": "sessions/16387877014523172499",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/16387877014523172499"
+    },
+    {
+      "name": "sessions/18046950038902881999",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/18046950038902881999"
+    },
+    {
+      "name": "sessions/6772708384542803924",
+      "state": "COMPLETED",
+      "flags": [],
+      "url": "https://jules.google.com/session/6772708384542803924"
+    },
+    {
+      "name": "sessions/14941115679822205801",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/14941115679822205801"
+    },
+    {
+      "name": "sessions/9811666062781550445",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/9811666062781550445"
+    },
+    {
+      "name": "sessions/1718391195164930964",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/1718391195164930964"
+    },
+    {
+      "name": "sessions/3160140147963508048",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/3160140147963508048"
+    },
+    {
+      "name": "sessions/10457711670003755055",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/10457711670003755055"
+    },
+    {
+      "name": "sessions/738175384704726190",
+      "state": "COMPLETED",
+      "flags": [],
+      "url": "https://jules.google.com/session/738175384704726190"
+    },
+    {
+      "name": "sessions/13684893426359134239",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/13684893426359134239"
+    },
+    {
+      "name": "sessions/16561642093246359899",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/16561642093246359899"
+    },
+    {
+      "name": "sessions/5007591070603755859",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/5007591070603755859"
+    },
+    {
+      "name": "sessions/16220394734208508651",
+      "state": "COMPLETED",
+      "flags": [],
+      "url": "https://jules.google.com/session/16220394734208508651"
+    },
+    {
+      "name": "sessions/13001426110633871074",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/13001426110633871074"
+    },
+    {
+      "name": "sessions/4651661303858123605",
+      "state": "COMPLETED",
+      "flags": [],
+      "url": "https://jules.google.com/session/4651661303858123605"
+    },
+    {
+      "name": "sessions/8838994688830827032",
+      "state": "COMPLETED",
+      "flags": [],
+      "url": "https://jules.google.com/session/8838994688830827032"
+    },
+    {
+      "name": "sessions/6904240254378313920",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/6904240254378313920"
+    },
+    {
+      "name": "sessions/7552632919627966761",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/7552632919627966761"
+    },
+    {
+      "name": "sessions/653951798428306725",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/653951798428306725"
+    },
+    {
+      "name": "sessions/1914835282038759176",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/1914835282038759176"
+    },
+    {
+      "name": "sessions/5417528365228293222",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/5417528365228293222"
+    },
+    {
+      "name": "sessions/12032216803293027397",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/12032216803293027397"
+    },
+    {
+      "name": "sessions/7571370682549431112",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/7571370682549431112"
+    },
+    {
+      "name": "sessions/1700510608081955846",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/1700510608081955846"
+    },
+    {
+      "name": "sessions/3042028047805742283",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/3042028047805742283"
+    },
+    {
+      "name": "sessions/2717619091676164501",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/2717619091676164501"
+    },
+    {
+      "name": "sessions/10833633699116984131",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/10833633699116984131"
+    },
+    {
+      "name": "sessions/6490153279698878997",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/6490153279698878997"
+    },
+    {
+      "name": "sessions/1273398637511247672",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/1273398637511247672"
+    },
+    {
+      "name": "sessions/4011073244251086061",
+      "state": "AWAITING_USER_FEEDBACK",
+      "flags": [
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "url": "https://jules.google.com/session/4011073244251086061"
+    }
+  ],
+  "active_alerts": [
+    "Session sessions/16387877014523172499 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/18046950038902881999 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/14941115679822205801 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/9811666062781550445 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/1718391195164930964 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/3160140147963508048 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/10457711670003755055 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/13684893426359134239 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/16561642093246359899 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/5007591070603755859 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/13001426110633871074 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/6904240254378313920 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/7552632919627966761 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/653951798428306725 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/1914835282038759176 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/5417528365228293222 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/12032216803293027397 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/7571370682549431112 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/1700510608081955846 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/3042028047805742283 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/2717619091676164501 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/10833633699116984131 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/6490153279698878997 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/1273398637511247672 is AWAITING_USER_FEEDBACK.",
+    "Session sessions/4011073244251086061 is AWAITING_USER_FEEDBACK."
+  ]
+}

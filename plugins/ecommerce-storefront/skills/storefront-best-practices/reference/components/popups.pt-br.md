@@ -1,198 +1,168 @@
-# Componente de Popups
+# Componente Pop-ups
 
-## Conteúdo
+## Índice
 
-- [Visão Geral](#visão-geral)
-- [Quando Usar Pop-ups](#quando-usar-pop-ups)
-- [Tipos de Popup de Comércio Eletrônico](#tipos-de-popup-de-comercio-eletronico)
-- [Tempo e Desencadeadores](#tempo-e-desencadeadores)
-- [Gerenciamento de Frequência](#gerenciamento-de-frequência)
-- [Considerações Móveis](#considerações-móveis)
-- [Lista de Verificação](#lista-de-verificacao)
+- [Visão geral](#visao-geral)
+- [Quando usar pop-ups](#quando-usar-pop-ups)
+- [Tipos de pop-ups para comércio eletrônico](#tipos-de-pop-ups-para-comercio-eletronico)
+- [Tempo e gatilhos](#momento-e-gatilhos)
+- [Gerenciamento de frequência](#gerenciamento-de-frequencia)
+- [Considerações para dispositivos móveis](#consideracoes-para-dispositivos-moveis)
+- [Lista de verificação](#lista-de-verificacao)
 
-## Visão Geral
+## Visão geral
 
-Popups (modais/sobreposições) aparecem sobre o conteúdo principal para captar atenção para ações específicas: inscrições em newsletters, ofertas promocionais, ofertas de saída.
+Os pop-ups (modais/sobreposições) aparecem sobre o conteúdo principal para chamar a atenção para ações específicas: inscrições em boletins informativos, ofertas promocionais, ofertas de intenção de saída.
 
-**Conhecimento prévio**: Os agentes de inteligência artificial sabem como criar modais com botões de fechar e sobreposições de fundo. Este se concentra em padrões de popups de comércio eletrônico.
+**Conhecimento prévio**: os agentes de IA sabem como criar modais com botões de fechar e sobreposições de fundo. Este conteúdo se concentra em padrões de pop-ups para comércio eletrônico.
 
-**Balanço crítico**: Efetivo para conversões quando usado com moderação, intrusivo e irritante quando usado em excesso. O tempo e a frequência são críticos para o comércio eletrônico.
+**Equilíbrio crítico**: eficaz para conversões quando usado com moderação, mas intrusivo e irritante quando usado em excesso. O momento certo e a frequência são fundamentais para o comércio eletrônico.
 
-## Quando Usar Popups
+## Quando usar pop-ups
 
-**Use popups quando:***Quando o usuário precisa de mais informações sobre um item específico.
+**Use pop-ups quando:**
 
-- Quando você deseja criar uma experiência de usuário mais interativa.
-- Quando o conteúdo é muito grande ou complexo para ser exibido em uma única tela.
-- Quando você deseja fornecer uma forma de feedback ao usuário.
-
-### Exemplo
-
-```html
-<!-- Crie um botão que, ao ser clicado, exibe uma popup com informações adicionais -->
-<button id="myButton">Clique aqui</button>
-
-<!-- Crie o popup com as informações adicionais -->
-<div id="myPopup" style="display:none;">
-  <h2>Informações adicionais</h2>
-  <p>Este é um exemplo de popup com informações adicionais.</p>
-  <button id="closeButton">Fechar</button>
-</div>
-
-<!-- Adicione um evento de clique ao botão para exibir o popup -->
-<script>
-  document.getElementById("myButton").addEventListener("click", function() {
-    document.getElementById("myPopup").style.display = "block";
-  });
-
-  // Adicione um evento de clique ao botão de fechar para esconder o popup
-  document.getElementById("closeButton").addEventListener("click", function() {
-    document.getElementById("myPopup").style.display = "none";
-  });
-</script>
-```
-
-- Oferecendo um valor significativo (10-20% de desconto na primeira compra, envio grátis)
-- Promoções com prazo limitado (venda relâmpago terminando em breve)
-- Saída-intencional para recuperar visitantes que abandonam (última oferta de chance)
-- Bem-vindo a primeira visita (apenas uma vez)
-- Anúncios importantes (atrasos de envio, mudanças de política)
+- Oferecer valor significativo (desconto de 10 a 20% na primeira compra, frete grátis)
+- Promoções com prazo limitado (promoção relâmpago que termina em breve)
+- Detecção de intenção de saída para recuperar visitantes que estão abandonando o site (oferta de última chance)
+- Boas-vindas a visitantes de primeira visita (apenas uma vez)
+- Anúncios importantes (atrasos na entrega, mudanças nas políticas)
 
 **Não use pop-ups para:**
 
-- Cada visita de página (extremamente irritante)
-- Múltiplos pop-ups por sessão
-- Carregamento imediato da página (os utilizadores ainda não viram o site)
-- Usuários móveis (especialmente os takeovers de tela cheia - muito disruptivos)
-- Usuários que já se registraram ou recusaram o consentimento
+- Cada visita à página (extremamente irritante)
+- Vários pop-ups por sessão
+- Carregamento imediato da página (os usuários ainda não viram o site)
+- Usuários de dispositivos móveis (especialmente janelas pop-up em tela cheia — muito perturbadoras)
+- Usuários que já se cadastraram ou fecharam a janela
 
 **Considere alternativas:**
 
-- Banner superior: Menos intrusivo, sempre visível, bom para promoções contínuas
-- Formulários inline: Página inicial ou inscrição na newsletter do rodapé, não bloqueante.
-- Slide-in (canto): Do canto inferior direito, menos intrusivo do que um popup central.
-- Pós-venda: Peça o e-mail após a ordem bem-sucedida (alta conversão)
+- Banner superior: menos intrusivo, sempre visível, bom para promoções em andamento
+- Formulários embutidos: cadastro para boletim informativo na página inicial ou no rodapé, sem bloquear a visualização
+- Janela deslizante (no canto): a partir do canto inferior direito, menos perturbadora do que uma janela pop-up central
+- Pós-compra: solicite o e-mail após o pedido ser concluído com sucesso (alta conversão)
 
-**Popups são melhores quando:** Precisam de atenção imediata, oferta de alta valor justifica a interrupção, intenção de saída (última chance).
+**Os pop-ups são mais eficazes quando:** é necessária atenção imediata, uma oferta de alto valor justifica a interrupção ou há intenção de saída (última chance).
 
-## Tipos de Popup para Ecommerce
+## Tipos de pop-ups para comércio eletrônico
 
-### 1. Desconto de Primeira Compra
+### 1. Desconto na primeira compra
 
-**Propósito**: Converter visitantes pela primeira vez com incentivo de desconto.
+**Objetivo**: converter visitantes de primeira visita com o incentivo de um desconto.
 
 **Conteúdo:**
 
-- Título: "Bem-vindo! Desconto de 10% na sua primeira encomenda"
-- Campo de e-mail
+- Título: “Bem-vindo! Ganhe 10% de desconto no seu primeiro pedido”
+- Campo para inserção de e-mail
 - Código de desconto ou aplicação automática
-- Botão de inscrição: "Obter Meu Desconto"
+- Botão de inscrição: “Receba meu desconto”
 
-**Tempo**: Após 30-60 segundos no site OU após visualizar 2-3 produtos (sinal de envolvimento).
+**Momento**: Após 30 a 60 segundos no site OU após visualizar 2 a 3 produtos (sinal de engajamento).
 
-**Frequência**: Uma vez por usuário (cookie/localStorage). Não mostrar para clientes retornantes.
+**Frequência**: Uma vez por usuário (cookie/localStorage). Não exibir para clientes recorrentes.
 
-### 2. Inscrição no Boletim
+### 2. Inscrição na newsletter
 
-**Propósito**: Aumentar a lista de e-mails para marketing.
-
-**Content:**
-
-- Proposta de valor: "Consiga ofertas exclusivas e acesso antecipado"
-- Campo de e-mail
-- Botão de inscrever-se
-- Opcional: Desconto de incentivo de primeira compra (10-15% de desconto)
-
-**Timing**: After 50% scroll OR 60 seconds on site.
-
-**Frequência**: Uma vez por sessão. Se desmarcado, não mostrar por 30 dias.
-
-### 3. Popup de Intenção de Sair
-
-**Propósito**: Recuperar visitantes que estão prestes a abandonar com uma oferta de última chance.
-
-**Disparador**: O mouse se move em direção ao botão de fechar/voltar do navegador (apenas para desktop).
+**Objetivo**: Aumentar a lista de e-mails para fins de marketing.
 
 **Conteúdo:**
 
-- Urgência: "Espere! Não perca!"
-- Oferta: "Ganhe 10% de Desconto na sua Compra" ou "Frete Grátis Apenas Hoje"
-- Captura de e-mail (opcional): "Envie-me o código"
-- CTA: "Reclame Oferta" ou "Continue Comprando"
+- Proposta de valor: “Receba ofertas exclusivas e acesso antecipado”
+- Campo para e-mail
+- Botão “Inscrever-se”
+- Opcional: incentivo de desconto na primeira compra (10 a 15% de desconto)
 
-**Melhor para**: abandonadores de carrinho, saídas de página de produto, visitantes pela primeira vez.
+**Momento**: Após rolagem de 50% OU 60 segundos no site.
 
-**Frequência**: Uma vez por sessão. Não mostrar se o usuário já adicionou ao carrinho ou estiver no checkout.
+**Frequência**: Uma vez por sessão. Se for fechado, não exibir por 30 dias.
 
-### 4. Lembrete de Abandono de Carrinho
+### 3. Pop-up de intenção de saída
 
-**Purpose**: Remind user of items in cart before leaving.
+**Objetivo**: Recuperar visitantes que estão saindo do site com uma oferta de última chance.
 
-**Gatilho**: Intenção de saída quando o carrinho contém itens, mas o usuário está navegando para fora.
+**Gatilho**: O mouse se move em direção ao botão de fechar ou voltar do navegador (somente no desktop).
 
 **Conteúdo:**
 
-- O seu carrinho está esperando.
+- Urgência: “Espere! Não perca essa oportunidade”
+- Oferta: “Ganhe 10% de desconto no seu pedido” ou “Frete grátis somente hoje”
+- Captura de e-mail (opcional): “Envie-me o código”
+- CTA: “Resgate a oferta” ou “Continue comprando”
+
+**Ideal para**: Usuários que abandonam o carrinho, saídas da página do produto, visitantes de primeira visita.
+
+**Frequência**: Uma vez por sessão. Não exiba se o usuário já tiver adicionado itens ao carrinho ou estiver no checkout.
+
+### 4. Lembrete de abandono do carrinho
+
+**Objetivo**: Lembrar o usuário dos itens no carrinho antes de sair.
+
+**Gatilho**: Intenção de saída quando o carrinho contém itens, mas o usuário está saindo da página.
+
+**Conteúdo:**
+
+- “Seu carrinho está esperando”
 - Mostrar resumo do carrinho (itens, total)
-- CTA: "Finalize Seu Pedido" ou "Ver Carrinho"
-- Incentivo opcional: "Complete em 10 minutos e ganhe frete grátis"
+- CTA: “Conclua seu pedido” ou “Ver carrinho”
+- Incentivo opcional: “Conclua em 10 minutos para frete grátis”
 
 **Frequência**: Uma vez por sessão com itens no carrinho.
 
-### 5. Anúncio Promocional
+### 5. Anúncio promocional
 
-**Propósito**: Anunciar vendas, novas chegadas ou eventos em todo o site.
+**Objetivo**: Anunciar promoções, novidades ou eventos em todo o site.
 
 **Conteúdo:**
 
-- Título: "Promoção Relâmpago: 40% de Desconto em Tudo"
-- Subtexto: "Termina em 3 horas"
-- CTA: "Compre Agora"
+- Título: “Promoção relâmpago: 40% de desconto em tudo”
+- Subtítulo: “Termina em 3 horas”
+- CTA: “Compre agora”
 
-**Timing**: Imediato no carregamento da página (se for um evento importante), OU após 30 segundos.
+**Momento**: Imediatamente após o carregamento da página (se for um evento importante) OU após 30 segundos.
 
-**Frequência**: Uma vez por dia durante o período promocional.
+**Frequência**: Uma vez por dia durante o período da promoção.
 
-## Timming e Gatilhos
+## Momento e Gatilhos
 
-**Baseado em tempo:**
+**Baseado no tempo:**
 
-- 30-60 segundos após o carregamento da página (tempo suficiente para navegar)
-- Nunca imediato (0 segundos) - os usuários precisam ver o site primeiro
+- 30 a 60 segundos após o carregamento da página (tempo suficiente para navegar)
+- Nunca imediatamente (0 segundos) — os usuários precisam ver o site primeiro
 
-**Baseado em engajamento:**
+**Baseado no engajamento:**
 
-- Após 50% de rolagem (demonstra interesse)
-- Após visualizar 2-3 produtos (visitante qualificado)
-- Após adicionar ao carrinho (apenas intenção de saída)
+- Após rolagem de 50% (demonstra interesse)
+- Após visualizar 2 a 3 produtos (visitante qualificado)
+- Após adicionar ao carrinho (somente intenção de saída)
 
-**Exit-intent:**
+**Intenção de saída:**
 
-- O mouse se move em direção ao botão de fechar/voltar (desktop)
-- Role a página para cima em direção à barra de endereços (mobile - menos confiável)
-- Disparar apenas uma vez por sessão
-- Não acionar nas páginas de checkout (interrompe a compra)
+- O mouse se move em direção ao botão Fechar/Voltar (desktop)
+- Role a tela para cima em direção à barra de endereço (dispositivos móveis – menos confiável)
+- Acione apenas uma vez por sessão
+- Não acione em páginas de finalização de compra (interrompe a compra)
 
-**Página específica:**
+**Específico por página:**
 
-- Página Inicial: Bem-vindo/popup de desconto
-- Páginas de produtos: Exit-intent com oferta específica do produto
-- Cart page: Don't use popups (already engaged)
-- Checkout: Nunca use pop-ups (fluxo crítico)
+- Página inicial: Pop-up de boas-vindas/desconto
+- Páginas de produtos: Pop-up de intenção de saída com oferta específica para o produto
+- Página do carrinho: Não use pop-ups (o usuário já está engajado)
+- Finalização da compra: nunca use pop-ups (fluxo crítico)
 
-## Gerenciamento de Frequência
+## Gerenciamento de frequência
 
-**Crítico para UX**: Não mostre a mesma pop-up repetidamente ao mesmo usuário.
+**Fundamental para a experiência do usuário (UX)**: não exiba o mesmo pop-up repetidamente para o mesmo usuário.
 
 **Implementação:**
 
-1. **Cookie/localStorage rastreamento**: Armazenar descarte/cadastro com carimbo de data/hora
-2. **Respeite dispensas**: Se o usuário fechar o pop-up, não mostre por 30 dias
-3. **Usuários cadastrados**: Nunca mais mostrar pop-up de newsletter novamente
-4. **Limites de sessão**: Máx. 1 popup por sessão
-5. **Tempo de espera**: Se dispensado, aguarde 30 dias antes de mostrar novamente
+1. **Rastreamento por cookies/localStorage**: armazene o fechamento/cadastro com registro de data e hora
+2. **Respeitar o fechamento**: Se o usuário fechar a janela pop-up, não exibi-la por 30 dias
+3. **Usuários cadastrados**: nunca mais exiba a janela pop-up da newsletter
+4. **Limites de sessão**: no máximo 1 janela pop-up por sessão
+5. **Tempo de espera**: se fechada, aguarde 30 dias antes de exibi-la novamente
 
-**Example tracking:**
+**Exemplo de rastreamento:**
 
 ```javascript
 // On popup dismiss
@@ -209,56 +179,56 @@ if (daysSince < 30) {
 
 **Divulgação progressiva:**
 
-- Sessão 1: Popup de desconto de boas-vindas
-- Sessão 2+: Exit-intent apenas (se aplicável)
-- Nunca empilhe vários popups
+- Sessão 1: Pop-up de desconto de boas-vindas
+- Sessão 2 e seguintes: Apenas com intenção de saída (se aplicável)
+- Nunca acumule vários pop-ups
 
-## Considerações Mobile
+## Considerações para dispositivos móveis
 
-**Pop-ups em dispositivos móveis são MAIS intrusivos:**
+**Os pop-ups em dispositivos móveis são MAIS intrusivos:**
 
-- Tela menor = popup ocupa mais espaço
-- Mais difícil de fechar (pequeno botão X)
-- Interrompe o fluxo de navegação móvel
-- Pode prejudicar o SEO mobile (penalização do Google para intersticiais intrusivos)
+- Tela menor = o pop-up ocupa mais espaço
+- Mais difícil de fechar (botão X pequeno)
+- Interrompe o fluxo de navegação no celular
+- Pode prejudicar o SEO para dispositivos móveis (penalidade do Google por intersticiais intrusivos)
 
-**Melhores práticas para mobile:**
+**Melhores práticas para dispositivos móveis:**
 
-1. **Use com moderação**: Considere um banner superior ou formulários inline em vez disso
-2. **Facilmente dispensável**: Botão de fechar grande (44x44px), toque fora para fechar
-3. **Atraso maior**: 60+ segundos em vez de 30 segundos
-4. **Tamanho menor**: largura máxima de 90%, não tela cheia
-5. **Exit-intent**: Less reliable on mobile, avoid
-6. **Google penalty**: Evite popups em tela cheia em dispositivos móveis (prejudica as classificações)
+1. **Use com moderação**: considere usar banners na parte superior ou formulários embutidos
+2. **Facilite o fechamento**: botão de fechamento grande (44x44px), toque fora da janela para fechar
+3. **Atraso maior**: mais de 60 segundos em vez de 30 segundos
+4. **Tamanho menor**: largura máxima de 90%, não em tela cheia
+5. **Intenção de saída**: menos confiável em dispositivos móveis, evite
+6. **Penalidade do Google**: evite pop-ups em tela cheia em dispositivos móveis (prejudica as classificações)
 
-**Alternativa móvel**: Barra inferior fixa (menos intrusiva)
+**Alternativa para dispositivos móveis**: Barra fixa na parte inferior (menos intrusiva)
 
-- Obtenha 10% de Desconto - Cadastre-se com email
+- “Ganhe 10% de desconto – Cadastre-se” com campo para e-mail
 - Sempre visível, mas não bloqueia o conteúdo
-- Melhor UX móvel do que popup
+- Melhor experiência do usuário em dispositivos móveis do que um pop-up
 
-## Checklist
+## Lista de verificação
 
 **Recursos essenciais:**
 
-- [ ] Proposição de valor clara (desconto, benefício)
-- [ ] Única CTA focada
+- [ ] Proposta de valor clara (desconto, benefício)
+- [ ] CTA único e direcionado
 - [ ] Fácil de fechar (botão X, clique no fundo, tecla Escape)
-- [ ] Tempo atrasado (30-60s, não imediato)
-- [ ] Gerenciamento de frequência (rastreamento por localStorage/cookie)
-- [ ] Respeitar dispensas (cooldown de 30 dias)
-- [ ] Nunca mostrar para usuários cadastrados
-- [ ] Máx. 1 popup por sessão
-- [ ] Exit-intent para carrinhos abandonados (apenas desktop)
-- [ ] Não mostrar nas páginas de checkout
-- [ ] Mobile: Use com moderação, considere alternativas
-- [ ] Mobile: Botão de fechar grande (44x44px)
-- [ ] Mobile: Não em tela cheia (90% de largura no máximo)
-- [ ] Validação de e-mail antes de enviar
-- [ ] Estado de carregamento ao enviar
+- [ ] Tempo de exibição retardado (30 a 60 s, não imediato)
+- [ ] Gerenciamento de frequência (rastreamento por localStorage/cookies)
+- [ ] Respeitar o fechamento (período de espera de 30 dias)
+- [ ] Nunca exibir para usuários cadastrados
+- [ ] No máximo 1 pop-up por sessão
+- [ ] Detecção de intenção de saída para usuários que abandonam o carrinho (somente em desktop)
+- [ ] Não exibir nas páginas de finalização de compra
+- [ ] Celular: usar com moderação, considerar alternativas
+- [ ] Celular: botão de fechar grande (44x44px)
+- [ ] Celular: não ocupar a tela inteira (máximo de 90% da largura)
+- [ ] Validação do e-mail antes do envio
+- [ ] Indicador de carregamento ao enviar
 - [ ] Mensagem de sucesso ou redirecionamento
-- [ ] Acessível pelo teclado (Tab, Escape, Enter)
-- [ ] `role="dialog"` and `aria-modal="true"`
-- [ ] Armadilha de foco (manter o foco dentro do popup)
-- [ ] Rótulo ARIA no botão de fechar
+- [ ] Acessível por teclado (Tab, Escape, Enter)
+- [ ] `role="dialog"` e `aria-modal="true"`
+- [ ] Retentor de foco (manter o foco dentro do pop-up)
+- [ ] Rótulo ARIA no botão Fechar
 - [ ] Anúncios do leitor de tela ao abrir

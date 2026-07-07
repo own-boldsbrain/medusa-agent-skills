@@ -1,0 +1,15 @@
+{
+  "min_interval_minutes": 30,
+  "max_interval_minutes": 45,
+  "stuck_threshold_minutes": 45,
+  "default_watch_interval_minutes": 30,
+  "alerts_enabled": true,
+  "alert_on": [
+    "PLAN_PENDING",
+    "PR_GENERATED",
+    "STUCK",
+    "FAILED",
+    "NEEDS_HUMAN_REVIEW"
+  ],
+  "jules_api_base_url": "https://jules.googleapis.com/v1alpha"
+}

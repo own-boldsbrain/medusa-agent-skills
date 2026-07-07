@@ -1,0 +1,208 @@
+{
+  "summary": {
+    "total_pairs": 72,
+    "passed": 59,
+    "needs_review": 13,
+    "failed": 0,
+    "error": 0
+  },
+  "issue_file_count": {
+    "english_residual_detected": 13
+  },
+  "issue_occurrence_count": {
+    "english_residual_detected": 13
+  },
+  "top_20_risk": [
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\SKILL.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\design.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\design.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\navbar.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\reference\\components\\navbar.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\SKILL.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-1-custom-features.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-2-extend-medusa.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\learn-medusa\\skills\\learning-medusa\\lessons\\lesson-2-extend-medusa.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-cloud\\skills\\using-medusa-cloud\\SKILL.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\SKILL.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\data-loading.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\data-loading.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\display-patterns.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\display-patterns.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\table-selection.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-admin-dashboard-customizations\\references\\table-selection.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-with-medusa\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\building-with-medusa\\SKILL.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\medusa-exec.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\medusa-dev\\skills\\creating-internal-agents\\reference\\medusa-exec.pt-br.md",
+      "status": "needs_review",
+      "risk_score": 30,
+      "action": "repair_by_script",
+      "issues": [
+        "english_residual_detected"
+      ]
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\README.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\README.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-create\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-create\\SKILL.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-create\\reference\\template.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-create\\reference\\template.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\reference\\schema.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\design-log\\skills\\design-log-workflow\\reference\\schema.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\README.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\README.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    },
+    {
+      "source": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.md",
+      "target": "C:\\Users\\fjuni\\medusa-agent-skills\\plugins\\ecommerce-storefront\\skills\\storefront-best-practices\\SKILL.pt-br.md",
+      "status": "passed",
+      "risk_score": 0,
+      "action": "none",
+      "issues": []
+    }
+  ],
+  "generated_files": {
+    "json": "translation_forensic_report.json",
+    "markdown": "translation_forensic_report.md",
+    "queue": "translation_repair_queue.json"
+  }
+}

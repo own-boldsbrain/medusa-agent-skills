@@ -1,0 +1,1547 @@
+{
+  "namespaces": [
+    "public"
+  ],
+  "name": "public",
+  "tables": [
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "price_set_id": {
+          "name": "price_set_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "currency_code": {
+          "name": "currency_code",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "raw_amount": {
+          "name": "raw_amount",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "json"
+        },
+        "rules_count": {
+          "name": "rules_count",
+          "type": "int4",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": 32,
+          "scale": 0,
+          "default": "0",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "integer"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "price_list_id": {
+          "name": "price_list_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "amount": {
+          "name": "amount",
+          "type": "numeric",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "decimal"
+        },
+        "min_quantity": {
+          "name": "min_quantity",
+          "type": "numeric",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "decimal"
+        },
+        "max_quantity": {
+          "name": "max_quantity",
+          "type": "numeric",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "decimal"
+        },
+        "raw_min_quantity": {
+          "name": "raw_min_quantity",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "json"
+        },
+        "raw_max_quantity": {
+          "name": "raw_max_quantity",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "json"
+        }
+      },
+      "name": "price",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "currency_code"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_currency_code",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_currency_code\" ON public.price USING btree (currency_code) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_deleted_at\" ON public.price USING btree (deleted_at) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "price_list_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_price_list_id",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_price_list_id\" ON public.price USING btree (price_list_id) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "price_set_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_price_set_id",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_price_set_id\" ON public.price USING btree (price_set_id) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "price_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "price_price_list_id_foreign": {
+          "columnNames": [
+            "price_list_id"
+          ],
+          "constraintName": "price_price_list_id_foreign",
+          "localTableName": "public.price",
+          "referencedTableName": "public.price_list",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "updateRule": "cascade",
+          "deleteRule": "cascade"
+        },
+        "price_price_set_id_foreign": {
+          "columnNames": [
+            "price_set_id"
+          ],
+          "constraintName": "price_price_set_id_foreign",
+          "localTableName": "public.price",
+          "referencedTableName": "public.price_set",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "updateRule": "cascade",
+          "deleteRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": "'draft'",
+          "comment": null,
+          "enumItems": [
+            "active",
+            "draft"
+          ],
+          "mappedType": "enum"
+        },
+        "starts_at": {
+          "name": "starts_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "ends_at": {
+          "name": "ends_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "rules_count": {
+          "name": "rules_count",
+          "type": "int4",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": 32,
+          "scale": 0,
+          "default": "0",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "integer"
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": "'sale'",
+          "comment": null,
+          "enumItems": [
+            "sale",
+            "override"
+          ],
+          "mappedType": "enum"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        }
+      },
+      "name": "price_list",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_list_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_list_deleted_at\" ON public.price_list USING btree (deleted_at) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "id",
+            "status",
+            "starts_at",
+            "ends_at"
+          ],
+          "composite": true,
+          "constraint": false,
+          "keyName": "IDX_price_list_id_status_starts_at_ends_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_list_id_status_starts_at_ends_at\" ON public.price_list USING btree (id, status, starts_at, ends_at) WHERE ((deleted_at IS NULL) AND (status = 'active'::text))"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "price_list_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "price_list_id": {
+          "name": "price_list_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "value": {
+          "name": "value",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "json"
+        },
+        "attribute": {
+          "name": "attribute",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": "''",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        }
+      },
+      "name": "price_list_rule",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "attribute"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_list_rule_attribute",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_list_rule_attribute\" ON public.price_list_rule USING btree (attribute) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_list_rule_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_list_rule_deleted_at\" ON public.price_list_rule USING btree (deleted_at) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "price_list_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_list_rule_price_list_id",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_list_rule_price_list_id\" ON public.price_list_rule USING btree (price_list_id) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "value"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_list_rule_value",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_list_rule_value\" ON public.price_list_rule USING gin (value) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "price_list_rule_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "price_list_rule_price_list_id_foreign": {
+          "columnNames": [
+            "price_list_id"
+          ],
+          "constraintName": "price_list_rule_price_list_id_foreign",
+          "localTableName": "public.price_list_rule",
+          "referencedTableName": "public.price_list",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "updateRule": "cascade",
+          "deleteRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "attribute": {
+          "name": "attribute",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": true,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "is_tax_inclusive": {
+          "name": "is_tax_inclusive",
+          "type": "bool",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": "false",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "boolean"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        }
+      },
+      "name": "price_preference",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "attribute",
+            "value"
+          ],
+          "composite": true,
+          "constraint": false,
+          "keyName": "IDX_price_preference_attribute_value",
+          "unique": true,
+          "primary": false,
+          "expression": "CREATE UNIQUE INDEX \"IDX_price_preference_attribute_value\" ON public.price_preference USING btree (attribute, value) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_preference_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_preference_deleted_at\" ON public.price_preference USING btree (deleted_at) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "price_preference_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "priority": {
+          "name": "priority",
+          "type": "int4",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": 32,
+          "scale": 0,
+          "default": "0",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "integer"
+        },
+        "price_id": {
+          "name": "price_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": true,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "attribute": {
+          "name": "attribute",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": "''",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "operator": {
+          "name": "operator",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": "'eq'",
+          "comment": null,
+          "enumItems": [
+            "gte",
+            "lte",
+            "gt",
+            "lt",
+            "eq"
+          ],
+          "mappedType": "enum"
+        }
+      },
+      "name": "price_rule",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "attribute"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_rule_attribute",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_rule_attribute\" ON public.price_rule USING btree (attribute) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "attribute",
+            "value"
+          ],
+          "composite": true,
+          "constraint": false,
+          "keyName": "IDX_price_rule_attribute_value",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_rule_attribute_value\" ON public.price_rule USING btree (attribute, value) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "attribute",
+            "value",
+            "price_id"
+          ],
+          "composite": true,
+          "constraint": false,
+          "keyName": "IDX_price_rule_attribute_value_price_id",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_rule_attribute_value_price_id\" ON public.price_rule USING btree (attribute, value, price_id) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_rule_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_rule_deleted_at\" ON public.price_rule USING btree (deleted_at) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "operator"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_rule_operator",
+          "unique": false,
+          "primary": false
+        },
+        {
+          "columnNames": [
+            "operator",
+            "value"
+          ],
+          "composite": true,
+          "constraint": false,
+          "keyName": "IDX_price_rule_operator_value",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_rule_operator_value\" ON public.price_rule USING btree (operator, value) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "price_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_rule_price_id",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_rule_price_id\" ON public.price_rule USING btree (price_id) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "price_id",
+            "attribute",
+            "operator"
+          ],
+          "composite": true,
+          "constraint": false,
+          "keyName": "IDX_price_rule_price_id_attribute_operator_unique",
+          "unique": true,
+          "primary": false,
+          "expression": "CREATE UNIQUE INDEX \"IDX_price_rule_price_id_attribute_operator_unique\" ON public.price_rule USING btree (price_id, attribute, operator) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "price_rule_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "price_rule_price_id_foreign": {
+          "columnNames": [
+            "price_id"
+          ],
+          "constraintName": "price_rule_price_id_foreign",
+          "localTableName": "public.price_rule",
+          "referencedTableName": "public.price",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "updateRule": "cascade",
+          "deleteRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        }
+      },
+      "name": "price_set",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_price_set_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_price_set_deleted_at\" ON public.price_set USING btree (deleted_at) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "price_set_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    }
+  ]
+}

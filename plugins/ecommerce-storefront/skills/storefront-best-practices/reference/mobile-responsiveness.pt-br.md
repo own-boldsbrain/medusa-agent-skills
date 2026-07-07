@@ -1,322 +1,199 @@
-# Responsividade Móvel para Lojas Virtuais
+# Responsividade móvel para lojas virtuais
 
-## Conteúdo
+## Índice
 
-- [Visão Geral](#visão-geral)
-- [Padrões de Comércio Eletrônico Móvel](#padrões-de-comércio-eletrônico-móvel)
-- [Interações Amigáveis ao Toque](#interacoes-amigaveis-ao-toque)
-- [Desempenho Móvel](#desempenho-móvel)
-- [Insetos da Área Segura (iOS)](#safe-area-insets-ios)
-- [Erros Comuns em Dispositivos Móveis](#erros-comuns-em-dispositivos-moveis)
+- [Visão geral](#visao-geral)
+- [Padrões de comércio eletrônico móvel](#padroes-de-comercio-eletronico-para-dispositivos-moveis)
+- [Interações otimizadas para tela sensível ao toque](#interacoes-otimizadas-para-toque)
+- [Desempenho móvel](#desempenho-em-dispositivos-moveis)
+- [Margens da área segura (iOS)](#margens-da-area-segura-ios)
+- [Erros comuns em dispositivos móveis](#erros-comuns-em-dispositivos-moveis)
 
-## Visão Geral
+## Visão geral
 
-Mais de 60% do tráfego de ecommerce é móvel. O design mobile-first é essencial para conversão.
+Mais de 60% do tráfego de comércio eletrônico vem de dispositivos móveis. O design “mobile-first” é essencial para a conversão.
 
-### Requisitos Chave
+### Requisitos principais
 
-- Desenvolvimento Web Mobile (media queries de min-width)
-- 44x44px alvos de toque mínimos
-- Cabecote fixo com acesso ao carrinho
-- Formulários grandes (altura mínima de 48px)
+- CSS “mobile-first” (consultas de mídia com min-width)
+- Áreas de toque com tamanho mínimo de 44x44px
+- Cabeçalho fixo com acesso ao carrinho
+- Campos de formulário grandes (altura mínima de 48px)
 - Imagens otimizadas para dispositivos móveis
-- Carregamento rápido (LCP < 2,5s)
+- Carregamento rápido (LCP < 2,5 s)
 
-**Conhecimento prévio**: Os agentes de IA já sabem dos princípios de design mobile-first, breakpoints e CSS responsivo. Esta guia se concentra em padrões móveis específicos de comércio eletrônico.
+**Conhecimentos prévios**: Os agentes de IA já conhecem os princípios de design “mobile-first”, pontos de quebra e CSS responsivo. Este guia se concentra em padrões móveis específicos para comércio eletrônico.
 
-## Padrões de Comércio Eletrônico Móvel
+## Padrões de comércio eletrônico para dispositivos móveis
 
-### Padrões de Comércio Eletrônico Móvel
-
-#### Introdução
-
-O comércio eletrônico móvel é uma área em constante evolução, com novas tecnologias e plataformas emergindo regularmente. Neste artigo, exploraremos alguns dos principais padrões de comércio eletrônico móvel que estão moldando a forma como as pessoas compram e vendem produtos online.
-
-#### Padrões de Comércio Eletrônico Móvel
-
-##### 1. **M-commerce**(Comércio Eletrônico Móvel)
-
-O comércio eletrônico móvel é uma abordagem que permite que os consumidores façam compras online utilizando dispositivos móveis, como smartphones e tablets.
-
-```python
-import requests
-
-# Exemplo de requisição GET para um site de comércio eletrônico móvel
-response = requests.get('https://www.exemplo.commerce/m-commerce')
-```
-
-##### 2.**M-commerce com Cart**O comércio eletrônico móvel com cart é uma variante do padrão anterior que inclui a capacidade de adicionar produtos ao carrinho de compras
-
-```html
-<!-- Exemplo de página de produto com botão de adicionar ao carrinho -->
-<button onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
-```
-
-##### 3.**M-commerce com Pagamento**
-
-O comércio eletrônico móvel com pagamento é uma abordagem que permite que os consumidores façam pagamentos online utilizando dispositivos móveis.
-
-```javascript
-// Exemplo de código para processar pagamento em um site de comércio eletrônico móvel
-function processarPagamento() {
-  // Código para processar pagamento
-}
-```
-
-#### Conclusão
-
-Os padrões de comércio eletrônico móvel estão em constante evolução, e é importante que os desenvolvedores e os negócios se mantenham atualizados para aproveitar as oportunidades que eles oferecem.
-
-### Referências
-
-- [1] <https://www.exemplo.commerce/m-commerce>
-- [2] <https://www.exemplo.commerce/m-commerce-com-cart>
-- [3] <https://www.exemplo.commerce/m-commerce-com-pagamento>
-
-### Autores
-
-- [1] João Silva
-- [2] Maria Oliveira
-- [3] Pedro Costa
-
-### Elementos Fixos (Críticos para Conversão)
+### Elementos fixos (fundamentais para a conversão)
 
 **Acesso ao carrinho sempre visível:**
 
 - Cabeçalho fixo com ícone do carrinho (canto superior direito)
-- Ou: Navegação inferior fixa com carrinho
-- Nunca esconda o carrinho no menu hambúrguer
-- Exibe o distintivo de contagem, atualizações em tempo real
+- Ou: Navegação inferior fixa com o carrinho
+- Nunca oculte o carrinho na barra de menu tipo “hambúrguer”
+- Exibe o selo de quantidade, com atualizações em tempo real
 
-**Barra "Adicionar ao Carrinho" fixa (páginas de produto):**
+**Barra fixa “Adicionar ao carrinho” (páginas de produtos):**
 
-- Fixo na parte inferior da tela
-- Mostra: Preço + "Adicionar ao Carrinho"
-- Aparece após rolar além da dobra.
-- Sempre acessível sem rolagem
-- **CRÍTICO: Deve usar `env(safe-area-inset-bottom)` para dispositivos iOS** (ver seção Inserções de Área Segura)
+- Fixada na parte inferior da tela
+- Exibe: Preço + botão “Adicionar ao carrinho”
+- Aparece após rolar a tela para além da dobra
+- Sempre acessível sem necessidade de rolagem
+- **CRÍTICO: É obrigatório usar `env(safe-area-inset-bottom)` para dispositivos iOS** (consulte a seção “Safe Area Insets”)
 - Taxas de conversão significativamente mais altas
 
-### Padrões de Navegação Móvel
-
-**Padrões de Navegação Móvel**
-
-Um dos principais desafios da navegação em dispositivos móveis é a limitação de espaço disponível. Isso pode levar a uma experiência de usuário frustrante, com menus e opções que são difíceis de acessar. Para superar esses desafios, os designers de interfaces de usuário criaram uma variedade de padrões de navegação móvel.
-
-### Hamburger Menu
-
-Um dos padrões de navegação móvel mais comuns é o menu hamburguer. Esse menu é representado por três linhas horizontais que, quando pressionadas, expandem para revelar uma lista de opções.
-
-```html
-<nav>
-  <button class="hamburger-menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <ul class="menu">
-    <li><a href="#">Opção 1</a></li>
-    <li><a href="#">Opção 2</a></li>
-    <li><a href="#">Opção 3</a></li>
-  </ul>
-</nav>
-```
-
-### Menu de Linhas
-
-Outro padrão de navegação móvel é o menu de linhas. Esse menu é representado por linhas horizontais que, quando pressionadas, expandem para revelar uma lista de opções.
-
-```html
-<nav>
-  <ul class="menu">
-    <li><a href="#">Opção 1</a></li>
-    <li><a href="#">Opção 2</a></li>
-    <li><a href="#">Opção 3</a></li>
-  </ul>
-</nav>
-```
-
-### Menu de Botões
-
-Um padrão de navegação móvel mais recente é o menu de botões. Esse menu é representado por botões que, quando pressionados, revelam uma lista de opções.
-
-```html
-<nav>
-  <button class="menu-button">Opções</button>
-  <ul class="menu">
-    <li><a href="#">Opção 1</a></li>
-    <li><a href="#">Opção 2</a></li>
-    <li><a href="#">Opção 3</a></li>
-  </ul>
-</nav>
-```
-
-### Menu de Opções
-
-Um padrão de navegação móvel mais simples é o menu de opções. Esse menu é representado por uma lista de opções que podem ser acessadas diretamente.
-
-```html
-<nav>
-  <ul class="menu">
-    <li><a href="#">Opção 1</a></li>
-    <li><a href="#">Opção 2</a></li>
-    <li><a href="#">Opção 3</a></li>
-  </ul>
-</nav>
-```
-
-### Conclusão
-
-Os padrões de navegação móvel são fundamentais para criar uma experiência de usuário agradável e fácil de usar em dispositivos móveis. Ao escolher o padrão certo, os designers de interfaces de usuário podem criar uma navegação eficiente e intuitiva que atenda às necessidades dos usuários.
+### Padrões de navegação em dispositivos móveis
 
 **Navegação inferior (padrão opcional):**
 
-- Considere para lojas móveis intensas (>70% de tráfego móvel)
-- 4-5 ações primárias: Home, Categorias, Carrinho, Conta, Busca
-- Fixado na parte inferior (acesso mais fácil da polegar)
-- Ícones + rótulos para clareza
+- Considere para lojas com grande volume de tráfego móvel (>70% de tráfego móvel)
+- 4 a 5 ações principais: Página inicial, Categorias, Carrinho, Conta, Pesquisa
+- Fixo na parte inferior (acesso mais fácil com o polegar)
+- Ícones + rótulos para maior clareza
 
 **Quando usar:**
 
-- Marcas móveis primeiro (fashion, beleza)
-- Demográfico mais jovem (18-34)
-- Experiência semelhante a um aplicativo desejada
+- Marcas com foco em dispositivos móveis (moda, beleza)
+- Público mais jovem (18 a 34 anos)
+- Quando se busca uma experiência semelhante à de um aplicativo
 
-**When NOT to use:**
+**Quando NÃO usar:**
 
-- Tráfego de desktop
-- Navegação complexa (mais de 5 itens)
-- B2B stores (desktop-focused)
+- Tráfego predominantemente em computadores
+- Necessidades complexas de navegação (>5 itens)
+- Lojas B2B (focadas em computadores)
 
-### Navegação de Produtos Móveis
+### Navegação de produtos em dispositivos móveis
 
 **Galerias de imagens:**
 
-- Carrossel de rolagem em largura
-- Toque com o dedo para zoomar
+- Carrossel deslizável em largura total
+- Aperte para ampliar
 - Toque para abrir a visualização em tela cheia
 - Indicadores de pontos (1/5, 2/5)
 
-**Caixa de filtro:**
+**Gaveta de filtros:**
 
-- Botão "Filtros" com contagem de crachá (por exemplo, "Filtros (3)")
-- Gaveta deslizante (tela cheia ou 80% de largura)
-- Seções de acordeão para categorias de filtro
-- "Apply" button at bottom (batch filtering)
-- Opção "**Limpar Tudo**" no topo
+- Botão “Filtros” com contador (por exemplo, “Filtros (3)”)
+- Gaveta deslizante (tela inteira ou 80% da largura)
+- Seções em acordeão para as categorias de filtros
+- Botão “Aplicar” na parte inferior (filtragem em lote)
+- Opção “Limpar tudo” na parte superior
 
-**Por que filtragem em lote em dispositivos móveis:**
+**Por que usar a filtragem em lote no celular:**
 
-- Impede múltiplas re-renderizações em conexões lentas
-- Usuário ajusta vários filtros antes de aplicar
-- Less disruptive mobile UX
+- Evita múltiplas atualizações da página em conexões lentas
+- O usuário ajusta vários filtros antes de aplicar
+- Experiência do usuário (UX) menos disruptiva no celular
 
-### Otimização do Checkout Móvel
+### Otimização do checkout no celular
 
-**Carteiras digitais prioridade (CRÍTICO para conversão móvel):**
+**Prioridade para carteiras digitais (CRÍTICO para a conversão no celular):**
 
-- Botões Apple Pay / Google Pay proeminentes no topo (se suportados no backend do e-commerce)
-- Pode melhorar a conversão no checkout móvel em 20-40%
-- Pagamento com um clique e endereços de envio pré-preenchidos (se suportado no backend do e-commerce)
-- Considere tornar a carteira digital padrão no celular.
+- Botões do Apple Pay / Google Pay em destaque na parte superior (se houver suporte no back-end do e-commerce)
+- Pode aumentar a conversão no checkout em dispositivos móveis em 20 a 40%
+- Pagamento com um clique e endereços de entrega pré-preenchidos (se houver suporte no back-end do e-commerce)
+- Considere definir a carteira digital como padrão em dispositivos móveis
 
 **Decisão: Posicionamento do resumo do pedido**
 
-- Colapsável no topo (recomendado): Economiza espaço na tela para o formulário, expansível para revisão
-- Fixo na parte inferior: Sempre visível, mas ocupa espaço do formulário.
-- Use **collapsible** no celular para priorizar o preenchimento do formulário.
+- Recolhível na parte superior (recomendado): economiza espaço na tela para o formulário, expansível para revisão
+- Fixo na parte inferior: sempre visível, mas ocupa espaço do formulário
+- Use a opção recolhível em dispositivos móveis para priorizar o preenchimento do formulário
 
-**Otimizações de formulário:**
+**Otimizações de formulários:**
 
-- Layout de coluna única (nunca em colunas múltiplas em dispositivos móveis)
-- 44-48px altura mínima do input
-- Teclados adequados para tipos (`inputMode="email"`, `"numeric"`, `"tel"`)
-- Atributos de preenchimento automático para autocompletar (`autocomplete="email"`, `"name"`, `"address-line1"`)
-- Considere um layout de página única em vez de um processo em várias etapas (menos atrito no celular).
+- Layout de coluna única (nunca use várias colunas em dispositivos móveis)
+- Altura mínima de 44-48px para campos de entrada
+- Tipos de teclado adequados (`inputMode="email"`, `"numeric"`, `"tel"`)
+- Atributos de autocompletar para preenchimento automático (`autocomplete="email"`, `"name"`, `"address-line1"`)
+- Priorize o layout de página única em vez de etapas múltiplas (menos atrito em dispositivos móveis)
 
-## Interações Amigáveis ao Toque
+## Interações otimizadas para toque
 
-**Alvos de toque padrão:** 44x44px mínimo para todos os elementos interativos. Preste atenção especial a:
+**Áreas de toque padrão:** mínimo de 44x44px para todos os elementos interativos. Preste atenção especial a:
 
-- Filtros de caixas de seleção em listagens de produtos
+- Caixas de seleção de filtro nas listas de produtos
 - Botões de quantidade +/- nas páginas de produtos
-- Botões de ação pequenos em cartões de produtos
-- Botões de fechamento modal
+- Pequenos botões de ação nos cartões de produtos
+- Botões de fechamento de modais
 
-**Swipe gestures for ecommerce:**
+**Gestos de deslizar para comércio eletrônico:**
 
-- Galerias de imagens de produtos (crítico - os usuários esperam imagens deslizáveis)
-- **Sliders de produtos relacionados**
-- Categoria carrosséis
+- Galerias de imagens de produtos (fundamental — os usuários esperam imagens que possam ser deslizadas)
+- Sliders de produtos relacionados
+- Carrosséis de categorias
 
-**Otimização de entrada móvel:**
+**Otimização de entrada em dispositivos móveis:**
 
-- 16px minimum font size for inputs (prevents iOS auto-zoom)
+- Tamanho mínimo de fonte de 16px para campos de entrada (evita o zoom automático do iOS)
 - Atributos `inputMode` adequados: `"email"`, `"numeric"`, `"tel"`
-- Atributos de autocompletar: `autocomplete="email"`, `"name"`, `"address-line1"`
+- Atributos de preenchimento automático: `autocomplete="email"`, `"name"`, `"address-line1"`
 
-## Desempenho Móvel
+## Desempenho em dispositivos móveis
 
-**Prioridades de desempenho em ecommerce:**
+**Prioridades de desempenho no comércio eletrônico:**
 
-1. **Product images** (highest impact): Optimize for mobile (<500KB), lazy load below-fold, responsive images with appropriate sizes
-2. **UI Otimista**: Contagem do carrinho atualiza imediatamente, feedback instantâneo ao adicionar ao carrinho
-3. **Skeleton screens**: Exiba espaços reservados de carregamento para grades de produtos, e não páginas em branco
+1. **Imagens de produtos** (maior impacto): otimizar para dispositivos móveis (<500 KB), carregamento diferido abaixo da dobra da tela, imagens responsivas com tamanhos adequados
+2. **Interface do usuário otimizada**: a contagem do carrinho é atualizada imediatamente, com feedback instantâneo ao adicionar ao carrinho
+3. **Telas esqueléticas**: exiba marcadores de carregamento para grades de produtos, em vez de páginas em branco
 
-**Problemas críticos de desempenho móvel:**
+**Problemas críticos de desempenho em dispositivos móveis:**
 
-- Imagens de produtos não otimizadas (>1MB) - problema mais comum
-- Carregando todo o catálogo de produtos de uma vez - use paginação ou rolagem infinita
-- Scripts de análise pesados na finalização da compra - adiar para pós-compra
+- Imagens de produtos não otimizadas (>1 MB) – problema mais comum
+- Carregamento de todo o catálogo de produtos de uma só vez – use paginação ou rolagem infinita
+- Scripts de análise pesados na página de finalização da compra — adiar para após a compra
 
-**Alvo**: LCP < 2,5s, imagens otimizadas para mobile, renderização do lado do servidor para páginas de produtos
+**Meta**: LCP < 2,5 s, imagens otimizadas para dispositivos móveis, renderização do lado do servidor para páginas de produtos
 
-## Safe Area Insets (iOS)
+## Margens da área segura (iOS)
 
-Use `env(safe-area-inset-*)` para lidar com recortes e cantos arredondados do iOS em:
+Use `env(safe-area-inset-*)` para lidar com o entalhe da tela e os cantos arredondados do iOS em:
 
-- Cabeçalhos fixos (inset superior)
-- Barras de navegação inferior fixas ou de "adicionar ao carrinho" (inset inferior)
+- Cabeçalhos fixos (margem superior)
+- Navegação fixa na parte inferior ou barras de “Adicionar ao carrinho” (recuo inferior)
 - Modais em tela cheia
 
-**Crítico para ecommerce**: Barras inferiores de "Adicionar ao Carrinho" serão cortadas pelo indicador de início do iOS sem preenchimento inferior (~34px). Teste em dispositivos iOS reais com recortes.
+**Crítico para comércio eletrônico**: As barras inferiores de “Adicionar ao carrinho” serão cortadas pelo indicador de tela inicial do iOS sem o recuo inferior (~34px). Teste em dispositivos iOS reais com entalhes.
 
-## Erros Comuns em Dispositivos Móveis
+## Erros comuns em dispositivos móveis
 
-**Problemas específicos de comércio eletrônico em dispositivos móveis:**
+**Problemas específicos do comércio eletrônico em dispositivos móveis:**
 
-1. **Ocultando carrinho na gaveta** - Ícone do carrinho oculto no menu hambúrguer. Mantenha o carrinho sempre visível no cabeçalho (canto superior direito).
+1. **Ocultar o carrinho no menu deslizante** — Ícone do carrinho oculto no menu “hambúrguer”. Mantenha o carrinho sempre visível no cabeçalho (canto superior direito).
 
-2. **Sem acesso ao carrinho fixo** - O carrinho rola para fora da tela nas páginas de produtos. Use o cabeçalho fixo ou a barra inferior fixa "Adicionar ao carrinho".
+2. **Ausência de acesso fixo ao carrinho** — O carrinho sai da tela nas páginas de produtos. Use um cabeçalho fixo ou uma barra fixa na parte inferior com o botão “Adicionar ao carrinho”.
 
-3. **Imagens para desktop** - Servindo imagens de produto com mais de 2MB para dispositivos móveis. Use imagens responsivas otimizadas para dispositivos móveis (<500KB).
+3. **Imagens com tamanho de desktop** — Exibição de imagens de produtos com mais de 2 MB em dispositivos móveis. Use imagens responsivas otimizadas para dispositivos móveis (<500 KB).
 
-4. **Experiência de formulário ruim** - Pequenos campos, teclados inadequados, sem autocomplete. Use campos de 48px, `inputMode` adequado, atributos autocomplete.
+4. **Experiência ruim nos formulários** — Campos de entrada pequenos, teclados inadequados, ausência de preenchimento automático. Use campos de entrada de 48 px, `inputMode` adequado e atributos de preenchimento automático.
 
-5. **Interações apenas no hover** - Visualização rápida, lista de desejos só funcionam no hover. Adicione manipuladores de toque, mostre ao tocar em vez disso.
+5. **Interações apenas ao passar o mouse** — A visualização rápida e a lista de desejos só funcionam ao passar o mouse. Adicione manipuladores de toque para exibir o conteúdo ao tocar.
 
-6. **Ignorando os recuos da área segura** - Barras inferiores "Adicionar ao Carrinho" cortadas pelo indicador de início do iOS. Use `env(safe-area-inset-bottom)` para elementos inferiores fixos.
+6. **Ignorar margens da área segura** — As barras inferiores de “Adicionar ao carrinho” são cortadas pelo indicador de tela inicial do iOS. Use `env(safe-area-inset-bottom)` para elementos fixos na parte inferior.
 
-7. **Opções de carteira digital ausentes** - Falta Apple Pay/Google Pay no checkout móvel. Usuários móveis esperam opções de checkout com um toque.
+7. **Ausência de opções de carteira digital** — Falta o Apple Pay/Google Pay no checkout móvel. Os usuários móveis esperam opções de checkout com um único toque.
 
-## Lista de Verificação de Dispositivos Móveis
+## Lista de verificação para dispositivos móveis
 
 **Otimizações essenciais para dispositivos móveis:**
 
-- [ ] CSS mobile-first (consultas de mídia com min-width)
-- [ ] Alvos de toque mínimos de 44x44px em todo lugar
+- [ ] CSS com prioridade para dispositivos móveis (consultas de mídia com min-width)
+- [ ] Áreas de toque com tamanho mínimo de 44x44px em todo o site
 - [ ] Espaçamento adequado entre elementos interativos (8-16px)
 - [ ] Cabeçalho fixo com ícone do carrinho (sempre visível)
-- [ ] Ou: Barra fixa "Adicionar ao Carrinho" na parte inferior das páginas de produto
-- [ ] Entradas de formulário grandes (altura mínima de 48px)
-- [ ] Tipos de entrada apropriados (`inputMode="email"`, `"numeric"`, `"tel"`)
-- [ ] Galerias de imagens deslizáveis em páginas de produtos
-- [ ] Filtro por lote com aplicação em listagens de produtos
-- [ ] Carteiras digitais proeminentes no checkout (Apple Pay, Google Pay)
-- [ ] Resumo do pedido expansível no checkout
-- [ ] Imagens otimizadas para mobile (<500KB)
-- [ ] Carregamento preguiçoso para conteúdo abaixo da dobra
-- [ ] Inserções de área segura para recortes do iOS (elementos fixos)
-- [ ] Tamanho de fonte mínimo de 16px (evita o zoom automático no iOS)
-- [ ] Testar em dispositivos móveis reais (não apenas no Chrome DevTools)
-- [ ] Metas do Core Web Vitals atendidas (LCP < 2,5s, CLS < 0,1, INP < 200ms)
+- [ ] Ou: Barra fixa na parte inferior com o botão “Adicionar ao carrinho” nas páginas de produtos
+- [ ] Campos de formulário grandes (altura mínima de 48px)
+- [ ] Tipos de campo apropriados (`inputMode="email"`, `"numeric"`, `"tel"`)
+- [ ] Galerias de imagens com navegação por deslize nas páginas de produtos
+- [ ] Menu de filtros com aplicação em lote nas listas de produtos
+- [ ] Carteiras digitais em destaque na finalização da compra (Apple Pay, Google Pay)
+- [ ] Resumo do pedido recolhível na página de finalização da compra
+- [ ] Imagens otimizadas para dispositivos móveis (<500 KB)
+- [ ] Carregamento diferido para conteúdo abaixo da área visível
+- [ ] Margens de segurança para entalhes do iOS (elementos fixos)
+- [ ] Tamanho mínimo de fonte de 16 px (evita o zoom automático do iOS)
+- [ ] Teste em dispositivos móveis reais (não apenas no Chrome DevTools)
+- [ ] Indicadores Core Web Vitals dentro das metas (LCP < 2,5 s, CLS < 0,1, INP < 200 ms)

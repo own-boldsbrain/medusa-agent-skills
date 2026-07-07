@@ -1,1 +1,13 @@
 .claude/settings.local.json
+# Translation pipeline artifacts
+*.bak
+__pycache__/
+*.pyc
+.env.local
+# P0: never commit raw Jules outputs with possible secrets
+reports/jules/sessions/**/outputs.json
+reports/jules/sessions/**/outputs.md
+reports/jules/sessions/**/activities.json
+reports/jules/sessions/**/activities.md
+reports/jules/sessions/**/workflow-replay.*
+reports/jules/sessions/**/audit-trail.*

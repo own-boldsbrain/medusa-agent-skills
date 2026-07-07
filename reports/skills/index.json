@@ -1,0 +1,367 @@
+{
+  "generated_at": "2026-07-06T15:32:17.489508+00:00",
+  "repo": "own-boldsbrain/medusa-agent-skills",
+  "branch": "chore/translation-forensic-repair",
+  "total_skills": 19,
+  "skills": [
+    {
+      "skill_id": "medusa-dev.building-admin-dashboard-customizations",
+      "plugin": "medusa-dev",
+      "skill_name": "building-admin-dashboard-customizations",
+      "path": "plugins/medusa-dev/skills/building-admin-dashboard-customizations/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-dev/skills/building-admin-dashboard-customizations/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-dev.building-storefronts",
+      "plugin": "medusa-dev",
+      "skill_name": "building-storefronts",
+      "path": "plugins/medusa-dev/skills/building-storefronts/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-dev.building-with-medusa",
+      "plugin": "medusa-dev",
+      "skill_name": "building-with-medusa",
+      "path": "plugins/medusa-dev/skills/building-with-medusa/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-dev/skills/building-with-medusa/SKILL.pt-br.md"
+      ],
+      "has_references": true,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-dev.creating-internal-agents",
+      "plugin": "medusa-dev",
+      "skill_name": "creating-internal-agents",
+      "path": "plugins/medusa-dev/skills/creating-internal-agents/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-dev/skills/creating-internal-agents/SKILL.pt-br.md"
+      ],
+      "has_references": true,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-dev.db-generate",
+      "plugin": "medusa-dev",
+      "skill_name": "db-generate",
+      "path": "plugins/medusa-dev/skills/db-generate/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-dev/skills/db-generate/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-dev.db-migrate",
+      "plugin": "medusa-dev",
+      "skill_name": "db-migrate",
+      "path": "plugins/medusa-dev/skills/db-migrate/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-dev/skills/db-migrate/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-dev.new-user",
+      "plugin": "medusa-dev",
+      "skill_name": "new-user",
+      "path": "plugins/medusa-dev/skills/new-user/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-dev/skills/new-user/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-cloud.mcloud-auth",
+      "plugin": "medusa-cloud",
+      "skill_name": "mcloud-auth",
+      "path": "plugins/medusa-cloud/skills/mcloud-auth/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-cloud/skills/mcloud-auth/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-cloud.mcloud-deployments",
+      "plugin": "medusa-cloud",
+      "skill_name": "mcloud-deployments",
+      "path": "plugins/medusa-cloud/skills/mcloud-deployments/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-cloud/skills/mcloud-deployments/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-cloud.mcloud-environments",
+      "plugin": "medusa-cloud",
+      "skill_name": "mcloud-environments",
+      "path": "plugins/medusa-cloud/skills/mcloud-environments/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-cloud/skills/mcloud-environments/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-cloud.mcloud-logs",
+      "plugin": "medusa-cloud",
+      "skill_name": "mcloud-logs",
+      "path": "plugins/medusa-cloud/skills/mcloud-logs/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-cloud/skills/mcloud-logs/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-cloud.mcloud-organizations",
+      "plugin": "medusa-cloud",
+      "skill_name": "mcloud-organizations",
+      "path": "plugins/medusa-cloud/skills/mcloud-organizations/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-cloud/skills/mcloud-organizations/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-cloud.mcloud-projects",
+      "plugin": "medusa-cloud",
+      "skill_name": "mcloud-projects",
+      "path": "plugins/medusa-cloud/skills/mcloud-projects/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-cloud/skills/mcloud-projects/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-cloud.mcloud-variables",
+      "plugin": "medusa-cloud",
+      "skill_name": "mcloud-variables",
+      "path": "plugins/medusa-cloud/skills/mcloud-variables/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-cloud/skills/mcloud-variables/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "medusa-cloud.using-medusa-cloud",
+      "plugin": "medusa-cloud",
+      "skill_name": "using-medusa-cloud",
+      "path": "plugins/medusa-cloud/skills/using-medusa-cloud/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/medusa-cloud/skills/using-medusa-cloud/SKILL.pt-br.md"
+      ],
+      "has_references": true,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "learn-medusa.learning-medusa",
+      "plugin": "learn-medusa",
+      "skill_name": "learning-medusa",
+      "path": "plugins/learn-medusa/skills/learning-medusa/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/learn-medusa/skills/learning-medusa/SKILL.pt-br.md"
+      ],
+      "has_references": false,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "ecommerce-storefront.storefront-best-practices",
+      "plugin": "ecommerce-storefront",
+      "skill_name": "storefront-best-practices",
+      "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/ecommerce-storefront/skills/storefront-best-practices/SKILL.pt-br.md"
+      ],
+      "has_references": true,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "design-log.design-log-create",
+      "plugin": "design-log",
+      "skill_name": "design-log-create",
+      "path": "plugins/design-log/skills/design-log-create/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/design-log/skills/design-log-create/SKILL.pt-br.md"
+      ],
+      "has_references": true,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    },
+    {
+      "skill_id": "design-log.design-log-workflow",
+      "plugin": "design-log",
+      "skill_name": "design-log-workflow",
+      "path": "plugins/design-log/skills/design-log-workflow/SKILL.md",
+      "source_language": "en",
+      "localized_variants": [
+        "plugins/design-log/skills/design-log-workflow/SKILL.pt-br.md"
+      ],
+      "has_references": true,
+      "has_scripts": false,
+      "has_tests": false,
+      "has_json": false,
+      "has_api_surface": "needs_human_review",
+      "has_data_surface": "needs_human_review",
+      "risk_level": "medium",
+      "coverage_score": 0,
+      "recommended_next_action": "human_review"
+    }
+  ]
+}

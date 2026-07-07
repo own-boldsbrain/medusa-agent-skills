@@ -1,0 +1,18 @@
+{
+  "github_synced": true,
+  "pr_number": 1,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_mergeable": "MERGEABLE",
+  "head_sha": "d2b2cd89265cb3c991d7c20b16559219a38c2a89",
+  "origin_main_sha": "9c41f09deaab619bf81ebc4770fbb2029babf42d",
+  "branch": "chore/translation-forensic-repair",
+  "updated_at": "2026-07-06T16:58:03Z",
+  "sessions_checked": 8,
+  "alerts_emitted": 5,
+  "source_mode": "gh_cli_live",
+  "jules_live_status": "CONNECTED",
+  "jules_live_reason": "API key validated. Listed 30 sessions. Audited session 6772708384542803924 (COMPLETED) with source_mode=jules_api_live.",
+  "jules_live_session_audited": "sessions/6772708384542803924",
+  "jules_live_activities_count": 1
+}

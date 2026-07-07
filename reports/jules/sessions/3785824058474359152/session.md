@@ -1,0 +1,14 @@
+# Jules Session Core
+
+```json
+{
+  "name": "sessions/3785824058474359152",
+  "state": "COMPLETED",
+  "createTime": "2026-06-23T09:27:12.111013440Z",
+  "updateTime": "2026-06-28T23:07:32.346299Z",
+  "url": "https://jules.google.com/session/3785824058474359152",
+  "source_mode": "jules_api_live",
+  "is_mock": false,
+  "audited_at": "2026-07-06T20:56:33.041125+00:00"
+}
+```

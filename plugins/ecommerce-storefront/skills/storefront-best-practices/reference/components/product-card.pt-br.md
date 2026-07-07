@@ -1,213 +1,132 @@
-# Componente de Cartão de Produto
+# Componente “Ficha do produto”
 
-## Conteúdos
+## Índice
 
-- [Overview](#overview)
-- [Price Display (Ecommerce-Specific)](#price-display-ecommerce-specific)
-- [Botões de Ação e Manipulação de Variantes](#botoes-de-acao-e-manipulacao-de-variantes)
-- [Badges and Labels](#badges-and-labels)
-- [Considerações sobre Mobile](#consideracoes-sobre-mobile)
-- [Ecommerce Checklist](#ecommerce-checklist)
+- [Visão geral](#visao-geral)
+- [Exibição de preços (específico para comércio eletrônico)](#exibicao-de-precos-especifica-para-comercio-eletronico)
+- [Botões de ação e gerenciamento de variantes](#botoes-de-acao-e-tratamento-de-variantes)
+- [Emblemas e rótulos](#emblemas-e-rotulos)
+- [Considerações para dispositivos móveis](#consideracoes-para-dispositivos-moveis)
+- [Lista de verificação para comércio eletrônico](#lista-de-verificacao-para-comercio-eletronico)
 
 ## Visão geral
 
-Os cartões de produto exibem produtos em grades (listagens de produtos, resultados de busca, produtos relacionados). Considerações importantes para ecommerce: preço claro, adição rápida ao carrinho e indicadores de estoque.
+Os cartões de produto exibem produtos em grades (listas de produtos, resultados de pesquisa, produtos relacionados). Principais considerações para o comércio eletrônico: preços claros, adição rápida ao carrinho e indicadores de estoque.
 
-**Assumed knowledge**: AI agents know how to build cards with images, titles, and buttons. This guide focuses on ecommerce-specific patterns.
+**Conhecimento prévio**: os agentes de IA sabem como criar cartões com imagens, títulos e botões. Este guia se concentra em padrões específicos do comércio eletrônico.
 
-### Principais Requisitos de Ecommerce
+### Principais requisitos do comércio eletrônico
 
-- Preços claros e destacados (incluindo preços promocionais)
-- Variant handling for add-to-cart
-- Stock status indicators
-- Venda/Novo/Fora de Estoque badges
-- Grade responsiva (1 col móvel, 2-3 tablet, 3-4 desktop)
-- Fast image loading (lazy load, optimized)
+- Preços claros e em destaque (incluindo preços promocionais)
+- Gerenciamento de variantes para “adicionar ao carrinho”
+- Indicadores de disponibilidade de estoque
+- Emblemas de “Promoção”, “Novo” e “Esgotado”
+- Grade responsiva (1 coluna para celular, 2–3 para tablet, 3–4 para desktop)
+- Carregamento rápido de imagens (carregamento diferido, otimizado)
 
-## Exibição de Preços (Específico para E-commerce)
+## Exibição de preços (específica para comércio eletrônico)
 
-### Regular vs Sale Pricing
+### Preço normal x preço promocional
 
 **Exibição do preço promocional:**
 
-- Sale price: Larger, bold, red or accent color
-- Original price: Smaller, struck through (~~$79.99~~), gray
-- Posicione o preço de venda antes do preço original
-- Opcional: Mostrar selo de porcentagem de desconto (-20%)
+- Preço promocional: Maius, em negrito, vermelho ou cor de destaque
+- Preço original: Menor, riscado (~~$79,99~~), cinza
+- Coloque o preço promocional antes do preço original
+- Opcional: Exiba um selo com a porcentagem de desconto (-20%)
 
-**Formate de forma consistente:**
+**Formate de maneira consistente:**
 
-- Sempre inclua o símbolo de moeda ($49.99)
-- Consistent decimals ($49.99 not $49.9 or $50)
-- For Medusa: Display prices as-is (no divide by 100)
+- Sempre inclua o símbolo da moeda ($49,99)
+- Decimais consistentes ($49,99, não $49,9 ou $50)
+- Para Medusa: exiba os preços como estão (sem dividir por 100)
 
-### Price Range (Multiple Variants)
+### Faixa de preços (várias variantes)
 
-**Quando variantes têm preços diferentes:**
+**Quando as variantes têm preços diferentes:**
 
-- Mostrar "A partir de R$49" ou "R$49 - R$79"
-- Deixa claro que o preço varia conforme a seleção
-- Don't show range if all variants same price
+- Mostre “A partir de $49” ou “$49 - $79”
+- Deixe claro que o preço varia de acordo com a seleção
+- Não exibir faixa de preço se todas as variantes tiverem o mesmo preço
 
-## Botões de Ação e Manipulação de Variantes
+## Botões de ação e tratamento de variantes
 
-### Adicionar ao Carrinho com Variantes (CRÍTICO)
+### Adicionar ao carrinho com variantes (CRÍTICO)
 
-**Desafio principal**: Produtos com variantes exigem a seleção de variantes antes de adicionar ao carrinho.
+**Desafio principal**: Produtos com variantes exigem a seleção de uma variante antes de serem adicionados ao carrinho.
 
-**Estratégias de manejo:**
+**Estratégias de tratamento:**
 
-1. **Adicionar a primeira variante por padrão** - Clique adiciona `product.variants[0]`. Rápido para produtos simples (1-2 variantes).
-2. **Redirect to product page** - Navigate to detail page for variant selection. Best for complex products (size + color + material).
-3. **Quick View modal** - Seletor de variante no modal. Bom meio-termo (somente desktop).
+1. **Adicionar a primeira variante por padrão** — Ao clicar, adiciona `product.variants[0]`. Rápido para produtos simples (1-2 variantes).
+2. **Redirecionar para a página do produto** — Navegue até a página de detalhes para a seleção da variante. Ideal para produtos complexos (tamanho + cor + material).
+3. **Modal de visualização rápida** — Seletor de variantes no modal. Bom meio-termo (somente para desktop).
 
 **Decisão:**
 
 - Produtos simples (1-2 variantes): Adicionar a primeira variante
-- Moda/vestuário com tamanhos: Requer seleção de tamanho (redirecionamento ou Visualização Rápida)
-- Produtos complexos (3+ tipos de variantes): Redirecione para a página do produto
+- Moda/vestuário com tamanhos: Exigir seleção de tamanho (redirecionamento ou Visualização Rápida)
+- Produtos complexos (3 ou mais tipos de variantes): redirecionar para a página do produto
 
 **Comportamento do botão:**
 
-- Carregando estado ("Adicionando..."), desabilitar durante o carregamento
-- Atualização otimista da IU (contagem do carrinho imediatamente)
-- Feedback de sucesso (toast, popup do carrinho ou marca de verificação)
-- **Não navegue embora** (fique na página de listagem)
-- Trate erros (falta de estoque, falha na API)
+- Estado de carregamento (“Adicionando...”), desativar durante o carregamento
+- Atualização otimista da interface do usuário (contagem no carrinho imediata)
+- Confirmação de sucesso (notificação, pop-up do carrinho ou marca de seleção)
+- **Não sair da página** (permanecer na página de listagem)
+- Lidar com erros (fora de estoque, falha na API)
 
-**Botão de lista de desejos (opcional)**: Ícone de coração, no canto superior direito sobre a imagem. Vazio quando não salvo, preenchido (vermelho) quando salvo. Consulte wishlist.md para mais detalhes.
+**Botão da lista de desejos (opcional)**: Ícone de coração, no canto superior direito sobre a imagem. Vazio quando não salvo, preenchido (vermelho) quando salvo. Consulte wishlist.md para mais detalhes.
 
-## Iniciantes e Intermediários
+## Emblemas e rótulos
 
-### Badges e Labels
+**Prioridade dos emblemas** (exibir no máximo 1 ou 2 por cartão):
 
-#### Introdução
+1. **Esgotado** (prioridade máxima) — sobreposição cinza/preta na imagem, desativa a opção “Adicionar ao carrinho”
+2. **Promoção/Desconto** — “Promoção” ou “-20%”, vermelho/destaque, canto superior esquerdo
+3. **Novo** — “Novo” para produtos recentes, azul/verde, canto superior esquerdo
+4. **Estoque baixo** (opcional) — “Restam apenas 3”, laranja, cria urgência
 
-Os badges e labels são elementos visuais importantes em uma interface de usuário, pois eles fornecem informações rápidas e claras ao usuário sobre o estado atual de um item ou processo.
+**Exibição**: canto superior esquerdo (exceto a sobreposição “Esgotado”), pequeno, mas legível, com alto contraste.
 
-#### Exemplos de Uso
+## Considerações para dispositivos móveis
 
-***Badges**:
-    *Indicar o número de notificações não lidas.*   Mostrar o progresso de um processo em andamento.
-    *Identificar o status de um item (por exemplo, "novamente disponível").***Labels**:
-    *Rotular itens ou categorias de forma clara e concisa.*   Identificar o tipo de conteúdo (por exemplo, "vídeo", "artigo", etc.).
-    *Fornecer informações adicionais sobre um item (por exemplo, "prioridade alta").
-
-#### Dicas de Design*   Use cores consistentes para badges e labels para evitar confusão
-
-- Certifique-se de que os badges e labels sejam legíveis mesmo em tamanhos pequenos.
-
-- Evite usar badges e labels excessivamente, pois isso pode causar distração e confusão.
-
-### Exemplo de Código
-
-```html
-<!-- Exemplo de badge -->
-<span class="badge">2</span>
-
-<!-- Exemplo de label -->
-<span class="label">Prioridade Alta</span>
-```
-
-### Recursos Adicionais
-
-- [Material Design: Badges](https://material.io/components/badges)
-- [Material Design: Labels](https://material.io/components/labels)
-
-**Prioridade da insígnia** (exiba no máximo 1-2 por cartão):
-
-1. **Esgotado** (mais alto) - Sobreposição cinza/preta na imagem, desativa a opção de adicionar ao carrinho
-2. **Promoção/Desconto** - "Promoção" ou "-20%", vermelho/accent, canto superior-esquerdo
-3. **Novo** - "Novo" para produtos recentes, azul/verde, canto superior esquerdo
-4. **Estoque Baixo** (opcional) - "Só 3 sobraram", laranja, cria urgência
-
-**Exibição**: Canto superior esquerdo (exceto sobreposto "Fora de Estoque"), pequeno mas legível, alto contraste.
-
-## Considerações de Dispositivo Móvel
-
-### Layout de Grid
+### Layout em grade
 
 **Ajustes específicos para dispositivos móveis:**
 
-- 2 colunas no máximo em dispositivos móveis (nunca 3+)
-- Alvos de toque maiores (44px mínimo para botões)
-- Sempre exiba o botão "Adicionar ao Carrinho" (não apenas hover)
-- Conteúdo simplificado (esconda elementos opcionais como marca)
-- Imagens menores para desempenho (<400px de largura)
+- No máximo 2 colunas em dispositivos móveis (nunca mais de 3)
+- Áreas de toque maiores (mínimo de 44px para botões)
+- Sempre exiba o botão “Adicionar ao carrinho” (não apenas ao passar o cursor)
+- Conteúdo simplificado (oculte elementos opcionais, como a marca)
+- Imagens menores para melhorar o desempenho (<400px de largura)
 
-### Interações por Toque
-
-### Introdução
-
-- [Touch events](https://developer.mozilla.org/pt-PT/docs/Web/API/Touch_events)
-- [Mouse events](https://developer.mozilla.org/pt-PT/docs/Web/API/Mouse_events)
-
-### Eventos de Toque
-
-***Eventos de Toque Primários***`touchstart`
-    *`touchmove`*   `touchend`
-    *`touchcancel`***Eventos de Toque Secundários***`touchhold`
-    *`touchrelease`
-
-### Exemplo
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Exemplo de Interações por Toque</title>
-  </head>
-  <body>
-    <p>Move o dedo sobre a área abaixo para ver os eventos de toque:</p>
-    <div id="area-de-toque" style="width: 300px; height: 200px; border: 1px solid black;"></div>
-    <script>
-      const areaDeToque = document.getElementById('area-de-toque');
-      areaDeToque.addEventListener('touchstart', (evento) => {
-        console.log('Toque iniciado');
-      });
-      areaDeToque.addEventListener('touchmove', (evento) => {
-        console.log('Toque em movimento');
-      });
-      areaDeToque.addEventListener('touchend', (evento) => {
-        console.log('Toque finalizado');
-      });
-      areaDeToque.addEventListener('touchcancel', (evento) => {
-        console.log('Toque cancelado');
-      });
-    </script>
-  </body>
-</html>
-```
-
-### Recursos Adicionais*   [MDN - Touch Events](https://developer.mozilla.org/pt-PT/docs/Web/API/Touch_events)
-
-- [MDN - Mouse Events](https://developer.mozilla.org/pt-PT/docs/Web/API/Mouse_events)
+### Interações por toque
 
 **Sem estados de hover em dispositivos móveis:**
 
-- Não esconda ações atrás de hover
-- Sempre mostrar o botão principal
+- Não oculte ações por trás do hover
+- Sempre exiba o botão principal
 - Use estados de toque (estado ativo) em vez de hover
 
-## Checklist de Comércio Eletrônico
+## Lista de verificação para comércio eletrônico
 
 **Recursos essenciais:**
 
-- [ ] Imagem de produto clara (otimizada, carregada de forma preguiçosa)
-- [ ] Título do produto (truncado para 2 linhas max)
-- [ ] Preço exibido de forma destacada
-- [ ] Preço de venda exibido corretamente (preço original riscado)
-- [ ] Símbolo de moeda incluído
-- [ ] Para Medusa: Preço exibido como está (não dividido por 100)
-- [ ] Botão Adicionar ao Carrinho com estado de carregamento
-- Estratégia de manipulação de variantes (primeira variante, redirecionar ou Visualização Rápida)
-- [ ] Atualização otimista da IU (contagem do carrinho imediatamente)
-- [ ] Feedback de sucesso (toast ou popup de carrinho)
-- [ ] Não navegue para longe depois de adicionar ao carrinho
-- [ ] Emblema de Fora de Estoque (desativa adicionar ao carrinho)
-- [ ] Inicie a venda com um selo de preço reduzido
-- [ ] Grade responsiva (1 coluna móvel, 2-3 tablet, 3-4 desktop)
-- [ ] Amigável para toque em dispositivos móveis (botões de 44px)
-- [ ] Acessível por teclado (estados de foco, Enter para ativar)
-- [ ] Texto alternativo descritivo em imagens
-- [ ] HTML Semântico (`<article>` wrapper)
+- [ ] Imagem nítida do produto (otimizada, com carregamento diferido)
+- [ ] Título do produto (truncado para no máximo 2 linhas)
+- [ ] Preço exibido com destaque
+- [ ] Preço promocional exibido corretamente (preço original riscado)
+- [ ] Símbolo da moeda incluído
+- [ ] Para o Medusa: preço exibido tal como está (sem divisão por 100)
+- [ ] Botão “Adicionar ao carrinho” com indicador de carregamento
+- [ ] Estratégia de tratamento de variantes (primeira variante, redirecionamento ou Visualização Rápida)
+- [ ] Atualização otimista da interface do usuário (contagem do carrinho imediata)
+- [ ] Confirmação de sucesso (notificação ou pop-up do carrinho)
+- [ ] Não sair da página após adicionar ao carrinho
+- [ ] Emblema “Esgotado” (desativa a função “Adicionar ao carrinho”)
+- [ ] Ícone de promoção quando o preço for reduzido
+- [ ] Grade responsiva (1 coluna no celular, 2-3 no tablet, 3-4 no computador)
+- [ ] Otimizado para tela sensível ao toque no celular (botões de 44px)
+- [ ] Acessível por teclado (estados de foco, tecla Enter para ativar)
+- [ ] Texto alternativo descritivo nas imagens
+- [ ] HTML semântico (elemento `<article>`)

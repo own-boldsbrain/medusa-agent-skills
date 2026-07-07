@@ -1,171 +1,129 @@
-# Recurso de Promoções
+# Recurso de promoções
 
-## Conteúdo
+## Índice
 
-- [Visão Geral](#visão-geral)
-- [Tipos de Promoção e Quando Usá-los](#tipos-de-promoção-e-quando-usá-los)
-- [Exibição do Preço de Venda](#exibicao-do-preco-de-venda)
-- [Código de Promoção de Entrada](#codigo-de-promocao-de-entrada)
-- [Limiar de Frete Grátis](#limiar-de-frete-grátis)
-- [Banners Promocionais](#banners-promocionais)
-- [Temporizadores de Contagem Regressiva](#countdown-timers)
-- [Considerações de Móvel](#considerações-de-móvel)
-- [Lista de Verificação](#checklist)
+- [Visão geral](#visao-geral)
+- [Tipos de promoção e quando usá-los](#tipos-de-promocao-e-quando-usa-los)
+- [Exibição do preço promocional](#exibicao-do-preco-promocional)
+- [Inserção do código promocional](#insercao-do-codigo-promocional)
+- [Limite para frete grátis](#limite-para-frete-gratis)
+- [Banners promocionais](#banners-promocionais)
+- [Contadores regressivos](#contadores-regressivos)
+- [Considerações para dispositivos móveis](#consideracoes-para-dispositivos-moveis)
+- [Lista de verificação](#lista-de-verificacao)
 
-## Resumo
+## Visão geral
 
-Promoções são reduções temporárias de preço, descontos ou ofertas especiais projetadas para impulsionar as vendas e incentivar as compras. Uma interface de promoção eficaz comunica claramente o valor, cria urgência e facilita o resgate.
+Promoções são reduções temporárias de preço, descontos ou ofertas especiais destinadas a impulsionar as vendas e incentivar as compras. Uma interface de usuário eficaz para promoções comunica claramente o valor, cria urgência e facilita o resgate.
 
-**Integração de Back-end (CRÍTICO):**
+**Integração com o backend (CRÍTICO):**
 
-Todas as lógicas de promoção e dados devem vir do backend de ecommerce. Faça isso com base no backend integrado. Faça o fetch de promoções ativas, códigos de desconto e regras de preço do backend API. Nunca hardcode a lógica de promoção no frontend.
+Toda a lógica e os dados de promoções devem vir do backend do e-commerce. Faça isso com base na integração com o backend. Obtenha as promoções ativas, os códigos de desconto e as regras de preço pela API do backend. Nunca codifique a lógica de promoções diretamente no frontend.
 
-### Requisitos Básicos do Comércio Eletrônico
+### Principais requisitos de comércio eletrônico
 
-### Requisitos Básicos do Comércio Eletrônico
-
-#### 1. **Integração com o sistema de pagamento**Para que o sistema de pagamento seja integrado com o sistema de comércio eletrônico, é necessário:***Integração com cartões de crédito**(Visa, Mastercard, American Express, etc.)***Integração com serviços de pagamento online**(PayPal, PagSeguro, etc.)***Integração com outros métodos de pagamento**(Boleto, Depósito, etc.)
-
-#### 2.**Segurança e privacidade**Para garantir a segurança e privacidade dos clientes, é necessário:***Criptografia de dados**(HTTPS, SSL, etc.)***Autenticação de usuários**(login, senha, etc.)***Proteção contra ataques cibernéticos**(firewall, antivírus, etc.)
-
-#### 3.**Interação com o cliente**Para que o sistema de comércio eletrônico seja interativo e atraente para o cliente, é necessário:***Interface de usuário amigável**(design responsivo, fácil de usar, etc.)***Suporte a múltiplos idiomas**(português, inglês, espanhol, etc.)***Suporte a diferentes dispositivos**(desktop, tablet, smartphone, etc.)
-
-#### 4.**Integração com sistemas externos**Para que o sistema de comércio eletrônico seja integrado com outros sistemas externos, é necessário:***Integração com sistemas de gestão de estoque**(ERP, etc.)***Integração com sistemas de gerenciamento de pedidos**(WMS, etc.)***Integração com sistemas de análise de dados**(BI, etc.)
-
-#### 5.**Manutenção e atualização**Para que o sistema de comércio eletrônico seja atualizado e mantido de forma eficaz, é necessário:***Manutenção regular**(atualização de software, etc.)***Suporte técnico**(suporte a clientes, etc.)***Desenvolvimento contínuo** (melhoria do sistema, etc.)
-
-- Comunicação de desconto claro (preço com linha de corte, porcentagem de desconto)
-- Código de promoção de entrada (carrinho/checkout)
-- Progresso do limite para frete grátis (aumentar AOV)
-- Contadores de tempo (criar urgência)
-- Aplicação de desconto automática
-- Insígnias de venda (descoberta de produtos)
+- Comunicação clara sobre descontos (preços riscados, porcentagem de desconto)
+- Inserção de código promocional (carrinho/finalização da compra)
+- Progresso para frete grátis (aumentar o valor médio do pedido)
+- Contadores regressivos (criar urgência)
+- Aplicação automática de descontos
+- Emblemas de promoção (descoberta de produtos)
 
 ### Objetivo
 
-**Otimização de conversão:**
+**Otimização da conversão:**
 
-- Aumente as vendas e melhore a taxa de conversão.
-- Aumente o valor médio do pedido (limite de frete grátis, descontos escalonados)
-- Adquirir novos clientes (descontos na primeira compra)
-- Crie urgência (ofertas de tempo limitado)
-- Limpar inventário (promoções sazonais)
-- Reward loyalty (VIP codes, member discounts)
+- Impulsionar as vendas e aumentar a taxa de conversão
+- Aumentar o valor médio do pedido (limites para frete grátis, descontos por faixas)
+- Conquistar novos clientes (descontos na primeira compra)
+- Criar urgência (ofertas por tempo limitado)
+- Liquidar estoque (promoções sazonais)
+- Recompensar a fidelidade (códigos VIP, descontos para membros)
 
-## Tipos de Promoção e Quando Usá-los
+## Tipos de promoção e quando usá-los
 
-### Vendas (Reduções de Preço)
+### Promoções (reduções de preço)
 
-**O que é**: Selecione produtos com preços reduzidos, aplicados automaticamente. Nenhum código necessário.
+**O que é**: Produtos selecionados com preços reduzidos, aplicados automaticamente. Não é necessário código.
 
-**Use quando:**
+**Quando usar:**
 
-- Vendas sazonais (Black Friday, vendas de feriado)
-- Liquidação ou inventário de fim de temporada
+- Promoções sazonais (Black Friday, promoções de fim de ano)
+- Liquidação ou estoque de fim de temporada
+- Promoções específicas para produtos
+- Quando você quiser que os preços reduzidos fiquem visíveis nas páginas dos produtos (aumenta a taxa de cliques)
 
-***Clearance**: <https://pt.wikipedia.org/wiki/Liquidação_(comércio)>
-***end-of-season inventory**:
+**Exibição:**
 
-    ```markdown
-    # Inventário de fim de temporada
+- Preço original riscado (fornece contexto para a economia)
+- Preço promocional em negrito e em destaque (vermelho ou na cor da marca)
+- Selo de promoção nos cartões de produto (“Promoção”, “30% de desconto”)
 
-    ## Descrição
+**Implementação no Medusa:**
+Use Listas de Preços com preços especiais para os produtos. Isso fornece preços riscados automaticamente no carrinho e nas páginas dos produtos.
 
-    O inventário de fim de temporada é uma prática comum em lojas e empresas que vendem produtos de moda, eletrônicos e outros itens que têm uma estação de vida curta.
+### Códigos de desconto
 
-    ## Motivos
+**O que é**: O cliente insere o código para obter o desconto (porcentual, valor fixo ou frete grátis).
 
-    ***Descontinuação de produtos**: Quando uma empresa decide descontinuar um produto ou linha de produtos, ela precisa vender os estoques existentes para evitar perdas financeiras.
-    ***Estoque excessivo**: Se uma empresa tem um estoque excessivo de produtos, ela precisa vender esses itens para liberar espaço e evitar custos de armazenamento.
-    ***Mudanças de estilo**: Quando há mudanças de estilo ou tendências, as lojas precisam vender os produtos que não mais são populares e substituí-los por novos itens.
+**Quando usar:**
 
-    ## Tipos de inventário de fim de temporada
-
-    ***Liquidação**: É uma venda em massa de produtos com descontos significativos, geralmente para esvaziar o estoque e evitar perdas financeiras.
-    ***Venda de fim de temporada**: É uma venda que ocorre no final de uma estação de vida (por exemplo, no final do verão ou do inverno) para vender produtos que não mais são populares.
-    ***Venda de produtos de descontinuação**: É uma venda de produtos que foram descontinuados pela empresa, geralmente com descontos significativos.
-
-    ## Benefícios
-
-    ***Venda de estoque**: O inventário de fim de temporada ajuda a vender o estoque existente e evitar perdas financeiras.
-    ***Liberar espaço**: Ao vender os produtos, as lojas podem liberar espaço e evitar custos de armazenamento.
-    ***Mudanças de estilo**: O inventário de fim de temporada permite que as lojas mudem de estilo e substituam produtos que não mais são populares.
-    ```
-
-- Promoções específicas do produto
-- Você deseja que os preços reduzidos estejam visíveis nas páginas de produtos (aumenta a taxa de cliques)
-
-**Display:**
-
-- Risque o preço original (fornece contexto para economia)
-- Preço de venda **em destaque e proeminente** (vermelho ou cor da marca)
-- Badge de venda em cartões de produto ("Venda", "30% de Desconto")
-
-**Implementação da Medusa:**
-Use Price Lists com preços especiais para produtos. Fornece preço de risco automático no carrinho e nas páginas de produtos.
-
-### Códigos de Desconto
-
-**O que é**: O cliente insere um código para desbloquear um desconto (porcentagem, valor fixo ou frete grátis).
-
-**Use quando:**
-
-- Inscrições no boletim informativo ("Obtenha 10% de desconto com WELCOME10")
+- Inscrições na newsletter (“Ganhe 10% de desconto com WELCOME10”)
 - Membros do programa VIP ou de fidelidade (códigos exclusivos)
 - Campanhas de marketing direcionadas (e-mail, redes sociais)
-- Incentivos para clientes pela primeira vez
+- Incentivos para novos clientes
 - Descontos para amigos e familiares (distribuição limitada)
 
 **Exibição:**
 
-- Campo de entrada de código promocional no carrinho/checkout
-- Mensagem de sucesso: "Código aplicado: WELCOME10"
-- Desconto exibido na resumo da ordem com nome do código
-- Remover opção (ícone X ou link "Remover")
+- Campo para inserção do código promocional no carrinho/finalização da compra
+- Mensagem de sucesso: “Código aplicado: WELCOME10”
+- Desconto exibido no resumo do pedido com o nome do código
+- Opção de remoção (ícone X ou link “Remover”)
 
-**Implementação da Medusa:**
-Sistema de código de desconto/promo com lógica avançada (descontos por ordem, limites de uso, datas de vencimento).
+**Implementação do Medusa:**
+Sistema de descontos/códigos promocionais com lógica avançada (descontos por pedido, limites de uso, datas de validade).
 
-### Descontos Automáticos
+### Descontos automáticos
 
-**O que é**: Desconto aplicado automaticamente quando as condições são atendidas. Não é necessário inserir um código.
+**O que é**: Desconto aplicado automaticamente quando as condições são atendidas. Não é necessário inserir nenhum código.
 
-**Use quando:**
+**Quando usar:**
 
-- Limite de envio grátis ("Envio grátis a partir de $50")
-- Descontos de volume ("Gaste $100, ganhe $20 de desconto")
-- Buy One Get One (BOGO) offers
-- Incentivando valores maiores de carrinho (aumentar AOV)
+- Limites para frete grátis (“Frete grátis para compras acima de US$ 50”)
+- Descontos por volume (“Gaste US$ 100 e ganhe US$ 20 de desconto”)
+- Ofertas do tipo “Compre um, ganhe outro” (BOGO)
+- Incentivo a valores maiores no carrinho (aumentar o valor médio do pedido)
 
 **Exibição:**
 
 - Banner anunciando a promoção
-- Indicador de progresso em direção ao limite (ver seção Limite de Frete Grátis)
-- Mensagem "Desconto aplicado" no carrinho
-- Adição automática à soma do pedido
+- Indicador de progresso em relação ao limite (consulte a seção “Limite para frete grátis”)
+- Mensagem “Desconto aplicado” no carrinho
+- Adição automática ao resumo do pedido
 
-### Compre X, Ganhe Y (BOGO)
+### Compre X, ganhe Y (BOGO)
 
-**O que é**: Compre determinados produtos para desbloquear itens grátis/descontos.
+**O que é**: Compre determinados produtos para desbloquear itens gratuitos ou com desconto.
 
-**Use quando:**
+**Quando usar:**
 
-- Movimentação de estoque (eliminar produtos de baixa rotação)
-- Venda cruzada de produtos relacionados ("Compre protetor solar, ganhe 50% de desconto na bolsa de praia")
-- Aumento de unidades por transação
+- Liquidação de estoque (eliminar produtos de baixa rotatividade)
+- Venda cruzada de produtos relacionados (“Compre protetor solar e ganhe 50% de desconto na bolsa de praia”)
+- Aumento do número de unidades por transação
 
 **Exibição:**
 
-- Texto de promoção claro na página do produto ("Compre 2, Leve 3")
-- Item gratuito/com desconto mostrado no carrinho com explicação
+- Texto claro da promoção na página do produto (“Compre 2, ganhe 1 grátis”)
+- Item gratuito/com desconto exibido no carrinho com explicação
 - Linha de desconto no resumo do pedido
 
-**Implementação da Medusa:**  
-Compre X, ganhe Y com desconto automático. O item gratuito/descontado deve ser adicionado ao carrinho para ativar.
+**Implementação no Medusa:**
+Desconto automático “Compre X e ganhe Y”. O item gratuito/com desconto deve ser adicionado ao carrinho para ativar o desconto.
 
-## Exibição de Preço Promocional
+## Exibição do preço promocional
 
-### Riscado Pricing Pattern
+### Padrão de preço com risca
 
 **Formato:**
 
@@ -176,67 +134,67 @@ $49.99  $34.99
 
 **Design:**
 
-- Preço original: ~~cinza claro desbotado~~, menor
-- Preço de promoção: **negrito**, maior, vermelho ou cor de destaque
-- Hierarquia visual clara (o preço de venda domina)
+- Preço original: com risca, cor cinza suave, menor
+- Preço promocional: em negrito, maior, vermelho ou cor de destaque
+- Hierarquia visual clara (o preço promocional se destaca)
 
-**Colocação:**
+**Posicionamento:**
 
-- Cartões de produto: Abaixo imagem
-- Página do produto: Perto do botão "Adicionar ao Carrinho"
-- Carrinho: Coluna de preço do item
+- Fichas de produto: abaixo da imagem
+- Página do produto: próximo ao botão “Adicionar ao carrinho”
+- Carrinho: coluna de preço do item
 
-### Porcentagem de Desconto na Exibição
+### Exibição da porcentagem de desconto
 
-Mostre as economias para enfatizar o valor.
+Mostre a economia para destacar o valor.
 
 **Opções:**
 
-- "Emblema de 'Economize 30%'"
-- "30% de desconto" label
-- "$15 de desconto" (economia absoluta)
+- Emblema “Economize 30%”
+- Rótulo “30% de desconto”
+- “Desconto de $15” (economia absoluta)
 
-**Colocação:**
+**Posicionamento:**
 
-- Insígnia na imagem do produto (canto superior esquerdo ou canto superior direito)
-- Preço próximo (inline ou abaixo)
-- No resumo do carrinho ("Economias totais: $45")
+- Emblema na imagem do produto (canto superior esquerdo ou direito)
+- Próximo ao preço (ao lado ou abaixo)
+- No resumo do carrinho (“Economia total: $45”)
 
-### Tag de Oferta
+### Emblema de promoção
 
-Insígnia brilhante na imagem do produto (vermelho, laranja, amarelo) no canto superior. 48-64px desktop, 40-48px mobile. Texto: "Promoção", "30% de Desconto" ou "Economize $15".
+Emblema chamativo na imagem do produto (vermelho, laranja, amarelo) no canto superior. 48-64px no desktop, 40-48px no celular. Texto: “Promoção”, “30% de desconto” ou “Economize $15”.
 
-## Código Promocional
+## Inserção do código promocional
 
-### Colocação e Design
+### Posicionamento e design
 
-**Location:**
-Cart page order summary or checkout page. Position in right sidebar (desktop) or below items (mobile).
+**Localização:**
+Resumo do pedido na página do carrinho ou na página de finalização da compra. Posicionado na barra lateral direita (computador) ou abaixo dos itens (dispositivos móveis).
 
 **Layout:**
 
-- Rótulo: "Cupom promocional" ou "Código de desconto"
-- Texto de entrada (200-280px desktop, largura total no celular)
-- Botão "Aplicar" em linha ou empilhado (móvel)
-- Auto-uppercase ao enviar (códigos geralmente maiúsculos)
+- Rótulo: “Código promocional” ou “Código de desconto”
+- Campo de texto (200–280 px no computador, largura total em dispositivos móveis)
+- Botão “Aplicar” alinhado ou empilhado (dispositivos móveis)
+- Conversão automática para maiúsculas ao enviar (os códigos geralmente são em maiúsculas)
 
 **Padrão expansível (opcional):**
-Link "Possui um código promocional?" que expande para exibir o campo de entrada. Economiza espaço vertical, reduz a desordem visual.
+Link “Tem um código promocional?” que se expande para exibir o campo de entrada. Economiza espaço vertical e reduz a poluição visual.
 
-### Sucesso e Estados de Erro
+### Estados de sucesso e erro
 
 **Sucesso:**
 
-- Marca de seleção verde ou mensagem de sucesso: "Código aplicado: WELCOME10"
-- Desconto exibido na soma do pedido com o nome do código: "Desconto (WELCOME10) -$10,00"
-- Remover opção: ícone X ou link "Remover"
-- Atualizar total do carrinho imediatamente
+- Marca de seleção verde ou mensagem de sucesso: “Código aplicado: WELCOME10”
+- Desconto exibido no resumo do pedido com o nome do código: “Desconto (WELCOME10) -$10,00”
+- Opção de remoção: ícone X ou link “Remover”
+- Atualização imediata do total do carrinho
 
 **Erro:**
 
-- Mensagem de erro vermelha abaixo do campo de entrada: "Código inválido", "Código expirado" ou "Compra mínima não atingida"
-- A entrada permanece visível para nova tentativa
-- Não limpe o campo de entrada (o usuário pode ter cometido um erro de digitação).
+- Mensagem de erro em vermelho abaixo do campo de entrada: “Código inválido”, “Código expirado” ou “Valor mínimo de compra não atingido”
+- O campo de entrada permanece visível para nova tentativa
+- Não limpar o campo de entrada (o usuário pode ter cometido um erro de digitação)
 
 **Exibição do código aplicado no resumo do pedido:**
 
@@ -248,18 +206,18 @@ Shipping              $5.00
 Total                 $95.00
 ```
 
-## Limiar de Frete Grátis
+## Limite para frete grátis
 
-**Objetivo (CRÍTICO)**: Aumentar o valor médio do pedido incentivando os clientes a adicionar mais itens para atingir o frete grátis.
+**Objetivo (CRÍTICO)**: Aumentar o valor médio dos pedidos, incentivando os clientes a adicionarem mais itens para atingir o valor mínimo para frete grátis.
 
-### Barra de Progresso Pattern
+### Padrão da barra de progresso
 
-**Exibir no carrinho:**
+**Exibição no carrinho:**
 
-- "Adicione mais $25 para FRETE GRÁTIS"
-- Barra de progresso horizontal mostrando proximidade ao limite
-- Updates automatically as cart value changes
-- Verde quando o limite for atingido
+- “Adicione mais US$ 25 para FRETE GRÁTIS”
+- Barra de progresso horizontal mostrando a proximidade do limite
+- Atualiza automaticamente conforme o valor do carrinho muda
+- Verde quando o limite é atingido
 
 **Exemplo:**
 
@@ -268,107 +226,107 @@ Add $25.00 more for FREE SHIPPING
 [███████░░░░░░░░] 50%
 ```
 
-**Quando o limite for alcançado:**
+**Quando o limite é atingido:**
 
-- "Você desbloqueou o frete grátis!" (mensagem de sucesso)
-- Green checkmark or badge
-- Cobrança de frete riscada no resumo do pedido
+- “Você ganhou frete grátis!” (mensagem de sucesso)
+- Marca de seleção verde ou selo
+- Taxa de frete riscada no resumo do pedido
 
 **Por que funciona:**
 
-- Visualiza a proximidade do objetivo (aversão à perda)
-- Aumenta o AOV em 15-30% em média
-- Reduz o abandono de carrinho (o frete grátis é o principal motivo para concluir a compra)
+- Visualiza a proximidade da meta (aversão à perda)
+- Aumenta o valor médio do pedido (AOV) em 15 a 30%, em média
+- Reduz o abandono de carrinho (frete grátis é o principal motivo para concluir a compra)
 
-### Banner de Frete Grátis
+### Banner de frete grátis
 
-Anúncio em todo o site: "Frete grátis em pedidos acima de $50". Exibir no banner superior ou próximo ao ícone do carrinho. Visível em todas as páginas para conscientização.
+Anúncio em todo o site: “Frete grátis para pedidos acima de US$ 50”. Exiba no banner superior ou próximo ao ícone do carrinho. Visível em todas as páginas para aumentar a visibilidade.
 
-## Banners Promocionais
+## Banners promocionais
 
-### Faixa Superior
+### Banner superior
 
-Faixa de largura total no topo da página (altura de 48-64px). Cor vibrante contrastando com a barra de navegação. Mensagem curta: "Frete grátis em pedidos acima de R$50" ou "Promoção: Até 50% de desconto - Compre Agora".
+Faixa que ocupa toda a largura na parte superior da página (48 a 64 px de altura). Cor viva que contraste com a barra de navegação. Mensagem curta: “Frete grátis para pedidos acima de US$ 50” ou “Promoção: até 50% de desconto – Compre agora”.
 
-**Posição:**
+**Posicionamento:**
 
-- Acima da navbar (mais comum)
-- Abaixo da navbar (alternativa)
-- Sticky (permanece visível ao rolar, opcional)
+- Acima da barra de navegação (mais comum)
+- Abaixo da barra de navegação (alternativa)
+- Fixo (permanece visível durante a rolagem, opcional)
 
 **CTA:**
-Link para página de venda ("Compre Agora", "Saiba Mais") ou banner todo clicável.
+Link para a página da promoção (“Compre agora”, “Saiba mais”) ou banner inteiro clicável.
 
-### Herói Banner
+### Banner Hero
 
-Seção de destaque grande na página inicial com mensagem promocional. Imagem de fundo, manchete ("Promoção de Black Friday"), subtítulo ("Até 60% de desconto em todo o site"), botão de CTA ("Aproveitar a Oferta"), cronômetro opcional.
+Grande seção hero na página inicial com mensagem promocional. Imagem de fundo, título (“Promoção da Black Friday”), subtítulo (“Até 60% de desconto em todo o site”), botão de CTA (“Compre na promoção”), contador regressivo opcional.
 
-### Banners Inline
+### Banners embutidos
 
-Within page content (product pages, cart). Examples: Free shipping reminder on cart page, "Sale ends soon" on product page. Less prominent than hero.
+Dentro do conteúdo da página (páginas de produtos, carrinho). Exemplos: lembrete de frete grátis na página do carrinho, “A promoção termina em breve” na página do produto. Menos destacados que o banner principal.
 
-## Countdown Timers
+## Contadores regressivos
 
-Use for time-sensitive promotions to create urgency and FOMO.
+Use-os em promoções com prazo limitado para criar urgência e o sentimento de “FOMO” (medo de ficar de fora).
 
 **Quando usar:**
 
-- Flash sales (24-hour sales)
+- Vendas relâmpago (promoções de 24 horas)
 - Ofertas por tempo limitado
-- Promoções de feriado
-- Nunca para vendas permanentes (urgência falsa prejudica a confiança)
+- Promoções de feriados
+- Nunca em promoções permanentes (a urgência falsa prejudica a confiança)
 
-**Display format:**
+**Formato de exibição:**
 
-- "Venda termina em: 2d 14h 32m 15s"
-- Or simpler: "Ends in 2 days"
-- Ou: "Rápido! Restam apenas 14 horas"
+- “A promoção termina em: 2d 14h 32m 15s”
+- Ou, de forma mais simples: “Termina em 2 dias”
+- Ou: “Corra! Faltam apenas 14 horas”
 
-**Colocação:**  
-Banner superior, página do produto próximo ao preço, página do carrinho ou seção principal.
+**Posicionamento:**
+Banner superior, página do produto próximo ao preço, página do carrinho ou seção de destaque.
 
-**Implementation:**
-Server-side time to prevent client manipulation, auto-hide when expired, update in real-time.
+**Implementação:**
+Tempo calculado no servidor para evitar manipulação pelo cliente, ocultação automática ao expirar, atualização em tempo real.
 
-## Considerações Móveis
+## Considerações para dispositivos móveis
 
-**Top banner:**
-Shorter text (fewer words), smaller height (40-48px), dismissible (X button).
+**Banner superior:**
+Texto mais curto (menos palavras), altura menor (40-48px), com opção de fechar (botão X).
 
-**Sale badges:**
-Slightly smaller (40-48px), still clearly visible, don't obstruct product image.
+**Emblemas de promoção:**
+Ligeiramente menores (40-48px), mas ainda claramente visíveis; não devem obstruir a imagem do produto.
 
-**Promo code input:**
-Full-width input and button, stacked layout (input above button), large touch targets (48px height), expandable section to save space.
+**Campo de inserção do código promocional:**
+Campo e botão em largura total, layout empilhado (campo acima do botão), áreas de toque amplas (48 px de altura), seção expansível para economizar espaço.
 
-**Cronômetro regressivo:**
-Formato simplificado ("Termina em 14 horas" vs completo d:h:m:s), texto maior para melhor legibilidade.
+**Contador regressivo:**
+Formato simplificado (“Termina em 14 horas” em vez de d:h:m:s completo), texto maior para facilitar a leitura.
 
-## Checklist
+## Lista de verificação
 
 **Recursos essenciais:**
 
-- [ ] Riscar o preço original para vendas
-- [ ] Preço de venda em negrito, destacado, colorido
+- [ ] Preço original riscado para promoções
+- [ ] Preço promocional em negrito, destacado e colorido
 - [ ] Emblemas de promoção nas imagens dos produtos (40-64px)
-- [ ] Porcentagem de desconto exibida ("30% Off")
-- [ ] Campo de entrada de código promocional no carrinho/checkout
-- [ ] Botão "Aplicar" ao lado do campo de entrada de promoção
-- [ ] Success message after applying code
-- [ ] Error message for invalid codes
-- [ ] Código aplicado exibido no resumo do pedido com nome
-- [ ] Remover opção de código (ícone X ou link "Remover")
-- [ ] Economias totais destacadas no carrinho
-- [ ] Barra de progresso de frete grátis (se aplicável)
-- [ ] Progress updates as cart value changes
-- [ ] Success message when threshold met
-- [ ] Countdown timer for time-limited offers (server-side)
-- [ ] Promotional banners (top banner, hero)
-- [ ] Integração com o backend (buscar promoções da API)
-- [ ] Mobile: Full-width promo input, stacked layout
-- [ ] Mobile: Alvos de toque grandes (48px)
-- [ ] Expandable promo section (optional, saves space)
-- [ ] ARIA labels on promo input
-- [ ] Anúncios de leitor de tela para mudanças de preço
-- [ ] Acessível via teclado (Tab, Enter)
-- [ ] Texto de alto contraste (mínimo de 4,5:1)
+- [ ] Porcentagem de desconto exibida (“30% de desconto”)
+- [ ] Campo para inserção do código promocional no carrinho/finalização da compra
+- [ ] Botão “Aplicar” ao lado do campo de código promocional
+- [ ] Mensagem de sucesso após a aplicação do código
+- [ ] Mensagem de erro para códigos inválidos
+- [ ] Código aplicado exibido no resumo do pedido com o nome
+- [ ] Opção para remover o código (ícone X ou link “Remover”)
+- [ ] Economia total destacada no carrinho
+- [ ] Barra de progresso do frete grátis (se aplicável)
+- [ ] Atualizações de progresso conforme o valor do carrinho muda
+- [ ] Mensagem de sucesso quando o valor mínimo for atingido
+- [ ] Contador regressivo para ofertas por tempo limitado (do lado do servidor)
+- [ ] Banners promocionais (banner superior, hero)
+- [ ] Integração com o backend (busca de promoções pela API)
+- [ ] Celular: campo de promoção em largura total, layout empilhado
+- [ ] Celular: alvos de toque grandes (48px)
+- [ ] Seção de promoções expansível (opcional, economiza espaço)
+- [ ] Rótulos ARIA no campo de promoção
+- [ ] Anúncios do leitor de tela para alterações de preço
+- [ ] Acessível por teclado (Tab, Enter)
+- [ ] Texto com alto contraste (mínimo de 4,5:1)

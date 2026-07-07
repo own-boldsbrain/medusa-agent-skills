@@ -1,0 +1,467 @@
+{
+  "skill_id": "design-log.design-log-workflow",
+  "plugin": "design-log",
+  "skill_name": "design-log-workflow",
+  "path": "plugins/design-log/skills/design-log-workflow/SKILL.md",
+  "source_files": [
+    "plugins/design-log/skills/design-log-workflow/SKILL.md"
+  ],
+  "localized_variants": [
+    "plugins/design-log/skills/design-log-workflow/SKILL.pt-br.md"
+  ],
+  "coverage_score": 39.3,
+  "risk_level": "medium",
+  "evidence_level": "direct",
+  "coverage_details": {
+    "total_blocks": 28,
+    "blocks_with_items": 11,
+    "blocks_direct": 11,
+    "coverage_pct": 39.3
+  },
+  "blocks": {
+    "variables": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Variáveis",
+      "DOD": "Variáveis validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Variáveis",
+      "items": []
+    },
+    "workflows": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Workflows",
+      "DOD": "Workflows validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "name": "Phase 1 — Pre-Action Consultation (ALWAYS run before coding)",
+          "status": "inferred"
+        },
+        {
+          "name": "Phase 2 — During Implementation",
+          "status": "inferred"
+        },
+        {
+          "name": "Phase 3 — Post-Implementation Update",
+          "status": "inferred"
+        },
+        {
+          "name": "Domain Quick Reference",
+          "status": "inferred"
+        },
+        {
+          "name": "Status Authority Rules",
+          "status": "inferred"
+        },
+        {
+          "name": "Golden Rules (from `design-log/README.md`)",
+          "status": "inferred"
+        },
+        {
+          "name": "Reference",
+          "status": "inferred"
+        }
+      ]
+    },
+    "jtbds": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir JTBDs",
+      "DOD": "JTBDs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "when": "Working with design-log-workflow",
+          "i_want": "Use this skill whenever you are about to implement, modify, refactor, or make any architectural decision in the YSH Store project. This is the mandatory pre-action consultation protocol — scan existin",
+          "so_that": "I can implement the feature correctly",
+          "status": "inferred"
+        }
+      ]
+    },
+    "use_cases_05": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir 05 use cases",
+      "DOD": "05 use cases validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "use_case_id": "UC-001",
+          "name": "If you get blocked by an unanticipated problem",
+          "scenario": "1. Create a new design-log entry with `status: draft` (use `design-log-create` skill)\n2. Document the problem in `context` and `problem` fields\n3. Propose a solution in the `decision` field\n4. Present",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-002",
+          "name": "If you discover an undocumented decision already being followed",
+          "scenario": "Document it retroactively. Create a new entry capturing the implicit decision so it becomes explicit and searchable.\n\n---",
+          "status": "inferred"
+        }
+      ]
+    },
+    "does_and_does_not": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Faz / Não Faz",
+      "DOD": "Faz / Não Faz validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Faz / Não Faz",
+      "items": []
+    },
+    "user_inputs": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir User Inputs",
+      "DOD": "User Inputs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear User Inputs",
+      "items": []
+    },
+    "system_outputs": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir System Outputs",
+      "DOD": "System Outputs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "output_name": "Markdown file",
+          "type": "file",
+          "format": ".md",
+          "status": "inferred"
+        }
+      ]
+    },
+    "expected_outcomes": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Outcomes Esperados",
+      "DOD": "Outcomes Esperados validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "outcome": "Skill executes correctly",
+          "status": "inferred"
+        }
+      ]
+    },
+    "apis": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir APIs",
+      "DOD": "APIs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear APIs",
+      "items": []
+    },
+    "endpoints": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Endpoints",
+      "DOD": "Endpoints validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Endpoints",
+      "items": []
+    },
+    "urls": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir URLs",
+      "DOD": "URLs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "url": "https://github.com/boldsbrainai/ysh-store/pull/NNN\"",
+          "type": "reference",
+          "status": "direct"
+        }
+      ]
+    },
+    "connectors": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Conectores",
+      "DOD": "Conectores validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Conectores",
+      "items": []
+    },
+    "crud": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir CRUD",
+      "DOD": "CRUD validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "READ",
+          "status": "direct"
+        },
+        {
+          "operation": "UPDATE",
+          "status": "direct"
+        },
+        {
+          "operation": "APPROVE",
+          "status": "direct"
+        },
+        {
+          "operation": "REJECT",
+          "status": "direct"
+        },
+        {
+          "operation": "CREATE",
+          "status": "direct"
+        }
+      ]
+    },
+    "gets": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir GETs",
+      "DOD": "GETs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear GETs",
+      "items": []
+    },
+    "posts": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir POSTs",
+      "DOD": "POSTs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear POSTs",
+      "items": []
+    },
+    "create": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir CREATE",
+      "DOD": "CREATE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "CREATE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "update": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir UPDATE",
+      "DOD": "UPDATE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "UPDATE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "approve": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir APPROVE",
+      "DOD": "APPROVE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "APPROVE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "reject": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir REJECT",
+      "DOD": "REJECT validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "REJECT",
+          "status": "inferred"
+        }
+      ]
+    },
+    "delete": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir DELETE",
+      "DOD": "DELETE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear DELETE",
+      "items": []
+    },
+    "databases": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Bancos de dados",
+      "DOD": "Bancos de dados validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Bancos de dados",
+      "items": []
+    },
+    "schemas": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Schemas",
+      "DOD": "Schemas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Schemas",
+      "items": []
+    },
+    "relationships": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Relacionamentos",
+      "DOD": "Relacionamentos validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Relacionamentos",
+      "items": []
+    },
+    "datasets": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Datasets",
+      "DOD": "Datasets validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Datasets",
+      "items": []
+    },
+    "json_files": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir JSON files",
+      "DOD": "JSON files validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear JSON files",
+      "items": []
+    },
+    "tables": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Tabelas",
+      "DOD": "Tabelas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Tabelas",
+      "items": []
+    },
+    "logic": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Lógicas",
+      "DOD": "Lógicas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Lógicas",
+      "items": []
+    },
+    "calculations": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Cálculos",
+      "DOD": "Cálculos validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Cálculos",
+      "items": []
+    }
+  }
+}

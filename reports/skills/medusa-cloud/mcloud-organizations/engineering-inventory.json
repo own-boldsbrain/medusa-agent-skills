@@ -1,0 +1,467 @@
+{
+  "skill_id": "medusa-cloud.mcloud-organizations",
+  "plugin": "medusa-cloud",
+  "skill_name": "mcloud-organizations",
+  "path": "plugins/medusa-cloud/skills/mcloud-organizations/SKILL.md",
+  "source_files": [
+    "plugins/medusa-cloud/skills/mcloud-organizations/SKILL.md"
+  ],
+  "localized_variants": [
+    "plugins/medusa-cloud/skills/mcloud-organizations/SKILL.pt-br.md"
+  ],
+  "coverage_score": 35.7,
+  "risk_level": "medium",
+  "evidence_level": "inferred",
+  "coverage_details": {
+    "total_blocks": 28,
+    "blocks_with_items": 10,
+    "blocks_direct": 10,
+    "coverage_pct": 35.7
+  },
+  "blocks": {
+    "variables": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Variáveis",
+      "DOD": "Variáveis validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "name": "MCLOUD_TOKEN",
+          "type": "env_var",
+          "status": "inferred"
+        },
+        {
+          "name": "ORGANIZATION_ID",
+          "type": "env_var",
+          "status": "inferred"
+        }
+      ]
+    },
+    "workflows": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Workflows",
+      "DOD": "Workflows validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "name": "Constraints",
+          "status": "inferred"
+        },
+        {
+          "name": "Commands",
+          "status": "inferred"
+        },
+        {
+          "name": "Organization Fields (JSON)",
+          "status": "inferred"
+        },
+        {
+          "name": "Examples",
+          "status": "inferred"
+        }
+      ]
+    },
+    "jtbds": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir JTBDs",
+      "DOD": "JTBDs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "when": "Working with mcloud-organizations",
+          "i_want": "Execute mcloud organizations commands to list or get Cloud organizations. Use when discovering organizations, resolving organization IDs by name, or retrieving organization details including members a",
+          "so_that": "I can implement the feature correctly",
+          "status": "inferred"
+        }
+      ]
+    },
+    "use_cases_05": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir 05 use cases",
+      "DOD": "05 use cases validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "use_case_id": "UC-001",
+          "name": "organizations list",
+          "scenario": "List all organizations your account has access to.\n\n```bash\nmcloud organizations list --json\n```\n\n**Options:**\n- `--json` — Output as JSON",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-002",
+          "name": "organizations get",
+          "scenario": "Retrieve a single organization by ID. Returns metadata, subscription details, and members.\n\n```bash\nmcloud organizations get <organization-id> --json\n```\n\n**Arguments:**\n- `organization` — Organizatio",
+          "status": "inferred"
+        }
+      ]
+    },
+    "does_and_does_not": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Faz / Não Faz",
+      "DOD": "Faz / Não Faz validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "rule": "`organizations list` requires **personal auth** (browser login or personal access key). Organization access keys return 401 on this command.",
+          "status": "direct"
+        },
+        {
+          "rule": "When authenticated with `MCLOUD_TOKEN` using an org access key, use `mcloud whoami --json` to get the organization ID instead.",
+          "status": "direct"
+        }
+      ]
+    },
+    "user_inputs": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir User Inputs",
+      "DOD": "User Inputs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "input_name": "--json",
+          "type": "flag",
+          "origin": "CLI",
+          "status": "direct"
+        },
+        {
+          "input_name": "--organization",
+          "type": "flag",
+          "origin": "CLI",
+          "status": "direct"
+        },
+        {
+          "input_name": "MCLOUD_TOKEN",
+          "type": "env_var",
+          "origin": "environment",
+          "status": "inferred"
+        },
+        {
+          "input_name": "ORGANIZATION_ID",
+          "type": "env_var",
+          "origin": "environment",
+          "status": "inferred"
+        }
+      ]
+    },
+    "system_outputs": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir System Outputs",
+      "DOD": "System Outputs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "output_name": "JSON response",
+          "type": "json",
+          "format": "stdout",
+          "status": "direct"
+        }
+      ]
+    },
+    "expected_outcomes": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Outcomes Esperados",
+      "DOD": "Outcomes Esperados validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "outcome": "Skill executes correctly",
+          "status": "inferred"
+        }
+      ]
+    },
+    "apis": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir APIs",
+      "DOD": "APIs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear APIs",
+      "items": []
+    },
+    "endpoints": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Endpoints",
+      "DOD": "Endpoints validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Endpoints",
+      "items": []
+    },
+    "urls": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir URLs",
+      "DOD": "URLs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear URLs",
+      "items": []
+    },
+    "connectors": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Conectores",
+      "DOD": "Conectores validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Conectores",
+      "items": []
+    },
+    "crud": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir CRUD",
+      "DOD": "CRUD validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "READ",
+          "status": "direct"
+        },
+        {
+          "operation": "UPDATE",
+          "status": "direct"
+        }
+      ]
+    },
+    "gets": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir GETs",
+      "DOD": "GETs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear GETs",
+      "items": []
+    },
+    "posts": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir POSTs",
+      "DOD": "POSTs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear POSTs",
+      "items": []
+    },
+    "create": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir CREATE",
+      "DOD": "CREATE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear CREATE",
+      "items": []
+    },
+    "update": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir UPDATE",
+      "DOD": "UPDATE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "UPDATE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "approve": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir APPROVE",
+      "DOD": "APPROVE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear APPROVE",
+      "items": []
+    },
+    "reject": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir REJECT",
+      "DOD": "REJECT validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear REJECT",
+      "items": []
+    },
+    "delete": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir DELETE",
+      "DOD": "DELETE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear DELETE",
+      "items": []
+    },
+    "databases": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Bancos de dados",
+      "DOD": "Bancos de dados validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Bancos de dados",
+      "items": []
+    },
+    "schemas": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Schemas",
+      "DOD": "Schemas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Schemas",
+      "items": []
+    },
+    "relationships": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Relacionamentos",
+      "DOD": "Relacionamentos validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Relacionamentos",
+      "items": []
+    },
+    "datasets": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Datasets",
+      "DOD": "Datasets validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Datasets",
+      "items": []
+    },
+    "json_files": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir JSON files",
+      "DOD": "JSON files validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear JSON files",
+      "items": []
+    },
+    "tables": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Tabelas",
+      "DOD": "Tabelas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Tabelas",
+      "items": []
+    },
+    "logic": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Lógicas",
+      "DOD": "Lógicas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Lógicas",
+      "items": []
+    },
+    "calculations": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Cálculos",
+      "DOD": "Cálculos validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Cálculos",
+      "items": []
+    }
+  }
+}

@@ -1,0 +1,591 @@
+{
+  "skill_id": "learn-medusa.learning-medusa",
+  "plugin": "learn-medusa",
+  "skill_name": "learning-medusa",
+  "path": "plugins/learn-medusa/skills/learning-medusa/SKILL.md",
+  "source_files": [
+    "plugins/learn-medusa/skills/learning-medusa/SKILL.md"
+  ],
+  "localized_variants": [
+    "plugins/learn-medusa/skills/learning-medusa/SKILL.pt-br.md"
+  ],
+  "coverage_score": 46.4,
+  "risk_level": "medium",
+  "evidence_level": "direct",
+  "coverage_details": {
+    "total_blocks": 28,
+    "blocks_with_items": 13,
+    "blocks_direct": 13,
+    "coverage_pct": 46.4
+  },
+  "blocks": {
+    "variables": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Variáveis",
+      "DOD": "Variáveis validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Variáveis",
+      "items": []
+    },
+    "workflows": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Workflows",
+      "DOD": "Workflows validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "name": "Overview",
+          "status": "inferred"
+        },
+        {
+          "name": "Tutoring Protocol",
+          "status": "inferred"
+        },
+        {
+          "name": "Three-Lesson Structure",
+          "status": "inferred"
+        },
+        {
+          "name": "Checkpoint Verification Pattern",
+          "status": "inferred"
+        },
+        {
+          "name": "Error Handling During Tutorial",
+          "status": "inferred"
+        },
+        {
+          "name": "Architecture Teaching Strategy",
+          "status": "inferred"
+        },
+        {
+          "name": "Pedagogical Principles",
+          "status": "inferred"
+        },
+        {
+          "name": "Session Management",
+          "status": "inferred"
+        },
+        {
+          "name": "Using MedusaDocs MCP Server",
+          "status": "inferred"
+        },
+        {
+          "name": "Summary",
+          "status": "inferred"
+        }
+      ]
+    },
+    "jtbds": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir JTBDs",
+      "DOD": "JTBDs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "when": "Working with learning-medusa",
+          "i_want": "Load automatically when user asks to learn Medusa development (e.g., \"teach me how to build with medusa\", \"guide me through medusa\", \"I want to learn medusa\"). Interactive guided tutorial where Claude",
+          "so_that": "I can implement the feature correctly",
+          "status": "inferred"
+        },
+        {
+          "when": "User asks about specific method signatures beyond what's in the tutorial",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "User wants to know about advanced configurations",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "User asks about features not covered in the tutorial",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "User encounters errors not in troubleshooting guide",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        },
+        {
+          "when": "User wants more details on a specific concept",
+          "i_want": "implement this correctly",
+          "so_that": "the feature works as expected",
+          "status": "inferred"
+        }
+      ]
+    },
+    "use_cases_05": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir 05 use cases",
+      "DOD": "05 use cases validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "use_case_id": "UC-001",
+          "name": "When User Encounters Errors",
+          "scenario": "**CRITICAL**: NEVER skip errors or say \"we'll handle this later\"\n\nFollow this process:\n\n1. **Acknowledge**: \"Error messages are great teachers! Let's figure this out together.\"\n\n2. **Gather Informatio",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-002",
+          "name": "Common Error Categories",
+          "scenario": "Load the appropriate troubleshooting section:\n\n- **Module Errors**: \"Cannot find module\", \"Module name must be camelCase\"\n- **Workflow Errors**: \"Async function not allowed\", \"Cannot use await\"\n- **AP",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-003",
+          "name": "Saving Progress",
+          "scenario": "After each lesson:\n\n```\nGreat work completing Lesson [N]! Let's commit your progress:\n\ngit add .\ngit commit -m \"Complete Lesson [N]: [description]\"\n\nThis saves your work. Ready for Lesson [N+1]?\n```",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-004",
+          "name": "Resuming",
+          "scenario": "If user says they're resuming:\n\n```\nWelcome back! Where did we leave off?\n\nLooking at your code, I can see you've completed:\n- [✓] Lesson 1\n- [ ] Lesson 2\n- [ ] Lesson 3\n\nLet's pick up with Lesson 2. ",
+          "status": "inferred"
+        },
+        {
+          "use_case_id": "UC-005",
+          "name": "Skipping Ahead",
+          "scenario": "If user wants to skip:\n\n```\nI understand you want to jump to Lesson [N]. However, each lesson builds on the previous one:\n\n- Lesson 1 creates the Brand Module (needed for Lesson 2)\n- Lesson 2 links br",
+          "status": "inferred"
+        }
+      ]
+    },
+    "does_and_does_not": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Faz / Não Faz",
+      "DOD": "Faz / Não Faz validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Faz / Não Faz",
+      "items": []
+    },
+    "user_inputs": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir User Inputs",
+      "DOD": "User Inputs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear User Inputs",
+      "items": []
+    },
+    "system_outputs": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir System Outputs",
+      "DOD": "System Outputs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "output_name": "Markdown file",
+          "type": "file",
+          "format": ".md",
+          "status": "inferred"
+        }
+      ]
+    },
+    "expected_outcomes": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Outcomes Esperados",
+      "DOD": "Outcomes Esperados validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "outcome": "Skill executes correctly",
+          "status": "inferred"
+        }
+      ]
+    },
+    "apis": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir APIs",
+      "DOD": "APIs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "endpoint": "admin/brands",
+          "method": "POST",
+          "status": "direct"
+        },
+        {
+          "endpoint": "admin/brands",
+          "method": "POST",
+          "status": "direct"
+        },
+        {
+          "endpoint": "admin/products",
+          "method": "POST",
+          "status": "direct"
+        },
+        {
+          "endpoint": "admin/brands",
+          "method": "GET",
+          "status": "direct"
+        },
+        {
+          "endpoint": "admin/brands",
+          "method": "GET",
+          "status": "direct"
+        }
+      ]
+    },
+    "endpoints": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir Endpoints",
+      "DOD": "Endpoints validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "method": "POST",
+          "path": "admin/brands",
+          "status": "direct"
+        },
+        {
+          "method": "POST",
+          "path": "admin/brands",
+          "status": "direct"
+        },
+        {
+          "method": "POST",
+          "path": "admin/products",
+          "status": "direct"
+        },
+        {
+          "method": "GET",
+          "path": "admin/brands",
+          "status": "direct"
+        },
+        {
+          "method": "GET",
+          "path": "admin/brands",
+          "status": "direct"
+        }
+      ]
+    },
+    "urls": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir URLs",
+      "DOD": "URLs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear URLs",
+      "items": []
+    },
+    "connectors": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Conectores",
+      "DOD": "Conectores validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Conectores",
+      "items": []
+    },
+    "crud": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir CRUD",
+      "DOD": "CRUD validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "APPROVE",
+          "status": "direct"
+        },
+        {
+          "operation": "CREATE",
+          "status": "direct"
+        },
+        {
+          "operation": "READ",
+          "status": "direct"
+        },
+        {
+          "operation": "UPDATE",
+          "status": "direct"
+        }
+      ]
+    },
+    "gets": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir GETs",
+      "DOD": "GETs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "method": "GET",
+          "path": "admin/brands",
+          "status": "direct"
+        },
+        {
+          "method": "GET",
+          "path": "admin/brands",
+          "status": "direct"
+        }
+      ]
+    },
+    "posts": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir POSTs",
+      "DOD": "POSTs validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "method": "POST",
+          "path": "admin/brands",
+          "status": "direct"
+        },
+        {
+          "method": "POST",
+          "path": "admin/brands",
+          "status": "direct"
+        },
+        {
+          "method": "POST",
+          "path": "admin/products",
+          "status": "direct"
+        }
+      ]
+    },
+    "create": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir CREATE",
+      "DOD": "CREATE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "CREATE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "update": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir UPDATE",
+      "DOD": "UPDATE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "UPDATE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "approve": {
+      "status": "direct",
+      "evidencia": "extraido_do_skill_md",
+      "DOR": "Definir APPROVE",
+      "DOD": "APPROVE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Validar com revisão humana",
+      "items": [
+        {
+          "operation": "APPROVE",
+          "status": "inferred"
+        }
+      ]
+    },
+    "reject": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir REJECT",
+      "DOD": "REJECT validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear REJECT",
+      "items": []
+    },
+    "delete": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir DELETE",
+      "DOD": "DELETE validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear DELETE",
+      "items": []
+    },
+    "databases": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Bancos de dados",
+      "DOD": "Bancos de dados validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Bancos de dados",
+      "items": []
+    },
+    "schemas": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Schemas",
+      "DOD": "Schemas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Schemas",
+      "items": []
+    },
+    "relationships": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Relacionamentos",
+      "DOD": "Relacionamentos validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Relacionamentos",
+      "items": []
+    },
+    "datasets": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Datasets",
+      "DOD": "Datasets validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Datasets",
+      "items": []
+    },
+    "json_files": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir JSON files",
+      "DOD": "JSON files validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear JSON files",
+      "items": []
+    },
+    "tables": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Tabelas",
+      "DOD": "Tabelas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Tabelas",
+      "items": []
+    },
+    "logic": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Lógicas",
+      "DOD": "Lógicas validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Lógicas",
+      "items": []
+    },
+    "calculations": {
+      "status": "missing",
+      "evidencia": "ausente",
+      "DOR": "Definir Cálculos",
+      "DOD": "Cálculos validados e documentados",
+      "estimativa_t_shirt": "S",
+      "horas": 2,
+      "risco": "baixo",
+      "owner_sugerido": "A definir",
+      "proxima_acao": "Mapear Cálculos",
+      "items": []
+    }
+  }
+}

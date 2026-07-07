@@ -1,0 +1,1052 @@
+{
+  "namespaces": [
+    "public"
+  ],
+  "name": "public",
+  "tables": [
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "is_enabled": {
+          "name": "is_enabled",
+          "type": "bool",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": "true",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "boolean"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        }
+      },
+      "name": "tax_provider",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_provider_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_tax_provider_deleted_at\" ON public.tax_provider USING btree (deleted_at) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "tax_provider_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "rate": {
+          "name": "rate",
+          "type": "float4",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": 24,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "float"
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "is_default": {
+          "name": "is_default",
+          "type": "bool",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": "false",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "boolean"
+        },
+        "is_combinable": {
+          "name": "is_combinable",
+          "type": "bool",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": "false",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "boolean"
+        },
+        "tax_region_id": {
+          "name": "tax_region_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": true,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "json"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "created_by": {
+          "name": "created_by",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        }
+      },
+      "name": "tax_rate",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "tax_region_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_single_default_region",
+          "unique": true,
+          "primary": false,
+          "expression": "CREATE UNIQUE INDEX \"IDX_single_default_region\" ON public.tax_rate USING btree (tax_region_id) WHERE ((is_default = true) AND (deleted_at IS NULL))"
+        },
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_rate_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_tax_rate_deleted_at\" ON public.tax_rate USING btree (deleted_at) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "tax_region_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_rate_tax_region_id",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_tax_rate_tax_region_id\" ON public.tax_rate USING btree (tax_region_id) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "tax_rate_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "FK_tax_rate_tax_region_id": {
+          "columnNames": [
+            "tax_region_id"
+          ],
+          "constraintName": "FK_tax_rate_tax_region_id",
+          "localTableName": "public.tax_rate",
+          "referencedTableName": "public.tax_region",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "updateRule": "no action",
+          "deleteRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "tax_rate_id": {
+          "name": "tax_rate_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": true,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "reference_id": {
+          "name": "reference_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "reference": {
+          "name": "reference",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "json"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "created_by": {
+          "name": "created_by",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        }
+      },
+      "name": "tax_rate_rule",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_rate_rule_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_tax_rate_rule_deleted_at\" ON public.tax_rate_rule USING btree (deleted_at) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "reference_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_rate_rule_reference_id",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_tax_rate_rule_reference_id\" ON public.tax_rate_rule USING btree (reference_id) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "tax_rate_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_rate_rule_tax_rate_id",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_tax_rate_rule_tax_rate_id\" ON public.tax_rate_rule USING btree (tax_rate_id) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "tax_rate_id",
+            "reference_id"
+          ],
+          "composite": true,
+          "constraint": false,
+          "keyName": "IDX_tax_rate_rule_unique_rate_reference",
+          "unique": true,
+          "primary": false,
+          "expression": "CREATE UNIQUE INDEX \"IDX_tax_rate_rule_unique_rate_reference\" ON public.tax_rate_rule USING btree (tax_rate_id, reference_id) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "tax_rate_rule_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "FK_tax_rate_rule_tax_rate_id": {
+          "columnNames": [
+            "tax_rate_id"
+          ],
+          "constraintName": "FK_tax_rate_rule_tax_rate_id",
+          "localTableName": "public.tax_rate_rule",
+          "referencedTableName": "public.tax_rate",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "updateRule": "no action",
+          "deleteRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "provider_id": {
+          "name": "provider_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "country_code": {
+          "name": "country_code",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": true,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "province_code": {
+          "name": "province_code",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "json"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": "now()",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        },
+        "created_by": {
+          "name": "created_by",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "text"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz(6)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 6,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "datetime"
+        }
+      },
+      "name": "tax_region",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "deleted_at"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_region_deleted_at",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_tax_region_deleted_at\" ON public.tax_region USING btree (deleted_at) WHERE (deleted_at IS NOT NULL)"
+        },
+        {
+          "columnNames": [
+            "parent_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_region_parent_id",
+          "unique": false,
+          "primary": false
+        },
+        {
+          "columnNames": [
+            "provider_id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_region_provider_id",
+          "unique": false,
+          "primary": false,
+          "expression": "CREATE INDEX \"IDX_tax_region_provider_id\" ON public.tax_region USING btree (provider_id) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "country_code"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "IDX_tax_region_unique_country_nullable_province",
+          "unique": true,
+          "primary": false,
+          "expression": "CREATE UNIQUE INDEX \"IDX_tax_region_unique_country_nullable_province\" ON public.tax_region USING btree (country_code) WHERE ((province_code IS NULL) AND (deleted_at IS NULL))"
+        },
+        {
+          "columnNames": [
+            "country_code",
+            "province_code"
+          ],
+          "composite": true,
+          "constraint": false,
+          "keyName": "IDX_tax_region_unique_country_province",
+          "unique": true,
+          "primary": false,
+          "expression": "CREATE UNIQUE INDEX \"IDX_tax_region_unique_country_province\" ON public.tax_region USING btree (country_code, province_code) WHERE (deleted_at IS NULL)"
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "tax_region_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "CK_tax_region_country_top_level",
+          "columnName": "province_code",
+          "definition": "CHECK (((parent_id IS NULL) OR (province_code IS NOT NULL)))",
+          "expression": "(parent_id IS NULL) OR (province_code IS NOT NULL)"
+        },
+        {
+          "name": "CK_tax_region_provider_top_level",
+          "columnName": "parent_id",
+          "definition": "CHECK (((parent_id IS NULL) OR (provider_id IS NULL)))",
+          "expression": "(parent_id IS NULL) OR (provider_id IS NULL)"
+        }
+      ],
+      "foreignKeys": {
+        "FK_tax_region_parent_id": {
+          "columnNames": [
+            "parent_id"
+          ],
+          "constraintName": "FK_tax_region_parent_id",
+          "localTableName": "public.tax_region",
+          "referencedTableName": "public.tax_region",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "updateRule": "no action",
+          "deleteRule": "cascade"
+        },
+        "FK_tax_region_provider_id": {
+          "columnNames": [
+            "provider_id"
+          ],
+          "constraintName": "FK_tax_region_provider_id",
+          "localTableName": "public.tax_region",
+          "referencedTableName": "public.tax_provider",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "updateRule": "no action",
+          "deleteRule": "set null"
+        }
+      },
+      "nativeEnums": {
+        "claim_reason_enum": {
+          "name": "claim_reason_enum",
+          "schema": "public",
+          "items": [
+            "missing_item",
+            "wrong_item",
+            "production_failure",
+            "other"
+          ]
+        },
+        "order_claim_type_enum": {
+          "name": "order_claim_type_enum",
+          "schema": "public",
+          "items": [
+            "refund",
+            "replace"
+          ]
+        },
+        "order_status_enum": {
+          "name": "order_status_enum",
+          "schema": "public",
+          "items": [
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
+          ]
+        },
+        "return_status_enum": {
+          "name": "return_status_enum",
+          "schema": "public",
+          "items": [
+            "open",
+            "requested",
+            "received",
+            "partially_received",
+            "canceled"
+          ]
+        }
+      },
+      "comment": null
+    }
+  ]
+}

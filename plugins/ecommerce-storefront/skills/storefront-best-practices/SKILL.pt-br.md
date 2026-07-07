@@ -1,181 +1,78 @@
 ---
-name: storefront-best-practices
-description: SEMPRE use esta habilidade ao trabalhar em vitrines de ecommerce, lojas online, sites de compras. Use para QUALQUER componente da vitrine, incluindo páginas de checkout, carrinho, fluxos de pagamento, páginas de produtos, listagens de produtos, navegação, homepage ou QUALQUER página/componente em uma vitrine. CRUCIAL para adicionar checkout, implementar carrinho, integrar backend Medusa ou criar qualquer funcionalidade de ecommerce. Independente de framework (Next.js, SvelteKit, TanStack Start, React, Vue). Oferece padrões, estruturas de decisão, orientação de integração backend.
+nome: storefront-best-practices
+descrição: SEMPRE utilize esta habilidade ao trabalhar com vitrines de comércio eletrônico, lojas online e sites de compras. Utilize-a para QUALQUER componente de vitrine, incluindo páginas de finalização de compra, carrinho, fluxos de pagamento, páginas de produtos, listagens de produtos, navegação, página inicial ou QUALQUER página/componente em uma vitrine. ESSENCIAL para adicionar o checkout, implementar o carrinho, integrar o backend do Medusa ou desenvolver qualquer funcionalidade de comércio eletrônico. Independente de framework (Next.js, SvelteKit, TanStack Start, React, Vue). Oferece padrões, estruturas de decisão e orientações para integração com o backend.
 ---
 
-# Práticas recomendadas para vitrines de comércio eletrônico
+# Melhores práticas para lojas virtuais
 
-Orientação abrangente para construir vitrines de comércio eletrônico modernas e de alta conversão, abarcando padrões de UI/UX, design de componentes, estruturas de layout, otimização de SEO e responsividade móvel.
+Orientação abrangente para a criação de lojas virtuais modernas e com alta taxa de conversão, abrangendo padrões de UI/UX, design de componentes, estruturas de layout, otimização de SEO e responsividade para dispositivos móveis.
 
-## # **Quando Aplicar**##**Aplicação**
+## Quando aplicar
 
-Você pode aplicar este produto em qualquer momento durante o dia.
+**SEMPRE utilize esta competência ao trabalhar em QUALQUER tarefa relacionada a lojas virtuais:**
 
-**SEMPRE carregue esta habilidade ao trabalhar em QUALQUER tarefa de vitrine:**
+- **Adicionar página/fluxo de finalização de compra** – Pagamento, frete, realização do pedido
+- **Implementar carrinho** – Página do carrinho, janela pop-up do carrinho, funcionalidade “adicionar ao carrinho”
+- **Criação de páginas de produtos** – Detalhes do produto, listagens de produtos, grades de produtos
+- **Criação de navegação**
 
-- **Adicionando página de checkout/fluxo** - Pagamento, envio, colocação da ordem
-- **Implementando carrinho** - Página do carrinho, popup do carrinho, funcionalidade de adicionar ao carrinho
-- **Criando páginas de produtos** - Detalhes do produto, listagens de produtos, grades de produtos
-- **Criando navegação** - Barra de navegação, megamenu, rodapé, menu móvel
-- **Integrando backend Medusa** - configuração do SDK, carrinho, produtos, pagamento
+- Barra de navegação, megamenu, rodapé, menu para dispositivos móveis
+- **Integração com o backend do Medusa**
 
-# Integrando backend Medusa
+- Configuração do SDK, carrinho, produtos, pagamento
+- **Qualquer componente da vitrine**
 
-## SDK setup
+- Página inicial, pesquisa, filtros, páginas de conta
+- Criação de novas vitrines de comércio eletrônico do zero
+- Aprimoramento de experiências de compra e taxas de conversão existentes
+- Otimização de usabilidade, acessibilidade e SEO
+- Criação de experiências de comércio eletrônico responsivas para dispositivos móveis
 
-### Instalando o SDK
+**Exemplos de comandos que devem acionar esta habilidade:**
 
-```bash
-npm install @medusajs/medusa
-```
+- “Adicionar uma página de finalização de compra”
+- “Implementar carrinho de compras”
+- “Criar página de listagem de produtos”
+- “Conectar ao backend do Medusa”
+- “Adicionar menu de navegação”
+- “Criar página inicial da loja”
 
-### Configurando o SDK
+## IMPORTANTE: Carregue os arquivos de referência quando necessário
 
-```javascript
-const medusa = new Medusa({
-  // URL do servidor Medusa
-  url: 'https://example.com/medusa',
-  // Chave de API do servidor Medusa
-  api_key: 'chave_de_api',
-});
-```
+**⚠️ SEMPRE carregue `reference/design.md` ANTES de criar QUALQUER componente da interface do usuário**
 
-## Cart
+- Identifica tokens de design existentes (cores, fontes, espaçamento, padrões)
+- Evita a introdução de estilos inconsistentes
+- Fornece diretrizes para manter a consistência da marca
+- **Obrigatório para todos os componentes, não apenas para novas lojas**
 
-### Criando um carrinho
+**Carregue essas referências de acordo com o que você estiver implementando:**
 
-```javascript
-const cart = await medusa.cart.create({
-  // ID do usuário
-  user_id: 'usuário_id',
-});
-```
+- **Está criando uma nova loja virtual?** → É OBRIGATÓRIO carregar primeiro o arquivo `reference/design.md` para identificar as preferências do usuário
+- **Está se conectando à API de back-end?** → É OBRIGATÓRIO carregar primeiro o arquivo `reference/connecting-to-backend.md`
+- **Está se conectando ao back-end do Medusa?** → É OBRIGATÓRIO carregar o arquivo `reference/medusa.md` para configuração do SDK, preços, regiões e padrões do Medusa
+- **Implementando a página inicial?** → É OBRIGATÓRIO carregar `reference/components/navbar.md`, `reference/components/hero.md`, `reference/components/footer.md` e `reference/layouts/home-page.md`
+- **Implementando a navegação?** → É OBRIGATÓRIO carregar `reference/components/navbar.md` e, opcionalmente, `reference/components/megamenu.md`
+- **Criando uma lista de produtos?** → É OBRIGATÓRIO carregar `reference/layouts/product-listing.md` primeiro
+- **Criando detalhes do produto?** → É OBRIGATÓRIO carregar `reference/layouts/product-details.md` primeiro
+- **Implementando o checkout?** → É OBRIGATÓRIO carregar `reference/layouts/checkout.md` primeiro
+- **Otimizando para SEO?** → É OBRIGATÓRIO carregar `reference/seo.md` primeiro
+- **Otimizando para dispositivos móveis?** → É OBRIGATÓRIO carregar primeiro o arquivo `reference/mobile-responsiveness.md`
 
-### Adicionando produtos ao carrinho
+**Requisito mínimo:** Carregue pelo menos 1 ou 2 arquivos de referência relevantes para sua tarefa específica antes de implementar.
 
-```javascript
-const product = await medusa.product.retrieve({
-  // ID do produto
-  id: 'produto_id',
-});
+## Fluxo de trabalho de planejamento e implementação
 
-await medusa.cart.addProduct({
-  // ID do carrinho
-  cart_id: cart.id,
-  // ID do produto
-  product_id: product.id,
-  // Quantidade do produto
-  quantity: 2,
-});
-```
+**IMPORTANTE: Se você criar um plano para implementar recursos da loja virtual, inclua o seguinte no seu plano:**
 
-## Products
+Ao implementar cada componente, página, layout ou recurso do plano:
 
-### Criando um produto
+1. **Consulte este guia** antes de iniciar a implementação
+2. **Carregue os arquivos de referência relevantes** listados acima para o componente/página específico que você está criando
+3. **Siga os padrões e orientações** contidos nos arquivos de referência
+4. **Verifique as seções sobre erros comuns** para evitar armadilhas conhecidas
 
-```javascript
-const product = await medusa.product.create({
-  // Nome do produto
-  name: 'Produto de exemplo',
-  // Preço do produto
-  price: 19.99,
-  // Descrição do produto
-  description: 'Este é um produto de exemplo.',
-});
-```
-
-### Recuperando um produto
-
-```javascript
-const product = await medusa.product.retrieve({
-  // ID do produto
-  id: 'produto_id',
-});
-```
-
-## Payment
-
-### Criando uma transação de pagamento
-
-```javascript
-const transaction = await medusa.transaction.create({
-  // ID do carrinho
-  cart_id: cart.id,
-  // Tipo de pagamento
-  payment_method: 'pagamento_bancário',
-  // Valor da transação
-  amount: 19.99,
-});
-```
-
-### Realizando a transação de pagamento
-
-```javascript
-const transaction = await medusa.transaction.process({
-  // ID da transação
-  id: transaction.id,
-});
-```
-
-### Cancelando a transação de pagamento
-
-```javascript
-const transaction = await medusa.transaction.cancel({
-  // ID da transação
-  id: transaction.id,
-});
-```
-- **Qualquer componente de vitrine** - Página inicial, pesquisa, filtros, páginas de conta
-- Criando novas lojas virtuais do zero
-- Melhorando as experiências de compras existentes e as taxas de conversão
-- Melhorando a usabilidade, acessibilidade e SEO
-- Projetando experiências de e-commerce responsivas para dispositivos móveis
-
-**Exemplos de prompts que devem acionar esta habilidade:**
-
-- "Adicione uma página de checkout"
-- Implementar carrinho de compras
-- Criar página de listagem de produtos
-- Conecte-se ao backend Medusa
-- "Adicionar menu de navegação"
-- Construa página inicial para loja
-
-## CRÍTICO: Carregar Arquivos de Referência Quando Necessário
-
-**⚠️ SEMPRE carregue `reference/design.md` ANTES de criar QUALQUER componente de interface do usuário**
-
-- Descobre tokens de design existentes (cores, fontes, espaçamento, padrões)
-- Evita introduzir estilos inconsistentes
-- Fornece corrimãos para manter a consistência da marca
-- **Necessário para todos os componentes, não apenas novas vitrines**
-
-**Carregue essas referências com base no que você está implementando:**
-
-- **Iniciando uma nova vitrine?** → DEVE carregar `reference/design.md` primeiro para descobrir as preferências do usuário
-- **Conectando à API backend?** → DEVE carregar `reference/connecting-to-backend.md` primeiro
-- **Conectando ao backend Medusa?** → DEVE carregar `reference/medusa.md` para configuração do SDK, preços, regiões e padrões de Medusa
-- **Implementando a homepage?** → DEVE carregar `reference/components/navbar.md`, `reference/components/hero.md`, `reference/components/footer.md` e `reference/layouts/home-page.md`
-- **Implementando a navegação?** → DEVE carregar `reference/components/navbar.md` e opcionalmente `reference/components/megamenu.md`
-- **Construindo listagem de produtos?** → DEVE carregar `reference/layouts/product-listing.md` primeiro
-- **Detalhando os detalhes do produto?** → DEVE carregar `reference/layouts/product-details.md` primeiro
-- **Implementando o checkout?** → DEVE carregar `reference/layouts/checkout.md` primeiro
-- **Otimizando para SEO?** → DEVE carregar `reference/seo.md` primeiro
-- **Otimizando para dispositivos móveis?** → DEVE carregar `reference/mobile-responsiveness.md` primeiro
-
-**Requisito mínimo:** Carregue pelo menos 1-2 arquivos de referência relevantes para a sua tarefa específica antes de implementar.
-
-## Planejamento e Fluxo de Trabalho de Implementação
-
-**IMPORTANTE: Se você criar um plano para implementar recursos de vitrine, inclua o seguinte no seu plano:**
-
-Ao implementar cada componente, página, layout ou funcionalidade no plano:
-
-1. **Volte a esta habilidade** antes de iniciar a implementação
-2. **Carregue os arquivos de referência relevantes** listados acima para o componente/página específica que você está construindo
-3. **Siga os padrões e orientações** nos arquivos de referência
-4. **Verifique as seções de erros comuns** para evitar armadilhas conhecidas
-
-**Estrutura do plano de exemplo:**
+**Exemplo de estrutura do plano:**
 
 ```
 Task 1: Implement Navigation
@@ -198,128 +95,138 @@ Task 3: Implement Checkout Flow
 
 **Por que isso é importante:**
 
-- Planos fornecem estratégia de alto nível
-- Arquivos de referência fornecem padrões de implementação detalhados
-- Arquivo de habilidades contém erros críticos a evitar
-- Seguindo esse fluxo de trabalho garante consistência e melhores práticas
+- Os planos fornecem uma estratégia de alto nível
+- Os arquivos de referência fornecem padrões detalhados de implementação
+- O arquivo de habilidades contém erros críticos a serem evitados
+- Seguir esse fluxo de trabalho garante consistência e melhores práticas
 
-## Padrões Críticos Específicos para E-commerce
+## Padrões críticos específicos do comércio eletrônico
 
 ### Acessibilidade
 
-- **CRÍTICO: Atualizações da contagem do carrinho exigem `aria-live="polite"`** - Leitores de tela não anunciarão sem isso
-- Garantir a navegação via teclado para todas as interações do carrinho/compras
+- **CRÍTICO: As atualizações da contagem do carrinho exigem `aria-live="polite"`**
 
-### Móvel
+- Os leitores de tela não farão a leitura sem isso
+- Garanta a navegação por teclado para todas as interações com o carrinho e o checkout
 
-- **Elementos fixos na parte inferior DEVEM usar `env(safe-area-inset-bottom)`** - caso contrário, o indicador inicial do iOS cortará os botões de compra
-- 44px de alvos mínimos para ações do carrinho, seletores de variantes, botões de quantidade
+### Dispositivos móveis
+
+- **Elementos fixos na parte inferior DEVEM usar `env(safe-area-inset-bottom)`**
+
+- Caso contrário, o indicador de tela inicial do iOS cortará os botões de compra
+- Áreas de toque com tamanho mínimo de 44px para ações no carrinho, seletores de variantes e botões de quantidade
 
 ### Desempenho
 
-- **SEMPRE adicione `loading="lazy"` às imagens de produtos abaixo da dobra** - Não confie nos padrões do navegador
-- Otimize imagens de produto para dispositivos móveis (<500KB) - A maior parte do tráfego de ecommerce é móvel
+- **SEMPRE adicione `loading="lazy"` às imagens de produtos abaixo da dobra**
 
-### Otimização de Conversão
+- Não confie nas configurações padrão do navegador
+- Otimize as imagens de produtos para dispositivos móveis (<500 KB) - A maior parte do tráfego de comércio eletrônico vem de dispositivos móveis
 
-- Clique aqui (CTAs) ao longo do fluxo de compras
-- Fricção mínima no checkout (checkout como convidado, se suportado)
+### Otimização de conversão
+
+- CTAs claras ao longo de todo o fluxo de compra
+- Atrito mínimo no checkout (checkout como convidado, se disponível)
 - Sinais de confiança (avaliações, selos de segurança, política de devolução) próximos aos botões de compra
-- Informações claras de preços e envio desde o início
+- Informações claras sobre preços e frete apresentadas logo no início
 
 ### SEO
 
-- **Esquema de produto (JSON-LD) necessário** - Fundamental para Google Shopping e rich snippets
-- Use [PageSpeed Insights](https://pagespeed.web.dev/) para medir os Core Web Vitals
+- **Esquema de produto (JSON-LD) obrigatório**
 
-### Visual Design
+- Essencial para o Google Shopping e rich snippets
+- Use o [PageSpeed Insights](https://pagespeed.web.dev/) para medir os Core Web Vitals
 
-- **NUNCA use emojis** na interface da vitrine - Use ícones ou imagens em vez disso (pouprofissional, problemas de acessibilidade)
+### Design visual
 
-### Integração de Backend
+- **NUNCA use emojis** na interface do usuário da loja - Use ícones ou imagens em vez disso (falta de profissionalismo, problemas de acessibilidade)
 
-- **Detecção de backend**: Se estiver em monorepo, verifique o diretório de backend. Se não tiver certeza, pergunte ao usuário qual backend está sendo usado.
-- **NUNCA hardcode conteúdos dinâmicos**: Sempre busque categorias, regiões, produtos, opções de frete, etc. do backend - eles mudam com frequência.
-- Nunca assuma a estrutura da API - verifique os endpoints e os formatos de dados
+### Integração com o backend
 
-### ⚠️ CRÍTICO: Fluxo de Verificação de Métodos do Backend SDK
+- **Detecção do backend**: Se estiver em um monorepo, verifique o diretório do backend. Em caso de dúvida, pergunte ao usuário qual backend é utilizado.
+- **NUNCA codifique conteúdo dinâmico de forma rígida**: Sempre busque categorias, regiões, produtos, opções de entrega etc. no backend — eles mudam com frequência
+- Nunca presuma a estrutura da API — verifique os endpoints e os formatos de dados
 
-**VOCÊ DEVE SEGUIR ESSE FLUXO DE TRABALHO EXATO ANTES DE ESCRVER CÓDIGO QUE SE CONECTE AO BACKEND:**
+### ⚠️ CRÍTICO: Fluxo de trabalho para verificação de métodos do SDK de backend
 
-**Etapa 1: PAUSE - NÃO escreva código ainda**
+**VOCÊ DEVE SEGUIR EXATAMENTE ESTE FLUXO DE TRABALHO ANTES DE ESCREVER CÓDIGO QUE SE CONECTE AO BACKEND:**
 
-- Você está prestes a escrever um código que chama uma API de backend ou um método de SDK (por exemplo, Medusa SDK, REST API, GraphQL)
-- **PARE** - Não prossiga para o código sem verificação
+**Passo 1: PAUSA — NÃO escreva código ainda**
 
-**Etapa 2: CONSULTAR a documentação ou servidor MCP**
+- Você está prestes a escrever código que chama uma API de backend ou um método do SDK (por exemplo, SDK Medusa, API REST, GraphQL)
+- **PARE** — Não prossiga com a codificação sem antes verificar
 
-- **Se o servidor MCP estiver disponível**: Consulte-o para obter o método exato (por exemplo, medusa MCP)
-- **Se não houver servidor MCP**: Consulte a documentação oficial
-- **Encontrar**: Nome do método exato, parâmetros, tipo de retorno
+**Etapa 2: CONSULTE a documentação ou o servidor MCP**
+
+- **Se o servidor MCP estiver disponível**: consulte-o para obter o método exato (por exemplo, MCP Medusa)
+- **Se não houver servidor MCP**: Pesquise na documentação oficial
+- **Encontre**: Nome exato do método, parâmetros, tipo de retorno
 
 **Passo 3: VERIFIQUE o que você encontrou**
 
-- Afirme em voz alta para o usuário: "Eu preciso verificar o método correto para [operação]. Deixe-me consultar [servidor/documentação MCP]."
-- Mostre ao usuário o que você encontrou: "De acordo com [fonte], o método é `sdk.store.cart.methodName(params)`"
+- Diga em voz alta ao usuário: “Preciso verificar o método correto para [operação]. Deixe-me conferir no [servidor MCP/documentação].”
+- Mostre ao usuário o que você encontrou: “De acordo com [fonte], o método é `sdk.store.cart.methodName(params)`”
 - Confirme a assinatura do método e os parâmetros
 
-**Etapa 4: SÓ ENTÃO escreva o código**
+**Passo 4: SÓ ENTÃO escreva o código**
 
-- Agora você pode escrever código usando o método verificado
-- Use a assinatura exata que você encontrou
+- Agora você pode escrever o código usando o método verificado
+- Use exatamente a assinatura que você encontrou
 
-**Passo 5: VERIFICAR erros do TypeScript**
+**Passo 5: VERIFIQUE se há erros de TypeScript**
 
-- Após escrever o código, verifique se há erros de TypeScript/tipo relacionados ao SDK
-- Se você vir erros de tipo nos métodos do SDK, significa que você usou um nome de método incorreto ou parâmetros errados.
-- **Erros de tipo são um sinal de que você não verificou corretamente** - Volte à Etapa 2
+- Após escrever o código, verifique se há erros de TypeScript ou de tipo relacionados ao SDK
+- Se você encontrar erros de tipo nos métodos do SDK, isso significa que você usou um nome de método incorreto ou parâmetros errados
+- **Erros de tipo são um sinal de que você não verificou corretamente**
 
-**ISSO NÃO É OPCIONAL - ISSO É PREVENÇÃO OBRIGATÓRIA DE ERROS**
+- Volte para a Etapa 2
+
+**ISSO NÃO É OPCIONAL — É UMA MEDIDA OBRIGATÓRIA DE PREVENÇÃO DE ERROS**
 
 **É um ERRO CRÍTICO:**
 
-- ❌ Escreva código que chame APIs/SDKs de backend sem consultar explicitamente a documentação/MCP primeiro
-- ❌ Adivinhe nomes de métodos ou parâmetros
+- ❌ Escrever código que chame APIs/SDKs de back-end sem consultar explicitamente a documentação/MCP primeiro
+- ❌ Adivinhar nomes de métodos ou parâmetros
 - ❌ Ignorar erros do TypeScript nos métodos do SDK (os erros indicam uso incorreto do método)
-- ❌ Copiar exemplos desta habilidade sem verificação (os exemplos podem estar desatualizados)
-- ❌ Presuma que os métodos do SDK correspondem aos endpoints da API REST
+- ❌ Copiar exemplos desta skill sem verificação (os exemplos podem estar desatualizados)
+- ❌ Presumir que os métodos do SDK correspondem aos endpoints da API REST
 
-**Para a Medusa especificamente:**
+**Especificamente para o Medusa:**
 
-- **Preços da Medusa**: Exibir preços como estão - NÃO divida por 100 (ao contrário do Stripe, a Medusa armazena preços no formato de exibição)
-- **Servidor Medusa MCP**: <https://docs.medusajs.com/mcp> - Configuração recomendada se não instalado
-- Carregue `reference/medusa.md` para padrões específicos do Medusa (regiões, preços, etc.)
+- **Preços do Medusa**: Exiba os preços como estão — NÃO divida por 100 (ao contrário do Stripe, a Medusa armazena os preços no formato de exibição)
+- **Servidor MCP da Medusa**: <https://docs.medusajs.com/mcp> — Recomenda-se a configuração caso ainda não esteja instalado
+- Carregue `reference/medusa.md` para padrões específicos da Medusa (regiões, preços etc.)
 
-### Padrões de Roteamento
+### Padrões de roteamento
 
-- **SEMPRE use rotas dinâmicas**para produtos e categorias -**NUNCA** crie páginas estáticas para itens individuais
-- Páginas de produtos: Use rotas dinâmicas como `/products/[handle]` ou `/products/$handle`, NÃO `/products/shirt.tsx`
-- Páginas de categoria: Use rotas dinâmicas como `/categories/[handle]` ou `/categories/$handle`, NÃO `/categories/women.tsx`
-- Padrões específicos do framework:
+- **SEMPRE use rotas dinâmicas** para produtos e categorias - NUNCA crie páginas estáticas para itens individuais
+- Páginas de produtos: use rotas dinâmicas como `/products/[handle]` ou `/products/$handle`, NÃO `/products/shirt.tsx`
+- Páginas de categorias: use rotas dinâmicas como `/categories/[handle]` ou `/categories/$handle`, NÃO `/categories/women.tsx`
+- Padrões específicos da estrutura:
   - **Next.js App Router**: `app/products/[handle]/page.tsx` ou `app/products/[id]/page.tsx`
   - **Next.js Pages Router**: `pages/products/[handle].tsx`
-  - **SvelteKit**: `rotas/produtos/[handle]/+página.svelte`
-  - **TanStack Start**: `rotas/produtos/$handle.tsx`
-  - **Remix**: `rotas/produtos.$handle.tsx`
-- Por que: Rotas dinâmicas escalam para qualquer número de produtos/categorias sem a necessidade de criar arquivos individuais
-- As rotas estáticas são insustentáveis e não escalam (imagine criar 1000 arquivos de produtos)
+  - **SvelteKit**: `routes/products/[handle]/+page.svelte`
+  - **TanStack Start**: `routes/products/$handle.tsx`
+  - **Remix**: `routes/products.$handle.tsx`
+- Por quê: as rotas dinâmicas se adaptam a qualquer número de produtos/categorias sem a necessidade de criar arquivos individuais
+- Rotas estáticas são difíceis de manter e não se adaptam (imagine criar 1.000 arquivos de produtos)
 
-## Seleção de Guias de Padrões
+## Guias de seleção de padrões
 
-Quando você precisar escolher entre padrões de implementação, carregue o arquivo de referência relevante:
+Quando precisar escolher entre padrões de implementação, carregue o arquivo de referência relevante:
 
-- **Estratégia de checkout** (página única vs. multi-etapas) → Carregar `reference/layouts/checkout.md`
-- **Estratégia de navegação** (dropdown vs megamenu) → Carregue `reference/components/navbar.md` e `reference/components/megamenu.md`
-- **Estratégia de listagem de produtos** (paginação vs rolagem infinita vs carregar mais) → Carregar `reference/layouts/product-listing.md`
-- **Estratégia de busca** (autocompletar vs filtros vs linguagem natural) → Carregar `reference/components/search.md`
-- **Mobile vs desktop prioridades** → Carregar `reference/mobile-responsiveness.md`
-- **Seleção de variante** (texto vs amostras vs configurador) → Carregar `reference/layouts/product-details.md`
-- **Padrão de carrinho** (popup vs drawer vs navegação de página) → Carregue `reference/components/cart-popup.md` e `reference/layouts/cart.md`
-- **Estratégia de sinais de confiança** → Carregar `reference/layouts/product-details.md` e `reference/layouts/checkout.md`
+- **Estratégia de checkout** (página única vs. várias etapas) → Carregue `reference/layouts/checkout.md`
+- **Estratégia de navegação** (menu suspenso x megamenu) → Carregar `reference/components/navbar.md` e `reference/components/megamenu.md`
+- **Estratégia de listagem de produtos** (paginação x rolagem infinita x carregar mais) → Carregar `reference/layouts/product-listing.md`
+- **Estratégia de pesquisa** (autocompletar x filtros x linguagem natural) → Carregue `reference/components/search.md`
+- **Prioridades para dispositivos móveis x desktop** → Carregue `reference/mobile-responsiveness.md`
+- **Seleção de variantes** (texto x amostras x configurador) → Carregue `reference/layouts/product-details.md`
+- **Padrão do carrinho** (pop-up x gaveta x navegação por página) → Carregue `reference/components/cart-popup.md` e `reference/layouts/cart.md`
+- **Estratégia de sinais de confiança** → Carregue `reference/layouts/product-details.md` e `reference/layouts/checkout.md`
 
-Cada arquivo de referência contém estruturas decisórias com critérios específicos para ajudá-lo a escolher o padrão certo para o seu contexto.
+Cada arquivo de referência contém estruturas de decisão com critérios específicos para ajudá-lo a escolher o padrão certo para o seu contexto.
 
-## Referência Rápida
+## Referência rápida
 
 ### Geral
 
@@ -361,16 +268,16 @@ reference/layouts/account.md           - Dashboard, order history, address book
 reference/layouts/static-pages.md      - FAQ, about, contact, shipping/returns policies
 ```
 
-### Features
+### Recursos
 
 ```
 reference/features/wishlist.md         - Add to wishlist, wishlist page, move to cart
 reference/features/promotions.md       - Promotional banners, discount codes, sale badges
 ```
 
-## Padrões Comuns de Implementação
+## Padrões comuns de implementação
 
-### Iniciando uma Nova Loja Virtual
+### Iniciando uma nova loja virtual
 
 **IMPORTANTE: Para cada etapa abaixo, carregue os arquivos referenciados ANTES de implementar essa etapa.**
 
@@ -387,9 +294,9 @@ reference/features/promotions.md       - Promotional banners, discount codes, sa
 10. Optimization → SEO audit (seo.md), mobile testing (mobile-responsiveness.md)
 ```
 
-Mesmo que você crie um plano de implementação, consulte a habilidade e carregue os arquivos de referência relevantes ao implementar cada etapa.
+Mesmo que você crie um plano de implementação, consulte a seção de habilidades e carregue os arquivos de referência relevantes ao implementar cada etapa.
 
-### Fluxo de Compra
+### Padrão de fluxo de compras
 
 ```
 Browse → View → Cart → Checkout
@@ -400,167 +307,178 @@ Cart:     cart-popup.md → cart.md
 Checkout: checkout.md → order-confirmation.md
 ```
 
-### Guia de Seleção de Componentes
+### Guia de seleção de componentes
 
-**For product grids and filtering** → `product-listing.md` and `product-card.md`
-**For product cards** → `product-card.md`
-**For navigation** → `navbar.md` and `megamenu.md`
-**For search functionality** → `search.md`
-**For checkout flow** → `checkout.md`
-**For promotions and sales** → `promotions.md`
+**Para grades de produtos e filtragem** → `product-listing.md` e `product-card.md`
+**Para cartões de produtos** → `product-card.md`
+**Para navegação** → `navbar.md` e `megamenu.md`
+**Para a funcionalidade de busca** → `search.md`
+**Para o fluxo de finalização de compra** → `checkout.md`
+**Para promoções e liquidações** → `promotions.md`
 
-## Considerações de Design
+## Considerações de design
 
 Antes de implementar, considere:
 
-1. **Preferências do usuário** - Leia `design.md` para descobrir as preferências de estilo de design
-2. **Identidade da marca** - Cores, tipografia, tom que combinam com a marca
-3. **Público-alvo** - B2C vs B2B, demografia, uso de dispositivos
-4. **Product type** - Fashion vs electronics vs groceries affect layout choices
-5. **Business requirements** - Multi-currency, multi-language, region-specific
-6. **Backend system** - API structure affects component implementation
+1. **Preferências do usuário** — Leia `design.md` para conhecer as preferências de estilo de design
+2. **Identidade da marca** — Cores, tipografia e tom de voz que combinem com a marca
+3. **Público-alvo** — B2C x B2B, dados demográficos, uso de dispositivos
+4. **Tipo de produto** — Moda x eletrônicos x mantimentos influenciam as escolhas de layout
+5. **Requisitos de negócios**
 
-## Integration with Medusa
+- Multimoeda, multilíngue, específico para cada região
 
-[Medusa](https://medusajs.com) é um backend de ecommerce moderno e flexível. Considere o Medusa quando:
+1. **Sistema de back-end**
 
-- Building a new ecommerce storefront
-- Precisa de uma solução de comércio sem cabeça
-- Quer suporte nativo para várias regiões, várias moedas
-- Precisa de um mecanismo poderoso de promoção e desconto
+- A estrutura da API afeta a implementação dos componentes
+
+## Integração com o Medusa
+
+O [Medusa](https://medusajs.com) é um back-end de comércio eletrônico moderno e flexível. Considere o Medusa quando:
+
+- Estiver criando uma nova loja virtual
+- Precisar de uma solução de comércio headless
+- Desejar suporte integrado para várias regiões e moedas
+- Precisar de um mecanismo robusto de promoções e descontos
 - Exigir modelagem flexível de produtos
 
-Para obter orientações detalhadas sobre a integração Medusa, consulte `reference/medusa.md`. Para padrões gerais de backend, consulte `reference/connecting-to-backend.md`.
+Para orientações detalhadas sobre a integração com o Medusa, consulte `reference/medusa.md`. Para padrões gerais de backend, consulte `reference/connecting-to-backend.md`.
 
-### Framework Agnostic
+### Independente de framework
 
-Todo o direcionamento é agnóstico em relação ao framework. Exemplos utilizam React/TypeScript onde demonstrações de código são úteis, mas os padrões se aplicam a:
+Todas as orientações são independentes de framework. Os exemplos utilizam React/TypeScript quando as demonstrações de código são úteis, mas os padrões se aplicam a:
 
 - Next.js
 - SvelteKit
-- Tanstack Início
-- Any modern frontend framework
+- Tanstack Start
+- Qualquer framework front-end moderno
 
-## Minimum Viable Features
+## Recursos mínimos viáveis
 
-**Obrigatório para o lançamento (fluxo de compras principal):**
+**Obrigatórios para o lançamento (fluxo básico de compras):**
 
-- Navbar with cart, categories, search
-- Product listing with filtering and pagination
-- Detalhes do produto com seleção de variante
-- Add to cart functionality
+- Barra de navegação com carrinho, categorias e pesquisa
+- Lista de produtos com filtragem e paginação
+- Detalhes do produto com seleção de variantes
+- Funcionalidade “Adicionar ao carrinho”
 - Página do carrinho com gerenciamento de itens
-- Fluxo de checkout (envio, pagamento, revisão)
-- Página de confirmação de pedido
+- Fluxo de finalização da compra (frete, pagamento, revisão)
+- Página de confirmação do pedido
 
-**Bom ter (adicionar se o tempo permitir):**
+**Recursos opcionais (adicionar se o tempo permitir):**
 
 - Recomendações de produtos relacionados
 - Avaliações e classificações de produtos
 - Funcionalidade de lista de desejos
-- Zoom de imagem nas páginas de produtos
-- Bottom navigation on mobile
-- Mega-menu for navigation
-- Newsletter signup
-- Product comparison
-- Quick view modals
+- Zoom nas imagens nas páginas de produtos
+- Navegação na parte inferior da tela em dispositivos móveis
+- Megamenu para navegação
+- Inscrição na newsletter
+- Comparação de produtos
+- Janelas modais de visualização rápida
 
 **Dependente do usuário (pergunte antes de implementar):**
 
-- Guest checkout vs login-required
-- Recursos do painel de controle de conta
-- Suporte multilinguístico
-- Suporte a múltiplas moedas
-- Live chat support
+- Finalização de compra como convidado vs. login obrigatório
+- Recursos do painel de controle da conta
+- Suporte a vários idiomas
+- Suporte a várias moedas
+- Suporte por chat ao vivo
 
-## Top Ecommerce Mistakes to Avoid
+## Principais erros de comércio eletrônico a evitar
 
-Antes de implementar, fique atento a esses erros comuns específicos de comércio eletrônico:
+Antes de implementar, fique atento a essas armadilhas comuns específicas do comércio eletrônico:
 
-**1. Erros de Carrinho e Navegação**
+**1. Erros no carrinho e na navegação**
 
-- ❌ Ocultar indicador do carrinho no menu hambúrguer móvel (manter sempre visível)
-- ❌ Não exibindo atualizações de contagem de carrinho em tempo real
-- ❌ **CRÍTICO: Faltando `aria-live="polite"` na contagem do carrinho** - Leitores de tela não anunciarão as atualizações do carrinho sem isso
-- ❌ Não exibir detalhes da variante (tamanho, cor, etc.) no popup do carrinho - apenas mostrando o título do produto
-- ❌ Menu Megamenu fecha quando o usuário passa o ponteiro do mouse sobre o conteúdo de dropdown (deve ficar aberto quando o usuário passa o ponteiro do mouse sobre o botão de abertura ou dropdown)
-- ❌ **CRÍTICO: Erros de posicionamento do Megamenu** - Três erros comuns:
-  - ❌ Navbar não tem `position: relative` (megamenu não irá se posicionar corretamente)
-  - ❌ Menú mega posicionado relativo ao botão de gatilho em vez do menu de navegação (use `absolute left-0` no menú mega)
-  - ❌ O megamenu não ocupa toda a largura (é necessário usar `right-0` ou `w-full`, e não apenas `w-auto`)
-- ❌ Codificar categorias, produtos em destaque ou qualquer conteúdo dinâmico em vez de buscar no backend
-- ❌ Sem indicação clara da página atual na navegação da categoria
+- ❌ Ocultar o indicador do carrinho no menu “hambúrguer” da versão móvel (mantenha-o sempre visível)
+- ❌ Não exibir atualizações em tempo real da contagem do carrinho
+- ❌ **CRÍTICO: Falta o atributo `aria-live="polite"` na contagem do carrinho** — os leitores de tela não anunciarão as atualizações do carrinho sem ele
+- ❌ Não exibir detalhes das variantes (tamanho, cor etc.) no pop-up do carrinho — mostrar apenas o título do produto
+- ❌ O megamenu fecha ao passar o mouse sobre o conteúdo do menu suspenso (deve permanecer aberto ao passar o mouse sobre o gatilho OU sobre o menu suspenso)
+- ❌ **CRÍTICO: Erros de posicionamento do megamenu**
 
-**2. Erros ao Navegar por Produtos**
+- Três erros comuns:
+  - ❌ A barra de navegação não tem `position: relative` (o megamenu não se posiciona corretamente)
+  - ❌ O megamenu está posicionado em relação ao botão de acionamento, em vez de em relação à barra de navegação (use `absolute left-0` no megamenu)
+  - ❌ O megamenu não ocupa toda a largura (é preciso usar `right-0` ou `w-full`, não apenas `w-auto`)
+- ❌ Codificação estática de categorias, produtos em destaque ou qualquer conteúdo dinâmico, em vez de buscá-los do backend
+- ❌ Ausência de indicação clara da página atual na navegação por categorias
 
-- ❌ Criando rotas estáticas para produtos/categorias (use rotas dinâmicas como `/produtos/[handle]` em vez de `/produtos/shirt.tsx`)
-- ❌ Estado vazio "nenhum produto encontrado" com sugestões úteis
-- ❌ Sem indicadores de carregamento enquanto os produtos são buscados
-- ❌ Páginação sem URLs amigáveis para motores de busca (para motores de busca)
-- ❌ Filtrar seleções que não persistem ao recarregar a página
+**2. Erros na navegação por produtos**
 
-**3. Erros nos Detalhes do Produto**
+- ❌ Criação de rotas estáticas para produtos/categorias (use rotas dinâmicas como `/products/[handle]` em vez de `/products/shirt.tsx`)
+- ❌ Falta de um estado vazio do tipo “nenhum produto encontrado” com sugestões úteis
+- ❌ Ausência de indicadores de carregamento durante a busca por produtos
+- ❌ Paginação sem URLs otimizadas para SEO (para mecanismos de busca)
+- ❌ Seleções de filtro que não são mantidas ao recarregar a página
 
-- ❌ Habilitando "Adicionar ao Carrinho" antes da seleção de variantes (tamanho, cor, etc.)
-- ❌ Imagens de produtos não otimizadas (imagens grandes não compactadas)
-- ❌ Navegando embora da página do produto após adicionar ao carrinho (fique na página)
-- ❌ Usando emojis no UI em vez de ícones ou imagens (inprofissional, problemas de acessibilidade)
+**3. Erros nos detalhes do produto**
 
-**4. Erros de Design e Consistência**
+- ❌ Habilitar o botão “Adicionar ao carrinho” antes da seleção de variantes (tamanho, cor etc.)
+- ❌ Falta de otimização das imagens dos produtos (imagens grandes e não compactadas)
+- ❌ Saída da página do produto após adicioná-lo ao carrinho (deve permanecer na página)
+- ❌ Uso de emojis na interface do usuário em vez de ícones ou imagens (falta de profissionalismo, problemas de acessibilidade)
 
-- ❌ **CRÍTICO: Não carregar `reference/design.md` antes de criar QUALQUER componente de interface do usuário** - Resulta em cores, fontes e estilos inconsistentes
-- ❌ Introduzindo novas cores sem verificar o tema existente primeiro
-- ❌ Adicionar novas fontes sem verificar o que já está sendo usado
-- ❌ Usar valores arbitrários do Tailwind quando existem tokens de tema
-- ❌ Não detectando versão do Tailwind (v3 vs v4) - Causa erros de sintaxe
+**4. Erros de design e consistência**
 
-**5. Erros de Checkout e Conversão**
+- ❌ **CRÍTICO: Não carregar o arquivo `reference/design.md` antes de criar QUALQUER componente da interface do usuário** — leva a inconsistências nas cores, fontes e estilos
+- ❌ Introduzir novas cores sem verificar primeiro o tema existente
+- ❌ Adicionar novas fontes sem verificar quais já estão em uso
+- ❌ Usar valores arbitrários do Tailwind quando existem tokens do tema
+- ❌ Não detectar a versão do Tailwind (v3 vs v4) — causa erros de sintaxe
 
-- ❌ Requerir criação de conta para finalizar a compra (ofereça checkout como convidado se o backend suportar)
-- ❌ Não está buscando métodos de pagamento do backend - assumindo opções de pagamento disponíveis ou pulando a seleção de métodos de pagamento
-- ❌ O processo de checkout complexo demais em vários passos (4+ passos mata a conversão) - O ideal é 3 passos: Informações de Envio, Método de Entrega + Pagamento, Revisão
-- ❌ Sinais de confiança ausentes (badge de checkout seguro, link de política de devolução)
-- ❌ Não lidar com erros de estoque fora de estoque de forma amigável durante o checkout
+**5. Erros no checkout e na conversão**
 
-**6. Erros de Experiência Móvel**
+- ❌ Exigir a criação de uma conta para finalizar a compra (ofereça a opção de checkout como convidado, se o backend permitir)
+- ❌ Não buscar as formas de pagamento do backend — presumir que as opções de pagamento estão disponíveis ou pular a seleção da forma de pagamento
+- ❌ Processo de checkout excessivamente complexo com várias etapas (mais de 4 etapas prejudicam a conversão) — o ideal são 3 etapas: Informações de envio, Forma de entrega + Pagamento, Revisão
+- ❌ Falta de sinais de confiança (selo de checkout seguro, link para a política de devolução)
+- ❌ Não lida adequadamente com erros de falta de estoque durante o checkout
 
-- ❌ Alvos de toque menores que 44x44px (botões, links, campos de formulário)
-- ❌ Menus de hover estilo desktop em dispositivos móveis (use toque/clique em vez disso)
-- ❌ Não otimizar imagens para dispositivos móveis (carregando imagens enormes de desktop)
-- ❌ Faltam padrões específicos para dispositivos móveis (navegação inferior, filtros de gaveta)
+**6. Erros na experiência móvel**
 
-**7. Erros de Desempenho e SEO**
+- ❌ Áreas de toque menores que 44x44px (botões, links, campos de formulário)
+- ❌ Menus de hover no estilo desktop em dispositivos móveis (use toque/clique em vez disso)
+- ❌ Imagens não otimizadas para dispositivos móveis (carregamento de imagens enormes do desktop)
+- ❌ Ausência de padrões específicos para dispositivos móveis (navegação inferior, filtros em gaveta)
 
-- ❌ Dados estruturados (esquema de produto) faltando para SEO
-- ❌ No explicit image lazy loading (don't assume browser defaults) - Always add `loading="lazy"` to images below the fold
-- ❌ Falta de meta tags e Open Graph para compartilhamento em redes sociais
-- ❌ Não otimizar os Web Vitals do Core (LCP, FID, CLS) - Use [PageSpeed Insights](https://pagespeed.web.dev/) ou Lighthouse para medir
+**7. Erros de desempenho e SEO**
 
-**8. Erros de Integração de Backend**
+- ❌ Ausência de dados estruturados (esquema de produto) para SEO
+- ❌ Ausência de carregamento diferido explícito de imagens (não presuma que o navegador use as configurações padrão) — Sempre adicione `loading="lazy"` às imagens abaixo da dobra
+- ❌ Falta de metatags e Open Graph para compartilhamento nas redes sociais
+- ❌ Não otimizar os Core Web Vitals (LCP, FID, CLS) — use o [PageSpeed Insights](https://pagespeed.web.dev/) ou o Lighthouse para medir
 
-- ❌ **ERRO: Escrever código que chama APIs/SDKs de backend sem seguir o fluxo de verificação em 5 etapas** - Você DEVE: 1) PAUSAR, 2) CONSULTAR docs/MCP, 3) VERIFICAR com o usuário, 4) Escrever código, 5) VERIFICAR erros de tipo
-- ❌ **ERRO: Ignorando erros de TypeScript nos métodos do SDK** - Erros de tipo significam que você usou nomes de método ou parâmetros errados. Volte e verifique com os docs/MCP
-- ❌ **ERRO: Adivinhando nomes de métodos da API, métodos SDK ou parâmetros** - Sempre verifique as assinaturas exatas dos métodos antes de usar
-- ❌ **ERRO: Não usando servidor Medusa MCP quando disponível**- Se estiver usando backend Medusa, sempre consulte servidor MCP para métodos**Exemplo:**```bash
-# Usando servidor MCP
-curl -X GET \
-  http://localhost:3000/mcp/methods \
-  - H 'Content-Type: application/json' \
-  - H 'Authorization: Bearer YOUR_ACCESS_TOKEN'
-```**Observação:** Certifique-se de que o servidor MCP esteja configurado corretamente e esteja funcionando antes de tentar consultar métodos.
-- ❌ **ERRO: Copiar exemplos de código sem verificar se estão atualizados** - Os exemplos podem estar desatualizados, sempre verifique primeiro.
-- ❌ Não detectar qual backend está sendo usado (verifique o monorepo, pergunte ao usuário se estiver em dúvida)
-- ❌ Supondo estrutura da API sem verificar a documentação do backend ou servidor MCP
-- ❌ Hardcoding conteúdo dinâmico (categorias, regiões, produtos, etc.) em vez de recuperar do backend
-- ❌ Definindo tipos personalizados para entidades da Medusa ao invés de usar o pacote `@medusajs/types`
-- ❌ Inicializando Medusa SDK sem chave de API publicável (necessária para lojas multi-região e preços de produtos)
-- ❌ Buscando produtos da Medusa sem passar o parâmetro de consulta `region_id` (causa preços faltantes ou incorretos)
-- ❌ Mostrar todos os países no checkout Medusa - deve mostrar apenas os países da região do carrinho
-- ❌ Dividir os preços da Medusa por 100 (a Medusa armazena os preços como estão, não em centavos como o Stripe)
-- ❌ Configuração SSR do Vite ausente para o SDK Medusa (adicione `ssr.noExternal: ['@medusajs/js-sdk']` ao vite.config.ts)
-- ❌ Executando loja de Medusa em porta diferente de 8000 (causa erros de CORS - backend da Medusa espera porta 8000 por padrão)
-- ❌ Não está a lidar com estados de carregamento, erro e vazio para chamadas de API
-- ❌ Fazendo chamadas de API no lado do cliente que devem ser de servidor (SEO, segurança)
-- ❌ Não implementar mensagens de erro adequadas ("Ocorreu um erro" vs "Produto fora de estoque")
-- ❌ Falta de invalidação de cache (dados de produto desatualizados, preços, estoque)
-- ❌ **Não limpar o estado do carrinho após a encomenda ser colocada** - O pop-up do carrinho mostra itens antigos porque o carrinho não foi redefinido a partir do Context/localStorage/cache
+**8. Erros de integração com o backend**
+
+- ❌ **ERRO: Escrever código que chama APIs/SDKs de backend sem seguir o fluxo de trabalho de verificação em 5 etapas**
+
+- Você DEVE: 1) PARAR, 2) CONSULTAR a documentação/MCP, 3) VERIFICAR com o usuário, 4) Escrever o código, 5) VERIFICAR se há erros de tipo
+- ❌ **ERRO: Ignorando erros do TypeScript nos métodos do SDK**
+
+- Erros de tipo indicam que você usou nomes de métodos ou parâmetros incorretos. Volte e verifique na documentação do MCP
+- ❌ **ERRO: Adivinhando nomes de métodos da API, métodos do SDK ou parâmetros**
+
+- Sempre verifique as assinaturas exatas dos métodos antes de usá-los
+- ❌ **ERRO: Não está usando o servidor MCP do Medusa quando disponível**
+
+- Se estiver usando o backend do Medusa, sempre consulte o servidor MCP para obter os métodos
+- ❌ **ERRO: Copiando exemplos de código sem verificar se estão atualizados**
+
+- Os exemplos podem estar desatualizados; sempre verifique primeiro
+- ❌ Não detectar qual backend está sendo usado (verificar o monorepo, perguntar ao usuário em caso de dúvida)
+- ❌ Presumir a estrutura da API sem verificar a documentação do backend ou o servidor MCP
+- ❌ Codificar conteúdo dinâmico (categorias, regiões, produtos etc.) em vez de buscá-lo no backend
+- ❌ Definir tipos personalizados para entidades do Medusa em vez de usar o pacote `@medusajs/types`
+- ❌ Inicializar o SDK do Medusa sem uma chave de API publicável (necessária para lojas multirregionais e preços de produtos)
+- ❌ Obter produtos do Medusa sem passar o parâmetro de consulta `region_id` (causa preços ausentes ou incorretos)
+- ❌ Exibição de todos os países no checkout do Medusa — deveria exibir apenas os países da região do carrinho
+- ❌ Divisão dos preços do Medusa por 100 (o Medusa armazena os preços como estão, não em centavos como o Stripe)
+- ❌ Falta a configuração SSR do Vite para o SDK do Medusa (adicione `ssr.noExternal: ['@medusajs/js-sdk']` ao arquivo vite.config.ts)
+- ❌ Execução da loja virtual do Medusa em uma porta diferente da 8000 (causa erros de CORS — o backend do Medusa espera a porta 8000 por padrão)
+- ❌ Não há tratamento para os estados de carregamento, erro e página vazia nas chamadas de API
+- ❌ Realização de chamadas de API no lado do cliente que deveriam ser feitas no lado do servidor (SEO, segurança)
+- ❌ Não há implementação de mensagens de erro adequadas (“Ocorreu um erro” em vez de “Produto fora de estoque”)
+- ❌ Falta a invalidação do cache (dados desatualizados de produtos, preços e estoque)
+- ❌ **Não há limpeza do estado do carrinho após a realização do pedido** — A janela pop-up do carrinho exibe itens antigos porque o carrinho não foi reinicializado a partir do Context/localStorage/cache

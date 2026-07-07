@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ApiRouteInspectionReport",
+  "type": "object",
+  "properties": {
+    "project_root": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "inspector_version": {
+      "type": "string"
+    },
+    "api_routes": {
+      "type": "array",
+      "items": {
+        "$ref": "medusa-route.schema.json"
+      }
+    },
+    "route_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "route_id": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "handler_export": {
+            "type": "string"
+          },
+          "middleware_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "detected_symbols": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "route_id",
+          "file",
+          "handler_export",
+          "middleware_sources",
+          "detected_symbols"
+        ]
+      }
+    },
+    "unknown_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "route_id": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "route_id",
+          "fields"
+        ]
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "file",
+          "message"
+        ]
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "route_count": {
+          "type": "integer"
+        },
+        "admin_route_count": {
+          "type": "integer"
+        },
+        "store_route_count": {
+          "type": "integer"
+        },
+        "internal_route_count": {
+          "type": "integer"
+        },
+        "routes_with_auth": {
+          "type": "integer"
+        },
+        "routes_with_zod": {
+          "type": "integer"
+        },
+        "routes_with_workflow": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "route_count",
+        "admin_route_count",
+        "store_route_count",
+        "internal_route_count",
+        "routes_with_auth",
+        "routes_with_zod",
+        "routes_with_workflow"
+      ]
+    }
+  },
+  "required": [
+    "project_root",
+    "generated_at",
+    "inspector_version",
+    "api_routes",
+    "route_evidence",
+    "unknown_fields",
+    "diagnostics",
+    "summary"
+  ]
+}

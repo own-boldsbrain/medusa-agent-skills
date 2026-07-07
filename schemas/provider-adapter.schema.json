@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProviderAdapterSchema",
+  "description": "JSON schema validating LLM provider adapter contracts and capacities",
+  "type": "object",
+  "properties": {
+    "provider_id": {
+      "type": "string"
+    },
+    "provider_type": {
+      "type": "string"
+    },
+    "models_supported": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "chat": {
+          "type": "boolean"
+        },
+        "tool_calling": {
+          "type": "boolean"
+        },
+        "structured_output": {
+          "type": "boolean"
+        },
+        "json_schema_output": {
+          "type": "boolean"
+        },
+        "streaming": {
+          "type": "boolean"
+        },
+        "vision": {
+          "type": "boolean"
+        },
+        "audio": {
+          "type": "boolean"
+        },
+        "embeddings": {
+          "type": "boolean"
+        },
+        "batch": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "chat",
+        "tool_calling",
+        "structured_output",
+        "json_schema_output",
+        "streaming",
+        "vision",
+        "audio",
+        "embeddings",
+        "batch"
+      ]
+    },
+    "auth": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": ["type"]
+    },
+    "rate_limits": {
+      "type": "object",
+      "properties": {
+        "rpm": {
+          "type": "integer"
+        }
+      },
+      "required": ["rpm"]
+    },
+    "cost_tracking": {
+      "type": "boolean"
+    },
+    "tool_calling": {
+      "type": "boolean"
+    },
+    "structured_output": {
+      "type": "boolean"
+    },
+    "streaming": {
+      "type": "boolean"
+    },
+    "embeddings": {
+      "type": "boolean"
+    },
+    "vision": {
+      "type": "boolean"
+    },
+    "audio": {
+      "type": "boolean"
+    },
+    "safety": {
+      "type": "object",
+      "properties": {
+        "moderation_enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": ["moderation_enabled"]
+    },
+    "timeouts": {
+      "type": "object",
+      "properties": {
+        "request_timeout_ms": {
+          "type": "integer"
+        }
+      },
+      "required": ["request_timeout_ms"]
+    },
+    "retry_policy": {
+      "type": "object",
+      "properties": {
+        "max_retries": {
+          "type": "integer"
+        }
+      },
+      "required": ["max_retries"]
+    },
+    "fallback_policy": {
+      "type": "string"
+    },
+    "observability": {
+      "type": "object",
+      "properties": {
+        "log_requests": {
+          "type": "boolean"
+        }
+      },
+      "required": ["log_requests"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "active", "deprecated"]
+    }
+  },
+  "required": [
+    "provider_id",
+    "provider_type",
+    "models_supported",
+    "capabilities",
+    "auth",
+    "rate_limits",
+    "cost_tracking",
+    "tool_calling",
+    "structured_output",
+    "streaming",
+    "embeddings",
+    "vision",
+    "audio",
+    "safety",
+    "timeouts",
+    "retry_policy",
+    "fallback_policy",
+    "observability",
+    "status"
+  ]
+}

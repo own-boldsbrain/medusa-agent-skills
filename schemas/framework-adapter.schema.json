@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FrameworkAdapterSchema",
+  "description": "JSON schema validating agentic framework adapter contracts, state logic, and HITL policies",
+  "type": "object",
+  "properties": {
+    "framework_id": {
+      "type": "string"
+    },
+    "language": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "runtime_type": {
+      "type": "string"
+    },
+    "supports_state_graph": {
+      "type": "boolean"
+    },
+    "supports_agents": {
+      "type": "boolean"
+    },
+    "supports_tools": {
+      "type": "boolean"
+    },
+    "supports_memory": {
+      "type": "boolean"
+    },
+    "supports_checkpointing": {
+      "type": "boolean"
+    },
+    "supports_human_in_the_loop": {
+      "type": "boolean"
+    },
+    "supports_streaming": {
+      "type": "boolean"
+    },
+    "supports_parallelism": {
+      "type": "boolean"
+    },
+    "state_management": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "stateless_request_response",
+          "session_scoped_state",
+          "durable_graph_state",
+          "checkpointed_workflow_state",
+          "event_sourced_trace",
+          "resumable_execution",
+          "human_review_pending_state",
+          "failed_with_recovery_state"
+        ]
+      }
+    },
+    "human_in_the_loop": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "plan_approval_required",
+          "tool_call_approval_required",
+          "write_operation_approval_required",
+          "destructive_action_approval_required",
+          "secret_or_pii_escalation_required",
+          "external_network_call_approval_required",
+          "merge_or_pr_action_approval_required",
+          "manual_review_gate_required",
+          "timeout_policy",
+          "fallback_policy",
+          "audit_evidence_required"
+        ]
+      }
+    },
+    "execution_model": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string"
+        },
+        "supports_parallel_steps": {
+          "type": "boolean"
+        },
+        "supports_resumable_runs": {
+          "type": "boolean"
+        },
+        "supports_retryable_nodes": {
+          "type": "boolean"
+        },
+        "supports_interrupt_before_tool": {
+          "type": "boolean"
+        },
+        "supports_interrupt_after_tool": {
+          "type": "boolean"
+        },
+        "max_concurrency": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "supports_parallel_steps",
+        "supports_resumable_runs",
+        "supports_retryable_nodes",
+        "supports_interrupt_before_tool",
+        "supports_interrupt_after_tool",
+        "max_concurrency"
+      ]
+    },
+    "error_handling": {
+      "type": "object",
+      "properties": {
+        "catch_all": {
+          "type": "boolean"
+        }
+      },
+      "required": ["catch_all"]
+    },
+    "observability": {
+      "type": "object",
+      "properties": {
+        "trace_node_execution": {
+          "type": "boolean"
+        }
+      },
+      "required": ["trace_node_execution"]
+    },
+    "adapter_contract": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "active", "deprecated"]
+    }
+  },
+  "required": [
+    "framework_id",
+    "language",
+    "runtime_type",
+    "supports_state_graph",
+    "supports_agents",
+    "supports_tools",
+    "supports_memory",
+    "supports_checkpointing",
+    "supports_human_in_the_loop",
+    "supports_streaming",
+    "supports_parallelism",
+    "state_management",
+    "human_in_the_loop",
+    "execution_model",
+    "error_handling",
+    "observability",
+    "adapter_contract",
+    "status"
+  ]
+}

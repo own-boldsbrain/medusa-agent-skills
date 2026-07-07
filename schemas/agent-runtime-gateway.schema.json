@@ -1,0 +1,249 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AgentRuntimeGatewaySchema",
+  "description": "JSON schema validating the properties, configuration, and security guardrails of the runtime gateway",
+  "type": "object",
+  "properties": {
+    "gateway_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "request_contract": {
+      "type": "object",
+      "properties": {
+        "payload_format": {
+          "type": "string",
+          "enum": ["application/json"]
+        }
+      },
+      "required": ["payload_format"]
+    },
+    "response_contract": {
+      "type": "object",
+      "properties": {
+        "payload_format": {
+          "type": "string",
+          "enum": ["application/json"]
+        }
+      },
+      "required": ["payload_format"]
+    },
+    "routing": {
+      "type": "object",
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "enum": ["policy_based", "dynamic", "static"]
+        },
+        "allowed_targets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["provider_adapter", "framework_adapter", "mcp_tool_router"]
+          }
+        },
+        "default_provider": {
+          "type": "string"
+        },
+        "default_framework": {
+          "type": "string"
+        },
+        "fallback_provider": {
+          "type": "string"
+        },
+        "fallback_framework": {
+          "type": "string"
+        },
+        "requires_policy_match": {
+          "type": "boolean"
+        },
+        "reject_unknown_target": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "strategy",
+        "allowed_targets",
+        "default_provider",
+        "default_framework",
+        "fallback_provider",
+        "fallback_framework",
+        "requires_policy_match",
+        "reject_unknown_target"
+      ]
+    },
+    "provider_adapter_policy": {
+      "type": "string"
+    },
+    "framework_adapter_policy": {
+      "type": "string"
+    },
+    "mcp_tool_router": {
+      "type": "string"
+    },
+    "state_management": {
+      "type": "object",
+      "properties": {
+        "supported_modes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "stateless_request_response",
+              "session_scoped_state",
+              "durable_graph_state",
+              "checkpointed_workflow_state",
+              "event_sourced_trace"
+            ]
+          }
+        },
+        "default_mode": {
+          "type": "string",
+          "enum": [
+            "stateless_request_response",
+            "session_scoped_state",
+            "durable_graph_state",
+            "checkpointed_workflow_state",
+            "event_sourced_trace"
+          ]
+        },
+        "checkpoint_required_for_long_running_tasks": {
+          "type": "boolean"
+        },
+        "trace_id_required": {
+          "type": "boolean"
+        },
+        "resume_token_supported": {
+          "type": "boolean"
+        },
+        "state_storage": {
+          "type": "string"
+        },
+        "pii_redaction_required": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "supported_modes",
+        "default_mode",
+        "checkpoint_required_for_long_running_tasks",
+        "trace_id_required",
+        "resume_token_supported",
+        "state_storage",
+        "pii_redaction_required"
+      ]
+    },
+    "human_in_the_loop": {
+      "type": "object",
+      "properties": {
+        "plan_approval_required": {
+          "type": "boolean"
+        },
+        "tool_call_approval_required": {
+          "type": "boolean"
+        },
+        "write_operation_approval_required": {
+          "type": "boolean"
+        },
+        "destructive_action_approval_required": {
+          "type": "boolean"
+        },
+        "secret_or_pii_escalation_required": {
+          "type": "boolean"
+        },
+        "external_network_call_approval_required": {
+          "type": "boolean"
+        },
+        "merge_or_pr_action_approval_required": {
+          "type": "boolean"
+        },
+        "manual_review_gate_required": {
+          "type": "boolean"
+        },
+        "timeout_policy": {
+          "type": "string"
+        },
+        "fallback_policy": {
+          "type": "string"
+        },
+        "audit_evidence_required": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "plan_approval_required",
+        "tool_call_approval_required",
+        "write_operation_approval_required",
+        "destructive_action_approval_required",
+        "secret_or_pii_escalation_required",
+        "external_network_call_approval_required",
+        "merge_or_pr_action_approval_required",
+        "manual_review_gate_required",
+        "timeout_policy",
+        "fallback_policy",
+        "audit_evidence_required"
+      ]
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "ssl_required": {
+          "type": "boolean"
+        }
+      },
+      "required": ["ssl_required"]
+    },
+    "observability": {
+      "type": "object",
+      "properties": {
+        "trace_enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": ["trace_enabled"]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "failure_modes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "active", "deprecated"]
+    }
+  },
+  "required": [
+    "gateway_id",
+    "name",
+    "description",
+    "version",
+    "request_contract",
+    "response_contract",
+    "routing",
+    "provider_adapter_policy",
+    "framework_adapter_policy",
+    "mcp_tool_router",
+    "state_management",
+    "human_in_the_loop",
+    "security",
+    "observability",
+    "evidence",
+    "failure_modes",
+    "status"
+  ]
+}

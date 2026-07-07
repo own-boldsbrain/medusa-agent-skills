@@ -60,7 +60,7 @@ graph LR
     subgraph Knowledge
         Skills[Skills / Registries]
     end
-    
+
     Console --> Gateway
     Gateway --> MCP
     MCP --> Skills

@@ -11,10 +11,10 @@ export function validateDataModels(context: ArchitectureRuleContext) {
         severity: "P0",
         category: "layering",
         description: "Data model without a corresponding migration detected.",
-        file: model.file,
-        evidence: `Data model ${model.name} does not have any migration files associated in its module.`,
+        file: model.path,
+        evidence: `Data model ${model.model_name} (${model.table_name}) does not have any migration files associated in module ${model.module_name}.`,
         remediation: "Create a database migration for the data model.",
-        affected_entity: model.name
+        affected_entity: model.model_name
       });
     }
   }

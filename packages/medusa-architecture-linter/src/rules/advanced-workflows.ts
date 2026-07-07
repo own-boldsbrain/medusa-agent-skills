@@ -8,7 +8,8 @@ export function validateAdvancedWorkflows(context: ArchitectureRuleContext) {
 
   for (const wf of workflowReport.workflows) {
     for (const step of wf.steps_defined) {
-      if (mutationRegex.test(step.name) && !step.has_compensation) {
+      const stepLabel = step.step_name || step.variable_name;
+      if (mutationRegex.test(stepLabel) && !step.has_compensation) {
         
         const isStrongSignal = step.uses_container || step.mutates_state_signal;
 
@@ -18,10 +19,10 @@ export function validateAdvancedWorkflows(context: ArchitectureRuleContext) {
             severity: "P1",
             category: "workflows",
             description: "Mutation step without compensation (strong signal).",
-            file: wf.file,
-            evidence: `Step ${step.name} appears to be a mutation and lacks compensation, but uses container or has mutation signals.`,
+            file: wf.path,
+            evidence: `Step ${stepLabel} appears to be a mutation and lacks compensation, but uses container or has mutation signals.`,
             remediation: "Add a compensation step to ensure workflow state can be rolled back on failure.",
-            affected_entity: step.name
+            affected_entity: stepLabel
           });
         } else {
           addViolation({
@@ -29,10 +30,10 @@ export function validateAdvancedWorkflows(context: ArchitectureRuleContext) {
             severity: "P2",
             category: "workflows",
             description: "Mutation step without compensation (weak signal).",
-            file: wf.file,
-            evidence: `Step ${step.name} appears to be a mutation by name but lacks strong factual evidence of state mutation.`,
+            file: wf.path,
+            evidence: `Step ${stepLabel} appears to be a mutation by name but lacks strong factual evidence of state mutation.`,
             remediation: "Verify if this step requires compensation. If it mutates state, add a compensation block.",
-            affected_entity: step.name
+            affected_entity: stepLabel
           });
         }
       }

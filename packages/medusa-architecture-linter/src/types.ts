@@ -99,17 +99,42 @@ export interface WorkflowSchemaInspectionReport {
   inspector_version: string;
   workflows: Array<{
     name: string;
-    file: string;
+    path: string;
+    create_workflow_detected: boolean;
+    constructor_kind: string;
+    workflow_response_detected: boolean;
     steps_defined: Array<{
-      name: string;
+      step_name: string;
+      variable_name: string;
       has_compensation: boolean;
+      returns_step_response: boolean;
       uses_container: boolean;
       mutates_state_signal: boolean;
+      input_identifiers?: string[];
+      output_identifiers?: string[];
+    }>;
+    steps_invoked: Array<{
+      step_name: string;
+      call_expression: string;
+      order: number;
     }>;
   }>;
   data_models: Array<{
-    name: string;
-    file: string;
+    module_name: string;
+    path: string;
+    model_name: string;
+    table_name: string;
+    fields: Array<{
+      name: string;
+      kind: string;
+      primary_key: boolean;
+      nullable: boolean;
+    }>;
+    relationships: Array<{
+      kind: string;
+      related_model_reference: string;
+      mapped_by?: string;
+    }>;
     migration_files: string[];
   }>;
 }

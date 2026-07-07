@@ -20,6 +20,11 @@ export interface ArchitectureValidationReport {
     scanner_version: string;
     path: string;
   };
+  source_reports?: {
+    structure: { version: string; path: string };
+    workflow_schema: { version: string; path: string };
+    api_routes: { version: string; path: string };
+  };
   passed: boolean;
   violations: ArchitectureViolation[];
   summary: string;
@@ -27,6 +32,8 @@ export interface ArchitectureValidationReport {
 
 export interface ArchitectureRuleContext {
   report: MedusaStructureReport;
+  workflowReport?: WorkflowSchemaInspectionReport;
+  apiRouteReport?: ApiRouteInspectionReport;
   addViolation: (violation: ArchitectureViolation) => void;
 }
 
@@ -84,3 +91,73 @@ export interface MedusaStructureReport {
   }>;
   summary: string;
 }
+
+// Mirror of workflow schema inspector report
+export interface WorkflowSchemaInspectionReport {
+  project_root: string;
+  generated_at: string;
+  inspector_version: string;
+  workflows: Array<{
+    name: string;
+    path: string;
+    create_workflow_detected: boolean;
+    constructor_kind: string;
+    workflow_response_detected: boolean;
+    steps_defined: Array<{
+      step_name: string;
+      variable_name: string;
+      has_compensation: boolean;
+      returns_step_response: boolean;
+      uses_container: boolean;
+      mutates_state_signal: boolean;
+      input_identifiers?: string[];
+      output_identifiers?: string[];
+    }>;
+    steps_invoked: Array<{
+      step_name: string;
+      call_expression: string;
+      order: number;
+    }>;
+  }>;
+  data_models: Array<{
+    module_name: string;
+    path: string;
+    model_name: string;
+    table_name: string;
+    fields: Array<{
+      name: string;
+      kind: string;
+      primary_key: boolean;
+      nullable: boolean;
+    }>;
+    relationships: Array<{
+      kind: string;
+      related_model_reference: string;
+      mapped_by?: string;
+    }>;
+    migration_files: string[];
+  }>;
+}
+
+// Mirror of API route inspector report
+export interface ApiRouteInspectionReport {
+  project_root: string;
+  generated_at: string;
+  inspector_version: string;
+  api_routes: Array<{
+    route_id: string;
+    scope: string;
+    method: string;
+    path: string;
+    auth_required: boolean;
+    zod_validator_required: boolean;
+    workflow_invoked: string;
+    idempotency: boolean;
+    error_contracts: string[];
+  }>;
+  unknown_fields: Array<{
+    route_id: string;
+    fields: string[];
+  }>;
+}
+

@@ -1,0 +1,71 @@
+{
+  "patterns": [
+    {
+      "pattern_id": "medusa.module.layering",
+      "domain": "medusa-module",
+      "severity": "P0",
+      "rule": "Custom business entities must be implemented inside Medusa modules, not directly inside API routes.",
+      "required_artifacts": [
+        "src/modules/<module-name>/index.ts",
+        "src/modules/<module-name>/models/*.ts",
+        "src/modules/<module-name>/service.ts",
+        "migration file when persistence changes"
+      ],
+      "anti_patterns": [
+        "route calls database directly",
+        "route owns business mutation",
+        "data model exists without service",
+        "service exists without module registration"
+      ],
+      "evidence_required": [
+        "module path",
+        "service export",
+        "model definition",
+        "migration presence or explicit not_applicable reason"
+      ],
+      "status": "proposed"
+    },
+    {
+      "pattern_id": "medusa.data-model.contract",
+      "domain": "medusa-data-model",
+      "severity": "P0",
+      "rule": "Persistent domain objects must have explicit data model definitions, relationship strategy, migration evidence, and schema ownership.",
+      "required_fields": [
+        "model_name",
+        "table_name",
+        "fields",
+        "relationships",
+        "indexes",
+        "constraints",
+        "migration_required",
+        "owner_module"
+      ],
+      "recommended_validations": [
+        "primary key declared",
+        "timestamps declared or explicitly not_applicable",
+        "foreign keys or module links documented",
+        "json/jsonb fields justified",
+        "unique constraints documented",
+        "PII/sensitive fields classified"
+      ],
+      "status": "proposed"
+    },
+    {
+      "pattern_id": "medusa.route.no-business-mutation",
+      "severity": "P0",
+      "description": "API routes must not own business mutation logic directly. Mutations must call Medusa workflows.",
+      "valid_when": [
+        "route validates request",
+        "route invokes workflow",
+        "route returns typed response",
+        "business mutation lives in workflow step"
+      ],
+      "invalid_when": [
+        "route writes directly to database",
+        "route calls service mutation without workflow",
+        "route contains business branching not delegated to workflow"
+      ],
+      "status": "proposed"
+    }
+  ]
+}

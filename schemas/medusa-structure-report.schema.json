@@ -1,0 +1,254 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MedusaStructureReportSchema",
+  "description": "JSON schema validating the output Medusa project structure scan report",
+  "type": "object",
+  "properties": {
+    "project_root": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "scanner_version": {
+      "type": "string"
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "has_index": {
+            "type": "boolean"
+          },
+          "has_service": {
+            "type": "boolean"
+          },
+          "models": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "migrations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "registered_in_medusa_config": {
+            "type": "boolean"
+          },
+          "module_definition_detected": {
+            "type": "boolean"
+          },
+          "medusa_service_detected": {
+            "type": "boolean"
+          },
+          "registration_key": {
+            "type": "string"
+          },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "path",
+          "has_index",
+          "has_service",
+          "models",
+          "migrations",
+          "registered_in_medusa_config",
+          "module_definition_detected",
+          "medusa_service_detected",
+          "registration_key",
+          "findings"
+        ]
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "create_workflow_detected": {
+            "type": "boolean"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "step_response_detected": {
+            "type": "boolean"
+          },
+          "workflow_response_detected": {
+            "type": "boolean"
+          },
+          "container_usage_detected": {
+            "type": "boolean"
+          },
+          "invoked_by": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "path",
+          "create_workflow_detected",
+          "steps",
+          "step_response_detected",
+          "workflow_response_detected",
+          "container_usage_detected",
+          "invoked_by",
+          "findings"
+        ]
+      }
+    },
+    "api_routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "route_url": {
+            "type": "string"
+          },
+          "methods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scope": {
+            "type": "string",
+            "enum": ["admin", "store", "custom"]
+          },
+          "uses_medusa_request": {
+            "type": "boolean"
+          },
+          "uses_medusa_response": {
+            "type": "boolean"
+          },
+          "workflow_invocations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "direct_service_calls_detected": {
+            "type": "boolean"
+          },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "path",
+          "route_url",
+          "methods",
+          "scope",
+          "uses_medusa_request",
+          "uses_medusa_response",
+          "workflow_invocations",
+          "direct_service_calls_detected",
+          "findings"
+        ]
+      }
+    },
+    "subscribers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scheduled_jobs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "storefront_sdk_usages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "admin_ui_extensions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "string",
+            "enum": ["P0", "P1", "P2", "P3"]
+          },
+          "type": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["level", "type", "file", "message"]
+      }
+    },
+    "summary": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "project_root",
+    "generated_at",
+    "scanner_version",
+    "modules",
+    "workflows",
+    "api_routes",
+    "subscribers",
+    "scheduled_jobs",
+    "storefront_sdk_usages",
+    "admin_ui_extensions",
+    "findings",
+    "summary"
+  ]
+}

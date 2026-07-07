@@ -18,7 +18,7 @@
 | BB-05         | API Route Inspector                     |       **APROVADO COM EVIDÊNCIAS** | PR #13 mergeado em `main`, `merge_commit_sha: 0f9b059...`, 10 arquivos, 732 adições.                                  |
 | BB-06         | Architecture Linter Expansion           |       **APROVADO COM EVIDÊNCIAS** | PR #14 mergeado em `main`, `merge_commit_sha: b7f648...`, 14 arquivos, 531 adições.                                   |
 | BB-07         | Golden Fixtures & Rule Regression Tests |       **APROVADO COM EVIDÊNCIAS** | PR #15 mergeado em `main`, `merge_commit_sha: 36c11c...`, 16 arquivos, 260 adições.                                   |
-| BB-08         | Storefront Translation Integrity Canary | **APROVADO COM EVIDÊNCIAS (PR #16)** | PR #16 mergeado em `main` e validado (PR adicionado e validado recentemente).                                    |
+| BB-08         | Storefront Translation Integrity Canary | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | PR #16 aberto, com validações passando, aguardando merge em `main`.                                    |
 
 ---
 
@@ -291,10 +291,10 @@ Subtasks executadas:
 - Rodar npm run test e validate-json-schemas.
 
 Estado real:
-APROVADO COM EVIDÊNCIAS (PR #16)
+VALIDADO EM PR ABERTO / AGUARDANDO MERGE (PR #16)
 ```
 
-> **Evidência**: O problema real nos canários foi remediado em um PR próprio isolado e determinístico (PR #16 criado e executado com validações locais consistentes).
+> **Evidência**: O problema real nos canários foi remediado em um PR próprio isolado e determinístico (PR #16 criado, com validações locais passando).
 
 ---
 
@@ -309,6 +309,9 @@ APROVADO COM EVIDÊNCIAS (PR #16)
 - BB-05
 - BB-06
 - BB-07
+
+**VALIDADO EM PR ABERTO / AGUARDANDO MERGE:**
+
 - BB-08 (PR #16)
 
 **REPROVADO / BLOQUEADO:**

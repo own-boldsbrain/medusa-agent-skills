@@ -44,6 +44,7 @@ mcloud projects list --organization <org-id> --json
 ```
 
 **Options:**
+
 - `-o/--organization <id>` — Organization ID (falls back to active context; **requi
   - use_case_id: UC-002, name: projects get, scenario: Retrieve a single project by its ID or handle.
 
@@ -52,10 +53,12 @@ mcloud projects get <project-id-or-handle> --organization <org-id> --json
 ```
 
 **Arguments:**
+
 - `project` — Project ID or handle (required)
 
 **O
-  - use_case_id: UC-003, name: projects delete, scenario: Delete a project by its ID or handle. **Irreversible.**
+
+- use_case_id: UC-003, name: projects delete, scenario: Delete a project by its ID or handle. **Irreversible.**
 
 ```bash
 mcloud projects delete <project-id-or-handle> \
@@ -64,6 +67,7 @@ mcloud projects delete <project-id-or-handle> \
 ```
 
 **Arguments:**
+
 - `project` — Project ID or han
 
 ### Faz / Não Faz

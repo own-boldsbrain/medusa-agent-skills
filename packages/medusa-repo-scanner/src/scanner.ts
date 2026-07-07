@@ -1,6 +1,14 @@
 import * as fs from "fs";
 import * as path from "path";
-import ts from "typescript";
+import {
+  parseSourceFile,
+  findExportedHttpMethods,
+  findCallExpressionsByName,
+  detectAsyncArrowWorkflowConstructor,
+  findDirectServiceResolve,
+  detectModuleDefinition,
+  detectMedusaServiceExtension,
+} from "./ast-utils.js";
 
 export interface MedusaStructureReport {
   project_root: string;
@@ -70,11 +78,22 @@ function getFilesRecursively(dir: string): string[] {
   return results;
 }
 
+/**
+ * Read a source file and return its content and parsed AST SourceFile.
+ * Returns null if the file does not exist.
+ */
+function readAndParseFile(filePath: string): { content: string; sourceFile: ReturnType<typeof parseSourceFile> } | null {
+  if (!fs.existsSync(filePath)) return null;
+  const content = fs.readFileSync(filePath, "utf-8");
+  const sourceFile = parseSourceFile(filePath, content);
+  return { content, sourceFile };
+}
+
 export function scanMedusaProject(projectRoot: string): MedusaStructureReport {
   const report: MedusaStructureReport = {
     project_root: projectRoot,
     generated_at: new Date().toISOString(),
-    scanner_version: "0.1.0",
+    scanner_version: "0.2.0",
     modules: [],
     workflows: [],
     api_routes: [],
@@ -116,33 +135,33 @@ export function scanMedusaProject(projectRoot: string): MedusaStructureReport {
       const migrationsDir = path.join(fullModPath, "migrations");
       const migrations = getFilesRecursively(migrationsDir).map((f) => path.relative(projectRoot, f).replace(/\\/g, "/"));
 
-      // Parse index.ts for Module definition
+      // AST: Parse index.ts for Module definition
       let moduleDefinitionDetected = false;
-      const indexFile = fs.existsSync(path.join(fullModPath, "index.ts"))
+      const indexFilePath = fs.existsSync(path.join(fullModPath, "index.ts"))
         ? path.join(fullModPath, "index.ts")
         : fs.existsSync(path.join(fullModPath, "index.js"))
         ? path.join(fullModPath, "index.js")
         : null;
 
-      if (indexFile) {
-        const content = fs.readFileSync(indexFile, "utf-8");
-        if (content.includes("Module(") || content.includes("ModuleConfig")) {
-          moduleDefinitionDetected = true;
+      if (indexFilePath) {
+        const parsed = readAndParseFile(indexFilePath);
+        if (parsed) {
+          moduleDefinitionDetected = detectModuleDefinition(parsed.sourceFile);
         }
       }
 
-      // Parse service.ts for Service/MedusaService
+      // AST: Parse service.ts for MedusaService extension
       let medusaServiceDetected = false;
-      const serviceFile = fs.existsSync(path.join(fullModPath, "service.ts"))
+      const serviceFilePath = fs.existsSync(path.join(fullModPath, "service.ts"))
         ? path.join(fullModPath, "service.ts")
         : fs.existsSync(path.join(fullModPath, "service.js"))
         ? path.join(fullModPath, "service.js")
         : null;
 
-      if (serviceFile) {
-        const content = fs.readFileSync(serviceFile, "utf-8");
-        if (content.includes("MedusaService") || content.includes("extends") || content.includes("Service")) {
-          medusaServiceDetected = true;
+      if (serviceFilePath) {
+        const parsed = readAndParseFile(serviceFilePath);
+        if (parsed) {
+          medusaServiceDetected = detectMedusaServiceExtension(parsed.sourceFile);
         }
       }
 
@@ -209,21 +228,31 @@ export function scanMedusaProject(projectRoot: string): MedusaStructureReport {
 
   for (const wfFile of workflowFiles) {
     const relativePath = path.relative(projectRoot, wfFile).replace(/\\/g, "/");
-    const content = fs.readFileSync(wfFile, "utf-8");
+    const parsed = readAndParseFile(wfFile);
+    if (!parsed) continue;
 
-    const createWorkflowDetected = content.includes("createWorkflow");
-    const stepResponseDetected = content.includes("StepResponse");
-    const workflowResponseDetected = content.includes("WorkflowResponse");
-    const containerUsageDetected = content.includes("container");
+    const { content, sourceFile } = parsed;
 
-    const steps: string[] = [];
-    const stepRegex = /createStep\(\s*['"]([^'"]+)['"]/g;
-    let match;
-    while ((match = stepRegex.exec(content)) !== null) {
-      if (match[1]) {
-        steps.push(match[1]);
-      }
-    }
+    // AST: Detect createWorkflow calls
+    const createWorkflowCalls = findCallExpressionsByName(sourceFile, "createWorkflow");
+    const createWorkflowDetected = createWorkflowCalls.length > 0;
+
+    // AST: Detect createStep calls and extract step names
+    const createStepCalls = findCallExpressionsByName(sourceFile, "createStep");
+    const steps = createStepCalls
+      .map((c) => c.firstArg)
+      .filter((name): name is string => name !== null);
+
+    // AST: Detect StepResponse and WorkflowResponse usage
+    const stepResponseCalls = findCallExpressionsByName(sourceFile, "StepResponse");
+    const stepResponseDetected = stepResponseCalls.length > 0 || content.includes("StepResponse");
+
+    const workflowResponseCalls = findCallExpressionsByName(sourceFile, "WorkflowResponse");
+    const workflowResponseDetected = workflowResponseCalls.length > 0 || content.includes("WorkflowResponse");
+
+    // AST: Detect container usage via service resolve
+    const serviceResolves = findDirectServiceResolve(sourceFile);
+    const containerUsageDetected = serviceResolves.length > 0 || content.includes("container");
 
     const wfFindings: string[] = [];
     if (!createWorkflowDetected) {
@@ -245,17 +274,18 @@ export function scanMedusaProject(projectRoot: string): MedusaStructureReport {
       });
     }
 
-    // Check if the workflow construtor uses async arrow syntax
-    // e.g. createWorkflow("name", async () => { ... })
-    const asyncArrowRegex = /createWorkflow\(\s*['"][^'"]+['"]\s*,\s*async\s*\(/;
-    if (asyncArrowRegex.test(content)) {
+    // AST: Check for async arrow constructor anti-pattern
+    const asyncArrowHits = detectAsyncArrowWorkflowConstructor(sourceFile);
+    if (asyncArrowHits.length > 0) {
       wfFindings.push("workflow_async_arrow_constructor");
-      report.findings.push({
-        level: "P0",
-        type: "workflow_async_arrow_constructor",
-        file: relativePath,
-        message: `Workflow '${relativePath}' uses an async arrow function constructor. This blocks Medusa graph rendering.`
-      });
+      for (const hit of asyncArrowHits) {
+        report.findings.push({
+          level: "P0",
+          type: "workflow_async_arrow_constructor",
+          file: relativePath,
+          message: `Workflow '${hit.workflowName || relativePath}' at line ${hit.line} uses an async arrow function constructor. This blocks Medusa graph rendering.`
+        });
+      }
     }
 
     report.workflows.push({
@@ -280,7 +310,10 @@ export function scanMedusaProject(projectRoot: string): MedusaStructureReport {
 
   for (const rFile of routeFiles) {
     const relativePath = path.relative(projectRoot, rFile).replace(/\\/g, "/");
-    const content = fs.readFileSync(rFile, "utf-8");
+    const parsed = readAndParseFile(rFile);
+    if (!parsed) continue;
+
+    const { content, sourceFile } = parsed;
 
     // Detect route URL (e.g. src/api/blog/posts/route.ts -> /blog/posts)
     const apiPart = relativePath.split("/src/api/")[1] || relativePath.split("src/api/")[1] || "";
@@ -294,19 +327,18 @@ export function scanMedusaProject(projectRoot: string): MedusaStructureReport {
       scope = "store";
     }
 
-    const methods: string[] = [];
-    if (content.includes("export const GET") || content.includes("export async function GET")) methods.push("GET");
-    if (content.includes("export const POST") || content.includes("export async function POST")) methods.push("POST");
-    if (content.includes("export const DELETE") || content.includes("export async function DELETE")) methods.push("DELETE");
-    if (content.includes("export const PUT") || content.includes("export async function PUT")) methods.push("PUT");
+    // AST: Detect exported HTTP methods
+    const methods = findExportedHttpMethods(sourceFile);
 
     const usesMedusaRequest = content.includes("MedusaRequest");
     const usesMedusaResponse = content.includes("MedusaResponse");
 
-    // Workflow invocation detection
+    // Workflow invocation detection via AST
     const workflowInvocations: string[] = [];
     for (const wf of report.workflows) {
-      if (content.includes(wf.name)) {
+      // Check both by name reference and by explicit .run() call
+      const wfNameCalls = findCallExpressionsByName(sourceFile, wf.name);
+      if (wfNameCalls.length > 0 || content.includes(wf.name)) {
         workflowInvocations.push(wf.name);
         if (!wf.invoked_by.includes(relativePath)) {
           wf.invoked_by.push(relativePath);
@@ -314,14 +346,14 @@ export function scanMedusaProject(projectRoot: string): MedusaStructureReport {
       }
     }
 
-    // Direct Service Call detection (anti-pattern)
-    // E.g. resolving a service inside a POST/DELETE/PUT route without a workflow
-    const directServiceCallsDetected = (content.includes("scope.resolve(") || content.includes("container.resolve(")) &&
-      methods.some(m => ["POST", "DELETE", "PUT"].includes(m)) &&
+    // AST: Direct Service Call detection (anti-pattern)
+    const directResolves = findDirectServiceResolve(sourceFile);
+    const directServiceCallsDetected = directResolves.length > 0 &&
+      methods.some(m => ["POST", "DELETE", "PUT", "PATCH"].includes(m)) &&
       workflowInvocations.length === 0;
 
     const routeFindings: string[] = [];
-    if (methods.some(m => ["POST", "DELETE", "PUT"].includes(m)) && workflowInvocations.length === 0) {
+    if (methods.some(m => ["POST", "DELETE", "PUT", "PATCH"].includes(m)) && workflowInvocations.length === 0) {
       routeFindings.push("route_mutation_without_workflow_invocation");
       report.findings.push({
         level: "P0",

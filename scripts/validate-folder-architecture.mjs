@@ -234,12 +234,21 @@ if (fs.existsSync(reportDir)) {
     if (!fs.existsSync(subFull)) continue;
     const subConfig = config.reports.structure[subdir];
     if (!subConfig) continue;
-    for (const entry of fs.readdirSync(subFull)) {
-      const ext = path.extname(entry);
-      if (!subConfig.allowed_extensions.includes(ext)) {
-        errors.push(`Report has disallowed extension in reports/${subdir}/: ${entry} (allowed: ${subConfig.allowed_extensions.join(", ")})`);
+    function validateReportFiles(dir) {
+      if (!fs.existsSync(dir)) return;
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        if (entry.isDirectory()) {
+          validateReportFiles(path.join(dir, entry.name));
+        } else {
+          if (entry.name === '.gitkeep') continue;
+          const ext = path.extname(entry.name);
+          if (!subConfig.allowed_extensions.includes(ext)) {
+            errors.push(`Report has disallowed extension in reports/${subdir}/: ${entry.name} (allowed: ${subConfig.allowed_extensions.join(", ")})`);
+          }
+        }
       }
     }
+    validateReportFiles(subFull);
   }
 }
 

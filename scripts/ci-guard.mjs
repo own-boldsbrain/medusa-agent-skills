@@ -39,7 +39,7 @@ function checkCI() {
   // Get changed files compared to main (assuming main is the base)
   let changedFilesStr;
   try {
-    changedFilesStr = execSync('git diff --name-only origin/main...HEAD').toString().trim();
+    changedFilesStr = execSync('git diff --name-only --diff-filter=ACMRT origin/main...HEAD').toString().trim();
   } catch (err) {
     console.log('Could not compare with origin/main. Comparing with main...');
     try {

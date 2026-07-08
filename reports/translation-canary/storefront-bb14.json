@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "reports": [
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.pt-br.md",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.pt-br.md",
+      "passed": true,
+      "errors": []
+    }
+  ]
+}

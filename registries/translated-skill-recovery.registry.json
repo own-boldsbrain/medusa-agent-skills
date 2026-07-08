@@ -412,7 +412,8 @@
       "recommended_action": "compare_against_current_source_before_restore",
       "allowed_recovery_mode": "new_pr_only",
       "materialization_status": "not_materialized",
-      "recovery_mode": "materialize_only"
+      "recovery_mode": "materialize_only",
+      "discard_reason": "stub_bak_structurally_invalid_and_contains_filler"
     },
     {
       "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.pt-br.md.bak",

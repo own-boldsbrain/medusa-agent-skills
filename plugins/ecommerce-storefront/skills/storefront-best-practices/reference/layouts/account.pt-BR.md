@@ -2,16 +2,16 @@
 
 ## Índice
 
-- [Visão geral](#visão-geral)
+- [Visão geral](#visao-geral)
 - [Painel da Conta](#painel-da-conta)
 - [Gerenciamento de Pedidos](#gerenciamento-de-pedidos)
-- [Endereços Salvos](#endereços-salvos)
-- [Métodos de Pagamento](#métodos-de-pagamento)
-- [Perfil e Segurança](#perfil-e-segurança)
-- [Preferências de E-mail](#preferências-de-e-mail)
-- [Navegação e Layout](#navegação-e-layout)
-- [Considerações sobre Dispositivos Móveis](#considerações-sobre-dispositivos-móveis)
-- [Lista de Verificação](#lista-de-verificação)
+- [Endereços Salvos](#enderecos-salvos)
+- [Métodos de Pagamento](#metodos-de-pagamento)
+- [Perfil e Segurança](#perfil-e-seguranca)
+- [Preferências de E-mail](#preferencias-de-e-mail)
+- [Navegação e Layout](#navegacao-e-layout)
+- [Considerações sobre Dispositivos Móveis](#consideracoes-sobre-dispositivos-moveis)
+- [Lista de Verificação](#lista-de-verificacao)
 
 ## Visão geral
 
@@ -416,7 +416,7 @@ Hub da Conta (Foco em Celular):**
 
 - **
 
-Use quando**: Tráfego majoritariamente móvel, conta simples
+Use quando**: Tráfego majoritariamente de dispositivos móveis, conta simples
 - Página de destino com cartões de seção (grade de 2 colunas)
 - Toque no cartão para entrar na seção, botão de voltar retorna ao hub
 - Benefícios: Amigável ao toque, intuitivo, hierarquia mínima

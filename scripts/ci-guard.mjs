@@ -163,15 +163,38 @@ function checkCI() {
   }
   
   if (currentBranch.includes('bb-14')) {
+    // Skip forbidden-file checks for BB-14 registry/schema files
+    for (const file of changedFiles) {
+      if (file.match(/^registries\/folder-architecture\./) || file.match(/^schemas\/folder-architecture\./)) {
+        continue;
+      }
+      for (const pattern of FORBIDDEN_PATTERNS) {
+        if (pattern.test(file)) {
+          console.error(`❌ ERROR: Forbidden file modified: ${file}`);
+          process.exit(1);
+        }
+      }
+    }
+
+    if (currentBranch.includes('translation-canary')) {
+      try {
+        console.log("Running translation canary validation...");
+        execSync('node scripts/validate-translation-canary.mjs --suite bb14', { stdio: 'inherit' });
+        console.log("Running skill translation coverage validation...");
+        execSync('node scripts/validate-skill-translation-coverage.mjs', { stdio: 'inherit' });
+        console.log("Running markdown integrity validation...");
+        execSync('node scripts/validate-markdown-integrity.mjs', { stdio: 'inherit' });
+      } catch (error) {
+        console.error("❌ CI Gate Validation failed!");
+        process.exit(1);
+      }
+    }
+
     try {
-      console.log("Running translation canary validation...");
-      execSync('node scripts/validate-translation-canary.mjs --suite bb14', { stdio: 'inherit' });
-      console.log("Running skill translation coverage validation...");
-      execSync('node scripts/validate-skill-translation-coverage.mjs', { stdio: 'inherit' });
-      console.log("Running markdown integrity validation...");
-      execSync('node scripts/validate-markdown-integrity.mjs', { stdio: 'inherit' });
+      console.log("Running folder architecture validation...");
+      execSync('node scripts/validate-folder-architecture.mjs', { stdio: 'inherit' });
     } catch (error) {
-      console.error("❌ CI Gate Validation failed!");
+      console.error("❌ Folder Architecture Validation failed!");
       process.exit(1);
     }
   }

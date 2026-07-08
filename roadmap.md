@@ -19,18 +19,12 @@
 | BB-06         | Architecture Linter Expansion           |       **APROVADO COM EVIDÊNCIAS** | PR #14 mergeado em `main`, `merge_commit_sha: b7f648...`, 14 arquivos, 531 adições.                                   |
 | BB-07         | Golden Fixtures & Rule Regression Tests |       **APROVADO COM EVIDÊNCIAS** | PR #15 mergeado em `main`, `merge_commit_sha: 36c11c...`, 16 arquivos, 260 adições.                                   |
 | BB-08         | Storefront Translation Integrity Canary |       **APROVADO COM EVIDÊNCIAS** | PR #16 mergeado em `main`.                                                                            |
-<<<<<<< HEAD
-| BB-09         | Storefront Canary Expansion             |       **APROVADO COM EVIDÊNCIAS** | PR #18 mergeado em `main`.                                                                            |
-| BB-10         | Skill Accuracy Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #20 mergeado em `main` (commit 5f4a1d9), validando governança de accuracy.                         |
-| BB-11         | Repo Hygiene & Ghost Sweep              |       **APROVADO COM EVIDÊNCIAS** | PR #21 mergeado em `main`. Limpeza não destrutiva, .gitignore tuning e auditoria de fantasmas.        |
-| BB-12         | Agent Executor Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #22 mergeado em `main`. Governança de escopo de execução (Jules Policy).                           |
-| BB-13         | Translated Skills Loss Registry         |                **EM ANDAMENTO** | Cria inventário governado de perdas. BB-13 não recupera arquivos; a recuperação começará no BB-14.    |
-=======
 | BB-09         | Storefront Canary Expansion             |       **APROVADO COM EVIDÊNCIAS** | PR #18 mergeado em `main`, atualizado contra main e validado por suites bb08/bb09.                                        |
 | BB-10         | Skill Accuracy Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #20 mergeado em `main` (commit 5f4a1d9), validando governança de accuracy.                         |
 | BB-11         | Repo Hygiene & Ghost Sweep              |       **APROVADO COM EVIDÊNCIAS** | PR #21 mergeado em `main`, isolando governança de fantasmas.                          |
-| BB-12         | Agent Executor Registry                 |                **EM ANDAMENTO** | Registro oficial de executores (Jules), áreas e contratos.                            |
->>>>>>> origin/main
+| BB-12         | Agent Executor Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #22 mergeado em `main`. Governança de escopo de execução (Jules Policy).                           |
+| BB-13         | Translated Skills Loss Registry         |       **APROVADO COM EVIDÊNCIAS** | Cria inventário governado de perdas. BB-13 não recupera arquivos; a recuperação começará no BB-14.    |
+| BB-14         | Translated Skills Surgical Recovery     | **VALIDADO PARCIALMENTE / PR ABERTO / REQUER CORREÇÃO** | PR #24 aberto; escopo reduzido para canário cirúrgico, mas ainda pendente de correção final em `checkout.pt-br.md` e `mergeable=true`. |
 
 ---
 
@@ -326,10 +320,15 @@ APROVADO COM EVIDÊNCIAS (PR #16)
 - BB-10
 - BB-11
 - BB-12
+- BB-13
+
+**VALIDADO PARCIALMENTE / PR ABERTO / REQUER CORREÇÃO:**
+
+- BB-14
 
 **EM ANDAMENTO:**
 
-- BB-13
+(Nenhum no momento)
 
 **REPROVADO / BLOQUEADO:**
 
@@ -359,3 +358,104 @@ O repositório tem hoje:
 **Pendência operacional**:
 
 - PR #1 segue bloqueado e não deve ser usado como base. Nenhuma tentativa de reviver ou tocar em branches atreladas ao PR #1 deve ser feita sem refatoração metódica similar à iniciada no BB-08.
+
+---
+
+### Building Blocks TO-BE — Folder & Translation Architecture
+
+```txt
+BB-14.1 — Governance Roadmap Repair Hotfix
+Estado real:
+TO-BE / P0
+
+Issue:
+Remover marcadores de conflito Git de roadmap.md e restaurar a Matriz Executiva como fonte única da verdade.
+
+DOD:
+- roadmap.md sem marcadores de conflito Git.
+- BB-12 e BB-13 registrados como APROVADO COM EVIDÊNCIAS.
+- BB-14 registrado como VALIDADO EM PR ABERTO / AGUARDANDO MERGE.
+```
+
+```txt
+BB-14.2 — Folder Architecture Registry
+Estado real:
+TO-BE
+
+Issue:
+Formalizar a arquitetura de pastas/subpastas em schema, registry e validador.
+
+DOD:
+- schemas/folder-architecture.schema.json criado.
+- registries/folder-architecture.registry.json criado.
+- scripts/validate-folder-architecture.mjs criado.
+- ci-guard integrado.
+```
+
+```txt
+BB-14.3 — Skill Directory Contract
+Estado real:
+TO-BE
+
+Issue:
+Garantir contrato determinístico para plugins/**/skills/**.
+
+DOD:
+- Cada skill com estrutura permitida.
+- Nenhum .bak ou .pt-BR.md em plugins.
+- Nenhum report/scratch dentro de plugins.
+```
+
+```txt
+BB-15 — PT-BR Casing Normalization Sweep
+Estado real:
+TO-BE
+
+Issue:
+Normalizar variantes .pt-BR.md/.pt_BR.md/.pt_br.md para .pt-br.md em PRs pequenos.
+
+DOD:
+- Somente git mv.
+- Sem tradução nova.
+- Relatório de casing.
+```
+
+```txt
+BB-16.x — Missing PT-BR Sidecars Batch Recovery
+Estado real:
+TO-BE
+
+Issue:
+Criar sidecars .pt-br.md faltantes em lotes pequenos.
+
+DOD:
+- Máximo 5 traduções por PR.
+- Canary por lote.
+- Markdown integrity gate passando.
+```
+
+```txt
+BB-17 — Reports & Evidence Architecture
+Estado real:
+TO-BE
+
+Issue:
+Governar reports/** por domínio, sensibilidade e vínculo BB/PR.
+
+DOD:
+- Registry/validador de reports.
+- Bloqueio de paths locais e secrets.
+```
+
+```txt
+BB-18 — Root Workspace Contract Enforcement
+Estado real:
+TO-BE
+
+Issue:
+Aplicar via CI o contrato do root workspace descrito no README.
+
+DOD:
+- Nenhum arquivo solto novo no root sem allowlist.
+- Nenhuma pasta root fora do registry.
+```

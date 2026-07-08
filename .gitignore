@@ -1,4 +1,34 @@
+# Local agent/IDE state
+.gemini/
 .claude/settings.local.json
-node_modules/
+.antigravity/
+.vscode/settings.json
+
+# Local planning artifacts
+task.md
+walkthrough.md
+implementation_plan.md
+
+# Temporary and backup files
+*.bak
+*.tmp
+*.temp
+*.log
+*.local
+*.local.*
+.DS_Store
+Thumbs.db
+
+# Generated reports and scratch outputs
 reports/generated/
+scratch/
+tmp/
+
+# Jules runtime scratch, keep reports/jules as governed active area
+reports/jules/tmp/
+reports/jules/scratch/
+reports/jules/private/
+
+# Dependencies
+node_modules/
 package-lock.json

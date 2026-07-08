@@ -1,0 +1,46 @@
+{
+  "ghosts": [
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.pt-br.md.bak",
+      "size_bytes": 15729,
+      "ghost_type": "backup_file",
+      "suggested_action": "add_to_gitignore"
+    },
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/cart.pt-BR.md.stub.bak",
+      "size_bytes": 703,
+      "ghost_type": "backup_file",
+      "suggested_action": "add_to_gitignore"
+    },
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.pt-br.md.bak",
+      "size_bytes": 12672,
+      "ghost_type": "backup_file",
+      "suggested_action": "add_to_gitignore"
+    },
+    {
+      "file": "reports/generated/.gitkeep",
+      "size_bytes": 46,
+      "ghost_type": "generated_report",
+      "suggested_action": "add_to_gitignore"
+    },
+    {
+      "file": "reports/generated/api-route-inspection.json",
+      "size_bytes": 440,
+      "ghost_type": "generated_report",
+      "suggested_action": "add_to_gitignore"
+    },
+    {
+      "file": "reports/generated/architecture-validation.json",
+      "size_bytes": 742,
+      "ghost_type": "generated_report",
+      "suggested_action": "add_to_gitignore"
+    },
+    {
+      "file": "reports/generated/workflow-schema-inspection.json",
+      "size_bytes": 352,
+      "ghost_type": "generated_report",
+      "suggested_action": "add_to_gitignore"
+    }
+  ]
+}

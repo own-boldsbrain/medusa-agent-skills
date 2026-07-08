@@ -18,7 +18,10 @@
 | BB-05         | API Route Inspector                     |       **APROVADO COM EVIDÊNCIAS** | PR #13 mergeado em `main`, `merge_commit_sha: 0f9b059...`, 10 arquivos, 732 adições.                                  |
 | BB-06         | Architecture Linter Expansion           |       **APROVADO COM EVIDÊNCIAS** | PR #14 mergeado em `main`, `merge_commit_sha: b7f648...`, 14 arquivos, 531 adições.                                   |
 | BB-07         | Golden Fixtures & Rule Regression Tests |       **APROVADO COM EVIDÊNCIAS** | PR #15 mergeado em `main`, `merge_commit_sha: 36c11c...`, 16 arquivos, 260 adições.                                   |
-| BB-08         | Storefront Translation Integrity Canary | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | PR #16 aberto, com validações passando, aguardando merge em `main`.                                    |
+| BB-08         | Storefront Translation Integrity Canary |       **APROVADO COM EVIDÊNCIAS** | PR #16 mergeado em `main`.                                                                            |
+| BB-09         | Storefront Canary Expansion             | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | PR #18 atualizado contra main e validado por suites bb08/bb09.                                        |
+| BB-10         | Skill Accuracy Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #20 mergeado em `main` (commit 5f4a1d9), validando governança de accuracy.                         |
+| BB-11         | Repo Hygiene & Ghost Sweep              |                **EM ANDAMENTO** | Limpeza não destrutiva, .gitignore tuning e script de auditoria de fantasmas.                         |
 
 ---
 
@@ -291,10 +294,10 @@ Subtasks executadas:
 - Rodar npm run test e validate-json-schemas.
 
 Estado real:
-VALIDADO EM PR ABERTO / AGUARDANDO MERGE (PR #16)
+APROVADO COM EVIDÊNCIAS (PR #16)
 ```
 
-> **Evidência**: O problema real nos canários foi remediado em um PR próprio isolado e determinístico (PR #16 criado, com validações locais passando).
+> **Evidência**: O PR #16 foi mergeado em `main`.
 
 ---
 
@@ -309,10 +312,16 @@ VALIDADO EM PR ABERTO / AGUARDANDO MERGE (PR #16)
 - BB-05
 - BB-06
 - BB-07
+- BB-08
+- BB-10
 
 **VALIDADO EM PR ABERTO / AGUARDANDO MERGE:**
 
-- BB-08 (PR #16)
+- BB-09 (PR #18)
+
+**EM ANDAMENTO:**
+
+- BB-11
 
 **REPROVADO / BLOQUEADO:**
 

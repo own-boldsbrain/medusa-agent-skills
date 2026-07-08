@@ -8,7 +8,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/architecture/module-isolation.pt-BR.md",
@@ -18,7 +21,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/architecture/module-workflow-route.pt-BR.md",
@@ -28,7 +34,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/architecture/workflow-orchestration.pt-BR.md",
@@ -38,7 +47,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-api-route.pt-BR.md",
@@ -48,7 +60,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-module-links.pt-BR.md",
@@ -58,7 +73,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-module.pt-BR.md",
@@ -68,7 +86,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-querying.pt-BR.md",
@@ -78,7 +99,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-ui-route.pt-BR.md",
@@ -88,7 +112,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-widget.pt-BR.md",
@@ -98,7 +125,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-workflow-hooks.pt-BR.md",
@@ -108,7 +138,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-workflow.pt-BR.md",
@@ -118,7 +151,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/lessons/lesson-1-custom-features.pt-BR.md",
@@ -128,7 +164,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/lessons/lesson-2-extend-medusa.pt-BR.md",
@@ -138,7 +177,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/lessons/lesson-3-admin-dashboard.pt-BR.md",
@@ -148,7 +190,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/troubleshooting/common-errors.pt-BR.md",
@@ -158,7 +203,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/learn-medusa/skills/learning-medusa/troubleshooting/verification-guide.pt-BR.md",
@@ -168,7 +216,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-storefronts/references/frontend-integration.pt-BR.md",
@@ -178,7 +229,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/api-routes.pt-BR.md",
@@ -188,7 +242,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/authentication.pt-BR.md",
@@ -198,7 +255,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/custom-modules.pt-BR.md",
@@ -208,7 +268,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/error-handling.pt-BR.md",
@@ -218,7 +281,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/frontend-integration.pt-BR.md",
@@ -228,7 +294,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/module-links.pt-BR.md",
@@ -238,7 +307,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/querying-data.pt-BR.md",
@@ -248,7 +320,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/scheduled-jobs.pt-BR.md",
@@ -258,7 +333,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/subscribers-and-events.pt-BR.md",
@@ -268,7 +346,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/troubleshooting.pt-BR.md",
@@ -278,7 +359,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/workflow-hooks.pt-BR.md",
@@ -288,7 +372,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/medusa-dev/skills/building-with-medusa/reference/workflows.pt-BR.md",
@@ -298,7 +385,10 @@
       "risk": "high",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "last_seen_commit": "235309d15b6d376ebc7c56adabf1b48f8c55f73d",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.pt-br.md.bak",
@@ -308,7 +398,9 @@
       "risk": "medium",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/cart.pt-BR.md.stub.bak",
@@ -318,7 +410,9 @@
       "risk": "medium",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     },
     {
       "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.pt-br.md.bak",
@@ -328,7 +422,9 @@
       "risk": "medium",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
-      "allowed_recovery_mode": "new_pr_only"
+      "allowed_recovery_mode": "new_pr_only",
+      "materialization_status": "not_materialized",
+      "recovery_mode": "materialize_only"
     }
   ]
 }

@@ -35,6 +35,20 @@
           "allowed_recovery_mode": {
             "type": "string",
             "enum": ["new_pr_only"]
+          },
+          "last_seen_commit": { "type": "string" },
+          "deleted_at_commit": { "type": "string" },
+          "source_ref": { "type": "string" },
+          "historical_blob_path": { "type": "string" },
+          "materialized_path": { "type": ["string", "null"] },
+          "current_target_path": { "type": "string" },
+          "materialization_status": {
+            "type": "string",
+            "enum": ["not_materialized", "materialized", "failed", "skipped"]
+          },
+          "recovery_mode": {
+            "type": "string",
+            "enum": ["materialize_only", "restore_in_new_pr"]
           }
         },
         "required": [

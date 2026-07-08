@@ -3,18 +3,29 @@ import * as path from "path";
 
 const CANARY_PAIRS = [
   {
-    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/promotions.md",
-    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/promotions.pt-br.md"
+    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/country-selector.md",
+    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/country-selector.pt-BR.md"
   },
   {
-    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/wishlist.md",
-    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/wishlist.pt-br.md"
+    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-card.md",
+    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-card.pt-br.md"
   },
   {
-    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/cart-popup.md",
-    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/cart-popup.pt-BR.md"
+    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/navbar.md",
+    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/navbar.pt-br.md"
+  },
+  {
+    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/popups.md",
+    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/popups.pt-br.md"
+  },
+  {
+    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/footer.md",
+    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/footer.pt-BR.md"
   }
 ];
+
+const reportOutput = 'reports/translation-canary/storefront-bb09.md';
+const jsonOutput = 'reports/translation-canary/storefront-bb09.json';
 
 const FILLER_PHRASES = [
   "aqui está", "claro,", "claro!", "com certeza", "como solicitado",

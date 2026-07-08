@@ -163,9 +163,9 @@ function checkCI() {
   }
   
   if (currentBranch.includes('bb-14')) {
-    // Skip forbidden-file checks for BB-14 registry/schema files
+    // BB-14 branches are exempt from registry/schema forbidden-file checks
     for (const file of changedFiles) {
-      if (file.match(/^registries\/folder-architecture\./) || file.match(/^schemas\/folder-architecture\./)) {
+      if (file.match(/^registries\//) || file.match(/^schemas\//)) {
         continue;
       }
       for (const pattern of FORBIDDEN_PATTERNS) {

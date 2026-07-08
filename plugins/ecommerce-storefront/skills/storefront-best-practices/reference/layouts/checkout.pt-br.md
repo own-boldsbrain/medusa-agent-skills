@@ -35,7 +35,9 @@ CheckoutWorkspace (server)          → fetches shipping/payment methods from Me
         ├── Delivery step UI
         ├── Payment step UI
         └── Review step UI
-```**Por que essa divisão é importante:**
+```
+
+**Por que essa divisão é importante:**
 
 - O `CheckoutWorkspace` recupera `listCartShippingMethods` e `listCartPaymentMethods` no lado do servidor, evitando cascatas no lado do cliente
 - O `CheckoutWorkspaceClient` é um componente do tipo “cliente de uso” que mantém todo o estado interativo

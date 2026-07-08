@@ -11,6 +11,13 @@ const FILLER_PHRASES = [
 
 const SECRETS_PATTERN = /C:\\Users|file:\/\/\/|\.env|Authorization|Bearer|x-goog-api-key|api[_-]?key|access[_-]?token|secret|password/i;
 
+const brokenPatterns = [
+  { name: "code_fence_glued_to_text", regex: /```[^\s`a-zA-Z0-9]/ },
+  { name: "glued_bold_without_space", regex: /\*\*\(/ },
+  { name: "horizontal_rule_glued_to_heading", regex: /^---#+/ },
+  { name: "code_fence_glued_to_heading", regex: /```#+/ }
+];
+
 function slugify(text) {
   return text
     .toLowerCase()
@@ -88,6 +95,18 @@ function validateFile(file) {
         if (enContaminationSafe.test(line)) {
           errors.push(`PT-BR contamination in EN source at line ${i+1}: ${line.trim()}`);
         }
+      }
+
+      // 9. BB-14 specific Markdown breakage checks
+      for (const pattern of brokenPatterns) {
+        if (pattern.regex.test(line)) {
+          errors.push(`Markdown breakage (${pattern.name}) detected at line ${i+1}: ${line.trim()}`);
+        }
+      }
+
+      const boldCount = (line.match(/\*\*/g) || []).length;
+      if (boldCount % 2 !== 0) {
+        errors.push(`Unmatched bold (**) on single line at line ${i+1}`);
       }
     }
   }

@@ -24,7 +24,8 @@
 | BB-11         | Repo Hygiene & Ghost Sweep              |       **APROVADO COM EVIDÊNCIAS** | PR #21 mergeado em `main`, isolando governança de fantasmas.                          |
 | BB-12         | Agent Executor Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #22 mergeado em `main`. Governança de escopo de execução (Jules Policy).                           |
 | BB-13         | Translated Skills Loss Registry         |       **APROVADO COM EVIDÊNCIAS** | Cria inventário governado de perdas. BB-13 não recupera arquivos; a recuperação começará no BB-14.    |
-| BB-14         | Translated Skills Surgical Recovery     | **VALIDADO PARCIALMENTE / PR ABERTO / REQUER CORREÇÃO** | PR #24 aberto; escopo reduzido para canário cirúrgico, mas ainda pendente de correção final em `checkout.pt-br.md` e `mergeable=true`. |
+| BB-14         | Translated Skills Surgical Recovery     |       **APROVADO COM EVIDÊNCIAS** | PR #24 mergeado em `main`. Escopo restrito ao canário cirúrgico. |
+| BB-14.2       | Folder Architecture Registry            | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | PR aberto formalizando schema, registry e validador de pastas. |
 
 ---
 

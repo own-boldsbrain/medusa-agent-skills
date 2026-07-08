@@ -1,0 +1,5 @@
+{
+  "generated_at": "2026-07-08T02:11:38.630Z",
+  "status": "PASSED",
+  "output": "Starting Folder Architecture validation (BB-14.2)...\n\n⚠️  Warnings:\n  Unexpected reports subdirectory: reports/folder-architecture/\n\n✅ Folder Architecture validation passed (1 warning(s))."
+}

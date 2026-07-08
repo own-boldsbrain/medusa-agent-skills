@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Translated Skill Recovery Registry Schema",
+  "type": "object",
+  "properties": {
+    "recovery_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "candidate_type": {
+            "type": "string",
+            "enum": ["backup_recovery", "history_recovery"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending_manual_review", "in_progress", "recovered", "discarded"]
+          },
+          "estimated_recoverable_tokens": {
+            "type": "integer"
+          },
+          "risk": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+          },
+          "source_evidence": {
+            "type": "string"
+          },
+          "recommended_action": {
+            "type": "string"
+          },
+          "allowed_recovery_mode": {
+            "type": "string",
+            "enum": ["new_pr_only"]
+          }
+        },
+        "required": [
+          "path",
+          "candidate_type",
+          "status",
+          "estimated_recoverable_tokens",
+          "risk",
+          "source_evidence",
+          "recommended_action",
+          "allowed_recovery_mode"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["recovery_candidates"],
+  "additionalProperties": false
+}

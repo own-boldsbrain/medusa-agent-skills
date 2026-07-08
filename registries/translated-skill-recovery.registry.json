@@ -393,7 +393,7 @@
     {
       "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.pt-br.md.bak",
       "candidate_type": "backup_recovery",
-      "status": "pending_manual_review",
+      "status": "recovered",
       "estimated_recoverable_tokens": 3794,
       "risk": "medium",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
@@ -405,19 +405,20 @@
     {
       "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/cart.pt-BR.md.stub.bak",
       "candidate_type": "backup_recovery",
-      "status": "pending_manual_review",
+      "status": "discarded",
       "estimated_recoverable_tokens": 171,
       "risk": "medium",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",
       "recommended_action": "compare_against_current_source_before_restore",
       "allowed_recovery_mode": "new_pr_only",
       "materialization_status": "not_materialized",
-      "recovery_mode": "materialize_only"
+      "recovery_mode": "materialize_only",
+      "discard_reason": "stub_bak_structurally_invalid_and_contains_filler"
     },
     {
       "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.pt-br.md.bak",
       "candidate_type": "backup_recovery",
-      "status": "pending_manual_review",
+      "status": "recovered",
       "estimated_recoverable_tokens": 3076,
       "risk": "medium",
       "source_evidence": "reports/loss-investigation/translated-skills-loss.json",

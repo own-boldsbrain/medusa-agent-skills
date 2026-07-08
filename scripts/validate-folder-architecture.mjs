@@ -146,7 +146,7 @@ for (const plugin of config.plugins) {
 const schemaDir = path.join(root, "schemas");
 if (fs.existsSync(schemaDir)) {
   const actualSchemas = fs.readdirSync(schemaDir);
-  const allowedExt = config.schema_rules.allowed_extensions;
+  const allowedExt = config.schemas.allowed_extensions;
   for (const file of actualSchemas) {
     const ext = path.extname(file);
     if (!allowedExt.includes(ext)) {
@@ -168,7 +168,7 @@ if (fs.existsSync(schemaDir)) {
 const registryDir = path.join(root, "registries");
 if (fs.existsSync(registryDir)) {
   const actualRegistries = fs.readdirSync(registryDir);
-  const allowedExt = config.registry_rules.allowed_extensions;
+  const allowedExt = config.registries.allowed_extensions;
   for (const file of actualRegistries) {
     const ext = path.extname(file);
     if (!allowedExt.includes(ext)) {
@@ -190,7 +190,7 @@ if (fs.existsSync(registryDir)) {
 const scriptDir = path.join(root, "scripts");
 if (fs.existsSync(scriptDir)) {
   const actualScripts = fs.readdirSync(scriptDir);
-  const allowedExt = config.script_rules.allowed_extensions;
+  const allowedExt = config.scripts.allowed_extensions;
   for (const file of actualScripts) {
     const ext = path.extname(file);
     if (!allowedExt.includes(ext)) {

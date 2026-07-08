@@ -45,6 +45,7 @@ A prova de que a fundação arquitetural não foi quebrada:
 - **Testes Unitários:** Todos os testes (`npm run test`) devem reportar sucesso. Nenhum teste anterior pode ser removido sem justificativa explícita.
 - **Schemas JSON:** O validador de schemas estruturais (`node scripts/validate-json-schemas.mjs`) deve rodar sem erros para garantir a saúde dos registries e contracts.
 - **Registries:** O registry de skill accuracy deve rodar sem erros contra o schema correspondente através do validador dedicado (`node scripts/validate-skill-accuracy-registry.mjs`).
+- **Executors:** O registry de executores deve rodar sem erros através de `node scripts/validate-agent-executor-registry.mjs`.
 
 ## 3. Validação Determinística de Tradução (Canary Rules)
 

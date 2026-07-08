@@ -1,0 +1,9 @@
+{
+  "skill_id": "building-with-medusa",
+  "generated_at": "2026-07-08T00:00:00Z",
+  "status": "up-to-date",
+  "framework_version": "v2.16",
+  "translation_parity": true,
+  "accuracy_findings_summary": "All topics (Modules, Workflows, API Routes) are current with Medusa v2.16.",
+  "validation_passed": true
+}

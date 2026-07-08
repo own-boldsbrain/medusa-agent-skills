@@ -11,9 +11,7 @@ Orientações para a implementação do fluxo de finalização de compra na loja
 - Fluxos B2B complexos com requisitos de aprovação
 
 - Vários campos de coleta de dados (empresa, endereço, remessa, cobrança, contato, pagamento)
-- A divulgação progressiva reduz a carga cognitiva**
-
-A YSH Store utiliza 4 etapas de superfície**(mapeadas a partir dos IDs internos das etapas):
+- A divulgação progressiva reduz a carga cognitiva\n\n**A YSH Store utiliza 4 etapas de superfície** ():
 
 | Passo de superfície | Etapas internas abordadas | Descrição |
 |---|---|---|

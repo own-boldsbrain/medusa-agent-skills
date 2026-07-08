@@ -4,14 +4,19 @@
       "executor_id": "jules",
       "name": "Jules (Agent Executor)",
       "allowed_areas": [
-        "reports/jules/**",
+        "reports/jules/**"
+      ],
+      "runtime_allowed_areas": [
         "scratch/**",
         "tmp/**"
       ],
       "forbidden_areas": [
         "reports/jules/**/*.bak",
         "reports/jules/tmp/**",
-        "reports/jules/scratch/**"
+        "reports/jules/scratch/**",
+        "reports/jules/private/**",
+        "reports/jules/**/*.tmp",
+        "reports/jules/**/*.log"
       ],
       "accepted_artifacts": [
         "*.md",

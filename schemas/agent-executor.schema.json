@@ -21,6 +21,12 @@
               "type": "string"
             }
           },
+          "runtime_allowed_areas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "forbidden_areas": {
             "type": "array",
             "items": {

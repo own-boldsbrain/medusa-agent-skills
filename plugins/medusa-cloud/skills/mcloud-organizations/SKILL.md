@@ -24,7 +24,6 @@ mcloud organizations list --json
 ```
 
 **Options:**
-
 - `--json` — Output as JSON
 
 ### organizations get
@@ -36,11 +35,9 @@ mcloud organizations get <organization-id> --json
 ```
 
 **Arguments:**
-
 - `organization` — Organization ID (required)
 
 **Options:**
-
 - `-o/--organization <id>` — Override the organization in active context (must match the argument)
 - `--json` — Output as JSON
 

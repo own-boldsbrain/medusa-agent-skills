@@ -1,0 +1,14 @@
+{
+  "bb": "BB-14",
+  "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.md",
+  "repair_type": "source_en_corruption_repair",
+  "corrupted_commit": "df5499e",
+  "restored_from_ref": "df5499e^",
+  "reason": "Source EN contained PT-BR content and could not serve as structural validation base.",
+  "validation_required": [
+    "headings",
+    "code_fences",
+    "links",
+    "pt_br_residual_scan"
+  ]
+}

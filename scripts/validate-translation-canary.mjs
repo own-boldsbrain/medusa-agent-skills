@@ -2,6 +2,16 @@ import * as fs from "fs";
 import * as path from "path";
 
 const CANARY_SUITES = {
+  bb14: [
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.pt-br.md"
+    },
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.pt-br.md"
+    }
+  ],
   bb08: [
     {
       source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/promotions.md",
@@ -123,7 +133,7 @@ function runValidation(suite) {
   let globalPassed = true;
 
   const pairsToValidate = suite === 'all' 
-    ? [...CANARY_SUITES.bb08, ...CANARY_SUITES.bb09]
+    ? [...CANARY_SUITES.bb08, ...CANARY_SUITES.bb09, ...CANARY_SUITES.bb14]
     : CANARY_SUITES[suite];
 
   for (const pair of pairsToValidate) {
@@ -306,7 +316,7 @@ if (args.includes('--suite')) {
   const suiteIndex = args.indexOf('--suite') + 1;
   if (suiteIndex < args.length) {
     const requestedSuite = args[suiteIndex];
-    if (requestedSuite === 'bb08' || requestedSuite === 'bb09' || requestedSuite === 'all') {
+    if (requestedSuite === 'bb08' || requestedSuite === 'bb09' || requestedSuite === 'bb14' || requestedSuite === 'all') {
       suite = requestedSuite;
     }
   }

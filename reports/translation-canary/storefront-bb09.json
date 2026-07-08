@@ -2,7 +2,7 @@
   "passed": true,
   "reports": [
     {
-      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/country-selector.pt-BR.md",
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/country-selector.pt-br.md",
       "passed": true,
       "errors": []
     },
@@ -22,7 +22,7 @@
       "errors": []
     },
     {
-      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/footer.pt-BR.md",
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/footer.pt-br.md",
       "passed": true,
       "errors": []
     }

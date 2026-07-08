@@ -1,10 +1,10 @@
-# Canary Translation Report
+# Canary Translation Report (BB09)
 
-Generated at: 2026-07-08T00:06:04.851Z
+Generated at: 2026-07-08T00:11:50.828Z
 
 Status: ✅ PASSED
 
-## country-selector.pt-BR.md
+## country-selector.pt-br.md
 Status: ✅ PASSED
 
 ## product-card.pt-br.md
@@ -16,6 +16,6 @@ Status: ✅ PASSED
 ## popups.pt-br.md
 Status: ✅ PASSED
 
-## footer.pt-BR.md
+## footer.pt-br.md
 Status: ✅ PASSED
 

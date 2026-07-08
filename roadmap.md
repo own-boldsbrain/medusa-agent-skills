@@ -19,11 +19,18 @@
 | BB-06         | Architecture Linter Expansion           |       **APROVADO COM EVIDÊNCIAS** | PR #14 mergeado em `main`, `merge_commit_sha: b7f648...`, 14 arquivos, 531 adições.                                   |
 | BB-07         | Golden Fixtures & Rule Regression Tests |       **APROVADO COM EVIDÊNCIAS** | PR #15 mergeado em `main`, `merge_commit_sha: 36c11c...`, 16 arquivos, 260 adições.                                   |
 | BB-08         | Storefront Translation Integrity Canary |       **APROVADO COM EVIDÊNCIAS** | PR #16 mergeado em `main`.                                                                            |
+<<<<<<< HEAD
 | BB-09         | Storefront Canary Expansion             |       **APROVADO COM EVIDÊNCIAS** | PR #18 mergeado em `main`.                                                                            |
 | BB-10         | Skill Accuracy Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #20 mergeado em `main` (commit 5f4a1d9), validando governança de accuracy.                         |
 | BB-11         | Repo Hygiene & Ghost Sweep              |       **APROVADO COM EVIDÊNCIAS** | PR #21 mergeado em `main`. Limpeza não destrutiva, .gitignore tuning e auditoria de fantasmas.        |
 | BB-12         | Agent Executor Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #22 mergeado em `main`. Governança de escopo de execução (Jules Policy).                           |
 | BB-13         | Translated Skills Loss Registry         |                **EM ANDAMENTO** | Cria inventário governado de perdas. BB-13 não recupera arquivos; a recuperação começará no BB-14.    |
+=======
+| BB-09         | Storefront Canary Expansion             |       **APROVADO COM EVIDÊNCIAS** | PR #18 mergeado em `main`, atualizado contra main e validado por suites bb08/bb09.                                        |
+| BB-10         | Skill Accuracy Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #20 mergeado em `main` (commit 5f4a1d9), validando governança de accuracy.                         |
+| BB-11         | Repo Hygiene & Ghost Sweep              |       **APROVADO COM EVIDÊNCIAS** | PR #21 mergeado em `main`, isolando governança de fantasmas.                          |
+| BB-12         | Agent Executor Registry                 |                **EM ANDAMENTO** | Registro oficial de executores (Jules), áreas e contratos.                            |
+>>>>>>> origin/main
 
 ---
 

@@ -1,0 +1,35 @@
+{
+  "agent_executors": [
+    {
+      "executor_id": "jules",
+      "name": "Jules (Agent Executor)",
+      "allowed_areas": [
+        "reports/jules/**"
+      ],
+      "runtime_allowed_areas": [
+        "scratch/**",
+        "tmp/**"
+      ],
+      "forbidden_areas": [
+        "reports/jules/**/*.bak",
+        "reports/jules/tmp/**",
+        "reports/jules/scratch/**",
+        "reports/jules/private/**",
+        "reports/jules/**/*.tmp",
+        "reports/jules/**/*.log"
+      ],
+      "accepted_artifacts": [
+        "*.md",
+        "*.json"
+      ],
+      "allowed_commands": [
+        "node",
+        "npm",
+        "git",
+        "gh"
+      ],
+      "evidence_contract": "Todas as execuções de Jules devem prover relatórios reprodutíveis versionados em markdown/json quando vinculados a um BB.",
+      "status": "active"
+    }
+  ]
+}

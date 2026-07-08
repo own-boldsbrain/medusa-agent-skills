@@ -1,20 +1,44 @@
 import * as fs from "fs";
 import * as path from "path";
 
-const CANARY_PAIRS = [
-  {
-    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/promotions.md",
-    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/promotions.pt-br.md"
-  },
-  {
-    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/wishlist.md",
-    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/wishlist.pt-br.md"
-  },
-  {
-    source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/cart-popup.md",
-    target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/cart-popup.pt-BR.md"
-  }
-];
+const CANARY_SUITES = {
+  bb08: [
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/promotions.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/promotions.pt-br.md"
+    },
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/wishlist.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/features/wishlist.pt-br.md"
+    },
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/cart-popup.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/cart-popup.pt-BR.md"
+    }
+  ],
+  bb09: [
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/country-selector.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/country-selector.pt-br.md"
+    },
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-card.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-card.pt-br.md"
+    },
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/navbar.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/navbar.pt-br.md"
+    },
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/popups.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/popups.pt-br.md"
+    },
+    {
+      source: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/footer.md",
+      target: "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/footer.pt-br.md"
+    }
+  ]
+};
 
 const FILLER_PHRASES = [
   "aqui está", "claro,", "claro!", "com certeza", "como solicitado",
@@ -94,14 +118,15 @@ function extractMarkdownFeatures(content) {
   return { headings, codeFences, links, anomalies };
 }
 
-function runValidation() {
+function runValidation(suite) {
   const reports = [];
   let globalPassed = true;
 
-  // 1. Check for .bak files globally
-  const bakFound = false; // Simplified check. Ideally we'd use glob or fs traversal.
-  
-  for (const pair of CANARY_PAIRS) {
+  const pairsToValidate = suite === 'all' 
+    ? [...CANARY_SUITES.bb08, ...CANARY_SUITES.bb09]
+    : CANARY_SUITES[suite];
+
+  for (const pair of pairsToValidate) {
     const sourcePath = path.resolve(process.cwd(), pair.source);
     const targetPath = path.resolve(process.cwd(), pair.target);
     
@@ -245,7 +270,7 @@ function runValidation() {
   }
 
   // Generate markdown report
-  let mdReport = `# Canary Translation Report\n\n`;
+  let mdReport = `# Canary Translation Report (${suite.toUpperCase()})\n\n`;
   mdReport += `Generated at: ${new Date().toISOString()}\n\n`;
   mdReport += `Status: ${globalPassed ? "✅ PASSED" : "❌ FAILED"}\n\n`;
   
@@ -261,8 +286,12 @@ function runValidation() {
     mdReport += `\n`;
   }
 
-  fs.writeFileSync(path.join(reportsDir, "storefront-bb08.md"), mdReport);
-  fs.writeFileSync(path.join(reportsDir, "storefront-bb08.json"), JSON.stringify({ passed: globalPassed, reports }, null, 2));
+  const suiteSuffix = suite === 'all' ? 'all' : suite;
+  const reportOutput = `reports/translation-canary/storefront-${suiteSuffix}.md`;
+  const jsonOutput = `reports/translation-canary/storefront-${suiteSuffix}.json`;
+
+  fs.writeFileSync(path.join(process.cwd(), reportOutput), mdReport);
+  fs.writeFileSync(path.join(process.cwd(), jsonOutput), JSON.stringify({ passed: globalPassed, reports }, null, 2));
 
   console.log(mdReport);
   if (!globalPassed) {
@@ -270,4 +299,17 @@ function runValidation() {
   }
 }
 
-runValidation();
+// Check arguments
+const args = process.argv.slice(2);
+let suite = 'bb09'; // Default
+if (args.includes('--suite')) {
+  const suiteIndex = args.indexOf('--suite') + 1;
+  if (suiteIndex < args.length) {
+    const requestedSuite = args[suiteIndex];
+    if (requestedSuite === 'bb08' || requestedSuite === 'bb09' || requestedSuite === 'all') {
+      suite = requestedSuite;
+    }
+  }
+}
+
+runValidation(suite);

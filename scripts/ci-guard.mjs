@@ -31,8 +31,8 @@ function checkCI() {
   // Get current branch
   const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
   
-  if (!currentBranch.includes('translation-canary') && !isFrameworkAccuracyMode) {
-    console.log(`Branch '${currentBranch}' is not a translation-canary branch and --framework-accuracy is not set. Skipping CI rules.`);
+  if (!currentBranch.includes('translation-canary') && !currentBranch.includes('bb-14') && !isFrameworkAccuracyMode) {
+    console.log(`Branch '${currentBranch}' is not a translation-canary or bb-14 branch and --framework-accuracy is not set. Skipping CI rules.`);
     return;
   }
 
@@ -168,6 +168,8 @@ function checkCI() {
       execSync('node scripts/validate-skill-translation-coverage.mjs', { stdio: 'inherit' });
       console.log("Running markdown integrity validation...");
       execSync('node scripts/validate-markdown-integrity.mjs', { stdio: 'inherit' });
+      console.log("Running folder architecture validation...");
+      execSync('node scripts/validate-folder-architecture.mjs', { stdio: 'inherit' });
     } catch (error) {
       console.error("❌ CI Gate Validation failed!");
       process.exit(1);

@@ -17,8 +17,26 @@ Nenhum BB será aceito se violar os limites de um PR isolado e cirúrgico.
   - `*.bak` (resquícios tóxicos de edições não curadas)
   - `translation_audit_report.*`
   - `scratch/**`
-  - `reports/jules/**`
   - Pacotes e registros não relacionados à task (`packages/**`, `schemas/**`, `registries/**` etc., a menos que a missão do BB exija explicitamente).
+
+### JULES_POLICY
+
+`reports/jules/**` é área viva reservada para Jules como agente executor.
+
+Permitido versionar:
+
+- `reports/jules/*.md`
+- `reports/jules/*.json`
+- evidências explicitamente ligadas a um BB, PR ou auditoria aprovada
+
+Ignorar ou bloquear:
+
+- `reports/jules/tmp/**`
+- `reports/jules/scratch/**`
+- `reports/jules/private/**`
+- `reports/jules/**/*.bak`
+- `reports/jules/**/*.tmp`
+- `reports/jules/**/*.log`, salvo quando explicitamente aprovado como evidência
 
 ## 2. Qualidade e Integração Contínua (CI)
 

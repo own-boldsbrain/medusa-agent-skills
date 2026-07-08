@@ -36,7 +36,6 @@ if (!config) {
 const errors = [];
 const warnings = [];
 
-// ── 1. Check excluded paths never exist ──────────────────────────────────
 function pathMatchesPattern(filePath, pattern) {
   const normalized = filePath.replace(/\\/g, "/");
   const regexSafe = pattern
@@ -71,7 +70,6 @@ for (const excluded of config.excluded_paths) {
   }
 }
 
-// ── 2. Check enforced paths exist ────────────────────────────────────────
 for (const enforced of config.enforced_paths) {
   const full = path.join(root, enforced);
   if (!fs.existsSync(full)) {
@@ -79,7 +77,6 @@ for (const enforced of config.enforced_paths) {
   }
 }
 
-// ── 3. Check top-level structure ─────────────────────────────────────────
 const topLevelEntries = fs.readdirSync(root, { withFileTypes: true });
 for (const entry of topLevelEntries) {
   if (entry.name.startsWith(".")) continue;
@@ -97,7 +94,6 @@ for (const entry of topLevelEntries) {
   }
 }
 
-// ── 4. Check plugin structure ────────────────────────────────────────────
 for (const plugin of config.plugins) {
   const pluginRoot = path.join(root, plugin.path);
   if (!fs.existsSync(pluginRoot)) {
@@ -105,7 +101,6 @@ for (const plugin of config.plugins) {
     continue;
   }
 
-  // Check required files
   for (const reqFile of plugin.required_files) {
     const full = path.join(pluginRoot, reqFile);
     if (!fs.existsSync(full)) {
@@ -113,7 +108,6 @@ for (const plugin of config.plugins) {
     }
   }
 
-  // Check skills
   if (plugin.skills) {
     for (const skill of plugin.skills) {
       const skillRoot = path.join(root, skill.path);
@@ -129,7 +123,6 @@ for (const plugin of config.plugins) {
         }
       }
 
-      // Check forbidden patterns inside skill
       for (const fPattern of config.plugin_requirements.forbidden_patterns) {
         const regex = new RegExp(fPattern, "i");
         for (const entry of fs.readdirSync(skillRoot)) {
@@ -142,7 +135,6 @@ for (const plugin of config.plugins) {
   }
 }
 
-// ── 5. Check schemas directory ───────────────────────────────────────────
 const schemaDir = path.join(root, "schemas");
 if (fs.existsSync(schemaDir)) {
   const actualSchemas = fs.readdirSync(schemaDir);
@@ -164,7 +156,6 @@ if (fs.existsSync(schemaDir)) {
   }
 }
 
-// ── 6. Check registries directory ────────────────────────────────────────
 const registryDir = path.join(root, "registries");
 if (fs.existsSync(registryDir)) {
   const actualRegistries = fs.readdirSync(registryDir);
@@ -186,7 +177,6 @@ if (fs.existsSync(registryDir)) {
   }
 }
 
-// ── 7. Check scripts directory ───────────────────────────────────────────
 const scriptDir = path.join(root, "scripts");
 if (fs.existsSync(scriptDir)) {
   const actualScripts = fs.readdirSync(scriptDir);
@@ -208,10 +198,8 @@ if (fs.existsSync(scriptDir)) {
   }
 }
 
-// ── 8. Check reports directory ───────────────────────────────────────────
 const reportDir = path.join(root, "reports");
 if (fs.existsSync(reportDir)) {
-  // Check for forbidden files at reports root
   for (const entry of fs.readdirSync(reportDir)) {
     const full = path.join(reportDir, entry);
     if (entry.endsWith(".md") && entry !== "index.md") {
@@ -219,7 +207,6 @@ if (fs.existsSync(reportDir)) {
     }
   }
 
-  // Check allowed subdirs
   for (const entry of fs.readdirSync(reportDir, { withFileTypes: true })) {
     if (entry.isDirectory()) {
       if (!config.reports.allowed_subdirs.includes(entry.name)) {
@@ -228,7 +215,6 @@ if (fs.existsSync(reportDir)) {
     }
   }
 
-  // Check each allowed subdir structure
   for (const subdir of config.reports.allowed_subdirs) {
     const subFull = path.join(reportDir, subdir);
     if (!fs.existsSync(subFull)) continue;
@@ -252,7 +238,6 @@ if (fs.existsSync(reportDir)) {
   }
 }
 
-// ── 9. Summary ───────────────────────────────────────────────────────────
 if (errors.length > 0) {
   console.error("\n❌ Folder Architecture validation FAILED.");
   for (const err of errors) {

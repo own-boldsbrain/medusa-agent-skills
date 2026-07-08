@@ -174,6 +174,16 @@ function checkCI() {
     }
   }
 
+  if (currentBranch.includes('bb-14-2') || currentBranch.includes('folder-architecture')) {
+    try {
+      console.log("Running folder architecture validation (BB-14.2)...");
+      execSync('node scripts/validate-folder-architecture.mjs', { stdio: 'inherit' });
+    } catch (error) {
+      console.error("❌ Folder Architecture CI Gate failed!");
+      process.exit(1);
+    }
+  }
+
   console.log('✅ CI Guard checks passed! The PR is surgical and clean.');
 }
 

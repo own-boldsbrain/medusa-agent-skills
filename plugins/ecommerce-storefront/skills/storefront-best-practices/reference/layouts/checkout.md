@@ -20,7 +20,7 @@ Guidance for implementing the checkout flow in the YSH Store storefront. This re
 | `payment` | `payment` | Payment method selection |
 | `review` | `review` | Final order confirmation |
 
-> ⚠️ The UI stepper may display more labels than surface steps (e.g., Entrega, Faturamento, Frete, Contato, Pagamento). The surface step system is the authoritative state machine; the stepper is presentational only.
+> ⚠️ The UI stepper may display more labels than surface steps (e.g., Delivery, Billing, Shipping, Contact, Payment). The surface step system is the authoritative state machine; the stepper is presentational only.
 
 ---
 

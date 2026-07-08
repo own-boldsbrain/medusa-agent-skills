@@ -1,0 +1,1 @@
+# BB-14 Checkout Source Repair\n\nThe EN source checkout.md was corrupted with PT-BR content in commit df5499e. Repaired using df5499e^ before validating checkout.pt-br.md.\n

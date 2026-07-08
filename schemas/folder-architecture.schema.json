@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FolderArchitectureSchema",
+  "description": "Defines the canonical folder structure, naming conventions, and file-type rules for the medusa-agent-skills repository. Used by validate-folder-architecture.mjs to enforce structural integrity.",
+  "type": "object",
+  "properties": {
+    "allowed_top_level_dirs": {
+      "description": "Permitted top-level directories. Any other top-level directory is a violation.",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "allowed_top_level_files": {
+      "description": "Permitted top-level files (relative to repo root). Any other file is a violation.",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "excluded_paths": {
+      "description": "Glob-like patterns for paths that should never exist in the repo (e.g., .bak files, scratch outputs).",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "enforced_paths": {
+      "description": "Paths that MUST exist in the repo (key structural files).",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "plugin_requirements": {
+      "type": "object",
+      "description": "Required and optional files/directories per plugin.",
+      "properties": {
+        "required_files": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Files that every plugin must contain (path relative to plugin root)."
+        },
+        "required_dirs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Directories that every plugin must contain (relative to plugin root)."
+        },
+        "allowed_extensions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Permitted file extensions inside plugin directories."
+        },
+        "forbidden_patterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Regex patterns for forbidden files inside plugins."
+        },
+        "skill_requirements": {
+          "type": "object",
+          "properties": {
+            "required_files": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Files that every skill directory must contain."
+            }
+          },
+          "required": ["required_files"]
+        }
+      },
+      "required": ["required_files", "required_dirs", "allowed_extensions", "forbidden_patterns", "skill_requirements"]
+    },
+    "schema_rules": {
+      "type": "object",
+      "properties": {
+        "allowed_extensions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["allowed_extensions"]
+    },
+    "registry_rules": {
+      "type": "object",
+      "properties": {
+        "allowed_extensions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["allowed_extensions"]
+    },
+    "script_rules": {
+      "type": "object",
+      "properties": {
+        "allowed_extensions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["allowed_extensions"]
+    },
+    "report_rules": {
+      "type": "object",
+      "properties": {
+        "allowed_subdirs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_at_root": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Forbidden file patterns at the reports/ root level."
+        }
+      },
+      "required": ["allowed_subdirs", "forbidden_at_root"]
+    }
+  },
+  "required": [
+    "allowed_top_level_dirs",
+    "allowed_top_level_files",
+    "excluded_paths",
+    "enforced_paths",
+    "plugin_requirements",
+    "schema_rules",
+    "registry_rules",
+    "script_rules",
+    "report_rules"
+  ]
+}

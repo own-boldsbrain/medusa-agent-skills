@@ -158,6 +158,18 @@ function checkCI() {
     } else {
       console.log(`✅ No SKILL files modified. Framework Accuracy check passed.`);
     }
+  if (currentBranch.includes('bb-14')) {
+    try {
+      console.log("Running translation canary validation...");
+      execSync('node scripts/validate-translation-canary.mjs --suite bb14', { stdio: 'inherit' });
+      console.log("Running skill translation coverage validation...");
+      execSync('node scripts/validate-skill-translation-coverage.mjs', { stdio: 'inherit' });
+      console.log("Running markdown integrity validation...");
+      execSync('node scripts/validate-markdown-integrity.mjs', { stdio: 'inherit' });
+    } catch (error) {
+      console.error("❌ CI Gate Validation failed!");
+      process.exit(1);
+    }
   }
 
   console.log('✅ CI Guard checks passed! The PR is surgical and clean.');

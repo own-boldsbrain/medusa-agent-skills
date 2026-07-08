@@ -1,0 +1,24 @@
+{
+  "skills_accuracy": [
+    {
+      "skill_id": "building-with-medusa",
+      "framework": "Medusa",
+      "target_version": "v2.16",
+      "source_skill_path": "plugins/medusa-dev/skills/building-with-medusa/SKILL.md",
+      "translated_skill_path": "plugins/medusa-dev/skills/building-with-medusa/SKILL.pt-BR.md",
+      "translations": [
+        "en",
+        "pt-br"
+      ],
+      "framework_accuracy_report": "reports/framework-accuracy/building-with-medusa.json",
+      "skill_accuracy_report": "reports/skill-accuracy/building-with-medusa.json",
+      "status": "up-to-date",
+      "evidence_level": "approved-with-evidence",
+      "last_verified_at": "2026-07-08",
+      "validation_commands": [
+        "node scripts/ci-guard.mjs --framework-accuracy",
+        "node scripts/validate-skill-accuracy-registry.mjs"
+      ]
+    }
+  ]
+}

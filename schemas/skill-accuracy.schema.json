@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SkillAccuracyRegistry",
+  "description": "Registry tracking the accuracy, translation state, and validation commands for skills.",
+  "type": "object",
+  "properties": {
+    "skills_accuracy": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "skill_id": {
+            "type": "string"
+          },
+          "framework": {
+            "type": "string"
+          },
+          "target_version": {
+            "type": "string"
+          },
+          "source_skill_path": {
+            "type": "string"
+          },
+          "translated_skill_path": {
+            "type": "string"
+          },
+          "translations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "framework_accuracy_report": {
+            "type": "string"
+          },
+          "skill_accuracy_report": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["up-to-date", "stale", "unverified"]
+          },
+          "evidence_level": {
+            "type": "string",
+            "enum": ["approved-with-evidence", "approved", "low", "medium", "high", "critical"]
+          },
+          "last_verified_at": {
+            "type": "string"
+          },
+          "validation_commands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "skill_id",
+          "framework",
+          "target_version",
+          "source_skill_path",
+          "translated_skill_path",
+          "translations",
+          "framework_accuracy_report",
+          "skill_accuracy_report",
+          "status",
+          "evidence_level",
+          "last_verified_at",
+          "validation_commands"
+        ]
+      }
+    }
+  },
+  "required": [
+    "skills_accuracy"
+  ]
+}

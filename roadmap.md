@@ -24,7 +24,7 @@
 | BB-11         | Repo Hygiene & Ghost Sweep              |       **APROVADO COM EVIDÊNCIAS** | PR #21 mergeado em `main`, isolando governança de fantasmas.                          |
 | BB-12         | Agent Executor Registry                 |       **APROVADO COM EVIDÊNCIAS** | PR #22 mergeado em `main`. Governança de escopo de execução (Jules Policy).                           |
 | BB-13         | Translated Skills Loss Registry         |       **APROVADO COM EVIDÊNCIAS** | Cria inventário governado de perdas. BB-13 não recupera arquivos; a recuperação começará no BB-14.    |
-| BB-14         | Translated Skills Surgical Recovery     | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | PR #24 aberto, `mergeable: true`, validadores passando, pendente aprovação final.                    |
+| BB-14         | Translated Skills Surgical Recovery     | **VALIDADO PARCIALMENTE / PR ABERTO / REQUER CORREÇÃO** | PR #24 aberto; escopo reduzido para canário cirúrgico, mas ainda pendente de correção final em `checkout.pt-br.md` e `mergeable=true`. |
 
 ---
 
@@ -322,7 +322,7 @@ APROVADO COM EVIDÊNCIAS (PR #16)
 - BB-12
 - BB-13
 
-**VALIDADO EM PR ABERTO / AGUARDANDO MERGE:**
+**VALIDADO PARCIALMENTE / PR ABERTO / REQUER CORREÇÃO:**
 
 - BB-14
 
@@ -372,7 +372,7 @@ Issue:
 Remover marcadores de conflito Git de roadmap.md e restaurar a Matriz Executiva como fonte única da verdade.
 
 DOD:
-- roadmap.md sem <<<<<<<, =======, >>>>>>>.
+- roadmap.md sem marcadores de conflito Git.
 - BB-12 e BB-13 registrados como APROVADO COM EVIDÊNCIAS.
 - BB-14 registrado como VALIDADO EM PR ABERTO / AGUARDANDO MERGE.
 ```

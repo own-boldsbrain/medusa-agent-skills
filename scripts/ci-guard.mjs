@@ -67,6 +67,17 @@ function checkCI() {
       process.exit(1);
     }
 
+    const commands = [
+      "node scripts/validate-skill-accuracy-registry.mjs",
+      "node scripts/validate-agent-executor-registry.mjs",
+      "node scripts/validate-translated-skill-loss.mjs"
+    ];
+
+    for (const cmd of commands) {
+      console.log(`Executing: ${cmd}`);
+      execSync(cmd, { stdio: 'inherit' });
+    }
+
     let translationTargets = 0;
     let reports = 0;
     let scripts = 0;

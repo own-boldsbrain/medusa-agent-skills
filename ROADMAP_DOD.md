@@ -75,3 +75,13 @@ Qualquer alteração em arquivos de instrução de habilidade (`SKILL.md` ou `SK
 - **Acurácia do Framework**: É OBRIGATÓRIO gerar (ou atualizar) um relatório correspondente em `reports/framework-accuracy/<nome-da-habilidade>.md` (e `.json`) documentando a auditoria da skill contra a documentação atual do framework.
 - Os *findings* no relatório JSON devem ser classificados como `current`, `stale`, `missing`, `custom` ou `unverified`.
 - O guardião CI (`scripts/ci-guard.mjs --framework-accuracy`) falhará se a skill for alterada sem o respectivo relatório de acurácia em anexo.
+
+## 7. Translation Recovery Policy (BB-13+)
+
+- Nenhum arquivo traduzido perdido pode ser recuperado diretamente na mesma PR da investigação de perda.
+- Toda recuperação deve ocorrer em PR próprio, contendo:
+  - Source EN atual.
+  - Target PT-BR candidato.
+  - Diff estrutural.
+  - Validação de headings, code fences e links internos.
+  - Classificação de risco.

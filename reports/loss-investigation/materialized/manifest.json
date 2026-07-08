@@ -1,0 +1,238 @@
+{
+  "generated_at": "2026-07-08T00:53:02.446Z",
+  "mode": "materialize_only",
+  "output_root": "reports/loss-investigation/materialized",
+  "candidates": [
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/architecture/admin-integration.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__architecture__admin-integration.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/architecture/module-isolation.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__architecture__module-isolation.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/architecture/module-workflow-route.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__architecture__module-workflow-route.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/architecture/workflow-orchestration.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__architecture__workflow-orchestration.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-api-route.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__checkpoints__checkpoint-api-route.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-module-links.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__checkpoints__checkpoint-module-links.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-module.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__checkpoints__checkpoint-module.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-querying.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__checkpoints__checkpoint-querying.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-ui-route.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__checkpoints__checkpoint-ui-route.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-widget.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__checkpoints__checkpoint-widget.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-workflow-hooks.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__checkpoints__checkpoint-workflow-hooks.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/checkpoints/checkpoint-workflow.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__checkpoints__checkpoint-workflow.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/lessons/lesson-1-custom-features.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__lessons__lesson-1-custom-features.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/lessons/lesson-2-extend-medusa.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__lessons__lesson-2-extend-medusa.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/lessons/lesson-3-admin-dashboard.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__lessons__lesson-3-admin-dashboard.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/troubleshooting/common-errors.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__troubleshooting__common-errors.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/learn-medusa/skills/learning-medusa/troubleshooting/verification-guide.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__learn-medusa__skills__learning-medusa__troubleshooting__verification-guide.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-storefronts/references/frontend-integration.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-storefronts__references__frontend-integration.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/api-routes.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__api-routes.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/authentication.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__authentication.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/custom-modules.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__custom-modules.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/error-handling.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__error-handling.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/frontend-integration.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__frontend-integration.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/module-links.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__module-links.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/querying-data.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__querying-data.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/scheduled-jobs.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__scheduled-jobs.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/subscribers-and-events.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__subscribers-and-events.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/troubleshooting.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__troubleshooting.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/workflow-hooks.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__workflow-hooks.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/medusa-dev/skills/building-with-medusa/reference/workflows.pt-BR.md",
+      "candidate_type": "history_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/history/235309d15b6d376ebc7c56adabf1b48f8c55f73d__plugins__medusa-dev__skills__building-with-medusa__reference__workflows.pt-BR.md",
+      "reason": null
+    },
+    {
+      "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.pt-br.md.bak",
+      "candidate_type": "backup_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/backups/plugins__ecommerce-storefront__skills__storefront-best-practices__reference__layouts__account.pt-br.md.bak",
+      "reason": null
+    },
+    {
+      "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/cart.pt-BR.md.stub.bak",
+      "candidate_type": "backup_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/backups/plugins__ecommerce-storefront__skills__storefront-best-practices__reference__layouts__cart.pt-BR.md.stub.bak",
+      "reason": null
+    },
+    {
+      "path": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.pt-br.md.bak",
+      "candidate_type": "backup_recovery",
+      "status": "materialized",
+      "materialized_path": "reports/loss-investigation/materialized/backups/plugins__ecommerce-storefront__skills__storefront-best-practices__reference__layouts__checkout.pt-br.md.bak",
+      "reason": null
+    }
+  ]
+}

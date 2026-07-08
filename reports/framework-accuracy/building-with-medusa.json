@@ -1,0 +1,23 @@
+{
+  "skill": "building-with-medusa",
+  "generated_at": "2026-07-08T00:00:00Z",
+  "framework_target": "Medusa v2.16",
+  "passed": true,
+  "findings": [
+    {
+      "topic": "Modules",
+      "status": "current",
+      "details": "Medusa define módulo como pacote reutilizável ligado a um domínio ou integração; módulos customizados vivem em src/modules, definem data models, service, module definition e migrations."
+    },
+    {
+      "topic": "Workflows",
+      "status": "current",
+      "details": "Medusa descreve workflow como série de queries/actions chamadas steps, com execução durável, rollback por step, rastreabilidade de progresso e execução a partir de API routes, subscribers e scheduled jobs."
+    },
+    {
+      "topic": "API Routes",
+      "status": "current",
+      "details": "Medusa define API route como endpoint REST para storefronts, admin dashboard e sistemas terceiros; rotas customizadas ficam em src/api, com arquivo obrigatório route.ts ou route.js."
+    }
+  ]
+}

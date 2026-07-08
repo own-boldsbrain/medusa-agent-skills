@@ -158,6 +158,8 @@ function checkCI() {
     } else {
       console.log(`✅ No SKILL files modified. Framework Accuracy check passed.`);
     }
+  }
+  
   if (currentBranch.includes('bb-14')) {
     try {
       console.log("Running translation canary validation...");

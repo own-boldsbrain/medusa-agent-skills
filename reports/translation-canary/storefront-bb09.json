@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "reports": [
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/country-selector.pt-BR.md",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/product-card.pt-br.md",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/navbar.pt-br.md",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/popups.pt-br.md",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "file": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/components/footer.pt-BR.md",
+      "passed": true,
+      "errors": []
+    }
+  ]
+}

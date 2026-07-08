@@ -1,290 +1,153 @@
-# Componente Seletor de País
+# Componente Country Selector
 
 ## Conteúdo
 
-- [Visão Geral](#visão-geral)
+- [Visão Geral](#visao-geral)
 - [Quando Implementar](#quando-implementar)
-- [Padrões de UI](#ui-patterns)
-- Gerenciamento de Estado
-- [Integração de Back-end](#integração-de-back-end)
-- [Detecção e Padrões Padrão](#detecção-e-padrões-padrão)
-- [Considerações Móveis](#consideracoes-moveis)
-- [Checklist](#checklist)
+- [Padrões de UI](#padroes-de-ui)
+- [Gerenciamento de Estado](#gerenciamento-de-estado)
+- [Integração com Backend](#integracao-com-backend)
+- [Detecção e Padrões](#deteccao-e-padroes)
+- [Considerações para Mobile](#consideracoes-para-mobile)
+- [Lista de Verificação](#lista-de-verificacao)
 
-## Visão geral
+## Visão Geral
 
-Selecionador de país permite que os clientes escolham seu país/região, o que determina a moeda, o preço, os produtos disponíveis, as opções de envio, os métodos de pagamento e o conteúdo localizado.
+O seletor de país (country selector) permite que os clientes escolham seu país/região, o que determina a moeda, preços, produtos disponíveis, opções de frete, métodos de pagamento e conteúdo localizado.
 
-### Funções-chave do Ecommerce
-
-### Funções-chave do Ecommerce
-
-#### 1. **Gerenciamento de Produtos***Adicionar produtos
-
-- Editar produtos
-
-- Excluir produtos
-- Visualizar produtos
-
-#### 2. **Gerenciamento de Pedidos***Criar pedidos
-
-- Editar pedidos
-
-- Excluir pedidos
-- Visualizar pedidos
-- Status de pedidos
-
-#### 3. **Gerenciamento de Clientes***Criar clientes
-
-- Editar clientes
-
-- Excluir clientes
-- Visualizar clientes
-- Histórico de compras
-
-#### 4. **Gerenciamento de Pagamentos***Formas de pagamento
-
-- Pagamentos parciais
-
-- Pagamentos totais
-- Cancelamentos de pagamentos
-
-#### 5. **Gerenciamento de Relatórios***Relatórios de vendas
-
-- Relatórios de lucro
-
-- Relatórios de estoque
-- Relatórios de clientes
-
-#### 6. **Integração com Terceiros***Integração com lojas virtuais
-
-- Integração com sistemas de pagamento
-
-- Integração com provedores de entrega
-
-#### 7. **Segurança e Privacidade***Autenticação de usuários
-
-- Autorização de acesso
-
-- Proteção de dados
-- Privacidade de clientes
-
-#### 8. **Desempenho e Manutenção***Monitoramento de desempenho
-
-- Manutenção de banco de dados
-
-- Manutenção de sistema
-- Atualizações de software
+### Principais Funções no E-commerce
 
 - Exibir preços na moeda correta
-- Mostrar disponibilidade de produtos específica de país
+- Mostrar a disponibilidade de produtos específica do país
 - Aplicar promoções e descontos específicos da região
-- Calcula custos de envio precisos e tempos de entrega
-- Habilite métodos de pagamento apropriados
+- Calcular custos de frete e prazos de entrega precisos
+- Habilitar métodos de pagamento apropriados
 - Exibir conteúdo e idioma localizados
 
 ### Objetivo
 
-**Por que a seleção do país/região é importante:**
+**Por que a seleção de país/região importa:**
 
-- Preços variam por região (moeda, impostos, taxas de importação)
-- A disponibilidade do produto varia de mercado para mercado.
-- Os métodos e custos de envio são específicos de cada região.
-- Os requisitos legais variam (privacidade, proteção ao consumidor)
-- Métodos de pagamento variam por país
+- Os preços variam por região (moeda, impostos, taxas de importação)
+- A disponibilidade do produto difere por mercado
+- Os métodos e custos de envio são específicos da região
+- Os requisitos legais variam (privacidade, defesa do consumidor)
+- Os métodos de pagamento diferem por país
 - Melhora a experiência do usuário com conteúdo relevante
 
 ## Quando Implementar
 
-**Implementar o seletor de país quando:**
+**Implemente o seletor de país quando:**
 
-- O backend suporta vários países ou regiões.
-- Venda para vários países ou regiões
-- Preços variam de acordo com a localização (moeda, impostos)
+- O backend suporta múltiplos países ou regiões
+- Vende para múltiplos países ou regiões
+- Os preços variam por localização (moeda, impostos)
 - Envio internacional com taxas diferentes
-- Catálogos de produtos específicos de região
-- Suporte a múltiplas moedas necessário
-- Os requisitos legais ou regulatórios variam de região para região.
+- Catálogos de produtos específicos da região
+- Necessidade de suporte a múltiplas moedas
+- Requisitos legais ou regulatórios variam por região
 
 **Pule se:**
 
-- Fundo de cena não suporta múltiplos países ou regiões
-- Todos os preços em uma única moeda
-- Sem diferenças regionais no catálogo ou no preço
+- O backend não suporta múltiplos países ou regiões
+- Todos os preços estão em uma única moeda
+- Não há diferenças regionais no catálogo ou nos preços
 
-## Padrões de Interface de Usuário
+## Padrões de UI
 
-### Opções de Localização
+### Opções de Posicionamento
 
-**Posicionamento do rodapé (moderno e minimal):**
+**Posicionamento no rodapé (moderno e minimalista):**
 
-- Bottom of page in footer
+- Na parte inferior da página, no rodapé
 - Menos proeminente, mas sempre acessível
 - Ícone (bandeira ou globo) + código/nome do país
 
-**Posicionamento da cabeçalha (mais comum):**
+**Posicionamento no cabeçalho (mais comum):**
 
-- Parte superior direita da barra de navegação
+- Canto superior direito da barra de navegação
 - Ícone (bandeira ou globo) + código/nome do país
-- Clique abre selecionador de dropdown ou modal
+- O clique abre um dropdown ou modal seletor
 
-**Modal/popup no primeiro acesso:**
+**Modal/popup na primeira visita:**
 
-- Detectar localização e sugerir país
-- Permita ao usuário confirmar ou alterar
+- Detecta a localização e sugere o país
+- Permite que o usuário confirme ou altere
+- Armazena a preferência para visitas futuras
 
-**Confirmar ou alterar**Para confirmar ou alterar, siga os passos abaixo:
-
-1. Verifique se você deseja confirmar ou alterar.
-2. Selecione a opção desejada no menu.
-3. Clique em "Confirmar" ou "Alterar" para prosseguir.**Exemplo de código**
-
-```python
-def confirmar_alterar():
-    # Código para confirmar ou alterar
-    pass
-```
-
-[Veja mais](https://exemplo.com/confirmar-alterar) sobre como confirmar ou alterar.
-
-- Store preference for future visits
-
-### Padrões de Design de Seletores
-
-**Introdução**================
-
-Os padrões de design de seletores são uma coleção de estratégias para selecionar elementos HTML de maneira eficiente e escalável. Eles são fundamentais para a construção de interfaces de usuário responsivas e manuteníveis.**Tipos de Padrões de Design de Seletores**
-- ---------------------------------------
-
-### 1. Padrão de Seleção por Nome
-
-O padrão de seleção por nome é uma estratégia simples e eficaz para selecionar elementos HTML. Ele consiste em atribuir um nome único a cada elemento e usar esse nome para selecioná-lo.
-
-```css
-/*Exemplo de seleção por nome*/
-.elemento-nome {
-  background-color: #f2f2f2;
-}
-```
-
-### 2. Padrão de Seleção por Classe
-
-O padrão de seleção por classe é uma estratégia comum para selecionar elementos HTML. Ele consiste em atribuir uma classe a cada elemento e usar essa classe para selecioná-lo.
-
-```css
-/*Exemplo de seleção por classe*/
-.elemento-classe {
-  background-color: #f2f2f2;
-}
-```
-
-### 3. Padrão de Seleção por ID
-
-O padrão de seleção por ID é uma estratégia eficaz para selecionar elementos HTML. Ele consiste em atribuir um ID único a cada elemento e usar esse ID para selecioná-lo.
-
-```css
-/*Exemplo de seleção por ID*/
-#elemento-id {
-  background-color: #f2f2f2;
-}
-```
-
-### 4. Padrão de Seleção por Atributo
-
-O padrão de seleção por atributo é uma estratégia avançada para selecionar elementos HTML. Ele consiste em usar atributos de elementos para selecioná-los.
-
-```css
-/*Exemplo de seleção por atributo*/
-[atributo="valor"] {
-  background-color: #f2f2f2;
-}
-```
-
-### 5. Padrão de Seleção por Pseudoelemento
-
-O padrão de seleção por pseudoelemento é uma estratégia avançada para selecionar elementos HTML. Ele consiste em usar pseudoelementos para selecionar partes específicas de elementos.
-
-```css
-/*Exemplo de seleção por pseudoelemento*/
-::after {
-  content: "Texto após o elemento";
-}
-```
-
-**Conclusão**
-=============
-
-Os padrões de design de seletores são fundamentais para a construção de interfaces de usuário responsivas e manuteníveis. Ao escolher o padrão de seleção correto, você pode criar código mais eficiente e escalável. Lembre-se de sempre considerar a legibilidade e a manutenibilidade do seu código ao escolher um padrão de seleção.
+### Padrões de Design do Seletor
 
 **Padrão 1: Dropdown (Recomendado)**
 
-Small, compact selector in header. Shows current country flag/name, click to open dropdown with country list.
+Seletor pequeno e compacto no cabeçalho. Mostra a bandeira/nome do país atual, clique para abrir o dropdown com a lista de países.
 
 **Prós:** Não interrompe a navegação, sempre acessível, padrão familiar.
 
-**Pattern 2: Modal on First Visit**
+**Padrão 2: Modal na Primeira Visita**
 
-Tela cheia ou modal centralizado na primeira visita. "Selecione seu país para ver preços e frete precisos."
+Modal em tela cheia ou centralizado na primeira visita. "Selecione seu país para ver preços e fretes precisos."
 
-**Prós:**Força a seleção inicial, garante preços precisos desde o início.**Contras:** Pode ser intrusivo, atrasa a navegação.
+**Prós:** Força a seleção inicial, garante preços precisos desde o início.
+**Contras:** Pode ser intrusivo, atrasa a navegação.
 
-**Compromisso:** Modal garante a seleção, mas adiciona atrito. Dropdown é menos intrusivo, mas os usuários podem não perceber.
+**Tradeoff:** O modal garante a seleção, mas adiciona atrito. O dropdown é menos intrusivo, mas os usuários podem não notá-lo.
 
 **Padrão 3: Banner Inline**
 
-Banner fixo no topo: "Enviando para os Estados Unidos? Alterar" com link para o seletor.
+Banner fixo no topo: "Enviando para o Brasil? Alterar" com link para o seletor.
 
-**Prós:**Lembrete não invasivo, não bloqueia o conteúdo.**Contras:** Ocupa espaço vertical, fácil de ignorar.
+**Prós:** Lembrete não intrusivo, não bloqueia o conteúdo.
+**Contras:** Ocupa espaço vertical, fácil de ignorar.
 
-### Lista de Exibição de Países
+### Exibição da Lista de Países
 
-**Search + list:**
+**Busca + lista:**
 
-- Campo de pesquisa no topo
-- Lista alfabética de países abaixo
-- Países populares no topo (EUA, Reino Unido, Canadá, etc.)
-- Ícones de bandeiras para reconhecimento visual
+- Input de busca no topo
+- Lista de países em ordem alfabética abaixo
+- Países populares no topo (EUA, Reino Unido, Canadá, Brasil, etc.)
+- Ícones de bandeira para reconhecimento visual
 
 **Agrupado por região:**
 
 - América do Norte, Europa, Ásia, etc.
-- Seções recolhíveis
-- Útil para grandes listas (100+ países)
+- Seções colapsáveis
+- Útil para listas grandes (100+ países)
 
 **Formato:**
 
 ```
-🇺🇸 United States (USD)
-🇬🇧 United Kingdom (GBP)
-🇨🇦 Canada (CAD)
+🇺🇸 Estados Unidos (USD)
+🇬🇧 Reino Unido (GBP)
+🇨🇦 Canadá (CAD)
 ───────────────────
-🇩🇪 Germany (EUR)
-🇫🇷 France (EUR)
+🇩🇪 Alemanha (EUR)
+🇫🇷 França (EUR)
 ```
 
-Mostrar bandeira, nome do país e código da moeda para clareza.
+Mostre a bandeira, o nome do país e o código da moeda para maior clareza.
 
 ## Gerenciamento de Estado
 
-### Armazenando Seleção de País
+### Armazenando a Seleção de País
 
-**Armazenamento do lado do cliente (recomendado):**
+**Armazenamento no lado do cliente (recomendado):**
 
-- localStorage ou cookies
+- `localStorage` ou cookies
 - Persiste entre sessões
 - Chave: `region_id` ou `country_code`
 
-**Por que armazenamento local:**
+**Por que usar armazenamento local:**
 
-- Acesso rápido sem chamada de API
-- Disponível imediatamente ao carregar a página
-- Nenhuma ida e volta ao servidor necessária
+- Acesso rápido sem chamada à API
+- Disponível imediatamente no carregamento da página
+- Nenhuma viagem de ida e volta ao servidor necessária
 
-### Provedor de Contexto (Context Provider Pattern)
+### Padrão Provider de Contexto
 
-**Recomendado: Crie contexto para dados de região/país.**
+**Recomendado: Crie um contexto para dados de região/país.**
 
-Fornece acesso rápido em toda o aplicativo a:
+Fornece acesso rápido em toda a aplicação para:
 
 - País selecionado
 - Região selecionada (se aplicável)
@@ -294,12 +157,12 @@ Fornece acesso rápido em toda o aplicativo a:
 
 **Benefícios:**
 
-- Lógica centralizada de país/região
-- Acesso fácil de qualquer componente
-- Fonte única de verdade
-- Consulta simplificada de carrinho e produtos
+- Lógica de país/região centralizada
+- Fácil acesso a partir de qualquer componente
+- Única fonte de verdade
+- Consultas de carrinho e produto simplificadas
 
-**Example structure:**
+**Estrutura de exemplo:**
 
 ```typescript
 interface RegionContext {
@@ -312,15 +175,15 @@ interface RegionContext {
 
 ### Quando Aplicar a Seleção
 
-**Apply country/region to:**
+**Aplique o país/região para:**
 
-- Exibição de preço do produto (converter moeda, aplicar preços regionais)
-- Criação do carrinho (defina a região para totais precisos)
-- Consultas de produto (recuperar preços precisos)
+- Exibição de preços de produtos (converter moeda, aplicar precificação regional)
+- Criação do carrinho (definir região para totais precisos)
+- Consultas de produtos (recuperar preços precisos)
 - Fluxo de checkout (métodos de envio, opções de pagamento)
-- Exibição de conteúdo (idioma, medições)
+- Exibição de conteúdo (idioma, medidas)
 
-## Integração de Backend
+## Integração com Backend
 
 ### Requisitos Gerais de Backend
 
@@ -328,131 +191,131 @@ interface RegionContext {
 
 - Lista de países/regiões disponíveis
 - Mapeamento de países para regiões (se estiver usando estrutura regional)
-- Preços por região ou país
-- Disponibilidade de produtos por região
+- Precificação por região ou país
+- Disponibilidade de produto por região
 - Métodos de envio por região
 - Métodos de pagamento suportados por região
 
-**Considerações sobre API:**
+**Considerações de API:**
 
-- Buscar lista de países/regiões ao carregar o aplicativo
-- Passe o país/região selecionado para consultas de produtos
-- Incluir região na criação do carrinho
-- Validar seleção de país no backend
+- Buscar a lista de países/regiões no carregamento do app
+- Passar o país/região selecionado para as consultas de produto
+- Incluir a região na criação do carrinho
+- Validar a seleção do país no backend
 
-### Integração do Backend Medusa
+### Integração com Backend Medusa
 
-**Para usuários do Medusa, as regiões são fundamentais para a definição precisa de preços.**
+**Para usuários do Medusa, as regiões são críticas para precificação precisa.**
 
-Medusa utiliza regiões (não países individuais) para precificação. Uma região pode conter múltiplos países.
+O Medusa usa regiões (não países individuais) para precificação. Uma região pode conter vários países.
 
 **Conceitos-chave:**
 
-- **Região**: Grupo de países com preços compartilhados (ex., "região Europa")
+- **Região**: Grupo de países com preços compartilhados (ex: região "Europa")
 - **País**: País individual dentro de uma região
-- **Moeda**: Cada região tem uma moeda
+- **Moeda**: Cada região possui uma moeda
 
-**Mapeamento de país para região:**
+**Mapeando país para região:**
 
-1. Cliente seleciona o país (ex.: "Alemanha")
-2. Encontre qual região contém aquele país (por exemplo, região "Europa")
-3. Armazenar ID da região da loja para operações de carrinho e produto
-4. Use região para todas as consultas de preços
+1. Cliente seleciona o país (ex: "Alemanha")
+2. Encontre qual região contém esse país (ex: região "Europa")
+3. Armazene o ID da região para operações de carrinho e produto
+4. Use a região para todas as consultas de preços
 
-**Requerido para:**
+**Necessário para:**
 
-- Criando carrinhos: É necessário passar o ID da região
-- Retrieving products: Pass region to get accurate prices
-- Disponibilidade de produtos: Os produtos podem ser específicos para determinadas regiões
+- Criar carrinhos: Deve passar o ID da região
+- Recuperar produtos: Passe a região para obter preços precisos
+- Disponibilidade do produto: Produtos podem ser específicos da região
 
 **Padrão de implementação:**
-Criar um contexto que armazene tanto o país quanto a região. Quando o país mudar, procurar a região correspondente e atualizar ambos.
+Crie um contexto que armazene tanto o país quanto a região. Quando o país mudar, procure a região correspondente e atualize ambos.
 
-**Para implementação detalhada da região Medusa, veja:**
+**Para a implementação detalhada de regiões do Medusa, veja:**
 
-- Documentação das regiões da vitrine do Medusa: <https://docs.medusajs.com/resources/storefront-development/regions/context>
-- Pontos de extremidade (endpoints) das regiões do Medusa JS SDK
-- Consulte o servidor Medusa MCP para obter detalhes da API em tempo real.
+- Documentação de regiões do Medusa storefront: <https://docs.medusajs.com/resources/storefront-development/regions/context>
+- Endpoints de regiões no Medusa JS SDK
+- Consulte o servidor MCP do Medusa para detalhes de API em tempo real
 
-**Outros backends:**  
-Verifique a documentação do backend de ecommerce para os padrões de manipulação de país/região.
+**Outros backends:**
+Verifique a documentação do backend de e-commerce sobre os padrões de manuseio de país/região.
 
-## Detecção e Padrões Padrão
+## Detecção e Padrões
 
 ### Detecção Automática
 
 **Geolocalização baseada em IP (recomendado):**
-Detecta o país do usuário pelo endereço IP. Use como padrão, mas permita que o usuário altere.
+Detecte o país do usuário a partir do endereço IP. Use como padrão, mas permita que o usuário altere.
 
 **Implementação:**
 
-- Use a API ou serviço de geolocalização (MaxMind, ipapi.co, CloudFlare)
-- Detecção no servidor (mais precisa)
-- Definir como padrão, mostrar confirmação: "Enviar para Estados Unidos?"
+- Use API ou serviço de geolocalização (MaxMind, ipapi.co, CloudFlare)
+- Detecção no lado do servidor (mais precisa)
+- Defina como padrão, mostre a confirmação: "Enviando para o Brasil?"
 
 **Benefícios:** Reduz o atrito, a maioria dos usuários mantém o país detectado.
 
-**Compromisso:** Não é 100% preciso (VPNs, proxies). Sempre permita a substituição manual.
+**Tradeoff:** Não é 100% preciso (VPNs, proxies). Sempre permita a substituição manual.
 
-### Fallback Strategy
+### Estratégia de Fallback
 
-**If detection fails or unavailable:**
+**Se a detecção falhar ou estiver indisponível:**
 
-1. Check localStorage for previous selection
-2. Use browser language as hint (`navigator.language`)
-3. Default to primary market (e.g., US for US-based store)
-4. Solicitar ao usuário que selecione na primeira interação (carrinho, checkout)
+1. Verifique o `localStorage` para a seleção anterior
+2. Use o idioma do navegador como dica (`navigator.language`)
+3. Adote o mercado principal como padrão (ex: EUA para loja sediada nos EUA)
+4. Peça ao usuário para selecionar na primeira interação (carrinho, checkout)
 
-**Never block browsing if country unknown.**
-Allow browsing with default pricing, prompt selection before checkout.
+**Nunca bloqueie a navegação se o país for desconhecido.**
+Permita a navegação com preços padrão, solicite a seleção antes do checkout.
 
-## Considerações Móveis
+## Considerações para Mobile
 
-**Colocação do seletor:**  
-Menu hambúrguer móvel ou na parte inferior da página. Parte superior direita no cabeçalho móvel, se houver espaço disponível.
+**Posicionamento do seletor:**
+No menu hambúrguer para mobile ou na parte inferior da página. Canto superior direito no cabeçalho mobile se o espaço permitir.
 
-**Modal selector:**
-Full-screen modal on mobile for country selection. Large touch targets (48px), search input at top, easy scrolling.
+**Modal seletor:**
+Modal em tela cheia no mobile para seleção de país. Alvos de toque grandes (48px), input de busca no topo, rolagem fácil.
 
-**Lembrete fixo:**  
-Pequeno banner: "Enviando para os EUA? Alterar" com toque para abrir o seletor.
+**Lembrete fixo:**
+Pequeno banner: "Enviando para o Brasil? Alterar" com toque para abrir o seletor.
 
-**Prompt de detecção:**
-Folha inferior: "Detectamos que você está na Alemanha. Isso está correto?" com botões Confirmar/Alterar.
+**Aviso de detecção:**
+Bottom sheet: "Detectamos que você está no Brasil. Está correto?" com botões Confirmar/Alterar.
 
 ## Lista de Verificação
 
 **Recursos essenciais:**
 
-- [ ] Country selector visible (header, footer, or first-visit modal)
-- [ ] País atual claramente exibido (bandeira, nome, moeda)
+- [ ] Seletor de país visível (cabeçalho, rodapé ou modal de primeira visita)
+- [ ] País atual exibido claramente (bandeira, nome, moeda)
 - [ ] Dropdown ou modal com lista de países
-- [ ] Search functionality for long country lists
+- [ ] Funcionalidade de busca para longas listas de países
 - [ ] Países populares no topo da lista
-- [ ] Flag icons for visual recognition
-- [ ] Mostrar código da moeda por país
-- [ ] persistência do localStorage (salvar seleção)
-- [ ] Context provider for region/country data
-- [ ] Auto-detection based on IP (optional)
+- [ ] Ícones de bandeira para reconhecimento visual
+- [ ] Mostrar o código da moeda por país
+- [ ] Persistência no `localStorage` (salvar seleção)
+- [ ] Provider de contexto para dados de região/país
+- [ ] Detecção automática baseada em IP (opcional)
 - [ ] Substituição manual sempre disponível
-- [ ] Apply to product prices (currency, regional pricing)
+- [ ] Aplicar aos preços dos produtos (moeda, precificação regional)
 - [ ] Aplicar à criação do carrinho (definir região)
-- [ ] Aplicar ao checkout (envio, métodos de pagamento)
-- [ ] Fallback if detection fails
-- [ ] Mobile: Modal de tela cheia ou folha inferior
-- [ ] Mobile: Grandes alvos de toque (48px)
-- [ ] Backend integration (fetch regions, map countries)
-- [ ] Para Medusa: Contexto de região com mapeamento de país-para-região
-- [ ] Para Medusa: Passe a região para as consultas de carrinho e produto
-- [ ] Rótulo ARIA no botão seletor
-- [ ] Keyboard accessible (Tab, Enter, arrows)
-- [ ] Screen reader announces country changes
+- [ ] Aplicar ao checkout (frete, métodos de pagamento)
+- [ ] Fallback caso a detecção falhe
+- [ ] Mobile: Modal em tela cheia ou bottom sheet
+- [ ] Mobile: Alvos de toque grandes (48px)
+- [ ] Integração com backend (buscar regiões, mapear países)
+- [ ] Para Medusa: Contexto da região com mapeamento país-para-região
+- [ ] Para Medusa: Passar a região nas consultas de carrinho e produto
+- [ ] ARIA label no botão do seletor
+- [ ] Acessível via teclado (Tab, Enter, setas)
+- [ ] Leitor de tela anuncia as mudanças de país
 
-**Optional enhancements:**
+**Melhorias opcionais:**
 
-- [ ] Currency conversion display (show original + converted)
-- [ ] Seletor de idioma vinculado ao país
-- [ ] Estimativa de envio baseada no país
-- [ ] Exibição de estimativa de imposto
+- [ ] Exibição de conversão de moeda (mostrar original + convertido)
+- [ ] Seletor de idioma atrelado ao país
+- [ ] Estimativa de envio com base no país
+- [ ] Exibição de estimativa de impostos
 - [ ] Conteúdo regional (imagens, mensagens)
-- [ ] "Não enviamos para o seu país?" alternativa
+- [ ] Alternativa "Não envia para o seu país?"

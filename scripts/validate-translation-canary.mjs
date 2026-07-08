@@ -272,8 +272,8 @@ function runValidation() {
     mdReport += `\n`;
   }
 
-  fs.writeFileSync(path.join(reportsDir, "storefront-bb08.md"), mdReport);
-  fs.writeFileSync(path.join(reportsDir, "storefront-bb08.json"), JSON.stringify({ passed: globalPassed, reports }, null, 2));
+  fs.writeFileSync(path.join(process.cwd(), reportOutput), mdReport);
+  fs.writeFileSync(path.join(process.cwd(), jsonOutput), JSON.stringify({ passed: globalPassed, reports }, null, 2));
 
   console.log(mdReport);
   if (!globalPassed) {

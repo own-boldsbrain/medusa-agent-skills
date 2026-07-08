@@ -1,86 +1,124 @@
-# Component do Rodapé
+# Componente Footer
 
 ## Conteúdo
 
-- [Component do Rodapé](#componente-do-rodapé)
-  - [Conteúdo](#conteúdo)
-  - [Visão Geral](#visão-geral)
-    - [Requisitos Chave](#requisitos-chave)
-  - [Elementos Essenciais do Rodapé](#elementos-essenciais-do-rodapé)
-    - [Conteúdo Obrigatório](#conteúdo-obrigatório)
-    - [Layout em Colunas (Desktop)](#layout-em-colunas-desktop)
-  - [Links de Categoria Dinâmicos (Específico para E-commerce)](#links-de-categoria-dinâmicos-específico-para-ecommerce)
+- [Componente Footer](#componente-footer)
+  - [Conteúdo](#conteudo)
+  - [Visão Geral](#visao-geral)
+    - [Principais Requisitos](#principais-requisitos)
+  - [Elementos Essenciais do Rodapé](#elementos-essenciais-do-rodape)
+    - [Conteúdo Obrigatório](#conteudo-obrigatorio)
+    - [Layout em Múltiplas Colunas (Desktop)](#layout-em-multiplas-colunas-desktop)
+  - [Links de Categoria Dinâmicos (Específico para E-commerce)](#links-de-categoria-dinamicos-especifico-para-e-commerce)
   - [Inscrição na Newsletter](#inscricao-na-newsletter)
-  - [Ícones de Pagamento e Confiança](#icones-de-pagamento-e-confianca)
+  - [Selos de Pagamento e Confiança](#selos-de-pagamento-e-confianca)
   - [Rodapé para Mobile](#rodape-para-mobile)
   - [Lista de Verificação](#lista-de-verificacao)
 
 ## Visão Geral
 
-O rodapé fornece navegação complementar, informações da empresa e sinais de confiança. Aparece em todas as páginas.
+O rodapé (footer) fornece navegação suplementar, informações da empresa e sinais de confiança. Aparece em todas as páginas.
 
-**Conhecimentos assumidos:**Os agentes de IA sabem como criar layouts em colunas e listas de navegação. Este guia se concentra nos padrões de rodapé para e-commerce.
+**Conhecimento assumido**: Agentes de IA sabem como construir layouts de múltiplas colunas e listas de navegação. Este guia se concentra em padrões de rodapé para e-commerce.
 
-### Requisitos Chave
+### Principais Requisitos
 
 - Links de navegação (categorias, páginas)
-- Recuperação dinâmica de categorias do backend
+- Busca dinâmica de categorias no backend
 - Links legais (Privacidade, Termos)
 - Inscrição na newsletter
-- Ícones de métodos de pagamento
-- Links de mídia social
-- Responsivo (colunas em desktop, coluna única em mobile)
+- Selos de métodos de pagamento
+- Links para redes sociais
+- Responsivo (múltiplas colunas no desktop, coluna única no mobile)
 
 ## Elementos Essenciais do Rodapé
 
-### Conteúdo Obrigatório**Obrigatório:**- Links de navegação (categorias do backend)
+### Conteúdo Obrigatório
 
+**Obrigatório:**
+
+- Links de navegação (categorias vindas do backend)
 - Informações de contato (e-mail, telefone)
-- Links legais (Política de Privacidade, Termos de Uso)
-- Aviso de direitos autorais com o ano atual**Fortemente recomendado:**- Formulário de inscrição na newsletter
-- Ícones de métodos de pagamento
-- Links de mídia social
+- Links legais (Política de Privacidade, Termos de Serviço)
+- Aviso de direitos autorais (copyright) com o ano atual
+
+**Fortemente recomendado:**
+
+- Formulário de inscrição na newsletter
+- Selos de métodos de pagamento
+- Links de redes sociais
 - Sinais de confiança
 
-### Layout em Colunas (Desktop)**Padrão: 4-5 colunas**- Coluna 1: Loja/Categorias (dinâmica do backend)
+### Layout em Múltiplas Colunas (Desktop)
 
-- Coluna 2: Atendimento ao Cliente (Contato, FAQ, Envio)
+**Padrão standard: 4-5 colunas**
+
+- Coluna 1: Loja/Categorias (dinâmico do backend)
+- Coluna 2: Atendimento ao Cliente (Contato, FAQ, Frete)
 - Coluna 3: Empresa (Sobre, Carreiras)
 - Coluna 4: Inscrição na newsletter
-- Inferior: Links legais, ícones de pagamento, direitos autorais
+- Fundo: Links legais, selos de pagamento, copyright
 
-## Links de Categoria Dinâmicos (Específico para E-commerce)**CRÍTICO: Recupere categorias do backend dinamicamente**- nunca codifique. Recupere da API do backend de e-commerce (para Medusa: `sdk.store.category.list()`).**Benefícios:**- Mantém-se sincronizado com a navegação principal
+## Links de Categoria Dinâmicos (Específico para E-commerce)
 
+**CRÍTICO: Busque as categorias dinamicamente do backend** - nunca faça hardcode. Busque na API do backend de e-commerce (para o Medusa: `sdk.store.category.list()`).
+
+**Benefícios:**
+
+- Permanece em sincronia com a navegação principal
 - Categorias adicionadas/removidas automaticamente
-- Sem atualizações manuais no rodapé**Diretrizes:**- Mostrar apenas as categorias de nível superior (máximo 5-8)
-- Correspondência das etiquetas com a navegação principal
-- Cache dos dados de categoria (raramente muda)
+- Sem necessidade de atualizações manuais no rodapé
 
-## Inscrição na Newsletter**Elementos essenciais:**- Campo de e-mail + botão ("Assinar")
+**Diretrizes:**
 
-- Proposta de valor (CRÍTICO): Declare o benefício claramente ("Receba 10% de desconto no seu primeiro pedido", "Ofertas exclusivas + acesso antecipado"). Não apenas diga "Inscreva-se na newsletter".
-- Nota sobre privacidade: "Respeitamos sua privacidade" + link para a política de privacidade**Layout:**Input + botão em linha (desktop), empilhados (mobile). Full width no mobile.
+- Mostrar apenas categorias de nível superior (máximo de 5-8)
+- Corresponder aos rótulos da navegação principal
+- Fazer cache dos dados da categoria (raramente muda)
 
-## Ícones de Pagamento e Confiança**Ícones de métodos de pagamento:**Exibir métodos de pagamento aceitos (Visa, Mastercard, PayPal, Apple Pay, Google Pay). Ícones de 40-50px, linha horizontal, inferior do rodapé.**Ícones de confiança (opcional):**Máximo 3-4 certificações legítimas (SSL, BBB, garantia de reembolso). Use apenas ícones reais com links de verificação
+## Inscrição na Newsletter
 
-## Rodapé para Mobile**Coluna única, empilhada:**Logo → Navegação → Newsletter → Social → Legal/direitos autorais.**Seções dobráveis (opcional):**Padrão acordeon para a navegação para reduzir a altura. Mantenha o newsletter/social sempre visível.**Para toque:**Links de 44px mínimo, espaçamento de 8-12px, texto de 14-16px, altura do campo de newsletter de 48px
+**Elementos essenciais:**
 
-## Lista de Verificação**Recursos essenciais:**
+- Input de e-mail + botão de envio ("Inscrever-se")
+- **Proposta de valor (CRÍTICO)**: Declare um benefício claro ("Ganhe 10% de desconto no seu primeiro pedido", "Ofertas exclusivas + acesso antecipado"). Não diga apenas "Inscreva-se na newsletter".
+- Nota de privacidade: "Nós respeitamos sua privacidade" + link para a política de privacidade
+
+**Layout:** Input + botão na mesma linha (desktop), empilhados (mobile). Largura total no mobile.
+
+## Selos de Pagamento e Confiança
+
+**Ícones de métodos de pagamento:**
+Exiba os pagamentos aceitos (Visa, Mastercard, PayPal, Apple Pay, Google Pay). Ícones de 40-50px, linha horizontal, na parte inferior do rodapé.
+
+**Selos de confiança (opcional):**
+Máximo de 3-4 certificações legítimas (SSL, Reclame Aqui, garantia de devolução do dinheiro). Use apenas selos reais com links de verificação.
+
+## Rodapé para Mobile
+
+**Coluna única, empilhada:** Logo → Navegação → Newsletter → Redes Sociais → Legais/copyright.
+
+**Seções colapsáveis (opcional):** Padrão de sanfona (accordion) para navegação para reduzir a altura. Mantenha a newsletter/redes sociais sempre visíveis.
+
+**Adequado para toque:** Links com no mínimo 44px, espaçamento de 8-12px, texto de 14-16px, altura do input de newsletter de 48px.
+
+## Lista de Verificação
+
+**Recursos essenciais:**
 
 - [ ] Links de navegação (categorias, páginas)
-- [ ] Categorias recuperadas dinamicamente do backend
+- [ ] Categorias buscadas dinamicamente no backend
 - [ ] Informações de contato (e-mail, telefone)
-- [ ] Links legais (Política de Privacidade, Termos de Uso)
+- [ ] Links legais (Política de Privacidade, Termos de Serviço)
 - [ ] Aviso de direitos autorais com o ano atual
 - [ ] Formulário de inscrição na newsletter com proposta de valor
 - [ ] Ícones de métodos de pagamento
-- [ ] Links de mídia social
-- [ ] Responsivo (colunas em desktop, coluna única em mobile)
+- [ ] Links de redes sociais
+- [ ] Responsivo (4-5 colunas desktop, coluna única mobile)
 - [ ] Mobile: Alvos de toque de 44px
-- [ ] Mobile: Seções dobráveis (opcional)
-- [ ] HTML semântico (`<footer>`, `<nav>` sections)
-- [ ] Rótulos ARIA para a navegação ("Navegação do rodapé")
-- [ ] Acessível por teclado
+- [ ] Mobile: Seções colapsáveis (opcional)
+- [ ] HTML semântico (seções `<footer>`, `<nav>`)
+- [ ] ARIA labels na navegação ("Navegação do rodapé")
+- [ ] Acessível via teclado
 - [ ] Indicadores de foco visíveis
 - [ ] Contraste de cor mínimo de 4.5:1
 - [ ] Consistente em todas as páginas

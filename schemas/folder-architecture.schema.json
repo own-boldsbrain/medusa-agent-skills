@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/own-boldsbrain/medusa-agent-skills/schemas/folder-architecture.schema.json",
+  "title": "Folder Architecture",
+  "description": "Schema for folder-architecture.registry.json — canonical folder layout for medusa-agent-skills.",
+  "type": "object",
+  "properties": {
+    "folder_architecture": {
+      "type": "object",
+      "required": [
+        "version",
+        "description",
+        "top_level_dirs",
+        "top_level_files",
+        "plugins",
+        "schemas",
+        "registries",
+        "scripts",
+        "reports",
+        "enforced_paths",
+        "excluded_paths",
+        "plugin_requirements"
+      ],
+      "properties": {
+        "version": { "type": "string" },
+        "description": { "type": "string" },
+        "top_level_dirs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "top_level_files": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "plugins": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "path", "skills"],
+            "properties": {
+              "name": { "type": "string" },
+              "path": { "type": "string" },
+              "required_files": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "skills": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "path"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "path": { "type": "string" },
+                    "required_files": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "schemas": {
+          "type": "object",
+          "required": ["allowed_extensions", "entries"],
+          "properties": {
+            "allowed_extensions": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            },
+            "entries": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            }
+          }
+        },
+        "registries": {
+          "type": "object",
+          "required": ["allowed_extensions", "entries"],
+          "properties": {
+            "allowed_extensions": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            },
+            "entries": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            }
+          }
+        },
+        "scripts": {
+          "type": "object",
+          "required": ["allowed_extensions", "entries"],
+          "properties": {
+            "allowed_extensions": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            },
+            "entries": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            }
+          }
+        },
+        "reports": {
+          "type": "object",
+          "required": ["allowed_subdirs", "structure"],
+          "properties": {
+            "allowed_subdirs": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            },
+            "structure": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "required": ["allowed_extensions"],
+                "properties": {
+                  "allowed_extensions": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "uniqueItems": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "enforced_paths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "excluded_paths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "plugin_requirements": {
+          "type": "object",
+          "required": ["required_files", "required_dirs", "allowed_extensions", "forbidden_patterns", "skill_requirements"],
+          "properties": {
+            "required_files": { "type": "array", "items": { "type": "string" } },
+            "required_dirs": { "type": "array", "items": { "type": "string" } },
+            "allowed_extensions": { "type": "array", "items": { "type": "string" } },
+            "forbidden_patterns": { "type": "array", "items": { "type": "string" } },
+            "skill_requirements": {
+              "type": "object",
+              "required": ["required_files"],
+              "properties": {
+                "required_files": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

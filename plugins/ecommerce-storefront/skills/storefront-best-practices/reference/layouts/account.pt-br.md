@@ -348,11 +348,11 @@ Categorias de preferência:**
 
 1. **
 
-E-mails transacionais**(atualizações de pedidos, envios) - Recomendado sempre ativado, pode ser legalmente exigido
-2.**
+E-mails transacionais** (atualizações de pedidos, envios) - Recomendado sempre ativado, pode ser legalmente exigido
+2. **
 
-E-mails de marketing**(vendas, promoções, novos produtos) - Escolha do usuário
-3.**
+E-mails de marketing** (vendas, promoções, novos produtos) - Escolha do usuário
+3. **
 
 Boletim informativo** (resumo semanal, conteúdo) - Escolha do usuário
 
@@ -395,7 +395,6 @@ Escolha com base na complexidade da conta:
 - **
 
 Use quando**: Mais de 6 seções de conta, recursos complexos de conta
-
 - Desktop: Barra lateral vertical (20-25% de largura) com links de seção
 - Celular: Recolha para menu hambúrguer ou menu suspenso
 - Benefícios: Navegação persistente, profissional, acomoda muitas seções
@@ -407,7 +406,6 @@ Navegação por Abas:**
 - **
 
 Use quando**: 4-6 seções de conta, estrutura de conta mais simples
-
 - Abas horizontais na parte superior, aba ativa destacada
 - Celular: Rolagem horizontal ou menu suspenso
 - Benefícios: Moderno, limpo, troca rápida
@@ -419,7 +417,6 @@ Hub da Conta (Foco em Celular):**
 - **
 
 Use quando**: Tráfego majoritariamente de dispositivos móveis, conta simples
-
 - Página de destino com cartões de seção (grade de 2 colunas)
 - Toque no cartão para entrar na seção, botão de voltar retorna ao hub
 - Benefícios: Amigável ao toque, intuitivo, hierarquia mínima

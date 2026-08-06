@@ -125,6 +125,7 @@ const transaction = await medusa.transaction.cancel({
   id: transaction.id,
 });
 ```
+
 - **Qualquer componente de vitrine** - Página inicial, pesquisa, filtros, páginas de conta
 - Criando novas lojas virtuais do zero
 - Melhorando as experiências de compras existentes e as taxas de conversão
@@ -542,11 +543,15 @@ Antes de implementar, fique atento a esses erros comuns específicos de comérci
 - ❌ **ERRO: Ignorando erros de TypeScript nos métodos do SDK** - Erros de tipo significam que você usou nomes de método ou parâmetros errados. Volte e verifique com os docs/MCP
 - ❌ **ERRO: Adivinhando nomes de métodos da API, métodos SDK ou parâmetros** - Sempre verifique as assinaturas exatas dos métodos antes de usar
 - ❌ **ERRO: Não usando servidor Medusa MCP quando disponível**- Se estiver usando backend Medusa, sempre consulte servidor MCP para métodos**Exemplo:**```bash
+
 # Usando servidor MCP
+
 curl -X GET \
-  http://localhost:3000/mcp/methods \
-  - H 'Content-Type: application/json' \
-  - H 'Authorization: Bearer YOUR_ACCESS_TOKEN'
+  <http://localhost:3000/mcp/methods> \
+
+- H 'Content-Type: application/json' \
+- H 'Authorization: Bearer YOUR_ACCESS_TOKEN'
+
 ```**Observação:** Certifique-se de que o servidor MCP esteja configurado corretamente e esteja funcionando antes de tentar consultar métodos.
 - ❌ **ERRO: Copiar exemplos de código sem verificar se estão atualizados** - Os exemplos podem estar desatualizados, sempre verifique primeiro.
 - ❌ Não detectar qual backend está sendo usado (verifique o monorepo, pergunte ao usuário se estiver em dúvida)

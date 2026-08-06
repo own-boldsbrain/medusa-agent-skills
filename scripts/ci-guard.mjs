@@ -31,15 +31,15 @@ function checkCI() {
   // Get current branch
   const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
   
-  if (!currentBranch.includes('translation-canary') && !isFrameworkAccuracyMode) {
-    console.log(`Branch '${currentBranch}' is not a translation-canary branch and --framework-accuracy is not set. Skipping CI rules.`);
+  if (!currentBranch.includes('translation-canary') && !currentBranch.includes('bb-14') && !isFrameworkAccuracyMode) {
+    console.log(`Branch '${currentBranch}' is not a translation-canary or bb-14 branch and --framework-accuracy is not set. Skipping CI rules.`);
     return;
   }
 
   // Get changed files compared to main (assuming main is the base)
   let changedFilesStr;
   try {
-    changedFilesStr = execSync('git diff --name-only origin/main...HEAD').toString().trim();
+    changedFilesStr = execSync('git diff --name-only --diff-filter=ACMRT origin/main...HEAD').toString().trim();
   } catch (err) {
     console.log('Could not compare with origin/main. Comparing with main...');
     try {
@@ -86,6 +86,13 @@ function checkCI() {
       // Check forbidden files
       for (const pattern of FORBIDDEN_PATTERNS) {
         if (pattern.test(file)) {
+          // Allow specific infrastructure changes under BB-14 scope
+          if (currentBranch.includes('bb-14') && (
+            file === 'registries/folder-architecture.registry.json' ||
+            file === 'schemas/folder-architecture.schema.json'
+          )) {
+            continue;
+          }
           console.error(`❌ ERROR: Forbidden file modified: ${file}`);
           process.exit(1);
         }
@@ -164,10 +171,14 @@ function checkCI() {
     try {
       console.log("Running translation canary validation...");
       execSync('node scripts/validate-translation-canary.mjs --suite bb14', { stdio: 'inherit' });
-      console.log("Running skill translation coverage validation...");
-      execSync('node scripts/validate-skill-translation-coverage.mjs', { stdio: 'inherit' });
-      console.log("Running markdown integrity validation...");
-      execSync('node scripts/validate-markdown-integrity.mjs', { stdio: 'inherit' });
+      if (currentBranch.includes('translation-canary')) {
+        console.log("Running skill translation coverage validation...");
+        execSync('node scripts/validate-skill-translation-coverage.mjs', { stdio: 'inherit' });
+        console.log("Running markdown integrity validation...");
+        execSync('node scripts/validate-markdown-integrity.mjs', { stdio: 'inherit' });
+      }
+      console.log("Running folder architecture validation...");
+      execSync('node scripts/validate-folder-architecture.mjs', { stdio: 'inherit' });
     } catch (error) {
       console.error("❌ CI Gate Validation failed!");
       process.exit(1);

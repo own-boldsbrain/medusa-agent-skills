@@ -2,6 +2,14 @@
 
 O módulo do agente é **infraestrutura compartilhada**— um serviço manipula a persistência e o cliente de IA para cada agente do projeto. Cada agente passa sua própria configuração (prompt do sistema + descrições de ferramentas) no momento da chamada, então os diferentes agentes obtêm diferentes comportamentos sem módulos separados.
 
+## Baseline Reproduzível do Provedor
+
+Instale o provedor da família 4.x do AI SDK usada por esta referência. Mantenha esta versão exata junto da versão exata de `ai` documentada em `agent-setup.pt-BR.md`.
+
+```bash
+npm install --save-exact @ai-sdk/anthropic@4.0.39
+```
+
 ## Módulo Serviço
 
 ```ts

@@ -4,6 +4,14 @@ O tempo de execução do agente é uma função que chama `streamText` do SDK de
 
 > **Use o MedusaExec em vez de ferramentas personalizadas.** Para qualquer operação que leia ou escreva dados do Medusa, o agente deve escrever TypeScript e executá-lo via MedusaExec. Isso é muito mais eficiente do que construir uma ferramenta separada para cada operação — uma única ferramenta MedusaExec substitui dezenas de ferramentas personalizadas. Só construa uma ferramenta personalizada para capacidades que realmente não possam ser expressas como TypeScript executável (ex.: chamar uma API externa com um segredo, enviar um e-mail via SDK de terceiros).
 
+## Baseline Reproduzível de Dependências
+
+Instale a versão exata do AI SDK usada por esta referência. Não substitua a versão exata por um intervalo nem a misture com pacotes de outra versão principal do AI SDK.
+
+```bash
+npm install --save-exact ai@7.0.66
+```
+
 ## Função do Agente
 
 ```ts

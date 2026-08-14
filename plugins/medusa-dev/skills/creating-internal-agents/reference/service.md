@@ -2,6 +2,14 @@
 
 The agent module is **shared infrastructure** — one service handles persistence and the AI client for every agent in the project. Each agent passes its own config (system prompt + tool descriptions) at call time, so different agents get different behaviour without separate modules.
 
+## Reproducible Provider Baseline
+
+Install the provider from the AI SDK 4.x family used by this reference. Keep this exact version together with the exact `ai` version documented in `agent-setup.md`.
+
+```bash
+npm install --save-exact @ai-sdk/anthropic@4.0.39
+```
+
 ## Module Service
 
 ```ts

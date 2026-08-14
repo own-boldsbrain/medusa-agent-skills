@@ -4,6 +4,14 @@ The agent runtime is a function that calls `streamText` from the Vercel AI SDK w
 
 > **Use MedusaExec instead of custom tools.** For any operation that reads or writes Medusa data, the agent should write TypeScript and execute it via MedusaExec. This is far more efficient than building a separate tool per operation — a single MedusaExec tool replaces dozens of bespoke tools. Only build a custom tool for capabilities that genuinely cannot be expressed as executable TypeScript (e.g. calling an external API with a secret, sending an email via a third-party SDK).
 
+## Reproducible Dependency Baseline
+
+Install the exact AI SDK version used by this reference. Do not replace the exact version with a range or mix it with packages from another AI SDK major release.
+
+```bash
+npm install --save-exact ai@7.0.66
+```
+
 ## Agent Function
 
 ```ts

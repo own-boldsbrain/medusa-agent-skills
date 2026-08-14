@@ -151,7 +151,9 @@ Para adicionar um segundo agente, você pode seguir estas etapas:
 
 Agora, você tem dois agentes configurados e pode gerenciar suas tarefas e responsabilidades de forma eficiente.
 
--*Observação:**Certifique-se de manter um equilíbrio entre a delegação de tarefas e a sobrecarga de trabalho para garantir a produtividade e o bem-estar dos seus agentes.
+**Observação:**
+
+Certifique-se de manter um equilíbrio entre a delegação de tarefas e a sobrecarga de trabalho para garantir a produtividade e o bem-estar dos seus agentes.
 
 Adicione um novo diretório de rota com sua própria constante `AGENT_TYPE` e sua própria importação de configuração. Todo o resto — o serviço, os modelos, as tabelas do banco de dados — é reutilizado sem alterações.
 
@@ -169,7 +171,7 @@ src/api/admin/agent/
 
 ## Pontos Chave
 
--*Todas as rotas do agente devem usar `AuthenticatedMedusaRequest`** — o agente aciona o MedusaExec, que executa TypeScript arbitrário com acesso total ao banco de dados. Uma rota não autenticada é uma vulnerabilidade de execução remota de código. Nunca coloque rotas do agente fora de `src/api/admin/` ou relaxe o middleware de autenticação.
+- **Todas as rotas do agente devem usar `AuthenticatedMedusaRequest`** — o agente aciona o MedusaExec, que executa TypeScript arbitrário com acesso total ao banco de dados. Uma rota não autenticada é uma vulnerabilidade de execução remota de código. Nunca coloque rotas do agente fora de `src/api/admin/` ou relaxe o middleware de autenticação.
 - `agent_type` é a única coisa que distingue as sessões entre agentes — sempre defina-o ao criar e filtre por ele na lista.
 - Passe `agentConfig` (a configuração específica do agente) para `stream()` — não um padrão compartilhado. A configuração de cada agente fica junto de suas rotas ou em `src/modules/agent/config/<agent-type>.ts`.
 - `req.scope` é o container de DI da Medusa — passe-o para `stream()` para que o MedusaExec possa resolver serviços.

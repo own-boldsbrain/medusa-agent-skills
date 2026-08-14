@@ -1,0 +1,20 @@
+{
+  "bb": "BB-16.2",
+  "status": "validated_locally",
+  "canary_pairs": [
+    {
+      "source": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.md",
+      "target": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.pt-br.md"
+    },
+    {
+      "source": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.md",
+      "target": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/checkout.pt-br.md"
+    },
+    {
+      "source": "plugins/medusa-dev/skills/creating-internal-agents/reference/api-route.md",
+      "target": "plugins/medusa-dev/skills/creating-internal-agents/reference/api-route.pt-BR.md"
+    }
+  ],
+  "risk": "low",
+  "rationale": "Mechanical Markdown repairs with exact canary structural parity; no SKILL instruction file is changed."
+}

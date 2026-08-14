@@ -1,0 +1,112 @@
+{
+  "catalog_id": "medusa-store-operations-v0",
+  "version": "0.1.0",
+  "agent_type": "store-operations",
+  "source_evidence": [
+    "plugins/medusa-dev/skills/creating-internal-agents/SKILL.md",
+    "plugins/medusa-dev/skills/creating-internal-agents/reference/admin-extension.md",
+    "plugins/medusa-dev/skills/creating-internal-agents/reference/medusa-exec.md"
+  ],
+  "components": [
+    {
+      "component_id": "metric_card",
+      "purpose": "Display a single operational KPI such as product, order, customer, inventory, or cohort count.",
+      "allowed_data": ["label", "value", "unit", "trend", "status"],
+      "interactive": false
+    },
+    {
+      "component_id": "data_table",
+      "purpose": "Display auditable product, order, customer, inventory, or support records with stable identifiers.",
+      "allowed_data": ["columns", "rows", "row_id", "pagination", "empty_state"],
+      "interactive": true
+    },
+    {
+      "component_id": "status_badge",
+      "purpose": "Represent lifecycle, inventory, payment, fulfillment, or validation status.",
+      "allowed_data": ["label", "tone"],
+      "interactive": false
+    },
+    {
+      "component_id": "alert",
+      "purpose": "Communicate operational risk, validation failure, stale data, or required human review.",
+      "allowed_data": ["title", "message", "severity", "evidence_refs"],
+      "interactive": false
+    },
+    {
+      "component_id": "trend_chart",
+      "purpose": "Visualize order, revenue, cohort, inventory, or support trends over time.",
+      "allowed_data": ["series", "x_axis", "y_axis", "time_range"],
+      "interactive": false
+    },
+    {
+      "component_id": "record_detail",
+      "purpose": "Inspect a single product, order, customer, inventory item, or agent session.",
+      "allowed_data": ["record_id", "title", "fields", "links"],
+      "interactive": true
+    },
+    {
+      "component_id": "approval_card",
+      "purpose": "Present a typed plan or mutation for explicit human approval before dispatch.",
+      "allowed_data": ["operation", "summary", "affected_records", "risk", "evidence_refs"],
+      "interactive": true
+    },
+    {
+      "component_id": "operation_form",
+      "purpose": "Collect validated parameters for a proposed store operation without executing it in the renderer.",
+      "allowed_data": ["fields", "validation", "submit_action", "cancel_action"],
+      "interactive": true
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "refresh_data",
+      "purpose": "Refresh the current read model through a registered read-only tool.",
+      "side_effect_level": "read_only",
+      "required_gate": "none",
+      "host_mediated": true
+    },
+    {
+      "action_id": "inspect_record",
+      "purpose": "Load a record detail view using its stable identifier.",
+      "side_effect_level": "read_only",
+      "required_gate": "none",
+      "host_mediated": true
+    },
+    {
+      "action_id": "navigate_admin",
+      "purpose": "Navigate to an authenticated Medusa Admin route selected from an allowlist.",
+      "side_effect_level": "read_only",
+      "required_gate": "none",
+      "host_mediated": true
+    },
+    {
+      "action_id": "propose_bulk_update",
+      "purpose": "Create a typed mutation plan for selected products, orders, customers, or inventory records.",
+      "side_effect_level": "propose_write",
+      "required_gate": "plan_approval_required",
+      "host_mediated": true
+    },
+    {
+      "action_id": "execute_approved_update",
+      "purpose": "Execute a previously approved mutation plan through the host tool layer.",
+      "side_effect_level": "write",
+      "required_gate": "write_operation_approval_required",
+      "host_mediated": true
+    },
+    {
+      "action_id": "execute_approved_destructive_action",
+      "purpose": "Execute a previously approved destructive operation through the host tool layer.",
+      "side_effect_level": "destructive",
+      "required_gate": "destructive_action_approval_required",
+      "host_mediated": true
+    },
+    {
+      "action_id": "cancel_operation",
+      "purpose": "Discard a proposed operation without side effects.",
+      "side_effect_level": "read_only",
+      "required_gate": "none",
+      "host_mediated": true
+    }
+  ],
+  "status": "proposed"
+}

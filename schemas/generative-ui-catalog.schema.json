@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GenerativeUICatalogSchema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "catalog_id": { "type": "string" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "agent_type": { "type": "string" },
+    "source_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "component_id": { "type": "string" },
+          "purpose": { "type": "string" },
+          "allowed_data": { "type": "array", "items": { "type": "string" } },
+          "interactive": { "type": "boolean" }
+        },
+        "required": ["component_id", "purpose", "allowed_data", "interactive"]
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "action_id": { "type": "string" },
+          "purpose": { "type": "string" },
+          "side_effect_level": {
+            "type": "string",
+            "enum": ["read_only", "propose_write", "write", "destructive"]
+          },
+          "required_gate": {
+            "type": "string",
+            "enum": [
+              "none",
+              "plan_approval_required",
+              "tool_call_approval_required",
+              "write_operation_approval_required",
+              "destructive_action_approval_required"
+            ]
+          },
+          "host_mediated": { "const": true }
+        },
+        "required": ["action_id", "purpose", "side_effect_level", "required_gate", "host_mediated"]
+      }
+    },
+    "status": { "type": "string", "enum": ["proposed", "active", "deprecated"] }
+  },
+  "required": ["catalog_id", "version", "agent_type", "source_evidence", "components", "actions", "status"]
+}

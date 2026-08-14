@@ -116,6 +116,19 @@
       "adapter_required": true,
       "adapter_contract": "AgentRuntimeAdapter",
       "status": "proposed"
+    },
+    {
+      "framework_id": "json-render",
+      "type": "generative_ui_framework",
+      "language": ["typescript"],
+      "supports_state_graph": false,
+      "supports_human_in_the_loop": true,
+      "supports_tool_routing": false,
+      "supports_persistence": false,
+      "supports_streaming": true,
+      "adapter_required": true,
+      "adapter_contract": "GenerativeUIAdapter",
+      "status": "proposed"
     }
   ]
 }

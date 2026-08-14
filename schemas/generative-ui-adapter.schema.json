@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GenerativeUIAdapterSchema",
+  "description": "Contract for framework-neutral Generative UI adapters, catalogs, action dispatch, security, HITL, and observability.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "adapter_id": { "type": "string", "minLength": 1 },
+    "framework_id": { "type": "string", "minLength": 1 },
+    "catalog_id": { "type": "string", "minLength": 1 },
+    "language": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "runtime_type": { "type": "string" },
+    "supported_renderers": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "supported_spec_versions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "supports_streaming": { "type": "boolean" },
+    "supports_state_binding": { "type": "boolean" },
+    "supports_actions": { "type": "boolean" },
+    "supports_human_in_the_loop": { "type": "boolean" },
+    "action_dispatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "type": "string", "enum": ["host_mediated"] },
+        "validates_before_dispatch": { "const": true },
+        "fail_closed": { "const": true },
+        "requires_side_effect_classification": { "const": true },
+        "requires_hitl_gate_mapping": { "const": true }
+      },
+      "required": [
+        "mode",
+        "validates_before_dispatch",
+        "fail_closed",
+        "requires_side_effect_classification",
+        "requires_hitl_gate_mapping"
+      ]
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "arbitrary_markup_forbidden": { "const": true },
+        "unknown_component_policy": { "const": "reject" },
+        "unknown_action_policy": { "const": "reject" },
+        "external_network_default": { "const": "deny" },
+        "secret_redaction_required": { "const": true }
+      },
+      "required": [
+        "arbitrary_markup_forbidden",
+        "unknown_component_policy",
+        "unknown_action_policy",
+        "external_network_default",
+        "secret_redaction_required"
+      ]
+    },
+    "observability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trace_spec_validation": { "type": "boolean" },
+        "trace_action_dispatch": { "type": "boolean" },
+        "record_catalog_version": { "type": "boolean" },
+        "audit_evidence_required": { "type": "boolean" }
+      },
+      "required": [
+        "trace_spec_validation",
+        "trace_action_dispatch",
+        "record_catalog_version",
+        "audit_evidence_required"
+      ]
+    },
+    "adapter_contract": { "const": "GenerativeUIAdapter" },
+    "status": { "type": "string", "enum": ["proposed", "active", "deprecated"] }
+  },
+  "required": [
+    "adapter_id",
+    "framework_id",
+    "catalog_id",
+    "language",
+    "runtime_type",
+    "supported_renderers",
+    "supported_spec_versions",
+    "supports_streaming",
+    "supports_state_binding",
+    "supports_actions",
+    "supports_human_in_the_loop",
+    "action_dispatch",
+    "security",
+    "observability",
+    "adapter_contract",
+    "status"
+  ]
+}

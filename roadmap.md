@@ -26,6 +26,7 @@
 | BB-13         | Translated Skills Loss Registry         |       **APROVADO COM EVIDÊNCIAS** | Cria inventário governado de perdas. BB-13 não recupera arquivos; a recuperação começará no BB-14.    |
 | BB-14         | Translated Skills Surgical Recovery     |       **APROVADO COM EVIDÊNCIAS** | PR #24 mergeado em `main`. Escopo restrito ao canário cirúrgico. |
 | BB-14.2       | Folder Architecture Registry            | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | PR aberto formalizando schema, registry e validador de pastas. |
+| BB-16.1 / PR #28 | Layout Source Restore & Sidecar Repair | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | Evidência em `reports/loss-investigation/recovery/layouts-source-restore-sidecar-repair.*`; canary por manifesto. |
 
 ---
 
@@ -433,6 +434,18 @@ DOD:
 - Máximo 5 traduções por PR.
 - Canary por lote.
 - Markdown integrity gate passando.
+```
+
+```txt
+BB-16.1 — Layout Source Restore & Sidecar Repair
+Estado real:
+VALIDADO EM PR ABERTO / AGUARDANDO MERGE
+
+Evidência:
+- Commit 68236a3 restaura quatro fontes EN corrompidas.
+- PR #28 aberto contra `main`.
+- Pacote de recovery registra diff estrutural, risco e pares canary.
+- product-listing.pt-BR.md permanece preservado como resumo customizado Yello e fora do canary de tradução.
 ```
 
 ```txt

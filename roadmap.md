@@ -26,6 +26,7 @@
 | BB-13         | Translated Skills Loss Registry         |       **APROVADO COM EVIDÊNCIAS** | Cria inventário governado de perdas. BB-13 não recupera arquivos; a recuperação começará no BB-14.    |
 | BB-14         | Translated Skills Surgical Recovery     |       **APROVADO COM EVIDÊNCIAS** | PR #24 mergeado em `main`. Escopo restrito ao canário cirúrgico. |
 | BB-14.2       | Folder Architecture Registry            | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | PR aberto formalizando schema, registry e validador de pastas. |
+| BB-16.2 / PR #29 | Validated PT-BR Reference Repairs     | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | Canary 3/3 para `account`, `checkout` e `api-route`; pacote em `reports/loss-investigation/recovery/bb-16-2-validated-reference-repairs.*`. |
 
 ---
 

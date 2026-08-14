@@ -50,8 +50,27 @@ const CANARY_SUITES = {
   ]
 };
 
+function readManifest(manifestPath) {
+  const absolutePath = path.resolve(process.cwd(), manifestPath);
+  const manifest = JSON.parse(fs.readFileSync(absolutePath, "utf-8"));
+  if (!Array.isArray(manifest.canary_pairs) || manifest.canary_pairs.length === 0) {
+    throw new Error(`Manifest must define a non-empty canary_pairs array: ${manifestPath}`);
+  }
+
+  for (const [index, pair] of manifest.canary_pairs.entries()) {
+    if (typeof pair?.source !== "string" || typeof pair?.target !== "string") {
+      throw new Error(`Invalid canary pair at index ${index} in ${manifestPath}`);
+    }
+  }
+
+  return {
+    name: manifest.bb || path.basename(manifestPath, path.extname(manifestPath)),
+    pairs: manifest.canary_pairs
+  };
+}
+
 const FILLER_PHRASES = [
-  "aqui está", "claro,", "claro!", "com certeza", "como solicitado",
+  "claro,", "claro!", "com certeza", "como solicitado",
   "abaixo está", "neste documento vamos", "neste guia vamos",
   "vamos explorar", "vamos ver", "espero que isso ajude", "se precisar",
   "obrigado por", "resumindo"
@@ -128,13 +147,13 @@ function extractMarkdownFeatures(content) {
   return { headings, codeFences, links, anomalies };
 }
 
-function runValidation(suite) {
+function runValidation({ suite, pairs, reportName, writeReports }) {
   const reports = [];
   let globalPassed = true;
 
-  const pairsToValidate = suite === 'all' 
+  const pairsToValidate = pairs || (suite === 'all'
     ? [...CANARY_SUITES.bb08, ...CANARY_SUITES.bb09, ...CANARY_SUITES.bb14]
-    : CANARY_SUITES[suite];
+    : CANARY_SUITES[suite]);
 
   for (const pair of pairsToValidate) {
     const sourcePath = path.resolve(process.cwd(), pair.source);
@@ -273,14 +292,9 @@ function runValidation(suite) {
     reports.push(report);
   }
 
-  // Create reports dir
-  const reportsDir = path.resolve(process.cwd(), "reports/translation-canary");
-  if (!fs.existsSync(reportsDir)) {
-    fs.mkdirSync(reportsDir, { recursive: true });
-  }
-
   // Generate markdown report
-  let mdReport = `# Canary Translation Report (${suite.toUpperCase()})\n\n`;
+  const displayName = reportName || suite;
+  let mdReport = `# Canary Translation Report (${displayName.toUpperCase()})\n\n`;
   mdReport += `Generated at: ${new Date().toISOString()}\n\n`;
   mdReport += `Status: ${globalPassed ? "✅ PASSED" : "❌ FAILED"}\n\n`;
   
@@ -296,12 +310,14 @@ function runValidation(suite) {
     mdReport += `\n`;
   }
 
-  const suiteSuffix = suite === 'all' ? 'all' : suite;
-  const reportOutput = `reports/translation-canary/storefront-${suiteSuffix}.md`;
-  const jsonOutput = `reports/translation-canary/storefront-${suiteSuffix}.json`;
-
-  fs.writeFileSync(path.join(process.cwd(), reportOutput), mdReport);
-  fs.writeFileSync(path.join(process.cwd(), jsonOutput), JSON.stringify({ passed: globalPassed, reports }, null, 2));
+  if (writeReports) {
+    const reportsDir = path.resolve(process.cwd(), "reports/translation-canary");
+    fs.mkdirSync(reportsDir, { recursive: true });
+    const reportOutput = `reports/translation-canary/storefront-${displayName}.md`;
+    const jsonOutput = `reports/translation-canary/storefront-${displayName}.json`;
+    fs.writeFileSync(path.join(process.cwd(), reportOutput), mdReport);
+    fs.writeFileSync(path.join(process.cwd(), jsonOutput), JSON.stringify({ passed: globalPassed, reports }, null, 2));
+  }
 
   console.log(mdReport);
   if (!globalPassed) {
@@ -312,6 +328,8 @@ function runValidation(suite) {
 // Check arguments
 const args = process.argv.slice(2);
 let suite = 'bb09'; // Default
+let pairs;
+let reportName;
 if (args.includes('--suite')) {
   const suiteIndex = args.indexOf('--suite') + 1;
   if (suiteIndex < args.length) {
@@ -322,4 +340,19 @@ if (args.includes('--suite')) {
   }
 }
 
-runValidation(suite);
+if (args.includes('--manifest')) {
+  const manifestIndex = args.indexOf('--manifest') + 1;
+  if (manifestIndex >= args.length) {
+    throw new Error('--manifest requires a JSON file path');
+  }
+  const manifest = readManifest(args[manifestIndex]);
+  pairs = manifest.pairs;
+  reportName = manifest.name.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
+}
+
+runValidation({
+  suite,
+  pairs,
+  reportName,
+  writeReports: args.includes('--write-report')
+});

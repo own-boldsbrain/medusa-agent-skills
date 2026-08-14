@@ -33,9 +33,9 @@ Adotar `json-render` **em duas velocidades**, separando o contrato do renderer:
 
 ---
 
-## A restrição que elimina a opção óbvia
+## Restrição de suporte e resultado do spike React 18
 
-A opção natural — "usar json-render no chat do Medusa Admin, onde o agente já vive" — **não é instalável hoje**. Verificado no npm em 2026-08-14:
+A opção natural — "usar json-render no chat do Medusa Admin, onde o agente já vive" — não é suportada oficialmente hoje. Verificado no npm em 2026-08-14:
 
 | Pacote | Requisito de React |
 |---|---|
@@ -43,12 +43,39 @@ A opção natural — "usar json-render no chat do Medusa Admin, onde o agente j
 | `@medusajs/ui@4.2.1` | `peerDependencies: react ^18.3.1`, `react-dom ^18.3.1` |
 | `@medusajs/dashboard@2.19.0` | `dependencies: react ^18.3.1` |
 
-O Medusa Admin está travado em React 18.3; o renderer React do json-render exige React 19.2.3. Não é um conflito de *lockfile* contornável com `resolutions` sem risco — é uma diferença de major do React entre o host e a biblioteca.
+O Medusa Admin está em React 18.3; o renderer React do json-render declara React 19.2.3. Isso continua sendo uma diferença de major fora da matriz de suporte oficial, mas o spike abaixo demonstrou que não é uma incompatibilidade técnica imediata no caminho exercitado.
 
-Duas verificações que **ainda não fiz** e que mudariam o desenho, listadas como ação:
+### Inspeção estática do pacote publicado
 
-* Se `@json-render/react` não usar APIs exclusivas do React 19, um `override` pode ser viável — mas isso é hipótese, não plano.
-* `@json-render/core` não tem peer de React algum (`dependencies: { zod: ^4.3.6 }`, `peerDependencies: { zod: ^4.0.0 }`), o que é justamente o que torna a Opção D viável.
+O tarball publicado de `@json-render/react@0.19.0` foi inspecionado diretamente. O bundle usa `createContext`, `useContext`, `useState`, `useEffect`, `useMemo`, `useRef`, `useCallback`, `useSyncExternalStore` e `react/jsx-runtime`. Todas essas superfícies existem no React 18. Não foram encontrados `useActionState`, `useOptimistic`, `useFormStatus`, `useEffectEvent`, `Activity`, `cacheSignal` ou outras APIs exclusivas do React 19.
+
+`@json-render/core` continua sem peer de React (`zod ^4.0.0`), preservando a separação entre contrato e renderer.
+
+### Spike descartável com React 18.3.1
+
+O spike foi executado fora do repositório, em `C:\wt\json-render-spike`, sem produzir artefatos versionados. Baseline exata:
+
+| Dependência | Versão |
+|---|---:|
+| `@json-render/react` | `0.19.0` |
+| `@json-render/core` | `0.19.0` |
+| `react` / `react-dom` | `18.3.1` |
+| `@types/react` | `18.3.12` |
+| `vite` | `7.3.6` |
+
+O `package.json` aplicou override explícito de `react` e `react-dom` para `18.3.1`; a instalação exigiu `--force` porque o peer publicado permanece `^19.2.3`.
+
+Resultados:
+
+| Verificação | Resultado |
+|---|---|
+| `npm ls react react-dom @json-render/react` | árvore única em React 18.3.1, exit 0 |
+| TypeScript `tsc --noEmit` | passou |
+| Bundle cliente Vite | passou, 107 módulos transformados |
+| SSR com `StateProvider` + `useStateValue` | passou; renderizou `<output ...>18</output>` |
+| `npm audit --audit-level=high` | 0 vulnerabilidades |
+
+**Conclusão do spike:** `@json-render/react@0.19.0` funciona com React 18.3.1 no conjunto testado e não usa API React 19 exclusiva detectável no bundle. Isso torna um adapter experimental tecnicamente possível, mas não transforma React 18 em configuração suportada pelo mantenedor. A Opção D continua recomendada para produção. Um uso no Medusa Admin exigiria suíte browser/E2E do renderer completo, confirmação de componentes reais do catálogo e política explícita de upgrade/rollback.
 
 Em contrapartida, o **Zod é compatível**: `@medusajs/admin-sdk@2.19.0` traz `zod: 4.2.0` e o core do json-render aceita `^4.0.0`. Não há conflito ali.
 
@@ -66,7 +93,7 @@ Em contrapartida, o **Zod é compatível**: `@medusajs/admin-sdk@2.19.0` traz `z
 | Familiaridade do time | Média (React/shadcn é terreno conhecido) |
 
 **Prós:** entrega generative UI exatamente onde o agente já opera; reaproveita os 36 componentes shadcn prontos.
-**Contras:** **bloqueado** pelo conflito React 19 vs 18.3. Destravar depende do roadmap do Medusa, fora do controle deste repositório.
+**Contras:** fora da matriz de peer support. O override passou no spike, mas transfere ao time a responsabilidade por regressões e upgrades até que o mantenedor suporte React 18 ou o Medusa migre para React 19.
 
 ### Opção B: `json-render` completo, mas só no `apps/console`
 
@@ -139,7 +166,7 @@ Em contrapartida, o **Zod é compatível**: `@medusajs/admin-sdk@2.19.0` traz `z
 
 ## Action Items
 
-1. [ ] Verificar se `@json-render/react@0.19.0` usa APIs exclusivas do React 19; se não usar, testar `override` para React 18.3 num spike descartável e registrar o resultado neste ADR.
+1. [x] Inspecionar `@json-render/react@0.19.0` e executar override React 18.3 em spike descartável — compatibilidade técnica confirmada no escopo testado; peer support continua ausente.
 2. [ ] Avaliar `@json-render/mcp` contra o Tools Plan e os [contratos de MCP server](mcp-server-contracts.md) — pode ser um ADR próprio.
 3. [ ] Definir o catálogo v0 (componentes e ações) para o agente de operações de loja, derivado dos casos reais da skill `creating-internal-agents`.
 4. [ ] Especificar o contrato `GenerativeUIAdapter` em `schemas/`, espelhando a estrutura de `schemas/framework-adapter.schema.json`.

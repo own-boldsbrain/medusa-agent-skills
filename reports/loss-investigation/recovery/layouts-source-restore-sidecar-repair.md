@@ -1,6 +1,6 @@
 # Layouts Source Restore and Sidecar Repair
 
-Original repair commit: `68236a3` — BB: **BB-16.1** — Dedicated PR: **pending**
+Original repair commit: `68236a3` — BB: **BB-16.1** — Dedicated PR: **#28**
 
 Evidence package required by `ROADMAP_DOD.md` section 7 (Translation Recovery Policy).
 
@@ -77,4 +77,3 @@ canary suite that included it, so admitting it to one requires an editorial deci
 1. The repaired pairs are covered by the `canary_pairs` manifest in the JSON evidence package.
 2. `product-listing.pt-BR.md` remains explicitly excluded because it is a custom Yello
    summary, not a translation; preserving it avoids silent editorial data loss.
-3. Record the dedicated PR number in this package and in `roadmap.md` after opening it.

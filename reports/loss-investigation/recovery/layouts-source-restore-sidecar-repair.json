@@ -1,6 +1,6 @@
 {
   "bb": "BB-16.1",
-  "pr": "pending",
+  "pr": 28,
   "commit": "68236a3",
   "repair_type": "source_en_corruption_repair + sidecar_structural_repair",
   "corrupted_commit": "df5499e",
@@ -91,7 +91,7 @@
     }
   },
   "open_items": [
-    "BB-16.1 assigned; the PR number must be recorded after the dedicated PR is opened (DoD section 5).",
+    "BB-16.1 assigned and dedicated PR #28 recorded in roadmap.md (DoD section 5).",
     "The repaired pairs are covered through this manifest's canary_pairs array (DoD section 3).",
     "The dedicated recovery branch must remain within the surgical scope limits (DoD section 1)."
   ]

@@ -1,6 +1,7 @@
 {
   "bb": "BB-16.2",
-  "status": "validated_locally",
+  "status": "validated_in_open_pr",
+  "pr": 29,
   "canary_pairs": [
     {
       "source": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/account.md",

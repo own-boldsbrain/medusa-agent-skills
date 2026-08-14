@@ -1,6 +1,8 @@
 # BB-16.2 — Validated Reference Repairs
 
-Status: validated locally
+Status: **VALIDADO EM PR ABERTO / AGUARDANDO MERGE**
+
+PR: **#29**
 
 Targets: 3
 

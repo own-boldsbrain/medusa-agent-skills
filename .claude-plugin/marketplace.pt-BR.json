@@ -13,12 +13,16 @@
   },
   "plugins": [
     {
-      "name": "ecommerce-storefront",
-      "source": "./plugins/ecommerce-storefront"
-    },
-    {
       "name": "medusa-dev",
       "source": "./plugins/medusa-dev"
+    },
+    {
+      "name": "learn-medusa",
+      "source": "./plugins/learn-medusa"
+    },
+    {
+      "name": "ecommerce-storefront",
+      "source": "./plugins/ecommerce-storefront"
     },
     {
       "name": "design-log",

@@ -6,7 +6,9 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --import tsx --test \"tests/**/*.test.ts\"",
+    "test": "npm run test:unit && npm run test:llamaparse",
+    "test:unit": "node --import tsx --test \"tests/**/*.test.ts\"",
+    "test:llamaparse": "node --test tests/llamaparse-integration.test.mjs",
     "validate:markdown": "node scripts/validate-markdown-integrity.mjs",
     "validate:translations": "node scripts/validate-skill-translation-coverage.mjs",
     "validate:registries": "node scripts/validate-skill-accuracy-registry.mjs && node scripts/validate-agent-executor-registry.mjs && node scripts/validate-translated-skill-loss.mjs && node scripts/validate-json-schemas.mjs",

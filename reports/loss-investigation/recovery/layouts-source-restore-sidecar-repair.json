@@ -1,0 +1,98 @@
+{
+  "bb": "BB-16.1",
+  "pr": 28,
+  "commit": "68236a3",
+  "repair_type": "source_en_corruption_repair + sidecar_structural_repair",
+  "corrupted_commit": "df5499e",
+  "restored_from_ref": "df5499e^",
+  "reason": "Commit df5499e overwrote four EN sources with partial PT-BR content. The EN sources could not serve as a structural validation base, and two restorations left orphaned PT-BR sidecars requiring an editorial decision.",
+  "sources_restored": [
+    "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/product-listing.md",
+    "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/static-pages.md",
+    "plugins/learn-medusa/skills/learning-medusa/architecture/module-workflow-route.md",
+    "plugins/learn-medusa/skills/learning-medusa/architecture/workflow-orchestration.md"
+  ],
+  "canary_pairs": [
+    {
+      "source": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/static-pages.md",
+      "target": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/static-pages.pt-BR.md"
+    },
+    {
+      "source": "plugins/learn-medusa/skills/learning-medusa/architecture/module-workflow-route.md",
+      "target": "plugins/learn-medusa/skills/learning-medusa/architecture/module-workflow-route.pt-br.md"
+    },
+    {
+      "source": "plugins/learn-medusa/skills/learning-medusa/architecture/workflow-orchestration.md",
+      "target": "plugins/learn-medusa/skills/learning-medusa/architecture/workflow-orchestration.pt-br.md"
+    }
+  ],
+  "historical_candidate_assessment": [
+    {
+      "candidate_ref": "d5ab2a8:.../layouts/product-listing.md",
+      "claimed": "complete PT-BR translation, 581 lines",
+      "measured": "27 of 581 lines in Portuguese; remainder byte-identical to EN source",
+      "verdict": "rejected_not_a_translation"
+    },
+    {
+      "candidate_ref": "df5499e:.../layouts/static-pages.md",
+      "claimed": "PT-BR translation, 375 lines, more complete than sidecar",
+      "measured": "22 of 375 lines in Portuguese; remainder byte-identical to EN source",
+      "verdict": "rejected_not_a_translation"
+    }
+  ],
+  "structural_diff": [
+    {
+      "source": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/static-pages.md",
+      "target": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/static-pages.pt-BR.md",
+      "action": "repaired_in_place",
+      "before": { "toc_anchors_resolving": "0/9", "malformed_links": 1, "glued_bold_runs": 30 },
+      "after": {
+        "lines": { "source": 357, "target": 357 },
+        "headings": { "h1": "1/1", "h2": "10/10", "h3": "15/15" },
+        "code_fences": "4/4",
+        "internal_links": "9/9",
+        "parity": "exact"
+      },
+      "canary_verdict": "PASSED"
+    },
+    {
+      "source": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/product-listing.md",
+      "target": "plugins/ecommerce-storefront/skills/storefront-best-practices/reference/layouts/product-listing.pt-BR.md",
+      "action": "left_unchanged",
+      "after": {
+        "lines": { "source": 521, "target": 26 },
+        "headings": { "h1": "1/1", "h2": "12/4", "h3": "24/0" },
+        "code_fences": "5/0",
+        "internal_links": "12/0",
+        "parity": "none"
+      },
+      "canary_verdict": "FAILED",
+      "note": "Target is not a translation. It is a custom Yello Solar Hub summary matching the deliberate stub family (home-page, order-confirmation, product-details). Fails canary parity by construction, not by defect. Requires an editorial decision before being admitted to any canary suite."
+    }
+  ],
+  "validation_performed": {
+    "headings": "per-level counts compared source vs target",
+    "code_fences": "counts compared source vs target",
+    "links": "every internal anchor resolved against target and source heading slugs",
+    "pt_br_residual_scan": "filler, meta-LLM and English-residual scans via validate-markdown-integrity.mjs"
+  },
+  "risk_classification": {
+    "static-pages.pt-BR.md": {
+      "risk": "low",
+      "rationale": "Formatting-only repair. Portuguese prose preserved verbatim; structure now mirrors the EN source exactly."
+    },
+    "product-listing.pt-BR.md": {
+      "risk": "medium",
+      "rationale": "Untouched, but structurally divergent from its source. Will fail any canary suite that includes it; the Yello stub family shares this exposure."
+    },
+    "en_sources_restored": {
+      "risk": "low",
+      "rationale": "Restored from df5499e^; both learn-medusa sidecars verified intact as full PT-BR translations (415 and 634 lines), so no orphans were created."
+    }
+  },
+  "open_items": [
+    "BB-16.1 assigned and dedicated PR #28 recorded in roadmap.md (DoD section 5).",
+    "The repaired pairs are covered through this manifest's canary_pairs array (DoD section 3).",
+    "The dedicated recovery branch must remain within the surgical scope limits (DoD section 1)."
+  ]
+}

@@ -27,6 +27,7 @@
 | BB-14         | Translated Skills Surgical Recovery     |       **APROVADO COM EVIDÊNCIAS** | PR #24 mergeado em `main`. Escopo restrito ao canário cirúrgico. |
 | BB-14.2       | Folder Architecture Registry            | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | PR aberto formalizando schema, registry e validador de pastas. |
 | BB-16.1 / PR #28 | Layout Source Restore & Sidecar Repair | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | Evidência em `reports/loss-investigation/recovery/layouts-source-restore-sidecar-repair.*`; canary por manifesto. |
+| BB-16.2 / PR #29 | Validated PT-BR Reference Repairs     | **VALIDADO EM PR ABERTO / AGUARDANDO MERGE** | Canary 3/3 para `account`, `checkout` e `api-route`; pacote em `reports/loss-investigation/recovery/bb-16-2-validated-reference-repairs.*`. |
 
 ---
 

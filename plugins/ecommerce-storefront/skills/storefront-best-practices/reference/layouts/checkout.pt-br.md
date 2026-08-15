@@ -60,7 +60,9 @@ export const resolveCheckoutSurfaceState = (cart, rawStep) => {
   const requestedStep = normalizeCheckoutSurfaceStep(rawStep)
   // ...
 }
-```**Invariante-chave:**
+```
+
+**Invariante-chave:**
 
 Um cliente nunca pode ultrapassar o `furthestAccessibleStep`. Os degraus tornam-se acessíveis à medida que o carrinho avança.
 ---
@@ -94,7 +96,9 @@ const spendLimitExceeded = customer ? checkSpendingLimit(cart, customer) : false
 
 // If exceeded → show warning + disabled "Revisar aprovacao" button
 // If within limit → show PaymentButton (place order)
-```---
+```
+
+---
 ## Página de finalização da compra
 
 ### Rota
@@ -115,7 +119,9 @@ const localFixture = isLocalE2EMode
 
 const cart = localFixture?.cart ?? (await retrieveCart(cartId))
 const customer = localFixture?.customer ?? (await retrieveCustomer())
-```**Padrão:**
+```
+
+**Padrão:**
 
 Sempre proteja `localFixture` por meio de `isLocalE2EModeEnabled()` — esse sinalizador nunca deve estar ativo em produção.
 ---
@@ -128,7 +134,9 @@ Sempre obtenha os métodos de pagamento do Medusa por ID de região — nunca os
 ```typescript
 // In CheckoutWorkspace (server)
 const availablePaymentMethods = await listCartPaymentMethods(cart.region?.id ?? "")
-```**Por que:**
+```
+
+**Por que:**
 
 Os provedores de pagamento variam de acordo com a região. A codificação estática faz com que o processo de finalização da compra deixe de funcionar quando a região muda.
 ---
@@ -144,7 +152,9 @@ const CHECKOUT_STEPS = [
   { id: "contact-details", label: "Contato" },
   { id: "payment", label: "Pagamento" },
 ] as const
-```**Requisito-chave de acessibilidade:**
+```
+
+**Requisito-chave de acessibilidade:**
 
 Cada círculo de degrau utiliza `aria-current="step"` quando está ativo.
 ---
@@ -166,7 +176,9 @@ const createQueryString = useCallback(
 router.push(pathname + "?" + createQueryString("step", "delivery"), {
   scroll: false,
 })
-```**Use `scroll: false`**
+```
+
+**Use `scroll: false`**
 
 em todas as transições entre etapas para evitar saltos na página. O layout do checkout é um fluxo de página única, no qual o conteúdo das etapas é atualizado dinamicamente, sem a necessidade de rolar até o topo.
 ---
@@ -191,7 +203,9 @@ if (isStripeLike(selectedPaymentMethod) && !activeSession) {
 await initiatePaymentSession(cart, {
   provider_id: selectedPaymentMethod,
 })
-```**Padrão:**
+```
+
+**Padrão:**
 
 Sempre chame `initiatePaymentSession` quando o provedor for alterado OU quando não houver nenhuma sessão ativa.
 
@@ -275,27 +289,13 @@ O `StripeContext` (por meio de `useContext`) está disponível em toda a árvore
 ## Erros comuns a evitar
 
 - ❌**Busca de formas de pagamento no lado do cliente**— faça a busca no lado do servidor em `CheckoutWorkspace` para evitar a arquitetura em cascata
-- ❌**
-
-Exibindo todos os países**— exibir apenas `cart.region?.countries`
-- ❌**
-
-Definir manualmente os provedores de pagamento**— use sempre `listCartPaymentMethods(region_id)`
-- ❌**
-
-Degraus com salto**— sempre aplique `furthestAccessibleStep` a partir da lógica de degraus da superfície
-- ❌**
-
-Omissão de `scroll: false`**na navegação por etapas — causa um deslocamento brusco para o topo da página
-- ❌**
-
-Realização do pedido antes da sessão de pagamento**— certifique-se de que `initiatePaymentSession` seja concluído antes do redirecionamento para a página de revisão
-- ❌**
-
-Dividir os preços por 100**— O Medusa armazena os preços como valores de exibição
-- ❌**
-
-Não limpar o estado do carrinho após o pedido** — após a realização bem-sucedida do pedido, invalidar o contexto/cache do carrinho
+- ❌**Exibindo todos os países**— exibir apenas `cart.region?.countries`
+- ❌**Definir manualmente os provedores de pagamento**— use sempre `listCartPaymentMethods(region_id)`
+- ❌**Degraus com salto**— sempre aplique `furthestAccessibleStep` a partir da lógica de degraus da superfície
+- ❌**Omissão de `scroll: false`**na navegação por etapas — causa um deslocamento brusco para o topo da página
+- ❌**Realização do pedido antes da sessão de pagamento**— certifique-se de que `initiatePaymentSession` seja concluído antes do redirecionamento para a página de revisão
+- ❌**Dividir os preços por 100**— O Medusa armazena os preços como valores de exibição
+- ❌**Não limpar o estado do carrinho após o pedido** — após a realização bem-sucedida do pedido, invalidar o contexto/cache do carrinho
 ---
 ## Painel de resumo do checkout
 

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "llamaparse",
+  "transport": "streamable-http",
+  "url": "https://mcp.llamaindex.ai/mcp",
+  "region": "us",
+  "auth": { "type": "oauth", "required": true },
+  "tools": ["uploadFileByUrl", "getUploadUrl", "parseFile", "classifyFile", "splitFile", "generateExtractionConfig", "extractFile", "getUserProjects", "listIndexes", "findFilesInIndex", "readFileFromIndex", "grepFileFromIndex", "retrieveFromIndex"],
+  "environment": { "LLAMAPARSE_MCP_URL": "https://mcp.llamaindex.ai/mcp", "LLAMAPARSE_MCP_REGION": "us" }
+}

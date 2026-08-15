@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "node --import tsx --test \"tests/**/*.test.ts\""
+    "test": "npm run test:unit && npm run test:llamaparse",
+    "test:llamaparse": "node --test tests/llamaparse-integration.test.mjs",
+    "test:unit": "node --import tsx --test \"tests/**/*.test.ts\""
   },
   "devDependencies": {
     "@types/node": "^26.1.0",

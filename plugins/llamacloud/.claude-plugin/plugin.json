@@ -1,0 +1,20 @@
+{
+  "name": "llamacloud",
+  "description": "End-to-end guidance for integrating LlamaCloud, LlamaParse, LiteParse, Index, and MCP with Medusa applications, including Enterprise self-hosting on Kubernetes, security, performance, observability, rollout, and rollback.",
+  "version": "1.0.0",
+  "author": {
+    "name": "YSH Store"
+  },
+  "homepage": "https://developers.llamaindex.ai/llamaparse/self_hosting/",
+  "repository": "https://github.com/Fernadoteixeira/medusa-agent-skills",
+  "keywords": [
+    "llamacloud",
+    "llamaparse",
+    "liteparse",
+    "document-intelligence",
+    "mcp",
+    "rag",
+    "kubernetes",
+    "medusa"
+  ]
+}

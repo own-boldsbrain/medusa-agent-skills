@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { execFileSync } from "child_process";
 
 const root = process.cwd();
 const base = path.join(root, "plugins");
@@ -135,7 +136,42 @@ function walk(dir, results) {
 }
 
 const results = [];
-walk(base, results);
+const validateAll = process.argv.includes("--all");
+
+function gitLines(args) {
+  try {
+    return execFileSync("git", args, { cwd: root, encoding: "utf8" })
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+function changedSkillMarkdown() {
+  const committed = gitLines(["diff", "--name-only", "--diff-filter=ACMRT", "origin/main...HEAD"]);
+  const unstaged = gitLines(["diff", "--name-only", "--diff-filter=ACMRT", "HEAD"]);
+  const staged = gitLines(["diff", "--name-only", "--diff-filter=ACMRT", "--cached"]);
+  const untracked = gitLines(["ls-files", "--others", "--exclude-standard"]);
+
+  return [...new Set([...committed, ...unstaged, ...staged, ...untracked])]
+    .map((file) => file.replace(/\\/g, "/"))
+    .filter((file) => file.startsWith("plugins/") && file.includes("/skills/") && file.endsWith(".md"))
+    .map((file) => path.join(root, file))
+    .filter((file) => fs.existsSync(file));
+}
+
+if (validateAll) {
+  walk(base, results);
+} else {
+  for (const file of changedSkillMarkdown()) {
+    const errors = validateFile(file);
+    if (errors.length > 0) {
+      results.push({ file: path.relative(root, file), errors });
+    }
+  }
+}
 
 if (results.length > 0) {
   console.error("❌ Markdown Integrity Gate failed.");
@@ -148,4 +184,8 @@ if (results.length > 0) {
   process.exit(1);
 }
 
-console.log("✅ Markdown Integrity is clean.");
+console.log(
+  validateAll
+    ? "✅ Markdown Integrity is clean for the complete plugin tree."
+    : "✅ Markdown Integrity is clean for changed skill files."
+);

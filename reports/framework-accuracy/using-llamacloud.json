@@ -1,0 +1,53 @@
+{
+  "skill": "using-llamacloud",
+  "generated_at": "2026-08-14T00:00:00Z",
+  "framework_target": "LlamaCloud Self-Hosted Helm chart 0.9.0 and maintained LlamaCloud SDKs",
+  "passed": true,
+  "evidence_boundary": "Source and documentation accuracy only; no Enterprise license, live Kubernetes cluster, identity provider, LLM contract, or production workload was validated.",
+  "sources": [
+    "https://developers.llamaindex.ai/llamaparse/self_hosting/",
+    "https://developers.llamaindex.ai/llamaparse/self_hosting/installation/",
+    "https://developers.llamaindex.ai/llamaparse/self_hosting/architecture/",
+    "https://developers.llamaindex.ai/llamaparse/self_hosting/configuration/index-v2-configuration/",
+    "https://developers.llamaindex.ai/llamaparse/self_hosting/monitoring/monitoring/",
+    "https://developers.llamaindex.ai/llamaparse/self_hosting/tuning/llamaparse-throughput/",
+    "https://developers.llamaindex.ai/llamaparse/for-agents/mcp/",
+    "https://github.com/run-llama/helm-charts",
+    "https://github.com/run-llama/llama-parse-py",
+    "https://github.com/run-llama/llama-parse-ts",
+    "https://github.com/run-llama/mcp-llamaindex-ai",
+    "https://github.com/run-llama/liteparse"
+  ],
+  "findings": [
+    {
+      "topic": "Self-hosting prerequisites",
+      "status": "current",
+      "details": "The skill records the Enterprise license gate, Kubernetes 1.28+, Helm 3.7+, Linux amd64, documented starting capacity, production GPU recommendation, object storage, and required Postgres, MongoDB, Redis, RabbitMQ, and Temporal dependencies."
+    },
+    {
+      "topic": "Helm distribution",
+      "status": "current",
+      "details": "The skill uses the public run-llama Helm repository and the llamaindex/llamacloud chart, and explicitly marks the older enterprise repository and chart name as deprecated for new work."
+    },
+    {
+      "topic": "SDK packages",
+      "status": "current",
+      "details": "The skill uses the maintained llama-cloud>=1.0 Python distribution (llama_cloud import namespace) and @llamaindex/llama-cloud for TypeScript, with a verification step for private or regional base URL configuration in the installed version."
+    },
+    {
+      "topic": "MCP",
+      "status": "current",
+      "details": "The skill uses the authenticated regional LlamaParse MCP endpoints, classifies the current unified upload, Parse, Classify, Split, Extract, regex/file-search, and hybrid retrieval tools by side effect, and marks the archived llamacloud-mcp demo as unsuitable for a new implementation."
+    },
+    {
+      "topic": "Index and operations",
+      "status": "current",
+      "details": "The skill separates metadata databases from Index targets; preserves source revision, ACL, deletion state, and provenance for Google Drive, Notion, GitHub, Linear, and Hugging Face ingestion; routes exact regex before hybrid semantic retrieval; and covers pgvector, MongoDB Search, Azure AI Search, Turbopuffer, custom export, observability, performance, rollout, rollback, and data-preserving incident response."
+    },
+    {
+      "topic": "Medusa boundary",
+      "status": "current",
+      "details": "The integration preserves the Medusa route-to-workflow layering, idempotency, compensation, callback verification, provider abstraction, and evidence boundaries."
+    }
+  ]
+}

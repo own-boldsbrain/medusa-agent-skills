@@ -1,44 +1,47 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   CANONICAL_SUFFIX,
-  FROZEN_LEGACY_PATHS,
   findTranslation,
+  FROZEN_LEGACY_PATHS,
   isCanonicalTranslationName,
   isLegacyTranslationName,
   isTranslatableSource,
   isTranslationName,
 } from "./lib/translation-naming.mjs";
 
-const root = process.cwd();
+const root = path.resolve(fileURLToPath(import.meta.url), "../..");
 const base = path.join(root, "plugins");
-const ignoreDirs = new Set(["node_modules", ".git"]);
+
 const missing = [];
 const badVariants = [];
 const unfrozenLegacy = [];
 const backups = [];
 
-const toRel = (full) => path.relative(root, full).replace(/\\/g, "/");
-
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-  const fileNames = entries.filter((entry) => !entry.isDirectory()).map((entry) => entry.name);
+  const names = entries.map((e) => e.name);
 
   for (const entry of entries) {
-    if (ignoreDirs.has(entry.name)) continue;
-
     const full = path.join(dir, entry.name);
+    const rel = path.relative(root, full).replace(/\\/g, "/");
+
     if (entry.isDirectory()) {
       walk(full);
       continue;
     }
 
-    const rel = toRel(full);
-    if (!rel.includes("/skills/")) continue;
-
-    if (/\.(bak|stub\.bak|tmp|temp|log)$/i.test(entry.name)) {
+    if (entry.name.includes(".backup")) {
       backups.push(rel);
       continue;
+    }
+
+    if (isTranslatableSource(entry.name)) {
+      const match = findTranslation(entry.name, names);
+      if (!match) {
+        missing.push(rel);
+      }
     }
 
     if (isTranslationName(entry.name)) {
@@ -52,13 +55,13 @@ function walk(dir) {
           unfrozenLegacy.push(rel);
         }
       }
-      continue;
-    }
 
-    if (!isTranslatableSource(entry.name)) continue;
-
-    if (!findTranslation(entry.name, fileNames)) {
-      missing.push(rel);
+      // Check whether this sidecar actually has a matching source file.
+      const stem = entry.name.replace(/\.pt[-_]?br\.md$/i, "");
+      const expectedSource = `${stem}.md`;
+      if (!names.includes(expectedSource)) {
+        badVariants.push(`${rel} (orphaned sidecar without matching source: ${expectedSource})`);
+      }
     }
   }
 }
@@ -92,7 +95,7 @@ if (missing.length || badVariants.length || unfrozenLegacy.length || staleFrozen
   }
 
   if (backups.length) {
-    console.error("\nBackup/temp files in plugins:");
+    console.error("\nUnwanted backup files found:");
     for (const item of backups) console.error(`- ${item}`);
   }
 

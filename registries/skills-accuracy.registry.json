@@ -19,6 +19,26 @@
         "node scripts/ci-guard.mjs --framework-accuracy",
         "node scripts/validate-skill-accuracy-registry.mjs"
       ]
+    },
+    {
+      "skill_id": "using-llamacloud",
+      "framework": "LlamaCloud and Medusa",
+      "target_version": "LlamaCloud Helm chart 0.9.0 and maintained SDKs as of 2026-08-14",
+      "source_skill_path": "plugins/llamacloud/skills/using-llamacloud/SKILL.md",
+      "translated_skill_path": "plugins/llamacloud/skills/using-llamacloud/SKILL.pt-br.md",
+      "translations": [
+        "en",
+        "pt-br"
+      ],
+      "framework_accuracy_report": "reports/framework-accuracy/using-llamacloud.json",
+      "skill_accuracy_report": "reports/skill-accuracy/using-llamacloud.json",
+      "status": "up-to-date",
+      "evidence_level": "approved-with-evidence",
+      "last_verified_at": "2026-08-14",
+      "validation_commands": [
+        "npm run check",
+        "node --import tsx --test tests/llamacloud-plugin-contract.test.ts"
+      ]
     }
   ]
 }

@@ -5,16 +5,17 @@
   "author": {
     "name": "Medusa"
   },
-  "homepage": "https://medusajs.com",
-  "repository": "https://github.com/medusajs/medusa-claude-plugins",
   "keywords": [
     "medusa",
+    "ecommerce",
     "cloud",
     "mcloud",
     "deployments",
     "environments",
+    "ambientes",
     "cli",
     "devops",
-    "hosting"
+    "hosting",
+    "hospedagem"
   ]
 }

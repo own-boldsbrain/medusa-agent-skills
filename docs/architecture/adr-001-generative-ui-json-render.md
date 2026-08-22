@@ -172,6 +172,7 @@ Em contrapartida, o **Zod é compatível**: `@medusajs/admin-sdk@2.19.0` traz `z
 4. [ ] Especificar o contrato `GenerativeUIAdapter` em `schemas/`, espelhando a estrutura de `schemas/framework-adapter.schema.json`.
 5. [ ] Registrar `json-render` em `registries/agentic-frameworks.registry.json` (ou registry novo de UI) com `status: "proposed"`, seguindo a convenção existente.
 6. [ ] Fixar as versões de `ai` e `@ai-sdk/*` na skill `creating-internal-agents`, que hoje não pina nenhuma — pré-requisito para qualquer integração reproduzível.
+7. [x] Exigir no catálogo/spec nomes acessíveis, navegação por teclado, política de live region, foco, loading/empty/error/success e feedback de ação; o validator e os testes adversariais permanecem contract-only.
 
 ---
 

@@ -88,6 +88,27 @@ function Get-SkillDirectories {
     } | Sort-Object Skill
 }
 
+function Get-RelativePathCompat {
+    param(
+        [Parameter(Mandatory = $true)][string]$BasePath,
+        [Parameter(Mandatory = $true)][string]$TargetPath
+    )
+
+    # Windows PowerShell 5.1/.NET Framework does not expose Path.GetRelativePath.
+    # Uri.MakeRelativeUri is available there and produces the same slash-normalized
+    # relative path used by PowerShell 7/Linux runners.
+    $baseFull = [System.IO.Path]::GetFullPath($BasePath)
+    $targetFull = [System.IO.Path]::GetFullPath($TargetPath)
+    if (-not $baseFull.EndsWith([System.IO.Path]::DirectorySeparatorChar)) {
+        $baseFull += [System.IO.Path]::DirectorySeparatorChar
+    }
+
+    $baseUri = [System.Uri]::new($baseFull)
+    $targetUri = [System.Uri]::new($targetFull)
+    $relativeUri = $baseUri.MakeRelativeUri($targetUri)
+    return [System.Uri]::UnescapeDataString($relativeUri.ToString()).Replace('/', [System.IO.Path]::DirectorySeparatorChar)
+}
+
 # Decides, for one skill folder, which source file supplies each destination file.
 function Resolve-SkillPlan {
     param([string]$SourcePath)
@@ -100,14 +121,14 @@ function Resolve-SkillPlan {
     )
 
     foreach ($file in $files) {
-        $relative = [System.IO.Path]::GetRelativePath($SourcePath, $file.FullName)
+        $relative = Get-RelativePathCompat -BasePath $SourcePath -TargetPath $file.FullName
         if ($translatedSuffix.IsMatch($relative)) {
             [void]$supersededDestinations.Add($translatedSuffix.Replace($relative, ".md"))
         }
     }
 
     foreach ($file in $files) {
-        $relative = [System.IO.Path]::GetRelativePath($SourcePath, $file.FullName)
+        $relative = Get-RelativePathCompat -BasePath $SourcePath -TargetPath $file.FullName
 
         if ($translatedSuffix.IsMatch($relative)) {
             [PSCustomObject]@{

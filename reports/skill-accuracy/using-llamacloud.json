@@ -1,0 +1,11 @@
+{
+  "skill_id": "using-llamacloud",
+  "generated_at": "2026-08-14T00:00:00Z",
+  "status": "up-to-date",
+  "framework_version": "LlamaCloud Helm chart 0.9.0 and maintained SDKs as of 2026-08-14",
+  "translation_parity": true,
+  "accuracy_findings_summary": "The skill covers Medusa integration, federated Google Drive, Notion, GitHub, Linear, and Hugging Face ingestion, exact regex and hybrid semantic retrieval, hosted and self-hosted routing, current SDK and Helm paths, MCP side effects, ACL boundaries, security, Index, performance, observability, testing, rollout, rollback, and evidence boundaries.",
+  "validation_passed": true,
+  "runtime_validation": false,
+  "runtime_validation_reason": "No Enterprise license or target Kubernetes environment was provided to this repository-only change."
+}

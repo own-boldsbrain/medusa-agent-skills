@@ -208,6 +208,34 @@
         "logs_secrets": false
       },
       "status": "proposed"
+    },
+    {
+      "mcp_id": "llamacloud-platform",
+      "domain": "document-intelligence",
+      "purpose": "Use authenticated LlamaParse Platform capabilities for upload, parsing, classification, splitting, extraction, regex file search, hybrid Index retrieval, and Medusa document workflows",
+      "tools": [
+        "getUploadUrl",
+        "uploadFileByUrl",
+        "getUserProjects",
+        "parseFile",
+        "classifyFile",
+        "splitFile",
+        "generateExtractionConfig",
+        "extractFile",
+        "listIndexes",
+        "findFilesInIndex",
+        "readFileFromIndex",
+        "grepFileFromIndex",
+        "retrieveFromIndex"
+      ],
+      "input_schemas": ["mcp-tool.schema.json"],
+      "output_schemas": ["evidence-report.schema.json"],
+      "security": {
+        "reads_repo": false,
+        "writes_repo": false,
+        "logs_secrets": false
+      },
+      "status": "active"
     }
   ]
 }

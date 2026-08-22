@@ -287,6 +287,105 @@
         "write_operations_allowed": true
       },
       "status": "proposed"
+    },
+    {
+      "server_id": "llamacloud-platform",
+      "domain": "document-intelligence",
+      "contract_schema": "schemas/mcp-server.schema.json",
+      "transport_profile": "remote_authenticated",
+      "default_transport": "streamable_http",
+      "remote_transport": "streamable_http",
+      "tools": [
+        {
+          "tool_id": "llamacloud-platform.getUserProjects",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": true
+        },
+        {
+          "tool_id": "llamacloud-platform.getUploadUrl",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_write",
+          "required": true
+        },
+        {
+          "tool_id": "llamacloud-platform.uploadFileByUrl",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_write",
+          "required": true
+        },
+        {
+          "tool_id": "llamacloud-platform.parseFile",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_write",
+          "required": true
+        },
+        {
+          "tool_id": "llamacloud-platform.classifyFile",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_write",
+          "required": false
+        },
+        {
+          "tool_id": "llamacloud-platform.splitFile",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_write",
+          "required": false
+        },
+        {
+          "tool_id": "llamacloud-platform.generateExtractionConfig",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_write",
+          "required": false
+        },
+        {
+          "tool_id": "llamacloud-platform.extractFile",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_write",
+          "required": false
+        },
+        {
+          "tool_id": "llamacloud-platform.listIndexes",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": false
+        },
+        {
+          "tool_id": "llamacloud-platform.findFilesInIndex",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": false
+        },
+        {
+          "tool_id": "llamacloud-platform.readFileFromIndex",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": false
+        },
+        {
+          "tool_id": "llamacloud-platform.grepFileFromIndex",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": false
+        },
+        {
+          "tool_id": "llamacloud-platform.retrieveFromIndex",
+          "contract_schema": "schemas/mcp-tool-contract.schema.json",
+          "side_effect_level": "read_only",
+          "required": false
+        }
+      ],
+      "capabilities": {
+        "tools": true,
+        "resources": false,
+        "prompts": false,
+        "logging": true
+      },
+      "security": {
+        "secret_logging_forbidden": true,
+        "write_operations_allowed": true
+      },
+      "status": "active"
     }
   ]
 }

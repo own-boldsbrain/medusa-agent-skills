@@ -1,11 +1,15 @@
 {
-  "name": "medusa",
+  "$schema": "https://anthropic.com/schemas/claude-plugin-marketplace.json",
+  "name": "medusa-agent-skills",
+  "version": "1.1.0",
+  "description": "Coleção de plugins Claude para construir aplicações de ecommerce com Medusa. Inclui skills, comandos e ferramentas para backend Medusa, Admin UI e desenvolvimento de storefront.",
   "owner": {
-    "name": "Medusa"
+    "name": "Medusa",
+    "email": "support@medusajs.com"
   },
   "metadata": {
     "description": "Coleção de plugins Claude para construir aplicações de ecommerce com Medusa. Inclui skills, comandos e ferramentas para backend Medusa, Admin UI e desenvolvimento de storefront.",
-    "version": "1.0.8"
+    "version": "1.1.0"
   },
   "plugins": [
     {
@@ -23,6 +27,14 @@
     {
       "name": "design-log",
       "source": "./plugins/design-log"
+    },
+    {
+      "name": "medusa-cloud",
+      "source": "./plugins/medusa-cloud"
+    },
+    {
+      "name": "llamacloud",
+      "source": "./plugins/llamacloud"
     }
   ]
 }
